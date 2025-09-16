@@ -1,0 +1,408 @@
+//=======================================
+//
+// リザルトスコア処理 [ resultscore.h ]
+// Author: Asuma Nishio
+// 
+//=======================================
+
+//**********************
+// インクルードファイル
+//**********************
+#include "resultscore.h"
+#include "manager.h"
+#include "texture.h"
+
+//================================
+// コンストラクタ
+//================================
+CResultScore::CResultScore(int nPriority) : CObject(nPriority)
+{
+	// 値のクリア
+	m_nScore = NULL;
+	m_nLastScore = NULL;
+	m_nTimeScore = NULL;
+	m_nIdxTexture = NULL;
+	m_nDestLastScore = NULL;
+	m_nDestTimeScore = NULL;
+	m_nLastScore = NULL;
+
+	m_fScale = 20.0f;		// 最初は大きく
+	m_fTargetScale = 1.0f;	// 通常サイズ
+	m_fScaleSpeed = 0.7f;	// 縮小速度
+
+	m_pos = VECTOR3_NULL;
+	m_DestPos = VECTOR3_NULL;
+
+	for (int nCnt = 0; nCnt < NUM_RESULTSCORE; nCnt++)
+	{
+		m_apNumber[nCnt] = nullptr;
+	}
+}
+//================================
+// デストラクタ
+//================================
+CResultScore::~CResultScore()
+{
+	// 無し
+}
+//================================
+// 生成処理
+//================================
+CResultScore* CResultScore::Create(D3DXVECTOR3 pos, float fWidth, float fHeight,int nType)
+{
+	// インスタンス生成
+	CResultScore* pResultScore = new CResultScore;
+	if (pResultScore == nullptr) return nullptr;
+
+	// 座標,サイズ設定
+	pResultScore->m_DestPos = pos; // 目的の座標
+
+	// 左上からスタート
+	const float fOffsetX = -400.0f; // 左
+	const float fOffsetY = -800.0f; // 上
+	pResultScore->m_pos = pos + D3DXVECTOR3(fOffsetX, fOffsetY, 0.0f);
+
+	pResultScore->m_fWidth = fWidth;
+	pResultScore->m_fHeight = fHeight;
+	pResultScore->m_nType = nType;
+
+	// 初期化失敗時
+	if (FAILED(pResultScore->Init()))
+	{
+		return nullptr;
+	}
+
+	// 生成されたポインタを返す
+	return pResultScore;
+}
+//================================
+// 初期化処理
+//================================
+HRESULT CResultScore::Init(void)
+{
+	// 横幅計算
+	float fTexPos = m_fWidth / NUM_RESULTSCORE;
+
+	// 桁数分
+	for (int nCnt = 0; nCnt < NUM_RESULTSCORE; nCnt++)
+	{
+		// インスタンス生成
+		m_apNumber[nCnt] = new CNumber;
+
+		// 座標設定
+		m_apNumber[nCnt]->SetPos(m_pos);
+		// 初期化処理
+		m_apNumber[nCnt]->Init(D3DXVECTOR3(m_pos.x - (fTexPos * 2.0f * nCnt), m_pos.y, 0.0f), fTexPos, m_fHeight);
+		// ナンバー変数のサイズ
+		m_apNumber[nCnt]->SetSize(fTexPos, m_fHeight);
+	}
+
+	// テクスチャセット
+	SetTexture();
+
+	// 初期化結果を返す
+	return S_OK;
+
+}
+//================================
+// 終了処理
+//================================
+void CResultScore::Uninit(void)
+{
+	// 使った分破棄
+	for (int nCnt = 0; nCnt < NUM_RESULTSCORE; nCnt++)
+	{
+		// nullptrチェック
+		if (m_apNumber[nCnt] != nullptr)
+		{
+			// 終了
+			m_apNumber[nCnt]->Uninit();
+
+			// 破棄
+			delete m_apNumber[nCnt];
+
+			// ポインタ初期化
+			m_apNumber[nCnt] = nullptr;
+		}
+	}
+
+	// 自身の破棄
+	CObject::Release();
+}
+//================================
+// 更新処理
+//================================
+void CResultScore::Update(void)
+{	
+	// 減算処理
+	if (m_fScale > m_fTargetScale)
+	{
+		// 減少
+		m_fScale -= m_fScaleSpeed;
+
+		// 下回ったら
+		if (m_fScale < m_fTargetScale)
+			m_fScale = m_fTargetScale;
+	}	
+	
+	// 座標のイージング補間
+	float ease = 0.2f; // 補間の値
+	m_pos.x += (m_DestPos.x - m_pos.x) * ease;
+	m_pos.y += (m_DestPos.y - m_pos.y) * ease;
+
+	// スコア種類によって計算を変える
+	switch (m_nType)
+	{
+	case SCORE_GAME:
+	{
+		// スコア格納
+		int nScore = m_nScore;
+
+		// 八桁分
+		for (int nCntScore = 0; nCntScore < NUM_RESULTSCORE; nCntScore++) // 右から処理
+		{
+			// 桁数ごとに分割する値を計算
+			int nDigit = nScore % NUM_RESULTDIGIT;
+
+			nScore /= NUM_RESULTDIGIT;
+
+			// ナンバー更新
+			m_apNumber[nCntScore]->Update();
+
+			// 桁更新
+			m_apNumber[nCntScore]->SetDigit(nDigit);
+
+			// 座標を更新
+			D3DXVECTOR3 Pos(
+				m_pos.x - ((m_fWidth / NUM_RESULTSCORE) * 2.0f * nCntScore * m_fScale),
+				m_pos.y,
+				0.0f);
+			m_apNumber[nCntScore]->SetPos(Pos);
+
+			// サイズ更新
+			float fTexPos = (m_fWidth / NUM_RESULTSCORE) * m_fScale;
+			float fHeight = m_fHeight * m_fScale;
+			m_apNumber[nCntScore]->SetSize(fTexPos, fHeight);
+		}
+	}
+	break;
+
+	case SCORE_TIME:
+	{
+		// タイム用のスコア格納
+		int nTimescore = m_nTimeScore;
+
+		// 八桁分
+		for (int nCntScore = 0; nCntScore < NUM_RESULTSCORE; nCntScore++) // 右から処理
+		{
+			// 桁数ごとに分割する値を計算
+			int nDigitTime = nTimescore % NUM_RESULTDIGIT;
+
+			nTimescore /= NUM_RESULTDIGIT;
+
+			// ナンバー更新
+			m_apNumber[nCntScore]->Update();
+
+			// 桁更新
+			m_apNumber[nCntScore]->SetDigit(nDigitTime);
+
+
+			// 座標を更新
+			D3DXVECTOR3 TimescorePos(
+				m_pos.x - ((m_fWidth / NUM_RESULTSCORE) * 2.0f * nCntScore * m_fScale),
+				m_pos.y,
+				0.0f);
+			m_apNumber[nCntScore]->SetPos(TimescorePos);
+
+			// サイズ更新
+			float fTexPos = (m_fWidth / NUM_RESULTSCORE) * m_fScale;
+			float fHeight = m_fHeight * m_fScale;
+			m_apNumber[nCntScore]->SetSize(fTexPos, fHeight);
+		}
+	}
+	break;
+
+	case SCORE_LAST:
+	{
+		// スコア格納
+		int nLastScore = m_nLastScore;
+
+		// 八桁分
+		for (int nCntScore = 0; nCntScore < NUM_RESULTSCORE; nCntScore++) // 右から処理
+		{
+			// 桁数ごとに分割する値を計算
+			int nDigitLast = nLastScore % NUM_RESULTDIGIT;
+
+			nLastScore /= NUM_RESULTDIGIT;
+
+			// ナンバー更新
+			m_apNumber[nCntScore]->Update();
+
+			// 桁更新
+			m_apNumber[nCntScore]->SetDigit(nDigitLast);
+
+			// 座標を更新
+			D3DXVECTOR3 LastscorePos(
+				m_pos.x - ((m_fWidth / NUM_RESULTSCORE) * 2.0f * nCntScore * m_fScale),
+				m_pos.y,
+				0.0f);
+			m_apNumber[nCntScore]->SetPos(LastscorePos);
+
+			// サイズ更新
+			float fTexPos = (m_fWidth / NUM_RESULTSCORE) * m_fScale;
+			float fHeight = m_fHeight * m_fScale;
+			m_apNumber[nCntScore]->SetSize(fTexPos, fHeight);
+
+			// カラー更新
+			m_apNumber[nCntScore]->SetFlash(10,20,COLOR_RED);
+		}
+	}
+	break;
+
+	default:
+		break;
+	}
+}
+//================================
+// 描画処理
+//================================
+void CResultScore::Draw(void)
+{
+	// デバイスの取得
+	LPDIRECT3DDEVICE9 pDevice = CManager::GetRenderer()->GetDevice();
+
+	// テクスチャ読み込み
+	CTexture* pTexture = CManager::GetTexture();
+
+	// 使っている桁数分の描画
+	for (int nCnt = 0; nCnt < NUM_RESULTSCORE; nCnt++)
+	{
+		// テクスチャセット
+		pDevice->SetTexture(0, pTexture->GetAddress(m_nIdxTexture));
+
+		// ナンバー描画
+		m_apNumber[nCnt]->Draw();
+	
+	}
+}
+//================================
+// 書き出し処理
+//================================
+void CResultScore::Save(void)
+{
+	// 最大5件
+	int nScores[NUM_SAVESCORE] = { NULL };
+
+	// カウント用
+	int nCnt = 0;
+
+	// 既存のスコアを読み込み
+	std::ifstream inFile("data\\Loader\\RankScore.txt");
+
+	// ファイルが開けたら
+	if (inFile.is_open())
+	{
+		// カウントが最大値以下
+		while (nCnt < NUM_SAVESCORE && inFile >> nScores[nCnt])
+		{
+			// カウントを進める
+			nCnt++;
+		}
+
+		// ファイルを閉じる
+		inFile.close();
+	}
+
+	// 今回のスコアを追加する
+	if (nCnt < NUM_SAVESCORE)
+	{
+		// 配列に一時保存
+		nScores[nCnt++] = m_nLastScore;
+	}
+	else
+	{
+		// 最後に入れる
+		nScores[NUM_SAVESCORE - 1] = m_nLastScore;
+	}
+
+	// バブルソート
+	for (int nCntScore = 0; nCntScore < nCnt - 1; nCntScore++)
+	{
+		for (int nCnt1 = nCntScore + 1; nCnt1 < nCnt; nCnt1++)
+		{
+			if (nScores[nCntScore] < nScores[nCnt1])
+			{
+				// 値が小さいなら入れ替え
+				int nDestScore = nScores[nCntScore];
+				nScores[nCntScore] = nScores[nCnt1];
+				nScores[nCnt1] = nDestScore;
+			}
+		}
+	}
+
+	// 上位5件に絞る
+	// ファイルに書き出し
+	std::ofstream outFile("data\\Loader\\RankScore.txt");
+
+	// 開けたら
+	if (outFile.is_open())
+	{
+		// 書き出す分回す
+		for (int nCnt = 0; nCnt < NUM_SAVESCORE; nCnt++)
+		{
+			outFile << nScores[nCnt] << std::endl;
+		}
+
+		// ファイルを閉じる
+		outFile.close();
+	}
+	else
+	{
+		MessageBox(NULL, "RankScore.txt が開けませんでした", "エラー", MB_OK);
+	}
+}
+
+//================================
+// テクスチャ処理
+//================================
+void CResultScore::SetTexture(void)
+{
+	// テクスチャポインタ取得
+	CTexture* pTexture = CManager::GetTexture();
+
+	// テクスチャ割り当て
+	m_nIdxTexture = pTexture->Register("data\\TEXTURE\\ResultScore.png");
+}
+//================================
+// クリアタイムのスコアを計算
+//================================
+int CResultScore::MathTimescore(void)
+{
+	// 読み込んだ値
+	float fValue = (float)m_nTimeScore;
+
+	// もし0なら
+	if (m_nTimeScore == 0)
+	{
+		// 0を返す
+		return 0;
+	}
+
+	// 上限値
+	const float fMaxReadValue = 120.0f;
+
+	// 最大スコア
+	const int nMaxTimeScore = 50000;
+
+	// 比率を算出
+	float fRatio = 1.0f - (fValue / fMaxReadValue);
+
+	// 範囲補正
+	if (fRatio < 0.0f) fRatio = 0.0f;
+	if (fRatio > 1.0f) fRatio = 1.0f;
+
+	// スコア計算
+	int nMathscore = (int)(nMaxTimeScore * fRatio);
+
+	return nMathscore;
+}

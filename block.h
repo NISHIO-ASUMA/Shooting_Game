@@ -1,0 +1,53 @@
+//=====================================
+//
+// ブロック処理 [ block.h ]
+// Author: Asuma Nishio
+//
+//=====================================
+
+#ifndef _BLOCK_H_ // このマクロ定義がされてなかったら
+#define _BLOCK_H_ // 2重インクルード防止のマクロ定義
+
+//**********************
+// インクルードファイル
+//**********************
+#include "objectX.h"
+
+//************************************
+// ブロッククラスを定義
+//************************************
+class CBlock : public CObjectX
+{
+public:
+	//***************************
+	// 回転の種類
+	//***************************
+	enum ROTTYPE
+	{
+		ROTTYPE_NOROTATION,
+		ROTTYPE_ROTATION,
+		ROTTYPE_MAX
+	};
+
+	// コンストラクタ・デストラクタ
+	CBlock(int nPriority = static_cast<int>(CObject::PRIORITY::MODELOBJECT));
+	~CBlock();
+
+	// メンバ関数
+	HRESULT Init(void);
+	void Uninit(void);
+	void Update(void);
+	void Draw(void);
+
+	// ゲッター
+	float GetSize(void) const { return m_size; }
+
+	// 静的メンバ関数
+	static CBlock* Create(const char* pFileName, D3DXVECTOR3 pos,D3DXVECTOR3 rot, float fSize,int nType);
+
+private:
+	float m_size; // サイズ設定用
+	int m_nType;	// 種類
+};
+
+#endif

@@ -1,0 +1,93 @@
+#=====================================================
+# 
+# チュートリアルUI情報 [ TutoUi.txt ]
+# Author : Asuma Nishio
+#
+#=====================================================
+
+#=====================================================
+# オブジェクト数
+#=====================================================
+NUM_UI = 7
+
+#=====================================================
+# 配置情報
+#=====================================================
+
+#--------------------------
+# 移動
+#--------------------------
+SET
+POS = 1320.0 110.0 0.0
+WIDTH = 150.0
+HEIGHT = 100.0
+TEXTURE = data/TEXTURE/ComboMenu/Tutorial_menu_move.png
+STATE = 0
+ENDSET
+
+#--------------------------
+# 攻撃
+#--------------------------
+SET
+POS = 1320.0 110.0 0.0
+WIDTH = 150.0
+HEIGHT = 100.0
+TEXTURE = data/TEXTURE/ComboMenu/Tutorial_menu_Attack.png
+STATE = 0
+ENDSET
+
+#--------------------------
+# ジャンプ
+#--------------------------
+SET
+POS = 1320.0 110.0 0.0
+WIDTH = 150.0
+HEIGHT = 100.0
+TEXTURE = data/TEXTURE/ComboMenu/Tutorial_menu_Jump.png
+STATE = 0
+ENDSET
+
+#--------------------------
+# ジャンプ攻撃
+#--------------------------
+SET
+POS = 1320.0 110.0 0.0
+WIDTH = 150.0
+HEIGHT = 100.0
+TEXTURE = data/TEXTURE/ComboMenu/Tutorial_menu_JumpAttack.png
+STATE = 0
+ENDSET
+
+#--------------------------
+# 攻撃切り替え
+#--------------------------
+SET
+POS = 1320.0 110.0 0.0
+WIDTH = 150.0
+HEIGHT = 100.0
+TEXTURE = data/TEXTURE/ComboMenu/Tutorial_menu_gauge.png
+STATE = 0
+ENDSET
+
+#--------------------------
+# レーザー攻撃
+#--------------------------
+SET
+POS = 1320.0 110.0 0.0
+WIDTH = 150.0
+HEIGHT = 100.0
+TEXTURE = data/TEXTURE/ComboMenu/Tutorial_menu_Attack.png
+STATE = 0
+ENDSET
+
+#--------------------------
+# フリータイム
+#--------------------------
+SET
+POS = 1320.0 110.0 0.0
+WIDTH = 150.0
+HEIGHT = 100.0
+TEXTURE = data/TEXTURE/ComboMenu/Tutorial_menu_free.png
+STATE = 0
+ENDSET
+
