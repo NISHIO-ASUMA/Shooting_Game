@@ -206,10 +206,10 @@ HRESULT CMeshCircle::Init(void)
 	m_nLife = 90;
 
 	// サークルの円周上に石つぶてを生成
-	for (int nCnt = 0; nCnt < CIRCLEINFO::NUMSPREAD; nCnt++)
+	for (int nCntSpred = 0; nCntSpred < CIRCLEINFO::NUMSPREAD; nCntSpred++)
 	{
 		// 配置角度を計算
-		float fPopAngle = (D3DX_PI * 2.0f / CIRCLEINFO::NUMSPREAD) * nCnt;
+		float fPopAngle = (D3DX_PI * 2.0f / CIRCLEINFO::NUMSPREAD) * nCntSpred;
 
 		// 円周上の座標を計算
 		float fRotX = sinf(fPopAngle) * CIRCLEINFO::CIRCLERADIUS;

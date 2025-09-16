@@ -55,7 +55,6 @@ void CSceneLoader::SplitLoad(int nIdx)
 
 	// ƒ[ƒJƒ‹•Ï”
 	std::string line;
-	int nNumFile = NULL;
 
 	// “Ç‚İ‚ñ‚¾–¼‘O
 	std::string objName, motionPath, filePath, createType;

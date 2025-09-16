@@ -821,7 +821,6 @@ void CPlayer::UpdateJumpAction(CInputKeyboard* pInputKeyboard, D3DXMATRIX pMtx, 
 
 	 // モーションのフラグ
 	 bool isJumpAttacking = (m_pMotion->GetMotionType() == PLAYERMOTION_JUMPATTACK);
-	 bool isLanding = false;
 
 	 // シーン取得
 	 CScene::MODE nMode = CManager::GetScene();
@@ -872,9 +871,6 @@ void CPlayer::UpdateJumpAction(CInputKeyboard* pInputKeyboard, D3DXMATRIX pMtx, 
 
 			// ジャンプ攻撃モーションに変更
 			m_pMotion->SetMotion(PLAYERMOTION_JUMPATTACK,false,0, false);
-
-			// シーン取得
-			CScene::MODE nMode = CManager::GetScene();
 
 			// ゲームシーン
 			if (nMode == CScene::MODE_GAME)
@@ -1232,9 +1228,6 @@ void CPlayer::StickState(void)
 
 	// 角度取得
 	pStick = pPad->GetStickAngle();
-
-	// カメラ取得
-	CCamera* pCamera = CManager::GetCamera();
 
 	if (pPad->GetLeftStick() == true)
 	{

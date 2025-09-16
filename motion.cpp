@@ -674,9 +674,9 @@ void CMotion::SetParts(std::ifstream& file, CModel** pModel)
 			std::getline(partss, rest); // •¶š—ñ‚Åæ“¾
 
 			// ƒRƒƒ“ƒg‚ğíœ
-			size_t pos = rest.find('#');
-			if (pos != std::string::npos)
-				rest = rest.substr(0, pos);
+			size_t Pos = rest.find('#');
+			if (Pos != std::string::npos)
+				rest = rest.substr(0, Pos);
 
 			// ‹ó”’‚Å•ªŠ„‚µ‚Ä float ‚É•ÏŠ·
 			std::istringstream iss(rest);

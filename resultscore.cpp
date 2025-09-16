@@ -348,9 +348,9 @@ void CResultScore::Save(void)
 	if (outFile.is_open())
 	{
 		// 書き出す分回す
-		for (int nCnt = 0; nCnt < NUM_SAVESCORE; nCnt++)
+		for (int nCntScore = 0; nCntScore < NUM_SAVESCORE; nCntScore++)
 		{
-			outFile << nScores[nCnt] << std::endl;
+			outFile << nScores[nCntScore] << std::endl;
 		}
 
 		// ファイルを閉じる

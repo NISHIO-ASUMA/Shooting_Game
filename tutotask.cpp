@@ -99,9 +99,6 @@ void CTutoTask::Update(void)
 //================================
 void CTutoTask::Load(void)
 {
-	// デバイスポインタを宣言
-	LPDIRECT3DDEVICE9 pDevice = CManager::GetRenderer()->GetDevice();
-
 	// 指定ファイルを開く
 	std::ifstream loadFile(TASKS::FILENAME);
 
