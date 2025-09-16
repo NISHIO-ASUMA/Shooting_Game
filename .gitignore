@@ -39,7 +39,6 @@
 
 # debug information files
 *.dwo
-/.Debug
-/.Release
-/.vs
+/Debug
 /Release
+/.vs
