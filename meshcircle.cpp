@@ -62,9 +62,10 @@ CMeshCircle* CMeshCircle::Create(D3DXVECTOR3 pos)
 	// インスタンス生成
 	CMeshCircle* pMeshCircle = new CMeshCircle;
 
-	// nullチェックs
+	// nullチェック
 	if (pMeshCircle == nullptr)	return nullptr;
 
+	// オブジェクト設定
 	pMeshCircle->m_pos = pos;
 
 	// 初期化失敗時
@@ -165,7 +166,6 @@ HRESULT CMeshCircle::Init(void)
 		nCnt++;
 	}
 
-
 	// 頂点バッファをアンロック
 	m_pVtx->Unlock();
 
@@ -203,6 +203,7 @@ HRESULT CMeshCircle::Init(void)
 	//インデックスバッファのアンロック
 	m_pIdx->Unlock();
 
+	// 体力値を設定
 	m_nLife = 90;
 
 	// サークルの円周上に石つぶてを生成
@@ -280,35 +281,35 @@ void CMeshCircle::Draw(void)
 	// デバイスのポインタ
 	LPDIRECT3DDEVICE9 pDevice = CManager::GetRenderer()->GetDevice();
 
-	//計算用のマトリックスを宣言
+	// 計算用のマトリックスを宣言
 	D3DXMATRIX mtxRot, mtxTrans;
 
-	//ワールドマトリックスの初期化
+	// ワールドマトリックスの初期化
 	D3DXMatrixIdentity(&m_mtxWorld);
 
-	//向きを反映
+	// 向きを反映
 	D3DXMatrixRotationYawPitchRoll(&mtxRot, m_rot.y, m_rot.x, m_rot.z);
 	D3DXMatrixMultiply(&m_mtxWorld, &m_mtxWorld, &mtxRot);
 
-	//位置を反映
+	// 位置を反映
 	D3DXMatrixTranslation(&mtxTrans, m_pos.x, m_pos.y, m_pos.z);
 	D3DXMatrixMultiply(&m_mtxWorld, &m_mtxWorld, &mtxTrans);
 
-	//ワールドマトリックスの設定
+	// ワールドマトリックスの設定
 	pDevice->SetTransform(D3DTS_WORLD, &m_mtxWorld);
 
-	//頂点バッファをデバイスのデータストリームに設定
+	// 頂点バッファをデバイスのデータストリームに設定
 	pDevice->SetStreamSource(0, m_pVtx, 0, sizeof(VERTEX_3D));
 
-	//インデックスバッファをデータストリームに設定
+	// インデックスバッファをデータストリームに設定
 	pDevice->SetIndices(m_pIdx);
 
-	//テクスチャフォーマットの設定
+	// テクスチャフォーマットの設定
 	pDevice->SetFVF(FVF_VERTEX_3D);
 
-	//ポリゴンの描画
+	// ポリゴンの描画
 	pDevice->DrawIndexedPrimitive(D3DPT_TRIANGLESTRIP, 0, 0, m_nNumAllVtx, 0, m_nNumPrimitive);
 
-	//テクスチャを戻す
+	// テクスチャを戻す
 	pDevice->SetTexture(0, NULL);
 }
