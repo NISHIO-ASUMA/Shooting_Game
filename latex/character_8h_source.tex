@@ -1,0 +1,95 @@
+\doxysection{character.\+h}
+\hypertarget{character_8h_source}{}\label{character_8h_source}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{//==========================================================}}
+\DoxyCodeLine{00002\ \textcolor{comment}{//}}
+\DoxyCodeLine{00003\ \textcolor{comment}{//\ キャラクソstring^ーパラメーソstring^ー設定関数\ [\ charactor.h\ ]}}
+\DoxyCodeLine{00004\ \textcolor{comment}{//\ Author\ :\ Asuma\ Nishio}}
+\DoxyCodeLine{00005\ \textcolor{comment}{//}}
+\DoxyCodeLine{00006\ \textcolor{comment}{//==========================================================}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#ifndef\ \_CHARACTER\_H\_\ }\textcolor{comment}{//\ このソ}クロ定義がされてなかったら}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#define\ \_CHARACTER\_H\_\ }\textcolor{comment}{//\ 2重インクルード防蚕string~のソ}クロ定義}}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00011\ \textcolor{comment}{//**********************}}
+\DoxyCodeLine{00012\ \textcolor{comment}{//\ インクルードファイル}}
+\DoxyCodeLine{00013\ \textcolor{comment}{//**********************}}
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#include\ "{}object2D.h"{}}}
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#include\ "{}object.h"{}}}
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#include\ "{}motion.h"{}}}
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#include\ "{}model.h"{}}}
+\DoxyCodeLine{00018\ }
+\DoxyCodeLine{00019\ \textcolor{comment}{//*****************************}}
+\DoxyCodeLine{00020\ \textcolor{comment}{//\ キャラクソstring^ー2Dクラスを定義}}
+\DoxyCodeLine{00021\ \textcolor{comment}{//*****************************}}
+\DoxyCodeLine{00022\ \textcolor{keyword}{class\ }CCharacter:\ \textcolor{keyword}{public}\ CObject2D}
+\DoxyCodeLine{00023\ \{}
+\DoxyCodeLine{00024\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00025\ }
+\DoxyCodeLine{00026\ \ \ \ \ \textcolor{comment}{//\ キャラクソstring^ー状態を設定}}
+\DoxyCodeLine{00027\ \ \ \ \ \textcolor{keyword}{enum}\ STATE}
+\DoxyCodeLine{00028\ \ \ \ \ \{}
+\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ STATE\_NONE\ =\ 0,}
+\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ STATE\_NORMAL,}
+\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ STATE\_DAMAGE,}
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ STATE\_INVINCIBLE,}
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ STATE\_DAETH,}
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ STATE\_MAX}
+\DoxyCodeLine{00035\ \ \ \ \ \};}
+\DoxyCodeLine{00036\ }
+\DoxyCodeLine{00037\ \ \ \ \ CCharacter();}
+\DoxyCodeLine{00038\ \ \ \ \ \string~CCharacter();}
+\DoxyCodeLine{00039\ }
+\DoxyCodeLine{00040\ \ \ \ \ HRESULT\ Init(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00041\ \ \ \ \ \textcolor{keywordtype}{void}\ Uninit(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00042\ \ \ \ \ \textcolor{keywordtype}{void}\ Update(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00043\ }
+\DoxyCodeLine{00044\ \ \ \ \ \textcolor{keywordtype}{void}\ CharactorMove(\textcolor{keywordtype}{float}\ fMove);}
+\DoxyCodeLine{00045\ \ \ \ \ \textcolor{keywordtype}{void}\ SetLife(\textcolor{keywordtype}{int}\ nLife)\ \{\ m\_nLife\ =\ nLife;\ \}}
+\DoxyCodeLine{00046\ \ \ \ \ \textcolor{keywordtype}{int}\ GetLife(\textcolor{keywordtype}{void})\ \{\ \textcolor{keywordflow}{return}\ m\_nLife;\ \}}
+\DoxyCodeLine{00047\ \ \ \ \ \textcolor{keywordtype}{void}\ SetAnim2D(\textcolor{keywordtype}{int}\ nMaxPattern,\ \textcolor{keywordtype}{int}\ nAnimCount,\ \textcolor{keywordtype}{float}\ TexU,\ \textcolor{keywordtype}{float}\ TexV);}
+\DoxyCodeLine{00048\ }
+\DoxyCodeLine{00049\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00050\ \ \ \ \ \textcolor{keywordtype}{int}\ m\_nLife;\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 現在体力}}
+\DoxyCodeLine{00051\ \ \ \ \ \textcolor{keywordtype}{int}\ m\_nAnimCount2D;\ \ \textcolor{comment}{//\ 2Dアニメーションカウント}}
+\DoxyCodeLine{00052\ \ \ \ \ \textcolor{keywordtype}{int}\ m\_nAnimPattern2D;\ \textcolor{comment}{//\ 2Dアニメーションパソstring^ーン}}
+\DoxyCodeLine{00053\ \ \ \ \ \textcolor{keywordtype}{int}\ m\_nMaxLife;\ \ \ \ \ \ \textcolor{comment}{//\ 最大体力}}
+\DoxyCodeLine{00054\ \ \ \ \ \textcolor{keywordtype}{float}\ m\_fMove;\ \ \ \ \ \ \textcolor{comment}{//\ 移動量}}
+\DoxyCodeLine{00055\ \};}
+\DoxyCodeLine{00056\ }
+\DoxyCodeLine{00057\ \textcolor{comment}{//*********************************************}}
+\DoxyCodeLine{00058\ \textcolor{comment}{//\ キャラクソstring^ー3Dクラスを定義\ (\ 継承\ :\ CObject\ )}}
+\DoxyCodeLine{00059\ \textcolor{comment}{//*********************************************}}
+\DoxyCodeLine{00060\ \textcolor{keyword}{class\ }CCharactor3D\ :\ \textcolor{keyword}{public}\ CObject}
+\DoxyCodeLine{00061\ \{}
+\DoxyCodeLine{00062\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00063\ \ \ \ \ \textcolor{comment}{//\ キャラクソstring^ー状態を設定}}
+\DoxyCodeLine{00064\ \ \ \ \ \textcolor{keyword}{enum}\ STATE}
+\DoxyCodeLine{00065\ \ \ \ \ \{}
+\DoxyCodeLine{00066\ \ \ \ \ \ \ \ \ STATE\_NONE\ =\ 0,}
+\DoxyCodeLine{00067\ \ \ \ \ \ \ \ \ STATE\_NORMAL,}
+\DoxyCodeLine{00068\ \ \ \ \ \ \ \ \ STATE\_DAMAGE,}
+\DoxyCodeLine{00069\ \ \ \ \ \ \ \ \ STATE\_INVINCIBLE,}
+\DoxyCodeLine{00070\ \ \ \ \ \ \ \ \ STATE\_DAETH,}
+\DoxyCodeLine{00071\ \ \ \ \ \ \ \ \ STATE\_MAX}
+\DoxyCodeLine{00072\ \ \ \ \ \};}
+\DoxyCodeLine{00073\ }
+\DoxyCodeLine{00074\ \ \ \ \ CCharactor3D(\textcolor{keywordtype}{int}\ nPriority\ =\ 4);}
+\DoxyCodeLine{00075\ \ \ \ \ \string~CCharactor3D();}
+\DoxyCodeLine{00076\ }
+\DoxyCodeLine{00077\ \ \ \ \ HRESULT\ Init(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00078\ \ \ \ \ \textcolor{keywordtype}{void}\ Uninit(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00079\ \ \ \ \ \textcolor{keywordtype}{void}\ Update(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00080\ }
+\DoxyCodeLine{00081\ \ \ \ \ \textcolor{keywordtype}{int}\ GetLife(\textcolor{keywordtype}{void})\textcolor{keyword}{const\ }\{\ \textcolor{keywordflow}{return}\ m\_nLife;\ \}}
+\DoxyCodeLine{00082\ \ \ \ \ \textcolor{keywordtype}{void}\ SetLife(\textcolor{keywordtype}{int}\ nLife)\ \{\ m\_nLife\ =\ nLife;\ \}}
+\DoxyCodeLine{00083\ }
+\DoxyCodeLine{00084\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00085\ \ \ \ \ D3DXVECTOR3\ m\_move;\ \ \ \ \ \textcolor{comment}{//\ 移動量}}
+\DoxyCodeLine{00086\ \ \ \ \ D3DXVECTOR3\ m\_rotDest;\ \ \textcolor{comment}{//\ 目的の角度}}
+\DoxyCodeLine{00087\ \ \ \ \ \textcolor{keywordtype}{int}\ m\_nLife;\ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 現在体力 }}
+\DoxyCodeLine{00088\ \ \ \ \ STATE\ m\_state;}
+\DoxyCodeLine{00089\ \};}
+\DoxyCodeLine{00090\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

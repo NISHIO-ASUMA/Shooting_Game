@@ -1,0 +1,90 @@
+\doxysection{bossattackstate.\+h}
+\hypertarget{bossattackstate_8h_source}{}\label{bossattackstate_8h_source}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{//=============================================}}
+\DoxyCodeLine{00002\ \textcolor{comment}{//}}
+\DoxyCodeLine{00003\ \textcolor{comment}{//\ ソ{スの攻撃状態管理処理\ [bossattackstate.h\ ]}}
+\DoxyCodeLine{00004\ \textcolor{comment}{//\ Author:\ Asuma\ Nishio}}
+\DoxyCodeLine{00005\ \textcolor{comment}{//}}
+\DoxyCodeLine{00006\ \textcolor{comment}{//=============================================}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#ifndef\ \_BOSSATTACKSTATE\_H\_\ }\textcolor{comment}{//\ このソ}クロ定義がされてなかったら}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#define\ \_BOSSATTACKSTATE\_H\_\ }\textcolor{comment}{//\ 2重インクルード防蚕string~のソ}クロ定義}}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00011\ \textcolor{comment}{//**************************}}
+\DoxyCodeLine{00012\ \textcolor{comment}{//\ インクルードファイル宣言}}
+\DoxyCodeLine{00013\ \textcolor{comment}{//**************************}}
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#include\ "{}bossstate.h"{}}}
+\DoxyCodeLine{00015\ }
+\DoxyCodeLine{00016\ \textcolor{comment}{//********************************}}
+\DoxyCodeLine{00017\ \textcolor{comment}{//\ 殴り攻撃状態管理クラスを定義}}
+\DoxyCodeLine{00018\ \textcolor{comment}{//********************************}}
+\DoxyCodeLine{00019\ \textcolor{keyword}{class\ }CBosshandAttack\ :\ \textcolor{keyword}{public}\ CBossStateBace}
+\DoxyCodeLine{00020\ \{}
+\DoxyCodeLine{00021\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00022\ \ \ \ \ \textcolor{comment}{//\ コンストラクソstring^・デストラクソstring^}}
+\DoxyCodeLine{00023\ \ \ \ \ CBosshandAttack();}
+\DoxyCodeLine{00024\ \ \ \ \ \string~CBosshandAttack();}
+\DoxyCodeLine{00025\ }
+\DoxyCodeLine{00026\ \ \ \ \ \textcolor{comment}{//\ ステートが始まるときに一度だけ呼ばれる関数}}
+\DoxyCodeLine{00027\ \ \ \ \ \textcolor{keywordtype}{void}\ OnStart(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00028\ }
+\DoxyCodeLine{00029\ \ \ \ \ \textcolor{comment}{//\ ステートが更新されるときに呼ばれる関数}}
+\DoxyCodeLine{00030\ \ \ \ \ \textcolor{keywordtype}{void}\ OnUpdate(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00031\ }
+\DoxyCodeLine{00032\ \ \ \ \ \textcolor{comment}{//\ ステートが終了する時に一度だけ呼ばれる関数}}
+\DoxyCodeLine{00033\ \ \ \ \ \textcolor{keywordtype}{void}\ OnExit(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00034\ }
+\DoxyCodeLine{00035\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00036\ }
+\DoxyCodeLine{00037\ \};}
+\DoxyCodeLine{00038\ }
+\DoxyCodeLine{00039\ \textcolor{comment}{//************************************}}
+\DoxyCodeLine{00040\ \textcolor{comment}{//\ 叩きつけ攻撃状態管理クラスを定義}}
+\DoxyCodeLine{00041\ \textcolor{comment}{//************************************}}
+\DoxyCodeLine{00042\ \textcolor{keyword}{class\ }CBossimpactAttack\ :\ \textcolor{keyword}{public}\ CBossStateBace}
+\DoxyCodeLine{00043\ \{}
+\DoxyCodeLine{00044\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00045\ \ \ \ \ \textcolor{comment}{//\ コンストラクソstring^・デストラクソstring^}}
+\DoxyCodeLine{00046\ \ \ \ \ CBossimpactAttack();}
+\DoxyCodeLine{00047\ \ \ \ \ \string~CBossimpactAttack();}
+\DoxyCodeLine{00048\ }
+\DoxyCodeLine{00049\ \ \ \ \ \textcolor{comment}{//\ ステートが始まるときに一度だけ呼ばれる関数}}
+\DoxyCodeLine{00050\ \ \ \ \ \textcolor{keywordtype}{void}\ OnStart(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00051\ }
+\DoxyCodeLine{00052\ \ \ \ \ \textcolor{comment}{//\ ステートが更新されるときに呼ばれる関数}}
+\DoxyCodeLine{00053\ \ \ \ \ \textcolor{keywordtype}{void}\ OnUpdate(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00054\ }
+\DoxyCodeLine{00055\ \ \ \ \ \textcolor{comment}{//\ ステートが終了する時に一度だけ呼ばれる関数}}
+\DoxyCodeLine{00056\ \ \ \ \ \textcolor{keywordtype}{void}\ OnExit(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00057\ }
+\DoxyCodeLine{00058\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00059\ }
+\DoxyCodeLine{00060\ \};}
+\DoxyCodeLine{00061\ }
+\DoxyCodeLine{00062\ \textcolor{comment}{//************************************}}
+\DoxyCodeLine{00063\ \textcolor{comment}{//\ 振り回し攻撃状態管理クラスを定義}}
+\DoxyCodeLine{00064\ \textcolor{comment}{//************************************}}
+\DoxyCodeLine{00065\ \textcolor{keyword}{class\ }CBosscircleAttack\ :\ \textcolor{keyword}{public}\ CBossStateBace}
+\DoxyCodeLine{00066\ \{}
+\DoxyCodeLine{00067\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00068\ \ \ \ \ \textcolor{comment}{//\ コンストラクソstring^・デストラクソstring^}}
+\DoxyCodeLine{00069\ \ \ \ \ CBosscircleAttack();}
+\DoxyCodeLine{00070\ \ \ \ \ \string~CBosscircleAttack();}
+\DoxyCodeLine{00071\ }
+\DoxyCodeLine{00072\ \ \ \ \ \textcolor{comment}{//\ ステートが始まるときに一度だけ呼ばれる関数}}
+\DoxyCodeLine{00073\ \ \ \ \ \textcolor{keywordtype}{void}\ OnStart(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00074\ }
+\DoxyCodeLine{00075\ \ \ \ \ \textcolor{comment}{//\ ステートが更新されるときに呼ばれる関数}}
+\DoxyCodeLine{00076\ \ \ \ \ \textcolor{keywordtype}{void}\ OnUpdate(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00077\ }
+\DoxyCodeLine{00078\ \ \ \ \ \textcolor{comment}{//\ ステートが終了する時に一度だけ呼ばれる関数}}
+\DoxyCodeLine{00079\ \ \ \ \ \textcolor{keywordtype}{void}\ OnExit(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00080\ }
+\DoxyCodeLine{00081\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00082\ }
+\DoxyCodeLine{00083\ \};}
+\DoxyCodeLine{00084\ }
+\DoxyCodeLine{00085\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

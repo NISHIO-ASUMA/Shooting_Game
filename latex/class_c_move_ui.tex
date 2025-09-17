@@ -1,0 +1,241 @@
+\doxysection{CMove\+Ui Class Reference}
+\hypertarget{class_c_move_ui}{}\label{class_c_move_ui}\index{CMoveUi@{CMoveUi}}
+Inheritance diagram for CMove\+Ui\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{class_c_move_ui}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_c_move_ui_af955e78514c49edbfd1788543e404749}\label{class_c_move_ui_af955e78514c49edbfd1788543e404749} 
+enum {\bfseries MOVETYPE} \{ {\bfseries MOVETYPE\+\_\+\+RIGHT}
+, {\bfseries MOVETYPE\+\_\+\+LEFT}
+, {\bfseries MOVETYPE\+\_\+\+CENTER}
+, {\bfseries MOVETYPE\+\_\+\+MAX}
+ \}
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Types inherited from \mbox{\hyperlink{class_c_object2_d}{CObject2D}}}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_c_object2_d_a483a21d4e8003ebe21db4c85942c9403}\label{class_c_object2_d_a483a21d4e8003ebe21db4c85942c9403} 
+enum {\bfseries ANCHORTYPE} \{ \newline
+{\bfseries ANCHORTYPE\+\_\+\+NONE}
+, {\bfseries ANCHORTYPE\+\_\+\+CENTER}
+, {\bfseries ANCHORTYPE\+\_\+\+LEFTSIDE}
+, {\bfseries ANCHORTYPE\+\_\+\+RIGHTSIDE}
+, \newline
+{\bfseries ANCHORTYPE\+\_\+\+MAX}
+ \}
+\item 
+\Hypertarget{class_c_object2_d_a2ad1272aa34ca2ae2d6df2cc154299cf}\label{class_c_object2_d_a2ad1272aa34ca2ae2d6df2cc154299cf} 
+enum {\bfseries DRAWTYPE} \{ {\bfseries DRAWTYPE\+\_\+\+NONE}
+, {\bfseries DRAWTYPE\+\_\+\+ANIM}
+, {\bfseries DRAWTYPE\+\_\+\+MAX}
+ \}
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Types inherited from \mbox{\hyperlink{class_c_object}{CObject}}}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_c_object_a7263d5eae1a949d02e262e246152a2c6}\label{class_c_object_a7263d5eae1a949d02e262e246152a2c6} 
+enum {\bfseries TYPE} \{ \newline
+{\bfseries TYPE\+\_\+\+NONE} = 0
+, {\bfseries TYPE\+\_\+\+PLAYER}
+, {\bfseries TYPE\+\_\+\+MESH}
+, {\bfseries TYPE\+\_\+\+BULLET}
+, \newline
+{\bfseries TYPE\+\_\+\+BOSS}
+, {\bfseries TYPE\+\_\+\+ENEMY}
+, {\bfseries TYPE\+\_\+\+BLOCK}
+, {\bfseries TYPE\+\_\+\+PAUSE}
+, \newline
+{\bfseries TYPE\+\_\+\+BARRIER}
+, {\bfseries TYPE\+\_\+\+ITEM}
+, {\bfseries TYPE\+\_\+\+RUBBLE}
+, {\bfseries TYPE\+\_\+\+PILER}
+, \newline
+{\bfseries TYPE\+\_\+\+POINT}
+, {\bfseries TYPE\+\_\+\+MAX}
+ \}
+\item 
+\Hypertarget{class_c_object_a0924032649f7068d08cc5da588adc8d0}\label{class_c_object_a0924032649f7068d08cc5da588adc8d0} 
+enum {\bfseries PRIORITY} \{ \newline
+{\bfseries NONE}
+, {\bfseries MESH}
+, {\bfseries BASENUMBER}
+, {\bfseries MODELOBJECT}
+, \newline
+{\bfseries BULLET}
+, {\bfseries SHADOW}
+, {\bfseries IMPACT}
+, {\bfseries CHARACTOR}
+, \newline
+{\bfseries BILLBOARD}
+, {\bfseries EFFECT}
+, {\bfseries UI}
+, {\bfseries PAUSE}
+, \newline
+{\bfseries PRIORITY\+\_\+\+MAX}
+ \}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_c_move_ui_aeec7650ea70051cd85f16959218e14bc}\label{class_c_move_ui_aeec7650ea70051cd85f16959218e14bc} 
+{\bfseries CMove\+Ui} (int n\+Priority=static\+\_\+cast$<$ int $>$(CObject\+::\+PRIORITY\+::\+UI))
+\item 
+HRESULT \mbox{\hyperlink{class_c_move_ui_a4d6ba4a24776776cf40ef802042692fc}{Init}} (void)
+\item 
+void \mbox{\hyperlink{class_c_move_ui_a09b3d1a36b3d5f0fa593ee88a7600694}{Uninit}} (void)
+\item 
+void \mbox{\hyperlink{class_c_move_ui_a0cecc87f555359cb978ed1a921e998a7}{Update}} (void)
+\item 
+void \mbox{\hyperlink{class_c_move_ui_a9b559108675c8ac7f5540b44f15325a8}{Draw}} (void)
+\item 
+\Hypertarget{class_c_move_ui_a284b068b7774839201ee94b79e7aa5da}\label{class_c_move_ui_a284b068b7774839201ee94b79e7aa5da} 
+void {\bfseries Set\+Texture} (const char \texorpdfstring{$\ast$}{*}p\+Registername)
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_c_object2_d}{CObject2D}}}
+\begin{DoxyCompactItemize}
+\item 
+{\bfseries CObject2D} (int n\+Priority=static\+\_\+cast$<$ int $>$(CObject\+::\+PRIORITY\+::\+UI))
+\item 
+HRESULT \mbox{\hyperlink{class_c_object2_d_a7744dbebf59d9b5a84c6aa5a084e0785}{Init}} (void)
+\item 
+void \mbox{\hyperlink{class_c_object2_d_a87f629d430f2331e50f3c6f58bfd8fb5}{Uninit}} (void)
+\item 
+void \mbox{\hyperlink{class_c_object2_d_a458fdeaac5e996ebdbd65f363d59614c}{Update}} (void)
+\item 
+void \mbox{\hyperlink{class_c_object2_d_ace9e01032c2ee4925b6e00ad5918e670}{Draw}} (void)
+\item 
+void {\bfseries Set\+UV} (float TexU, float TexV)
+\item 
+void {\bfseries Set\+Col} (D3\+DXCOLOR col)
+\item 
+void {\bfseries Set\+Pos} (D3\+DXVECTOR3 pos)
+\item 
+void {\bfseries Set\+Rot} (D3\+DXVECTOR3 rot)
+\item 
+void {\bfseries Set\+Size} (float f\+Width, float f\+Height)
+\item 
+void {\bfseries Set\+Width} (float f\+Width)
+\item 
+void {\bfseries Set\+Height} (float f\+Height)
+\item 
+void {\bfseries Set\+Flash} (const int n\+Firstcount, const int n\+Endcount, const D3\+DXCOLOR col)
+\item 
+void {\bfseries Set\+Anchor} (int Type)
+\item 
+void {\bfseries Set\+Draw\+Type} (int n\+Type)
+\item 
+void {\bfseries Set\+Center} (void)
+\item 
+void {\bfseries Set\+Left} (void)
+\item 
+void {\bfseries Set\+Right} (void)
+\item 
+D3\+DXVECTOR3 {\bfseries Get\+Pos} (void)
+\item 
+D3\+DXVECTOR3 {\bfseries Get\+Rot} (void)
+\item 
+D3\+DXCOLOR {\bfseries Get\+Col} (void)
+\item 
+float {\bfseries Get\+Width} (void)
+\item 
+float {\bfseries Get\+Height} (void)
+\item 
+int {\bfseries Get\+Draw\+Type} (void)
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_c_object}{CObject}}}
+\begin{DoxyCompactItemize}
+\item 
+{\bfseries CObject} (int n\+Priority=NONE)
+\item 
+void {\bfseries Set\+Obj\+Type} (TYPE type)
+\item 
+TYPE {\bfseries Get\+Obj\+Type} (void)
+\item 
+\mbox{\hyperlink{class_c_object}{CObject}} \texorpdfstring{$\ast$}{*} {\bfseries Get\+Next} (void)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_c_move_ui_a04370aa01764335d91c5a358dfa9f6db}\label{class_c_move_ui_a04370aa01764335d91c5a358dfa9f6db} 
+static \mbox{\hyperlink{class_c_move_ui}{CMove\+Ui}} \texorpdfstring{$\ast$}{*} {\bfseries Create} (D3\+DXVECTOR3 pos, const char \texorpdfstring{$\ast$}{*}p\+File\+Name, MOVETYPE type)
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Member Functions inherited from \mbox{\hyperlink{class_c_object2_d}{CObject2D}}}
+\begin{DoxyCompactItemize}
+\item 
+static \mbox{\hyperlink{class_c_object2_d}{CObject2D}} \texorpdfstring{$\ast$}{*} {\bfseries Create} (void)
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Member Functions inherited from \mbox{\hyperlink{class_c_object}{CObject}}}
+\begin{DoxyCompactItemize}
+\item 
+static void {\bfseries Release\+All} (void)
+\item 
+static void {\bfseries Update\+All} (void)
+\item 
+static void {\bfseries Draw\+All} (void)
+\item 
+static \mbox{\hyperlink{class_c_object}{CObject}} \texorpdfstring{$\ast$}{*} {\bfseries Get\+Top} (int n\+Priority)
+\item 
+static int {\bfseries Get\+Num\+All} (void)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Protected Member Functions inherited from \mbox{\hyperlink{class_c_object}{CObject}}}
+\begin{DoxyCompactItemize}
+\item 
+void {\bfseries Release} (void)
+\end{DoxyCompactItemize}
+
+
+\label{doc-func-members}
+\Hypertarget{class_c_move_ui_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_c_move_ui_a9b559108675c8ac7f5540b44f15325a8}\index{CMoveUi@{CMoveUi}!Draw@{Draw}}
+\index{Draw@{Draw}!CMoveUi@{CMoveUi}}
+\doxysubsubsection{\texorpdfstring{Draw()}{Draw()}}
+{\footnotesize\ttfamily \label{class_c_move_ui_a9b559108675c8ac7f5540b44f15325a8} 
+void CMove\+Ui\+::\+Draw (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{class_c_object}{CObject}}.
+
+\Hypertarget{class_c_move_ui_a4d6ba4a24776776cf40ef802042692fc}\index{CMoveUi@{CMoveUi}!Init@{Init}}
+\index{Init@{Init}!CMoveUi@{CMoveUi}}
+\doxysubsubsection{\texorpdfstring{Init()}{Init()}}
+{\footnotesize\ttfamily \label{class_c_move_ui_a4d6ba4a24776776cf40ef802042692fc} 
+HRESULT CMove\+Ui\+::\+Init (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{class_c_object}{CObject}}.
+
+\Hypertarget{class_c_move_ui_a09b3d1a36b3d5f0fa593ee88a7600694}\index{CMoveUi@{CMoveUi}!Uninit@{Uninit}}
+\index{Uninit@{Uninit}!CMoveUi@{CMoveUi}}
+\doxysubsubsection{\texorpdfstring{Uninit()}{Uninit()}}
+{\footnotesize\ttfamily \label{class_c_move_ui_a09b3d1a36b3d5f0fa593ee88a7600694} 
+void CMove\+Ui\+::\+Uninit (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{class_c_object}{CObject}}.
+
+\Hypertarget{class_c_move_ui_a0cecc87f555359cb978ed1a921e998a7}\index{CMoveUi@{CMoveUi}!Update@{Update}}
+\index{Update@{Update}!CMoveUi@{CMoveUi}}
+\doxysubsubsection{\texorpdfstring{Update()}{Update()}}
+{\footnotesize\ttfamily \label{class_c_move_ui_a0cecc87f555359cb978ed1a921e998a7} 
+void CMove\+Ui\+::\+Update (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{class_c_object}{CObject}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+moveui.\+h\item 
+moveui.\+cpp\end{DoxyCompactItemize}

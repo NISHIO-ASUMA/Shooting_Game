@@ -1,0 +1,229 @@
+\doxysection{CObject2D Class Reference}
+\hypertarget{class_c_object2_d}{}\label{class_c_object2_d}\index{CObject2D@{CObject2D}}
+Inheritance diagram for CObject2D\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=12.000000cm]{class_c_object2_d}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_c_object2_d_a483a21d4e8003ebe21db4c85942c9403}\label{class_c_object2_d_a483a21d4e8003ebe21db4c85942c9403} 
+enum {\bfseries ANCHORTYPE} \{ \newline
+{\bfseries ANCHORTYPE\+\_\+\+NONE}
+, {\bfseries ANCHORTYPE\+\_\+\+CENTER}
+, {\bfseries ANCHORTYPE\+\_\+\+LEFTSIDE}
+, {\bfseries ANCHORTYPE\+\_\+\+RIGHTSIDE}
+, \newline
+{\bfseries ANCHORTYPE\+\_\+\+MAX}
+ \}
+\item 
+\Hypertarget{class_c_object2_d_a2ad1272aa34ca2ae2d6df2cc154299cf}\label{class_c_object2_d_a2ad1272aa34ca2ae2d6df2cc154299cf} 
+enum {\bfseries DRAWTYPE} \{ {\bfseries DRAWTYPE\+\_\+\+NONE}
+, {\bfseries DRAWTYPE\+\_\+\+ANIM}
+, {\bfseries DRAWTYPE\+\_\+\+MAX}
+ \}
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Types inherited from \mbox{\hyperlink{class_c_object}{CObject}}}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_c_object_a7263d5eae1a949d02e262e246152a2c6}\label{class_c_object_a7263d5eae1a949d02e262e246152a2c6} 
+enum {\bfseries TYPE} \{ \newline
+{\bfseries TYPE\+\_\+\+NONE} = 0
+, {\bfseries TYPE\+\_\+\+PLAYER}
+, {\bfseries TYPE\+\_\+\+MESH}
+, {\bfseries TYPE\+\_\+\+BULLET}
+, \newline
+{\bfseries TYPE\+\_\+\+BOSS}
+, {\bfseries TYPE\+\_\+\+ENEMY}
+, {\bfseries TYPE\+\_\+\+BLOCK}
+, {\bfseries TYPE\+\_\+\+PAUSE}
+, \newline
+{\bfseries TYPE\+\_\+\+BARRIER}
+, {\bfseries TYPE\+\_\+\+ITEM}
+, {\bfseries TYPE\+\_\+\+RUBBLE}
+, {\bfseries TYPE\+\_\+\+PILER}
+, \newline
+{\bfseries TYPE\+\_\+\+POINT}
+, {\bfseries TYPE\+\_\+\+MAX}
+ \}
+\item 
+\Hypertarget{class_c_object_a0924032649f7068d08cc5da588adc8d0}\label{class_c_object_a0924032649f7068d08cc5da588adc8d0} 
+enum {\bfseries PRIORITY} \{ \newline
+{\bfseries NONE}
+, {\bfseries MESH}
+, {\bfseries BASENUMBER}
+, {\bfseries MODELOBJECT}
+, \newline
+{\bfseries BULLET}
+, {\bfseries SHADOW}
+, {\bfseries IMPACT}
+, {\bfseries CHARACTOR}
+, \newline
+{\bfseries BILLBOARD}
+, {\bfseries EFFECT}
+, {\bfseries UI}
+, {\bfseries PAUSE}
+, \newline
+{\bfseries PRIORITY\+\_\+\+MAX}
+ \}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_c_object2_d_a8f5f669877212f5fe7dad44b783dbb33}\label{class_c_object2_d_a8f5f669877212f5fe7dad44b783dbb33} 
+{\bfseries CObject2D} (int n\+Priority=static\+\_\+cast$<$ int $>$(CObject\+::\+PRIORITY\+::\+UI))
+\item 
+HRESULT \mbox{\hyperlink{class_c_object2_d_a7744dbebf59d9b5a84c6aa5a084e0785}{Init}} (void)
+\item 
+void \mbox{\hyperlink{class_c_object2_d_a87f629d430f2331e50f3c6f58bfd8fb5}{Uninit}} (void)
+\item 
+void \mbox{\hyperlink{class_c_object2_d_a458fdeaac5e996ebdbd65f363d59614c}{Update}} (void)
+\item 
+void \mbox{\hyperlink{class_c_object2_d_ace9e01032c2ee4925b6e00ad5918e670}{Draw}} (void)
+\item 
+\Hypertarget{class_c_object2_d_ab017794585aad27bd434a9e706186359}\label{class_c_object2_d_ab017794585aad27bd434a9e706186359} 
+void {\bfseries Set\+UV} (float TexU, float TexV)
+\item 
+\Hypertarget{class_c_object2_d_a59b9453dfc6697fb43abbb90e7a63a7f}\label{class_c_object2_d_a59b9453dfc6697fb43abbb90e7a63a7f} 
+void {\bfseries Set\+Col} (D3\+DXCOLOR col)
+\item 
+\Hypertarget{class_c_object2_d_ab74590663c651016c143da435931af02}\label{class_c_object2_d_ab74590663c651016c143da435931af02} 
+void {\bfseries Set\+Pos} (D3\+DXVECTOR3 pos)
+\item 
+\Hypertarget{class_c_object2_d_a3a5026d84892752cc8326503e5afc9eb}\label{class_c_object2_d_a3a5026d84892752cc8326503e5afc9eb} 
+void {\bfseries Set\+Rot} (D3\+DXVECTOR3 rot)
+\item 
+\Hypertarget{class_c_object2_d_a4b0da09d7aa1473b5f25a170d429b114}\label{class_c_object2_d_a4b0da09d7aa1473b5f25a170d429b114} 
+void {\bfseries Set\+Size} (float f\+Width, float f\+Height)
+\item 
+\Hypertarget{class_c_object2_d_a3731d892715fbeef5f0f047022c26179}\label{class_c_object2_d_a3731d892715fbeef5f0f047022c26179} 
+void {\bfseries Set\+Width} (float f\+Width)
+\item 
+\Hypertarget{class_c_object2_d_ae22a570de6c4349704ffe5a53d0aaa57}\label{class_c_object2_d_ae22a570de6c4349704ffe5a53d0aaa57} 
+void {\bfseries Set\+Height} (float f\+Height)
+\item 
+\Hypertarget{class_c_object2_d_ad68187702d3cf2cea32d60056e3fc881}\label{class_c_object2_d_ad68187702d3cf2cea32d60056e3fc881} 
+void {\bfseries Set\+Flash} (const int n\+Firstcount, const int n\+Endcount, const D3\+DXCOLOR col)
+\item 
+\Hypertarget{class_c_object2_d_ad49cbe9cb8b57dbbb952172500fc4389}\label{class_c_object2_d_ad49cbe9cb8b57dbbb952172500fc4389} 
+void {\bfseries Set\+Anchor} (int Type)
+\item 
+\Hypertarget{class_c_object2_d_ae2124b6d85585d587838bf0ddb955399}\label{class_c_object2_d_ae2124b6d85585d587838bf0ddb955399} 
+void {\bfseries Set\+Draw\+Type} (int n\+Type)
+\item 
+\Hypertarget{class_c_object2_d_af17e32fb470de0894478afc599907c57}\label{class_c_object2_d_af17e32fb470de0894478afc599907c57} 
+void {\bfseries Set\+Center} (void)
+\item 
+\Hypertarget{class_c_object2_d_a0fda080e589ce2846392be22fe16acf9}\label{class_c_object2_d_a0fda080e589ce2846392be22fe16acf9} 
+void {\bfseries Set\+Left} (void)
+\item 
+\Hypertarget{class_c_object2_d_a81ec1163b3fab09fa812cc8730bddf89}\label{class_c_object2_d_a81ec1163b3fab09fa812cc8730bddf89} 
+void {\bfseries Set\+Right} (void)
+\item 
+\Hypertarget{class_c_object2_d_aa49a96b12a2698cdee92415c121c5ecb}\label{class_c_object2_d_aa49a96b12a2698cdee92415c121c5ecb} 
+D3\+DXVECTOR3 {\bfseries Get\+Pos} (void)
+\item 
+\Hypertarget{class_c_object2_d_a8c21a02757afc2fdd505b7f2b46ac8f5}\label{class_c_object2_d_a8c21a02757afc2fdd505b7f2b46ac8f5} 
+D3\+DXVECTOR3 {\bfseries Get\+Rot} (void)
+\item 
+\Hypertarget{class_c_object2_d_a8a824c1ea3a3fc929903d90ffb6290a0}\label{class_c_object2_d_a8a824c1ea3a3fc929903d90ffb6290a0} 
+D3\+DXCOLOR {\bfseries Get\+Col} (void)
+\item 
+\Hypertarget{class_c_object2_d_a3f34077edbeff1c3329eee16771ac5f7}\label{class_c_object2_d_a3f34077edbeff1c3329eee16771ac5f7} 
+float {\bfseries Get\+Width} (void)
+\item 
+\Hypertarget{class_c_object2_d_a482084031809b197d3f2d68570bcc864}\label{class_c_object2_d_a482084031809b197d3f2d68570bcc864} 
+float {\bfseries Get\+Height} (void)
+\item 
+\Hypertarget{class_c_object2_d_a45b4f0d57c8c571e8263c756594e66ca}\label{class_c_object2_d_a45b4f0d57c8c571e8263c756594e66ca} 
+int {\bfseries Get\+Draw\+Type} (void)
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_c_object}{CObject}}}
+\begin{DoxyCompactItemize}
+\item 
+{\bfseries CObject} (int n\+Priority=NONE)
+\item 
+void {\bfseries Set\+Obj\+Type} (TYPE type)
+\item 
+TYPE {\bfseries Get\+Obj\+Type} (void)
+\item 
+\mbox{\hyperlink{class_c_object}{CObject}} \texorpdfstring{$\ast$}{*} {\bfseries Get\+Next} (void)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_c_object2_d_a23c137cd2745cb180e92f19e80eed39d}\label{class_c_object2_d_a23c137cd2745cb180e92f19e80eed39d} 
+static \mbox{\hyperlink{class_c_object2_d}{CObject2D}} \texorpdfstring{$\ast$}{*} {\bfseries Create} (void)
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Member Functions inherited from \mbox{\hyperlink{class_c_object}{CObject}}}
+\begin{DoxyCompactItemize}
+\item 
+static void {\bfseries Release\+All} (void)
+\item 
+static void {\bfseries Update\+All} (void)
+\item 
+static void {\bfseries Draw\+All} (void)
+\item 
+static \mbox{\hyperlink{class_c_object}{CObject}} \texorpdfstring{$\ast$}{*} {\bfseries Get\+Top} (int n\+Priority)
+\item 
+static int {\bfseries Get\+Num\+All} (void)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Protected Member Functions inherited from \mbox{\hyperlink{class_c_object}{CObject}}}
+\begin{DoxyCompactItemize}
+\item 
+void {\bfseries Release} (void)
+\end{DoxyCompactItemize}
+
+
+\label{doc-func-members}
+\Hypertarget{class_c_object2_d_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_c_object2_d_ace9e01032c2ee4925b6e00ad5918e670}\index{CObject2D@{CObject2D}!Draw@{Draw}}
+\index{Draw@{Draw}!CObject2D@{CObject2D}}
+\doxysubsubsection{\texorpdfstring{Draw()}{Draw()}}
+{\footnotesize\ttfamily \label{class_c_object2_d_ace9e01032c2ee4925b6e00ad5918e670} 
+void CObject2\+D\+::\+Draw (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{class_c_object}{CObject}}.
+
+\Hypertarget{class_c_object2_d_a7744dbebf59d9b5a84c6aa5a084e0785}\index{CObject2D@{CObject2D}!Init@{Init}}
+\index{Init@{Init}!CObject2D@{CObject2D}}
+\doxysubsubsection{\texorpdfstring{Init()}{Init()}}
+{\footnotesize\ttfamily \label{class_c_object2_d_a7744dbebf59d9b5a84c6aa5a084e0785} 
+HRESULT CObject2\+D\+::\+Init (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{class_c_object}{CObject}}.
+
+\Hypertarget{class_c_object2_d_a87f629d430f2331e50f3c6f58bfd8fb5}\index{CObject2D@{CObject2D}!Uninit@{Uninit}}
+\index{Uninit@{Uninit}!CObject2D@{CObject2D}}
+\doxysubsubsection{\texorpdfstring{Uninit()}{Uninit()}}
+{\footnotesize\ttfamily \label{class_c_object2_d_a87f629d430f2331e50f3c6f58bfd8fb5} 
+void CObject2\+D\+::\+Uninit (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{class_c_object}{CObject}}.
+
+\Hypertarget{class_c_object2_d_a458fdeaac5e996ebdbd65f363d59614c}\index{CObject2D@{CObject2D}!Update@{Update}}
+\index{Update@{Update}!CObject2D@{CObject2D}}
+\doxysubsubsection{\texorpdfstring{Update()}{Update()}}
+{\footnotesize\ttfamily \label{class_c_object2_d_a458fdeaac5e996ebdbd65f363d59614c} 
+void CObject2\+D\+::\+Update (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{class_c_object}{CObject}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+object2\+D.\+h\item 
+object2\+D.\+cpp\end{DoxyCompactItemize}

@@ -1,0 +1,181 @@
+\doxysection{CSpread Class Reference}
+\hypertarget{class_c_spread}{}\label{class_c_spread}\index{CSpread@{CSpread}}
+Inheritance diagram for CSpread\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{class_c_spread}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_c_spread_a6b4d9303acb9d1c117132317334049cd}\label{class_c_spread_a6b4d9303acb9d1c117132317334049cd} 
+{\bfseries CSpread} (int n\+Priority=static\+\_\+cast$<$ int $>$(CObject\+::\+PRIORITY\+::\+MODELOBJECT))
+\item 
+HRESULT \mbox{\hyperlink{class_c_spread_a0e7b46972c16e85ded79d850bb355d31}{Init}} (void)
+\item 
+void \mbox{\hyperlink{class_c_spread_a996910a3cc70284d6c6d74446a4296be}{Uninit}} (void)
+\item 
+void \mbox{\hyperlink{class_c_spread_adecb0036246488a4cf446fae1f345134}{Update}} (void)
+\item 
+void \mbox{\hyperlink{class_c_spread_a0ccf124b6a86760962851542d40bd633}{Draw}} (void)
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_c_object_x}{CObjectX}}}
+\begin{DoxyCompactItemize}
+\item 
+{\bfseries CObjectX} (int n\+Priority=static\+\_\+cast$<$ int $>$(CObject\+::\+PRIORITY\+::\+MODELOBJECT))
+\item 
+void {\bfseries Set\+File\+Pass} (const char \texorpdfstring{$\ast$}{*}p\+File\+Pass)
+\item 
+void {\bfseries Set\+Pos} (D3\+DXVECTOR3 pos)
+\item 
+void {\bfseries Set\+Rot} (D3\+DXVECTOR3 rot)
+\item 
+void {\bfseries Set\+Use\+Quat} (bool is\+Flags)
+\item 
+void {\bfseries Set\+Mtx\+World} (D3\+DXMATRIX mtxworld)
+\item 
+D3\+DXVECTOR3 {\bfseries Get\+Pos} (void)
+\item 
+D3\+DXVECTOR3 {\bfseries Get\+Rot} (void)
+\item 
+D3\+DXMATRIX {\bfseries Get\+Mtx\+World} (void)
+\item 
+const char \texorpdfstring{$\ast$}{*} {\bfseries Get\+File\+Name} () const
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_c_object}{CObject}}}
+\begin{DoxyCompactItemize}
+\item 
+{\bfseries CObject} (int n\+Priority=NONE)
+\item 
+void {\bfseries Set\+Obj\+Type} (TYPE type)
+\item 
+TYPE {\bfseries Get\+Obj\+Type} (void)
+\item 
+\mbox{\hyperlink{class_c_object}{CObject}} \texorpdfstring{$\ast$}{*} {\bfseries Get\+Next} (void)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_c_spread_a2833b1e078dfccbe5e1e70515a04bd44}\label{class_c_spread_a2833b1e078dfccbe5e1e70515a04bd44} 
+static \mbox{\hyperlink{class_c_spread}{CSpread}} \texorpdfstring{$\ast$}{*} {\bfseries Create} (D3\+DXVECTOR3 pos, D3\+DXVECTOR3 rot)
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Member Functions inherited from \mbox{\hyperlink{class_c_object_x}{CObjectX}}}
+\begin{DoxyCompactItemize}
+\item 
+static \mbox{\hyperlink{class_c_object_x}{CObjectX}} \texorpdfstring{$\ast$}{*} {\bfseries Create} (const char \texorpdfstring{$\ast$}{*}p\+File\+Name, D3\+DXVECTOR3 pos)
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Member Functions inherited from \mbox{\hyperlink{class_c_object}{CObject}}}
+\begin{DoxyCompactItemize}
+\item 
+static void {\bfseries Release\+All} (void)
+\item 
+static void {\bfseries Update\+All} (void)
+\item 
+static void {\bfseries Draw\+All} (void)
+\item 
+static \mbox{\hyperlink{class_c_object}{CObject}} \texorpdfstring{$\ast$}{*} {\bfseries Get\+Top} (int n\+Priority)
+\item 
+static int {\bfseries Get\+Num\+All} (void)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Public Types inherited from \mbox{\hyperlink{class_c_object}{CObject}}}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_c_object_a7263d5eae1a949d02e262e246152a2c6}\label{class_c_object_a7263d5eae1a949d02e262e246152a2c6} 
+enum {\bfseries TYPE} \{ \newline
+{\bfseries TYPE\+\_\+\+NONE} = 0
+, {\bfseries TYPE\+\_\+\+PLAYER}
+, {\bfseries TYPE\+\_\+\+MESH}
+, {\bfseries TYPE\+\_\+\+BULLET}
+, \newline
+{\bfseries TYPE\+\_\+\+BOSS}
+, {\bfseries TYPE\+\_\+\+ENEMY}
+, {\bfseries TYPE\+\_\+\+BLOCK}
+, {\bfseries TYPE\+\_\+\+PAUSE}
+, \newline
+{\bfseries TYPE\+\_\+\+BARRIER}
+, {\bfseries TYPE\+\_\+\+ITEM}
+, {\bfseries TYPE\+\_\+\+RUBBLE}
+, {\bfseries TYPE\+\_\+\+PILER}
+, \newline
+{\bfseries TYPE\+\_\+\+POINT}
+, {\bfseries TYPE\+\_\+\+MAX}
+ \}
+\item 
+\Hypertarget{class_c_object_a0924032649f7068d08cc5da588adc8d0}\label{class_c_object_a0924032649f7068d08cc5da588adc8d0} 
+enum {\bfseries PRIORITY} \{ \newline
+{\bfseries NONE}
+, {\bfseries MESH}
+, {\bfseries BASENUMBER}
+, {\bfseries MODELOBJECT}
+, \newline
+{\bfseries BULLET}
+, {\bfseries SHADOW}
+, {\bfseries IMPACT}
+, {\bfseries CHARACTOR}
+, \newline
+{\bfseries BILLBOARD}
+, {\bfseries EFFECT}
+, {\bfseries UI}
+, {\bfseries PAUSE}
+, \newline
+{\bfseries PRIORITY\+\_\+\+MAX}
+ \}
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Member Functions inherited from \mbox{\hyperlink{class_c_object}{CObject}}}
+\begin{DoxyCompactItemize}
+\item 
+void {\bfseries Release} (void)
+\end{DoxyCompactItemize}
+
+
+\label{doc-func-members}
+\Hypertarget{class_c_spread_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_c_spread_a0ccf124b6a86760962851542d40bd633}\index{CSpread@{CSpread}!Draw@{Draw}}
+\index{Draw@{Draw}!CSpread@{CSpread}}
+\doxysubsubsection{\texorpdfstring{Draw()}{Draw()}}
+{\footnotesize\ttfamily \label{class_c_spread_a0ccf124b6a86760962851542d40bd633} 
+void CSpread\+::\+Draw (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Reimplemented from \mbox{\hyperlink{class_c_object_x}{CObjectX}}.
+
+\Hypertarget{class_c_spread_a0e7b46972c16e85ded79d850bb355d31}\index{CSpread@{CSpread}!Init@{Init}}
+\index{Init@{Init}!CSpread@{CSpread}}
+\doxysubsubsection{\texorpdfstring{Init()}{Init()}}
+{\footnotesize\ttfamily \label{class_c_spread_a0e7b46972c16e85ded79d850bb355d31} 
+HRESULT CSpread\+::\+Init (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Reimplemented from \mbox{\hyperlink{class_c_object_x}{CObjectX}}.
+
+\Hypertarget{class_c_spread_a996910a3cc70284d6c6d74446a4296be}\index{CSpread@{CSpread}!Uninit@{Uninit}}
+\index{Uninit@{Uninit}!CSpread@{CSpread}}
+\doxysubsubsection{\texorpdfstring{Uninit()}{Uninit()}}
+{\footnotesize\ttfamily \label{class_c_spread_a996910a3cc70284d6c6d74446a4296be} 
+void CSpread\+::\+Uninit (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Reimplemented from \mbox{\hyperlink{class_c_object_x}{CObjectX}}.
+
+\Hypertarget{class_c_spread_adecb0036246488a4cf446fae1f345134}\index{CSpread@{CSpread}!Update@{Update}}
+\index{Update@{Update}!CSpread@{CSpread}}
+\doxysubsubsection{\texorpdfstring{Update()}{Update()}}
+{\footnotesize\ttfamily \label{class_c_spread_adecb0036246488a4cf446fae1f345134} 
+void CSpread\+::\+Update (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Reimplemented from \mbox{\hyperlink{class_c_object_x}{CObjectX}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+spread.\+h\item 
+spread.\+cpp\end{DoxyCompactItemize}

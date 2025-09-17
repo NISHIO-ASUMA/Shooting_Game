@@ -1,0 +1,65 @@
+\doxysection{tutorialui.\+h}
+\hypertarget{tutorialui_8h_source}{}\label{tutorialui_8h_source}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{//=============================================}}
+\DoxyCodeLine{00002\ \textcolor{comment}{//}}
+\DoxyCodeLine{00003\ \textcolor{comment}{//\ チュートリアルUI処理\ [\ tutorialui.h\ ]}}
+\DoxyCodeLine{00004\ \textcolor{comment}{//\ Author:\ Asuma\ Nishio}}
+\DoxyCodeLine{00005\ \textcolor{comment}{//}}
+\DoxyCodeLine{00006\ \textcolor{comment}{//=============================================}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#ifndef\ \_TUTORIALUI\_H\_\ }\textcolor{comment}{//\ このソ}クロ定義がされてなかったら}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#define\ \_TUTORIALUI\_H\_\ }\textcolor{comment}{//\ 2重インクルード防蚕string~のソ}クロ定義}}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00011\ \textcolor{comment}{//******************************}}
+\DoxyCodeLine{00012\ \textcolor{comment}{//\ インクルードファイル宣言}}
+\DoxyCodeLine{00013\ \textcolor{comment}{//******************************}}
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#include\ "{}object2D.h"{}}}
+\DoxyCodeLine{00015\ }
+\DoxyCodeLine{00016\ \textcolor{comment}{//******************************}}
+\DoxyCodeLine{00017\ \textcolor{comment}{//\ チュートリアルuiクラスを定義}}
+\DoxyCodeLine{00018\ \textcolor{comment}{//******************************}}
+\DoxyCodeLine{00019\ \textcolor{keyword}{class\ }CTutorialUi\ :\ \textcolor{keyword}{public}\ CObject2D}
+\DoxyCodeLine{00020\ \{}
+\DoxyCodeLine{00021\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00022\ \ \ \ \ \textcolor{comment}{//***************************}}
+\DoxyCodeLine{00023\ \ \ \ \ \textcolor{comment}{//\ オブジェクトの状態}}
+\DoxyCodeLine{00024\ \ \ \ \ \textcolor{comment}{//***************************}}
+\DoxyCodeLine{00025\ \ \ \ \ \textcolor{keyword}{enum}\ STATE}
+\DoxyCodeLine{00026\ \ \ \ \ \{}
+\DoxyCodeLine{00027\ \ \ \ \ \ \ \ \ STATE\_AWAIT,}
+\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ STATE\_MOVE,}
+\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ STATE\_STOP,}
+\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ STATE\_EXIT,}
+\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ STATE\_MAX}
+\DoxyCodeLine{00032\ \ \ \ \ \};}
+\DoxyCodeLine{00033\ }
+\DoxyCodeLine{00034\ \ \ \ \ \textcolor{comment}{//\ コンストラクソstring^・デストラクソstring^}}
+\DoxyCodeLine{00035\ \ \ \ \ CTutorialUi(\textcolor{keywordtype}{int}\ nPriority\ =\ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{int}\textcolor{keyword}{>}(CObject::PRIORITY::UI));}
+\DoxyCodeLine{00036\ \ \ \ \ \string~CTutorialUi();}
+\DoxyCodeLine{00037\ }
+\DoxyCodeLine{00038\ \ \ \ \ \textcolor{comment}{//\ メンバ関数}}
+\DoxyCodeLine{00039\ \ \ \ \ HRESULT\ Init(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00040\ \ \ \ \ \textcolor{keywordtype}{void}\ Uninit(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00041\ \ \ \ \ \textcolor{keywordtype}{void}\ Update(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00042\ \ \ \ \ \textcolor{keywordtype}{void}\ Draw(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00043\ }
+\DoxyCodeLine{00044\ \ \ \ \ \textcolor{comment}{//\ セッソstring^ー}}
+\DoxyCodeLine{00045\ \ \ \ \ \textcolor{keywordtype}{void}\ SetTexture(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *\ pFileName);}
+\DoxyCodeLine{00046\ \ \ \ \ \textcolor{keywordtype}{void}\ SetState(\textcolor{keywordtype}{int}\ nState)\ \{\ m\_nState\ =\ nState;\ \}}
+\DoxyCodeLine{00047\ }
+\DoxyCodeLine{00048\ \ \ \ \ \textcolor{comment}{//\ ゲッソstring^ー}}
+\DoxyCodeLine{00049\ \ \ \ \ \textcolor{keywordtype}{bool}\ IsFinished()\ \textcolor{keyword}{const};}
+\DoxyCodeLine{00050\ }
+\DoxyCodeLine{00051\ \ \ \ \ \textcolor{comment}{//\ 静的メンバ関数}}
+\DoxyCodeLine{00052\ \ \ \ \ \textcolor{keyword}{static}\ CTutorialUi*\ Create(D3DXVECTOR3\ pos,\ \textcolor{keywordtype}{float}\ fWidth,\ \textcolor{keywordtype}{float}\ fHeight,\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *\ pFileName,\textcolor{keywordtype}{int}\ nState);}
+\DoxyCodeLine{00053\ }
+\DoxyCodeLine{00054\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00055\ \ \ \ \ \textcolor{keywordtype}{int}\ m\_nIdxTexture;\ \ \textcolor{comment}{//\ テクスチャインデックス}}
+\DoxyCodeLine{00056\ \ \ \ \ \textcolor{keywordtype}{int}\ m\_nState;\ \ \ \ \ \ \ \textcolor{comment}{//\ UIの状態}}
+\DoxyCodeLine{00057\ \ \ \ \ \textcolor{keywordtype}{float}\ m\_fAlpha;\ \ \ \ \ \textcolor{comment}{//\ 透明度}}
+\DoxyCodeLine{00058\ \};}
+\DoxyCodeLine{00059\ }
+\DoxyCodeLine{00060\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

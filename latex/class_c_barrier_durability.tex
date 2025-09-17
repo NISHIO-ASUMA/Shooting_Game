@@ -1,0 +1,212 @@
+\doxysection{CBarrier\+Durability Class Reference}
+\hypertarget{class_c_barrier_durability}{}\label{class_c_barrier_durability}\index{CBarrierDurability@{CBarrierDurability}}
+Inheritance diagram for CBarrier\+Durability\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{class_c_barrier_durability}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_c_barrier_durability_a2c42138dda80ecebf44c3941c9039157}\label{class_c_barrier_durability_a2c42138dda80ecebf44c3941c9039157} 
+{\bfseries CBarrier\+Durability} (int n\+Priority=static\+\_\+cast$<$ int $>$(CObject\+::\+PRIORITY\+::\+MODELOBJECT))
+\item 
+HRESULT \mbox{\hyperlink{class_c_barrier_durability_a47e2b013a9f7ce5eb8e73ab027d6b9ee}{Init}} (void)
+\item 
+void \mbox{\hyperlink{class_c_barrier_durability_a6e295a6e70c3789aee5a733a135c4a9e}{Uninit}} (void)
+\item 
+void \mbox{\hyperlink{class_c_barrier_durability_ac0c854e7cbeb7d590dec102009946910}{Update}} (void)
+\item 
+void \mbox{\hyperlink{class_c_barrier_durability_aca30250052cba86be3fd0af7df8bb081}{Draw}} (void)
+\item 
+\Hypertarget{class_c_barrier_durability_aa0fdbf53ea74ec3e9b8c662682cf20ff}\label{class_c_barrier_durability_aa0fdbf53ea74ec3e9b8c662682cf20ff} 
+bool {\bfseries Collision} (D3\+DXVECTOR3 \texorpdfstring{$\ast$}{*}Dest\+Pos)
+\item 
+\Hypertarget{class_c_barrier_durability_a4492f8a321fab78998d2220993c38133}\label{class_c_barrier_durability_a4492f8a321fab78998d2220993c38133} 
+void {\bfseries Set\+Idx} (int n\+Value)
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_c_object_x}{CObjectX}}}
+\begin{DoxyCompactItemize}
+\item 
+{\bfseries CObjectX} (int n\+Priority=static\+\_\+cast$<$ int $>$(CObject\+::\+PRIORITY\+::\+MODELOBJECT))
+\item 
+HRESULT \mbox{\hyperlink{class_c_object_x_a847767341403f8245dcaeff654a8d4e8}{Init}} (void)
+\item 
+void \mbox{\hyperlink{class_c_object_x_acdc96ed7b96db25dbf30b06a0ad865d9}{Uninit}} (void)
+\item 
+void \mbox{\hyperlink{class_c_object_x_a5b265df5e9d645e2bd50ee23135b90e5}{Update}} (void)
+\item 
+void \mbox{\hyperlink{class_c_object_x_a506817897c8d93f88bf6353999f38941}{Draw}} (void)
+\item 
+void {\bfseries Set\+File\+Pass} (const char \texorpdfstring{$\ast$}{*}p\+File\+Pass)
+\item 
+void {\bfseries Set\+Pos} (D3\+DXVECTOR3 pos)
+\item 
+void {\bfseries Set\+Rot} (D3\+DXVECTOR3 rot)
+\item 
+void {\bfseries Set\+Use\+Quat} (bool is\+Flags)
+\item 
+void {\bfseries Set\+Mtx\+World} (D3\+DXMATRIX mtxworld)
+\item 
+D3\+DXVECTOR3 {\bfseries Get\+Pos} (void)
+\item 
+D3\+DXVECTOR3 {\bfseries Get\+Rot} (void)
+\item 
+D3\+DXMATRIX {\bfseries Get\+Mtx\+World} (void)
+\item 
+const char \texorpdfstring{$\ast$}{*} {\bfseries Get\+File\+Name} () const
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_c_object}{CObject}}}
+\begin{DoxyCompactItemize}
+\item 
+{\bfseries CObject} (int n\+Priority=NONE)
+\item 
+void {\bfseries Set\+Obj\+Type} (TYPE type)
+\item 
+TYPE {\bfseries Get\+Obj\+Type} (void)
+\item 
+\mbox{\hyperlink{class_c_object}{CObject}} \texorpdfstring{$\ast$}{*} {\bfseries Get\+Next} (void)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \mbox{\hyperlink{class_c_barrier_durability}{CBarrier\+Durability}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_c_barrier_durability_a47780fe4daa37f9ebb9499baf000629d}{Create}} (D3\+DXVECTOR3 pos, D3\+DXVECTOR3 rot, const char \texorpdfstring{$\ast$}{*}p\+Filename)
+\begin{DoxyCompactList}\small\item\em ソ+Nラス \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Member Functions inherited from \mbox{\hyperlink{class_c_object_x}{CObjectX}}}
+\begin{DoxyCompactItemize}
+\item 
+static \mbox{\hyperlink{class_c_object_x}{CObjectX}} \texorpdfstring{$\ast$}{*} {\bfseries Create} (const char \texorpdfstring{$\ast$}{*}p\+File\+Name, D3\+DXVECTOR3 pos)
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Member Functions inherited from \mbox{\hyperlink{class_c_object}{CObject}}}
+\begin{DoxyCompactItemize}
+\item 
+static void {\bfseries Release\+All} (void)
+\item 
+static void {\bfseries Update\+All} (void)
+\item 
+static void {\bfseries Draw\+All} (void)
+\item 
+static \mbox{\hyperlink{class_c_object}{CObject}} \texorpdfstring{$\ast$}{*} {\bfseries Get\+Top} (int n\+Priority)
+\item 
+static int {\bfseries Get\+Num\+All} (void)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Public Types inherited from \mbox{\hyperlink{class_c_object}{CObject}}}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_c_object_a7263d5eae1a949d02e262e246152a2c6}\label{class_c_object_a7263d5eae1a949d02e262e246152a2c6} 
+enum {\bfseries TYPE} \{ \newline
+{\bfseries TYPE\+\_\+\+NONE} = 0
+, {\bfseries TYPE\+\_\+\+PLAYER}
+, {\bfseries TYPE\+\_\+\+MESH}
+, {\bfseries TYPE\+\_\+\+BULLET}
+, \newline
+{\bfseries TYPE\+\_\+\+BOSS}
+, {\bfseries TYPE\+\_\+\+ENEMY}
+, {\bfseries TYPE\+\_\+\+BLOCK}
+, {\bfseries TYPE\+\_\+\+PAUSE}
+, \newline
+{\bfseries TYPE\+\_\+\+BARRIER}
+, {\bfseries TYPE\+\_\+\+ITEM}
+, {\bfseries TYPE\+\_\+\+RUBBLE}
+, {\bfseries TYPE\+\_\+\+PILER}
+, \newline
+{\bfseries TYPE\+\_\+\+POINT}
+, {\bfseries TYPE\+\_\+\+MAX}
+ \}
+\item 
+\Hypertarget{class_c_object_a0924032649f7068d08cc5da588adc8d0}\label{class_c_object_a0924032649f7068d08cc5da588adc8d0} 
+enum {\bfseries PRIORITY} \{ \newline
+{\bfseries NONE}
+, {\bfseries MESH}
+, {\bfseries BASENUMBER}
+, {\bfseries MODELOBJECT}
+, \newline
+{\bfseries BULLET}
+, {\bfseries SHADOW}
+, {\bfseries IMPACT}
+, {\bfseries CHARACTOR}
+, \newline
+{\bfseries BILLBOARD}
+, {\bfseries EFFECT}
+, {\bfseries UI}
+, {\bfseries PAUSE}
+, \newline
+{\bfseries PRIORITY\+\_\+\+MAX}
+ \}
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Member Functions inherited from \mbox{\hyperlink{class_c_object}{CObject}}}
+\begin{DoxyCompactItemize}
+\item 
+void {\bfseries Release} (void)
+\end{DoxyCompactItemize}
+
+
+\label{doc-func-members}
+\Hypertarget{class_c_barrier_durability_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_c_barrier_durability_a47780fe4daa37f9ebb9499baf000629d}\index{CBarrierDurability@{CBarrierDurability}!Create@{Create}}
+\index{Create@{Create}!CBarrierDurability@{CBarrierDurability}}
+\doxysubsubsection{\texorpdfstring{Create()}{Create()}}
+{\footnotesize\ttfamily \label{class_c_barrier_durability_a47780fe4daa37f9ebb9499baf000629d} 
+\mbox{\hyperlink{class_c_barrier_durability}{CBarrier\+Durability}} \texorpdfstring{$\ast$}{*} CBarrier\+Durability\+::\+Create (\begin{DoxyParamCaption}\item[{D3\+DXVECTOR3}]{pos}{, }\item[{D3\+DXVECTOR3}]{rot}{, }\item[{const char \texorpdfstring{$\ast$}{*}}]{p\+Filename}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+ソ+Nラス 
+
+
+\begin{DoxyParams}{Parameters}
+{\em m\+\_\+n\+Idx} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+戻り値 
+\end{DoxyReturn}
+\Hypertarget{class_c_barrier_durability_aca30250052cba86be3fd0af7df8bb081}\index{CBarrierDurability@{CBarrierDurability}!Draw@{Draw}}
+\index{Draw@{Draw}!CBarrierDurability@{CBarrierDurability}}
+\doxysubsubsection{\texorpdfstring{Draw()}{Draw()}}
+{\footnotesize\ttfamily \label{class_c_barrier_durability_aca30250052cba86be3fd0af7df8bb081} 
+void CBarrier\+Durability\+::\+Draw (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{class_c_object}{CObject}}.
+
+\Hypertarget{class_c_barrier_durability_a47e2b013a9f7ce5eb8e73ab027d6b9ee}\index{CBarrierDurability@{CBarrierDurability}!Init@{Init}}
+\index{Init@{Init}!CBarrierDurability@{CBarrierDurability}}
+\doxysubsubsection{\texorpdfstring{Init()}{Init()}}
+{\footnotesize\ttfamily \label{class_c_barrier_durability_a47e2b013a9f7ce5eb8e73ab027d6b9ee} 
+HRESULT CBarrier\+Durability\+::\+Init (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{class_c_object}{CObject}}.
+
+\Hypertarget{class_c_barrier_durability_a6e295a6e70c3789aee5a733a135c4a9e}\index{CBarrierDurability@{CBarrierDurability}!Uninit@{Uninit}}
+\index{Uninit@{Uninit}!CBarrierDurability@{CBarrierDurability}}
+\doxysubsubsection{\texorpdfstring{Uninit()}{Uninit()}}
+{\footnotesize\ttfamily \label{class_c_barrier_durability_a6e295a6e70c3789aee5a733a135c4a9e} 
+void CBarrier\+Durability\+::\+Uninit (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{class_c_object}{CObject}}.
+
+\Hypertarget{class_c_barrier_durability_ac0c854e7cbeb7d590dec102009946910}\index{CBarrierDurability@{CBarrierDurability}!Update@{Update}}
+\index{Update@{Update}!CBarrierDurability@{CBarrierDurability}}
+\doxysubsubsection{\texorpdfstring{Update()}{Update()}}
+{\footnotesize\ttfamily \label{class_c_barrier_durability_ac0c854e7cbeb7d590dec102009946910} 
+void CBarrier\+Durability\+::\+Update (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{class_c_object}{CObject}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+barrierdurability.\+h\item 
+barrierdurability.\+cpp\end{DoxyCompactItemize}

@@ -37,8 +37,12 @@ public:
 
 	// セッター
 	void SetIdx(int nValue) { m_nIdx = nValue; }
-
-	// 静的メンバ関数
+	
+	/**
+	* @brief クラス
+	* @param m_nIdx 
+	* @return 戻り値
+	*/
 	static CBarrierDurability* Create(D3DXVECTOR3 pos,D3DXVECTOR3 rot,const char * pFilename);
 
 private:

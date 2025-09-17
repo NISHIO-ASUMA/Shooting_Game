@@ -1,0 +1,70 @@
+\doxysection{tutotask.\+h}
+\hypertarget{tutotask_8h_source}{}\label{tutotask_8h_source}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{//=============================================}}
+\DoxyCodeLine{00002\ \textcolor{comment}{//}}
+\DoxyCodeLine{00003\ \textcolor{comment}{//\ チュートリアルソstring^スク処理\ [\ tutotask.h\ ]}}
+\DoxyCodeLine{00004\ \textcolor{comment}{//\ Author:\ Asuma\ Nishio}}
+\DoxyCodeLine{00005\ \textcolor{comment}{//}}
+\DoxyCodeLine{00006\ \textcolor{comment}{//=============================================}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#ifndef\ \_TUTOTASK\_H\_\ }\textcolor{comment}{//\ このソ}クロ定義がされてなかったら}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#define\ \_TUTOTASK\_H\_\ }\textcolor{comment}{//\ 2重インクルード防蚕string~のソ}クロ定義}}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00011\ \textcolor{comment}{//******************************}}
+\DoxyCodeLine{00012\ \textcolor{comment}{//\ インクルードファイル}}
+\DoxyCodeLine{00013\ \textcolor{comment}{//******************************}}
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00016\ }
+\DoxyCodeLine{00017\ \textcolor{comment}{//******************************}}
+\DoxyCodeLine{00018\ \textcolor{comment}{//\ 前方宣言}}
+\DoxyCodeLine{00019\ \textcolor{comment}{//******************************}}
+\DoxyCodeLine{00020\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_c_tutorial_ui}{CTutorialUi}};}
+\DoxyCodeLine{00021\ }
+\DoxyCodeLine{00022\ \textcolor{comment}{//********************************}}
+\DoxyCodeLine{00023\ \textcolor{comment}{//\ ソstring^スククラスを定義}}
+\DoxyCodeLine{00024\ \textcolor{comment}{//********************************}}
+\DoxyCodeLine{00025\ \textcolor{keyword}{class\ }CTutoTask}
+\DoxyCodeLine{00026\ \{}
+\DoxyCodeLine{00027\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00028\ \ \ \ \ \textcolor{comment}{//**************************}}
+\DoxyCodeLine{00029\ \ \ \ \ \textcolor{comment}{//\ 読み込み情報構(\backslash\)造体}}
+\DoxyCodeLine{00030\ \ \ \ \ \textcolor{comment}{//**************************}}
+\DoxyCodeLine{00031\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_c_tuto_task_1_1_t_a_s_k_i_n_f_o}{TASKINFO}}}
+\DoxyCodeLine{00032\ \ \ \ \ \{}
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ D3DXVECTOR3\ pos;\ \ \ \ \textcolor{comment}{//\ 座標}}
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ fWidth;\ \ \ \ \ \ \ \textcolor{comment}{//\ 横幅}}
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ fHeight;\ \ \ \ \ \ \textcolor{comment}{//\ 高さ}}
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ std::string\ TexName;\ \textcolor{comment}{//\ テクスチャ名}}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ nState;\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 状態}}
+\DoxyCodeLine{00038\ \ \ \ \ \};}
+\DoxyCodeLine{00039\ }
+\DoxyCodeLine{00040\ \ \ \ \ \textcolor{comment}{//\ コンストラクソstring^・デストラクソstring^}}
+\DoxyCodeLine{00041\ \ \ \ \ CTutoTask();}
+\DoxyCodeLine{00042\ \ \ \ \ \string~CTutoTask();}
+\DoxyCodeLine{00043\ }
+\DoxyCodeLine{00044\ \ \ \ \ \textcolor{comment}{//\ メンバ関数}}
+\DoxyCodeLine{00045\ \ \ \ \ HRESULT\ Init(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00046\ \ \ \ \ \textcolor{keywordtype}{void}\ Uninit(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00047\ \ \ \ \ \textcolor{keywordtype}{void}\ Update(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00048\ \ \ \ \ \textcolor{keywordtype}{void}\ Load(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00049\ \ \ \ \ \textcolor{keywordtype}{void}\ NextTask(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00050\ }
+\DoxyCodeLine{00051\ \ \ \ \ \textcolor{comment}{//\ ゲッソstring^ー}}
+\DoxyCodeLine{00052\ \ \ \ \ \textcolor{keywordtype}{int}\ GetTaskIndex()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ m\_nCurrentIndex;\ \}}
+\DoxyCodeLine{00053\ }
+\DoxyCodeLine{00054\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00055\ \ \ \ \ std::vector<TASKINFO>m\_pTutoUi;\ \textcolor{comment}{//\ 動的配列}}
+\DoxyCodeLine{00056\ \ \ \ \ \textcolor{keywordtype}{int}\ m\_nCurrentIndex;\ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 今のソstring^スク番号}}
+\DoxyCodeLine{00057\ \ \ \ \ \mbox{\hyperlink{class_c_tutorial_ui}{CTutorialUi}}*\ m\_pCurrentUi;\ \ \ \ \ \ \ \textcolor{comment}{//\ 表(\backslash\)示中のUI}}
+\DoxyCodeLine{00058\ \ \ \ \ TASKINFO\ m\_Info;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 構(\backslash\)造体変数}}
+\DoxyCodeLine{00059\ }
+\DoxyCodeLine{00060\ \ \ \ \ \textcolor{keywordtype}{void}\ CreateTaskUi(\textcolor{keywordtype}{int}\ index);\ \ \ \textcolor{comment}{//\ 生成}}
+\DoxyCodeLine{00061\ \};}
+\DoxyCodeLine{00062\ }
+\DoxyCodeLine{00063\ }
+\DoxyCodeLine{00064\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00065\ }
+
+\end{DoxyCode}

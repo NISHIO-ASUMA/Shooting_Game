@@ -1,0 +1,199 @@
+\doxysection{CExit\+Point Class Reference}
+\hypertarget{class_c_exit_point}{}\label{class_c_exit_point}\index{CExitPoint@{CExitPoint}}
+Inheritance diagram for CExit\+Point\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{class_c_exit_point}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_c_exit_point_a99b8d00f9f0dcf1e37fb8f790df04150}\label{class_c_exit_point_a99b8d00f9f0dcf1e37fb8f790df04150} 
+{\bfseries CExit\+Point} (int n\+Priority=static\+\_\+cast$<$ int $>$(CObject\+::\+PRIORITY\+::\+SHADOW))
+\item 
+HRESULT \mbox{\hyperlink{class_c_exit_point_a89ecdad6a4c49d907beaa594abf30fec}{Init}} (void)
+\item 
+void \mbox{\hyperlink{class_c_exit_point_a3d2f36b0a3982938316baffd633dccf6}{Uninit}} (void)
+\item 
+void \mbox{\hyperlink{class_c_exit_point_a37c79015731fef922ca4a2f01f6fadfd}{Update}} (void)
+\item 
+void \mbox{\hyperlink{class_c_exit_point_a8e3d5431a824db380ade0f951ae6d0bb}{Draw}} (void)
+\item 
+\Hypertarget{class_c_exit_point_ad793790671e137b27e481bb112c45ec1}\label{class_c_exit_point_ad793790671e137b27e481bb112c45ec1} 
+void {\bfseries Set\+Texture} (void)
+\item 
+\Hypertarget{class_c_exit_point_aaedeef2ba666114de99dc1f208b30d7c}\label{class_c_exit_point_aaedeef2ba666114de99dc1f208b30d7c} 
+bool {\bfseries Collision} (D3\+DXVECTOR3 \texorpdfstring{$\ast$}{*}Dest\+Pos)
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_c_object3_d}{CObject3D}}}
+\begin{DoxyCompactItemize}
+\item 
+{\bfseries CObject3D} (int n\+Priority=static\+\_\+cast$<$ int $>$(CObject\+::\+PRIORITY\+::\+BASENUMBER))
+\item 
+HRESULT \mbox{\hyperlink{class_c_object3_d_a0ccc7381ee07e5324b0a16bfcfe06500}{Init}} (void)
+\item 
+void \mbox{\hyperlink{class_c_object3_d_a41dfa02c5deaccfeda77421d1ddffd8a}{Uninit}} (void)
+\item 
+void \mbox{\hyperlink{class_c_object3_d_a0185159859c8924e9ad09da1b4c10085}{Update}} (void)
+\item 
+void \mbox{\hyperlink{class_c_object3_d_a75cedda5b1d8a5dc3345f96b4ad7d4ef}{Draw}} (void)
+\item 
+void {\bfseries Set\+Pos} (D3\+DXVECTOR3 pos)
+\item 
+void {\bfseries Set\+Rot} (D3\+DXVECTOR3 rot)
+\item 
+void {\bfseries Set\+Col} (D3\+DXCOLOR col)
+\item 
+void {\bfseries Set\+Size} (float f\+Width, float f\+Height)
+\item 
+void {\bfseries Set\+Texture} (void)
+\item 
+D3\+DXVECTOR3 {\bfseries Get\+Pos} (void)
+\item 
+D3\+DXVECTOR3 {\bfseries Get\+Rot} (void)
+\item 
+D3\+DXCOLOR {\bfseries Get\+Col} (void)
+\item 
+float {\bfseries Get\+Width} (void)
+\item 
+float {\bfseries Getheight} (void)
+\item 
+float {\bfseries Get\+Height} (D3\+DXVECTOR3 pos)
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_c_object}{CObject}}}
+\begin{DoxyCompactItemize}
+\item 
+{\bfseries CObject} (int n\+Priority=NONE)
+\item 
+void {\bfseries Set\+Obj\+Type} (TYPE type)
+\item 
+TYPE {\bfseries Get\+Obj\+Type} (void)
+\item 
+\mbox{\hyperlink{class_c_object}{CObject}} \texorpdfstring{$\ast$}{*} {\bfseries Get\+Next} (void)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_c_exit_point_a056ab45dae32503436a7b426636587a1}\label{class_c_exit_point_a056ab45dae32503436a7b426636587a1} 
+static \mbox{\hyperlink{class_c_exit_point}{CExit\+Point}} \texorpdfstring{$\ast$}{*} {\bfseries Create} (D3\+DXVECTOR3 pos, float f\+Width)
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Member Functions inherited from \mbox{\hyperlink{class_c_object3_d}{CObject3D}}}
+\begin{DoxyCompactItemize}
+\item 
+static \mbox{\hyperlink{class_c_object3_d}{CObject3D}} \texorpdfstring{$\ast$}{*} {\bfseries Create} (D3\+DXVECTOR3 pos)
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Member Functions inherited from \mbox{\hyperlink{class_c_object}{CObject}}}
+\begin{DoxyCompactItemize}
+\item 
+static void {\bfseries Release\+All} (void)
+\item 
+static void {\bfseries Update\+All} (void)
+\item 
+static void {\bfseries Draw\+All} (void)
+\item 
+static \mbox{\hyperlink{class_c_object}{CObject}} \texorpdfstring{$\ast$}{*} {\bfseries Get\+Top} (int n\+Priority)
+\item 
+static int {\bfseries Get\+Num\+All} (void)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Public Types inherited from \mbox{\hyperlink{class_c_object}{CObject}}}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_c_object_a7263d5eae1a949d02e262e246152a2c6}\label{class_c_object_a7263d5eae1a949d02e262e246152a2c6} 
+enum {\bfseries TYPE} \{ \newline
+{\bfseries TYPE\+\_\+\+NONE} = 0
+, {\bfseries TYPE\+\_\+\+PLAYER}
+, {\bfseries TYPE\+\_\+\+MESH}
+, {\bfseries TYPE\+\_\+\+BULLET}
+, \newline
+{\bfseries TYPE\+\_\+\+BOSS}
+, {\bfseries TYPE\+\_\+\+ENEMY}
+, {\bfseries TYPE\+\_\+\+BLOCK}
+, {\bfseries TYPE\+\_\+\+PAUSE}
+, \newline
+{\bfseries TYPE\+\_\+\+BARRIER}
+, {\bfseries TYPE\+\_\+\+ITEM}
+, {\bfseries TYPE\+\_\+\+RUBBLE}
+, {\bfseries TYPE\+\_\+\+PILER}
+, \newline
+{\bfseries TYPE\+\_\+\+POINT}
+, {\bfseries TYPE\+\_\+\+MAX}
+ \}
+\item 
+\Hypertarget{class_c_object_a0924032649f7068d08cc5da588adc8d0}\label{class_c_object_a0924032649f7068d08cc5da588adc8d0} 
+enum {\bfseries PRIORITY} \{ \newline
+{\bfseries NONE}
+, {\bfseries MESH}
+, {\bfseries BASENUMBER}
+, {\bfseries MODELOBJECT}
+, \newline
+{\bfseries BULLET}
+, {\bfseries SHADOW}
+, {\bfseries IMPACT}
+, {\bfseries CHARACTOR}
+, \newline
+{\bfseries BILLBOARD}
+, {\bfseries EFFECT}
+, {\bfseries UI}
+, {\bfseries PAUSE}
+, \newline
+{\bfseries PRIORITY\+\_\+\+MAX}
+ \}
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Member Functions inherited from \mbox{\hyperlink{class_c_object}{CObject}}}
+\begin{DoxyCompactItemize}
+\item 
+void {\bfseries Release} (void)
+\end{DoxyCompactItemize}
+
+
+\label{doc-func-members}
+\Hypertarget{class_c_exit_point_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_c_exit_point_a8e3d5431a824db380ade0f951ae6d0bb}\index{CExitPoint@{CExitPoint}!Draw@{Draw}}
+\index{Draw@{Draw}!CExitPoint@{CExitPoint}}
+\doxysubsubsection{\texorpdfstring{Draw()}{Draw()}}
+{\footnotesize\ttfamily \label{class_c_exit_point_a8e3d5431a824db380ade0f951ae6d0bb} 
+void CExit\+Point\+::\+Draw (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{class_c_object}{CObject}}.
+
+\Hypertarget{class_c_exit_point_a89ecdad6a4c49d907beaa594abf30fec}\index{CExitPoint@{CExitPoint}!Init@{Init}}
+\index{Init@{Init}!CExitPoint@{CExitPoint}}
+\doxysubsubsection{\texorpdfstring{Init()}{Init()}}
+{\footnotesize\ttfamily \label{class_c_exit_point_a89ecdad6a4c49d907beaa594abf30fec} 
+HRESULT CExit\+Point\+::\+Init (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{class_c_object}{CObject}}.
+
+\Hypertarget{class_c_exit_point_a3d2f36b0a3982938316baffd633dccf6}\index{CExitPoint@{CExitPoint}!Uninit@{Uninit}}
+\index{Uninit@{Uninit}!CExitPoint@{CExitPoint}}
+\doxysubsubsection{\texorpdfstring{Uninit()}{Uninit()}}
+{\footnotesize\ttfamily \label{class_c_exit_point_a3d2f36b0a3982938316baffd633dccf6} 
+void CExit\+Point\+::\+Uninit (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{class_c_object}{CObject}}.
+
+\Hypertarget{class_c_exit_point_a37c79015731fef922ca4a2f01f6fadfd}\index{CExitPoint@{CExitPoint}!Update@{Update}}
+\index{Update@{Update}!CExitPoint@{CExitPoint}}
+\doxysubsubsection{\texorpdfstring{Update()}{Update()}}
+{\footnotesize\ttfamily \label{class_c_exit_point_a37c79015731fef922ca4a2f01f6fadfd} 
+void CExit\+Point\+::\+Update (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{class_c_object}{CObject}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+exitpoint.\+h\item 
+exitpoint.\+cpp\end{DoxyCompactItemize}

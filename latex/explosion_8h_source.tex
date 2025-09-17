@@ -1,0 +1,49 @@
+\doxysection{explosion.\+h}
+\hypertarget{explosion_8h_source}{}\label{explosion_8h_source}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{//====================================}}
+\DoxyCodeLine{00002\ \textcolor{comment}{//}}
+\DoxyCodeLine{00003\ \textcolor{comment}{//\ 爆発処理\ [\ explosion.h\ ]}}
+\DoxyCodeLine{00004\ \textcolor{comment}{//\ Author:\ Asuma\ Nishio}}
+\DoxyCodeLine{00005\ \textcolor{comment}{//}}
+\DoxyCodeLine{00006\ \textcolor{comment}{//=====================================}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#ifndef\ \_EXPLOSION\_H\_\ }\textcolor{comment}{//\ このソ}クロ定義がされてなかったら}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#define\ \_EXPLOSION\_H\_\ }\textcolor{comment}{//\ 2重インクルード防蚕string~のソ}クロ定義}}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00011\ \textcolor{comment}{//**********************}}
+\DoxyCodeLine{00012\ \textcolor{comment}{//\ インクルードファイル}}
+\DoxyCodeLine{00013\ \textcolor{comment}{//**********************}}
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#include\ "{}object2D.h"{}}}
+\DoxyCodeLine{00015\ }
+\DoxyCodeLine{00016\ \textcolor{comment}{//**************************}}
+\DoxyCodeLine{00017\ \textcolor{comment}{//\ 爆発クラスを定義}}
+\DoxyCodeLine{00018\ \textcolor{comment}{//**************************}}
+\DoxyCodeLine{00019\ \textcolor{keyword}{class\ }CExplosion\ :\ \textcolor{keyword}{public}\ CObject2D}
+\DoxyCodeLine{00020\ \{}
+\DoxyCodeLine{00021\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00022\ }
+\DoxyCodeLine{00023\ \ \ \ \ \textcolor{comment}{//\ コンストラクソstring^・デストラクソstring^}}
+\DoxyCodeLine{00024\ \ \ \ \ CExplosion(\textcolor{keywordtype}{int}\ nPriority\ =\ 3);}
+\DoxyCodeLine{00025\ \ \ \ \ \string~CExplosion();}
+\DoxyCodeLine{00026\ }
+\DoxyCodeLine{00027\ \ \ \ \ \textcolor{comment}{//\ メンバ関数}}
+\DoxyCodeLine{00028\ \ \ \ \ HRESULT\ Init(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00029\ \ \ \ \ \textcolor{keywordtype}{void}\ Uninit(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00030\ \ \ \ \ \textcolor{keywordtype}{void}\ Update(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00031\ \ \ \ \ \textcolor{keywordtype}{void}\ Draw(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00032\ }
+\DoxyCodeLine{00033\ \ \ \ \ \textcolor{comment}{//\ セッソstring^ー}}
+\DoxyCodeLine{00034\ \ \ \ \ \textcolor{keywordtype}{void}\ SetTexture();}
+\DoxyCodeLine{00035\ }
+\DoxyCodeLine{00036\ \ \ \ \ \textcolor{comment}{//\ 静的メンバ関数}}
+\DoxyCodeLine{00037\ \ \ \ \ \textcolor{keyword}{static}\ CExplosion*\ Create(\textcolor{keyword}{const}\ D3DXVECTOR3\ pos,\ \textcolor{keyword}{const}\ D3DXVECTOR3\ rot,D3DXCOLOR\ col);}
+\DoxyCodeLine{00038\ }
+\DoxyCodeLine{00039\ }
+\DoxyCodeLine{00040\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00041\ \ \ \ \ \textcolor{keywordtype}{int}\ m\_nIdxTexture;\ \ \textcolor{comment}{//\ テクスチャインデックス}}
+\DoxyCodeLine{00042\ \};}
+\DoxyCodeLine{00043\ }
+\DoxyCodeLine{00044\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

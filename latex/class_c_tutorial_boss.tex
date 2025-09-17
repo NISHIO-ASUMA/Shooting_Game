@@ -1,0 +1,161 @@
+\doxysection{CTutorial\+Boss Class Reference}
+\hypertarget{class_c_tutorial_boss}{}\label{class_c_tutorial_boss}\index{CTutorialBoss@{CTutorialBoss}}
+Inheritance diagram for CTutorial\+Boss\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_c_tutorial_boss}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_c_tutorial_boss_a4c150d1bad454b7f5dfcb796f88c4ca7}\label{class_c_tutorial_boss_a4c150d1bad454b7f5dfcb796f88c4ca7} 
+enum {\bfseries TYPE} \{ {\bfseries TYPE\+\_\+\+NEUTRAL} = 0
+, {\bfseries TYPE\+\_\+\+MAX}
+ \}
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Types inherited from \mbox{\hyperlink{class_c_object}{CObject}}}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_c_object_a7263d5eae1a949d02e262e246152a2c6}\label{class_c_object_a7263d5eae1a949d02e262e246152a2c6} 
+enum {\bfseries TYPE} \{ \newline
+{\bfseries TYPE\+\_\+\+NONE} = 0
+, {\bfseries TYPE\+\_\+\+PLAYER}
+, {\bfseries TYPE\+\_\+\+MESH}
+, {\bfseries TYPE\+\_\+\+BULLET}
+, \newline
+{\bfseries TYPE\+\_\+\+BOSS}
+, {\bfseries TYPE\+\_\+\+ENEMY}
+, {\bfseries TYPE\+\_\+\+BLOCK}
+, {\bfseries TYPE\+\_\+\+PAUSE}
+, \newline
+{\bfseries TYPE\+\_\+\+BARRIER}
+, {\bfseries TYPE\+\_\+\+ITEM}
+, {\bfseries TYPE\+\_\+\+RUBBLE}
+, {\bfseries TYPE\+\_\+\+PILER}
+, \newline
+{\bfseries TYPE\+\_\+\+POINT}
+, {\bfseries TYPE\+\_\+\+MAX}
+ \}
+\item 
+\Hypertarget{class_c_object_a0924032649f7068d08cc5da588adc8d0}\label{class_c_object_a0924032649f7068d08cc5da588adc8d0} 
+enum {\bfseries PRIORITY} \{ \newline
+{\bfseries NONE}
+, {\bfseries MESH}
+, {\bfseries BASENUMBER}
+, {\bfseries MODELOBJECT}
+, \newline
+{\bfseries BULLET}
+, {\bfseries SHADOW}
+, {\bfseries IMPACT}
+, {\bfseries CHARACTOR}
+, \newline
+{\bfseries BILLBOARD}
+, {\bfseries EFFECT}
+, {\bfseries UI}
+, {\bfseries PAUSE}
+, \newline
+{\bfseries PRIORITY\+\_\+\+MAX}
+ \}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_c_tutorial_boss_ae4288cdda272df4bc15a3d155d2ffca0}\label{class_c_tutorial_boss_ae4288cdda272df4bc15a3d155d2ffca0} 
+{\bfseries CTutorial\+Boss} (int n\+Priority=static\+\_\+cast$<$ int $>$(CObject\+::\+PRIORITY\+::\+CHARACTOR))
+\item 
+HRESULT \mbox{\hyperlink{class_c_tutorial_boss_a17625a2042b6bc989f9de88d0a2e6ffb}{Init}} (void)
+\item 
+void \mbox{\hyperlink{class_c_tutorial_boss_aa4bf5138d3f777347e5526386829b901}{Uninit}} (void)
+\item 
+void \mbox{\hyperlink{class_c_tutorial_boss_ae311ff49db8f5769dfeb721813efb1a7}{Update}} (void)
+\item 
+void \mbox{\hyperlink{class_c_tutorial_boss_ab2474985889a495630b85f2bb8fc9e43}{Draw}} (void)
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_c_object}{CObject}}}
+\begin{DoxyCompactItemize}
+\item 
+{\bfseries CObject} (int n\+Priority=NONE)
+\item 
+void {\bfseries Set\+Obj\+Type} (TYPE type)
+\item 
+TYPE {\bfseries Get\+Obj\+Type} (void)
+\item 
+\mbox{\hyperlink{class_c_object}{CObject}} \texorpdfstring{$\ast$}{*} {\bfseries Get\+Next} (void)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_c_tutorial_boss_ad7b87f97aabf074bb6f546adac9c8183}\label{class_c_tutorial_boss_ad7b87f97aabf074bb6f546adac9c8183} 
+static \mbox{\hyperlink{class_c_tutorial_boss}{CTutorial\+Boss}} \texorpdfstring{$\ast$}{*} {\bfseries Create} (D3\+DXVECTOR3 pos)
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Member Functions inherited from \mbox{\hyperlink{class_c_object}{CObject}}}
+\begin{DoxyCompactItemize}
+\item 
+static void {\bfseries Release\+All} (void)
+\item 
+static void {\bfseries Update\+All} (void)
+\item 
+static void {\bfseries Draw\+All} (void)
+\item 
+static \mbox{\hyperlink{class_c_object}{CObject}} \texorpdfstring{$\ast$}{*} {\bfseries Get\+Top} (int n\+Priority)
+\item 
+static int {\bfseries Get\+Num\+All} (void)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Protected Member Functions inherited from \mbox{\hyperlink{class_c_object}{CObject}}}
+\begin{DoxyCompactItemize}
+\item 
+void {\bfseries Release} (void)
+\end{DoxyCompactItemize}
+
+
+\label{doc-func-members}
+\Hypertarget{class_c_tutorial_boss_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_c_tutorial_boss_ab2474985889a495630b85f2bb8fc9e43}\index{CTutorialBoss@{CTutorialBoss}!Draw@{Draw}}
+\index{Draw@{Draw}!CTutorialBoss@{CTutorialBoss}}
+\doxysubsubsection{\texorpdfstring{Draw()}{Draw()}}
+{\footnotesize\ttfamily \label{class_c_tutorial_boss_ab2474985889a495630b85f2bb8fc9e43} 
+void CTutorial\+Boss\+::\+Draw (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{class_c_object}{CObject}}.
+
+\Hypertarget{class_c_tutorial_boss_a17625a2042b6bc989f9de88d0a2e6ffb}\index{CTutorialBoss@{CTutorialBoss}!Init@{Init}}
+\index{Init@{Init}!CTutorialBoss@{CTutorialBoss}}
+\doxysubsubsection{\texorpdfstring{Init()}{Init()}}
+{\footnotesize\ttfamily \label{class_c_tutorial_boss_a17625a2042b6bc989f9de88d0a2e6ffb} 
+HRESULT CTutorial\+Boss\+::\+Init (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{class_c_object}{CObject}}.
+
+\Hypertarget{class_c_tutorial_boss_aa4bf5138d3f777347e5526386829b901}\index{CTutorialBoss@{CTutorialBoss}!Uninit@{Uninit}}
+\index{Uninit@{Uninit}!CTutorialBoss@{CTutorialBoss}}
+\doxysubsubsection{\texorpdfstring{Uninit()}{Uninit()}}
+{\footnotesize\ttfamily \label{class_c_tutorial_boss_aa4bf5138d3f777347e5526386829b901} 
+void CTutorial\+Boss\+::\+Uninit (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{class_c_object}{CObject}}.
+
+\Hypertarget{class_c_tutorial_boss_ae311ff49db8f5769dfeb721813efb1a7}\index{CTutorialBoss@{CTutorialBoss}!Update@{Update}}
+\index{Update@{Update}!CTutorialBoss@{CTutorialBoss}}
+\doxysubsubsection{\texorpdfstring{Update()}{Update()}}
+{\footnotesize\ttfamily \label{class_c_tutorial_boss_ae311ff49db8f5769dfeb721813efb1a7} 
+void CTutorial\+Boss\+::\+Update (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{class_c_object}{CObject}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+tutorialboss.\+h\item 
+tutorialboss.\+cpp\end{DoxyCompactItemize}

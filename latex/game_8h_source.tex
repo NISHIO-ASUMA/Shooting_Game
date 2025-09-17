@@ -1,0 +1,73 @@
+\doxysection{game.\+h}
+\hypertarget{game_8h_source}{}\label{game_8h_source}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{//====================================}}
+\DoxyCodeLine{00002\ \textcolor{comment}{//}}
+\DoxyCodeLine{00003\ \textcolor{comment}{//\ メインゲーム処理\ [\ game.h\ ]}}
+\DoxyCodeLine{00004\ \textcolor{comment}{//\ Author:\ Asuma\ Nishio}}
+\DoxyCodeLine{00005\ \textcolor{comment}{//}}
+\DoxyCodeLine{00006\ \textcolor{comment}{//=====================================}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#ifndef\ \_GAME\_H\_\ }\textcolor{comment}{//\ このソ}クロ定義がされてなかったら}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#define\ \_GAME\_H\_\ }\textcolor{comment}{//\ 2重インクルード防蚕string~のソ}クロ定義}}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00011\ \textcolor{comment}{//****************************}}
+\DoxyCodeLine{00012\ \textcolor{comment}{//\ インクルードファイル宣言}}
+\DoxyCodeLine{00013\ \textcolor{comment}{//****************************}}
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#include\ "{}scene.h"{}}}
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#include\ "{}meshcylinder.h"{}}}
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#include\ "{}boss.h"{}}}
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#include\ "{}block.h"{}}}
+\DoxyCodeLine{00018\ \textcolor{preprocessor}{\#include\ "{}pausemanager.h"{}}}
+\DoxyCodeLine{00019\ \textcolor{preprocessor}{\#include\ "{}time.h"{}}}
+\DoxyCodeLine{00020\ }
+\DoxyCodeLine{00021\ \textcolor{comment}{//****************************}}
+\DoxyCodeLine{00022\ \textcolor{comment}{//\ 前方宣言}}
+\DoxyCodeLine{00023\ \textcolor{comment}{//****************************}}
+\DoxyCodeLine{00024\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_c_game_manager}{CGameManager}};}
+\DoxyCodeLine{00025\ }
+\DoxyCodeLine{00026\ \textcolor{comment}{//****************************}}
+\DoxyCodeLine{00027\ \textcolor{comment}{//\ ゲームクラスを定義}}
+\DoxyCodeLine{00028\ \textcolor{comment}{//****************************}}
+\DoxyCodeLine{00029\ \textcolor{keyword}{class\ }CGame\ :\ \textcolor{keyword}{public}\ CScene}
+\DoxyCodeLine{00030\ \{}
+\DoxyCodeLine{00031\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00032\ \ \ \ \ \textcolor{comment}{//***********************}}
+\DoxyCodeLine{00033\ \ \ \ \ \textcolor{comment}{//\ ゲーム状態列挙圭string^}}
+\DoxyCodeLine{00034\ \ \ \ \ \textcolor{comment}{//***********************}}
+\DoxyCodeLine{00035\ \ \ \ \ \textcolor{keyword}{enum}\ GAMESTATE}
+\DoxyCodeLine{00036\ \ \ \ \ \{}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ GAMESTATE\_NONE,}
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ GAMESTATE\_NORMAL,}
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ GAMESTATE\_END,}
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ GAMESTATE\_LOSEEND,}
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ GAMESTATE\_MAX}
+\DoxyCodeLine{00042\ \ \ \ \ \};}
+\DoxyCodeLine{00043\ }
+\DoxyCodeLine{00044\ \ \ \ \ \textcolor{comment}{//\ コンストラクソstring^・デストラクソstring^}}
+\DoxyCodeLine{00045\ \ \ \ \ CGame();}
+\DoxyCodeLine{00046\ \ \ \ \ \string~CGame();}
+\DoxyCodeLine{00047\ }
+\DoxyCodeLine{00048\ \ \ \ \ \textcolor{comment}{//\ メンバ関数}}
+\DoxyCodeLine{00049\ \ \ \ \ HRESULT\ Init(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00050\ \ \ \ \ \textcolor{keywordtype}{void}\ Uninit(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00051\ \ \ \ \ \textcolor{keywordtype}{void}\ Update(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00052\ \ \ \ \ \textcolor{keywordtype}{void}\ Draw(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00053\ }
+\DoxyCodeLine{00054\ \ \ \ \ \textcolor{comment}{//　セッソstring^ー}}
+\DoxyCodeLine{00055\ \ \ \ \ \textcolor{keywordtype}{void}\ SetState(\textcolor{keywordtype}{int}\ state)\ \{\ m\_nGametype\ =\ state;\ \}}
+\DoxyCodeLine{00056\ }
+\DoxyCodeLine{00057\ \ \ \ \ \textcolor{comment}{//\ 静的メンバ関数}}
+\DoxyCodeLine{00058\ \ \ \ \ \textcolor{keyword}{static}\ CGame*\ Create(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00059\ \ \ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{class_c_pause_manager}{CPauseManager}}*\ GetPause(\textcolor{keywordtype}{void})\ \{\ \textcolor{keywordflow}{return}\ m\_pPausemanager;\ \}}
+\DoxyCodeLine{00060\ }
+\DoxyCodeLine{00061\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00062\ \ \ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{class_c_pause_manager}{CPauseManager}}*\ m\_pPausemanager;\ \ \ \ \ \textcolor{comment}{//\ ポーズソ}ネージャーポインソstring^}}
+\DoxyCodeLine{00063\ \ \ \ \ \mbox{\hyperlink{class_c_game_manager}{CGameManager}}*\ m\_pGameManager;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ ゲームソ}ネージャーポインソstring^}}
+\DoxyCodeLine{00064\ \ \ \ \ \textcolor{keywordtype}{int}\ m\_nGametype;}
+\DoxyCodeLine{00065\ \ \ \ \ \textcolor{keywordtype}{int}\ m\_nStateCount;}
+\DoxyCodeLine{00066\ \};}
+\DoxyCodeLine{00067\ }
+\DoxyCodeLine{00068\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

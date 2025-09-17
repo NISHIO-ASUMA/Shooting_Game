@@ -1,0 +1,200 @@
+\doxysection{CEffect Class Reference}
+\hypertarget{class_c_effect}{}\label{class_c_effect}\index{CEffect@{CEffect}}
+Inheritance diagram for CEffect\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{class_c_effect}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_c_effect_a3fc468d3ba63ba4d9759633ef53bf808}\label{class_c_effect_a3fc468d3ba63ba4d9759633ef53bf808} 
+{\bfseries CEffect} (int n\+Priority=static\+\_\+cast$<$ int $>$(CObject\+::\+PRIORITY\+::\+EFFECT))
+\item 
+HRESULT \mbox{\hyperlink{class_c_effect_ae6485f0efea4aef444e438a56d60dbdd}{Init}} (void)
+\item 
+void \mbox{\hyperlink{class_c_effect_a6095eaa648bda5e5051483c4ec4a2fd7}{Uninit}} (void)
+\item 
+void \mbox{\hyperlink{class_c_effect_afdaf3fcaa91c5aabdf6db0b6cd901849}{Update}} (void)
+\item 
+void \mbox{\hyperlink{class_c_effect_a2e4354b81a5cd9f5c6645b20345cce16}{Draw}} (void)
+\item 
+\Hypertarget{class_c_effect_a6a5f5c94a19aa99226c10ddf53aebadd}\label{class_c_effect_a6a5f5c94a19aa99226c10ddf53aebadd} 
+void {\bfseries Set\+Life} (int n\+Life)
+\item 
+\Hypertarget{class_c_effect_a1bc4f6e212cb57002b981f70c43b5c9d}\label{class_c_effect_a1bc4f6e212cb57002b981f70c43b5c9d} 
+void {\bfseries Set\+Texture} (void)
+\item 
+\Hypertarget{class_c_effect_a7721e4c836634b6a0ff889b4c14ba0b9}\label{class_c_effect_a7721e4c836634b6a0ff889b4c14ba0b9} 
+int {\bfseries Get\+Life} (void)
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_c_billboard}{CBillboard}}}
+\begin{DoxyCompactItemize}
+\item 
+{\bfseries CBillboard} (int n\+Priority=static\+\_\+cast$<$ int $>$(CObject\+::\+PRIORITY\+::\+BILLBOARD))
+\item 
+void {\bfseries Flash} (const int n\+Max\+Flash\+Time, const int Digittime)
+\item 
+void {\bfseries Set\+Pos} (D3\+DXVECTOR3 pos)
+\item 
+void {\bfseries Set\+Rot} (D3\+DXVECTOR3 rot)
+\item 
+void {\bfseries Set\+Col} (D3\+DXCOLOR col)
+\item 
+void {\bfseries Set\+Size} (float f\+Width, float f\+Height)
+\item 
+void {\bfseries Set\+Texture} (void)
+\item 
+void {\bfseries Set\+Enable\+Ztest} (bool isflags)
+\item 
+void {\bfseries Set\+Anim} (const int n\+Max\+Pattern, const int n\+Max\+Anim\+Count, float f\+TexU, float f\+TexV)
+\item 
+void {\bfseries Set\+UV} (float f\+TexU, float f\+Tex\+U1, float f\+TexV)
+\item 
+D3\+DXVECTOR3 {\bfseries Get\+Pos} (void)
+\item 
+D3\+DXVECTOR3 {\bfseries Get\+Rot} (void)
+\item 
+D3\+DXCOLOR {\bfseries Get\+Col} (void)
+\item 
+float {\bfseries Get\+Width} (void)
+\item 
+float {\bfseries Get\+Height} (void)
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_c_object}{CObject}}}
+\begin{DoxyCompactItemize}
+\item 
+{\bfseries CObject} (int n\+Priority=NONE)
+\item 
+void {\bfseries Set\+Obj\+Type} (TYPE type)
+\item 
+TYPE {\bfseries Get\+Obj\+Type} (void)
+\item 
+\mbox{\hyperlink{class_c_object}{CObject}} \texorpdfstring{$\ast$}{*} {\bfseries Get\+Next} (void)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_c_effect_a4b6f24ae843b05bba6f484a819798957}\label{class_c_effect_a4b6f24ae843b05bba6f484a819798957} 
+static \mbox{\hyperlink{class_c_effect}{CEffect}} \texorpdfstring{$\ast$}{*} {\bfseries Create} (D3\+DXVECTOR3 pos, D3\+DXCOLOR col, D3\+DXVECTOR3 move, int n\+Life, float f\+Radius)
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Member Functions inherited from \mbox{\hyperlink{class_c_billboard}{CBillboard}}}
+\begin{DoxyCompactItemize}
+\item 
+static \mbox{\hyperlink{class_c_billboard}{CBillboard}} \texorpdfstring{$\ast$}{*} {\bfseries Create} (D3\+DXVECTOR3 pos, D3\+DXVECTOR3 rot, float f\+Width, float f\+Height)
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Member Functions inherited from \mbox{\hyperlink{class_c_object}{CObject}}}
+\begin{DoxyCompactItemize}
+\item 
+static void {\bfseries Release\+All} (void)
+\item 
+static void {\bfseries Update\+All} (void)
+\item 
+static void {\bfseries Draw\+All} (void)
+\item 
+static \mbox{\hyperlink{class_c_object}{CObject}} \texorpdfstring{$\ast$}{*} {\bfseries Get\+Top} (int n\+Priority)
+\item 
+static int {\bfseries Get\+Num\+All} (void)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Public Types inherited from \mbox{\hyperlink{class_c_object}{CObject}}}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_c_object_a7263d5eae1a949d02e262e246152a2c6}\label{class_c_object_a7263d5eae1a949d02e262e246152a2c6} 
+enum {\bfseries TYPE} \{ \newline
+{\bfseries TYPE\+\_\+\+NONE} = 0
+, {\bfseries TYPE\+\_\+\+PLAYER}
+, {\bfseries TYPE\+\_\+\+MESH}
+, {\bfseries TYPE\+\_\+\+BULLET}
+, \newline
+{\bfseries TYPE\+\_\+\+BOSS}
+, {\bfseries TYPE\+\_\+\+ENEMY}
+, {\bfseries TYPE\+\_\+\+BLOCK}
+, {\bfseries TYPE\+\_\+\+PAUSE}
+, \newline
+{\bfseries TYPE\+\_\+\+BARRIER}
+, {\bfseries TYPE\+\_\+\+ITEM}
+, {\bfseries TYPE\+\_\+\+RUBBLE}
+, {\bfseries TYPE\+\_\+\+PILER}
+, \newline
+{\bfseries TYPE\+\_\+\+POINT}
+, {\bfseries TYPE\+\_\+\+MAX}
+ \}
+\item 
+\Hypertarget{class_c_object_a0924032649f7068d08cc5da588adc8d0}\label{class_c_object_a0924032649f7068d08cc5da588adc8d0} 
+enum {\bfseries PRIORITY} \{ \newline
+{\bfseries NONE}
+, {\bfseries MESH}
+, {\bfseries BASENUMBER}
+, {\bfseries MODELOBJECT}
+, \newline
+{\bfseries BULLET}
+, {\bfseries SHADOW}
+, {\bfseries IMPACT}
+, {\bfseries CHARACTOR}
+, \newline
+{\bfseries BILLBOARD}
+, {\bfseries EFFECT}
+, {\bfseries UI}
+, {\bfseries PAUSE}
+, \newline
+{\bfseries PRIORITY\+\_\+\+MAX}
+ \}
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Member Functions inherited from \mbox{\hyperlink{class_c_object}{CObject}}}
+\begin{DoxyCompactItemize}
+\item 
+void {\bfseries Release} (void)
+\end{DoxyCompactItemize}
+
+
+\label{doc-func-members}
+\Hypertarget{class_c_effect_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_c_effect_a2e4354b81a5cd9f5c6645b20345cce16}\index{CEffect@{CEffect}!Draw@{Draw}}
+\index{Draw@{Draw}!CEffect@{CEffect}}
+\doxysubsubsection{\texorpdfstring{Draw()}{Draw()}}
+{\footnotesize\ttfamily \label{class_c_effect_a2e4354b81a5cd9f5c6645b20345cce16} 
+void CEffect\+::\+Draw (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Reimplemented from \mbox{\hyperlink{class_c_billboard}{CBillboard}}.
+
+\Hypertarget{class_c_effect_ae6485f0efea4aef444e438a56d60dbdd}\index{CEffect@{CEffect}!Init@{Init}}
+\index{Init@{Init}!CEffect@{CEffect}}
+\doxysubsubsection{\texorpdfstring{Init()}{Init()}}
+{\footnotesize\ttfamily \label{class_c_effect_ae6485f0efea4aef444e438a56d60dbdd} 
+HRESULT CEffect\+::\+Init (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Reimplemented from \mbox{\hyperlink{class_c_billboard}{CBillboard}}.
+
+\Hypertarget{class_c_effect_a6095eaa648bda5e5051483c4ec4a2fd7}\index{CEffect@{CEffect}!Uninit@{Uninit}}
+\index{Uninit@{Uninit}!CEffect@{CEffect}}
+\doxysubsubsection{\texorpdfstring{Uninit()}{Uninit()}}
+{\footnotesize\ttfamily \label{class_c_effect_a6095eaa648bda5e5051483c4ec4a2fd7} 
+void CEffect\+::\+Uninit (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Reimplemented from \mbox{\hyperlink{class_c_billboard}{CBillboard}}.
+
+\Hypertarget{class_c_effect_afdaf3fcaa91c5aabdf6db0b6cd901849}\index{CEffect@{CEffect}!Update@{Update}}
+\index{Update@{Update}!CEffect@{CEffect}}
+\doxysubsubsection{\texorpdfstring{Update()}{Update()}}
+{\footnotesize\ttfamily \label{class_c_effect_afdaf3fcaa91c5aabdf6db0b6cd901849} 
+void CEffect\+::\+Update (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Reimplemented from \mbox{\hyperlink{class_c_billboard}{CBillboard}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+effect.\+h\item 
+effect.\+cpp\end{DoxyCompactItemize}

@@ -1,0 +1,81 @@
+\doxysection{manager.\+h}
+\hypertarget{manager_8h_source}{}\label{manager_8h_source}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{//====================================}}
+\DoxyCodeLine{00002\ \textcolor{comment}{//}}
+\DoxyCodeLine{00003\ \textcolor{comment}{//\ ソ}ネージャー処理\ [\ manager.h\ ]}}
+\DoxyCodeLine{00004\ \textcolor{comment}{//\ Author:\ Asuma\ Nishio}}
+\DoxyCodeLine{00005\ \textcolor{comment}{//}}
+\DoxyCodeLine{00006\ \textcolor{comment}{//=====================================}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#ifndef\ \_MANAGER\_H\_\ }\textcolor{comment}{//\ このソ}クロ定義がされてなかったら}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#define\ \_MANAGER\_H\_\ }\textcolor{comment}{//\ 2重インクルード防蚕string~のソ}クロ定義}}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00011\ \textcolor{comment}{//**************************\ \ }}
+\DoxyCodeLine{00012\ \textcolor{comment}{//\ インクルードファイル宣言}}
+\DoxyCodeLine{00013\ \textcolor{comment}{//**************************}}
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#include\ "{}renderer.h"{}}}
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#include\ "{}input.h"{}}}
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#include\ "{}sound.h"{}}}
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#include\ "{}debugproc.h"{}}}
+\DoxyCodeLine{00018\ \textcolor{preprocessor}{\#include\ "{}bullet.h"{}}}
+\DoxyCodeLine{00019\ \textcolor{preprocessor}{\#include\ "{}enemymanager.h"{}}}
+\DoxyCodeLine{00020\ \textcolor{preprocessor}{\#include\ "{}texture.h"{}}}
+\DoxyCodeLine{00021\ \textcolor{preprocessor}{\#include\ "{}camera.h"{}}}
+\DoxyCodeLine{00022\ \textcolor{preprocessor}{\#include\ "{}light.h"{}}}
+\DoxyCodeLine{00023\ \textcolor{preprocessor}{\#include\ "{}object3D.h"{}}}
+\DoxyCodeLine{00024\ \textcolor{preprocessor}{\#include\ "{}blockManager.h"{}}}
+\DoxyCodeLine{00025\ \textcolor{preprocessor}{\#include\ "{}collision.h"{}}}
+\DoxyCodeLine{00026\ \textcolor{preprocessor}{\#include\ "{}meshcylinder.h"{}}}
+\DoxyCodeLine{00027\ \textcolor{preprocessor}{\#include\ "{}boss.h"{}}}
+\DoxyCodeLine{00028\ \textcolor{preprocessor}{\#include\ "{}scene.h"{}}}
+\DoxyCodeLine{00029\ \textcolor{preprocessor}{\#include\ "{}fade.h"{}}}
+\DoxyCodeLine{00030\ }
+\DoxyCodeLine{00031\ \textcolor{comment}{//**************************}}
+\DoxyCodeLine{00032\ \textcolor{comment}{//\ ソ}ネージャークラス宣言}}
+\DoxyCodeLine{00033\ \textcolor{comment}{//**************************}}
+\DoxyCodeLine{00034\ \textcolor{keyword}{class\ }CManager}
+\DoxyCodeLine{00035\ \{}
+\DoxyCodeLine{00036\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00037\ \ \ \ \ \textcolor{comment}{//\ コンストラクソstring^・デストラクソstring^}}
+\DoxyCodeLine{00038\ \ \ \ \ CManager();}
+\DoxyCodeLine{00039\ \ \ \ \ \string~CManager();}
+\DoxyCodeLine{00040\ }
+\DoxyCodeLine{00041\ \ \ \ \ \textcolor{comment}{//\ メンバ関数}}
+\DoxyCodeLine{00042\ \ \ \ \ HRESULT\ Init(HINSTANCE\ hInstance,\ HWND\ hWnd,\ BOOL\ bWindow);}
+\DoxyCodeLine{00043\ \ \ \ \ \textcolor{keywordtype}{void}\ Uninit(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00044\ \ \ \ \ \textcolor{keywordtype}{void}\ Update(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00045\ \ \ \ \ \textcolor{keywordtype}{void}\ Draw(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00046\ }
+\DoxyCodeLine{00047\ \ \ \ \ \textcolor{comment}{//\ 静的メンバ関数}}
+\DoxyCodeLine{00048\ \ \ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{class_c_renderer}{CRenderer}}*\ GetRenderer(\textcolor{keywordtype}{void})\ \{\ \textcolor{keywordflow}{return}\ m\_pRenderer;\ \}}
+\DoxyCodeLine{00049\ \ \ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{class_c_input_keyboard}{CInputKeyboard}}*\ GetInputKeyboard(\textcolor{keywordtype}{void})\ \{\ \textcolor{keywordflow}{return}\ m\_pInputKeyboard;\ \}}
+\DoxyCodeLine{00050\ \ \ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{class_c_joy_pad}{CJoyPad}}*\ GetJoyPad(\textcolor{keywordtype}{void})\ \{\ \textcolor{keywordflow}{return}\ m\_pJoyPad;\ \}}
+\DoxyCodeLine{00051\ \ \ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{class_c_sound}{CSound}}*\ GetSound(\textcolor{keywordtype}{void})\ \{\ \textcolor{keywordflow}{return}\ m\_pSound;\ \}}
+\DoxyCodeLine{00052\ \ \ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{class_c_input_mouse}{CInputMouse}}*\ GetMouse(\textcolor{keywordtype}{void})\ \{\ \textcolor{keywordflow}{return}\ m\_pInputMouse;\ \}}
+\DoxyCodeLine{00053\ \ \ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{class_c_texture}{CTexture}}*\ GetTexture(\textcolor{keywordtype}{void})\ \{\ \textcolor{keywordflow}{return}\ m\_pTexture;\ \}}
+\DoxyCodeLine{00054\ \ \ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{class_c_camera}{CCamera}}*\ GetCamera(\textcolor{keywordtype}{void})\ \{\ \textcolor{keywordflow}{return}\ m\_pCamera;\ \}}
+\DoxyCodeLine{00055\ \ \ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{class_c_light}{CLight}}*\ GetLight(\textcolor{keywordtype}{void})\ \{\ \textcolor{keywordflow}{return}\ m\_pLight;\ \}}
+\DoxyCodeLine{00056\ \ \ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{class_c_collision}{CCollision}}*\ GetCollision(\textcolor{keywordtype}{void})\ \{\ \textcolor{keywordflow}{return}\ m\_pCollision;\ \}}
+\DoxyCodeLine{00057\ \ \ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{class_c_scene}{CScene}}*\ Getscene(\textcolor{keywordtype}{void})\ \{\ \textcolor{keywordflow}{return}\ m\_pScene;\ \}}
+\DoxyCodeLine{00058\ \ \ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{class_c_fade}{CFade}}*\ GetFade(\textcolor{keywordtype}{void})\ \{\ \textcolor{keywordflow}{return}\ m\_pFade;\ \}}
+\DoxyCodeLine{00059\ }
+\DoxyCodeLine{00060\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ SetScene(\mbox{\hyperlink{class_c_scene}{CScene}}\ *\ pNewScene);}
+\DoxyCodeLine{00061\ \ \ \ \ \textcolor{keyword}{static}\ CScene::MODE\ GetScene(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00062\ }
+\DoxyCodeLine{00063\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00064\ \ \ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{class_c_renderer}{CRenderer}}*\ m\_pRenderer;\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ レンソ_ラークラスのポインソstring^}}
+\DoxyCodeLine{00065\ \ \ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{class_c_input_keyboard}{CInputKeyboard}}*\ m\_pInputKeyboard;\textcolor{comment}{//\ キーソ{ードクラスのポインソstring^}}
+\DoxyCodeLine{00066\ \ \ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{class_c_joy_pad}{CJoyPad}}*\ m\_pJoyPad;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ ジョイパッドクラスのポインソstring^}}
+\DoxyCodeLine{00067\ \ \ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{class_c_sound}{CSound}}*\ m\_pSound;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ サウンドオブジェクトのポインソstring^}}
+\DoxyCodeLine{00068\ \ \ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{class_c_input_mouse}{CInputMouse}}*\ m\_pInputMouse;\ \ \ \ \ \ \ \textcolor{comment}{//\ ソ}ウスクラスのポインソstring^}}
+\DoxyCodeLine{00069\ \ \ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{class_c_texture}{CTexture}}*\ m\_pTexture;\ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ テクスチャクラスのポインソstring^}}
+\DoxyCodeLine{00070\ \ \ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{class_c_camera}{CCamera}}*\ m\_pCamera;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ カメラクラスのポインソstring^}}
+\DoxyCodeLine{00071\ \ \ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{class_c_light}{CLight}}*\ m\_pLight;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ ライトクラスのポインソstring^}}
+\DoxyCodeLine{00072\ \ \ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{class_c_scene}{CScene}}*\ m\_pScene;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ シーン管理クラスのポインソstring^}}
+\DoxyCodeLine{00073\ \ \ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{class_c_fade}{CFade}}*\ m\_pFade;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ フェードクラスのポインソstring^}}
+\DoxyCodeLine{00074\ \ \ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{class_c_collision}{CCollision}}*\ m\_pCollision;\ \ \ \ \ \ \textcolor{comment}{//\ コリジョンクラスへのポインソstring^}}
+\DoxyCodeLine{00075\ \};}
+\DoxyCodeLine{00076\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

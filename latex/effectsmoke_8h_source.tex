@@ -1,0 +1,50 @@
+\doxysection{effectsmoke.\+h}
+\hypertarget{effectsmoke_8h_source}{}\label{effectsmoke_8h_source}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{//==========================================}}
+\DoxyCodeLine{00002\ \textcolor{comment}{//}}
+\DoxyCodeLine{00003\ \textcolor{comment}{//\ 煙エフェクト処理\ [\ effectsmoke.h\ ]}}
+\DoxyCodeLine{00004\ \textcolor{comment}{//\ Author\ :\ Asuma\ Nishi}}
+\DoxyCodeLine{00005\ \textcolor{comment}{//}}
+\DoxyCodeLine{00006\ \textcolor{comment}{//==========================================}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#ifndef\ \_EFFECTSMOKE\_H\_\ \ }\textcolor{comment}{//\ このソ}クロ定義がされてなかったら}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#define\ \_EFFECTSMOKE\_H\_\ \ }\textcolor{comment}{//\ 2重インクルード防蚕string~のソ}クロ定義}}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00011\ \textcolor{comment}{//**********************************}}
+\DoxyCodeLine{00012\ \textcolor{comment}{//\ インクルードファイル}}
+\DoxyCodeLine{00013\ \textcolor{comment}{//**********************************}}
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#include\ "{}billboard.h"{}}}
+\DoxyCodeLine{00015\ }
+\DoxyCodeLine{00016\ \textcolor{comment}{//**********************************}}
+\DoxyCodeLine{00017\ \textcolor{comment}{//\ 前方宣言}}
+\DoxyCodeLine{00018\ \textcolor{comment}{//**********************************}}
+\DoxyCodeLine{00019\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_c_object}{CObject}};}
+\DoxyCodeLine{00020\ }
+\DoxyCodeLine{00021\ \textcolor{comment}{//**********************************}}
+\DoxyCodeLine{00022\ \textcolor{comment}{//\ 煙エフェクトクラスを定義}}
+\DoxyCodeLine{00023\ \textcolor{comment}{//**********************************}}
+\DoxyCodeLine{00024\ \textcolor{keyword}{class\ }CEffectSmoke\ :\ \textcolor{keyword}{public}\ CBillboard}
+\DoxyCodeLine{00025\ \{}
+\DoxyCodeLine{00026\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00027\ \ \ \ \ CEffectSmoke(\textcolor{keywordtype}{int}\ nPriority\ =\ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{int}\textcolor{keyword}{>}(CObject::PRIORITY::EFFECT));}
+\DoxyCodeLine{00028\ \ \ \ \ \string~CEffectSmoke();}
+\DoxyCodeLine{00029\ }
+\DoxyCodeLine{00030\ \ \ \ \ HRESULT\ Init(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00031\ \ \ \ \ \textcolor{keywordtype}{void}\ Uninit(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00032\ \ \ \ \ \textcolor{keywordtype}{void}\ Update(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00033\ \ \ \ \ \textcolor{keywordtype}{void}\ Draw(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00034\ \ \ \ \ \textcolor{keywordtype}{void}\ SetTexture(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00035\ }
+\DoxyCodeLine{00036\ \ \ \ \ \textcolor{keyword}{static}\ CEffectSmoke*\ Create(D3DXVECTOR3\ pos,\ D3DXCOLOR\ col,\ D3DXVECTOR3\ move,\ \textcolor{keywordtype}{int}\ nLife,\ \textcolor{keywordtype}{float}\ fRadius);}
+\DoxyCodeLine{00037\ }
+\DoxyCodeLine{00038\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00039\ \ \ \ \ \textcolor{keywordtype}{int}\ m\_nIdxTex;\ \ \ \ \ \ \textcolor{comment}{//\ テクスチャインデックス}}
+\DoxyCodeLine{00040\ \ \ \ \ \textcolor{keywordtype}{int}\ m\_nLife;\ \ \ \ \ \ \ \ \textcolor{comment}{//\ 体力}}
+\DoxyCodeLine{00041\ \ \ \ \ \textcolor{keywordtype}{float}\ m\_fRadius;\ \ \ \ \textcolor{comment}{//\ 半径}}
+\DoxyCodeLine{00042\ \ \ \ \ D3DXVECTOR3\ m\_move;\ \textcolor{comment}{//\ 移動量}}
+\DoxyCodeLine{00043\ \};}
+\DoxyCodeLine{00044\ }
+\DoxyCodeLine{00045\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

@@ -1,0 +1,59 @@
+\doxysection{uiobject.\+h}
+\hypertarget{uiobject_8h_source}{}\label{uiobject_8h_source}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{//===============================================}}
+\DoxyCodeLine{00002\ \textcolor{comment}{//}}
+\DoxyCodeLine{00003\ \textcolor{comment}{//\ UIエディソstring^ーオブジェクト\ [\ uiobject.h\ ]}}
+\DoxyCodeLine{00004\ \textcolor{comment}{//\ Author\ :\ Asuma\ Nishio}}
+\DoxyCodeLine{00005\ \textcolor{comment}{//\ }}
+\DoxyCodeLine{00006\ \textcolor{comment}{//\ TODO\ :\ 家で作業する}}
+\DoxyCodeLine{00007\ \textcolor{comment}{//}}
+\DoxyCodeLine{00008\ \textcolor{comment}{//===============================================}}
+\DoxyCodeLine{00009\ }
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#ifndef\ \_UIOBJECT\_H\_\ }\textcolor{comment}{//\ このソ}クロ定義がされてなかったら}}
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#define\ \_UIOBJECT\_H\_\ }\textcolor{comment}{//\ 2重インクルード防蚕string~のソ}クロ定義}}
+\DoxyCodeLine{00012\ }
+\DoxyCodeLine{00013\ \textcolor{comment}{//**********************************}}
+\DoxyCodeLine{00014\ \textcolor{comment}{//\ インクルードファイル}}
+\DoxyCodeLine{00015\ \textcolor{comment}{//**********************************}}
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#include\ "{}object2D.h"{}}}
+\DoxyCodeLine{00017\ }
+\DoxyCodeLine{00018\ \textcolor{comment}{//**********************************}}
+\DoxyCodeLine{00019\ \textcolor{comment}{//\ UIオブジェクトクラスを定義}}
+\DoxyCodeLine{00020\ \textcolor{comment}{//**********************************}}
+\DoxyCodeLine{00021\ \textcolor{keyword}{class\ }CUiObject\ :\ \textcolor{keyword}{public}\ CObject2D}
+\DoxyCodeLine{00022\ \{}
+\DoxyCodeLine{00023\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00024\ \ \ \ \ \textcolor{comment}{//\ コンストラクソstring^・デストラクソstring^}}
+\DoxyCodeLine{00025\ \ \ \ \ CUiObject(\textcolor{keywordtype}{int}\ nPriority\ =\ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{int}\textcolor{keyword}{>}(CObject::PRIORITY::UI));}
+\DoxyCodeLine{00026\ \ \ \ \ \string~CUiObject();}
+\DoxyCodeLine{00027\ }
+\DoxyCodeLine{00028\ \ \ \ \ \textcolor{comment}{//\ メンバ関数}}
+\DoxyCodeLine{00029\ \ \ \ \ HRESULT\ Init(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00030\ \ \ \ \ \textcolor{keywordtype}{void}\ Uninit(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00031\ \ \ \ \ \textcolor{keywordtype}{void}\ Update(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00032\ \ \ \ \ \textcolor{keywordtype}{void}\ Draw(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00033\ }
+\DoxyCodeLine{00034\ \ \ \ \ \textcolor{comment}{//\ セッソstring^ー}}
+\DoxyCodeLine{00035\ \ \ \ \ D3DXVECTOR3\ SetPos(D3DXVECTOR3\ pos)\ \{\ m\_pos\ =\ pos;\ \}}
+\DoxyCodeLine{00036\ \ \ \ \ D3DXVECTOR3\ SetRot(D3DXVECTOR3\ rot)\ \{\ m\_rot\ =\ rot;\ \}}
+\DoxyCodeLine{00037\ }
+\DoxyCodeLine{00038\ \ \ \ \ \textcolor{comment}{//\ ゲッソstring^ー}}
+\DoxyCodeLine{00039\ \ \ \ \ D3DXVECTOR3\ GetPos()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ m\_pos;\ \}}
+\DoxyCodeLine{00040\ \ \ \ \ D3DXVECTOR3\ GetRot()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ m\_rot;\ \}}
+\DoxyCodeLine{00041\ \ \ \ \ \textcolor{keywordtype}{int}\ GetIdx()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ m\_nIdx;\ \}}
+\DoxyCodeLine{00042\ }
+\DoxyCodeLine{00043\ \ \ \ \ \textcolor{comment}{//\ 静的メンバ関数}}
+\DoxyCodeLine{00044\ \ \ \ \ \textcolor{keyword}{static}\ CUiObject*\ Create(D3DXVECTOR3\ pos,\ D3DXVECTOR3\ rot,\ \textcolor{keywordtype}{float}\ fWidth,\textcolor{keywordtype}{float}\ fHeight,\textcolor{keywordtype}{int}\ nIdx);}
+\DoxyCodeLine{00045\ }
+\DoxyCodeLine{00046\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00047\ \ \ \ \ \textcolor{keywordtype}{int}\ m\_nIdx;\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ インデックス}}
+\DoxyCodeLine{00048\ \ \ \ \ \textcolor{keywordtype}{float}\ m\_fWidth;\ \ \ \ \ \textcolor{comment}{//\ 横幅}}
+\DoxyCodeLine{00049\ \ \ \ \ \textcolor{keywordtype}{float}\ m\_fHeight;\ \ \ \ \textcolor{comment}{//\ 高さ}}
+\DoxyCodeLine{00050\ \ \ \ \ D3DXVECTOR3\ m\_pos;\ \ \textcolor{comment}{//\ 座標}}
+\DoxyCodeLine{00051\ \ \ \ \ D3DXVECTOR3\ m\_rot;\ \ \textcolor{comment}{//\ 角度}}
+\DoxyCodeLine{00052\ \};}
+\DoxyCodeLine{00053\ }
+\DoxyCodeLine{00054\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

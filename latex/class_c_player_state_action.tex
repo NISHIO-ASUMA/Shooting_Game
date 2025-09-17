@@ -1,0 +1,88 @@
+\doxysection{CPlayer\+State\+Action Class Reference}
+\hypertarget{class_c_player_state_action}{}\label{class_c_player_state_action}\index{CPlayerStateAction@{CPlayerStateAction}}
+Inheritance diagram for CPlayer\+State\+Action\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{class_c_player_state_action}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_c_player_state_action_a608321eb74c4fd41264e6864b732422c}{On\+Start}} ()
+\item 
+void \mbox{\hyperlink{class_c_player_state_action_a7d8d5717ede315457c4c578e4ee9a15d}{On\+Update}} ()
+\item 
+void \mbox{\hyperlink{class_c_player_state_action_a3d9811b5ad207bb1e4f6ad40c1b7a856}{On\+Exit}} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_c_player_state_base}{CPlayer\+State\+Base}}}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{class_c_player_state_base_a39be9a12832be4e9cb6f7a2d073fa5f1}{Get\+ID}} () const override
+\item 
+void {\bfseries Set\+ID} (ID id)
+\item 
+void {\bfseries Set\+Owner} (\mbox{\hyperlink{class_c_player}{CPlayer}} \texorpdfstring{$\ast$}{*}p\+Player)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Public Types inherited from \mbox{\hyperlink{class_c_player_state_base}{CPlayer\+State\+Base}}}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_c_player_state_base_af5941e0ed8927b652541a4736a38c2f4}\label{class_c_player_state_base_af5941e0ed8927b652541a4736a38c2f4} 
+enum {\bfseries ID} \{ \newline
+{\bfseries ID\+\_\+\+NEUTRAL}
+, {\bfseries ID\+\_\+\+MOVE}
+, {\bfseries ID\+\_\+\+ACTION}
+, {\bfseries ID\+\_\+\+JUMP}
+, \newline
+{\bfseries ID\+\_\+\+GUARD}
+, {\bfseries ID\+\_\+\+DAMAGE}
+, {\bfseries ID\+\_\+\+MAX}
+ \}
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes inherited from \mbox{\hyperlink{class_c_player_state_base}{CPlayer\+State\+Base}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_c_player}{CPlayer}} \texorpdfstring{$\ast$}{*} {\bfseries m\+\_\+p\+Player}
+\end{DoxyCompactItemize}
+
+
+\label{doc-func-members}
+\Hypertarget{class_c_player_state_action_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_c_player_state_action_a3d9811b5ad207bb1e4f6ad40c1b7a856}\index{CPlayerStateAction@{CPlayerStateAction}!OnExit@{OnExit}}
+\index{OnExit@{OnExit}!CPlayerStateAction@{CPlayerStateAction}}
+\doxysubsubsection{\texorpdfstring{OnExit()}{OnExit()}}
+{\footnotesize\ttfamily \label{class_c_player_state_action_a3d9811b5ad207bb1e4f6ad40c1b7a856} 
+void CPlayer\+State\+Action\+::\+On\+Exit (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Reimplemented from \mbox{\hyperlink{class_c_player_state_base}{CPlayer\+State\+Base}}.
+
+\Hypertarget{class_c_player_state_action_a608321eb74c4fd41264e6864b732422c}\index{CPlayerStateAction@{CPlayerStateAction}!OnStart@{OnStart}}
+\index{OnStart@{OnStart}!CPlayerStateAction@{CPlayerStateAction}}
+\doxysubsubsection{\texorpdfstring{OnStart()}{OnStart()}}
+{\footnotesize\ttfamily \label{class_c_player_state_action_a608321eb74c4fd41264e6864b732422c} 
+void CPlayer\+State\+Action\+::\+On\+Start (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Reimplemented from \mbox{\hyperlink{class_c_player_state_base}{CPlayer\+State\+Base}}.
+
+\Hypertarget{class_c_player_state_action_a7d8d5717ede315457c4c578e4ee9a15d}\index{CPlayerStateAction@{CPlayerStateAction}!OnUpdate@{OnUpdate}}
+\index{OnUpdate@{OnUpdate}!CPlayerStateAction@{CPlayerStateAction}}
+\doxysubsubsection{\texorpdfstring{OnUpdate()}{OnUpdate()}}
+{\footnotesize\ttfamily \label{class_c_player_state_action_a7d8d5717ede315457c4c578e4ee9a15d} 
+void CPlayer\+State\+Action\+::\+On\+Update (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Reimplemented from \mbox{\hyperlink{class_c_player_state_base}{CPlayer\+State\+Base}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+playerstate.\+h\item 
+playerstate.\+cpp\end{DoxyCompactItemize}

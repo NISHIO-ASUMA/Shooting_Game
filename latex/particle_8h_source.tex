@@ -1,0 +1,57 @@
+\doxysection{particle.\+h}
+\hypertarget{particle_8h_source}{}\label{particle_8h_source}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{//=====================================}}
+\DoxyCodeLine{00002\ \textcolor{comment}{//}}
+\DoxyCodeLine{00003\ \textcolor{comment}{//\ パーティクル処理\ [\ particle.h\ ]}}
+\DoxyCodeLine{00004\ \textcolor{comment}{//\ Author:\ Asuma\ Nishio}}
+\DoxyCodeLine{00005\ \textcolor{comment}{//}}
+\DoxyCodeLine{00006\ \textcolor{comment}{//=====================================}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#ifndef\ \_PARTICLE\_H\_\ }\textcolor{comment}{//\ このソ}クロ定義がされてなかったら}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#define\ \_PARTICLE\_H\_\ }\textcolor{comment}{//\ 2重インクルード防蚕string~のソ}クロ定義}}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00011\ \textcolor{comment}{//**********************}}
+\DoxyCodeLine{00012\ \textcolor{comment}{//\ インクルードファイル}}
+\DoxyCodeLine{00013\ \textcolor{comment}{//**********************}}
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#include\ "{}object.h"{}}}
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00016\ }
+\DoxyCodeLine{00017\ \textcolor{comment}{//*********************}}
+\DoxyCodeLine{00018\ \textcolor{comment}{//\ 前方宣言}}
+\DoxyCodeLine{00019\ \textcolor{comment}{//*********************}}
+\DoxyCodeLine{00020\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_c_effect}{CEffect}};}
+\DoxyCodeLine{00021\ }
+\DoxyCodeLine{00022\ \textcolor{comment}{//***************************}}
+\DoxyCodeLine{00023\ \textcolor{comment}{//\ パーティクルクラスを定義}}
+\DoxyCodeLine{00024\ \textcolor{comment}{//***************************}}
+\DoxyCodeLine{00025\ \textcolor{keyword}{class\ }CParticle\ :\ \textcolor{keyword}{public}\ CObject}
+\DoxyCodeLine{00026\ \{}
+\DoxyCodeLine{00027\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00028\ \ \ \ \ \textcolor{comment}{//\ コンストラクソstring^・デストラクソstring^}}
+\DoxyCodeLine{00029\ \ \ \ \ CParticle(\textcolor{keywordtype}{int}\ nPriority\ =\ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{int}\textcolor{keyword}{>}(CObject::PRIORITY::EFFECT));}
+\DoxyCodeLine{00030\ \ \ \ \ \string~CParticle();}
+\DoxyCodeLine{00031\ }
+\DoxyCodeLine{00032\ \ \ \ \ \textcolor{comment}{//\ メンバ関数}}
+\DoxyCodeLine{00033\ \ \ \ \ HRESULT\ Init(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00034\ \ \ \ \ \textcolor{keywordtype}{void}\ Uninit(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00035\ \ \ \ \ \textcolor{keywordtype}{void}\ Update(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00036\ \ \ \ \ \textcolor{keywordtype}{void}\ Draw(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00037\ }
+\DoxyCodeLine{00038\ \ \ \ \ \textcolor{comment}{//\ 静的メンバ関数}}
+\DoxyCodeLine{00039\ \ \ \ \ \textcolor{keyword}{static}\ CParticle*\ Create(D3DXVECTOR3\ pos,\ D3DXCOLOR\ col,\ \textcolor{keywordtype}{int}\ nMaxParticle,\ \textcolor{keywordtype}{int}\ nRadius,\ \textcolor{keywordtype}{int}\ nLength,\ \textcolor{keywordtype}{int}\ nLife);}
+\DoxyCodeLine{00040\ }
+\DoxyCodeLine{00041\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00042\ \ \ \ \ std::vector<CEffect*>\ m\_pEffect;\ \textcolor{comment}{//\ エフェクト配列}}
+\DoxyCodeLine{00043\ }
+\DoxyCodeLine{00044\ \ \ \ \ D3DXVECTOR3\ m\_pos;\ \ \textcolor{comment}{//\ 座標}}
+\DoxyCodeLine{00045\ \ \ \ \ D3DXCOLOR\ m\_col;\ \ \ \ \textcolor{comment}{//\ 色}}
+\DoxyCodeLine{00046\ \ \ \ \ \textcolor{keywordtype}{int}\ m\_nMaxParticle;\ \textcolor{comment}{//\ 最大数}}
+\DoxyCodeLine{00047\ \ \ \ \ \textcolor{keywordtype}{int}\ m\_nLife;\ \ \ \ \ \ \ \ \textcolor{comment}{//\ 寿命}}
+\DoxyCodeLine{00048\ \ \ \ \ \textcolor{keywordtype}{int}\ m\_nLength;\ \ \ \ \ \ \textcolor{comment}{//\ 飛散する距離}}
+\DoxyCodeLine{00049\ \ \ \ \ \textcolor{keywordtype}{int}\ m\_nRadius;\ \ \ \ \ \ \textcolor{comment}{//\ 粒の大きさ}}
+\DoxyCodeLine{00050\ \};}
+\DoxyCodeLine{00051\ }
+\DoxyCodeLine{00052\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

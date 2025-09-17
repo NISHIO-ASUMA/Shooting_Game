@@ -1,0 +1,67 @@
+\doxysection{charge.\+h}
+\hypertarget{charge_8h_source}{}\label{charge_8h_source}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{//========================================}}
+\DoxyCodeLine{00002\ \textcolor{comment}{//}}
+\DoxyCodeLine{00003\ \textcolor{comment}{//\ チャージ処理\ [\ charge.h\ ]}}
+\DoxyCodeLine{00004\ \textcolor{comment}{//\ Author\ :\ Asuma\ Nishio}}
+\DoxyCodeLine{00005\ \textcolor{comment}{//}}
+\DoxyCodeLine{00006\ \textcolor{comment}{//========================================}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \textcolor{comment}{//**********************************}}
+\DoxyCodeLine{00009\ \textcolor{comment}{//\ インクルードファイル}}
+\DoxyCodeLine{00010\ \textcolor{comment}{//**********************************}}
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ "{}gage.h"{}}}
+\DoxyCodeLine{00012\ }
+\DoxyCodeLine{00013\ \textcolor{comment}{//****************************}}
+\DoxyCodeLine{00014\ \textcolor{comment}{//\ 前方宣言}}
+\DoxyCodeLine{00015\ \textcolor{comment}{//****************************}}
+\DoxyCodeLine{00016\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_c_object}{CObject}};}
+\DoxyCodeLine{00017\ }
+\DoxyCodeLine{00018\ \textcolor{comment}{//****************************}}
+\DoxyCodeLine{00019\ \textcolor{comment}{//\ チャージクラスを定義}}
+\DoxyCodeLine{00020\ \textcolor{comment}{//****************************}}
+\DoxyCodeLine{00021\ \textcolor{keyword}{class\ }CCharge\ :\ \textcolor{keyword}{public}\ CGage}
+\DoxyCodeLine{00022\ \{}
+\DoxyCodeLine{00023\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00024\ \ \ \ \ \textcolor{comment}{//***********************}}
+\DoxyCodeLine{00025\ \ \ \ \ \textcolor{comment}{//\ テクスチャ種類列挙圭string^}}
+\DoxyCodeLine{00026\ \ \ \ \ \textcolor{comment}{//***********************}}
+\DoxyCodeLine{00027\ \ \ \ \ \textcolor{keyword}{enum}\ CHARGE}
+\DoxyCodeLine{00028\ \ \ \ \ \{}
+\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ CHARGE\_FRAME,\ \ \ \textcolor{comment}{//\ フレーム}}
+\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ CHARGE\_BAR,\ \ \ \ \ \textcolor{comment}{//\ ゲージ暴{体}}
+\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ CHARGE\_MAX}
+\DoxyCodeLine{00032\ \ \ \ \ \};}
+\DoxyCodeLine{00033\ }
+\DoxyCodeLine{00034\ \ \ \ \ \textcolor{comment}{//\ コンストラクソstring^・デストラクソstring^}}
+\DoxyCodeLine{00035\ \ \ \ \ CCharge(\textcolor{keywordtype}{int}\ nPriority\ =\ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{int}\textcolor{keyword}{>}(CObject::PRIORITY::UI));}
+\DoxyCodeLine{00036\ \ \ \ \ \string~CCharge();}
+\DoxyCodeLine{00037\ }
+\DoxyCodeLine{00038\ \ \ \ \ \textcolor{comment}{//\ メンバ関数}}
+\DoxyCodeLine{00039\ \ \ \ \ HRESULT\ Init(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00040\ \ \ \ \ \textcolor{keywordtype}{void}\ Uninit(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00041\ \ \ \ \ \textcolor{keywordtype}{void}\ Update(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00042\ \ \ \ \ \textcolor{keywordtype}{void}\ Draw(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00043\ }
+\DoxyCodeLine{00044\ \ \ \ \ \textcolor{comment}{//\ セッソstring^ー}}
+\DoxyCodeLine{00045\ \ \ \ \ \textcolor{keywordtype}{void}\ SetType(\textcolor{keywordtype}{int}\ nType)\ \{\ m\_nType\ =\ nType;\ \}}
+\DoxyCodeLine{00046\ \ \ \ \ \textcolor{keywordtype}{void}\ SetTexture(\textcolor{keywordtype}{int}\ nType);}
+\DoxyCodeLine{00047\ }
+\DoxyCodeLine{00048\ \ \ \ \ \textcolor{comment}{//\ 静的メンバ関数}}
+\DoxyCodeLine{00049\ \ \ \ \ \textcolor{keyword}{static}\ CCharge*\ Create(D3DXVECTOR3\ pos,\ \textcolor{keywordtype}{float}\ fWidth,\ \textcolor{keywordtype}{float}\ fHeight,\ \textcolor{keywordtype}{int}\ nType);}
+\DoxyCodeLine{00050\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ AddCharge(\textcolor{keywordtype}{float}\ fValue);}
+\DoxyCodeLine{00051\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ DecCharge(\textcolor{keywordtype}{float}\ fValue);}
+\DoxyCodeLine{00052\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{bool}\ GetChargeFlag(\textcolor{keywordtype}{void})\ \{\ \textcolor{keywordflow}{return}\ m\_isCharge;\ \}}
+\DoxyCodeLine{00053\ }
+\DoxyCodeLine{00054\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00055\ \ \ \ \ \textcolor{keywordtype}{int}\ m\_nIdxTex;}
+\DoxyCodeLine{00056\ \ \ \ \ \textcolor{keywordtype}{int}\ m\_nType;}
+\DoxyCodeLine{00057\ }
+\DoxyCodeLine{00058\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{bool}\ m\_isCharge;}
+\DoxyCodeLine{00059\ }
+\DoxyCodeLine{00060\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{float}\ m\_fCharge;}
+\DoxyCodeLine{00061\ \};}
+\DoxyCodeLine{00062\ }
+
+\end{DoxyCode}

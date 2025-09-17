@@ -1,0 +1,52 @@
+\doxysection{rubble.\+h}
+\hypertarget{rubble_8h_source}{}\label{rubble_8h_source}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{//========================================}}
+\DoxyCodeLine{00002\ \textcolor{comment}{//}}
+\DoxyCodeLine{00003\ \textcolor{comment}{//\ 瓦礫オブジェクト処理\ [\ rubble.h\ ]}}
+\DoxyCodeLine{00004\ \textcolor{comment}{//\ Author\ :\ Asuma\ Nishio}}
+\DoxyCodeLine{00005\ \textcolor{comment}{//}}
+\DoxyCodeLine{00006\ \textcolor{comment}{//========================================}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#ifndef\ \_RUBBLE\_H\_\ }\textcolor{comment}{//\ このソ}クロ定義がされてなかったら}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#define\ \_RUBBLE\_H\_\ }\textcolor{comment}{//\ 2重インクルード防蚕string~のソ}クロ定義}}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00011\ \textcolor{comment}{//**********************************}}
+\DoxyCodeLine{00012\ \textcolor{comment}{//\ インクルードファイル}}
+\DoxyCodeLine{00013\ \textcolor{comment}{//**********************************}}
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#include\ "{}objectX.h"{}}}
+\DoxyCodeLine{00015\ }
+\DoxyCodeLine{00016\ \textcolor{comment}{//**********************************}}
+\DoxyCodeLine{00017\ \textcolor{comment}{//\ 前方宣言}}
+\DoxyCodeLine{00018\ \textcolor{comment}{//**********************************}}
+\DoxyCodeLine{00019\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_c_object}{CObject}};}
+\DoxyCodeLine{00020\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_c_shadow}{CShadow}};}
+\DoxyCodeLine{00021\ }
+\DoxyCodeLine{00022\ \textcolor{comment}{//**********************************}}
+\DoxyCodeLine{00023\ \textcolor{comment}{//\ 瓦礫クラスを定義}}
+\DoxyCodeLine{00024\ \textcolor{comment}{//**********************************}}
+\DoxyCodeLine{00025\ \textcolor{keyword}{class\ }CRubble\ :\ \textcolor{keyword}{public}\ CObjectX}
+\DoxyCodeLine{00026\ \{}
+\DoxyCodeLine{00027\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00028\ \ \ \ \ \textcolor{comment}{//\ コンストラクソstring^・デストラクソstring^}}
+\DoxyCodeLine{00029\ \ \ \ \ CRubble(\textcolor{keywordtype}{int}\ nPriority\ =\ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{int}\textcolor{keyword}{>}(CObject::PRIORITY::MODELOBJECT));}
+\DoxyCodeLine{00030\ \ \ \ \ \string~CRubble();}
+\DoxyCodeLine{00031\ }
+\DoxyCodeLine{00032\ \ \ \ \ \textcolor{comment}{//\ メンバ関数}}
+\DoxyCodeLine{00033\ \ \ \ \ HRESULT\ Init(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00034\ \ \ \ \ \textcolor{keywordtype}{void}\ Uninit(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00035\ \ \ \ \ \textcolor{keywordtype}{void}\ Update(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00036\ \ \ \ \ \textcolor{keywordtype}{void}\ Draw(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00037\ \ \ \ \ \textcolor{keywordtype}{bool}\ Collision(D3DXVECTOR3\ *DestPos);}
+\DoxyCodeLine{00038\ }
+\DoxyCodeLine{00039\ \ \ \ \ \textcolor{comment}{//\ 生成処理}}
+\DoxyCodeLine{00040\ \ \ \ \ \textcolor{keyword}{static}\ CRubble*\ Create(D3DXVECTOR3\ pos,\ D3DXVECTOR3\ rot,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ pFilename);}
+\DoxyCodeLine{00041\ }
+\DoxyCodeLine{00042\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00043\ \ \ \ \ D3DXVECTOR3\ m\_Fallingspeed;\ \textcolor{comment}{//\ 落下速度}}
+\DoxyCodeLine{00044\ \ \ \ \ \mbox{\hyperlink{class_c_shadow}{CShadow}}*\ m\_pShadow;\ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 影クラスポインソstring^}}
+\DoxyCodeLine{00045\ \};}
+\DoxyCodeLine{00046\ }
+\DoxyCodeLine{00047\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

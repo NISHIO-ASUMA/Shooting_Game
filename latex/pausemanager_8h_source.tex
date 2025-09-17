@@ -1,0 +1,54 @@
+\doxysection{pausemanager.\+h}
+\hypertarget{pausemanager_8h_source}{}\label{pausemanager_8h_source}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{//=====================================}}
+\DoxyCodeLine{00002\ \textcolor{comment}{//}}
+\DoxyCodeLine{00003\ \textcolor{comment}{//\ ポーズ管理処理\ [\ pausemanager.h\ ]}}
+\DoxyCodeLine{00004\ \textcolor{comment}{//\ Author:\ Asuma\ Nishio}}
+\DoxyCodeLine{00005\ \textcolor{comment}{//}}
+\DoxyCodeLine{00006\ \textcolor{comment}{//=====================================}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#ifndef\ \_PAUSEMANAGER\_H\_\ }\textcolor{comment}{//\ このソ}クロ定義がされてなかったら}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#define\ \_PAUSEMANAGER\_H\_\ }\textcolor{comment}{//\ 2重インクルード防蚕string~のソ}クロ定義}}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00011\ \textcolor{comment}{//********************************}}
+\DoxyCodeLine{00012\ \textcolor{comment}{//\ インクルードファイル宣言}}
+\DoxyCodeLine{00013\ \textcolor{comment}{//********************************}}
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#include\ "{}pause.h"{}}}
+\DoxyCodeLine{00015\ }
+\DoxyCodeLine{00016\ \textcolor{comment}{//*********************************}}
+\DoxyCodeLine{00017\ \textcolor{comment}{//\ ポーズメニュー管理クラスを定義}}
+\DoxyCodeLine{00018\ \textcolor{comment}{//*********************************}}
+\DoxyCodeLine{00019\ \textcolor{keyword}{class\ }CPauseManager}
+\DoxyCodeLine{00020\ \{}
+\DoxyCodeLine{00021\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00022\ \ \ \ \ \textcolor{comment}{//\ コンストラクソstring^・デストラクソstring^}}
+\DoxyCodeLine{00023\ \ \ \ \ CPauseManager();}
+\DoxyCodeLine{00024\ \ \ \ \ \string~CPauseManager();}
+\DoxyCodeLine{00025\ }
+\DoxyCodeLine{00026\ \ \ \ \ \textcolor{comment}{//\ メンバ関数}}
+\DoxyCodeLine{00027\ \ \ \ \ HRESULT\ Init(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00028\ \ \ \ \ \textcolor{keywordtype}{void}\ Uninit(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00029\ \ \ \ \ \textcolor{keywordtype}{void}\ Update(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00030\ }
+\DoxyCodeLine{00031\ \ \ \ \ \textcolor{comment}{//\ セッソstring^ー}}
+\DoxyCodeLine{00032\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ SetEnablePause(\textcolor{keywordtype}{bool}\ isFlags)\ \{\ m\_isPause\ =\ isFlags;\ \}}
+\DoxyCodeLine{00033\ \ \ \ \ \textcolor{keywordtype}{void}\ SetEnablePause(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00034\ }
+\DoxyCodeLine{00035\ \ \ \ \ \textcolor{comment}{//\ 静的メンバ関数}}
+\DoxyCodeLine{00036\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{bool}\ GetPause(\textcolor{keywordtype}{void})\ \{\ \textcolor{keywordflow}{return}\ m\_isPause;\ \}}
+\DoxyCodeLine{00037\ }
+\DoxyCodeLine{00038\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00039\ }
+\DoxyCodeLine{00040\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{int}\ SELECT\_MAX\ =\ 4;\ \textcolor{comment}{//\ 最大メニュー選択数}}
+\DoxyCodeLine{00041\ }
+\DoxyCodeLine{00042\ \ \ \ \ \textcolor{keywordtype}{int}\ m\_nSelectIdx;\ \ \ \textcolor{comment}{//\ セレクト番号}}
+\DoxyCodeLine{00043\ }
+\DoxyCodeLine{00044\ \ \ \ \ \mbox{\hyperlink{class_c_pause}{CPause}}*\ m\_pPause[SELECT\_MAX];\ \textcolor{comment}{//\ ポーズクラスのポインソstring^配列}}
+\DoxyCodeLine{00045\ }
+\DoxyCodeLine{00046\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{bool}\ m\_isPause;\ \ \ \ \ \ \textcolor{comment}{//\ ポーズかどうか}}
+\DoxyCodeLine{00047\ \};}
+\DoxyCodeLine{00048\ }
+\DoxyCodeLine{00049\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

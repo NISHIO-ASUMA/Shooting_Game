@@ -1,0 +1,165 @@
+\doxysection{CMesh\+Cylinder Class Reference}
+\hypertarget{class_c_mesh_cylinder}{}\label{class_c_mesh_cylinder}\index{CMeshCylinder@{CMeshCylinder}}
+Inheritance diagram for CMesh\+Cylinder\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_c_mesh_cylinder}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_c_mesh_cylinder_ae5cf85c7b45345a9e2e6fe03c103540c}\label{class_c_mesh_cylinder_ae5cf85c7b45345a9e2e6fe03c103540c} 
+{\bfseries CMesh\+Cylinder} (int n\+Prio=static\+\_\+cast$<$ int $>$(CObject\+::\+PRIORITY\+::\+MESH))
+\item 
+HRESULT \mbox{\hyperlink{class_c_mesh_cylinder_a4bf9cd0823cb89a3cb6c9d0ae32d5c2f}{Init}} (void)
+\item 
+void \mbox{\hyperlink{class_c_mesh_cylinder_abb8ac9a7d77b8b8248b09b27faf5e9f1}{Uninit}} (void)
+\item 
+void \mbox{\hyperlink{class_c_mesh_cylinder_a2c266dcd4f3f6f25ebef6f94711f71c6}{Update}} (void)
+\item 
+void \mbox{\hyperlink{class_c_mesh_cylinder_a0503045b5bb3cbaa849e5e173a5cc4af}{Draw}} (void)
+\item 
+\Hypertarget{class_c_mesh_cylinder_a938871e71cf692d9c7f164eefdadfe0b}\label{class_c_mesh_cylinder_a938871e71cf692d9c7f164eefdadfe0b} 
+void {\bfseries Set\+Texture} (void)
+\item 
+\Hypertarget{class_c_mesh_cylinder_a4ea560de50011bd891a30abdd48d70a2}\label{class_c_mesh_cylinder_a4ea560de50011bd891a30abdd48d70a2} 
+D3\+DXVECTOR3 {\bfseries Get\+Pos} (void)
+\item 
+\Hypertarget{class_c_mesh_cylinder_a61a1f8faf5a6423184bac99853452bbe}\label{class_c_mesh_cylinder_a61a1f8faf5a6423184bac99853452bbe} 
+D3\+DXVECTOR3 {\bfseries Get\+Rot} (void)
+\item 
+\Hypertarget{class_c_mesh_cylinder_a849a6772cb8c3617bf49fd789e3930c1}\label{class_c_mesh_cylinder_a849a6772cb8c3617bf49fd789e3930c1} 
+float {\bfseries Get\+Radius} (void) const
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_c_object}{CObject}}}
+\begin{DoxyCompactItemize}
+\item 
+{\bfseries CObject} (int n\+Priority=NONE)
+\item 
+void {\bfseries Set\+Obj\+Type} (TYPE type)
+\item 
+TYPE {\bfseries Get\+Obj\+Type} (void)
+\item 
+\mbox{\hyperlink{class_c_object}{CObject}} \texorpdfstring{$\ast$}{*} {\bfseries Get\+Next} (void)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_c_mesh_cylinder_a840ce67e4d18e2caef4e45ab589f8197}\label{class_c_mesh_cylinder_a840ce67e4d18e2caef4e45ab589f8197} 
+static \mbox{\hyperlink{class_c_mesh_cylinder}{CMesh\+Cylinder}} \texorpdfstring{$\ast$}{*} {\bfseries Create} (D3\+DXVECTOR3 pos, float f\+Radius)
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Member Functions inherited from \mbox{\hyperlink{class_c_object}{CObject}}}
+\begin{DoxyCompactItemize}
+\item 
+static void {\bfseries Release\+All} (void)
+\item 
+static void {\bfseries Update\+All} (void)
+\item 
+static void {\bfseries Draw\+All} (void)
+\item 
+static \mbox{\hyperlink{class_c_object}{CObject}} \texorpdfstring{$\ast$}{*} {\bfseries Get\+Top} (int n\+Priority)
+\item 
+static int {\bfseries Get\+Num\+All} (void)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Public Types inherited from \mbox{\hyperlink{class_c_object}{CObject}}}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_c_object_a7263d5eae1a949d02e262e246152a2c6}\label{class_c_object_a7263d5eae1a949d02e262e246152a2c6} 
+enum {\bfseries TYPE} \{ \newline
+{\bfseries TYPE\+\_\+\+NONE} = 0
+, {\bfseries TYPE\+\_\+\+PLAYER}
+, {\bfseries TYPE\+\_\+\+MESH}
+, {\bfseries TYPE\+\_\+\+BULLET}
+, \newline
+{\bfseries TYPE\+\_\+\+BOSS}
+, {\bfseries TYPE\+\_\+\+ENEMY}
+, {\bfseries TYPE\+\_\+\+BLOCK}
+, {\bfseries TYPE\+\_\+\+PAUSE}
+, \newline
+{\bfseries TYPE\+\_\+\+BARRIER}
+, {\bfseries TYPE\+\_\+\+ITEM}
+, {\bfseries TYPE\+\_\+\+RUBBLE}
+, {\bfseries TYPE\+\_\+\+PILER}
+, \newline
+{\bfseries TYPE\+\_\+\+POINT}
+, {\bfseries TYPE\+\_\+\+MAX}
+ \}
+\item 
+\Hypertarget{class_c_object_a0924032649f7068d08cc5da588adc8d0}\label{class_c_object_a0924032649f7068d08cc5da588adc8d0} 
+enum {\bfseries PRIORITY} \{ \newline
+{\bfseries NONE}
+, {\bfseries MESH}
+, {\bfseries BASENUMBER}
+, {\bfseries MODELOBJECT}
+, \newline
+{\bfseries BULLET}
+, {\bfseries SHADOW}
+, {\bfseries IMPACT}
+, {\bfseries CHARACTOR}
+, \newline
+{\bfseries BILLBOARD}
+, {\bfseries EFFECT}
+, {\bfseries UI}
+, {\bfseries PAUSE}
+, \newline
+{\bfseries PRIORITY\+\_\+\+MAX}
+ \}
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Member Functions inherited from \mbox{\hyperlink{class_c_object}{CObject}}}
+\begin{DoxyCompactItemize}
+\item 
+void {\bfseries Release} (void)
+\end{DoxyCompactItemize}
+
+
+\label{doc-func-members}
+\Hypertarget{class_c_mesh_cylinder_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_c_mesh_cylinder_a0503045b5bb3cbaa849e5e173a5cc4af}\index{CMeshCylinder@{CMeshCylinder}!Draw@{Draw}}
+\index{Draw@{Draw}!CMeshCylinder@{CMeshCylinder}}
+\doxysubsubsection{\texorpdfstring{Draw()}{Draw()}}
+{\footnotesize\ttfamily \label{class_c_mesh_cylinder_a0503045b5bb3cbaa849e5e173a5cc4af} 
+void CMesh\+Cylinder\+::\+Draw (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{class_c_object}{CObject}}.
+
+\Hypertarget{class_c_mesh_cylinder_a4bf9cd0823cb89a3cb6c9d0ae32d5c2f}\index{CMeshCylinder@{CMeshCylinder}!Init@{Init}}
+\index{Init@{Init}!CMeshCylinder@{CMeshCylinder}}
+\doxysubsubsection{\texorpdfstring{Init()}{Init()}}
+{\footnotesize\ttfamily \label{class_c_mesh_cylinder_a4bf9cd0823cb89a3cb6c9d0ae32d5c2f} 
+HRESULT CMesh\+Cylinder\+::\+Init (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{class_c_object}{CObject}}.
+
+\Hypertarget{class_c_mesh_cylinder_abb8ac9a7d77b8b8248b09b27faf5e9f1}\index{CMeshCylinder@{CMeshCylinder}!Uninit@{Uninit}}
+\index{Uninit@{Uninit}!CMeshCylinder@{CMeshCylinder}}
+\doxysubsubsection{\texorpdfstring{Uninit()}{Uninit()}}
+{\footnotesize\ttfamily \label{class_c_mesh_cylinder_abb8ac9a7d77b8b8248b09b27faf5e9f1} 
+void CMesh\+Cylinder\+::\+Uninit (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{class_c_object}{CObject}}.
+
+\Hypertarget{class_c_mesh_cylinder_a2c266dcd4f3f6f25ebef6f94711f71c6}\index{CMeshCylinder@{CMeshCylinder}!Update@{Update}}
+\index{Update@{Update}!CMeshCylinder@{CMeshCylinder}}
+\doxysubsubsection{\texorpdfstring{Update()}{Update()}}
+{\footnotesize\ttfamily \label{class_c_mesh_cylinder_a2c266dcd4f3f6f25ebef6f94711f71c6} 
+void CMesh\+Cylinder\+::\+Update (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{class_c_object}{CObject}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+meshcylinder.\+h\item 
+meshcylinder.\+cpp\end{DoxyCompactItemize}

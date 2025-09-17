@@ -1,0 +1,171 @@
+\doxysection{CTitle\+Player Class Reference}
+\hypertarget{class_c_title_player}{}\label{class_c_title_player}\index{CTitlePlayer@{CTitlePlayer}}
+Inheritance diagram for CTitle\+Player\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_c_title_player}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_c_title_player_a934335c9919d71de947ccbc0b5ae273d}\label{class_c_title_player_a934335c9919d71de947ccbc0b5ae273d} 
+enum {\bfseries TITLEMOTION} \{ {\bfseries TITLEMOTION\+\_\+\+NEUTORAL}
+, {\bfseries TITLEMOTION\+\_\+\+ACTION}
+, {\bfseries TITLEMOTION\+\_\+\+MAX}
+ \}
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Types inherited from \mbox{\hyperlink{class_c_object}{CObject}}}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_c_object_a7263d5eae1a949d02e262e246152a2c6}\label{class_c_object_a7263d5eae1a949d02e262e246152a2c6} 
+enum {\bfseries TYPE} \{ \newline
+{\bfseries TYPE\+\_\+\+NONE} = 0
+, {\bfseries TYPE\+\_\+\+PLAYER}
+, {\bfseries TYPE\+\_\+\+MESH}
+, {\bfseries TYPE\+\_\+\+BULLET}
+, \newline
+{\bfseries TYPE\+\_\+\+BOSS}
+, {\bfseries TYPE\+\_\+\+ENEMY}
+, {\bfseries TYPE\+\_\+\+BLOCK}
+, {\bfseries TYPE\+\_\+\+PAUSE}
+, \newline
+{\bfseries TYPE\+\_\+\+BARRIER}
+, {\bfseries TYPE\+\_\+\+ITEM}
+, {\bfseries TYPE\+\_\+\+RUBBLE}
+, {\bfseries TYPE\+\_\+\+PILER}
+, \newline
+{\bfseries TYPE\+\_\+\+POINT}
+, {\bfseries TYPE\+\_\+\+MAX}
+ \}
+\item 
+\Hypertarget{class_c_object_a0924032649f7068d08cc5da588adc8d0}\label{class_c_object_a0924032649f7068d08cc5da588adc8d0} 
+enum {\bfseries PRIORITY} \{ \newline
+{\bfseries NONE}
+, {\bfseries MESH}
+, {\bfseries BASENUMBER}
+, {\bfseries MODELOBJECT}
+, \newline
+{\bfseries BULLET}
+, {\bfseries SHADOW}
+, {\bfseries IMPACT}
+, {\bfseries CHARACTOR}
+, \newline
+{\bfseries BILLBOARD}
+, {\bfseries EFFECT}
+, {\bfseries UI}
+, {\bfseries PAUSE}
+, \newline
+{\bfseries PRIORITY\+\_\+\+MAX}
+ \}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_c_title_player_a9421daf6990685348bf82ab0ecbc85bc}\label{class_c_title_player_a9421daf6990685348bf82ab0ecbc85bc} 
+{\bfseries CTitle\+Player} (int n\+Priority=static\+\_\+cast$<$ int $>$(CObject\+::\+PRIORITY\+::\+CHARACTOR))
+\item 
+HRESULT \mbox{\hyperlink{class_c_title_player_a348d0a114a7f36a9f9bb7fbaac84c6cf}{Init}} (void)
+\item 
+void \mbox{\hyperlink{class_c_title_player_af0840d75b4e800cf8431c501e83c23c8}{Uninit}} (void)
+\item 
+void \mbox{\hyperlink{class_c_title_player_aefd690dd26cee7350e98358df2e3accc}{Update}} (void)
+\item 
+void \mbox{\hyperlink{class_c_title_player_a4432d7874140f05b9520520f4824374a}{Draw}} (void)
+\item 
+\Hypertarget{class_c_title_player_a3f6ba33c7ced74cd65c88bf46012a9ff}\label{class_c_title_player_a3f6ba33c7ced74cd65c88bf46012a9ff} 
+D3\+DXVECTOR3 {\bfseries Get\+Pos} (void)
+\item 
+\Hypertarget{class_c_title_player_a5fba45603bc1676242a1a80feabac490}\label{class_c_title_player_a5fba45603bc1676242a1a80feabac490} 
+int {\bfseries Get\+Player\+Index} () const
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_c_object}{CObject}}}
+\begin{DoxyCompactItemize}
+\item 
+{\bfseries CObject} (int n\+Priority=NONE)
+\item 
+void {\bfseries Set\+Obj\+Type} (TYPE type)
+\item 
+TYPE {\bfseries Get\+Obj\+Type} (void)
+\item 
+\mbox{\hyperlink{class_c_object}{CObject}} \texorpdfstring{$\ast$}{*} {\bfseries Get\+Next} (void)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_c_title_player_aa1dd24a09f9117a67522aa8d76e66d5b}\label{class_c_title_player_aa1dd24a09f9117a67522aa8d76e66d5b} 
+static \mbox{\hyperlink{class_c_title_player}{CTitle\+Player}} \texorpdfstring{$\ast$}{*} {\bfseries Create} (D3\+DXVECTOR3 pos, D3\+DXVECTOR3 rot, const int n\+Idx\+Parson, const char \texorpdfstring{$\ast$}{*}p\+Filename)
+\item 
+\Hypertarget{class_c_title_player_a99967585a84ec2813d76f38b90edc158}\label{class_c_title_player_a99967585a84ec2813d76f38b90edc158} 
+static \mbox{\hyperlink{class_c_title_player}{CTitle\+Player}} \texorpdfstring{$\ast$}{*} {\bfseries Get\+Idx\+Player} (int Idx)
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Member Functions inherited from \mbox{\hyperlink{class_c_object}{CObject}}}
+\begin{DoxyCompactItemize}
+\item 
+static void {\bfseries Release\+All} (void)
+\item 
+static void {\bfseries Update\+All} (void)
+\item 
+static void {\bfseries Draw\+All} (void)
+\item 
+static \mbox{\hyperlink{class_c_object}{CObject}} \texorpdfstring{$\ast$}{*} {\bfseries Get\+Top} (int n\+Priority)
+\item 
+static int {\bfseries Get\+Num\+All} (void)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Protected Member Functions inherited from \mbox{\hyperlink{class_c_object}{CObject}}}
+\begin{DoxyCompactItemize}
+\item 
+void {\bfseries Release} (void)
+\end{DoxyCompactItemize}
+
+
+\label{doc-func-members}
+\Hypertarget{class_c_title_player_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_c_title_player_a4432d7874140f05b9520520f4824374a}\index{CTitlePlayer@{CTitlePlayer}!Draw@{Draw}}
+\index{Draw@{Draw}!CTitlePlayer@{CTitlePlayer}}
+\doxysubsubsection{\texorpdfstring{Draw()}{Draw()}}
+{\footnotesize\ttfamily \label{class_c_title_player_a4432d7874140f05b9520520f4824374a} 
+void CTitle\+Player\+::\+Draw (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{class_c_object}{CObject}}.
+
+\Hypertarget{class_c_title_player_a348d0a114a7f36a9f9bb7fbaac84c6cf}\index{CTitlePlayer@{CTitlePlayer}!Init@{Init}}
+\index{Init@{Init}!CTitlePlayer@{CTitlePlayer}}
+\doxysubsubsection{\texorpdfstring{Init()}{Init()}}
+{\footnotesize\ttfamily \label{class_c_title_player_a348d0a114a7f36a9f9bb7fbaac84c6cf} 
+HRESULT CTitle\+Player\+::\+Init (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{class_c_object}{CObject}}.
+
+\Hypertarget{class_c_title_player_af0840d75b4e800cf8431c501e83c23c8}\index{CTitlePlayer@{CTitlePlayer}!Uninit@{Uninit}}
+\index{Uninit@{Uninit}!CTitlePlayer@{CTitlePlayer}}
+\doxysubsubsection{\texorpdfstring{Uninit()}{Uninit()}}
+{\footnotesize\ttfamily \label{class_c_title_player_af0840d75b4e800cf8431c501e83c23c8} 
+void CTitle\+Player\+::\+Uninit (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{class_c_object}{CObject}}.
+
+\Hypertarget{class_c_title_player_aefd690dd26cee7350e98358df2e3accc}\index{CTitlePlayer@{CTitlePlayer}!Update@{Update}}
+\index{Update@{Update}!CTitlePlayer@{CTitlePlayer}}
+\doxysubsubsection{\texorpdfstring{Update()}{Update()}}
+{\footnotesize\ttfamily \label{class_c_title_player_aefd690dd26cee7350e98358df2e3accc} 
+void CTitle\+Player\+::\+Update (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{class_c_object}{CObject}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+titleplayer.\+h\item 
+titleplayer.\+cpp\end{DoxyCompactItemize}

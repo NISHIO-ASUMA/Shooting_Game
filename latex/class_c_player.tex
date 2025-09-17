@@ -1,0 +1,291 @@
+\doxysection{CPlayer Class Reference}
+\hypertarget{class_c_player}{}\label{class_c_player}\index{CPlayer@{CPlayer}}
+Inheritance diagram for CPlayer\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_c_player}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_c_player_a89c20957646f9d959318b893e97c74ff}\label{class_c_player_a89c20957646f9d959318b893e97c74ff} 
+enum {\bfseries PLAYERMOTION} \{ \newline
+{\bfseries PLAYERMOTION\+\_\+\+NEUTRAL}
+, {\bfseries PLAYERMOTION\+\_\+\+MOVE}
+, {\bfseries PLAYERMOTION\+\_\+\+ACTION}
+, {\bfseries PLAYERMOTION\+\_\+\+JUMP}
+, \newline
+{\bfseries PLAYERMOTION\+\_\+\+LANDING}
+, {\bfseries PLAYERMOTION\+\_\+\+JUMPATTACK}
+, {\bfseries PLAYERMOTION\+\_\+\+DAMAGE}
+, {\bfseries PLAYERMOTION\+\_\+\+GUARD}
+, \newline
+{\bfseries PLAYERMOTION\+\_\+\+MAX}
+ \}
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Types inherited from \mbox{\hyperlink{class_c_object}{CObject}}}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_c_object_a7263d5eae1a949d02e262e246152a2c6}\label{class_c_object_a7263d5eae1a949d02e262e246152a2c6} 
+enum {\bfseries TYPE} \{ \newline
+{\bfseries TYPE\+\_\+\+NONE} = 0
+, {\bfseries TYPE\+\_\+\+PLAYER}
+, {\bfseries TYPE\+\_\+\+MESH}
+, {\bfseries TYPE\+\_\+\+BULLET}
+, \newline
+{\bfseries TYPE\+\_\+\+BOSS}
+, {\bfseries TYPE\+\_\+\+ENEMY}
+, {\bfseries TYPE\+\_\+\+BLOCK}
+, {\bfseries TYPE\+\_\+\+PAUSE}
+, \newline
+{\bfseries TYPE\+\_\+\+BARRIER}
+, {\bfseries TYPE\+\_\+\+ITEM}
+, {\bfseries TYPE\+\_\+\+RUBBLE}
+, {\bfseries TYPE\+\_\+\+PILER}
+, \newline
+{\bfseries TYPE\+\_\+\+POINT}
+, {\bfseries TYPE\+\_\+\+MAX}
+ \}
+\item 
+\Hypertarget{class_c_object_a0924032649f7068d08cc5da588adc8d0}\label{class_c_object_a0924032649f7068d08cc5da588adc8d0} 
+enum {\bfseries PRIORITY} \{ \newline
+{\bfseries NONE}
+, {\bfseries MESH}
+, {\bfseries BASENUMBER}
+, {\bfseries MODELOBJECT}
+, \newline
+{\bfseries BULLET}
+, {\bfseries SHADOW}
+, {\bfseries IMPACT}
+, {\bfseries CHARACTOR}
+, \newline
+{\bfseries BILLBOARD}
+, {\bfseries EFFECT}
+, {\bfseries UI}
+, {\bfseries PAUSE}
+, \newline
+{\bfseries PRIORITY\+\_\+\+MAX}
+ \}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_c_player_a3a9e5cf8871dad02d88110ea684f6e06}\label{class_c_player_a3a9e5cf8871dad02d88110ea684f6e06} 
+{\bfseries CPlayer} (int n\+Priority=static\+\_\+cast$<$ int $>$(CObject\+::\+PRIORITY\+::\+CHARACTOR))
+\item 
+HRESULT \mbox{\hyperlink{class_c_player_a6f1c3f2314766a98a5ccfef0ad93a774}{Init}} (void)
+\item 
+void \mbox{\hyperlink{class_c_player_a9381090be1abcd8c5aae57c397617b98}{Uninit}} (void)
+\item 
+void \mbox{\hyperlink{class_c_player_a66e33b236118d3df9400a2503326ce94}{Update}} (void)
+\item 
+void \mbox{\hyperlink{class_c_player_aefe13cc723c7fea5cf165ad4a9dff58b}{Draw}} (void)
+\item 
+\Hypertarget{class_c_player_a191238ed07ba9241ca345897f04482fa}\label{class_c_player_a191238ed07ba9241ca345897f04482fa} 
+void {\bfseries Change\+State} (\mbox{\hyperlink{class_c_player_state_base}{CPlayer\+State\+Base}} \texorpdfstring{$\ast$}{*}p\+New\+State, int Id)
+\item 
+\Hypertarget{class_c_player_a882d11f86d77ffadf7a6fab53cb45a9b}\label{class_c_player_a882d11f86d77ffadf7a6fab53cb45a9b} 
+void {\bfseries Update\+Action} (\mbox{\hyperlink{class_c_input_keyboard}{CInput\+Keyboard}} \texorpdfstring{$\ast$}{*}p\+Input\+Keyboard, D3\+DXMATRIX p\+Mtx, const D3\+DXVECTOR3 Dest\+Pos, \mbox{\hyperlink{class_c_joy_pad}{CJoy\+Pad}} \texorpdfstring{$\ast$}{*}p\+Pad)
+\item 
+\Hypertarget{class_c_player_aed287f54c8127ae1cc4e30d800c8f9e6}\label{class_c_player_aed287f54c8127ae1cc4e30d800c8f9e6} 
+void {\bfseries Update\+Move} (const D3\+DXVECTOR3 Dest\+Pos, \mbox{\hyperlink{class_c_input_keyboard}{CInput\+Keyboard}} \texorpdfstring{$\ast$}{*}p\+Input\+Keyboard, \mbox{\hyperlink{class_c_joy_pad}{CJoy\+Pad}} \texorpdfstring{$\ast$}{*}p\+Pad)
+\item 
+\Hypertarget{class_c_player_a321f0855489c23c68661933fbf937346}\label{class_c_player_a321f0855489c23c68661933fbf937346} 
+void {\bfseries Update\+Jump\+Action} (\mbox{\hyperlink{class_c_input_keyboard}{CInput\+Keyboard}} \texorpdfstring{$\ast$}{*}p\+Input\+Keyboard, D3\+DXMATRIX p\+Mtx, const D3\+DXVECTOR3 Dest\+Move, \mbox{\hyperlink{class_c_joy_pad}{CJoy\+Pad}} \texorpdfstring{$\ast$}{*}p\+Pad)
+\item 
+\Hypertarget{class_c_player_af02a1c651602d8722af38cab3280a4d4}\label{class_c_player_af02a1c651602d8722af38cab3280a4d4} 
+void {\bfseries Update\+Guard} (void)
+\item 
+\Hypertarget{class_c_player_a053502abe81da22b368e17ebb32159ac}\label{class_c_player_a053502abe81da22b368e17ebb32159ac} 
+void {\bfseries Collision} (void)
+\item 
+\Hypertarget{class_c_player_a96d6e8f89f37480bf0e5710d5f5464c8}\label{class_c_player_a96d6e8f89f37480bf0e5710d5f5464c8} 
+void {\bfseries Stick\+State} (void)
+\item 
+\Hypertarget{class_c_player_a802eaeb478fdc5ba6c2d9e9f91769246}\label{class_c_player_a802eaeb478fdc5ba6c2d9e9f91769246} 
+D3\+DXVECTOR3 {\bfseries Vec\+To\+Boss} (const D3\+DXVECTOR3 \&p\+Pos)
+\item 
+\Hypertarget{class_c_player_ad8cf14b25ed4dffcd62c08bacf1154d5}\label{class_c_player_ad8cf14b25ed4dffcd62c08bacf1154d5} 
+D3\+DXVECTOR3 {\bfseries Vec\+To\+Center} (const D3\+DXVECTOR3 \&p\+Pos)
+\item 
+\Hypertarget{class_c_player_a9f7fcb23363fa17987b8ba4cb9c9b868}\label{class_c_player_a9f7fcb23363fa17987b8ba4cb9c9b868} 
+void {\bfseries Init\+Pos} (float f\+Angle)
+\item 
+\Hypertarget{class_c_player_a3c9e09371526688f817e4e8e82b3c7bf}\label{class_c_player_a3c9e09371526688f817e4e8e82b3c7bf} 
+void {\bfseries Start\+Jump} (void)
+\item 
+\Hypertarget{class_c_player_ac4ba2c45b209e7baf51f9882a1a58168}\label{class_c_player_ac4ba2c45b209e7baf51f9882a1a58168} 
+void {\bfseries Gravity\+Scal} (void)
+\item 
+\Hypertarget{class_c_player_a75a9c9edc39f5484201b8313dd104df6}\label{class_c_player_a75a9c9edc39f5484201b8313dd104df6} 
+void {\bfseries Hit\+Damage} (int n\+Damage)
+\item 
+\Hypertarget{class_c_player_a1cddf20790f948a36dd65562de11c004}\label{class_c_player_a1cddf20790f948a36dd65562de11c004} 
+void {\bfseries Set\+Rot\+Dest} (D3\+DXVECTOR3 rot\+Dest)
+\item 
+\Hypertarget{class_c_player_a1597836a98ec3ff7b8026118bad02387}\label{class_c_player_a1597836a98ec3ff7b8026118bad02387} 
+void {\bfseries Set\+Jump} (bool is\+Jump)
+\item 
+\Hypertarget{class_c_player_a49213c4a5f161587819d777430bf2bdc}\label{class_c_player_a49213c4a5f161587819d777430bf2bdc} 
+void {\bfseries Set\+Landing} (bool is\+Landing)
+\item 
+\Hypertarget{class_c_player_acd6db350b6a19fd83283d5ae0b30e2cc}\label{class_c_player_acd6db350b6a19fd83283d5ae0b30e2cc} 
+void {\bfseries Add\+Move} (void)
+\item 
+\Hypertarget{class_c_player_aa8b71633c371c7b9c3d6f7fb0d6b2070}\label{class_c_player_aa8b71633c371c7b9c3d6f7fb0d6b2070} 
+void {\bfseries Set\+Value} (float f\+Value)
+\item 
+\Hypertarget{class_c_player_ae2af08352a3d01faba500a01bbfaee84}\label{class_c_player_ae2af08352a3d01faba500a01bbfaee84} 
+void {\bfseries Jump\+Move} (void)
+\item 
+\Hypertarget{class_c_player_adc393599fe7e6df1c53e6fbbd7cc7e79}\label{class_c_player_adc393599fe7e6df1c53e6fbbd7cc7e79} 
+void {\bfseries Set\+Is\+Damege} (bool is\+Flags)
+\item 
+\Hypertarget{class_c_player_a3ab0ae96262520904f419339ec8a7f6f}\label{class_c_player_a3ab0ae96262520904f419339ec8a7f6f} 
+D3\+DXVECTOR3 {\bfseries Get\+Pos} (void)
+\item 
+\Hypertarget{class_c_player_ad879a69622dcfe589a30d181ae54259b}\label{class_c_player_ad879a69622dcfe589a30d181ae54259b} 
+D3\+DXVECTOR3 {\bfseries Get\+Old\+Pos} (void)
+\item 
+\Hypertarget{class_c_player_a1d5f8cc7274591480919889aa611f02f}\label{class_c_player_a1d5f8cc7274591480919889aa611f02f} 
+D3\+DXVECTOR3 {\bfseries Get\+Rot} (void)
+\item 
+\Hypertarget{class_c_player_a916a4f455cbfe932776146f08009c2c6}\label{class_c_player_a916a4f455cbfe932776146f08009c2c6} 
+D3\+DXVECTOR3 {\bfseries Get\+Rot\+Dest} (void)
+\item 
+\Hypertarget{class_c_player_a2f1424c29feb81fbc13c4a64e7fd0781}\label{class_c_player_a2f1424c29feb81fbc13c4a64e7fd0781} 
+PLAYERMOTION {\bfseries Get\+Now\+Motion} (void) const
+\item 
+\Hypertarget{class_c_player_ab5f645401725faa2e8f46378080a8fe6}\label{class_c_player_ab5f645401725faa2e8f46378080a8fe6} 
+\mbox{\hyperlink{class_c_model}{CModel}} \texorpdfstring{$\ast$}{*} {\bfseries Get\+Model\+Part\+Type} (CModel\+::\+PARTTYPE modelpart)
+\item 
+\Hypertarget{class_c_player_af57a82d69c52bbd7cf8054901c3d3713}\label{class_c_player_af57a82d69c52bbd7cf8054901c3d3713} 
+\mbox{\hyperlink{class_c_motion}{CMotion}} \texorpdfstring{$\ast$}{*} {\bfseries Get\+Motion} (void)
+\item 
+\Hypertarget{class_c_player_ad948b64c12090ded23cc663d0b1e8999}\label{class_c_player_ad948b64c12090ded23cc663d0b1e8999} 
+\mbox{\hyperlink{class_c_parameter}{CParameter}} \texorpdfstring{$\ast$}{*} {\bfseries Get\+Parameter} (void)
+\item 
+\Hypertarget{class_c_player_ae65d41ca2d130ec065c22c183d0f33c4}\label{class_c_player_ae65d41ca2d130ec065c22c183d0f33c4} 
+\mbox{\hyperlink{class_c_state_machine}{CState\+Machine}} \texorpdfstring{$\ast$}{*} {\bfseries Get\+State\+Machine} ()
+\item 
+\Hypertarget{class_c_player_ae0953160d8bf5f324b156518c435ffb1}\label{class_c_player_ae0953160d8bf5f324b156518c435ffb1} 
+int {\bfseries Get\+Type} (void)
+\item 
+\Hypertarget{class_c_player_a5da71efaaba65717ee24546dbc17b894}\label{class_c_player_a5da71efaaba65717ee24546dbc17b894} 
+int {\bfseries Get\+Player\+Index} () const
+\item 
+\Hypertarget{class_c_player_a92177d14ffb2fc10b0d9a37b8536934c}\label{class_c_player_a92177d14ffb2fc10b0d9a37b8536934c} 
+bool {\bfseries Is\+Jumping} ()
+\item 
+\Hypertarget{class_c_player_a4ecf57bd2d9c40e5d613a68f80a673bb}\label{class_c_player_a4ecf57bd2d9c40e5d613a68f80a673bb} 
+bool {\bfseries is\+Move\+Input\+Key} (\mbox{\hyperlink{class_c_input_keyboard}{CInput\+Keyboard}} \texorpdfstring{$\ast$}{*}p\+Key\+Input)
+\item 
+\Hypertarget{class_c_player_a405d4880453b78fd734eb9e28d13a6ba}\label{class_c_player_a405d4880453b78fd734eb9e28d13a6ba} 
+bool {\bfseries is\+Move\+Pad\+Button} (\mbox{\hyperlink{class_c_joy_pad}{CJoy\+Pad}} \texorpdfstring{$\ast$}{*}p\+Pad)
+\item 
+\Hypertarget{class_c_player_a587fe52650611ad6a3e9a9346b237b26}\label{class_c_player_a587fe52650611ad6a3e9a9346b237b26} 
+bool {\bfseries is\+Attackey\+Press} (\mbox{\hyperlink{class_c_input_keyboard}{CInput\+Keyboard}} \texorpdfstring{$\ast$}{*}p\+Key\+Input)
+\item 
+\Hypertarget{class_c_player_a8bad4760de90f0403ed5159f1910c5ec}\label{class_c_player_a8bad4760de90f0403ed5159f1910c5ec} 
+bool {\bfseries is\+Landing} (void)
+\item 
+\Hypertarget{class_c_player_ab41e9ad21306f8126e5588a61373f5e9}\label{class_c_player_ab41e9ad21306f8126e5588a61373f5e9} 
+bool {\bfseries Get\+Landing} (void)
+\item 
+\Hypertarget{class_c_player_ae18d71d3804328f7286dec0e0f2742e7}\label{class_c_player_ae18d71d3804328f7286dec0e0f2742e7} 
+bool {\bfseries Get\+Is\+Damege} (void)
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_c_object}{CObject}}}
+\begin{DoxyCompactItemize}
+\item 
+{\bfseries CObject} (int n\+Priority=NONE)
+\item 
+void {\bfseries Set\+Obj\+Type} (TYPE type)
+\item 
+TYPE {\bfseries Get\+Obj\+Type} (void)
+\item 
+\mbox{\hyperlink{class_c_object}{CObject}} \texorpdfstring{$\ast$}{*} {\bfseries Get\+Next} (void)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_c_player_a7505425ddea19b29736e2b23158d7bc6}\label{class_c_player_a7505425ddea19b29736e2b23158d7bc6} 
+static \mbox{\hyperlink{class_c_player}{CPlayer}} \texorpdfstring{$\ast$}{*} {\bfseries Create} (D3\+DXVECTOR3 pos, D3\+DXVECTOR3 rot, int n\+Life, const int n\+Idx\+Parson, const char \texorpdfstring{$\ast$}{*}p\+Filename)
+\item 
+\Hypertarget{class_c_player_ae63458e9a130e51c55806b85e483a8ab}\label{class_c_player_ae63458e9a130e51c55806b85e483a8ab} 
+static bool {\bfseries Is\+Death} (void)
+\item 
+\Hypertarget{class_c_player_a13f0d643e213d9d6429faa14e6c6f8e1}\label{class_c_player_a13f0d643e213d9d6429faa14e6c6f8e1} 
+static \mbox{\hyperlink{class_c_player}{CPlayer}} \texorpdfstring{$\ast$}{*} {\bfseries Get\+Idx\+Player} (int Idx)
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Member Functions inherited from \mbox{\hyperlink{class_c_object}{CObject}}}
+\begin{DoxyCompactItemize}
+\item 
+static void {\bfseries Release\+All} (void)
+\item 
+static void {\bfseries Update\+All} (void)
+\item 
+static void {\bfseries Draw\+All} (void)
+\item 
+static \mbox{\hyperlink{class_c_object}{CObject}} \texorpdfstring{$\ast$}{*} {\bfseries Get\+Top} (int n\+Priority)
+\item 
+static int {\bfseries Get\+Num\+All} (void)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Protected Member Functions inherited from \mbox{\hyperlink{class_c_object}{CObject}}}
+\begin{DoxyCompactItemize}
+\item 
+void {\bfseries Release} (void)
+\end{DoxyCompactItemize}
+
+
+\label{doc-func-members}
+\Hypertarget{class_c_player_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_c_player_aefe13cc723c7fea5cf165ad4a9dff58b}\index{CPlayer@{CPlayer}!Draw@{Draw}}
+\index{Draw@{Draw}!CPlayer@{CPlayer}}
+\doxysubsubsection{\texorpdfstring{Draw()}{Draw()}}
+{\footnotesize\ttfamily \label{class_c_player_aefe13cc723c7fea5cf165ad4a9dff58b} 
+void CPlayer\+::\+Draw (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{class_c_object}{CObject}}.
+
+\Hypertarget{class_c_player_a6f1c3f2314766a98a5ccfef0ad93a774}\index{CPlayer@{CPlayer}!Init@{Init}}
+\index{Init@{Init}!CPlayer@{CPlayer}}
+\doxysubsubsection{\texorpdfstring{Init()}{Init()}}
+{\footnotesize\ttfamily \label{class_c_player_a6f1c3f2314766a98a5ccfef0ad93a774} 
+HRESULT CPlayer\+::\+Init (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{class_c_object}{CObject}}.
+
+\Hypertarget{class_c_player_a9381090be1abcd8c5aae57c397617b98}\index{CPlayer@{CPlayer}!Uninit@{Uninit}}
+\index{Uninit@{Uninit}!CPlayer@{CPlayer}}
+\doxysubsubsection{\texorpdfstring{Uninit()}{Uninit()}}
+{\footnotesize\ttfamily \label{class_c_player_a9381090be1abcd8c5aae57c397617b98} 
+void CPlayer\+::\+Uninit (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{class_c_object}{CObject}}.
+
+\Hypertarget{class_c_player_a66e33b236118d3df9400a2503326ce94}\index{CPlayer@{CPlayer}!Update@{Update}}
+\index{Update@{Update}!CPlayer@{CPlayer}}
+\doxysubsubsection{\texorpdfstring{Update()}{Update()}}
+{\footnotesize\ttfamily \label{class_c_player_a66e33b236118d3df9400a2503326ce94} 
+void CPlayer\+::\+Update (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{class_c_object}{CObject}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+player.\+h\item 
+player.\+cpp\end{DoxyCompactItemize}

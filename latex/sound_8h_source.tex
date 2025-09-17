@@ -1,0 +1,103 @@
+\doxysection{sound.\+h}
+\hypertarget{sound_8h_source}{}\label{sound_8h_source}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{//=====================================}}
+\DoxyCodeLine{00002\ \textcolor{comment}{//}}
+\DoxyCodeLine{00003\ \textcolor{comment}{//\ サウンド処理\ [\ sound.h\ ]}}
+\DoxyCodeLine{00004\ \textcolor{comment}{//\ Author:\ Asuma\ Nishio}}
+\DoxyCodeLine{00005\ \textcolor{comment}{//}}
+\DoxyCodeLine{00006\ \textcolor{comment}{//=====================================}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#ifndef\ \_SOUND\_H\_\ }\textcolor{comment}{//\ このソ}クロ定義がされてなかったら}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#define\ \_SOUND\_H\_\ }\textcolor{comment}{//\ 2重インクルード防蚕string~のソ}クロ定義}}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00011\ \textcolor{comment}{//******************************}}
+\DoxyCodeLine{00012\ \textcolor{comment}{//\ サウンドクラスを定義}}
+\DoxyCodeLine{00013\ \textcolor{comment}{//******************************}}
+\DoxyCodeLine{00014\ \textcolor{keyword}{class\ }CSound}
+\DoxyCodeLine{00015\ \{}
+\DoxyCodeLine{00016\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00017\ \ \ \ \ \textcolor{comment}{//***************************}}
+\DoxyCodeLine{00018\ \ \ \ \ \textcolor{comment}{//\ サウンドの種類列挙圭string^}}
+\DoxyCodeLine{00019\ \ \ \ \ \textcolor{comment}{//***************************}}
+\DoxyCodeLine{00020\ \ \ \ \ \textcolor{keyword}{enum}\ SOUND\_LABEL}
+\DoxyCodeLine{00021\ \ \ \ \ \{}
+\DoxyCodeLine{00022\ \ \ \ \ \ \ \ \ SOUND\_LABEL\_TITLE\_BGM,\ \ \ \ \ \ \textcolor{comment}{//\ ソstring^イトルBGM}}
+\DoxyCodeLine{00023\ \ \ \ \ \ \ \ \ SOUND\_LABEL\_GAMEBGM,\ \ \ \ \ \ \ \ \textcolor{comment}{//\ ゲームBGM}}
+\DoxyCodeLine{00024\ \ \ \ \ \ \ \ \ SOUND\_LABEL\_RESULTBGM,\ \ \ \ \ \ \textcolor{comment}{//\ リザルトBGM}}
+\DoxyCodeLine{00025\ \ \ \ \ \ \ \ \ SOUND\_LABEL\_TUTORIALBGM,\ \ \ \ \textcolor{comment}{//\ チュートリアルBGM}}
+\DoxyCodeLine{00026\ \ \ \ \ \ \ \ \ SOUND\_LABEL\_LOSERESULTBGM,\ \ \textcolor{comment}{//\ 敗北リザルト}}
+\DoxyCodeLine{00027\ }
+\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ SOUND\_LABEL\_SELECT,\ \textcolor{comment}{//\ キー選択SE}}
+\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ SOUND\_LABEL\_RETURN,\ \textcolor{comment}{//\ 決定キーSE}}
+\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ SOUND\_LABEL\_ITEM,\ \ \ \textcolor{comment}{//\ アイテムSE}}
+\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ SOUND\_LABEL\_ALART,\ \ \textcolor{comment}{//\ 警告音SE}}
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ SOUND\_LABEL\_BULLET,\ \textcolor{comment}{//\ 通常弾SE}}
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ SOUND\_LABEL\_LASER,\ \ \textcolor{comment}{//\ レーザーSE}}
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ SOUND\_LABEL\_LIFE,\ \ \ \textcolor{comment}{//\ 回復SE}}
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ SOUND\_LABEL\_DAMAGE,\ \textcolor{comment}{//\ ソ_メージSE}}
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ SOUND\_LABEL\_CIRCLE,\ \textcolor{comment}{//\ メッシュ攻撃SE}}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ SOUND\_LABEL\_CLEAR,\ \ \textcolor{comment}{//\ ソstring^スク完了SE}}
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ SOUND\_LABEL\_MAX}
+\DoxyCodeLine{00039\ \ \ \ \ \};}
+\DoxyCodeLine{00040\ }
+\DoxyCodeLine{00041\ \ \ \ \ \textcolor{comment}{//\ コンストラクソstring^・デストラクソstring^}}
+\DoxyCodeLine{00042\ \ \ \ \ CSound();}
+\DoxyCodeLine{00043\ \ \ \ \ \string~CSound();}
+\DoxyCodeLine{00044\ }
+\DoxyCodeLine{00045\ \ \ \ \ \textcolor{comment}{//\ メンバ関数}}
+\DoxyCodeLine{00046\ \ \ \ \ HRESULT\ Init(HWND\ hWnd);}
+\DoxyCodeLine{00047\ \ \ \ \ \textcolor{keywordtype}{void}\ Uninit(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00048\ \ \ \ \ HRESULT\ PlaySound(SOUND\_LABEL\ label);}
+\DoxyCodeLine{00049\ \ \ \ \ \textcolor{keywordtype}{void}\ StopSound(SOUND\_LABEL\ label);}
+\DoxyCodeLine{00050\ \ \ \ \ \textcolor{keywordtype}{void}\ StopSound(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00051\ }
+\DoxyCodeLine{00052\ \ \ \ \ HRESULT\ CheckChunk(HANDLE\ hFile,\ DWORD\ format,\ DWORD*\ pChunkSize,\ DWORD*\ pChunkDataPosition);}
+\DoxyCodeLine{00053\ \ \ \ \ HRESULT\ ReadChunkData(HANDLE\ hFile,\ \textcolor{keywordtype}{void}*\ pBuffer,\ DWORD\ dwBuffersize,\ DWORD\ dwBufferoffset);}
+\DoxyCodeLine{00054\ }
+\DoxyCodeLine{00055\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00056\ \ \ \ \ \textcolor{comment}{//*****************************}}
+\DoxyCodeLine{00057\ \ \ \ \ \textcolor{comment}{//\ サウンド情報の構(\backslash\)造体定義}}
+\DoxyCodeLine{00058\ \ \ \ \ \textcolor{comment}{//*****************************}}
+\DoxyCodeLine{00059\ \ \ \ \ \textcolor{keyword}{struct\ }SOUNDINFO}
+\DoxyCodeLine{00060\ \ \ \ \ \{}
+\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ pFilename;\ \ \textcolor{comment}{//\ ファイル名}}
+\DoxyCodeLine{00062\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ nCntLoop;\ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ ループカウント}}
+\DoxyCodeLine{00063\ \ \ \ \ \};}
+\DoxyCodeLine{00064\ }
+\DoxyCodeLine{00065\ \ \ \ \ \textcolor{comment}{//******************************}}
+\DoxyCodeLine{00066\ \ \ \ \ \textcolor{comment}{//\ サウンドの情報列挙圭string^宣言}}
+\DoxyCodeLine{00067\ \ \ \ \ \textcolor{comment}{//******************************}}
+\DoxyCodeLine{00068\ \ \ \ \ SOUNDINFO\ m\_aSoundInfo[SOUND\_LABEL\_MAX]\ =}
+\DoxyCodeLine{00069\ \ \ \ \ \{}
+\DoxyCodeLine{00070\ \ \ \ \ \ \ \ \ \{\textcolor{stringliteral}{"{}data/BGM/titlebgm.wav"{}},\ -\/1\},\ \ \ \ \ \ \ \textcolor{comment}{//\ ソstring^イトルBGM}}
+\DoxyCodeLine{00071\ \ \ \ \ \ \ \ \ \{\textcolor{stringliteral}{"{}data/BGM/gamebgm.wav"{}},-\/1\},\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ ゲームBGM}}
+\DoxyCodeLine{00072\ \ \ \ \ \ \ \ \ \{\textcolor{stringliteral}{"{}data/BGM/resultbgm.wav"{}},-\/1\},\ \ \ \ \ \ \ \textcolor{comment}{//\ リザルトBGM}}
+\DoxyCodeLine{00073\ \ \ \ \ \ \ \ \ \{\textcolor{stringliteral}{"{}data/BGM/tutorialbgm.wav"{}},-\/1\},\ \ \ \ \ \textcolor{comment}{//\ チュートリアルBGM}}
+\DoxyCodeLine{00074\ \ \ \ \ \ \ \ \ \{\textcolor{stringliteral}{"{}data/BGM/LoseResult.wav"{}},-\/1\},\ \ \ \ \ \ \textcolor{comment}{//\ 敗北リザルトBGM}}
+\DoxyCodeLine{00075\ }
+\DoxyCodeLine{00076\ \ \ \ \ \ \ \ \ \{\textcolor{stringliteral}{"{}data/SE/keyselect.wav"{}},0\},\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 選択キーSE}}
+\DoxyCodeLine{00077\ \ \ \ \ \ \ \ \ \{\textcolor{stringliteral}{"{}data/SE/keyenter.wav"{}},0\},\ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 決定キーSE}}
+\DoxyCodeLine{00078\ \ \ \ \ \ \ \ \ \{\textcolor{stringliteral}{"{}data/SE/Itemse.wav"{}},0\},\ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ アイテムSE}}
+\DoxyCodeLine{00079\ \ \ \ \ \ \ \ \ \{\textcolor{stringliteral}{"{}data/SE/Alart.wav"{}},0\},\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 警告音SE}}
+\DoxyCodeLine{00080\ \ \ \ \ \ \ \ \ \{\textcolor{stringliteral}{"{}data/SE/BulletSe.wav"{}},0\},\ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 通常弾}}
+\DoxyCodeLine{00081\ \ \ \ \ \ \ \ \ \{\textcolor{stringliteral}{"{}data/SE/LaserBullet.wav"{}},0\},\ \ \ \ \ \ \ \textcolor{comment}{//\ レーザー弾}}
+\DoxyCodeLine{00082\ \ \ \ \ \ \ \ \ \{\textcolor{stringliteral}{"{}data/SE/LifeSe.wav"{}},0\},\ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 回復SE}}
+\DoxyCodeLine{00083\ \ \ \ \ \ \ \ \ \{\textcolor{stringliteral}{"{}data/SE/Damage.wav"{}},0\},\ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ ソ_メージSE}}
+\DoxyCodeLine{00084\ \ \ \ \ \ \ \ \ \{\textcolor{stringliteral}{"{}data/SE/MeshCircle.wav"{}},0\},\ \ \ \ \ \ \ \ \textcolor{comment}{//\ メッシュ攻撃SE}}
+\DoxyCodeLine{00085\ \ \ \ \ \ \ \ \ \{\textcolor{stringliteral}{"{}data/SE/TutoClear.wav"{}},0\},\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ ソstring^スク完了SE}}
+\DoxyCodeLine{00086\ \ \ \ \ \};}
+\DoxyCodeLine{00087\ }
+\DoxyCodeLine{00088\ \ \ \ \ IXAudio2*\ m\_pXAudio2;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ XAudio2オブジェクトへのインソstring^ーフェイス}}
+\DoxyCodeLine{00089\ \ \ \ \ IXAudio2MasteringVoice*\ m\_pMasteringVoice;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ ソ}スソstring^ーソ{イス}}
+\DoxyCodeLine{00090\ \ \ \ \ IXAudio2SourceVoice*\ m\_apSourceVoice[SOUND\_LABEL\_MAX];\ \ \textcolor{comment}{//\ ソ(\backslash\)ースソ{イス}}
+\DoxyCodeLine{00091\ \ \ \ \ BYTE*\ m\_apDataAudio[SOUND\_LABEL\_MAX];\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ オーディオデーソstring^}}
+\DoxyCodeLine{00092\ \ \ \ \ DWORD\ m\_aSizeAudio[SOUND\_LABEL\_MAX];\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ オーディオデーソstring^サイズ}}
+\DoxyCodeLine{00093\ \ \ \ \ \textcolor{keywordtype}{int}\ m\_SoundCount;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ サウンドのカウント}}
+\DoxyCodeLine{00094\ \ \ \ \ \textcolor{keywordtype}{int}\ m\_SoundInterval;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ インソstring^ーバルカウント}}
+\DoxyCodeLine{00095\ }
+\DoxyCodeLine{00096\ \};}
+\DoxyCodeLine{00097\ }
+\DoxyCodeLine{00098\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

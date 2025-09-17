@@ -1,0 +1,97 @@
+\doxysection{CPlayer\+State\+Base Class Reference}
+\hypertarget{class_c_player_state_base}{}\label{class_c_player_state_base}\index{CPlayerStateBase@{CPlayerStateBase}}
+Inheritance diagram for CPlayer\+State\+Base\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_c_player_state_base}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_c_player_state_base_af5941e0ed8927b652541a4736a38c2f4}\label{class_c_player_state_base_af5941e0ed8927b652541a4736a38c2f4} 
+enum {\bfseries ID} \{ \newline
+{\bfseries ID\+\_\+\+NEUTRAL}
+, {\bfseries ID\+\_\+\+MOVE}
+, {\bfseries ID\+\_\+\+ACTION}
+, {\bfseries ID\+\_\+\+JUMP}
+, \newline
+{\bfseries ID\+\_\+\+GUARD}
+, {\bfseries ID\+\_\+\+DAMAGE}
+, {\bfseries ID\+\_\+\+MAX}
+ \}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual void \mbox{\hyperlink{class_c_player_state_base_afd377aa7a15829aa42a0e87bcad4677e}{On\+Start}} ()
+\item 
+virtual void \mbox{\hyperlink{class_c_player_state_base_ac276bd936ee9695a63828a3663f2f978}{On\+Update}} ()
+\item 
+virtual void \mbox{\hyperlink{class_c_player_state_base_af80928949d635cfae3658c91bd6c59a4}{On\+Exit}} ()
+\item 
+int \mbox{\hyperlink{class_c_player_state_base_a39be9a12832be4e9cb6f7a2d073fa5f1}{Get\+ID}} () const override
+\item 
+\Hypertarget{class_c_player_state_base_a8d32f00df99ea46775f340ee9e67d32b}\label{class_c_player_state_base_a8d32f00df99ea46775f340ee9e67d32b} 
+void {\bfseries Set\+ID} (ID id)
+\item 
+\Hypertarget{class_c_player_state_base_a61e1163ebbbc35d256d3c28a21cdd163}\label{class_c_player_state_base_a61e1163ebbbc35d256d3c28a21cdd163} 
+void {\bfseries Set\+Owner} (\mbox{\hyperlink{class_c_player}{CPlayer}} \texorpdfstring{$\ast$}{*}p\+Player)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_c_player_state_base_ad3aab0e7b047ca7f85c3141ef15d5b1a}\label{class_c_player_state_base_ad3aab0e7b047ca7f85c3141ef15d5b1a} 
+\mbox{\hyperlink{class_c_player}{CPlayer}} \texorpdfstring{$\ast$}{*} {\bfseries m\+\_\+p\+Player}
+\end{DoxyCompactItemize}
+
+
+\label{doc-func-members}
+\Hypertarget{class_c_player_state_base_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_c_player_state_base_a39be9a12832be4e9cb6f7a2d073fa5f1}\index{CPlayerStateBase@{CPlayerStateBase}!GetID@{GetID}}
+\index{GetID@{GetID}!CPlayerStateBase@{CPlayerStateBase}}
+\doxysubsubsection{\texorpdfstring{GetID()}{GetID()}}
+{\footnotesize\ttfamily \label{class_c_player_state_base_a39be9a12832be4e9cb6f7a2d073fa5f1} 
+int CPlayer\+State\+Base\+::\+Get\+ID (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{class_c_state_base}{CState\+Base}}.
+
+\Hypertarget{class_c_player_state_base_af80928949d635cfae3658c91bd6c59a4}\index{CPlayerStateBase@{CPlayerStateBase}!OnExit@{OnExit}}
+\index{OnExit@{OnExit}!CPlayerStateBase@{CPlayerStateBase}}
+\doxysubsubsection{\texorpdfstring{OnExit()}{OnExit()}}
+{\footnotesize\ttfamily \label{class_c_player_state_base_af80928949d635cfae3658c91bd6c59a4} 
+virtual void CPlayer\+State\+Base\+::\+On\+Exit (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Reimplemented from \mbox{\hyperlink{class_c_state_base}{CState\+Base}}.
+
+\Hypertarget{class_c_player_state_base_afd377aa7a15829aa42a0e87bcad4677e}\index{CPlayerStateBase@{CPlayerStateBase}!OnStart@{OnStart}}
+\index{OnStart@{OnStart}!CPlayerStateBase@{CPlayerStateBase}}
+\doxysubsubsection{\texorpdfstring{OnStart()}{OnStart()}}
+{\footnotesize\ttfamily \label{class_c_player_state_base_afd377aa7a15829aa42a0e87bcad4677e} 
+virtual void CPlayer\+State\+Base\+::\+On\+Start (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Reimplemented from \mbox{\hyperlink{class_c_state_base}{CState\+Base}}.
+
+\Hypertarget{class_c_player_state_base_ac276bd936ee9695a63828a3663f2f978}\index{CPlayerStateBase@{CPlayerStateBase}!OnUpdate@{OnUpdate}}
+\index{OnUpdate@{OnUpdate}!CPlayerStateBase@{CPlayerStateBase}}
+\doxysubsubsection{\texorpdfstring{OnUpdate()}{OnUpdate()}}
+{\footnotesize\ttfamily \label{class_c_player_state_base_ac276bd936ee9695a63828a3663f2f978} 
+virtual void CPlayer\+State\+Base\+::\+On\+Update (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Reimplemented from \mbox{\hyperlink{class_c_state_base}{CState\+Base}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+playerstate.\+h\item 
+playerstate.\+cpp\end{DoxyCompactItemize}

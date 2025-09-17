@@ -1,0 +1,63 @@
+\doxysection{bg.\+h}
+\hypertarget{bg_8h_source}{}\label{bg_8h_source}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{//====================================}}
+\DoxyCodeLine{00002\ \textcolor{comment}{//}}
+\DoxyCodeLine{00003\ \textcolor{comment}{//\ 背景処理\ [\ bg.h\ ]}}
+\DoxyCodeLine{00004\ \textcolor{comment}{//\ Author:\ Asuma\ Nishio}}
+\DoxyCodeLine{00005\ \textcolor{comment}{//}}
+\DoxyCodeLine{00006\ \textcolor{comment}{//=====================================}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#ifndef\ \_BG\_H\_\ }\textcolor{comment}{//\ このソ}クロ定義がされてなかったら}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#define\ \_BG\_H\_\ }\textcolor{comment}{//\ 2重インクルード防蚕string~のソ}クロ定義}}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00011\ \textcolor{comment}{//**********************}}
+\DoxyCodeLine{00012\ \textcolor{comment}{//\ インクルードファイル}}
+\DoxyCodeLine{00013\ \textcolor{comment}{//**********************}}
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#include\ "{}object2D.h"{}}}
+\DoxyCodeLine{00015\ }
+\DoxyCodeLine{00016\ \textcolor{comment}{//**********************}}
+\DoxyCodeLine{00017\ \textcolor{comment}{//\ 背景クラスを宣言}}
+\DoxyCodeLine{00018\ \textcolor{comment}{//**********************}}
+\DoxyCodeLine{00019\ \textcolor{keyword}{class\ }CBg\ :\ \textcolor{keyword}{public}\ CObject2D}
+\DoxyCodeLine{00020\ \{}
+\DoxyCodeLine{00021\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00022\ \ \ \ \ \textcolor{comment}{//\ 背景種類}}
+\DoxyCodeLine{00023\ \ \ \ \ \textcolor{keyword}{typedef}\ \textcolor{keyword}{enum}}
+\DoxyCodeLine{00024\ \ \ \ \ \{}
+\DoxyCodeLine{00025\ \ \ \ \ \ \ \ \ BG\_BACK\ =\ 0,}
+\DoxyCodeLine{00026\ \ \ \ \ \ \ \ \ BG\_CENTER,}
+\DoxyCodeLine{00027\ \ \ \ \ \ \ \ \ BG\_FRONT,}
+\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ BG\_MAX}
+\DoxyCodeLine{00029\ \ \ \ \ \}BG;}
+\DoxyCodeLine{00030\ }
+\DoxyCodeLine{00031\ \ \ \ \ CBg(\textcolor{keywordtype}{int}\ nPriority\ =\ 2);}
+\DoxyCodeLine{00032\ \ \ \ \ \string~CBg();}
+\DoxyCodeLine{00033\ }
+\DoxyCodeLine{00034\ \ \ \ \ HRESULT\ Init(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00035\ \ \ \ \ \textcolor{keywordtype}{void}\ Uninit(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00036\ \ \ \ \ \textcolor{keywordtype}{void}\ Update(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00037\ \ \ \ \ \textcolor{keywordtype}{void}\ Draw(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00038\ }
+\DoxyCodeLine{00039\ \ \ \ \ \textcolor{keyword}{static}\ CBg*\ Create(\textcolor{keywordtype}{int}\ nIdxBg);}
+\DoxyCodeLine{00040\ }
+\DoxyCodeLine{00041\ \ \ \ \ \textcolor{keywordtype}{void}\ SetTexture(\textcolor{keywordtype}{int}\ nType);}
+\DoxyCodeLine{00042\ }
+\DoxyCodeLine{00043\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00044\ \ \ \ \ \textcolor{keywordtype}{void}\ SetScrollSpeed(\textcolor{keywordtype}{float}\ speed)\ \{\ m\_ScrollSpeed\ =\ speed;\ \}\ \textcolor{comment}{//\ スクロール関数}}
+\DoxyCodeLine{00045\ }
+\DoxyCodeLine{00046\ \ \ \ \ D3DXVECTOR2\ m\_TexScroll;\ \ \ \ \textcolor{comment}{//\ テクスチャスクロール変数}}
+\DoxyCodeLine{00047\ }
+\DoxyCodeLine{00048\ \ \ \ \ \textcolor{keywordtype}{int}\ m\_IndexBg;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ レイヤー番号}}
+\DoxyCodeLine{00049\ \ \ \ \ \textcolor{keywordtype}{float}\ m\_ScrollSpeed;\ \ \ \ \ \ \ \ \textcolor{comment}{//\ スクロールの速度}}
+\DoxyCodeLine{00050\ }
+\DoxyCodeLine{00051\ \ \ \ \ \textcolor{keyword}{static}\ LPDIRECT3DTEXTURE9\ m\_pTexture[BG\_MAX];\ \textcolor{comment}{//\ テクスチャポインソstring^}}
+\DoxyCodeLine{00052\ }
+\DoxyCodeLine{00053\ }
+\DoxyCodeLine{00054\ \ \ \ \ \textcolor{keywordtype}{int}\ m\_nIdxTexture;}
+\DoxyCodeLine{00055\ }
+\DoxyCodeLine{00056\ \};}
+\DoxyCodeLine{00057\ }
+\DoxyCodeLine{00058\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

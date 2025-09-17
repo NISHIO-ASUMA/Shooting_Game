@@ -1,0 +1,162 @@
+\doxysection{CMesh\+Dome Class Reference}
+\hypertarget{class_c_mesh_dome}{}\label{class_c_mesh_dome}\index{CMeshDome@{CMeshDome}}
+Inheritance diagram for CMesh\+Dome\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_c_mesh_dome}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_c_mesh_dome_a945932404df9a90a1fbf756fa662d234}\label{class_c_mesh_dome_a945932404df9a90a1fbf756fa662d234} 
+{\bfseries CMesh\+Dome} (int n\+Prio=static\+\_\+cast$<$ int $>$(CObject\+::\+PRIORITY\+::\+MESH))
+\item 
+HRESULT \mbox{\hyperlink{class_c_mesh_dome_aac474ea5273b8b339c9be379d46faf93}{Init}} (void)
+\item 
+void \mbox{\hyperlink{class_c_mesh_dome_a7370c25d9d7ecafc66674a59dddc02d5}{Uninit}} (void)
+\item 
+void \mbox{\hyperlink{class_c_mesh_dome_aec907e34069d9303eefd25db636bc5ff}{Update}} (void)
+\item 
+void \mbox{\hyperlink{class_c_mesh_dome_a8c9771028f15f58d09b6ba83574005f4}{Draw}} (void)
+\item 
+\Hypertarget{class_c_mesh_dome_a53d0ed2ab0dfb1dd6c17aea5d170a136}\label{class_c_mesh_dome_a53d0ed2ab0dfb1dd6c17aea5d170a136} 
+void {\bfseries Set\+Texture} (void)
+\item 
+\Hypertarget{class_c_mesh_dome_ada379c534bf5bbe691199b8408a9d29a}\label{class_c_mesh_dome_ada379c534bf5bbe691199b8408a9d29a} 
+D3\+DXVECTOR3 {\bfseries Get\+Pos} (void)
+\item 
+\Hypertarget{class_c_mesh_dome_a3356993245aac22da45040acbc4b9b2e}\label{class_c_mesh_dome_a3356993245aac22da45040acbc4b9b2e} 
+D3\+DXVECTOR3 {\bfseries Get\+Rot} (void)
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_c_object}{CObject}}}
+\begin{DoxyCompactItemize}
+\item 
+{\bfseries CObject} (int n\+Priority=NONE)
+\item 
+void {\bfseries Set\+Obj\+Type} (TYPE type)
+\item 
+TYPE {\bfseries Get\+Obj\+Type} (void)
+\item 
+\mbox{\hyperlink{class_c_object}{CObject}} \texorpdfstring{$\ast$}{*} {\bfseries Get\+Next} (void)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_c_mesh_dome_aa52929d19b20b60c4053444f822e78a6}\label{class_c_mesh_dome_aa52929d19b20b60c4053444f822e78a6} 
+static \mbox{\hyperlink{class_c_mesh_dome}{CMesh\+Dome}} \texorpdfstring{$\ast$}{*} {\bfseries Create} (D3\+DXVECTOR3 pos, float n\+Radius)
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Member Functions inherited from \mbox{\hyperlink{class_c_object}{CObject}}}
+\begin{DoxyCompactItemize}
+\item 
+static void {\bfseries Release\+All} (void)
+\item 
+static void {\bfseries Update\+All} (void)
+\item 
+static void {\bfseries Draw\+All} (void)
+\item 
+static \mbox{\hyperlink{class_c_object}{CObject}} \texorpdfstring{$\ast$}{*} {\bfseries Get\+Top} (int n\+Priority)
+\item 
+static int {\bfseries Get\+Num\+All} (void)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Public Types inherited from \mbox{\hyperlink{class_c_object}{CObject}}}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_c_object_a7263d5eae1a949d02e262e246152a2c6}\label{class_c_object_a7263d5eae1a949d02e262e246152a2c6} 
+enum {\bfseries TYPE} \{ \newline
+{\bfseries TYPE\+\_\+\+NONE} = 0
+, {\bfseries TYPE\+\_\+\+PLAYER}
+, {\bfseries TYPE\+\_\+\+MESH}
+, {\bfseries TYPE\+\_\+\+BULLET}
+, \newline
+{\bfseries TYPE\+\_\+\+BOSS}
+, {\bfseries TYPE\+\_\+\+ENEMY}
+, {\bfseries TYPE\+\_\+\+BLOCK}
+, {\bfseries TYPE\+\_\+\+PAUSE}
+, \newline
+{\bfseries TYPE\+\_\+\+BARRIER}
+, {\bfseries TYPE\+\_\+\+ITEM}
+, {\bfseries TYPE\+\_\+\+RUBBLE}
+, {\bfseries TYPE\+\_\+\+PILER}
+, \newline
+{\bfseries TYPE\+\_\+\+POINT}
+, {\bfseries TYPE\+\_\+\+MAX}
+ \}
+\item 
+\Hypertarget{class_c_object_a0924032649f7068d08cc5da588adc8d0}\label{class_c_object_a0924032649f7068d08cc5da588adc8d0} 
+enum {\bfseries PRIORITY} \{ \newline
+{\bfseries NONE}
+, {\bfseries MESH}
+, {\bfseries BASENUMBER}
+, {\bfseries MODELOBJECT}
+, \newline
+{\bfseries BULLET}
+, {\bfseries SHADOW}
+, {\bfseries IMPACT}
+, {\bfseries CHARACTOR}
+, \newline
+{\bfseries BILLBOARD}
+, {\bfseries EFFECT}
+, {\bfseries UI}
+, {\bfseries PAUSE}
+, \newline
+{\bfseries PRIORITY\+\_\+\+MAX}
+ \}
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Member Functions inherited from \mbox{\hyperlink{class_c_object}{CObject}}}
+\begin{DoxyCompactItemize}
+\item 
+void {\bfseries Release} (void)
+\end{DoxyCompactItemize}
+
+
+\label{doc-func-members}
+\Hypertarget{class_c_mesh_dome_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_c_mesh_dome_a8c9771028f15f58d09b6ba83574005f4}\index{CMeshDome@{CMeshDome}!Draw@{Draw}}
+\index{Draw@{Draw}!CMeshDome@{CMeshDome}}
+\doxysubsubsection{\texorpdfstring{Draw()}{Draw()}}
+{\footnotesize\ttfamily \label{class_c_mesh_dome_a8c9771028f15f58d09b6ba83574005f4} 
+void CMesh\+Dome\+::\+Draw (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{class_c_object}{CObject}}.
+
+\Hypertarget{class_c_mesh_dome_aac474ea5273b8b339c9be379d46faf93}\index{CMeshDome@{CMeshDome}!Init@{Init}}
+\index{Init@{Init}!CMeshDome@{CMeshDome}}
+\doxysubsubsection{\texorpdfstring{Init()}{Init()}}
+{\footnotesize\ttfamily \label{class_c_mesh_dome_aac474ea5273b8b339c9be379d46faf93} 
+HRESULT CMesh\+Dome\+::\+Init (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{class_c_object}{CObject}}.
+
+\Hypertarget{class_c_mesh_dome_a7370c25d9d7ecafc66674a59dddc02d5}\index{CMeshDome@{CMeshDome}!Uninit@{Uninit}}
+\index{Uninit@{Uninit}!CMeshDome@{CMeshDome}}
+\doxysubsubsection{\texorpdfstring{Uninit()}{Uninit()}}
+{\footnotesize\ttfamily \label{class_c_mesh_dome_a7370c25d9d7ecafc66674a59dddc02d5} 
+void CMesh\+Dome\+::\+Uninit (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{class_c_object}{CObject}}.
+
+\Hypertarget{class_c_mesh_dome_aec907e34069d9303eefd25db636bc5ff}\index{CMeshDome@{CMeshDome}!Update@{Update}}
+\index{Update@{Update}!CMeshDome@{CMeshDome}}
+\doxysubsubsection{\texorpdfstring{Update()}{Update()}}
+{\footnotesize\ttfamily \label{class_c_mesh_dome_aec907e34069d9303eefd25db636bc5ff} 
+void CMesh\+Dome\+::\+Update (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{class_c_object}{CObject}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+meshdome.\+h\item 
+meshdome.\+cpp\end{DoxyCompactItemize}

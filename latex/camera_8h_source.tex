@@ -1,0 +1,183 @@
+\doxysection{camera.\+h}
+\hypertarget{camera_8h_source}{}\label{camera_8h_source}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{//=====================================}}
+\DoxyCodeLine{00002\ \textcolor{comment}{//}}
+\DoxyCodeLine{00003\ \textcolor{comment}{//\ カメラ処理\ [\ camera.h\ ]}}
+\DoxyCodeLine{00004\ \textcolor{comment}{//\ Author:\ Asuma\ Nishio}}
+\DoxyCodeLine{00005\ \textcolor{comment}{//}}
+\DoxyCodeLine{00006\ \textcolor{comment}{//=====================================}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#ifndef\ \_CAMERA\_H\_\ }\textcolor{comment}{//\ このソ}クロ定義がされてなかったら}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#define\ \_CAMERA\_H\_\ }\textcolor{comment}{//\ 2重インクルード防蚕string~のソ}クロ定義}}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00011\ \textcolor{comment}{//**********************}}
+\DoxyCodeLine{00012\ \textcolor{comment}{//\ 前方宣言}}
+\DoxyCodeLine{00013\ \textcolor{comment}{//**********************}}
+\DoxyCodeLine{00014\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_c_input_mouse}{CInputMouse}};}
+\DoxyCodeLine{00015\ }
+\DoxyCodeLine{00016\ \textcolor{comment}{//**********************}}
+\DoxyCodeLine{00017\ \textcolor{comment}{//\ カメラクラスを定義}}
+\DoxyCodeLine{00018\ \textcolor{comment}{//**********************}}
+\DoxyCodeLine{00019\ \textcolor{keyword}{class\ }CCamera}
+\DoxyCodeLine{00020\ \{}
+\DoxyCodeLine{00021\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00022\ \ \ \ \ \textcolor{comment}{//**********************}}
+\DoxyCodeLine{00023\ \ \ \ \ \textcolor{comment}{//\ カメラモード列挙圭string^}}
+\DoxyCodeLine{00024\ \ \ \ \ \textcolor{comment}{//**********************}}
+\DoxyCodeLine{00025\ \ \ \ \ \textcolor{keyword}{enum}\ MODE}
+\DoxyCodeLine{00026\ \ \ \ \ \{}
+\DoxyCodeLine{00027\ \ \ \ \ \ \ \ \ MODE\_NONE,}
+\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ MODE\_PLAYER,}
+\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ MODE\_LOCKON,}
+\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ MODE\_MOUSE,}
+\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ MODE\_SHAKE,}
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ MODE\_EVENT,}
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ MODE\_ANIM,}
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ MODE\_MAX}
+\DoxyCodeLine{00035\ \ \ \ \ \};}
+\DoxyCodeLine{00036\ }
+\DoxyCodeLine{00037\ \ \ \ \ \textcolor{comment}{//\ コンストラクソstring^・デストラクソstring^}}
+\DoxyCodeLine{00038\ \ \ \ \ CCamera();}
+\DoxyCodeLine{00039\ \ \ \ \ \string~CCamera();}
+\DoxyCodeLine{00040\ }
+\DoxyCodeLine{00041\ \ \ \ \ \textcolor{comment}{//\ メンバ関数}}
+\DoxyCodeLine{00042\ \ \ \ \ HRESULT\ Init(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00043\ \ \ \ \ \textcolor{keywordtype}{void}\ Uninit(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00044\ \ \ \ \ \textcolor{keywordtype}{void}\ Update(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00045\ \ \ \ \ \textcolor{keywordtype}{void}\ SetCamera(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00046\ }
+\DoxyCodeLine{00047\ \ \ \ \ \textcolor{keywordtype}{void}\ MouseView(\mbox{\hyperlink{class_c_input_mouse}{CInputMouse}}*\ pMouse);}
+\DoxyCodeLine{00048\ \ \ \ \ \textcolor{keywordtype}{void}\ LockOn(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00049\ \ \ \ \ \textcolor{keywordtype}{void}\ PlayerFollow(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00050\ \ \ \ \ \textcolor{keywordtype}{void}\ Rotation(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00051\ \ \ \ \ \textcolor{keywordtype}{void}\ TitleCamera(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00052\ \ \ \ \ \textcolor{keywordtype}{void}\ TutorialCamera(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00053\ \ \ \ \ \textcolor{keywordtype}{void}\ AnimCamera(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00054\ \ \ \ \ \textcolor{keywordtype}{void}\ UpdateAnimCamera(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00055\ \ \ \ \ \textcolor{keywordtype}{void}\ UpdateShake(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00056\ }
+\DoxyCodeLine{00057\ \ \ \ \ \textcolor{keywordtype}{void}\ Load(\textcolor{keywordtype}{int}\ nIdx);}
+\DoxyCodeLine{00058\ \ \ \ \ \textcolor{keywordtype}{void}\ Save(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00059\ }
+\DoxyCodeLine{00060\ \ \ \ \ \textcolor{comment}{//\ セッソstring^ー}}
+\DoxyCodeLine{00061\ \ \ \ \ \textcolor{keywordtype}{void}\ StartEventCamera(\textcolor{keyword}{const}\ D3DXVECTOR3\&\ targetV,\ \textcolor{keyword}{const}\ D3DXVECTOR3\&\ targetR,\ \textcolor{keywordtype}{int}\ endFrame);}
+\DoxyCodeLine{00062\ \ \ \ \ \textcolor{keywordtype}{void}\ ShakeCamera(\textcolor{keywordtype}{int}\ WaveTime);}
+\DoxyCodeLine{00063\ \ \ \ \ \textcolor{keywordtype}{void}\ SetIsRotation(\textcolor{keywordtype}{bool}\ isFlags)\ \{\ m\_isRotation\ =\ isFlags;\ \}}
+\DoxyCodeLine{00064\ \ \ \ \ \textcolor{keywordtype}{void}\ SetFinishRotation(\textcolor{keywordtype}{bool}\ isFlags)\ \{\ m\_isStopRotation\ =\ isFlags;\ \}}
+\DoxyCodeLine{00065\ \ \ \ \ \textcolor{keywordtype}{void}\ SetCameraMode(\textcolor{keywordtype}{int}\ nMode)\ \{\ m\_pCamera.nMode\ =\ nMode;\ \}}
+\DoxyCodeLine{00066\ \ \ \ \ \textcolor{keywordtype}{void}\ SetKey(\textcolor{keywordtype}{bool}\ isFlags)\ \{\ m\_isKey\ =\ isFlags;\ \}}
+\DoxyCodeLine{00067\ \ \ \ \ \textcolor{keywordtype}{void}\ SetLoadPass(\textcolor{keywordtype}{int}\ nIdxPass)\ \{\ m\_nFileIdx\ =\ nIdxPass;\ \}}
+\DoxyCodeLine{00068\ \ \ \ \ \textcolor{keywordtype}{void}\ SetAnim(\textcolor{keywordtype}{bool}\ isFlags)\ \{\ m\_isAnimTime\ =\ isFlags;\ \}}
+\DoxyCodeLine{00069\ }
+\DoxyCodeLine{00070\ \ \ \ \ \textcolor{comment}{//\ ゲッソstring^ー}}
+\DoxyCodeLine{00071\ \ \ \ \ D3DXVECTOR3\ GetRot(\textcolor{keywordtype}{void})\ \{\ \textcolor{keywordflow}{return}\ m\_pCamera.rot;\ \}}
+\DoxyCodeLine{00072\ \ \ \ \ D3DXVECTOR3\ GetPos(\textcolor{keywordtype}{void})\ \{\ \textcolor{keywordflow}{return}\ m\_pCamera.posV;\ \}}
+\DoxyCodeLine{00073\ \ \ \ \ D3DXVECTOR3\ GetPosR(\textcolor{keywordtype}{void})\ \{\ \textcolor{keywordflow}{return}\ m\_pCamera.posR;\ \}}
+\DoxyCodeLine{00074\ \ \ \ \ D3DXMATRIX\ GetMtxProjection(\textcolor{keywordtype}{void})\ \{\ \textcolor{keywordflow}{return}\ m\_pCamera.mtxprojection;\ \}}
+\DoxyCodeLine{00075\ \ \ \ \ \textcolor{keywordtype}{int}\ GetMode(\textcolor{keywordtype}{void})\ \{\ \textcolor{keywordflow}{return}\ m\_pCamera.nMode;\ \}}
+\DoxyCodeLine{00076\ \ \ \ \ \textcolor{keywordtype}{bool}\ GetShake(\textcolor{keywordtype}{void})\ \{\ \textcolor{keywordflow}{return}\ m\_isShake;\ \}}
+\DoxyCodeLine{00077\ \ \ \ \ \textcolor{keywordtype}{bool}\ GetAnim(\textcolor{keywordtype}{void})\ \{\ \textcolor{keywordflow}{return}\ m\_isAnimTime;\ \}}
+\DoxyCodeLine{00078\ }
+\DoxyCodeLine{00079\ \ \ \ \ \textcolor{comment}{//\ フラグメント}}
+\DoxyCodeLine{00080\ \ \ \ \ \textcolor{keywordtype}{bool}\ GetIsRotation(\textcolor{keywordtype}{void})\ \{\ \textcolor{keywordflow}{return}\ m\_isRotation;\ \}}
+\DoxyCodeLine{00081\ \ \ \ \ \textcolor{keywordtype}{bool}\ GetFinishRotation(\textcolor{keywordtype}{void})\ \{\ \textcolor{keywordflow}{return}\ m\_isStopRotation;\ \}}
+\DoxyCodeLine{00082\ \ \ \ \ \textcolor{keywordtype}{bool}\ GetKeyFlag(\textcolor{keywordtype}{void})\ \{\ \textcolor{keywordflow}{return}\ m\_isKey;\ \}}
+\DoxyCodeLine{00083\ }
+\DoxyCodeLine{00084\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00085\ \ \ \ \ \textcolor{comment}{//\ 定数宣言}}
+\DoxyCodeLine{00086\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{int}\ NUMKEY\ =\ 10;}
+\DoxyCodeLine{00087\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{int}\ ANIMFILENUM\ =\ 2;}
+\DoxyCodeLine{00088\ }
+\DoxyCodeLine{00089\ \ \ \ \ \textcolor{comment}{//*************************}}
+\DoxyCodeLine{00090\ \ \ \ \ \textcolor{comment}{//\ イベントフレーム構(\backslash\)造体}}
+\DoxyCodeLine{00091\ \ \ \ \ \textcolor{comment}{//*************************}}
+\DoxyCodeLine{00092\ \ \ \ \ \textcolor{keyword}{struct\ }EventData}
+\DoxyCodeLine{00093\ \ \ \ \ \{}
+\DoxyCodeLine{00094\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ isActive;\ \ \ \ \ \ \textcolor{comment}{//\ イベント実行中か}}
+\DoxyCodeLine{00095\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \ frame;\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 経過フレーム}}
+\DoxyCodeLine{00096\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ \ endFrame;\ \ \ \ \ \ \textcolor{comment}{//\ 終了フレーム}}
+\DoxyCodeLine{00097\ \ \ \ \ \ \ \ \ D3DXVECTOR3\ startPosV;\ \ \ \ \ \ \textcolor{comment}{//\ 開始視貼_}}
+\DoxyCodeLine{00098\ \ \ \ \ \ \ \ \ D3DXVECTOR3\ startPosR;\ \ \ \ \ \ \textcolor{comment}{//\ 開始注視貼_}}
+\DoxyCodeLine{00099\ \ \ \ \ \ \ \ \ D3DXVECTOR3\ targetPosV;\ \ \ \ \ \textcolor{comment}{//\ 目標視貼_}}
+\DoxyCodeLine{00100\ \ \ \ \ \ \ \ \ D3DXVECTOR3\ targetPosR;\ \ \ \ \ \textcolor{comment}{//\ 目標注視貼_}}
+\DoxyCodeLine{00101\ \ \ \ \ \};}
+\DoxyCodeLine{00102\ }
+\DoxyCodeLine{00103\ }
+\DoxyCodeLine{00104\ \ \ \ \ \textcolor{comment}{//********************************}}
+\DoxyCodeLine{00105\ \ \ \ \ \textcolor{comment}{//\ カメラアニメーションキー構(\backslash\)造体}}
+\DoxyCodeLine{00106\ \ \ \ \ \textcolor{comment}{//********************************}}
+\DoxyCodeLine{00107\ \ \ \ \ \textcolor{keyword}{struct\ }AnimDataKey}
+\DoxyCodeLine{00108\ \ \ \ \ \{}
+\DoxyCodeLine{00109\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ fPosVX;\ \ \ \textcolor{comment}{//\ 視貼_X}}
+\DoxyCodeLine{00110\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ fPosVY;\ \ \ \textcolor{comment}{//\ 視貼_Y}}
+\DoxyCodeLine{00111\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ fPosVZ;\ \ \ \textcolor{comment}{//\ 視貼_Z}}
+\DoxyCodeLine{00112\ }
+\DoxyCodeLine{00113\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ fPosRX;\ \ \ \textcolor{comment}{//\ 注視貼_X}}
+\DoxyCodeLine{00114\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ fPosRY;\ \ \ \textcolor{comment}{//\ 注視貼_Y}}
+\DoxyCodeLine{00115\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ fPosRZ;\ \ \ \textcolor{comment}{//\ 注視貼_Z}}
+\DoxyCodeLine{00116\ }
+\DoxyCodeLine{00117\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ fRotX;\ \ \ \ \textcolor{comment}{//\ 向きX}}
+\DoxyCodeLine{00118\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ fRotY;\ \ \ \ \textcolor{comment}{//\ 向きY}}
+\DoxyCodeLine{00119\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ fRotZ;\ \ \ \ \textcolor{comment}{//\ 向きZ}}
+\DoxyCodeLine{00120\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ nAnimFrame;\ \textcolor{comment}{//\ アニメーションのフレーム}}
+\DoxyCodeLine{00121\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ fDistance;\textcolor{comment}{//\ カメラの距離}}
+\DoxyCodeLine{00122\ \ \ \ \ \};}
+\DoxyCodeLine{00123\ }
+\DoxyCodeLine{00124\ \ \ \ \ \textcolor{comment}{//**********************************}}
+\DoxyCodeLine{00125\ \ \ \ \ \textcolor{comment}{//\ カメラアニメーションデーソstring^構(\backslash\)造体}}
+\DoxyCodeLine{00126\ \ \ \ \ \textcolor{comment}{//**********************************}}
+\DoxyCodeLine{00127\ \ \ \ \ \textcolor{keyword}{struct\ }AnimData}
+\DoxyCodeLine{00128\ \ \ \ \ \{}
+\DoxyCodeLine{00129\ \ \ \ \ \ \ \ \ AnimDataKey\ KeyInfo[NUMKEY];\ \ \ \ \textcolor{comment}{//\ 構(\backslash\)造体}}
+\DoxyCodeLine{00130\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ nNumKey;\ \textcolor{comment}{//\ キーの最大数}}
+\DoxyCodeLine{00131\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ isLoop;\ \ \ \ \textcolor{comment}{//\ ループするかどうか}}
+\DoxyCodeLine{00132\ \ \ \ \ \};}
+\DoxyCodeLine{00133\ }
+\DoxyCodeLine{00134\ \ \ \ \ \textcolor{comment}{//*************************}}
+\DoxyCodeLine{00135\ \ \ \ \ \textcolor{comment}{//\ カメラ構(\backslash\)造体を定義}}
+\DoxyCodeLine{00136\ \ \ \ \ \textcolor{comment}{//*************************}}
+\DoxyCodeLine{00137\ \ \ \ \ \textcolor{keyword}{struct\ }Camera}
+\DoxyCodeLine{00138\ \ \ \ \ \{}
+\DoxyCodeLine{00139\ \ \ \ \ \ \ \ \ D3DXMATRIX\ mtxprojection;\ \ \ \textcolor{comment}{//\ プロジェクションソ}トリックス}}
+\DoxyCodeLine{00140\ \ \ \ \ \ \ \ \ D3DXMATRIX\ mtxView;\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ ビューソ}トリックス}}
+\DoxyCodeLine{00141\ \ \ \ \ \ \ \ \ D3DXVECTOR3\ posV,\ posR;\ \ \ \ \ \textcolor{comment}{//\ 視貼_,注視貼_座標}}
+\DoxyCodeLine{00142\ \ \ \ \ \ \ \ \ D3DXVECTOR3\ rot;\ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 角度}}
+\DoxyCodeLine{00143\ \ \ \ \ \ \ \ \ D3DXVECTOR3\ vecU;\ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 法線ベクトル}}
+\DoxyCodeLine{00144\ \ \ \ \ \ \ \ \ D3DXVECTOR3\ posRDest;\ \ \ \ \ \ \ \textcolor{comment}{//\ 目的座標}}
+\DoxyCodeLine{00145\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ fDistance;\ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ カメラの距離}}
+\DoxyCodeLine{00146\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ nMode;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ カメラのモード}}
+\DoxyCodeLine{00147\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ nUseKey;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ アニメーション使用時に読み取るキー数}}
+\DoxyCodeLine{00148\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ nCntAnim;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ カウント}}
+\DoxyCodeLine{00149\ \ \ \ \ \ \ \ \ AnimData\ m\_AnimData;\ \ \ \ \textcolor{comment}{//\ アニメーションデーソstring^}}
+\DoxyCodeLine{00150\ \ \ \ \ \};}
+\DoxyCodeLine{00151\ }
+\DoxyCodeLine{00152\ \ \ \ \ EventData\ m\_event;\ \ \ \ \ \ \textcolor{comment}{//\ イベント用デーソstring^}}
+\DoxyCodeLine{00153\ \ \ \ \ Camera\ m\_pCamera;\ \ \ \ \ \ \ \textcolor{comment}{//\ カメラ構(\backslash\)造体変数}}
+\DoxyCodeLine{00154\ }
+\DoxyCodeLine{00155\ \ \ \ \ \textcolor{keywordtype}{int}\ m\_nShakeTime;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 振動時間}}
+\DoxyCodeLine{00156\ \ \ \ \ \textcolor{keywordtype}{int}\ m\_nAnimNowKey;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 現在キーNo}}
+\DoxyCodeLine{00157\ \ \ \ \ \textcolor{keywordtype}{int}\ m\_nFileIdx;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ ファイルインデックス}}
+\DoxyCodeLine{00158\ \ \ \ \ \textcolor{keywordtype}{int}\ m\_nAnimShakeFlame;\ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ アニメーション振動フレーム}}
+\DoxyCodeLine{00159\ }
+\DoxyCodeLine{00160\ \ \ \ \ \textcolor{keywordtype}{bool}\ m\_isRotation;\ \ \ \ \ \ \textcolor{comment}{//\ 回転したかどうか}}
+\DoxyCodeLine{00161\ \ \ \ \ \textcolor{keywordtype}{bool}\ m\_isStopRotation;\ \ \textcolor{comment}{//\ 回転終了}}
+\DoxyCodeLine{00162\ \ \ \ \ \textcolor{keywordtype}{bool}\ m\_isSetPos;\ \ \ \ \ \ \ \ \textcolor{comment}{//\ ソ{スが死んだかどうかのフラグ}}
+\DoxyCodeLine{00163\ \ \ \ \ \textcolor{keywordtype}{bool}\ m\_isShake;\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 振動するかどうか}}
+\DoxyCodeLine{00164\ \ \ \ \ \textcolor{keywordtype}{bool}\ m\_isKey;\ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ キー入力判定}}
+\DoxyCodeLine{00165\ \ \ \ \ \textcolor{keywordtype}{bool}\ m\_isAnimTime;\ \ \ \ \ \ \textcolor{comment}{//\ アニメーション中かどうか}}
+\DoxyCodeLine{00166\ \ \ \ \ \textcolor{keywordtype}{bool}\ m\_isLoad;\ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 読み込んだかどうか}}
+\DoxyCodeLine{00167\ \ \ \ \ \textcolor{keywordtype}{bool}\ m\_isStopCurrentAnim;}
+\DoxyCodeLine{00168\ }
+\DoxyCodeLine{00169\ \ \ \ \ D3DXVECTOR3\ m\_lastBossPos;\ \ \ \ \ \ \textcolor{comment}{//\ ソ{スの最後の座標}}
+\DoxyCodeLine{00170\ }
+\DoxyCodeLine{00171\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ ANIMFILE[ANIMFILENUM]\ =}
+\DoxyCodeLine{00172\ \ \ \ \ \{}
+\DoxyCodeLine{00173\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}data\(\backslash\)\(\backslash\)Loader\(\backslash\)\(\backslash\)CameraInfo.txt"{}},}
+\DoxyCodeLine{00174\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}data\(\backslash\)\(\backslash\)Loader\(\backslash\)\(\backslash\)CameraGameEnd.txt"{}},}
+\DoxyCodeLine{00175\ \ \ \ \ \};}
+\DoxyCodeLine{00176\ \};}
+\DoxyCodeLine{00177\ }
+\DoxyCodeLine{00178\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

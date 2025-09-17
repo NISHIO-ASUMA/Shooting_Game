@@ -1,0 +1,64 @@
+\doxysection{bullethorming.\+h}
+\hypertarget{bullethorming_8h_source}{}\label{bullethorming_8h_source}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{//===================================================}}
+\DoxyCodeLine{00002\ \textcolor{comment}{//}}
+\DoxyCodeLine{00003\ \textcolor{comment}{//\ 弾のオブジェクトホーソstring~ング処理\ [\ bullethorming.h\ ]}}
+\DoxyCodeLine{00004\ \textcolor{comment}{//\ Author:\ Asuma\ Nishio}}
+\DoxyCodeLine{00005\ \textcolor{comment}{//}}
+\DoxyCodeLine{00006\ \textcolor{comment}{//===================================================}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#ifndef\ \_BULLETHORMING\_H\_\ }\textcolor{comment}{//\ このソ}クロ定義がされてなかったら}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#define\ \_BULLETHORMING\_H\_\ }\textcolor{comment}{//\ 2重インクルード防蚕string~のソ}クロ定義}}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00011\ \textcolor{comment}{//**************************}}
+\DoxyCodeLine{00012\ \textcolor{comment}{//\ インクルードファイル宣言}}
+\DoxyCodeLine{00013\ \textcolor{comment}{//**************************}}
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#include\ "{}objectX.h"{}}}
+\DoxyCodeLine{00015\ }
+\DoxyCodeLine{00016\ \textcolor{comment}{//**************************}}
+\DoxyCodeLine{00017\ \textcolor{comment}{//\ 前方宣言}}
+\DoxyCodeLine{00018\ \textcolor{comment}{//**************************}}
+\DoxyCodeLine{00019\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_c_object}{CObject}};}
+\DoxyCodeLine{00020\ }
+\DoxyCodeLine{00021\ \textcolor{comment}{//********************************}}
+\DoxyCodeLine{00022\ \textcolor{comment}{//\ 弾のホーソstring~ングクラスを定義}}
+\DoxyCodeLine{00023\ \textcolor{comment}{//********************************}}
+\DoxyCodeLine{00024\ \textcolor{keyword}{class\ }CBulletHorming\ :\ \textcolor{keyword}{public}\ CObjectX}
+\DoxyCodeLine{00025\ \{}
+\DoxyCodeLine{00026\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00027\ }
+\DoxyCodeLine{00028\ \ \ \ \ \textcolor{comment}{//*************************}}
+\DoxyCodeLine{00029\ \ \ \ \ \textcolor{comment}{//\ ホーソstring~ングの種類列挙圭string^}}
+\DoxyCodeLine{00030\ \ \ \ \ \textcolor{comment}{//*************************}}
+\DoxyCodeLine{00031\ \ \ \ \ \textcolor{keyword}{enum}\ HORMING}
+\DoxyCodeLine{00032\ \ \ \ \ \{}
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ HORMING\_PLAYER,\ \textcolor{comment}{//\ プレイヤー追従}}
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ HORMING\_GROUND,\ \textcolor{comment}{//\ 地面に着弾する}}
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ HORMING\_MAX}
+\DoxyCodeLine{00036\ \ \ \ \ \};}
+\DoxyCodeLine{00037\ }
+\DoxyCodeLine{00038\ \ \ \ \ \textcolor{comment}{//\ コンストラクソstring^・デストラクソstring^}}
+\DoxyCodeLine{00039\ \ \ \ \ CBulletHorming(\textcolor{keywordtype}{int}\ nPriority\ =\ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{int}\textcolor{keyword}{>}(CObject::PRIORITY::BULLET));}
+\DoxyCodeLine{00040\ \ \ \ \ \string~CBulletHorming();}
+\DoxyCodeLine{00041\ }
+\DoxyCodeLine{00042\ \ \ \ \ \textcolor{comment}{//\ メンバ関数}}
+\DoxyCodeLine{00043\ \ \ \ \ HRESULT\ Init(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00044\ \ \ \ \ \textcolor{keywordtype}{void}\ Uninit(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00045\ \ \ \ \ \textcolor{keywordtype}{void}\ Update(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00046\ \ \ \ \ \textcolor{keywordtype}{void}\ Draw(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00047\ \ \ \ \ \textcolor{keywordtype}{void}\ CollisionAll(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00048\ \ \ \ \ \textcolor{keywordtype}{bool}\ Collision(D3DXVECTOR3\ DestPos);}
+\DoxyCodeLine{00049\ }
+\DoxyCodeLine{00050\ \ \ \ \ \textcolor{comment}{//\ 静的メンバ関数}}
+\DoxyCodeLine{00051\ \ \ \ \ \textcolor{keyword}{static}\ CBulletHorming*\ Create(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *\ pFileNama,D3DXVECTOR3\ pos);}
+\DoxyCodeLine{00052\ }
+\DoxyCodeLine{00053\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00054\ }
+\DoxyCodeLine{00055\ \ \ \ \ \textcolor{keywordtype}{float}\ m\_fRange;\ \ \ \ \ \textcolor{comment}{//\ 追従距離計算用}}
+\DoxyCodeLine{00056\ \ \ \ \ \textcolor{keywordtype}{bool}\ m\_isHit;\ \ \ \ \ \ \ \textcolor{comment}{//\ 当たり判定フラグ}}
+\DoxyCodeLine{00057\ \};}
+\DoxyCodeLine{00058\ }
+\DoxyCodeLine{00059\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

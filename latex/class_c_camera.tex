@@ -1,0 +1,126 @@
+\doxysection{CCamera Class Reference}
+\hypertarget{class_c_camera}{}\label{class_c_camera}\index{CCamera@{CCamera}}
+\doxysubsubsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_c_camera_a3bfce4bc7deb635dd81977f9d7f5eef3}\label{class_c_camera_a3bfce4bc7deb635dd81977f9d7f5eef3} 
+enum {\bfseries MODE} \{ \newline
+{\bfseries MODE\+\_\+\+NONE}
+, {\bfseries MODE\+\_\+\+PLAYER}
+, {\bfseries MODE\+\_\+\+LOCKON}
+, {\bfseries MODE\+\_\+\+MOUSE}
+, \newline
+{\bfseries MODE\+\_\+\+SHAKE}
+, {\bfseries MODE\+\_\+\+EVENT}
+, {\bfseries MODE\+\_\+\+ANIM}
+, {\bfseries MODE\+\_\+\+MAX}
+ \}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_c_camera_a260a1ee1ef85377b83a0b27d5da3e1a4}\label{class_c_camera_a260a1ee1ef85377b83a0b27d5da3e1a4} 
+HRESULT {\bfseries Init} (void)
+\item 
+\Hypertarget{class_c_camera_ab1707df0b34f294616824b09193fd32a}\label{class_c_camera_ab1707df0b34f294616824b09193fd32a} 
+void {\bfseries Uninit} (void)
+\item 
+\Hypertarget{class_c_camera_a9797694b71f697fdbd15518f9f51556a}\label{class_c_camera_a9797694b71f697fdbd15518f9f51556a} 
+void {\bfseries Update} (void)
+\item 
+\Hypertarget{class_c_camera_aff134debdbcf7333f29c2e7bf3d89612}\label{class_c_camera_aff134debdbcf7333f29c2e7bf3d89612} 
+void {\bfseries Set\+Camera} (void)
+\item 
+\Hypertarget{class_c_camera_a5822df237817f8b5fe950fc934706657}\label{class_c_camera_a5822df237817f8b5fe950fc934706657} 
+void {\bfseries Mouse\+View} (\mbox{\hyperlink{class_c_input_mouse}{CInput\+Mouse}} \texorpdfstring{$\ast$}{*}p\+Mouse)
+\item 
+\Hypertarget{class_c_camera_ad9ede6681f0b9313b3cd46e341194d72}\label{class_c_camera_ad9ede6681f0b9313b3cd46e341194d72} 
+void {\bfseries Lock\+On} (void)
+\item 
+\Hypertarget{class_c_camera_a5616ce644381310a2bc4266fe45f60a7}\label{class_c_camera_a5616ce644381310a2bc4266fe45f60a7} 
+void {\bfseries Player\+Follow} (void)
+\item 
+\Hypertarget{class_c_camera_a47942373f77ee825ee7e134a4a74a3ab}\label{class_c_camera_a47942373f77ee825ee7e134a4a74a3ab} 
+void {\bfseries Rotation} (void)
+\item 
+\Hypertarget{class_c_camera_a946e8b16e030eb7b438dac7111e4d7af}\label{class_c_camera_a946e8b16e030eb7b438dac7111e4d7af} 
+void {\bfseries Title\+Camera} (void)
+\item 
+\Hypertarget{class_c_camera_abc9efde605ea101fbbb57beee582e01b}\label{class_c_camera_abc9efde605ea101fbbb57beee582e01b} 
+void {\bfseries Tutorial\+Camera} (void)
+\item 
+\Hypertarget{class_c_camera_ad877b1d431db76315d1226cfa71d2f56}\label{class_c_camera_ad877b1d431db76315d1226cfa71d2f56} 
+void {\bfseries Anim\+Camera} (void)
+\item 
+\Hypertarget{class_c_camera_a26d873d7bed26ee730c04dc24f33098a}\label{class_c_camera_a26d873d7bed26ee730c04dc24f33098a} 
+void {\bfseries Update\+Anim\+Camera} (void)
+\item 
+\Hypertarget{class_c_camera_a40fda274b2b30c0d67196ed36f131b3b}\label{class_c_camera_a40fda274b2b30c0d67196ed36f131b3b} 
+void {\bfseries Update\+Shake} (void)
+\item 
+\Hypertarget{class_c_camera_a1782842d73b1533563b6661c4378ef8a}\label{class_c_camera_a1782842d73b1533563b6661c4378ef8a} 
+void {\bfseries Load} (int n\+Idx)
+\item 
+\Hypertarget{class_c_camera_a889b6e3ef3e42ac34676520046c62836}\label{class_c_camera_a889b6e3ef3e42ac34676520046c62836} 
+void {\bfseries Save} (void)
+\item 
+\Hypertarget{class_c_camera_a102e7855b12016fde6d1ae3d4547d67e}\label{class_c_camera_a102e7855b12016fde6d1ae3d4547d67e} 
+void {\bfseries Start\+Event\+Camera} (const D3\+DXVECTOR3 \&targetV, const D3\+DXVECTOR3 \&targetR, int end\+Frame)
+\item 
+\Hypertarget{class_c_camera_af7e524264943f09eed5c0fb529539a1d}\label{class_c_camera_af7e524264943f09eed5c0fb529539a1d} 
+void {\bfseries Shake\+Camera} (int Wave\+Time)
+\item 
+\Hypertarget{class_c_camera_a95c3ce3e97a3204ef390153022392028}\label{class_c_camera_a95c3ce3e97a3204ef390153022392028} 
+void {\bfseries Set\+Is\+Rotation} (bool is\+Flags)
+\item 
+\Hypertarget{class_c_camera_a1feef6c399c51661b52afb6a36edf8f5}\label{class_c_camera_a1feef6c399c51661b52afb6a36edf8f5} 
+void {\bfseries Set\+Finish\+Rotation} (bool is\+Flags)
+\item 
+\Hypertarget{class_c_camera_af843f5e51a32ef90d1e2fdc88ff764bf}\label{class_c_camera_af843f5e51a32ef90d1e2fdc88ff764bf} 
+void {\bfseries Set\+Camera\+Mode} (int n\+Mode)
+\item 
+\Hypertarget{class_c_camera_a511c12e633733cef56e4a33fea7bd84b}\label{class_c_camera_a511c12e633733cef56e4a33fea7bd84b} 
+void {\bfseries Set\+Key} (bool is\+Flags)
+\item 
+\Hypertarget{class_c_camera_aaa4b5193015dbdf0425498c7e3bd7faf}\label{class_c_camera_aaa4b5193015dbdf0425498c7e3bd7faf} 
+void {\bfseries Set\+Load\+Pass} (int n\+Idx\+Pass)
+\item 
+\Hypertarget{class_c_camera_acdc1c8c55fe4f72f95ecb8d967af68b1}\label{class_c_camera_acdc1c8c55fe4f72f95ecb8d967af68b1} 
+void {\bfseries Set\+Anim} (bool is\+Flags)
+\item 
+\Hypertarget{class_c_camera_afbbf585183ef4f35ac5920cf64003739}\label{class_c_camera_afbbf585183ef4f35ac5920cf64003739} 
+D3\+DXVECTOR3 {\bfseries Get\+Rot} (void)
+\item 
+\Hypertarget{class_c_camera_a19b55c98e3272d627023d4fc42dd91ca}\label{class_c_camera_a19b55c98e3272d627023d4fc42dd91ca} 
+D3\+DXVECTOR3 {\bfseries Get\+Pos} (void)
+\item 
+\Hypertarget{class_c_camera_a187a308b34bf96576b075f0bbbc5deb8}\label{class_c_camera_a187a308b34bf96576b075f0bbbc5deb8} 
+D3\+DXVECTOR3 {\bfseries Get\+PosR} (void)
+\item 
+\Hypertarget{class_c_camera_acb16e72fab88e17f517f437c837ac28b}\label{class_c_camera_acb16e72fab88e17f517f437c837ac28b} 
+D3\+DXMATRIX {\bfseries Get\+Mtx\+Projection} (void)
+\item 
+\Hypertarget{class_c_camera_a875759fbc022cd35e7eb7923bb216aa2}\label{class_c_camera_a875759fbc022cd35e7eb7923bb216aa2} 
+int {\bfseries Get\+Mode} (void)
+\item 
+\Hypertarget{class_c_camera_a28455705d3162ebe8e87b94a130c7efc}\label{class_c_camera_a28455705d3162ebe8e87b94a130c7efc} 
+bool {\bfseries Get\+Shake} (void)
+\item 
+\Hypertarget{class_c_camera_a0cff541a7dac55969eec7474f2042ff5}\label{class_c_camera_a0cff541a7dac55969eec7474f2042ff5} 
+bool {\bfseries Get\+Anim} (void)
+\item 
+\Hypertarget{class_c_camera_a9679970080499040804b11e0bdcfdb9c}\label{class_c_camera_a9679970080499040804b11e0bdcfdb9c} 
+bool {\bfseries Get\+Is\+Rotation} (void)
+\item 
+\Hypertarget{class_c_camera_ac7b0f58242101923ea5cdc9ec5bf2fe6}\label{class_c_camera_ac7b0f58242101923ea5cdc9ec5bf2fe6} 
+bool {\bfseries Get\+Finish\+Rotation} (void)
+\item 
+\Hypertarget{class_c_camera_a015ec91e156553c7eba2d5ce547a9d86}\label{class_c_camera_a015ec91e156553c7eba2d5ce547a9d86} 
+bool {\bfseries Get\+Key\+Flag} (void)
+\end{DoxyCompactItemize}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+camera.\+h\item 
+camera.\+cpp\end{DoxyCompactItemize}

@@ -1,0 +1,101 @@
+\doxysection{object2\+D.\+h}
+\hypertarget{object2_d_8h_source}{}\label{object2_d_8h_source}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{//=====================================}}
+\DoxyCodeLine{00002\ \textcolor{comment}{//}}
+\DoxyCodeLine{00003\ \textcolor{comment}{//\ 2Dオブジェクト処理\ [\ object2D.h\ ]}}
+\DoxyCodeLine{00004\ \textcolor{comment}{//\ Author:\ Asuma\ Nishio}}
+\DoxyCodeLine{00005\ \textcolor{comment}{//}}
+\DoxyCodeLine{00006\ \textcolor{comment}{//=====================================}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#ifndef\ \_OBJECT2D\_H\_\ }\textcolor{comment}{//\ このソ}クロ定義がされてなかったら}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#define\ \_OBJECT2D\_H\_\ }\textcolor{comment}{//\ 2重インクルード防蚕string~のソ}クロ定義}}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00011\ \textcolor{comment}{//**********************}}
+\DoxyCodeLine{00012\ \textcolor{comment}{//\ インクルードファイル}}
+\DoxyCodeLine{00013\ \textcolor{comment}{//**********************}}
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#include\ "{}object.h"{}}}
+\DoxyCodeLine{00015\ }
+\DoxyCodeLine{00016\ \textcolor{comment}{//****************************}}
+\DoxyCodeLine{00017\ \textcolor{comment}{//\ オブジェクト2Dクラスを定義}}
+\DoxyCodeLine{00018\ \textcolor{comment}{//****************************}}
+\DoxyCodeLine{00019\ \textcolor{keyword}{class\ }CObject2D\ :\ \textcolor{keyword}{public}\ CObject}
+\DoxyCodeLine{00020\ \{}
+\DoxyCodeLine{00021\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00022\ \ \ \ \ \textcolor{comment}{//****************************}}
+\DoxyCodeLine{00023\ \ \ \ \ \textcolor{comment}{//\ アンカーポイントソstring^イプ}}
+\DoxyCodeLine{00024\ \ \ \ \ \textcolor{comment}{//****************************}}
+\DoxyCodeLine{00025\ \ \ \ \ \textcolor{keyword}{enum}\ ANCHORTYPE}
+\DoxyCodeLine{00026\ \ \ \ \ \{}
+\DoxyCodeLine{00027\ \ \ \ \ \ \ \ \ ANCHORTYPE\_NONE,}
+\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ ANCHORTYPE\_CENTER,}
+\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ ANCHORTYPE\_LEFTSIDE,}
+\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ ANCHORTYPE\_RIGHTSIDE,}
+\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ ANCHORTYPE\_MAX}
+\DoxyCodeLine{00032\ \ \ \ \ \};}
+\DoxyCodeLine{00033\ }
+\DoxyCodeLine{00034\ \ \ \ \ \textcolor{comment}{//****************************}}
+\DoxyCodeLine{00035\ \ \ \ \ \textcolor{comment}{//\ 描画タイプ}}
+\DoxyCodeLine{00036\ \ \ \ \ \textcolor{comment}{//****************************}}
+\DoxyCodeLine{00037\ \ \ \ \ \textcolor{keyword}{enum}\ DRAWTYPE}
+\DoxyCodeLine{00038\ \ \ \ \ \{}
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ DRAWTYPE\_NONE,}
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ DRAWTYPE\_ANIM,}
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ DRAWTYPE\_MAX,}
+\DoxyCodeLine{00042\ \ \ \ \ \};}
+\DoxyCodeLine{00043\ }
+\DoxyCodeLine{00044\ \ \ \ \ \textcolor{comment}{//\ コンストラクソstring^・デストラクソstring^}}
+\DoxyCodeLine{00045\ \ \ \ \ CObject2D(\textcolor{keywordtype}{int}\ nPriority\ =\ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{int}\textcolor{keyword}{>}(CObject::PRIORITY::UI));}
+\DoxyCodeLine{00046\ \ \ \ \ \string~CObject2D();}
+\DoxyCodeLine{00047\ }
+\DoxyCodeLine{00048\ \ \ \ \ \textcolor{comment}{//\ メンバ関数}}
+\DoxyCodeLine{00049\ \ \ \ \ HRESULT\ Init(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00050\ \ \ \ \ \textcolor{keywordtype}{void}\ Uninit(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00051\ \ \ \ \ \textcolor{keywordtype}{void}\ Update(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00052\ \ \ \ \ \textcolor{keywordtype}{void}\ Draw(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00053\ }
+\DoxyCodeLine{00054\ \ \ \ \ \textcolor{comment}{//\ 静的メンバ関数}}
+\DoxyCodeLine{00055\ \ \ \ \ \textcolor{keyword}{static}\ CObject2D*\ Create(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00056\ }
+\DoxyCodeLine{00057\ \ \ \ \ \textcolor{comment}{//\ セッソstring^ー}}
+\DoxyCodeLine{00058\ \ \ \ \ \textcolor{keywordtype}{void}\ SetUV(\textcolor{keywordtype}{float}\ TexU,\ \textcolor{keywordtype}{float}\ TexV);}
+\DoxyCodeLine{00059\ \ \ \ \ \textcolor{keywordtype}{void}\ SetCol(D3DXCOLOR\ col)\ \{\ m\_col\ =\ col;\ \}}
+\DoxyCodeLine{00060\ \ \ \ \ \textcolor{keywordtype}{void}\ SetPos(D3DXVECTOR3\ pos)\ \{\ m\_Pos\ =\ pos;\ \}}
+\DoxyCodeLine{00061\ \ \ \ \ \textcolor{keywordtype}{void}\ SetRot(D3DXVECTOR3\ rot)\ \{\ m\_Rot\ =\ rot;\ \}}
+\DoxyCodeLine{00062\ \ \ \ \ \textcolor{keywordtype}{void}\ SetSize(\textcolor{keywordtype}{float}\ fWidth,\ \textcolor{keywordtype}{float}\ fHeight)\ \{\ m\_fWidth\ =\ fWidth,\ m\_fHeight\ =\ fHeight;\ \}}
+\DoxyCodeLine{00063\ \ \ \ \ \textcolor{keywordtype}{void}\ SetWidth(\textcolor{keywordtype}{float}\ fWidth)\ \{\ m\_fWidth\ =\ fWidth;\ \}}
+\DoxyCodeLine{00064\ \ \ \ \ \textcolor{keywordtype}{void}\ SetHeight(\textcolor{keywordtype}{float}\ fHeight)\ \{\ m\_fWidth\ =\ fHeight;\ \}}
+\DoxyCodeLine{00065\ \ \ \ \ \textcolor{keywordtype}{void}\ SetFlash(\textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ nFirstcount,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ nEndcount,\textcolor{keyword}{const}\ D3DXCOLOR\ col);}
+\DoxyCodeLine{00066\ \ \ \ \ \textcolor{keywordtype}{void}\ SetAnchor(\textcolor{keywordtype}{int}\ Type)\ \{\ m\_nAnchorType\ =\ Type;\ \}}
+\DoxyCodeLine{00067\ \ \ \ \ \textcolor{keywordtype}{void}\ SetDrawType(\textcolor{keywordtype}{int}\ nType)\ \{\ m\_nDrawType\ =\ nType;\ \}}
+\DoxyCodeLine{00068\ \ \ \ \ \textcolor{keywordtype}{void}\ SetCenter(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00069\ \ \ \ \ \textcolor{keywordtype}{void}\ SetLeft(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00070\ \ \ \ \ \textcolor{keywordtype}{void}\ SetRight(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00071\ }
+\DoxyCodeLine{00072\ \ \ \ \ \textcolor{comment}{//\ ゲッソstring^ー}}
+\DoxyCodeLine{00073\ \ \ \ \ D3DXVECTOR3\ GetPos(\textcolor{keywordtype}{void})\ \{\ \textcolor{keywordflow}{return}\ m\_Pos;\ \}\ \ \textcolor{comment}{//\ 現在の座標を取得}}
+\DoxyCodeLine{00074\ \ \ \ \ D3DXVECTOR3\ GetRot(\textcolor{keywordtype}{void})\ \{\ \textcolor{keywordflow}{return}\ m\_Rot;\ \}\ \ \textcolor{comment}{//\ 現在の角度を取得}}
+\DoxyCodeLine{00075\ \ \ \ \ D3DXCOLOR\ GetCol(\textcolor{keywordtype}{void})\ \{\ \textcolor{keywordflow}{return}\ m\_col;\ \}\ \ \ \ \textcolor{comment}{//\ 現在の色を取得}}
+\DoxyCodeLine{00076\ \ \ \ \ \textcolor{keywordtype}{float}\ GetWidth(\textcolor{keywordtype}{void})\ \{\ \textcolor{keywordflow}{return}\ m\_fWidth;\ \}}
+\DoxyCodeLine{00077\ \ \ \ \ \textcolor{keywordtype}{float}\ GetHeight(\textcolor{keywordtype}{void})\ \{\ \textcolor{keywordflow}{return}\ m\_fHeight;\ \}}
+\DoxyCodeLine{00078\ \ \ \ \ \textcolor{keywordtype}{int}\ GetDrawType(\textcolor{keywordtype}{void})\ \{\ \textcolor{keywordflow}{return}\ m\_nDrawType;\ \}}
+\DoxyCodeLine{00079\ }
+\DoxyCodeLine{00080\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00081\ }
+\DoxyCodeLine{00082\ \ \ \ \ LPDIRECT3DTEXTURE9\ m\_pTexture;\ \ \ \ \ \ \textcolor{comment}{//\ テクスチャポインソstring^}}
+\DoxyCodeLine{00083\ \ \ \ \ LPDIRECT3DVERTEXBUFFER9\ m\_pVtxBuff;\ \textcolor{comment}{//\ 頂貼_バッファのポインソstring^}}
+\DoxyCodeLine{00084\ }
+\DoxyCodeLine{00085\ \ \ \ \ D3DXVECTOR3\ m\_Rot;\ \ \textcolor{comment}{//\ 角度情報}}
+\DoxyCodeLine{00086\ \ \ \ \ D3DXVECTOR3\ m\_Pos;\ \ \textcolor{comment}{//\ 座標情報}}
+\DoxyCodeLine{00087\ \ \ \ \ D3DXCOLOR\ m\_col;\ \ \ \ \textcolor{comment}{//\ 色情報}}
+\DoxyCodeLine{00088\ }
+\DoxyCodeLine{00089\ \ \ \ \ \textcolor{keywordtype}{int}\ m\_nAnchorType;\ \ \textcolor{comment}{//\ 基準座標設定}}
+\DoxyCodeLine{00090\ \ \ \ \ \textcolor{keywordtype}{int}\ m\_nColorCount;\ \ \textcolor{comment}{//\ 貼_滅カウント}}
+\DoxyCodeLine{00091\ \ \ \ \ \textcolor{keywordtype}{int}\ m\_nDrawType;\ \ \ \ \textcolor{comment}{//\ 描画タイプ}}
+\DoxyCodeLine{00092\ \ \ \ \ \textcolor{keywordtype}{float}\ m\_fWidth;\ \ \ \ \ \textcolor{comment}{//\ 横幅}}
+\DoxyCodeLine{00093\ \ \ \ \ \textcolor{keywordtype}{float}\ m\_fHeight;\ \ \ \ \textcolor{comment}{//\ 高さ}}
+\DoxyCodeLine{00094\ \};}
+\DoxyCodeLine{00095\ }
+\DoxyCodeLine{00096\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

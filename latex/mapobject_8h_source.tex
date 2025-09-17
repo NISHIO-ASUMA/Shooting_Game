@@ -1,0 +1,57 @@
+\doxysection{mapobject.\+h}
+\hypertarget{mapobject_8h_source}{}\label{mapobject_8h_source}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{//================================================}}
+\DoxyCodeLine{00002\ \textcolor{comment}{//}}
+\DoxyCodeLine{00003\ \textcolor{comment}{//\ ソ}ップに出すオブジェクト処理\ [\ mapobject.h\ ]}}
+\DoxyCodeLine{00004\ \textcolor{comment}{//\ Author:\ Asuma\ Nishio}}
+\DoxyCodeLine{00005\ \textcolor{comment}{//}}
+\DoxyCodeLine{00006\ \textcolor{comment}{//================================================}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#ifndef\ \_MAPOBJECT\_H\_\ }\textcolor{comment}{//\ このソ}クロ定義がされてなかったら}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#define\ \_MAPOBJECT\_H\_\ }\textcolor{comment}{//\ 2重インクルード防蚕string~のソ}クロ定義}}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00011\ \textcolor{comment}{//******************************}}
+\DoxyCodeLine{00012\ \textcolor{comment}{//\ インクルードファイル}}
+\DoxyCodeLine{00013\ \textcolor{comment}{//******************************}}
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#include\ "{}object.h"{}}}
+\DoxyCodeLine{00015\ }
+\DoxyCodeLine{00016\ \textcolor{comment}{//*********************************}}
+\DoxyCodeLine{00017\ \textcolor{comment}{//\ ソ}ップオブジェクトクラスを定義}}
+\DoxyCodeLine{00018\ \textcolor{comment}{//*********************************}}
+\DoxyCodeLine{00019\ \textcolor{keyword}{class\ }CMapObject\ :\ \textcolor{keyword}{public}\ CObject}
+\DoxyCodeLine{00020\ \{}
+\DoxyCodeLine{00021\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00022\ \ \ \ \ \textcolor{comment}{//\ コンストラクソstring^・デストラクソstring^}}
+\DoxyCodeLine{00023\ \ \ \ \ CMapObject(\textcolor{keywordtype}{int}\ nPriority\ =\ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{int}\textcolor{keyword}{>}(CObject::PRIORITY::MODELOBJECT));}
+\DoxyCodeLine{00024\ \ \ \ \ \string~CMapObject();}
+\DoxyCodeLine{00025\ }
+\DoxyCodeLine{00026\ \ \ \ \ \textcolor{comment}{//\ メンバ関数}}
+\DoxyCodeLine{00027\ \ \ \ \ HRESULT\ Init(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00028\ \ \ \ \ \textcolor{keywordtype}{void}\ Uninit(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00029\ \ \ \ \ \textcolor{keywordtype}{void}\ Update(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00030\ \ \ \ \ \textcolor{keywordtype}{void}\ Draw(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00031\ }
+\DoxyCodeLine{00032\ \ \ \ \ \textcolor{comment}{//\ セッソstring^ー}}
+\DoxyCodeLine{00033\ \ \ \ \ D3DXVECTOR3\ SetPos(D3DXVECTOR3\ pos)\ \{\ m\_pos\ =\ pos;\ \}}
+\DoxyCodeLine{00034\ \ \ \ \ D3DXVECTOR3\ SetRot(D3DXVECTOR3\ rot)\ \{\ m\_rot\ =\ rot;\ \}}
+\DoxyCodeLine{00035\ \ \ \ \ D3DXMATRIX\ GetMtx(\textcolor{keywordtype}{void})\ \{\ \textcolor{keywordflow}{return}\ m\_mtxworld;\ \}}
+\DoxyCodeLine{00036\ }
+\DoxyCodeLine{00037\ \ \ \ \ \textcolor{comment}{//\ ゲッソstring^ー}}
+\DoxyCodeLine{00038\ \ \ \ \ D3DXVECTOR3\ GetPos()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ m\_pos;\ \}}
+\DoxyCodeLine{00039\ \ \ \ \ D3DXVECTOR3\ GetRot()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ m\_rot;\ \}}
+\DoxyCodeLine{00040\ \ \ \ \ \textcolor{keywordtype}{int}\ GetIdx()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ m\_nIdx;\ \}}
+\DoxyCodeLine{00041\ }
+\DoxyCodeLine{00042\ \ \ \ \ \textcolor{comment}{//\ 静的メンバ関数}}
+\DoxyCodeLine{00043\ \ \ \ \ \textcolor{keyword}{static}\ CMapObject*\ Create(D3DXVECTOR3\ pos,\ D3DXVECTOR3\ rot,\ \textcolor{keywordtype}{int}\ nIdx);}
+\DoxyCodeLine{00044\ }
+\DoxyCodeLine{00045\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00046\ \ \ \ \ \textcolor{keywordtype}{int}\ m\_nIdx;\ \textcolor{comment}{//\ インデックス}}
+\DoxyCodeLine{00047\ \ \ \ \ D3DXVECTOR3\ m\_pos;}
+\DoxyCodeLine{00048\ \ \ \ \ D3DXVECTOR3\ m\_rot;}
+\DoxyCodeLine{00049\ \ \ \ \ D3DXMATRIX\ m\_mtxworld;}
+\DoxyCodeLine{00050\ \};}
+\DoxyCodeLine{00051\ }
+\DoxyCodeLine{00052\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

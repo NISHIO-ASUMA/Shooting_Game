@@ -1,0 +1,171 @@
+\doxysection{CMap\+Object Class Reference}
+\hypertarget{class_c_map_object}{}\label{class_c_map_object}\index{CMapObject@{CMapObject}}
+Inheritance diagram for CMap\+Object\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_c_map_object}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_c_map_object_a3206b2e9fcbe590e9cd109d466960520}\label{class_c_map_object_a3206b2e9fcbe590e9cd109d466960520} 
+{\bfseries CMap\+Object} (int n\+Priority=static\+\_\+cast$<$ int $>$(CObject\+::\+PRIORITY\+::\+MODELOBJECT))
+\item 
+HRESULT \mbox{\hyperlink{class_c_map_object_a897de243fc8003c82c1c1a2b7ef740bb}{Init}} (void)
+\item 
+void \mbox{\hyperlink{class_c_map_object_ab97bdc3934426233a54f7b6061421e0a}{Uninit}} (void)
+\item 
+void \mbox{\hyperlink{class_c_map_object_a8483d9e6687f10b464c251e5d250bdb2}{Update}} (void)
+\item 
+void \mbox{\hyperlink{class_c_map_object_ad74c98cdc5878539f5196763688126eb}{Draw}} (void)
+\item 
+\Hypertarget{class_c_map_object_a4ff560795fcca3b536ce3a85357ee1bf}\label{class_c_map_object_a4ff560795fcca3b536ce3a85357ee1bf} 
+D3\+DXVECTOR3 {\bfseries Set\+Pos} (D3\+DXVECTOR3 pos)
+\item 
+\Hypertarget{class_c_map_object_aa46c5b94b998b1d6fd2baf0e4ef462b8}\label{class_c_map_object_aa46c5b94b998b1d6fd2baf0e4ef462b8} 
+D3\+DXVECTOR3 {\bfseries Set\+Rot} (D3\+DXVECTOR3 rot)
+\item 
+\Hypertarget{class_c_map_object_a618e67da0ae429cec29707334127a86a}\label{class_c_map_object_a618e67da0ae429cec29707334127a86a} 
+D3\+DXMATRIX {\bfseries Get\+Mtx} (void)
+\item 
+\Hypertarget{class_c_map_object_a3fb4c5f625db7fa58246453dceaa874c}\label{class_c_map_object_a3fb4c5f625db7fa58246453dceaa874c} 
+D3\+DXVECTOR3 {\bfseries Get\+Pos} () const
+\item 
+\Hypertarget{class_c_map_object_a1ecad28f06f6565ba75700f587c77d14}\label{class_c_map_object_a1ecad28f06f6565ba75700f587c77d14} 
+D3\+DXVECTOR3 {\bfseries Get\+Rot} () const
+\item 
+\Hypertarget{class_c_map_object_ac50c240fdff452372e2edf9f3c68bc15}\label{class_c_map_object_ac50c240fdff452372e2edf9f3c68bc15} 
+int {\bfseries Get\+Idx} () const
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_c_object}{CObject}}}
+\begin{DoxyCompactItemize}
+\item 
+{\bfseries CObject} (int n\+Priority=NONE)
+\item 
+void {\bfseries Set\+Obj\+Type} (TYPE type)
+\item 
+TYPE {\bfseries Get\+Obj\+Type} (void)
+\item 
+\mbox{\hyperlink{class_c_object}{CObject}} \texorpdfstring{$\ast$}{*} {\bfseries Get\+Next} (void)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_c_map_object_ac5e337dc5a338861d29f481801e4eef7}\label{class_c_map_object_ac5e337dc5a338861d29f481801e4eef7} 
+static \mbox{\hyperlink{class_c_map_object}{CMap\+Object}} \texorpdfstring{$\ast$}{*} {\bfseries Create} (D3\+DXVECTOR3 pos, D3\+DXVECTOR3 rot, int n\+Idx)
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Member Functions inherited from \mbox{\hyperlink{class_c_object}{CObject}}}
+\begin{DoxyCompactItemize}
+\item 
+static void {\bfseries Release\+All} (void)
+\item 
+static void {\bfseries Update\+All} (void)
+\item 
+static void {\bfseries Draw\+All} (void)
+\item 
+static \mbox{\hyperlink{class_c_object}{CObject}} \texorpdfstring{$\ast$}{*} {\bfseries Get\+Top} (int n\+Priority)
+\item 
+static int {\bfseries Get\+Num\+All} (void)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Public Types inherited from \mbox{\hyperlink{class_c_object}{CObject}}}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_c_object_a7263d5eae1a949d02e262e246152a2c6}\label{class_c_object_a7263d5eae1a949d02e262e246152a2c6} 
+enum {\bfseries TYPE} \{ \newline
+{\bfseries TYPE\+\_\+\+NONE} = 0
+, {\bfseries TYPE\+\_\+\+PLAYER}
+, {\bfseries TYPE\+\_\+\+MESH}
+, {\bfseries TYPE\+\_\+\+BULLET}
+, \newline
+{\bfseries TYPE\+\_\+\+BOSS}
+, {\bfseries TYPE\+\_\+\+ENEMY}
+, {\bfseries TYPE\+\_\+\+BLOCK}
+, {\bfseries TYPE\+\_\+\+PAUSE}
+, \newline
+{\bfseries TYPE\+\_\+\+BARRIER}
+, {\bfseries TYPE\+\_\+\+ITEM}
+, {\bfseries TYPE\+\_\+\+RUBBLE}
+, {\bfseries TYPE\+\_\+\+PILER}
+, \newline
+{\bfseries TYPE\+\_\+\+POINT}
+, {\bfseries TYPE\+\_\+\+MAX}
+ \}
+\item 
+\Hypertarget{class_c_object_a0924032649f7068d08cc5da588adc8d0}\label{class_c_object_a0924032649f7068d08cc5da588adc8d0} 
+enum {\bfseries PRIORITY} \{ \newline
+{\bfseries NONE}
+, {\bfseries MESH}
+, {\bfseries BASENUMBER}
+, {\bfseries MODELOBJECT}
+, \newline
+{\bfseries BULLET}
+, {\bfseries SHADOW}
+, {\bfseries IMPACT}
+, {\bfseries CHARACTOR}
+, \newline
+{\bfseries BILLBOARD}
+, {\bfseries EFFECT}
+, {\bfseries UI}
+, {\bfseries PAUSE}
+, \newline
+{\bfseries PRIORITY\+\_\+\+MAX}
+ \}
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Member Functions inherited from \mbox{\hyperlink{class_c_object}{CObject}}}
+\begin{DoxyCompactItemize}
+\item 
+void {\bfseries Release} (void)
+\end{DoxyCompactItemize}
+
+
+\label{doc-func-members}
+\Hypertarget{class_c_map_object_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_c_map_object_ad74c98cdc5878539f5196763688126eb}\index{CMapObject@{CMapObject}!Draw@{Draw}}
+\index{Draw@{Draw}!CMapObject@{CMapObject}}
+\doxysubsubsection{\texorpdfstring{Draw()}{Draw()}}
+{\footnotesize\ttfamily \label{class_c_map_object_ad74c98cdc5878539f5196763688126eb} 
+void CMap\+Object\+::\+Draw (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{class_c_object}{CObject}}.
+
+\Hypertarget{class_c_map_object_a897de243fc8003c82c1c1a2b7ef740bb}\index{CMapObject@{CMapObject}!Init@{Init}}
+\index{Init@{Init}!CMapObject@{CMapObject}}
+\doxysubsubsection{\texorpdfstring{Init()}{Init()}}
+{\footnotesize\ttfamily \label{class_c_map_object_a897de243fc8003c82c1c1a2b7ef740bb} 
+HRESULT CMap\+Object\+::\+Init (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{class_c_object}{CObject}}.
+
+\Hypertarget{class_c_map_object_ab97bdc3934426233a54f7b6061421e0a}\index{CMapObject@{CMapObject}!Uninit@{Uninit}}
+\index{Uninit@{Uninit}!CMapObject@{CMapObject}}
+\doxysubsubsection{\texorpdfstring{Uninit()}{Uninit()}}
+{\footnotesize\ttfamily \label{class_c_map_object_ab97bdc3934426233a54f7b6061421e0a} 
+void CMap\+Object\+::\+Uninit (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{class_c_object}{CObject}}.
+
+\Hypertarget{class_c_map_object_a8483d9e6687f10b464c251e5d250bdb2}\index{CMapObject@{CMapObject}!Update@{Update}}
+\index{Update@{Update}!CMapObject@{CMapObject}}
+\doxysubsubsection{\texorpdfstring{Update()}{Update()}}
+{\footnotesize\ttfamily \label{class_c_map_object_a8483d9e6687f10b464c251e5d250bdb2} 
+void CMap\+Object\+::\+Update (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{class_c_object}{CObject}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+mapobject.\+h\item 
+mapobject.\+cpp\end{DoxyCompactItemize}

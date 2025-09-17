@@ -1,0 +1,84 @@
+\doxysection{CModel Class Reference}
+\hypertarget{class_c_model}{}\label{class_c_model}\index{CModel@{CModel}}
+\doxysubsubsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_c_model_ad02e30dea151edf770f6d65c30270077}\label{class_c_model_ad02e30dea151edf770f6d65c30270077} 
+enum {\bfseries PARTTYPE} \{ \newline
+{\bfseries PARTTYPE\+\_\+\+NONE}
+, {\bfseries PARTTYPE\+\_\+\+HEAD}
+, {\bfseries PARTTYPE\+\_\+\+CHEST}
+, {\bfseries PARTTYPE\+\_\+\+LEFT\+\_\+\+HAND}
+, \newline
+{\bfseries PARTTYPE\+\_\+\+RIGHT\+\_\+\+HAND}
+, {\bfseries PARTTYPE\+\_\+\+LEFT\+\_\+\+LEG}
+, {\bfseries PARTTYPE\+\_\+\+RIGHT\+\_\+\+LEG}
+, {\bfseries PARTTYPE\+\_\+\+WEAPON}
+, \newline
+{\bfseries PARTTYPE\+\_\+\+FOOT}
+, {\bfseries PARTTYPE\+\_\+\+MAX}
+ \}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_c_model_ad3c8aa24a14e8d904858cef672dffd32}\label{class_c_model_ad3c8aa24a14e8d904858cef672dffd32} 
+HRESULT {\bfseries Init} (D3\+DXVECTOR3 pos, D3\+DXVECTOR3 rot, const char \texorpdfstring{$\ast$}{*}p\+Filename)
+\item 
+\Hypertarget{class_c_model_a8433e976142d40bfd1c813f3ffdb3e49}\label{class_c_model_a8433e976142d40bfd1c813f3ffdb3e49} 
+void {\bfseries Uninit} (void)
+\item 
+\Hypertarget{class_c_model_a2d0094db1cdd383a7e3da8b1e8180ba1}\label{class_c_model_a2d0094db1cdd383a7e3da8b1e8180ba1} 
+void {\bfseries Update} (void)
+\item 
+\Hypertarget{class_c_model_abb642a603fbfed34b6c1e46488c753aa}\label{class_c_model_abb642a603fbfed34b6c1e46488c753aa} 
+void {\bfseries Draw} (void)
+\item 
+\Hypertarget{class_c_model_add261e5e13c9bed3316369733ebd6a00}\label{class_c_model_add261e5e13c9bed3316369733ebd6a00} 
+void {\bfseries Set\+Parent} (\mbox{\hyperlink{class_c_model}{CModel}} \texorpdfstring{$\ast$}{*}p\+Model)
+\item 
+\Hypertarget{class_c_model_a2322e52ab8e33ace03aedabb2ff23f0f}\label{class_c_model_a2322e52ab8e33ace03aedabb2ff23f0f} 
+void {\bfseries Set\+Pos} (D3\+DXVECTOR3 pos)
+\item 
+\Hypertarget{class_c_model_aad19e7237a69eacd389da660a8023cac}\label{class_c_model_aad19e7237a69eacd389da660a8023cac} 
+void {\bfseries Set\+Rot} (D3\+DXVECTOR3 rot)
+\item 
+\Hypertarget{class_c_model_ae8e4c15d60d9f8c67daf7ac139c6726a}\label{class_c_model_ae8e4c15d60d9f8c67daf7ac139c6726a} 
+void {\bfseries Off\+Set\+Pos} (D3\+DXVECTOR3 offpos)
+\item 
+\Hypertarget{class_c_model_a43dd8894ae4976b6b98826800d0f8458}\label{class_c_model_a43dd8894ae4976b6b98826800d0f8458} 
+void {\bfseries Off\+Set\+Rot} (D3\+DXVECTOR3 offrot)
+\item 
+\Hypertarget{class_c_model_a1e0b9bf9f021308581ab29cb7966d8d7}\label{class_c_model_a1e0b9bf9f021308581ab29cb7966d8d7} 
+void {\bfseries Set\+Part\+Type} (PARTTYPE n\+Dest\+Part\+Type)
+\item 
+\Hypertarget{class_c_model_a8bbc5993a2cdf12596ff03e6590493a6}\label{class_c_model_a8bbc5993a2cdf12596ff03e6590493a6} 
+D3\+DXMATRIX {\bfseries Get\+Mtx\+World} (void)
+\item 
+\Hypertarget{class_c_model_a048a750af70580d886ecd3ffc73bc3ba}\label{class_c_model_a048a750af70580d886ecd3ffc73bc3ba} 
+PARTTYPE {\bfseries Get\+Part\+Type} (void) const
+\item 
+\Hypertarget{class_c_model_a67ace07ce188c394c2430e8a845cc336}\label{class_c_model_a67ace07ce188c394c2430e8a845cc336} 
+bool {\bfseries Is\+Player} () const
+\item 
+\Hypertarget{class_c_model_aba4c876fbe6a2102ea9ad6be42db5e93}\label{class_c_model_aba4c876fbe6a2102ea9ad6be42db5e93} 
+bool {\bfseries Is\+Boss} () const
+\item 
+\Hypertarget{class_c_model_adfb6cba0c47579a2660b8dc4775d9540}\label{class_c_model_adfb6cba0c47579a2660b8dc4775d9540} 
+void {\bfseries Set\+Is\+Boss} (bool flag)
+\item 
+\Hypertarget{class_c_model_a07d35bdc0c2df6e56ec878acab093cea}\label{class_c_model_a07d35bdc0c2df6e56ec878acab093cea} 
+void {\bfseries Set\+Is\+Player} (bool flag)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_c_model_acb580c3ded105fcbf5660d15d2a801ee}\label{class_c_model_acb580c3ded105fcbf5660d15d2a801ee} 
+static \mbox{\hyperlink{class_c_model}{CModel}} \texorpdfstring{$\ast$}{*} {\bfseries Create} (D3\+DXVECTOR3 pos, D3\+DXVECTOR3 rot, const char \texorpdfstring{$\ast$}{*}p\+Filename)
+\end{DoxyCompactItemize}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+model.\+h\item 
+model.\+cpp\end{DoxyCompactItemize}

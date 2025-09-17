@@ -1,0 +1,69 @@
+\doxysection{object3\+D.\+h}
+\hypertarget{object3_d_8h_source}{}\label{object3_d_8h_source}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{//====================================}}
+\DoxyCodeLine{00002\ \textcolor{comment}{//}}
+\DoxyCodeLine{00003\ \textcolor{comment}{//\ 3Dオブジェクト処理\ [\ object3D.h\ ]}}
+\DoxyCodeLine{00004\ \textcolor{comment}{//\ Author:\ Asuma\ Nishio}}
+\DoxyCodeLine{00005\ \textcolor{comment}{//}}
+\DoxyCodeLine{00006\ \textcolor{comment}{//=====================================}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#ifndef\ \_OBJECT3D\_H\_\ }\textcolor{comment}{//\ このソ}クロ定義がされてなかったら}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#define\ \_OBJECT3D\_H\_\ }\textcolor{comment}{//\ 2重インクルード防蚕string~のソ}クロ定義}}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00011\ \textcolor{comment}{//**********************}}
+\DoxyCodeLine{00012\ \textcolor{comment}{//\ インクルードファイル}}
+\DoxyCodeLine{00013\ \textcolor{comment}{//**********************}}
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#include\ "{}object.h"{}}}
+\DoxyCodeLine{00015\ }
+\DoxyCodeLine{00016\ \textcolor{comment}{//*******************************}}
+\DoxyCodeLine{00017\ \textcolor{comment}{//\ オブジェクト3Dクラスを定義}}
+\DoxyCodeLine{00018\ \textcolor{comment}{//*******************************}}
+\DoxyCodeLine{00019\ \textcolor{keyword}{class\ }CObject3D\ :\ \textcolor{keyword}{public}\ CObject}
+\DoxyCodeLine{00020\ \{\ }
+\DoxyCodeLine{00021\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00022\ \ \ \ \ \textcolor{comment}{//\ コンストラクソstring^・デストラクソstring^}}
+\DoxyCodeLine{00023\ \ \ \ \ CObject3D(\textcolor{keywordtype}{int}\ nPriority\ =\ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{int}\textcolor{keyword}{>}(CObject::PRIORITY::BASENUMBER));}
+\DoxyCodeLine{00024\ \ \ \ \ \string~CObject3D();}
+\DoxyCodeLine{00025\ }
+\DoxyCodeLine{00026\ \ \ \ \ \textcolor{comment}{//\ メンバ関数}}
+\DoxyCodeLine{00027\ \ \ \ \ HRESULT\ Init(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00028\ \ \ \ \ \textcolor{keywordtype}{void}\ Uninit(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00029\ \ \ \ \ \textcolor{keywordtype}{void}\ Update(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00030\ \ \ \ \ \textcolor{keywordtype}{void}\ Draw(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00031\ }
+\DoxyCodeLine{00032\ \ \ \ \ \textcolor{comment}{//\ セッソstring^ー}}
+\DoxyCodeLine{00033\ \ \ \ \ \textcolor{keywordtype}{void}\ SetPos(D3DXVECTOR3\ pos)\ \{\ m\_pos\ =\ pos;\ \}}
+\DoxyCodeLine{00034\ \ \ \ \ \textcolor{keywordtype}{void}\ SetRot(D3DXVECTOR3\ rot)\ \{\ m\_rot\ =\ rot;\ \}}
+\DoxyCodeLine{00035\ \ \ \ \ \textcolor{keywordtype}{void}\ SetCol(D3DXCOLOR\ col)\ \{\ m\_col\ =\ col;\}}
+\DoxyCodeLine{00036\ \ \ \ \ \textcolor{keywordtype}{void}\ SetSize(\textcolor{keywordtype}{float}\ fWidth,\ \textcolor{keywordtype}{float}\ fHeight)\ \{\ m\_fWidth\ =\ fWidth,\ m\_fHeight\ =\ fHeight;\ \}}
+\DoxyCodeLine{00037\ \ \ \ \ \textcolor{keywordtype}{void}\ SetTexture(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00038\ }
+\DoxyCodeLine{00039\ \ \ \ \ \textcolor{comment}{//\ ゲッソstring^ー}}
+\DoxyCodeLine{00040\ \ \ \ \ D3DXVECTOR3\ GetPos(\textcolor{keywordtype}{void})\ \{\ \textcolor{keywordflow}{return}\ m\_pos;\ \}}
+\DoxyCodeLine{00041\ \ \ \ \ D3DXVECTOR3\ GetRot(\textcolor{keywordtype}{void})\ \{\ \textcolor{keywordflow}{return}\ m\_rot;\ \}}
+\DoxyCodeLine{00042\ \ \ \ \ D3DXCOLOR\ GetCol(\textcolor{keywordtype}{void})\ \{\ \textcolor{keywordflow}{return}\ m\_col;\ \}}
+\DoxyCodeLine{00043\ \ \ \ \ \textcolor{keywordtype}{float}\ GetWidth(\textcolor{keywordtype}{void})\ \{\ \textcolor{keywordflow}{return}\ m\_fWidth;\ \}}
+\DoxyCodeLine{00044\ \ \ \ \ \textcolor{keywordtype}{float}\ Getheight(\textcolor{keywordtype}{void})\ \{\ \textcolor{keywordflow}{return}\ m\_fHeight;\ \}}
+\DoxyCodeLine{00045\ }
+\DoxyCodeLine{00046\ \ \ \ \ \textcolor{keywordtype}{float}\ GetHeight(D3DXVECTOR3\ pos);}
+\DoxyCodeLine{00047\ }
+\DoxyCodeLine{00048\ \ \ \ \ \textcolor{comment}{//\ 静的メンバ関数}}
+\DoxyCodeLine{00049\ \ \ \ \ \textcolor{keyword}{static}\ CObject3D*\ Create(D3DXVECTOR3\ pos);}
+\DoxyCodeLine{00050\ }
+\DoxyCodeLine{00051\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00052\ \ \ \ \ LPDIRECT3DVERTEXBUFFER9\ m\_pVtxBuff;\ \ \ \ \ \textcolor{comment}{//\ 頂貼_バッファ}}
+\DoxyCodeLine{00053\ \ \ \ \ D3DXMATRIX\ m\_mtxWorld;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ ワールドソ}トリックス}}
+\DoxyCodeLine{00054\ \ \ \ \ \textcolor{keywordtype}{int}\ m\_nIdxTexture;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ テクスチャインデックス}}
+\DoxyCodeLine{00055\ }
+\DoxyCodeLine{00056\ \ \ \ \ D3DXVECTOR3\ m\_rot;\ \ \textcolor{comment}{//\ 角度情報}}
+\DoxyCodeLine{00057\ \ \ \ \ D3DXVECTOR3\ m\_pos;\ \ \textcolor{comment}{//\ 座標情報}}
+\DoxyCodeLine{00058\ \ \ \ \ D3DXCOLOR\ m\_col;\ \ \ \ \textcolor{comment}{//\ 色情報}}
+\DoxyCodeLine{00059\ }
+\DoxyCodeLine{00060\ \ \ \ \ \textcolor{keywordtype}{float}\ m\_fWidth;\ \ \ \ \ \textcolor{comment}{//\ 横幅}}
+\DoxyCodeLine{00061\ \ \ \ \ \textcolor{keywordtype}{float}\ m\_fHeight;\ \ \ \ \textcolor{comment}{//\ 高さ}}
+\DoxyCodeLine{00062\ \};}
+\DoxyCodeLine{00063\ }
+\DoxyCodeLine{00064\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

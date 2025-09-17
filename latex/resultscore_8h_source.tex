@@ -1,0 +1,87 @@
+\doxysection{resultscore.\+h}
+\hypertarget{resultscore_8h_source}{}\label{resultscore_8h_source}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{//=======================================}}
+\DoxyCodeLine{00002\ \textcolor{comment}{//}}
+\DoxyCodeLine{00003\ \textcolor{comment}{//\ リザルトスコア処理\ [\ resultscore.h\ ]}}
+\DoxyCodeLine{00004\ \textcolor{comment}{//\ Author:\ Asuma\ Nishio}}
+\DoxyCodeLine{00005\ \textcolor{comment}{//\ }}
+\DoxyCodeLine{00006\ \textcolor{comment}{//=======================================}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#ifndef\ \_RESULTSCORE\_H\_\ }\textcolor{comment}{//\ このソ}クロ定義がされてなかったら}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#define\ \_RESULTSCORE\_H\_\ }\textcolor{comment}{//\ 2重インクルード防蚕string~のソ}クロ定義}}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00011\ \textcolor{comment}{//**********************}}
+\DoxyCodeLine{00012\ \textcolor{comment}{//\ インクルードファイル}}
+\DoxyCodeLine{00013\ \textcolor{comment}{//**********************}}
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#include\ "{}number.h"{}}}
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#include\ "{}object.h"{}}}
+\DoxyCodeLine{00016\ }
+\DoxyCodeLine{00017\ \textcolor{comment}{//****************************}}
+\DoxyCodeLine{00018\ \textcolor{comment}{//\ リザルトスコアクラスを定義}}
+\DoxyCodeLine{00019\ \textcolor{comment}{//****************************}}
+\DoxyCodeLine{00020\ \textcolor{keyword}{class\ }CResultScore\ :\ \textcolor{keyword}{public}\ CObject}
+\DoxyCodeLine{00021\ \{}
+\DoxyCodeLine{00022\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00023\ \ \ \ \ \textcolor{comment}{//****************************}}
+\DoxyCodeLine{00024\ \ \ \ \ \textcolor{comment}{//\ 種類定義}}
+\DoxyCodeLine{00025\ \ \ \ \ \textcolor{comment}{//****************************}}
+\DoxyCodeLine{00026\ \ \ \ \ \textcolor{keyword}{enum}\ TYPE}
+\DoxyCodeLine{00027\ \ \ \ \ \{}
+\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ SCORE\_GAME,}
+\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ SCORE\_TIME,}
+\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ SCORE\_LAST,}
+\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ SCORE\_MAX}
+\DoxyCodeLine{00032\ \ \ \ \ \};}
+\DoxyCodeLine{00033\ }
+\DoxyCodeLine{00034\ \ \ \ \ \textcolor{comment}{//\ コンストラクソstring^・デストラクソstring^}}
+\DoxyCodeLine{00035\ \ \ \ \ CResultScore(\textcolor{keywordtype}{int}\ nPriority\ =\ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{int}\textcolor{keyword}{>}(CObject::PRIORITY::UI));}
+\DoxyCodeLine{00036\ \ \ \ \ \string~CResultScore();}
+\DoxyCodeLine{00037\ }
+\DoxyCodeLine{00038\ \ \ \ \ \textcolor{comment}{//\ メンバ関数}}
+\DoxyCodeLine{00039\ \ \ \ \ HRESULT\ Init(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00040\ \ \ \ \ \textcolor{keywordtype}{void}\ Uninit(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00041\ \ \ \ \ \textcolor{keywordtype}{void}\ Update(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00042\ \ \ \ \ \textcolor{keywordtype}{void}\ Draw(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00043\ \ \ \ \ \textcolor{keywordtype}{void}\ Save(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00044\ }
+\DoxyCodeLine{00045\ \ \ \ \ \textcolor{comment}{//\ セッソstring^ー}}
+\DoxyCodeLine{00046\ \ \ \ \ \textcolor{keywordtype}{void}\ SetTexture(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00047\ \ \ \ \ \textcolor{keywordtype}{void}\ SetScore(\textcolor{keywordtype}{int}\ nResultValue)\ \{\ m\_nScore\ =\ nResultValue;\ \}}
+\DoxyCodeLine{00048\ \ \ \ \ \textcolor{keywordtype}{void}\ SetTimeScore(\textcolor{keywordtype}{int}\ nResultValue)\ \{\ m\_nTimeScore\ =\ nResultValue;\ \}}
+\DoxyCodeLine{00049\ \ \ \ \ \textcolor{keywordtype}{void}\ SetLastScore(\textcolor{keywordtype}{int}\ nResultValue,\ \textcolor{keywordtype}{int}\ nResultValue1)\ \{\ m\_nLastScore\ =\ nResultValue\ +\ nResultValue1;\ \}}
+\DoxyCodeLine{00050\ }
+\DoxyCodeLine{00051\ \ \ \ \ \textcolor{keywordtype}{int}\ MathTimescore(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00052\ }
+\DoxyCodeLine{00053\ \ \ \ \ \textcolor{comment}{//\ 静的メンバ関数}}
+\DoxyCodeLine{00054\ \ \ \ \ \textcolor{keyword}{static}\ CResultScore*\ Create(D3DXVECTOR3\ pos,\ \textcolor{keywordtype}{float}\ fWidth,\ \textcolor{keywordtype}{float}\ fHeight,\textcolor{keywordtype}{int}\ nType);}
+\DoxyCodeLine{00055\ }
+\DoxyCodeLine{00056\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00057\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{int}\ NUM\_RESULTSCORE\ =\ 5;\ \textcolor{comment}{//\ 桁数}}
+\DoxyCodeLine{00058\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{int}\ NUM\_RESULTDIGIT\ =\ 10;\ \textcolor{comment}{//\ 表(\backslash\)示する分割桁数の値}}
+\DoxyCodeLine{00059\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{int}\ NUM\_SAVESCORE\ =\ 5;}
+\DoxyCodeLine{00060\ }
+\DoxyCodeLine{00061\ \ \ \ \ \textcolor{keywordtype}{int}\ m\_nScore;\ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ スコア保持用}}
+\DoxyCodeLine{00062\ \ \ \ \ \textcolor{keywordtype}{int}\ m\_nDestScore;\ \ \ \ \ \ \ \textcolor{comment}{//\ 目的のスコア}}
+\DoxyCodeLine{00063\ \ \ \ \ \textcolor{keywordtype}{int}\ m\_nTimeScore;\ \ \ \ \ \ \ \textcolor{comment}{//\ 時間のスコア}}
+\DoxyCodeLine{00064\ \ \ \ \ \textcolor{keywordtype}{int}\ m\_nDestTimeScore;\ \ \ \textcolor{comment}{//\ 目的のソstring^イムスコア}}
+\DoxyCodeLine{00065\ \ \ \ \ \textcolor{keywordtype}{int}\ m\_nLastScore;\ \ \ \ \ \ \ \textcolor{comment}{//\ 最終保存スコア}}
+\DoxyCodeLine{00066\ \ \ \ \ \textcolor{keywordtype}{int}\ m\_nDestLastScore;\ \ \ \textcolor{comment}{//\ 目的の最終スコア}}
+\DoxyCodeLine{00067\ \ \ \ \ \textcolor{keywordtype}{int}\ m\_nType;\ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 種類}}
+\DoxyCodeLine{00068\ }
+\DoxyCodeLine{00069\ \ \ \ \ \mbox{\hyperlink{class_c_number}{CNumber}}*\ m\_apNumber[NUM\_RESULTSCORE];\ \ \ \ \textcolor{comment}{//\ 桁数分のナンバーのポインソstring^}}
+\DoxyCodeLine{00070\ \ \ \ \ D3DXVECTOR3\ m\_pos;\ \ \ \ \ \ \textcolor{comment}{//\ 座標}}
+\DoxyCodeLine{00071\ \ \ \ \ D3DXVECTOR3\ m\_DestPos;\ \ \textcolor{comment}{//\ 目的の座標}}
+\DoxyCodeLine{00072\ \ \ \ \ \textcolor{keywordtype}{float}\ m\_fWidth;\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 横幅}}
+\DoxyCodeLine{00073\ \ \ \ \ \textcolor{keywordtype}{float}\ m\_fHeight;\ \ \ \ \ \ \ \ \textcolor{comment}{//\ 高さ}}
+\DoxyCodeLine{00074\ }
+\DoxyCodeLine{00075\ \ \ \ \ \textcolor{keywordtype}{float}\ m\_fScale;\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 現在の拡縮能{率}}
+\DoxyCodeLine{00076\ \ \ \ \ \textcolor{keywordtype}{float}\ m\_fTargetScale;\ \ \ \textcolor{comment}{//\ 最終的な拡縮能{率}}
+\DoxyCodeLine{00077\ \ \ \ \ \textcolor{keywordtype}{float}\ m\_fScaleSpeed;\ \ \ \ \textcolor{comment}{//\ 縮小スピード}}
+\DoxyCodeLine{00078\ }
+\DoxyCodeLine{00079\ \ \ \ \ \textcolor{keywordtype}{int}\ m\_nIdxTexture;\ \ \ \ \ \ \textcolor{comment}{//\ テクスチャインデックス}}
+\DoxyCodeLine{00080\ \};}
+\DoxyCodeLine{00081\ }
+\DoxyCodeLine{00082\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

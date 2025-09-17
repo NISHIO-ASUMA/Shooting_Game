@@ -1,0 +1,82 @@
+\doxysection{renderer.\+h}
+\hypertarget{renderer_8h_source}{}\label{renderer_8h_source}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{//=====================================}}
+\DoxyCodeLine{00002\ \textcolor{comment}{//}}
+\DoxyCodeLine{00003\ \textcolor{comment}{//\ レンソ_リング処理\ [\ renderer.h\ ]}}
+\DoxyCodeLine{00004\ \textcolor{comment}{//\ Author:\ Asuma\ Nishio}}
+\DoxyCodeLine{00005\ \textcolor{comment}{//}}
+\DoxyCodeLine{00006\ \textcolor{comment}{//=====================================}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#ifndef\ \_RENDERER\_H\_\ }\textcolor{comment}{//\ このソ}クロ定義がされてなかったら}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#define\ \_RENDERER\_H\_\ }\textcolor{comment}{//\ 2重インクルード防蚕string~のソ}クロ定義}}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00011\ \textcolor{comment}{//**********************}}
+\DoxyCodeLine{00012\ \textcolor{comment}{//\ インクルードファイル}}
+\DoxyCodeLine{00013\ \textcolor{comment}{//**********************}}
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#include\ "{}debugproc.h"{}}}
+\DoxyCodeLine{00015\ }
+\DoxyCodeLine{00016\ \textcolor{comment}{//*************************}}
+\DoxyCodeLine{00017\ \textcolor{comment}{//\ レンソ_ラークラスを定義}}
+\DoxyCodeLine{00018\ \textcolor{comment}{//*************************}}
+\DoxyCodeLine{00019\ \textcolor{keyword}{class\ }CRenderer}
+\DoxyCodeLine{00020\ \{}
+\DoxyCodeLine{00021\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00022\ \ \ \ \ \textcolor{comment}{//\ コンストラクソstring^・デストラクソstring^}}
+\DoxyCodeLine{00023\ \ \ \ \ CRenderer();}
+\DoxyCodeLine{00024\ \ \ \ \ \string~CRenderer();}
+\DoxyCodeLine{00025\ }
+\DoxyCodeLine{00026\ \ \ \ \ \textcolor{comment}{//\ メンバ関数}}
+\DoxyCodeLine{00027\ \ \ \ \ HRESULT\ Init(HWND\ hWnd,\ BOOL\ bWindow);}
+\DoxyCodeLine{00028\ \ \ \ \ \textcolor{keywordtype}{void}\ Uninit(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00029\ \ \ \ \ \textcolor{keywordtype}{void}\ Update(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00030\ \ \ \ \ \textcolor{keywordtype}{void}\ Draw(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00031\ \ \ \ \ \textcolor{keywordtype}{void}\ OnWireFrame();}
+\DoxyCodeLine{00032\ \ \ \ \ \textcolor{keywordtype}{void}\ OffWireFrame();}
+\DoxyCodeLine{00033\ \ \ \ \ \textcolor{keywordtype}{void}\ ChangeTarget(D3DXVECTOR3\ posV,\ D3DXVECTOR3\ posR,\ D3DXVECTOR3\ vecU);}
+\DoxyCodeLine{00034\ }
+\DoxyCodeLine{00035\ \ \ \ \ \textcolor{comment}{//\ セッソstring^ー}}
+\DoxyCodeLine{00036\ \ \ \ \ \textcolor{keywordtype}{void}\ SetSize(UINT\ uWidth,\ UINT\ uHeight)\ \{\ m\_Width\ =\ uWidth,\ m\_Height\ =\ uHeight;\ \}}
+\DoxyCodeLine{00037\ \ \ \ \ \textcolor{keywordtype}{void}\ SetBuller(\textcolor{keywordtype}{bool}\ isBuller,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ nMaxbullerTime);}
+\DoxyCodeLine{00038\ }
+\DoxyCodeLine{00039\ \ \ \ \ \textcolor{comment}{//\ ゲッソstring^ー}}
+\DoxyCodeLine{00040\ \ \ \ \ LPDIRECT3DDEVICE9\ GetDevice(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00041\ \ \ \ \ UINT\ GetWidth(\textcolor{keywordtype}{void})\ \{\ \textcolor{keywordflow}{return}\ m\_Width;\ \}}
+\DoxyCodeLine{00042\ \ \ \ \ UINT\ GetHeight(\textcolor{keywordtype}{void})\ \{\ \textcolor{keywordflow}{return}\ m\_Height;\ \}}
+\DoxyCodeLine{00043\ \ \ \ \ LPDIRECT3DTEXTURE9\ GetTextureFeedMT(\textcolor{keywordtype}{void})\ \{\ \textcolor{keywordflow}{return}\ m\_apTextureMT[0];\ \}}
+\DoxyCodeLine{00044\ \ \ \ \ \textcolor{keywordtype}{bool}\ GetBuller(\textcolor{keywordtype}{void})\ \{\ \textcolor{keywordflow}{return}\ m\_isbuller;\ \}}
+\DoxyCodeLine{00045\ }
+\DoxyCodeLine{00046\ \ \ \ \ \textcolor{comment}{//\ 静的メンバ関数}}
+\DoxyCodeLine{00047\ \ \ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{class_c_debugproc}{CDebugproc}}*\ GetDebug(\textcolor{keywordtype}{void})\ \{\ \textcolor{keywordflow}{return}\ m\_pDebug;\ \}}
+\DoxyCodeLine{00048\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ GetFps(\textcolor{keywordtype}{int}\ nFps);}
+\DoxyCodeLine{00049\ }
+\DoxyCodeLine{00050\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00051\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{inline}\ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{int}\ NUM\_FEEDBACKPOLYGON\ =\ 2;\ \textcolor{comment}{//\ フィードバック用ポリゴン}}
+\DoxyCodeLine{00052\ }
+\DoxyCodeLine{00053\ \ \ \ \ LPDIRECT3D9\ m\_pD3D;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Direct3Dオブジェクトへのポインソstring^}}
+\DoxyCodeLine{00054\ \ \ \ \ LPDIRECT3DDEVICE9\ m\_pD3DDevice;\ \ \ \ \ \textcolor{comment}{//\ Direct3Dデバイスへのポインソstring^}}
+\DoxyCodeLine{00055\ \ \ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{class_c_debugproc}{CDebugproc}}*\ m\_pDebug;\ \ \ \ \ \ \textcolor{comment}{//\ デバッグ}}
+\DoxyCodeLine{00056\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{int}\ m\_fps;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ fps}}
+\DoxyCodeLine{00057\ \ \ \ \ \textcolor{keywordtype}{int}\ m\_nBullerTime;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 継続時間}}
+\DoxyCodeLine{00058\ \ \ \ \ \textcolor{keywordtype}{bool}\ m\_isDeviceLost;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ デバイスロスト対処}}
+\DoxyCodeLine{00059\ \ \ \ \ \textcolor{keywordtype}{bool}\ m\_isbuller;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ ブラーかどうか}}
+\DoxyCodeLine{00060\ }
+\DoxyCodeLine{00061\ \ \ \ \ D3DPRESENT\_PARAMETERS\ m\_d3dpp;}
+\DoxyCodeLine{00062\ \ \ \ \ UINT\ m\_Width;}
+\DoxyCodeLine{00063\ \ \ \ \ UINT\ m\_Height;}
+\DoxyCodeLine{00064\ }
+\DoxyCodeLine{00065\ \ \ \ \ LPDIRECT3DSURFACE9\ m\_pRenderDef;\ \textcolor{comment}{//\ ソ}ルチソstring^ーゲットレンソ_リング用インソstring^ーフェース保存用}}
+\DoxyCodeLine{00066\ \ \ \ \ LPDIRECT3DSURFACE9\ m\_pZBuffDef;\ \ \textcolor{comment}{//\ ソ}ルチソstring^ーゲットレンソ_リング用Zバッファ保存用}}
+\DoxyCodeLine{00067\ }
+\DoxyCodeLine{00068\ \ \ \ \ LPDIRECT3DTEXTURE9\ m\_apTextureMT[NUM\_FEEDBACKPOLYGON];\ \textcolor{comment}{//\ レンソ_リングソstring^ーゲット用テクスチャ}}
+\DoxyCodeLine{00069\ \ \ \ \ LPDIRECT3DSURFACE9\ m\_apRenderMT[NUM\_FEEDBACKPOLYGON];\ \ \ \ \textcolor{comment}{//\ テクスチャレンソ_リング用インソstring^ーフェース}}
+\DoxyCodeLine{00070\ \ \ \ \ LPDIRECT3DSURFACE9\ m\_pZBuffMT;\ \ \ \textcolor{comment}{//\ テクスチャレンソ_リング用Zバッファ}}
+\DoxyCodeLine{00071\ \ \ \ \ D3DVIEWPORT9\ m\_viewportMT;\ \ \ \ \ \ \ \textcolor{comment}{//\ テクスチャレンソ_リング用ビューポート}}
+\DoxyCodeLine{00072\ }
+\DoxyCodeLine{00073\ \ \ \ \ LPDIRECT3DVERTEXBUFFER9\ m\_pVtxMT;\ \ \textcolor{comment}{//\ ポリゴン用頂貼_バッファ}}
+\DoxyCodeLine{00074\ }
+\DoxyCodeLine{00075\ \};}
+\DoxyCodeLine{00076\ }
+\DoxyCodeLine{00077\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

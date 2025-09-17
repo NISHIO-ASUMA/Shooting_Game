@@ -1,0 +1,36 @@
+\doxysection{sceneloader.\+h}
+\hypertarget{sceneloader_8h_source}{}\label{sceneloader_8h_source}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{//====================================================}}
+\DoxyCodeLine{00002\ \textcolor{comment}{//}}
+\DoxyCodeLine{00003\ \textcolor{comment}{//\ シーンファイル読み込み処理\ [\ sceneloader.h\ ]}}
+\DoxyCodeLine{00004\ \textcolor{comment}{//\ Author:\ Asuma\ Nishio}}
+\DoxyCodeLine{00005\ \textcolor{comment}{//}}
+\DoxyCodeLine{00006\ \textcolor{comment}{//====================================================}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \textcolor{comment}{//**********************************}}
+\DoxyCodeLine{00009\ \textcolor{comment}{//\ スクリプトファイル読み込み処理}}
+\DoxyCodeLine{00010\ \textcolor{comment}{//**********************************}}
+\DoxyCodeLine{00011\ \textcolor{keyword}{class\ }CSceneLoader}
+\DoxyCodeLine{00012\ \{}
+\DoxyCodeLine{00013\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00014\ \ \ \ \ \textcolor{comment}{//\ コンストラクソstring^・デストラクソstring^}}
+\DoxyCodeLine{00015\ \ \ \ \ CSceneLoader();}
+\DoxyCodeLine{00016\ \ \ \ \ \string~CSceneLoader();}
+\DoxyCodeLine{00017\ }
+\DoxyCodeLine{00018\ \ \ \ \ \textcolor{comment}{//\ 静的メンバ関数}}
+\DoxyCodeLine{00019\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ SplitLoad(\textcolor{keywordtype}{int}\ nIdx);}
+\DoxyCodeLine{00020\ }
+\DoxyCodeLine{00021\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00022\ }
+\DoxyCodeLine{00023\ \ \ \ \ \textcolor{comment}{//\ ファイルリスト}}
+\DoxyCodeLine{00024\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ m\_aFileList[]\ =\ }
+\DoxyCodeLine{00025\ \ \ \ \ \{}
+\DoxyCodeLine{00026\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}data\(\backslash\)\(\backslash\)SceneText\(\backslash\)\(\backslash\)TitleObj.txt"{}},\textcolor{comment}{//\ [0]\ ソstring^イトル}}
+\DoxyCodeLine{00027\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}data\(\backslash\)\(\backslash\)SceneText\(\backslash\)\(\backslash\)TutoObj.txt"{}},\ \textcolor{comment}{//\ [1]\ チュートリアル}}
+\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}data\(\backslash\)\(\backslash\)SceneText\(\backslash\)\(\backslash\)GameObj.txt"{}},\ \textcolor{comment}{//\ [2]\ ゲーム}}
+\DoxyCodeLine{00029\ \ \ \ \ \};}
+\DoxyCodeLine{00030\ \};}
+\DoxyCodeLine{00031\ }
+
+\end{DoxyCode}

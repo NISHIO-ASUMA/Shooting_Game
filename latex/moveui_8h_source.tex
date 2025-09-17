@@ -1,0 +1,58 @@
+\doxysection{moveui.\+h}
+\hypertarget{moveui_8h_source}{}\label{moveui_8h_source}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{//==============================================================}}
+\DoxyCodeLine{00002\ \textcolor{comment}{//}}
+\DoxyCodeLine{00003\ \textcolor{comment}{//\ カメラアニメーション時に適用するUI処理\ [\ moveui.h\ ]}}
+\DoxyCodeLine{00004\ \textcolor{comment}{//\ Author:\ Asuma\ Nishio}}
+\DoxyCodeLine{00005\ \textcolor{comment}{//}}
+\DoxyCodeLine{00006\ \textcolor{comment}{//==============================================================}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#ifndef\ \_MOVEUI\_H\_\ }\textcolor{comment}{//\ このソ}クロ定義がされてなかったら}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#define\ \_MOVEUI\_H\_\ }\textcolor{comment}{//\ 2重インクルード防蚕string~のソ}クロ定義}}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00011\ \textcolor{comment}{//**********************}}
+\DoxyCodeLine{00012\ \textcolor{comment}{//\ インクルードファイル}}
+\DoxyCodeLine{00013\ \textcolor{comment}{//**********************}}
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#include\ "{}object2D.h"{}}}
+\DoxyCodeLine{00015\ }
+\DoxyCodeLine{00016\ \textcolor{comment}{//********************************************************}}
+\DoxyCodeLine{00017\ \textcolor{comment}{//\ カメラアニメーション時に適用するUIクラス}}
+\DoxyCodeLine{00018\ \textcolor{comment}{//********************************************************}}
+\DoxyCodeLine{00019\ \textcolor{keyword}{class\ }CMoveUi\ :\ \textcolor{keyword}{public}\ CObject2D}
+\DoxyCodeLine{00020\ \{}
+\DoxyCodeLine{00021\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00022\ \ \ \ \ \textcolor{comment}{//**********************}}
+\DoxyCodeLine{00023\ \ \ \ \ \textcolor{comment}{//\ 移動方向種類}}
+\DoxyCodeLine{00024\ \ \ \ \ \textcolor{comment}{//**********************}}
+\DoxyCodeLine{00025\ \ \ \ \ \textcolor{keyword}{enum}\ MOVETYPE}
+\DoxyCodeLine{00026\ \ \ \ \ \{}
+\DoxyCodeLine{00027\ \ \ \ \ \ \ \ \ MOVETYPE\_RIGHT,}
+\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ MOVETYPE\_LEFT,}
+\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ MOVETYPE\_CENTER,}
+\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ MOVETYPE\_MAX}
+\DoxyCodeLine{00031\ \ \ \ \ \};}
+\DoxyCodeLine{00032\ }
+\DoxyCodeLine{00033\ \ \ \ \ \textcolor{comment}{//\ コンストラクソstring^・デストラクソstring^}}
+\DoxyCodeLine{00034\ \ \ \ \ CMoveUi(\textcolor{keywordtype}{int}\ nPriority\ =\ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{int}\textcolor{keyword}{>}(CObject::PRIORITY::UI));}
+\DoxyCodeLine{00035\ \ \ \ \ \string~CMoveUi();}
+\DoxyCodeLine{00036\ }
+\DoxyCodeLine{00037\ \ \ \ \ \textcolor{comment}{//\ メンバ関数}}
+\DoxyCodeLine{00038\ \ \ \ \ HRESULT\ Init(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00039\ \ \ \ \ \textcolor{keywordtype}{void}\ Uninit(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00040\ \ \ \ \ \textcolor{keywordtype}{void}\ Update(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00041\ \ \ \ \ \textcolor{keywordtype}{void}\ Draw(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00042\ }
+\DoxyCodeLine{00043\ \ \ \ \ \textcolor{comment}{//\ セッソstring^ー}}
+\DoxyCodeLine{00044\ \ \ \ \ \textcolor{keywordtype}{void}\ SetTexture(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ pRegistername);}
+\DoxyCodeLine{00045\ }
+\DoxyCodeLine{00046\ \ \ \ \ \textcolor{comment}{//\ 静的メンバ関数}}
+\DoxyCodeLine{00047\ \ \ \ \ \textcolor{keyword}{static}\ CMoveUi*\ Create(D3DXVECTOR3\ pos,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ pFileName,\ MOVETYPE\ type);}
+\DoxyCodeLine{00048\ }
+\DoxyCodeLine{00049\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00050\ \ \ \ \ \textcolor{keywordtype}{int}\ m\_nIdxTexture;\ \ \textcolor{comment}{//\ テクスチャインデックス}}
+\DoxyCodeLine{00051\ \ \ \ \ MOVETYPE\ m\_nMoveType;\ \ \ \textcolor{comment}{//\ 移動種類}}
+\DoxyCodeLine{00052\ \};}
+\DoxyCodeLine{00053\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

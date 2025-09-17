@@ -1,0 +1,90 @@
+\doxysection{editmanager.\+h}
+\hypertarget{editmanager_8h_source}{}\label{editmanager_8h_source}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{//============================================}}
+\DoxyCodeLine{00002\ \textcolor{comment}{//}}
+\DoxyCodeLine{00003\ \textcolor{comment}{//\ エディソstring^ーシーン管理処理\ [\ editmanager.h\ ]}}
+\DoxyCodeLine{00004\ \textcolor{comment}{//\ Author\ :\ Asuma\ Nishio}}
+\DoxyCodeLine{00005\ \textcolor{comment}{//}}
+\DoxyCodeLine{00006\ \textcolor{comment}{//============================================}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#ifndef\ \_EDITMANAGER\_H\_\ }\textcolor{comment}{//\ このソ}クロ定義がされてなかったら}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#define\ \_EDITMANAGER\_H\_\ }\textcolor{comment}{//\ 2重インクルード防蚕string~のソ}クロ定義}}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00011\ \textcolor{comment}{//**********************************}}
+\DoxyCodeLine{00012\ \textcolor{comment}{//\ インクルードファイル}}
+\DoxyCodeLine{00013\ \textcolor{comment}{//**********************************}}
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#include\ "{}modellist.h"{}}}
+\DoxyCodeLine{00015\ }
+\DoxyCodeLine{00016\ \textcolor{comment}{//**********************************}}
+\DoxyCodeLine{00017\ \textcolor{comment}{//\ 前方宣言}}
+\DoxyCodeLine{00018\ \textcolor{comment}{//**********************************}}
+\DoxyCodeLine{00019\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_c_rubble}{CRubble}};}
+\DoxyCodeLine{00020\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_c_map_manager}{CMapManager}};}
+\DoxyCodeLine{00021\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_c_shadow}{CShadow}};}
+\DoxyCodeLine{00022\ }
+\DoxyCodeLine{00023\ \textcolor{comment}{//**********************************}}
+\DoxyCodeLine{00024\ \textcolor{comment}{//\ エディソstring^ー管理クラスを定義}}
+\DoxyCodeLine{00025\ \textcolor{comment}{//**********************************}}
+\DoxyCodeLine{00026\ \textcolor{keyword}{class\ }CEditManager}
+\DoxyCodeLine{00027\ \{}
+\DoxyCodeLine{00028\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00029\ \ \ \ \ \textcolor{comment}{//=====================}}
+\DoxyCodeLine{00030\ \ \ \ \ \textcolor{comment}{//\ 書き出すパスの種類}}
+\DoxyCodeLine{00031\ \ \ \ \ \textcolor{comment}{//=====================}}
+\DoxyCodeLine{00032\ \ \ \ \ \textcolor{keyword}{enum}\ SAVEPASS}
+\DoxyCodeLine{00033\ \ \ \ \ \{}
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ SAVEPASS\_SMALL,}
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ SAVEPASS\_MEDIUM,}
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ SAVEPASS\_LARGE,}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ SAVEPASS\_MAX}
+\DoxyCodeLine{00038\ \ \ \ \ \};}
+\DoxyCodeLine{00039\ }
+\DoxyCodeLine{00040\ \ \ \ \ \textcolor{comment}{//\ コンストラクソstring^・デストラクソstring^}}
+\DoxyCodeLine{00041\ \ \ \ \ CEditManager();}
+\DoxyCodeLine{00042\ \ \ \ \ \string~CEditManager();}
+\DoxyCodeLine{00043\ }
+\DoxyCodeLine{00044\ \ \ \ \ \textcolor{comment}{//\ メンバ関数}}
+\DoxyCodeLine{00045\ \ \ \ \ HRESULT\ Init(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00046\ \ \ \ \ \textcolor{keywordtype}{void}\ Uninit(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00047\ \ \ \ \ \textcolor{keywordtype}{void}\ Update(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00048\ \ \ \ \ \textcolor{keywordtype}{void}\ Draw(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00049\ \ \ \ \ \textcolor{keywordtype}{void}\ Save(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00050\ \ \ \ \ \textcolor{keywordtype}{void}\ Reload(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00051\ }
+\DoxyCodeLine{00052\ \ \ \ \ \textcolor{comment}{//\ セッソstring^ー}}
+\DoxyCodeLine{00053\ \ \ \ \ D3DXVECTOR3\ SetPos(D3DXVECTOR3\ pos)\ \{\ m\_pos\ =\ pos;\ \}}
+\DoxyCodeLine{00054\ \ \ \ \ D3DXVECTOR3\ SetRot(D3DXVECTOR3\ rot)\ \{\ m\_rot\ =\ rot;\ \}}
+\DoxyCodeLine{00055\ }
+\DoxyCodeLine{00056\ \ \ \ \ \textcolor{comment}{//\ ゲッソstring^ー}}
+\DoxyCodeLine{00057\ \ \ \ \ D3DXVECTOR3\ GetPos()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ m\_pos;\ \}}
+\DoxyCodeLine{00058\ \ \ \ \ D3DXVECTOR3\ GetRot()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ m\_rot;\ \}}
+\DoxyCodeLine{00059\ }
+\DoxyCodeLine{00060\ }
+\DoxyCodeLine{00061\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00062\ \ \ \ \ \textcolor{comment}{//*******************************}}
+\DoxyCodeLine{00063\ \ \ \ \ \textcolor{comment}{//\ ファイルパスを格納するリスト}}
+\DoxyCodeLine{00064\ \ \ \ \ \textcolor{comment}{//*******************************}}
+\DoxyCodeLine{00065\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ FILELIST[SAVEPASS\_MAX]\ =}
+\DoxyCodeLine{00066\ \ \ \ \ \{}
+\DoxyCodeLine{00067\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}data\(\backslash\)\(\backslash\)Loader\(\backslash\)\(\backslash\)RubbleList\_small.txt"{}},}
+\DoxyCodeLine{00068\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}data\(\backslash\)\(\backslash\)Loader\(\backslash\)\(\backslash\)RubbleList\_medium.txt"{}},}
+\DoxyCodeLine{00069\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}data\(\backslash\)\(\backslash\)Loader\(\backslash\)\(\backslash\)RubbleList\_large.txt"{}},}
+\DoxyCodeLine{00070\ \ \ \ \ \};}
+\DoxyCodeLine{00071\ }
+\DoxyCodeLine{00072\ \ \ \ \ D3DXVECTOR3\ m\_pos;}
+\DoxyCodeLine{00073\ \ \ \ \ D3DXVECTOR3\ m\_rot;}
+\DoxyCodeLine{00074\ \ \ \ \ D3DXMATRIX\ m\_mtxworld;}
+\DoxyCodeLine{00075\ }
+\DoxyCodeLine{00076\ \ \ \ \ \mbox{\hyperlink{class_c_map_manager}{CMapManager}}*\ m\_pMapManager;\ \textcolor{comment}{//\ ソ}ネージャーポインソstring^}}
+\DoxyCodeLine{00077\ \ \ \ \ \mbox{\hyperlink{class_c_shadow}{CShadow}}*\ m\_pShadow;}
+\DoxyCodeLine{00078\ }
+\DoxyCodeLine{00079\ \ \ \ \ \textcolor{keywordtype}{int}\ m\_nTypeIdx;\ \textcolor{comment}{//\ インデックス}}
+\DoxyCodeLine{00080\ \ \ \ \ \textcolor{keywordtype}{int}\ m\_nSelectIndex;\ \textcolor{comment}{//\ 選択中オブジェクトのインデックス}}
+\DoxyCodeLine{00081\ \ \ \ \ \textcolor{keywordtype}{int}\ m\_nSavePassIdx;}
+\DoxyCodeLine{00082\ \ \ \ \ \textcolor{keywordtype}{int}\ m\_nNumAll;\ \ \ \ \ \ \textcolor{comment}{//\ 生成数}}
+\DoxyCodeLine{00083\ \};}
+\DoxyCodeLine{00084\ }
+\DoxyCodeLine{00085\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

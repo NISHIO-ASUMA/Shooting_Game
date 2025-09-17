@@ -1,0 +1,71 @@
+\doxysection{object\+X.\+h}
+\hypertarget{object_x_8h_source}{}\label{object_x_8h_source}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{//=====================================}}
+\DoxyCodeLine{00002\ \textcolor{comment}{//}}
+\DoxyCodeLine{00003\ \textcolor{comment}{//\ Xファイル処理\ [\ objectX.h\ ]}}
+\DoxyCodeLine{00004\ \textcolor{comment}{//\ Author:\ Asuma\ Nishio}}
+\DoxyCodeLine{00005\ \textcolor{comment}{//}}
+\DoxyCodeLine{00006\ \textcolor{comment}{//=====================================}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#ifndef\ \_OBJECTX\_H\_\ }\textcolor{comment}{//\ このソ}クロ定義がされてなかったら}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#define\ \_OBJECTX\_H\_\ }\textcolor{comment}{//\ 2重インクルード防蚕string~のソ}クロ定義}}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00011\ \textcolor{comment}{//**********************}}
+\DoxyCodeLine{00012\ \textcolor{comment}{//\ インクルードファイル}}
+\DoxyCodeLine{00013\ \textcolor{comment}{//**********************}}
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#include\ "{}object.h"{}}}
+\DoxyCodeLine{00015\ }
+\DoxyCodeLine{00016\ \textcolor{comment}{//******************************}}
+\DoxyCodeLine{00017\ \textcolor{comment}{//\ オブジェクトXクラスを定義}}
+\DoxyCodeLine{00018\ \textcolor{comment}{//******************************}}
+\DoxyCodeLine{00019\ \textcolor{keyword}{class\ }CObjectX\ :\ \textcolor{keyword}{public}\ CObject}
+\DoxyCodeLine{00020\ \{}
+\DoxyCodeLine{00021\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00022\ \ \ \ \ \textcolor{comment}{//\ コンストラクソstring^・デストラクソstring^}}
+\DoxyCodeLine{00023\ \ \ \ \ CObjectX(\textcolor{keywordtype}{int}\ nPriority\ =\ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{int}\textcolor{keyword}{>}(CObject::PRIORITY::MODELOBJECT));}
+\DoxyCodeLine{00024\ \ \ \ \ \string~CObjectX();}
+\DoxyCodeLine{00025\ }
+\DoxyCodeLine{00026\ \ \ \ \ \textcolor{comment}{//\ メンバ関数}}
+\DoxyCodeLine{00027\ \ \ \ \ HRESULT\ Init(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00028\ \ \ \ \ \textcolor{keywordtype}{void}\ Uninit(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00029\ \ \ \ \ \textcolor{keywordtype}{void}\ Update(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00030\ \ \ \ \ \textcolor{keywordtype}{void}\ Draw(\textcolor{keywordtype}{void});\ }
+\DoxyCodeLine{00031\ }
+\DoxyCodeLine{00032\ \ \ \ \ \textcolor{comment}{//\ セッソstring^ー}}
+\DoxyCodeLine{00033\ \ \ \ \ \textcolor{keywordtype}{void}\ SetFilePass(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ pFilePass)\ \{\ m\_pFileName\ =\ pFilePass;\ \}}
+\DoxyCodeLine{00034\ \ \ \ \ \textcolor{keywordtype}{void}\ SetPos(D3DXVECTOR3\ pos)\ \{\ m\_pos\ =\ pos;\ \}}
+\DoxyCodeLine{00035\ \ \ \ \ \textcolor{keywordtype}{void}\ SetRot(D3DXVECTOR3\ rot)\ \{\ m\_rot\ =\ rot;\ \}}
+\DoxyCodeLine{00036\ }
+\DoxyCodeLine{00037\ \ \ \ \ \textcolor{keywordtype}{void}\ SetUseQuat(\textcolor{keywordtype}{bool}\ isFlags)\ \{\ m\_isUseQaut\ =\ isFlags;\ \}}
+\DoxyCodeLine{00038\ \ \ \ \ \textcolor{keywordtype}{void}\ SetMtxWorld(D3DXMATRIX\ mtxworld)\ \{\ m\_mtxWorld\ =\ mtxworld;\ \}}
+\DoxyCodeLine{00039\ }
+\DoxyCodeLine{00040\ \ \ \ \ \textcolor{comment}{//\ ゲッソstring^ー}}
+\DoxyCodeLine{00041\ \ \ \ \ D3DXVECTOR3\ GetPos(\textcolor{keywordtype}{void})\ \{\ \textcolor{keywordflow}{return}\ m\_pos;\ \};}
+\DoxyCodeLine{00042\ \ \ \ \ D3DXVECTOR3\ GetRot(\textcolor{keywordtype}{void})\ \{\ \textcolor{keywordflow}{return}\ m\_rot;\ \};}
+\DoxyCodeLine{00043\ \ \ \ \ D3DXMATRIX\ GetMtxWorld(\textcolor{keywordtype}{void})\ \{\ \textcolor{keywordflow}{return}\ m\_mtxWorld;\ \}}
+\DoxyCodeLine{00044\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ GetFileName()\textcolor{keyword}{const\ }\{\ \textcolor{keywordflow}{return}\ m\_pFileName;\ \}}
+\DoxyCodeLine{00045\ }
+\DoxyCodeLine{00046\ \ \ \ \ \textcolor{comment}{//\ 静的メンバ関数}}
+\DoxyCodeLine{00047\ \ \ \ \ \textcolor{keyword}{static}\ CObjectX*\ Create(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ pFileName,D3DXVECTOR3\ pos);}
+\DoxyCodeLine{00048\ }
+\DoxyCodeLine{00049\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00050\ \ \ \ \ D3DXMATRIX\ m\_mtxWorld;\ \textcolor{comment}{//\ ワールドソ}トリックス}}
+\DoxyCodeLine{00051\ \ \ \ \ LPD3DXMESH\ m\_pMesh;\ \ \ \ \textcolor{comment}{//\ メッシュ情報}}
+\DoxyCodeLine{00052\ \ \ \ \ LPD3DXBUFFER\ m\_pBuffMat;\ \textcolor{comment}{//\ ソ}テリアル情報}}
+\DoxyCodeLine{00053\ \ \ \ \ DWORD\ m\_dwNumMat;\ \ \ \ \ \ \ \textcolor{comment}{//\ ソ}テリアル数}}
+\DoxyCodeLine{00054\ }
+\DoxyCodeLine{00055\ \ \ \ \ D3DXVECTOR3\ m\_pos;\ \ \ \ \ \ \textcolor{comment}{//\ 座標}}
+\DoxyCodeLine{00056\ \ \ \ \ D3DXVECTOR3\ m\_rot;\ \ \ \ \ \ \textcolor{comment}{//\ 角度}}
+\DoxyCodeLine{00057\ }
+\DoxyCodeLine{00058\ \ \ \ \ \textcolor{keywordtype}{int}\ m\_nIdxTexture;\ \ \ \ \ \ \textcolor{comment}{//\ テクスチャインデックス}}
+\DoxyCodeLine{00059\ \ \ \ \ \textcolor{keywordtype}{int}*\ m\_pTexture;\ \ \ \ \ \ \ \ \textcolor{comment}{//\ テクスチャポインソstring^}}
+\DoxyCodeLine{00060\ }
+\DoxyCodeLine{00061\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ m\_pFileName;\ \textcolor{comment}{//\ ファイル名}}
+\DoxyCodeLine{00062\ }
+\DoxyCodeLine{00063\ \ \ \ \ \textcolor{keywordtype}{bool}\ m\_isUseQaut;\ \ \ \ \ \ \ \ \textcolor{comment}{//\ クォーソstring^ニオンかどうか}}
+\DoxyCodeLine{00064\ \};}
+\DoxyCodeLine{00065\ }
+\DoxyCodeLine{00066\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

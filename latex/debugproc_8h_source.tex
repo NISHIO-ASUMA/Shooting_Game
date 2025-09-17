@@ -1,0 +1,44 @@
+\doxysection{debugproc.\+h}
+\hypertarget{debugproc_8h_source}{}\label{debugproc_8h_source}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{//========================================}}
+\DoxyCodeLine{00002\ \textcolor{comment}{//}}
+\DoxyCodeLine{00003\ \textcolor{comment}{//\ デバッグプロセス処理\ [\ debubgproc.h\ ]}}
+\DoxyCodeLine{00004\ \textcolor{comment}{//\ Author:\ Asuma\ Nishio}}
+\DoxyCodeLine{00005\ \textcolor{comment}{//}}
+\DoxyCodeLine{00006\ \textcolor{comment}{//========================================}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#ifndef\ \_DEBUGPROC\_H\_\ \ }\textcolor{comment}{//\ このソ}クロ定義がされてなかったら}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#define\ \_DEBUGPROC\_H\_\ \ }\textcolor{comment}{//\ 2重インクルード防蚕string~のソ}クロ定義}}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00011\ \textcolor{comment}{//***********************************}}
+\DoxyCodeLine{00012\ \textcolor{comment}{//\ デバッグプロセスクラスを定義}}
+\DoxyCodeLine{00013\ \textcolor{comment}{//***********************************}}
+\DoxyCodeLine{00014\ \textcolor{keyword}{class\ }CDebugproc}
+\DoxyCodeLine{00015\ \{}
+\DoxyCodeLine{00016\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00017\ \ \ \ \ \textcolor{comment}{//\ コンストラクソstring^・デストラクソstring^}}
+\DoxyCodeLine{00018\ \ \ \ \ CDebugproc();}
+\DoxyCodeLine{00019\ \ \ \ \ \string~CDebugproc();}
+\DoxyCodeLine{00020\ }
+\DoxyCodeLine{00021\ \ \ \ \ \textcolor{comment}{//\ メンバ関数}}
+\DoxyCodeLine{00022\ \ \ \ \ HRESULT\ Init(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00023\ \ \ \ \ \textcolor{keywordtype}{void}\ Uninit(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00024\ \ \ \ \ \textcolor{keywordtype}{void}\ Update(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00025\ }
+\DoxyCodeLine{00026\ \ \ \ \ \textcolor{comment}{//\ 静的メンバ関数}}
+\DoxyCodeLine{00027\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ Draw(\textcolor{keywordtype}{int}\ PosX,\ \textcolor{keywordtype}{int}\ PosY);}
+\DoxyCodeLine{00028\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ Print(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ fmt,\ ...);}
+\DoxyCodeLine{00029\ }
+\DoxyCodeLine{00030\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00031\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{int}\ FontSize\ =\ 20;\ \ \ \ \ \textcolor{comment}{//\ フォントサイズ}}
+\DoxyCodeLine{00032\ }
+\DoxyCodeLine{00033\ \ \ \ \ \textcolor{keyword}{static}\ LPD3DXFONT\ m\_pFont;\ \ \ \ \ \ \textcolor{comment}{//\ デバッグフォント}}
+\DoxyCodeLine{00034\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{char}\ m\_aStr[MAX\_WORD];\ \ \ \textcolor{comment}{//\ 文字列格納バッファ}}
+\DoxyCodeLine{00035\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{bool}\ m\_isUse;\ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 使用しているかフラグ}}
+\DoxyCodeLine{00036\ }
+\DoxyCodeLine{00037\ \};}
+\DoxyCodeLine{00038\ }
+\DoxyCodeLine{00039\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

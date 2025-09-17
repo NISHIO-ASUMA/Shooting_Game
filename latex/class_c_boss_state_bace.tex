@@ -1,0 +1,95 @@
+\doxysection{CBoss\+State\+Bace Class Reference}
+\hypertarget{class_c_boss_state_bace}{}\label{class_c_boss_state_bace}\index{CBossStateBace@{CBossStateBace}}
+Inheritance diagram for CBoss\+State\+Bace\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.204725cm]{class_c_boss_state_bace}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_c_boss_state_bace_a2b3ebac7e9000ea45f366eb4778497f0}\label{class_c_boss_state_bace_a2b3ebac7e9000ea45f366eb4778497f0} 
+enum {\bfseries ID} \{ \newline
+{\bfseries ID\+\_\+\+NEUTRAL}
+, {\bfseries ID\+\_\+\+ACTION}
+, {\bfseries ID\+\_\+\+DAMAGE}
+, {\bfseries ID\+\_\+\+EVENT}
+, \newline
+{\bfseries ID\+\_\+\+MAX}
+ \}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual void \mbox{\hyperlink{class_c_boss_state_bace_a1627d1654db10eab475fb26e349ce5a2}{On\+Start}} ()
+\item 
+virtual void \mbox{\hyperlink{class_c_boss_state_bace_a0c9e2c6849cc471ddf2bbfbf374982de}{On\+Update}} ()
+\item 
+virtual void \mbox{\hyperlink{class_c_boss_state_bace_a8ffb71d4e09966f9f0d2c1be7d3be77a}{On\+Exit}} ()
+\item 
+\Hypertarget{class_c_boss_state_bace_a0f8e7589517751cfb4eec843370477bd}\label{class_c_boss_state_bace_a0f8e7589517751cfb4eec843370477bd} 
+void {\bfseries Set\+Owner} (\mbox{\hyperlink{class_c_boss}{CBoss}} \texorpdfstring{$\ast$}{*}p\+Boss)
+\item 
+int \mbox{\hyperlink{class_c_boss_state_bace_a5b7c0e953b8dd82b30cbb73e006d3d59}{Get\+ID}} () const override
+\item 
+\Hypertarget{class_c_boss_state_bace_a804a8bec5af52b2e22d79aa6b45c9959}\label{class_c_boss_state_bace_a804a8bec5af52b2e22d79aa6b45c9959} 
+void {\bfseries Set\+ID} (ID id)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_c_boss_state_bace_ac899b544e74373fc07d11f07aa963dd7}\label{class_c_boss_state_bace_ac899b544e74373fc07d11f07aa963dd7} 
+\mbox{\hyperlink{class_c_boss}{CBoss}} \texorpdfstring{$\ast$}{*} {\bfseries m\+\_\+p\+Boss}
+\end{DoxyCompactItemize}
+
+
+\label{doc-func-members}
+\Hypertarget{class_c_boss_state_bace_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_c_boss_state_bace_a5b7c0e953b8dd82b30cbb73e006d3d59}\index{CBossStateBace@{CBossStateBace}!GetID@{GetID}}
+\index{GetID@{GetID}!CBossStateBace@{CBossStateBace}}
+\doxysubsubsection{\texorpdfstring{GetID()}{GetID()}}
+{\footnotesize\ttfamily \label{class_c_boss_state_bace_a5b7c0e953b8dd82b30cbb73e006d3d59} 
+int CBoss\+State\+Bace\+::\+Get\+ID (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{class_c_state_base}{CState\+Base}}.
+
+\Hypertarget{class_c_boss_state_bace_a8ffb71d4e09966f9f0d2c1be7d3be77a}\index{CBossStateBace@{CBossStateBace}!OnExit@{OnExit}}
+\index{OnExit@{OnExit}!CBossStateBace@{CBossStateBace}}
+\doxysubsubsection{\texorpdfstring{OnExit()}{OnExit()}}
+{\footnotesize\ttfamily \label{class_c_boss_state_bace_a8ffb71d4e09966f9f0d2c1be7d3be77a} 
+virtual void CBoss\+State\+Bace\+::\+On\+Exit (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Reimplemented from \mbox{\hyperlink{class_c_state_base}{CState\+Base}}.
+
+\Hypertarget{class_c_boss_state_bace_a1627d1654db10eab475fb26e349ce5a2}\index{CBossStateBace@{CBossStateBace}!OnStart@{OnStart}}
+\index{OnStart@{OnStart}!CBossStateBace@{CBossStateBace}}
+\doxysubsubsection{\texorpdfstring{OnStart()}{OnStart()}}
+{\footnotesize\ttfamily \label{class_c_boss_state_bace_a1627d1654db10eab475fb26e349ce5a2} 
+virtual void CBoss\+State\+Bace\+::\+On\+Start (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Reimplemented from \mbox{\hyperlink{class_c_state_base}{CState\+Base}}.
+
+\Hypertarget{class_c_boss_state_bace_a0c9e2c6849cc471ddf2bbfbf374982de}\index{CBossStateBace@{CBossStateBace}!OnUpdate@{OnUpdate}}
+\index{OnUpdate@{OnUpdate}!CBossStateBace@{CBossStateBace}}
+\doxysubsubsection{\texorpdfstring{OnUpdate()}{OnUpdate()}}
+{\footnotesize\ttfamily \label{class_c_boss_state_bace_a0c9e2c6849cc471ddf2bbfbf374982de} 
+virtual void CBoss\+State\+Bace\+::\+On\+Update (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Reimplemented from \mbox{\hyperlink{class_c_state_base}{CState\+Base}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+bossstate.\+h\item 
+bossstate.\+cpp\end{DoxyCompactItemize}

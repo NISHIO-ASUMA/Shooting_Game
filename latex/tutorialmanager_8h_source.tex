@@ -1,0 +1,59 @@
+\doxysection{tutorialmanager.\+h}
+\hypertarget{tutorialmanager_8h_source}{}\label{tutorialmanager_8h_source}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{//=============================================}}
+\DoxyCodeLine{00002\ \textcolor{comment}{//}}
+\DoxyCodeLine{00003\ \textcolor{comment}{//\ チュートリアル管理処理\ [\ tutorialmanager.h\ ]}}
+\DoxyCodeLine{00004\ \textcolor{comment}{//\ Author:\ Asuma\ Nishio}}
+\DoxyCodeLine{00005\ \textcolor{comment}{//}}
+\DoxyCodeLine{00006\ \textcolor{comment}{//=============================================}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#ifndef\ \_TUTORIALMANAGER\_H\_\ }\textcolor{comment}{//\ このソ}クロ定義がされてなかったら}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#define\ \_TUTORIALMANAGER\_H\_\ }\textcolor{comment}{//\ 2重インクルード防蚕string~のソ}クロ定義}}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00011\ \textcolor{comment}{//******************************}}
+\DoxyCodeLine{00012\ \textcolor{comment}{//\ 前方宣言}}
+\DoxyCodeLine{00013\ \textcolor{comment}{//******************************}}
+\DoxyCodeLine{00014\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_c_tutorial_ui}{CTutorialUi}};}
+\DoxyCodeLine{00015\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_c_tuto_task}{CTutoTask}};}
+\DoxyCodeLine{00016\ }
+\DoxyCodeLine{00017\ \textcolor{comment}{//********************************}}
+\DoxyCodeLine{00018\ \textcolor{comment}{//\ チュートリアル管理クラスを定義}}
+\DoxyCodeLine{00019\ \textcolor{comment}{//********************************}}
+\DoxyCodeLine{00020\ \textcolor{keyword}{class\ }CTutorialManager}
+\DoxyCodeLine{00021\ \{}
+\DoxyCodeLine{00022\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00023\ \ \ \ \ \textcolor{comment}{//***********************}}
+\DoxyCodeLine{00024\ \ \ \ \ \textcolor{comment}{//\ 動かすソstring^スクの種類}}
+\DoxyCodeLine{00025\ \ \ \ \ \textcolor{comment}{//***********************}}
+\DoxyCodeLine{00026\ \ \ \ \ \textcolor{keyword}{enum}\ TASKTYPE}
+\DoxyCodeLine{00027\ \ \ \ \ \{}
+\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ TASKTYPE\_MOVE,}
+\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ TASKTYPE\_ATTACK,}
+\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ TASKTYPE\_JUMP,}
+\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ TASKTYPE\_JUMPATTACK,}
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ TASKTYPE\_LASER,}
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ TASKTYPE\_LASERACTION,}
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ TASKTYPE\_FREE,}
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ TASKTYPE\_MAX}
+\DoxyCodeLine{00036\ \ \ \ \ \};}
+\DoxyCodeLine{00037\ }
+\DoxyCodeLine{00038\ \ \ \ \ \textcolor{comment}{//\ コンストラクソstring^・デストラクソstring^}}
+\DoxyCodeLine{00039\ \ \ \ \ CTutorialManager();}
+\DoxyCodeLine{00040\ \ \ \ \ \string~CTutorialManager();}
+\DoxyCodeLine{00041\ }
+\DoxyCodeLine{00042\ \ \ \ \ \textcolor{comment}{//\ メンバ関数}}
+\DoxyCodeLine{00043\ \ \ \ \ HRESULT\ Init(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00044\ \ \ \ \ \textcolor{keywordtype}{void}\ Uninit(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00045\ \ \ \ \ \textcolor{keywordtype}{void}\ Update(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00046\ }
+\DoxyCodeLine{00047\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00048\ \ \ \ \ \mbox{\hyperlink{class_c_tutorial_ui}{CTutorialUi}}*\ m\_pTutoui;\ \textcolor{comment}{//\ チュートリアルuiクラスのポインソstring^}}
+\DoxyCodeLine{00049\ \ \ \ \ \mbox{\hyperlink{class_c_tuto_task}{CTutoTask}}*\ m\_pTask;\ \ \ \ \ \ \ \ \textcolor{comment}{//\ ソstring^スククラスポインソstring^\ }}
+\DoxyCodeLine{00050\ \ \ \ \ TASKTYPE\ m\_Tasktype;\ \ \ \ \textcolor{comment}{//\ 種類}}
+\DoxyCodeLine{00051\ \ \ \ \ \textcolor{keywordtype}{bool}\ m\_isFreeDone;}
+\DoxyCodeLine{00052\ \};}
+\DoxyCodeLine{00053\ }
+\DoxyCodeLine{00054\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

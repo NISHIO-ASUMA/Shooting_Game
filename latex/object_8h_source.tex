@@ -1,0 +1,105 @@
+\doxysection{object.\+h}
+\hypertarget{object_8h_source}{}\label{object_8h_source}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{//====================================}}
+\DoxyCodeLine{00002\ \textcolor{comment}{//}}
+\DoxyCodeLine{00003\ \textcolor{comment}{//\ オブジェクト処理\ [\ object.h\ ]}}
+\DoxyCodeLine{00004\ \textcolor{comment}{//\ Author:\ Asuma\ Nishio}}
+\DoxyCodeLine{00005\ \textcolor{comment}{//}}
+\DoxyCodeLine{00006\ \textcolor{comment}{//=====================================}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#ifndef\ \_OBJECT\_H\_\ }\textcolor{comment}{//\ このソ}クロ定義がされてなかったら}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#define\ \_OBJECT\_H\_\ }\textcolor{comment}{//\ 2重インクルード防蚕string~のソ}クロ定義}}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00011\ \textcolor{comment}{//***************************}}
+\DoxyCodeLine{00012\ \textcolor{comment}{//\ オブジェクトクラスを定義}}
+\DoxyCodeLine{00013\ \textcolor{comment}{//***************************}}
+\DoxyCodeLine{00014\ \textcolor{keyword}{class\ }CObject}
+\DoxyCodeLine{00015\ \{}
+\DoxyCodeLine{00016\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00017\ \ \ \ \ \textcolor{comment}{//*************************}}
+\DoxyCodeLine{00018\ \ \ \ \ \textcolor{comment}{//\ オブジェクトの種類定義}}
+\DoxyCodeLine{00019\ \ \ \ \ \textcolor{comment}{//*************************}}
+\DoxyCodeLine{00020\ \ \ \ \ \textcolor{keyword}{enum}\ TYPE}
+\DoxyCodeLine{00021\ \ \ \ \ \{}
+\DoxyCodeLine{00022\ \ \ \ \ \ \ \ \ TYPE\_NONE\ =\ 0,}
+\DoxyCodeLine{00023\ \ \ \ \ \ \ \ \ TYPE\_PLAYER,}
+\DoxyCodeLine{00024\ \ \ \ \ \ \ \ \ TYPE\_MESH,}
+\DoxyCodeLine{00025\ \ \ \ \ \ \ \ \ TYPE\_BULLET,}
+\DoxyCodeLine{00026\ \ \ \ \ \ \ \ \ TYPE\_BOSS,}
+\DoxyCodeLine{00027\ \ \ \ \ \ \ \ \ TYPE\_ENEMY,}
+\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ TYPE\_BLOCK,}
+\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ TYPE\_PAUSE,}
+\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ TYPE\_BARRIER,}
+\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ TYPE\_ITEM,}
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ TYPE\_RUBBLE,}
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ TYPE\_PILER,}
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ TYPE\_POINT,}
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ TYPE\_MAX}
+\DoxyCodeLine{00036\ \ \ \ \ \};}
+\DoxyCodeLine{00037\ }
+\DoxyCodeLine{00038\ \ \ \ \ \textcolor{comment}{//*************************}}
+\DoxyCodeLine{00039\ \ \ \ \ \textcolor{comment}{//\ 描画番号定義}}
+\DoxyCodeLine{00040\ \ \ \ \ \textcolor{comment}{//*************************}}
+\DoxyCodeLine{00041\ \ \ \ \ \textcolor{keyword}{enum}\ PRIORITY}
+\DoxyCodeLine{00042\ \ \ \ \ \{}
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ NONE,\ \ \ \ \ \ \ \textcolor{comment}{//\ 初期状態}}
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ MESH,\ \ \ \ \ \ \ \textcolor{comment}{//\ メッシュ}}
+\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ BASENUMBER,\ \textcolor{comment}{//\ 基準番号}}
+\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ MODELOBJECT,\textcolor{comment}{//\ モデル}}
+\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ BULLET,\ \ \ \ \ \textcolor{comment}{//\ 弾}}
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ SHADOW,\ \ \ \ \ \textcolor{comment}{//\ 影}}
+\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ IMPACT,\ \ \ \ \ \textcolor{comment}{//\ 衝撃波}}
+\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ CHARACTOR,\ \ \textcolor{comment}{//\ プレイヤー}}
+\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ BILLBOARD,\ \ \textcolor{comment}{//\ ビルソ{ード}}
+\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ EFFECT,\ \ \ \ \ \textcolor{comment}{//\ エフェクト}}
+\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ UI,\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 2DUI関係}}
+\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ PAUSE,\ \ \ \ \ \ \textcolor{comment}{//\ ポーズ}}
+\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ PRIORITY\_MAX\ \textcolor{comment}{//\ 最大数}}
+\DoxyCodeLine{00056\ \ \ \ \ \};}
+\DoxyCodeLine{00057\ }
+\DoxyCodeLine{00058\ \ \ \ \ \textcolor{comment}{//\ コンストラクソstring^・デストラクソstring^}}
+\DoxyCodeLine{00059\ \ \ \ \ CObject(\textcolor{keywordtype}{int}\ nPriority\ =\ NONE);}
+\DoxyCodeLine{00060\ \ \ \ \ \textcolor{keyword}{virtual}\ \string~CObject();}
+\DoxyCodeLine{00061\ }
+\DoxyCodeLine{00062\ \ \ \ \ \textcolor{comment}{//\ 純粋仮想関数}}
+\DoxyCodeLine{00063\ \ \ \ \ \textcolor{keyword}{virtual}\ HRESULT\ Init(\textcolor{keywordtype}{void})\ =\ 0;}
+\DoxyCodeLine{00064\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ Uninit(\textcolor{keywordtype}{void})\ =\ 0;}
+\DoxyCodeLine{00065\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ Update(\textcolor{keywordtype}{void})\ =\ 0;}
+\DoxyCodeLine{00066\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ Draw(\textcolor{keywordtype}{void})\ =\ 0;}
+\DoxyCodeLine{00067\ }
+\DoxyCodeLine{00068\ \ \ \ \ \textcolor{comment}{//\ 静的メンバ関数}}
+\DoxyCodeLine{00069\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ ReleaseAll(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00070\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ UpdateAll(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00071\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{void}\ DrawAll(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00072\ \ \ \ \ \textcolor{keyword}{static}\ CObject*\ GetTop(\textcolor{keywordtype}{int}\ nPriority)\ \{\ \textcolor{keywordflow}{return}\ m\_pTop[nPriority];\ \}\ \textcolor{comment}{//\ 先頭取得}}
+\DoxyCodeLine{00073\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{int}\ GetNumAll(\textcolor{keywordtype}{void})\ \{\ \textcolor{keywordflow}{return}\ m\_nNumAll;\ \}}
+\DoxyCodeLine{00074\ }
+\DoxyCodeLine{00075\ \ \ \ \ \textcolor{comment}{//\ セッソstring^ー}}
+\DoxyCodeLine{00076\ \ \ \ \ \textcolor{keywordtype}{void}\ SetObjType(TYPE\ type)\ \{\ m\_Type\ =\ type;\ \}}
+\DoxyCodeLine{00077\ }
+\DoxyCodeLine{00078\ \ \ \ \ \textcolor{comment}{//\ ゲッソstring^ー}}
+\DoxyCodeLine{00079\ \ \ \ \ TYPE\ GetObjType(\textcolor{keywordtype}{void})\ \{\ \textcolor{keywordflow}{return}\ m\_Type;\ \}}
+\DoxyCodeLine{00080\ \ \ \ \ CObject*\ GetNext(\textcolor{keywordtype}{void})\ \{\ \textcolor{keywordflow}{return}\ m\_pNext;\ \}\ \ \ \ \ \ \textcolor{comment}{//\ 次を取得}}
+\DoxyCodeLine{00081\ }
+\DoxyCodeLine{00082\ \textcolor{keyword}{protected}:}
+\DoxyCodeLine{00083\ \ \ \ \ \textcolor{keywordtype}{void}\ Release(\textcolor{keywordtype}{void});\ \textcolor{comment}{//\ 解放}}
+\DoxyCodeLine{00084\ }
+\DoxyCodeLine{00085\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00086\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{int}\ m\_nNumAll;\ \ \ \ \ \ \ \textcolor{comment}{//\ 総数管理}}
+\DoxyCodeLine{00087\ \ \ \ \ \textcolor{keywordtype}{int}\ m\_nID;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 自分自身のID}}
+\DoxyCodeLine{00088\ \ \ \ \ TYPE\ m\_Type;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ オブジェクトの種類変数}}
+\DoxyCodeLine{00089\ \ \ \ \ \textcolor{keywordtype}{int}\ m\_nPriority;\ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 優先順位番号}}
+\DoxyCodeLine{00090\ }
+\DoxyCodeLine{00091\ \ \ \ \ \textcolor{keyword}{static}\ CObject*\ m\_pTop[PRIORITY\_MAX];\ \ \ \textcolor{comment}{//\ 先頭オブジェクト}}
+\DoxyCodeLine{00092\ \ \ \ \ \textcolor{keyword}{static}\ CObject*\ m\_pCur[PRIORITY\_MAX];\ \ \ \textcolor{comment}{//\ 最後尾オブジェクト}}
+\DoxyCodeLine{00093\ }
+\DoxyCodeLine{00094\ \ \ \ \ CObject*\ m\_pNext;\ \ \ \ \ \ \ \textcolor{comment}{//\ 次のオブジェクトのポインソstring^}}
+\DoxyCodeLine{00095\ \ \ \ \ CObject*\ m\_pPrev;\ \ \ \ \ \ \ \textcolor{comment}{//\ 前のオブジェクトのポインソstring^}}
+\DoxyCodeLine{00096\ }
+\DoxyCodeLine{00097\ \ \ \ \ \textcolor{keywordtype}{bool}\ m\_isDeath;\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 死亡フラグ}}
+\DoxyCodeLine{00098\ \};}
+\DoxyCodeLine{00099\ }
+\DoxyCodeLine{00100\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

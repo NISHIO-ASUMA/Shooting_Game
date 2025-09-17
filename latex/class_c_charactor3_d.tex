@@ -1,0 +1,157 @@
+\doxysection{CCharactor3D Class Reference}
+\hypertarget{class_c_charactor3_d}{}\label{class_c_charactor3_d}\index{CCharactor3D@{CCharactor3D}}
+Inheritance diagram for CCharactor3D\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_c_charactor3_d}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_c_charactor3_d_ae47713e2be98aaace8683c59a8fdafbd}\label{class_c_charactor3_d_ae47713e2be98aaace8683c59a8fdafbd} 
+enum {\bfseries STATE} \{ \newline
+{\bfseries STATE\+\_\+\+NONE} = 0
+, {\bfseries STATE\+\_\+\+NORMAL}
+, {\bfseries STATE\+\_\+\+DAMAGE}
+, {\bfseries STATE\+\_\+\+INVINCIBLE}
+, \newline
+{\bfseries STATE\+\_\+\+DAETH}
+, {\bfseries STATE\+\_\+\+MAX}
+ \}
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Types inherited from \mbox{\hyperlink{class_c_object}{CObject}}}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_c_object_a7263d5eae1a949d02e262e246152a2c6}\label{class_c_object_a7263d5eae1a949d02e262e246152a2c6} 
+enum {\bfseries TYPE} \{ \newline
+{\bfseries TYPE\+\_\+\+NONE} = 0
+, {\bfseries TYPE\+\_\+\+PLAYER}
+, {\bfseries TYPE\+\_\+\+MESH}
+, {\bfseries TYPE\+\_\+\+BULLET}
+, \newline
+{\bfseries TYPE\+\_\+\+BOSS}
+, {\bfseries TYPE\+\_\+\+ENEMY}
+, {\bfseries TYPE\+\_\+\+BLOCK}
+, {\bfseries TYPE\+\_\+\+PAUSE}
+, \newline
+{\bfseries TYPE\+\_\+\+BARRIER}
+, {\bfseries TYPE\+\_\+\+ITEM}
+, {\bfseries TYPE\+\_\+\+RUBBLE}
+, {\bfseries TYPE\+\_\+\+PILER}
+, \newline
+{\bfseries TYPE\+\_\+\+POINT}
+, {\bfseries TYPE\+\_\+\+MAX}
+ \}
+\item 
+\Hypertarget{class_c_object_a0924032649f7068d08cc5da588adc8d0}\label{class_c_object_a0924032649f7068d08cc5da588adc8d0} 
+enum {\bfseries PRIORITY} \{ \newline
+{\bfseries NONE}
+, {\bfseries MESH}
+, {\bfseries BASENUMBER}
+, {\bfseries MODELOBJECT}
+, \newline
+{\bfseries BULLET}
+, {\bfseries SHADOW}
+, {\bfseries IMPACT}
+, {\bfseries CHARACTOR}
+, \newline
+{\bfseries BILLBOARD}
+, {\bfseries EFFECT}
+, {\bfseries UI}
+, {\bfseries PAUSE}
+, \newline
+{\bfseries PRIORITY\+\_\+\+MAX}
+ \}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_c_charactor3_d_ada5a4d2c95ff4440ce9b961e98a91adb}\label{class_c_charactor3_d_ada5a4d2c95ff4440ce9b961e98a91adb} 
+{\bfseries CCharactor3D} (int n\+Priority=4)
+\item 
+HRESULT \mbox{\hyperlink{class_c_charactor3_d_a6cfc9a3bef30b1bdeb1a87e27a6d3eac}{Init}} (void)
+\item 
+void \mbox{\hyperlink{class_c_charactor3_d_abd9b04d68b91ef6071f61abfde4da6a5}{Uninit}} (void)
+\item 
+void \mbox{\hyperlink{class_c_charactor3_d_a26417edb5ac87aa6ab7c9c4ac59c5b74}{Update}} (void)
+\item 
+\Hypertarget{class_c_charactor3_d_a64ad2f10a06315e8e162291e51398d96}\label{class_c_charactor3_d_a64ad2f10a06315e8e162291e51398d96} 
+int {\bfseries Get\+Life} (void) const
+\item 
+\Hypertarget{class_c_charactor3_d_a377a3d2616eeb652047a65aaa779f7cb}\label{class_c_charactor3_d_a377a3d2616eeb652047a65aaa779f7cb} 
+void {\bfseries Set\+Life} (int n\+Life)
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_c_object}{CObject}}}
+\begin{DoxyCompactItemize}
+\item 
+{\bfseries CObject} (int n\+Priority=NONE)
+\item 
+virtual void {\bfseries Draw} (void)=0
+\item 
+void {\bfseries Set\+Obj\+Type} (TYPE type)
+\item 
+TYPE {\bfseries Get\+Obj\+Type} (void)
+\item 
+\mbox{\hyperlink{class_c_object}{CObject}} \texorpdfstring{$\ast$}{*} {\bfseries Get\+Next} (void)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Static Public Member Functions inherited from \mbox{\hyperlink{class_c_object}{CObject}}}
+\begin{DoxyCompactItemize}
+\item 
+static void {\bfseries Release\+All} (void)
+\item 
+static void {\bfseries Update\+All} (void)
+\item 
+static void {\bfseries Draw\+All} (void)
+\item 
+static \mbox{\hyperlink{class_c_object}{CObject}} \texorpdfstring{$\ast$}{*} {\bfseries Get\+Top} (int n\+Priority)
+\item 
+static int {\bfseries Get\+Num\+All} (void)
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Member Functions inherited from \mbox{\hyperlink{class_c_object}{CObject}}}
+\begin{DoxyCompactItemize}
+\item 
+void {\bfseries Release} (void)
+\end{DoxyCompactItemize}
+
+
+\label{doc-func-members}
+\Hypertarget{class_c_charactor3_d_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_c_charactor3_d_a6cfc9a3bef30b1bdeb1a87e27a6d3eac}\index{CCharactor3D@{CCharactor3D}!Init@{Init}}
+\index{Init@{Init}!CCharactor3D@{CCharactor3D}}
+\doxysubsubsection{\texorpdfstring{Init()}{Init()}}
+{\footnotesize\ttfamily \label{class_c_charactor3_d_a6cfc9a3bef30b1bdeb1a87e27a6d3eac} 
+HRESULT CCharactor3\+D\+::\+Init (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{class_c_object}{CObject}}.
+
+\Hypertarget{class_c_charactor3_d_abd9b04d68b91ef6071f61abfde4da6a5}\index{CCharactor3D@{CCharactor3D}!Uninit@{Uninit}}
+\index{Uninit@{Uninit}!CCharactor3D@{CCharactor3D}}
+\doxysubsubsection{\texorpdfstring{Uninit()}{Uninit()}}
+{\footnotesize\ttfamily \label{class_c_charactor3_d_abd9b04d68b91ef6071f61abfde4da6a5} 
+void CCharactor3\+D\+::\+Uninit (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{class_c_object}{CObject}}.
+
+\Hypertarget{class_c_charactor3_d_a26417edb5ac87aa6ab7c9c4ac59c5b74}\index{CCharactor3D@{CCharactor3D}!Update@{Update}}
+\index{Update@{Update}!CCharactor3D@{CCharactor3D}}
+\doxysubsubsection{\texorpdfstring{Update()}{Update()}}
+{\footnotesize\ttfamily \label{class_c_charactor3_d_a26417edb5ac87aa6ab7c9c4ac59c5b74} 
+void CCharactor3\+D\+::\+Update (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{class_c_object}{CObject}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+character.\+h\item 
+character.\+cpp\end{DoxyCompactItemize}

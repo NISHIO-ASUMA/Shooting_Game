@@ -1,0 +1,57 @@
+\doxysection{uiobjectmanager.\+h}
+\hypertarget{uiobjectmanager_8h_source}{}\label{uiobjectmanager_8h_source}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{//=========================================================}}
+\DoxyCodeLine{00002\ \textcolor{comment}{//}}
+\DoxyCodeLine{00003\ \textcolor{comment}{//\ UIエディソstring^ーオブジェクト管理処理\ [\ uiobjectmanager.h\ ]}}
+\DoxyCodeLine{00004\ \textcolor{comment}{//\ Author\ :\ Asuma\ Nishio}}
+\DoxyCodeLine{00005\ \textcolor{comment}{//\ }}
+\DoxyCodeLine{00006\ \textcolor{comment}{//\ TODO\ :\ 家で作業する}}
+\DoxyCodeLine{00007\ \textcolor{comment}{//}}
+\DoxyCodeLine{00008\ \textcolor{comment}{//=========================================================}}
+\DoxyCodeLine{00009\ }
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#ifndef\ \_UIOBJECTMANAGER\_H\_\ }\textcolor{comment}{//\ このソ}クロ定義がされてなかったら}}
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#define\ \_UIOBJECTMANAGER\_H\_\ }\textcolor{comment}{//\ 2重インクルード防蚕string~のソ}クロ定義}}
+\DoxyCodeLine{00012\ }
+\DoxyCodeLine{00013\ \textcolor{comment}{//**********************************}}
+\DoxyCodeLine{00014\ \textcolor{comment}{//\ インクルードファイル}}
+\DoxyCodeLine{00015\ \textcolor{comment}{//**********************************}}
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#include\ "{}object.h"{}}}
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00018\ }
+\DoxyCodeLine{00019\ \textcolor{comment}{//***************************}}
+\DoxyCodeLine{00020\ \textcolor{comment}{//\ 前方宣言}}
+\DoxyCodeLine{00021\ \textcolor{comment}{//***************************}}
+\DoxyCodeLine{00022\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_c_ui_object}{CUiObject}};}
+\DoxyCodeLine{00023\ }
+\DoxyCodeLine{00024\ \textcolor{comment}{//**********************************}}
+\DoxyCodeLine{00025\ \textcolor{comment}{//\ 管理クラスを定義}}
+\DoxyCodeLine{00026\ \textcolor{comment}{//**********************************}}
+\DoxyCodeLine{00027\ \textcolor{keyword}{class\ }CUiObjectManager\ :\ \textcolor{keyword}{public}\ CObject}
+\DoxyCodeLine{00028\ \{}
+\DoxyCodeLine{00029\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00030\ \ \ \ \ \textcolor{comment}{//\ コンストラクソstring^・デストラクソstring^}}
+\DoxyCodeLine{00031\ \ \ \ \ CUiObjectManager(\textcolor{keywordtype}{int}\ nPriority\ =\ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{int}\textcolor{keyword}{>}(CObject::PRIORITY::UI));}
+\DoxyCodeLine{00032\ \ \ \ \ \string~CUiObjectManager();}
+\DoxyCodeLine{00033\ }
+\DoxyCodeLine{00034\ \ \ \ \ \textcolor{comment}{//\ メンバ関数}}
+\DoxyCodeLine{00035\ \ \ \ \ HRESULT\ Init(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00036\ \ \ \ \ \textcolor{keywordtype}{void}\ Uninit(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00037\ \ \ \ \ \textcolor{keywordtype}{void}\ Update(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00038\ \ \ \ \ \textcolor{keywordtype}{void}\ Draw(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00039\ \ \ \ \ \textcolor{keywordtype}{void}\ PushBack(\mbox{\hyperlink{class_c_ui_object}{CUiObject}}*\ pMapOjbect)\ \{\ m\_UiObj.push\_back(pMapOjbect);\ \};}
+\DoxyCodeLine{00040\ }
+\DoxyCodeLine{00041\ \ \ \ \ \textcolor{comment}{//\ ゲッソstring^ー}}
+\DoxyCodeLine{00042\ \ \ \ \ \mbox{\hyperlink{class_c_ui_object}{CUiObject}}*\ GetInfo(\textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ nIdx)\ \{\ \textcolor{keywordflow}{return}\ m\_UiObj[nIdx];\ \}}
+\DoxyCodeLine{00043\ \ \ \ \ \textcolor{keywordtype}{int}\ GetSize()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ (\textcolor{keywordtype}{int})m\_UiObj.size();\ \}}
+\DoxyCodeLine{00044\ }
+\DoxyCodeLine{00045\ \ \ \ \ \textcolor{comment}{//\ 静的メンバ関数}}
+\DoxyCodeLine{00046\ \ \ \ \ \textcolor{keyword}{static}\ CUiObjectManager*\ Craete(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00047\ }
+\DoxyCodeLine{00048\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00049\ \ \ \ \ std::vector<CUiObject*>m\_UiObj;\ \textcolor{comment}{//\ 動的リスト}}
+\DoxyCodeLine{00050\ \};}
+\DoxyCodeLine{00051\ }
+\DoxyCodeLine{00052\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

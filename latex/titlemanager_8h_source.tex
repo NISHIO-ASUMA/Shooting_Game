@@ -1,0 +1,71 @@
+\doxysection{titlemanager.\+h}
+\hypertarget{titlemanager_8h_source}{}\label{titlemanager_8h_source}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{//==========================================}}
+\DoxyCodeLine{00002\ \textcolor{comment}{//}}
+\DoxyCodeLine{00003\ \textcolor{comment}{//\ ソstring^イトル管理処理\ [\ titlemanager.h\ ]}}
+\DoxyCodeLine{00004\ \textcolor{comment}{//\ Author:\ Asuma\ Nishio}}
+\DoxyCodeLine{00005\ \textcolor{comment}{//\ }}
+\DoxyCodeLine{00006\ \textcolor{comment}{//==========================================}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#ifndef\ \_TITLEMANAGER\_H\_\ }\textcolor{comment}{//\ このソ}クロ定義がされてなかったら}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#define\ \_TITLEMANAGER\_H\_\ }\textcolor{comment}{//\ 2重インクルード防蚕string~のソ}クロ定義}}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00011\ \textcolor{comment}{//**************}}
+\DoxyCodeLine{00012\ \textcolor{comment}{//\ 前方宣言}}
+\DoxyCodeLine{00013\ \textcolor{comment}{//**************}}
+\DoxyCodeLine{00014\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_c_title_ui}{CTitleUi}};}
+\DoxyCodeLine{00015\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_c_point_ui}{CPointUi}};}
+\DoxyCodeLine{00016\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_c_ui}{CUi}};}
+\DoxyCodeLine{00017\ }
+\DoxyCodeLine{00018\ \textcolor{comment}{//**************************************}}
+\DoxyCodeLine{00019\ \textcolor{comment}{//\ ソstring^イトルソ}ネージャー管理クラスを定義}}
+\DoxyCodeLine{00020\ \textcolor{comment}{//**************************************}}
+\DoxyCodeLine{00021\ \textcolor{keyword}{class\ }CTitleManager}
+\DoxyCodeLine{00022\ \{}
+\DoxyCodeLine{00023\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00024\ \ \ \ \ \textcolor{comment}{//\ コンストラクソstring^・デストラクソstring^}}
+\DoxyCodeLine{00025\ \ \ \ \ CTitleManager(\textcolor{keywordtype}{bool}\ isCreate\ =\ \textcolor{keyword}{true});}
+\DoxyCodeLine{00026\ \ \ \ \ \string~CTitleManager();}
+\DoxyCodeLine{00027\ }
+\DoxyCodeLine{00028\ \ \ \ \ \textcolor{comment}{//\ メンバ関数}}
+\DoxyCodeLine{00029\ \ \ \ \ HRESULT\ Init(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00030\ \ \ \ \ \textcolor{keywordtype}{void}\ Uninit(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00031\ \ \ \ \ \textcolor{keywordtype}{void}\ Update(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00032\ }
+\DoxyCodeLine{00033\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00034\ \ \ \ \ \textcolor{comment}{//**************************}}
+\DoxyCodeLine{00035\ \ \ \ \ \textcolor{comment}{//\ 定数格納構(\backslash\)造体}}
+\DoxyCodeLine{00036\ \ \ \ \ \textcolor{comment}{//**************************}}
+\DoxyCodeLine{00037\ \ \ \ \ \textcolor{keyword}{struct\ }TITLEINFO}
+\DoxyCodeLine{00038\ \ \ \ \ \{}
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{int}\ TITLE\_MENU\ =\ 3;\ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ ソstring^イトル選択ui数}}
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{int}\ SELECT\_START\ =\ 0;\ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 選択開始番号}}
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{int}\ SELECT\_END\ =\ 2;\ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 選択最大値}}
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{int}\ FLASHCOUNT\ =\ 10;\ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 貼_滅間隔}}
+\DoxyCodeLine{00043\ }
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{float}\ UIWIDTH\ =\ 195.0f;\ \ \ \ \ \ \ \ \textcolor{comment}{//\ uiの横幅}}
+\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{float}\ UIHEIGHT\ =\ 50.0f;\ \ \ \ \ \ \ \ \textcolor{comment}{//\ uiの高さ}}
+\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{float}\ SPREADWIDTH\ =\ 205.0f;\ \ \ \ \textcolor{comment}{//\ 拡大横幅}}
+\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{float}\ SPREADHEIGHT\ =\ 60.0f;\ \ \ \ \textcolor{comment}{//\ 拡大高さ}}
+\DoxyCodeLine{00048\ }
+\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{float}\ FIELDWIDTH\ =\ 1000.0f;\ \ \ \ \textcolor{comment}{//\ 地面の広さ}}
+\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{float}\ INTERVAL\ =\ 430.0f;\ \ \ \ \ \ \ \textcolor{comment}{//\ 横幅の間隔}}
+\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{float}\ SELECTPOS\ =\ 100.0f;\ \ \ \ \ \ \textcolor{comment}{//\ 高さの間隔}}
+\DoxyCodeLine{00052\ \ \ \ \ \};}
+\DoxyCodeLine{00053\ }
+\DoxyCodeLine{00054\ \ \ \ \ TITLEINFO\ m\_Info;\ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 構(\backslash\)造体変数}}
+\DoxyCodeLine{00055\ }
+\DoxyCodeLine{00056\ \ \ \ \ \textcolor{keywordtype}{int}\ m\_nIdx;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 選択番号}}
+\DoxyCodeLine{00057\ \ \ \ \ \textcolor{keywordtype}{bool}\ m\_isuiCreate;\ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 生成されたかどうかの判別フラグ}}
+\DoxyCodeLine{00058\ \ \ \ \ \textcolor{keywordtype}{bool}\ m\_isFirstuiCreate;\ \ \ \ \ \textcolor{comment}{//\ 最初のシーンで生成されたか判別フラグ}}
+\DoxyCodeLine{00059\ }
+\DoxyCodeLine{00060\ \ \ \ \ \mbox{\hyperlink{class_c_title_ui}{CTitleUi}}*\ m\_pTitleui[TITLEINFO::TITLE\_MENU];\ \textcolor{comment}{//\ クラスポインソstring^配列}}
+\DoxyCodeLine{00061\ \ \ \ \ \mbox{\hyperlink{class_c_point_ui}{CPointUi}}*\ m\_pPointUi;\ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ クラスポインソstring^}}
+\DoxyCodeLine{00062\ \ \ \ \ \mbox{\hyperlink{class_c_ui}{CUi}}*\ m\_pUi;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ クラスポインソstring^}}
+\DoxyCodeLine{00063\ \};}
+\DoxyCodeLine{00064\ }
+\DoxyCodeLine{00065\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00066\ }
+
+\end{DoxyCode}

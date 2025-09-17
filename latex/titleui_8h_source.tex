@@ -1,0 +1,63 @@
+\doxysection{titleui.\+h}
+\hypertarget{titleui_8h_source}{}\label{titleui_8h_source}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{//====================================}}
+\DoxyCodeLine{00002\ \textcolor{comment}{//}}
+\DoxyCodeLine{00003\ \textcolor{comment}{//\ ソstring^イトルui処理\ [\ titleui.h\ ]}}
+\DoxyCodeLine{00004\ \textcolor{comment}{//\ Author:\ Asuma\ Nishio}}
+\DoxyCodeLine{00005\ \textcolor{comment}{//}}
+\DoxyCodeLine{00006\ \textcolor{comment}{//=====================================}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#ifndef\ \_TITLEUI\_H\_\ }\textcolor{comment}{//\ このソ}クロ定義がされてなかったら}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#define\ \_TITLEUI\_H\_\ }\textcolor{comment}{//\ 2重インクルード防蚕string~のソ}クロ定義}}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00011\ \textcolor{comment}{//**********************}}
+\DoxyCodeLine{00012\ \textcolor{comment}{//\ インクルードファイル}}
+\DoxyCodeLine{00013\ \textcolor{comment}{//**********************}}
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#include\ "{}object2D.h"{}}}
+\DoxyCodeLine{00015\ }
+\DoxyCodeLine{00016\ \textcolor{comment}{//**********************}}
+\DoxyCodeLine{00017\ \textcolor{comment}{//\ 前方宣言}}
+\DoxyCodeLine{00018\ \textcolor{comment}{//**********************}}
+\DoxyCodeLine{00019\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_c_object}{CObject}};}
+\DoxyCodeLine{00020\ }
+\DoxyCodeLine{00021\ \textcolor{comment}{//************************************}}
+\DoxyCodeLine{00022\ \textcolor{comment}{//\ ソstring^イトル2Dオブジェクトクラスを定義}}
+\DoxyCodeLine{00023\ \textcolor{comment}{//************************************}}
+\DoxyCodeLine{00024\ \textcolor{keyword}{class\ }CTitleUi\ :\ \textcolor{keyword}{public}\ CObject2D}
+\DoxyCodeLine{00025\ \{}
+\DoxyCodeLine{00026\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00027\ \ \ \ \ \textcolor{comment}{//*********************}}
+\DoxyCodeLine{00028\ \ \ \ \ \textcolor{comment}{//\ メニュー識別列挙圭string^}}
+\DoxyCodeLine{00029\ \ \ \ \ \textcolor{comment}{//*********************}}
+\DoxyCodeLine{00030\ \ \ \ \ \textcolor{keyword}{enum}\ MENU}
+\DoxyCodeLine{00031\ \ \ \ \ \{}
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ MENU\_GAME,}
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ MENU\_TUTORIAL,}
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ MENU\_EXIT,}
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ MENU\_MAX}
+\DoxyCodeLine{00036\ \ \ \ \ \};}
+\DoxyCodeLine{00037\ }
+\DoxyCodeLine{00038\ \ \ \ \ \textcolor{comment}{//\ コンストラクソstring^・デストラクソstring^}}
+\DoxyCodeLine{00039\ \ \ \ \ CTitleUi(\textcolor{keywordtype}{int}\ nPriority\ =\ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{int}\textcolor{keyword}{>}(CObject::PRIORITY::UI));}
+\DoxyCodeLine{00040\ \ \ \ \ \string~CTitleUi();}
+\DoxyCodeLine{00041\ }
+\DoxyCodeLine{00042\ \ \ \ \ \textcolor{comment}{//\ メンバ関数}}
+\DoxyCodeLine{00043\ \ \ \ \ HRESULT\ Init(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00044\ \ \ \ \ \textcolor{keywordtype}{void}\ Uninit(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00045\ \ \ \ \ \textcolor{keywordtype}{void}\ Update(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00046\ \ \ \ \ \textcolor{keywordtype}{void}\ Draw(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00047\ }
+\DoxyCodeLine{00048\ \ \ \ \ \textcolor{comment}{//\ セッソstring^ー}}
+\DoxyCodeLine{00049\ \ \ \ \ \textcolor{keywordtype}{void}\ SetTexture(\textcolor{keywordtype}{int}\ nType);}
+\DoxyCodeLine{00050\ }
+\DoxyCodeLine{00051\ \ \ \ \ \textcolor{comment}{//\ 静的メンバ関数}}
+\DoxyCodeLine{00052\ \ \ \ \ \textcolor{keyword}{static}\ CTitleUi*\ Create(D3DXVECTOR3\ pos,D3DXCOLOR\ col,\textcolor{keywordtype}{float}\ fWidth,\textcolor{keywordtype}{float}\ fHeight,\textcolor{keywordtype}{int}\ nType);}
+\DoxyCodeLine{00053\ }
+\DoxyCodeLine{00054\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00055\ \ \ \ \ \textcolor{keywordtype}{int}\ m\_nTexIdx;\ \textcolor{comment}{//\ テクスチャインデックス}}
+\DoxyCodeLine{00056\ \};}
+\DoxyCodeLine{00057\ }
+\DoxyCodeLine{00058\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

@@ -1,0 +1,114 @@
+\doxysection{boss.\+h}
+\hypertarget{boss_8h_source}{}\label{boss_8h_source}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{//====================================}}
+\DoxyCodeLine{00002\ \textcolor{comment}{//}}
+\DoxyCodeLine{00003\ \textcolor{comment}{//\ ソ{ス処理\ [\ boss.h\ ]}}
+\DoxyCodeLine{00004\ \textcolor{comment}{//\ Author:\ Asuma\ Nishio}}
+\DoxyCodeLine{00005\ \textcolor{comment}{//}}
+\DoxyCodeLine{00006\ \textcolor{comment}{//=====================================}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#ifndef\ \_BOSS\_H\_\ }\textcolor{comment}{//\ このソ}クロ定義がされてなかったら}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#define\ \_BOSS\_H\_\ }\textcolor{comment}{//\ 2重インクルード防蚕string~のソ}クロ定義}}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00011\ \textcolor{comment}{//******************************}}
+\DoxyCodeLine{00012\ \textcolor{comment}{//\ インクルードファイル}}
+\DoxyCodeLine{00013\ \textcolor{comment}{//******************************}}
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#include\ "{}object.h"{}}}
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#include\ "{}model.h"{}}}
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#include\ "{}motion.h"{}}}
+\DoxyCodeLine{00017\ }
+\DoxyCodeLine{00018\ \textcolor{comment}{//**********************}}
+\DoxyCodeLine{00019\ \textcolor{comment}{//\ 前方宣言}}
+\DoxyCodeLine{00020\ \textcolor{comment}{//**********************}}
+\DoxyCodeLine{00021\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_c_parameter}{CParameter}};}
+\DoxyCodeLine{00022\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_c_state_machine}{CStateMachine}};}
+\DoxyCodeLine{00023\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_c_boss_state_bace}{CBossStateBace}};}
+\DoxyCodeLine{00024\ }
+\DoxyCodeLine{00025\ \textcolor{comment}{//**********************}}
+\DoxyCodeLine{00026\ \textcolor{comment}{//\ ソ{スクラスを定義}}
+\DoxyCodeLine{00027\ \textcolor{comment}{//**********************}}
+\DoxyCodeLine{00028\ \textcolor{keyword}{class\ }CBoss\ :\ \textcolor{keyword}{public}\ CObject}
+\DoxyCodeLine{00029\ \{}
+\DoxyCodeLine{00030\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00031\ \ \ \ \ \textcolor{comment}{//***************************}}
+\DoxyCodeLine{00032\ \ \ \ \ \textcolor{comment}{//\ モーション列挙圭string^宣言}}
+\DoxyCodeLine{00033\ \ \ \ \ \textcolor{comment}{//***************************}}
+\DoxyCodeLine{00034\ \ \ \ \ \textcolor{keyword}{enum}\ TYPE}
+\DoxyCodeLine{00035\ \ \ \ \ \{}
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ TYPE\_NEUTRAL\ =\ 0,\ \ \ \textcolor{comment}{//\ ニュートラル}}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ TYPE\_ACTION,\ \ \ \ \ \ \ \ \textcolor{comment}{//\ 腕攻撃}}
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ TYPE\_IMPACT,\ \ \ \ \ \ \ \ \textcolor{comment}{//\ 叩きつけ衝撃波}}
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ TYPE\_RUBBLE,\ \ \ \ \ \ \ \ \textcolor{comment}{//\ 瓦礫攻撃}}
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ TYPE\_CIRCLE,\ \ \ \ \ \ \ \ \textcolor{comment}{//\ 薙ぎ払い}}
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ TYPE\_MAX}
+\DoxyCodeLine{00042\ \ \ \ \ \};}
+\DoxyCodeLine{00043\ }
+\DoxyCodeLine{00044\ \ \ \ \ \textcolor{comment}{//\ コンストラクソstring^・デストラクソstring^}}
+\DoxyCodeLine{00045\ \ \ \ \ CBoss(\textcolor{keywordtype}{int}\ nPriority\ =\ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{int}\textcolor{keyword}{>}(CObject::PRIORITY::CHARACTOR));}
+\DoxyCodeLine{00046\ \ \ \ \ \string~CBoss();}
+\DoxyCodeLine{00047\ }
+\DoxyCodeLine{00048\ \ \ \ \ \textcolor{comment}{//\ メンバ関数}}
+\DoxyCodeLine{00049\ \ \ \ \ HRESULT\ Init(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00050\ \ \ \ \ \textcolor{keywordtype}{void}\ Uninit(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00051\ \ \ \ \ \textcolor{keywordtype}{void}\ Update(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00052\ \ \ \ \ \textcolor{keywordtype}{void}\ Draw(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00053\ \ \ \ \ \textcolor{keywordtype}{bool}\ CollisionRightHand(D3DXVECTOR3*\ pPos);}
+\DoxyCodeLine{00054\ \ \ \ \ \textcolor{keywordtype}{bool}\ CollisionImpactScal(D3DXVECTOR3*\ pPos);}
+\DoxyCodeLine{00055\ \ \ \ \ \textcolor{keywordtype}{bool}\ CollisionCircle(D3DXVECTOR3*\ pPos,\ \textcolor{keywordtype}{float}\ fHitRadius);}
+\DoxyCodeLine{00056\ \ \ \ \ \textcolor{keywordtype}{void}\ Hit(\textcolor{keywordtype}{int}\ nDamage,D3DXVECTOR3\ HitPos);}
+\DoxyCodeLine{00057\ \ \ \ \ \textcolor{keywordtype}{void}\ ChangeState(\mbox{\hyperlink{class_c_boss_state_bace}{CBossStateBace}}*\ pNewState,\ \textcolor{keywordtype}{int}\ Id);}
+\DoxyCodeLine{00058\ \ \ \ \ \textcolor{keywordtype}{void}\ RollToPlayer(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00059\ \ \ \ \ \textcolor{keywordtype}{void}\ DecCoolTime(\textcolor{keywordtype}{void})\ \{\ \textcolor{keywordflow}{if}\ (m\_nCoolTime\ >\ 0)\ m\_nCoolTime-\/-\/;\ \}}
+\DoxyCodeLine{00060\ \ \ \ \ \textcolor{keywordtype}{void}\ SaveHp(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00061\ }
+\DoxyCodeLine{00062\ \ \ \ \ \textcolor{comment}{//\ セッソstring^ー}}
+\DoxyCodeLine{00063\ \ \ \ \ \textcolor{keywordtype}{void}\ SetCoolTime(\textcolor{keywordtype}{int}\ nCooltime)\ \{\ m\_nCoolTime\ =\ nCooltime;\ \}}
+\DoxyCodeLine{00064\ \ \ \ \ \textcolor{keywordtype}{void}\ SetWeekPoint(\textcolor{keyword}{const}\ D3DXVECTOR3\ pos)\ \{\ m\_WeekPointPos\ =\ pos;\ \}}
+\DoxyCodeLine{00065\ \ \ \ \ \textcolor{keywordtype}{void}\ SetMovePos(\textcolor{keywordtype}{bool}\ isFlags)\ \{\ m\_isSet\ =\ isFlags;\ \}}
+\DoxyCodeLine{00066\ }
+\DoxyCodeLine{00067\ \ \ \ \ \textcolor{comment}{//\ ゲッソstring^ー}}
+\DoxyCodeLine{00068\ \ \ \ \ D3DXVECTOR3\ GetPos(\textcolor{keywordtype}{void})\ \{\ \textcolor{keywordflow}{return}\ m\_pos;\}}
+\DoxyCodeLine{00069\ \ \ \ \ D3DXVECTOR3\ GetRot(\textcolor{keywordtype}{void})\ \{\ \textcolor{keywordflow}{return}\ m\_rot;\ \}}
+\DoxyCodeLine{00070\ \ \ \ \ \mbox{\hyperlink{class_c_parameter}{CParameter}}*\ GetParam(\textcolor{keywordtype}{void})\ \{\ \textcolor{keywordflow}{return}\ m\_pParam;\ \}}
+\DoxyCodeLine{00071\ \ \ \ \ \mbox{\hyperlink{class_c_motion}{CMotion}}*\ GetMotion(\textcolor{keywordtype}{void})\ \{\ \textcolor{keywordflow}{return}\ m\_pMotion;\ \}}
+\DoxyCodeLine{00072\ }
+\DoxyCodeLine{00073\ \ \ \ \ \textcolor{keywordtype}{int}\ GetCoolTime(\textcolor{keywordtype}{void})\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ m\_nCoolTime;\ \}}
+\DoxyCodeLine{00074\ \ \ \ \ \textcolor{keywordtype}{float}\ GetSize(\textcolor{keywordtype}{void})\ \{\ \textcolor{keywordflow}{return}\ m\_fSize;\ \}}
+\DoxyCodeLine{00075\ }
+\DoxyCodeLine{00076\ \ \ \ \ \textcolor{keywordtype}{bool}\ GetIsSet(\textcolor{keywordtype}{void})\ \{\ \textcolor{keywordflow}{return}\ m\_isSet;\ \}}
+\DoxyCodeLine{00077\ }
+\DoxyCodeLine{00078\ \ \ \ \ \textcolor{comment}{//\ 静的メンバ関数}}
+\DoxyCodeLine{00079\ \ \ \ \ \textcolor{keyword}{static}\ CBoss*\ Create(D3DXVECTOR3\ pos,\ \textcolor{keywordtype}{float}\ fSize,\textcolor{keywordtype}{int}\ nLife);}
+\DoxyCodeLine{00080\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{bool}\ IsDaeth(\textcolor{keywordtype}{void})\ \{\ \textcolor{keywordflow}{return}\ m\_isdaeth;\}}
+\DoxyCodeLine{00081\ \ \ \ \ \mbox{\hyperlink{class_c_model}{CModel}}*GetModelPartType(CModel::PARTTYPE\ modelpart);}
+\DoxyCodeLine{00082\ }
+\DoxyCodeLine{00083\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00084\ }
+\DoxyCodeLine{00085\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{int}\ NUMMODELS\ =\ 21;\ \textcolor{comment}{//\ 使うモデル数}}
+\DoxyCodeLine{00086\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{float}\ WEEKPOINTSIZE\ =\ 100.0f;}
+\DoxyCodeLine{00087\ }
+\DoxyCodeLine{00088\ \ \ \ \ D3DXVECTOR3\ m\_pos;}
+\DoxyCodeLine{00089\ \ \ \ \ D3DXVECTOR3\ m\_rot;}
+\DoxyCodeLine{00090\ \ \ \ \ D3DXVECTOR3\ m\_WeekPointPos;}
+\DoxyCodeLine{00091\ \ \ \ \ D3DXMATRIX\ m\_mtxworld;\ \ \textcolor{comment}{//\ ソ}トリックス}}
+\DoxyCodeLine{00092\ }
+\DoxyCodeLine{00093\ \ \ \ \ \mbox{\hyperlink{class_c_model}{CModel}}*\ m\_pModel[NUMMODELS];\ \textcolor{comment}{//\ モデルのポインソstring^}}
+\DoxyCodeLine{00094\ \ \ \ \ \mbox{\hyperlink{class_c_motion}{CMotion}}*\ m\_pMotion;\ \ \ \ \ \ \textcolor{comment}{//\ モーションポインソstring^}}
+\DoxyCodeLine{00095\ \ \ \ \ \mbox{\hyperlink{class_c_parameter}{CParameter}}*\ m\_pParam;\ \textcolor{comment}{//\ パラメーソstring^ーポインソstring^}}
+\DoxyCodeLine{00096\ \ \ \ \ \mbox{\hyperlink{class_c_state_machine}{CStateMachine}}*\ m\_pState;\ \textcolor{comment}{//\ ステートポインソstring^}}
+\DoxyCodeLine{00097\ }
+\DoxyCodeLine{00098\ \ \ \ \ \textcolor{keywordtype}{int}\ m\_type;\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ モーションの種類変数}}
+\DoxyCodeLine{00099\ \ \ \ \ \textcolor{keywordtype}{int}\ m\_nCoolTime;\ \ \ \ \ \ \ \ \textcolor{comment}{//\ クールソstring^イム}}
+\DoxyCodeLine{00100\ \ \ \ \ \textcolor{keywordtype}{int}\ m\_nCurrentMotion;}
+\DoxyCodeLine{00101\ }
+\DoxyCodeLine{00102\ \ \ \ \ \textcolor{keywordtype}{float}\ m\_fSize;\ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ サイズ}}
+\DoxyCodeLine{00103\ \ \ \ \ \textcolor{keywordtype}{bool}\ m\_isEvent;\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ イベントを行ったか}}
+\DoxyCodeLine{00104\ \ \ \ \ \textcolor{keywordtype}{bool}\ m\_isSet;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ セットポジションに入ったか}}
+\DoxyCodeLine{00105\ }
+\DoxyCodeLine{00106\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{bool}\ m\_isdaeth;}
+\DoxyCodeLine{00107\ \};}
+\DoxyCodeLine{00108\ }
+\DoxyCodeLine{00109\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

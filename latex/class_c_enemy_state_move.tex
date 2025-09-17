@@ -1,0 +1,86 @@
+\doxysection{CEnemy\+State\+Move Class Reference}
+\hypertarget{class_c_enemy_state_move}{}\label{class_c_enemy_state_move}\index{CEnemyStateMove@{CEnemyStateMove}}
+Inheritance diagram for CEnemy\+State\+Move\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{class_c_enemy_state_move}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_c_enemy_state_move_a24fb0a362f2cfc2c641cb805bee8cb40}{On\+Start}} ()
+\item 
+void \mbox{\hyperlink{class_c_enemy_state_move_a73e2aa4296d52b233c0a9de7a72cf708}{On\+Update}} ()
+\item 
+void \mbox{\hyperlink{class_c_enemy_state_move_afe95d41e5be1a4851ef51254b94986a9}{On\+Exit}} ()
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_c_enemy_state_base}{CEnemy\+State\+Base}}}
+\begin{DoxyCompactItemize}
+\item 
+void {\bfseries Set\+Owner} (\mbox{\hyperlink{class_c_enemy}{CEnemy}} \texorpdfstring{$\ast$}{*}p\+Enemy)
+\item 
+int \mbox{\hyperlink{class_c_enemy_state_base_a4140c1452837d9a47299e25ec2a120de}{Get\+ID}} () const override
+\item 
+void {\bfseries Set\+ID} (ID id)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Public Types inherited from \mbox{\hyperlink{class_c_enemy_state_base}{CEnemy\+State\+Base}}}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_c_enemy_state_base_abbbff2f61b076a4ec347d5424a9bb595}\label{class_c_enemy_state_base_abbbff2f61b076a4ec347d5424a9bb595} 
+enum {\bfseries ID} \{ \newline
+{\bfseries ID\+\_\+\+NONE}
+, {\bfseries ID\+\_\+\+FALL}
+, {\bfseries ID\+\_\+\+MOVE}
+, {\bfseries ID\+\_\+\+DEATH}
+, \newline
+{\bfseries ID\+\_\+\+MAX}
+ \}
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes inherited from \mbox{\hyperlink{class_c_enemy_state_base}{CEnemy\+State\+Base}}}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_c_enemy}{CEnemy}} \texorpdfstring{$\ast$}{*} {\bfseries m\+\_\+p\+Enemy}
+\end{DoxyCompactItemize}
+
+
+\label{doc-func-members}
+\Hypertarget{class_c_enemy_state_move_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_c_enemy_state_move_afe95d41e5be1a4851ef51254b94986a9}\index{CEnemyStateMove@{CEnemyStateMove}!OnExit@{OnExit}}
+\index{OnExit@{OnExit}!CEnemyStateMove@{CEnemyStateMove}}
+\doxysubsubsection{\texorpdfstring{OnExit()}{OnExit()}}
+{\footnotesize\ttfamily \label{class_c_enemy_state_move_afe95d41e5be1a4851ef51254b94986a9} 
+void CEnemy\+State\+Move\+::\+On\+Exit (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Reimplemented from \mbox{\hyperlink{class_c_enemy_state_base}{CEnemy\+State\+Base}}.
+
+\Hypertarget{class_c_enemy_state_move_a24fb0a362f2cfc2c641cb805bee8cb40}\index{CEnemyStateMove@{CEnemyStateMove}!OnStart@{OnStart}}
+\index{OnStart@{OnStart}!CEnemyStateMove@{CEnemyStateMove}}
+\doxysubsubsection{\texorpdfstring{OnStart()}{OnStart()}}
+{\footnotesize\ttfamily \label{class_c_enemy_state_move_a24fb0a362f2cfc2c641cb805bee8cb40} 
+void CEnemy\+State\+Move\+::\+On\+Start (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Reimplemented from \mbox{\hyperlink{class_c_enemy_state_base}{CEnemy\+State\+Base}}.
+
+\Hypertarget{class_c_enemy_state_move_a73e2aa4296d52b233c0a9de7a72cf708}\index{CEnemyStateMove@{CEnemyStateMove}!OnUpdate@{OnUpdate}}
+\index{OnUpdate@{OnUpdate}!CEnemyStateMove@{CEnemyStateMove}}
+\doxysubsubsection{\texorpdfstring{OnUpdate()}{OnUpdate()}}
+{\footnotesize\ttfamily \label{class_c_enemy_state_move_a73e2aa4296d52b233c0a9de7a72cf708} 
+void CEnemy\+State\+Move\+::\+On\+Update (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Reimplemented from \mbox{\hyperlink{class_c_enemy_state_base}{CEnemy\+State\+Base}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+enemystate.\+h\item 
+enemystate.\+cpp\end{DoxyCompactItemize}

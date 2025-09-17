@@ -1,0 +1,74 @@
+\doxysection{billboard.\+h}
+\hypertarget{billboard_8h_source}{}\label{billboard_8h_source}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{//====================================}}
+\DoxyCodeLine{00002\ \textcolor{comment}{//}}
+\DoxyCodeLine{00003\ \textcolor{comment}{//\ ビルソ{ード処理\ [\ billboard.h\ ]}}
+\DoxyCodeLine{00004\ \textcolor{comment}{//\ Author:\ Asuma\ Nishio}}
+\DoxyCodeLine{00005\ \textcolor{comment}{//}}
+\DoxyCodeLine{00006\ \textcolor{comment}{//=====================================}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#ifndef\ \_BILLBOARD\_H\_\ }\textcolor{comment}{//\ このソ}クロ定義がされてなかったら}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#define\ \_BILLBOARD\_H\_\ }\textcolor{comment}{//\ 2重インクルード防蚕string~のソ}クロ定義}}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00011\ \textcolor{comment}{//**********************}}
+\DoxyCodeLine{00012\ \textcolor{comment}{//\ インクルードファイル}}
+\DoxyCodeLine{00013\ \textcolor{comment}{//**********************}}
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#include\ "{}object.h"{}}}
+\DoxyCodeLine{00015\ }
+\DoxyCodeLine{00016\ \textcolor{comment}{//*************************}}
+\DoxyCodeLine{00017\ \textcolor{comment}{//\ ビルソ{ードクラスを定義}}
+\DoxyCodeLine{00018\ \textcolor{comment}{//*************************}}
+\DoxyCodeLine{00019\ \textcolor{keyword}{class\ }CBillboard\ :\ \textcolor{keyword}{public}\ CObject}
+\DoxyCodeLine{00020\ \{}
+\DoxyCodeLine{00021\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00022\ \ \ \ \ \textcolor{comment}{//\ コンストラクソstring^・デストラクソstring^}}
+\DoxyCodeLine{00023\ \ \ \ \ CBillboard(\textcolor{keywordtype}{int}\ nPriority\ =\ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{int}\textcolor{keyword}{>}(CObject::PRIORITY::BILLBOARD));}
+\DoxyCodeLine{00024\ \ \ \ \ \string~CBillboard();}
+\DoxyCodeLine{00025\ }
+\DoxyCodeLine{00026\ \ \ \ \ \textcolor{comment}{//\ メンバ関数}}
+\DoxyCodeLine{00027\ \ \ \ \ HRESULT\ Init(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00028\ \ \ \ \ \textcolor{keywordtype}{void}\ Uninit(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00029\ \ \ \ \ \textcolor{keywordtype}{void}\ Update(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00030\ \ \ \ \ \textcolor{keywordtype}{void}\ Draw(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00031\ \ \ \ \ \textcolor{keywordtype}{void}\ Flash(\textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ nMaxFlashTime,\textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ Digittime);}
+\DoxyCodeLine{00032\ }
+\DoxyCodeLine{00033\ \ \ \ \ \textcolor{comment}{//\ セッソstring^ー}}
+\DoxyCodeLine{00034\ \ \ \ \ \textcolor{keywordtype}{void}\ SetPos(D3DXVECTOR3\ pos)\ \{\ m\_pos\ =\ pos;\ \}}
+\DoxyCodeLine{00035\ \ \ \ \ \textcolor{keywordtype}{void}\ SetRot(D3DXVECTOR3\ rot)\ \{\ m\_rot\ =\ rot;\ \}}
+\DoxyCodeLine{00036\ \ \ \ \ \textcolor{keywordtype}{void}\ SetCol(D3DXCOLOR\ col)\ \{\ m\_col\ =\ col;\ \}}
+\DoxyCodeLine{00037\ \ \ \ \ \textcolor{keywordtype}{void}\ SetSize(\textcolor{keywordtype}{float}\ fWidth,\ \textcolor{keywordtype}{float}\ fHeight)\ \{\ m\_fWidth\ =\ fWidth,\ m\_fHeight\ =\ fHeight;\ \}}
+\DoxyCodeLine{00038\ \ \ \ \ \textcolor{keywordtype}{void}\ SetTexture(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00039\ \ \ \ \ \textcolor{keywordtype}{void}\ SetEnableZtest(\textcolor{keywordtype}{bool}\ isflags)\ \{\ m\_isTests\ =\ isflags;\ \}}
+\DoxyCodeLine{00040\ \ \ \ \ \textcolor{keywordtype}{void}\ SetAnim(\textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ nMaxPattern,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ nMaxAnimCount,\ \textcolor{keywordtype}{float}\ fTexU,\ \textcolor{keywordtype}{float}\ fTexV);}
+\DoxyCodeLine{00041\ \ \ \ \ \textcolor{keywordtype}{void}\ SetUV(\textcolor{keywordtype}{float}\ fTexU,\ \textcolor{keywordtype}{float}\ fTexU1,\ \textcolor{keywordtype}{float}\ fTexV);}
+\DoxyCodeLine{00042\ }
+\DoxyCodeLine{00043\ \ \ \ \ \textcolor{comment}{//\ ゲッソstring^ー}}
+\DoxyCodeLine{00044\ \ \ \ \ D3DXVECTOR3\ GetPos(\textcolor{keywordtype}{void})\ \{\ \textcolor{keywordflow}{return}\ m\_pos;\ \};}
+\DoxyCodeLine{00045\ \ \ \ \ D3DXVECTOR3\ GetRot(\textcolor{keywordtype}{void})\ \{\ \textcolor{keywordflow}{return}\ m\_rot;\ \};}
+\DoxyCodeLine{00046\ \ \ \ \ D3DXCOLOR\ GetCol(\textcolor{keywordtype}{void})\ \{\ \textcolor{keywordflow}{return}\ m\_col;\ \};}
+\DoxyCodeLine{00047\ \ \ \ \ \textcolor{keywordtype}{float}\ GetWidth(\textcolor{keywordtype}{void})\ \{\ \textcolor{keywordflow}{return}\ m\_fWidth;\ \}}
+\DoxyCodeLine{00048\ \ \ \ \ \textcolor{keywordtype}{float}\ GetHeight(\textcolor{keywordtype}{void})\ \{\ \textcolor{keywordflow}{return}\ m\_fHeight;\ \}}
+\DoxyCodeLine{00049\ }
+\DoxyCodeLine{00050\ \ \ \ \ \textcolor{comment}{//\ 静的メンバ関数}}
+\DoxyCodeLine{00051\ \ \ \ \ \textcolor{keyword}{static}\ CBillboard*\ Create(D3DXVECTOR3\ pos,\ D3DXVECTOR3\ rot,\ \textcolor{keywordtype}{float}\ fWidth,\ \textcolor{keywordtype}{float}\ fHeight);}
+\DoxyCodeLine{00052\ }
+\DoxyCodeLine{00053\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00054\ \ \ \ \ LPDIRECT3DVERTEXBUFFER9\ m\_pVtxBuff;\ \textcolor{comment}{//\ 頂貼_バッファ}}
+\DoxyCodeLine{00055\ \ \ \ \ D3DXMATRIX\ m\_mtxWorld;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ ワールドソ}トリックス}}
+\DoxyCodeLine{00056\ }
+\DoxyCodeLine{00057\ \ \ \ \ D3DXVECTOR3\ m\_rot;\ \ \textcolor{comment}{//\ 角度情報}}
+\DoxyCodeLine{00058\ \ \ \ \ D3DXVECTOR3\ m\_pos;\ \ \textcolor{comment}{//\ 座標情報}}
+\DoxyCodeLine{00059\ \ \ \ \ D3DXCOLOR\ m\_col;\ \ \ \ \textcolor{comment}{//\ 色情報}}
+\DoxyCodeLine{00060\ }
+\DoxyCodeLine{00061\ \ \ \ \ \textcolor{keywordtype}{int}\ m\_nIdxTexture;\ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ テクスチャインデックス}}
+\DoxyCodeLine{00062\ \ \ \ \ \textcolor{keywordtype}{int}\ m\_FlashCount;}
+\DoxyCodeLine{00063\ \ \ \ \ \textcolor{keywordtype}{float}\ m\_fHeight,\ m\_fWidth;\ \ \textcolor{comment}{//\ 横幅,高さ}}
+\DoxyCodeLine{00064\ \ \ \ \ \textcolor{keywordtype}{bool}\ m\_isTests;\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Zテストするかどうか}}
+\DoxyCodeLine{00065\ \ \ \ \ \textcolor{keywordtype}{int}\ m\_nCountAnim;}
+\DoxyCodeLine{00066\ \ \ \ \ \textcolor{keywordtype}{int}\ m\_nPatterAnim;}
+\DoxyCodeLine{00067\ \};}
+\DoxyCodeLine{00068\ }
+\DoxyCodeLine{00069\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

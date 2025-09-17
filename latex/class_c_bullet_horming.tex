@@ -1,0 +1,204 @@
+\doxysection{CBullet\+Horming Class Reference}
+\hypertarget{class_c_bullet_horming}{}\label{class_c_bullet_horming}\index{CBulletHorming@{CBulletHorming}}
+Inheritance diagram for CBullet\+Horming\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{class_c_bullet_horming}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_c_bullet_horming_a0b476ea1c6182c58d622d7ac5c0c9f8e}\label{class_c_bullet_horming_a0b476ea1c6182c58d622d7ac5c0c9f8e} 
+enum {\bfseries HORMING} \{ {\bfseries HORMING\+\_\+\+PLAYER}
+, {\bfseries HORMING\+\_\+\+GROUND}
+, {\bfseries HORMING\+\_\+\+MAX}
+ \}
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Types inherited from \mbox{\hyperlink{class_c_object}{CObject}}}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_c_object_a7263d5eae1a949d02e262e246152a2c6}\label{class_c_object_a7263d5eae1a949d02e262e246152a2c6} 
+enum {\bfseries TYPE} \{ \newline
+{\bfseries TYPE\+\_\+\+NONE} = 0
+, {\bfseries TYPE\+\_\+\+PLAYER}
+, {\bfseries TYPE\+\_\+\+MESH}
+, {\bfseries TYPE\+\_\+\+BULLET}
+, \newline
+{\bfseries TYPE\+\_\+\+BOSS}
+, {\bfseries TYPE\+\_\+\+ENEMY}
+, {\bfseries TYPE\+\_\+\+BLOCK}
+, {\bfseries TYPE\+\_\+\+PAUSE}
+, \newline
+{\bfseries TYPE\+\_\+\+BARRIER}
+, {\bfseries TYPE\+\_\+\+ITEM}
+, {\bfseries TYPE\+\_\+\+RUBBLE}
+, {\bfseries TYPE\+\_\+\+PILER}
+, \newline
+{\bfseries TYPE\+\_\+\+POINT}
+, {\bfseries TYPE\+\_\+\+MAX}
+ \}
+\item 
+\Hypertarget{class_c_object_a0924032649f7068d08cc5da588adc8d0}\label{class_c_object_a0924032649f7068d08cc5da588adc8d0} 
+enum {\bfseries PRIORITY} \{ \newline
+{\bfseries NONE}
+, {\bfseries MESH}
+, {\bfseries BASENUMBER}
+, {\bfseries MODELOBJECT}
+, \newline
+{\bfseries BULLET}
+, {\bfseries SHADOW}
+, {\bfseries IMPACT}
+, {\bfseries CHARACTOR}
+, \newline
+{\bfseries BILLBOARD}
+, {\bfseries EFFECT}
+, {\bfseries UI}
+, {\bfseries PAUSE}
+, \newline
+{\bfseries PRIORITY\+\_\+\+MAX}
+ \}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_c_bullet_horming_aa18330b1b8a725902826a803eb8f7e64}\label{class_c_bullet_horming_aa18330b1b8a725902826a803eb8f7e64} 
+{\bfseries CBullet\+Horming} (int n\+Priority=static\+\_\+cast$<$ int $>$(CObject\+::\+PRIORITY\+::\+BULLET))
+\item 
+HRESULT \mbox{\hyperlink{class_c_bullet_horming_a5789fd3d2bdb508c9a18d4b0e14d8186}{Init}} (void)
+\item 
+void \mbox{\hyperlink{class_c_bullet_horming_a5786247887f30783ee3c7912dcb42f2a}{Uninit}} (void)
+\item 
+void \mbox{\hyperlink{class_c_bullet_horming_abc8f679f5810d2ea97722c60c74166ac}{Update}} (void)
+\item 
+void \mbox{\hyperlink{class_c_bullet_horming_adb054c00635a21318f0bf933dd4f05af}{Draw}} (void)
+\item 
+\Hypertarget{class_c_bullet_horming_afa507b1d06189f0b6309b45479add02f}\label{class_c_bullet_horming_afa507b1d06189f0b6309b45479add02f} 
+void {\bfseries Collision\+All} (void)
+\item 
+\Hypertarget{class_c_bullet_horming_a7b510bfd3d5f4fb0358ef892ce2ec71e}\label{class_c_bullet_horming_a7b510bfd3d5f4fb0358ef892ce2ec71e} 
+bool {\bfseries Collision} (D3\+DXVECTOR3 Dest\+Pos)
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_c_object_x}{CObjectX}}}
+\begin{DoxyCompactItemize}
+\item 
+{\bfseries CObjectX} (int n\+Priority=static\+\_\+cast$<$ int $>$(CObject\+::\+PRIORITY\+::\+MODELOBJECT))
+\item 
+HRESULT \mbox{\hyperlink{class_c_object_x_a847767341403f8245dcaeff654a8d4e8}{Init}} (void)
+\item 
+void \mbox{\hyperlink{class_c_object_x_acdc96ed7b96db25dbf30b06a0ad865d9}{Uninit}} (void)
+\item 
+void \mbox{\hyperlink{class_c_object_x_a5b265df5e9d645e2bd50ee23135b90e5}{Update}} (void)
+\item 
+void \mbox{\hyperlink{class_c_object_x_a506817897c8d93f88bf6353999f38941}{Draw}} (void)
+\item 
+void {\bfseries Set\+File\+Pass} (const char \texorpdfstring{$\ast$}{*}p\+File\+Pass)
+\item 
+void {\bfseries Set\+Pos} (D3\+DXVECTOR3 pos)
+\item 
+void {\bfseries Set\+Rot} (D3\+DXVECTOR3 rot)
+\item 
+void {\bfseries Set\+Use\+Quat} (bool is\+Flags)
+\item 
+void {\bfseries Set\+Mtx\+World} (D3\+DXMATRIX mtxworld)
+\item 
+D3\+DXVECTOR3 {\bfseries Get\+Pos} (void)
+\item 
+D3\+DXVECTOR3 {\bfseries Get\+Rot} (void)
+\item 
+D3\+DXMATRIX {\bfseries Get\+Mtx\+World} (void)
+\item 
+const char \texorpdfstring{$\ast$}{*} {\bfseries Get\+File\+Name} () const
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_c_object}{CObject}}}
+\begin{DoxyCompactItemize}
+\item 
+{\bfseries CObject} (int n\+Priority=NONE)
+\item 
+void {\bfseries Set\+Obj\+Type} (TYPE type)
+\item 
+TYPE {\bfseries Get\+Obj\+Type} (void)
+\item 
+\mbox{\hyperlink{class_c_object}{CObject}} \texorpdfstring{$\ast$}{*} {\bfseries Get\+Next} (void)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_c_bullet_horming_a3dd9e705e4760373041d6029b670acfa}\label{class_c_bullet_horming_a3dd9e705e4760373041d6029b670acfa} 
+static \mbox{\hyperlink{class_c_bullet_horming}{CBullet\+Horming}} \texorpdfstring{$\ast$}{*} {\bfseries Create} (const char \texorpdfstring{$\ast$}{*}p\+File\+Nama, D3\+DXVECTOR3 pos)
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Member Functions inherited from \mbox{\hyperlink{class_c_object_x}{CObjectX}}}
+\begin{DoxyCompactItemize}
+\item 
+static \mbox{\hyperlink{class_c_object_x}{CObjectX}} \texorpdfstring{$\ast$}{*} {\bfseries Create} (const char \texorpdfstring{$\ast$}{*}p\+File\+Name, D3\+DXVECTOR3 pos)
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Member Functions inherited from \mbox{\hyperlink{class_c_object}{CObject}}}
+\begin{DoxyCompactItemize}
+\item 
+static void {\bfseries Release\+All} (void)
+\item 
+static void {\bfseries Update\+All} (void)
+\item 
+static void {\bfseries Draw\+All} (void)
+\item 
+static \mbox{\hyperlink{class_c_object}{CObject}} \texorpdfstring{$\ast$}{*} {\bfseries Get\+Top} (int n\+Priority)
+\item 
+static int {\bfseries Get\+Num\+All} (void)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Protected Member Functions inherited from \mbox{\hyperlink{class_c_object}{CObject}}}
+\begin{DoxyCompactItemize}
+\item 
+void {\bfseries Release} (void)
+\end{DoxyCompactItemize}
+
+
+\label{doc-func-members}
+\Hypertarget{class_c_bullet_horming_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_c_bullet_horming_adb054c00635a21318f0bf933dd4f05af}\index{CBulletHorming@{CBulletHorming}!Draw@{Draw}}
+\index{Draw@{Draw}!CBulletHorming@{CBulletHorming}}
+\doxysubsubsection{\texorpdfstring{Draw()}{Draw()}}
+{\footnotesize\ttfamily \label{class_c_bullet_horming_adb054c00635a21318f0bf933dd4f05af} 
+void CBullet\+Horming\+::\+Draw (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{class_c_object}{CObject}}.
+
+\Hypertarget{class_c_bullet_horming_a5789fd3d2bdb508c9a18d4b0e14d8186}\index{CBulletHorming@{CBulletHorming}!Init@{Init}}
+\index{Init@{Init}!CBulletHorming@{CBulletHorming}}
+\doxysubsubsection{\texorpdfstring{Init()}{Init()}}
+{\footnotesize\ttfamily \label{class_c_bullet_horming_a5789fd3d2bdb508c9a18d4b0e14d8186} 
+HRESULT CBullet\+Horming\+::\+Init (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{class_c_object}{CObject}}.
+
+\Hypertarget{class_c_bullet_horming_a5786247887f30783ee3c7912dcb42f2a}\index{CBulletHorming@{CBulletHorming}!Uninit@{Uninit}}
+\index{Uninit@{Uninit}!CBulletHorming@{CBulletHorming}}
+\doxysubsubsection{\texorpdfstring{Uninit()}{Uninit()}}
+{\footnotesize\ttfamily \label{class_c_bullet_horming_a5786247887f30783ee3c7912dcb42f2a} 
+void CBullet\+Horming\+::\+Uninit (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{class_c_object}{CObject}}.
+
+\Hypertarget{class_c_bullet_horming_abc8f679f5810d2ea97722c60c74166ac}\index{CBulletHorming@{CBulletHorming}!Update@{Update}}
+\index{Update@{Update}!CBulletHorming@{CBulletHorming}}
+\doxysubsubsection{\texorpdfstring{Update()}{Update()}}
+{\footnotesize\ttfamily \label{class_c_bullet_horming_abc8f679f5810d2ea97722c60c74166ac} 
+void CBullet\+Horming\+::\+Update (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{class_c_object}{CObject}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+bullethorming.\+h\item 
+bullethorming.\+cpp\end{DoxyCompactItemize}

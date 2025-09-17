@@ -1,0 +1,62 @@
+\doxysection{easing.\+h}
+\hypertarget{easing_8h_source}{}\label{easing_8h_source}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{//=============================================}}
+\DoxyCodeLine{00002\ \textcolor{comment}{//}}
+\DoxyCodeLine{00003\ \textcolor{comment}{//\ イージング処理\ [\ easing.h\ ]}}
+\DoxyCodeLine{00004\ \textcolor{comment}{//\ Author:\ Asuma\ Nishio}}
+\DoxyCodeLine{00005\ \textcolor{comment}{//}}
+\DoxyCodeLine{00006\ \textcolor{comment}{//=============================================}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#ifndef\ \_EASING\_H\_\ }\textcolor{comment}{//\ このソ}クロ定義がされてなかったら}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#define\ \_EASING\_H\_\ }\textcolor{comment}{//\ 2重インクルード防蚕string~のソ}クロ定義}}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00011\ \textcolor{comment}{//*********************************}}
+\DoxyCodeLine{00012\ \textcolor{comment}{//\ イージングのクラス定義}}
+\DoxyCodeLine{00013\ \textcolor{comment}{//*********************************}}
+\DoxyCodeLine{00014\ \textcolor{keyword}{class\ }CEasing}
+\DoxyCodeLine{00015\ \{}
+\DoxyCodeLine{00016\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00017\ \ \ \ \ \textcolor{comment}{//\ コンストラクソstring^・デストラクソstring^}}
+\DoxyCodeLine{00018\ \ \ \ \ CEasing();}
+\DoxyCodeLine{00019\ \ \ \ \ \string~CEasing();}
+\DoxyCodeLine{00020\ }
+\DoxyCodeLine{00021\ \ \ \ \ \textcolor{comment}{//\ 静的メンバ関数}}
+\DoxyCodeLine{00022\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{float}\ EaseInsine(\textcolor{keywordtype}{float}\ t);}
+\DoxyCodeLine{00023\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{float}\ EaseOutsine(\textcolor{keywordtype}{float}\ t);}
+\DoxyCodeLine{00024\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{float}\ EaseInOutSine(\textcolor{keywordtype}{float}\ t);}
+\DoxyCodeLine{00025\ }
+\DoxyCodeLine{00026\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{float}\ EaseInQuad(\textcolor{keywordtype}{float}\ t);\ \ \ }
+\DoxyCodeLine{00027\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{float}\ EaseOutQuad(\textcolor{keywordtype}{float}\ t);\ \ }
+\DoxyCodeLine{00028\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{float}\ EaseInOutQuad(\textcolor{keywordtype}{float}\ t);}
+\DoxyCodeLine{00029\ }
+\DoxyCodeLine{00030\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{float}\ EaseInCubic(\textcolor{keywordtype}{float}\ t);\ \ }
+\DoxyCodeLine{00031\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{float}\ EaseOutCubic(\textcolor{keywordtype}{float}\ t);\ }
+\DoxyCodeLine{00032\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{float}\ EaseInOutCubic(\textcolor{keywordtype}{float}\ t);}
+\DoxyCodeLine{00033\ }
+\DoxyCodeLine{00034\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{float}\ EaseBounce(\textcolor{keywordtype}{float}\ t);}
+\DoxyCodeLine{00035\ }
+\DoxyCodeLine{00036\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{float}\ EaseOutQuart(\textcolor{keywordtype}{float}\ t);}
+\DoxyCodeLine{00037\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{float}\ EaseInOutQuart(\textcolor{keywordtype}{float}\ t);}
+\DoxyCodeLine{00038\ }
+\DoxyCodeLine{00039\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{float}\ EaseOutQuint(\textcolor{keywordtype}{float}\ t);}
+\DoxyCodeLine{00040\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{float}\ EaseInOutQuint(\textcolor{keywordtype}{float}\ t);}
+\DoxyCodeLine{00041\ }
+\DoxyCodeLine{00042\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{float}\ EaseInBack(\textcolor{keywordtype}{float}\ t);}
+\DoxyCodeLine{00043\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{float}\ EaseOutBack(\textcolor{keywordtype}{float}\ t);}
+\DoxyCodeLine{00044\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{float}\ EaseInOutBack(\textcolor{keywordtype}{float}\ t);}
+\DoxyCodeLine{00045\ }
+\DoxyCodeLine{00046\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{float}\ EaseInElastic(\textcolor{keywordtype}{float}\ t);}
+\DoxyCodeLine{00047\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{float}\ EaseOutElastic(\textcolor{keywordtype}{float}\ t);}
+\DoxyCodeLine{00048\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{float}\ EaseInOutElastic(\textcolor{keywordtype}{float}\ t);}
+\DoxyCodeLine{00049\ }
+\DoxyCodeLine{00050\ \ \ \ \ \textcolor{comment}{//\ セッソstring^ー}}
+\DoxyCodeLine{00051\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{float}\ SetEase(\textcolor{keywordtype}{int}\ EaseFrame,\ \textcolor{keywordtype}{int}\ MaxEaseFrame);}
+\DoxyCodeLine{00052\ }
+\DoxyCodeLine{00053\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00054\ }
+\DoxyCodeLine{00055\ \};}
+\DoxyCodeLine{00056\ }
+\DoxyCodeLine{00057\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

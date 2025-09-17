@@ -1,0 +1,64 @@
+\doxysection{rubblemanager.\+h}
+\hypertarget{rubblemanager_8h_source}{}\label{rubblemanager_8h_source}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{//=================================================}}
+\DoxyCodeLine{00002\ \textcolor{comment}{//}}
+\DoxyCodeLine{00003\ \textcolor{comment}{//\ 瓦礫オブジェクト管理処理\ [\ rubblemanager.h\ ]}}
+\DoxyCodeLine{00004\ \textcolor{comment}{//\ Author\ :\ Asuma\ Nishio}}
+\DoxyCodeLine{00005\ \textcolor{comment}{//}}
+\DoxyCodeLine{00006\ \textcolor{comment}{//=================================================}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#ifndef\ \_RUBBLEMANAGER\_H\_\ }\textcolor{comment}{//\ このソ}クロ定義がされてなかったら}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#define\ \_RUBBLEMANAGER\_H\_\ }\textcolor{comment}{//\ 2重インクルード防蚕string~のソ}クロ定義}}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00011\ \textcolor{comment}{//**********************************}}
+\DoxyCodeLine{00012\ \textcolor{comment}{//\ インクルードファイル}}
+\DoxyCodeLine{00013\ \textcolor{comment}{//**********************************}}
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#include\ "{}rubble.h"{}}}
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00017\ }
+\DoxyCodeLine{00018\ \textcolor{comment}{//**********************************}}
+\DoxyCodeLine{00019\ \textcolor{comment}{//\ 瓦礫管理クラスを定義}}
+\DoxyCodeLine{00020\ \textcolor{comment}{//**********************************}}
+\DoxyCodeLine{00021\ \textcolor{keyword}{class\ }CRubbleManager}
+\DoxyCodeLine{00022\ \{}
+\DoxyCodeLine{00023\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00024\ \ \ \ \ \textcolor{comment}{//*************************}}
+\DoxyCodeLine{00025\ \ \ \ \ \textcolor{comment}{//\ 使うファイルパスの種類}}
+\DoxyCodeLine{00026\ \ \ \ \ \textcolor{comment}{//*************************}}
+\DoxyCodeLine{00027\ \ \ \ \ \textcolor{keyword}{enum}\ FILETYPE}
+\DoxyCodeLine{00028\ \ \ \ \ \{}
+\DoxyCodeLine{00029\ \ \ \ \ \ \ \ \ FILETYPE\_SMALL,\ \ \ \ \ \textcolor{comment}{//\ 少なめ}}
+\DoxyCodeLine{00030\ \ \ \ \ \ \ \ \ FILETYPE\_MEDIUM,\ \ \ \ \textcolor{comment}{//\ 普通}}
+\DoxyCodeLine{00031\ \ \ \ \ \ \ \ \ FLIETYPE\_lARGE,\ \ \ \ \ \textcolor{comment}{//\ 多い}}
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ FILETYPE\_MAX}
+\DoxyCodeLine{00033\ \ \ \ \ \};}
+\DoxyCodeLine{00034\ }
+\DoxyCodeLine{00035\ \ \ \ \ \textcolor{comment}{//\ コンストラクソstring^・デストラクソstring^}}
+\DoxyCodeLine{00036\ \ \ \ \ CRubbleManager();}
+\DoxyCodeLine{00037\ \ \ \ \ \string~CRubbleManager();}
+\DoxyCodeLine{00038\ }
+\DoxyCodeLine{00039\ \ \ \ \ \textcolor{comment}{//\ メンバ関数}}
+\DoxyCodeLine{00040\ \ \ \ \ HRESULT\ Init(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00041\ \ \ \ \ \textcolor{keywordtype}{void}\ Uninit(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00042\ \ \ \ \ \textcolor{keywordtype}{void}\ Update(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00043\ \ \ \ \ \textcolor{keywordtype}{void}\ LoadAllList(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *\ pFileList);}
+\DoxyCodeLine{00044\ \ \ \ \ \textcolor{keywordtype}{void}\ LoadSplitFile(\textcolor{keywordtype}{int}\ type);}
+\DoxyCodeLine{00045\ }
+\DoxyCodeLine{00046\ \ \ \ \ \textcolor{comment}{//\ 静的メンバ関数}}
+\DoxyCodeLine{00047\ \ \ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{class_c_rubble}{CRubble}}*\ Create(D3DXVECTOR3\ pos,\ D3DXVECTOR3\ rot,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ pFilename);}
+\DoxyCodeLine{00048\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{const}\ std::vector<CRubble*>\&\ GetRubbles()\ \{\ \textcolor{keywordflow}{return}\ m\_rubbles;\ \}\ \textcolor{comment}{//\ 配列取得}}
+\DoxyCodeLine{00049\ }
+\DoxyCodeLine{00050\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00051\ \ \ \ \ \textcolor{keyword}{static}\ std::vector<CRubble*>\ m\_rubbles;\ \textcolor{comment}{//\ 動的配列}}
+\DoxyCodeLine{00052\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{int}\ m\_nIdxCount;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ モデルインデックス番号}}
+\DoxyCodeLine{00053\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ FILEPASS\ =\ \textcolor{stringliteral}{"{}data\(\backslash\)\(\backslash\)Loader\(\backslash\)\(\backslash\)AllRubbleList.txt"{}};\ \textcolor{comment}{//\ ファイルパス}}
+\DoxyCodeLine{00054\ }
+\DoxyCodeLine{00055\ \ \ \ \ std::vector<std::string>\ m\_SubListFiles;\ \ \ \ \textcolor{comment}{//\ AllRubbleListから読み込んだファイル群}}
+\DoxyCodeLine{00056\ \ \ \ \ \textcolor{keywordtype}{int}\ m\_nUseType;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 使う種類}}
+\DoxyCodeLine{00057\ \};}
+\DoxyCodeLine{00058\ }
+\DoxyCodeLine{00059\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

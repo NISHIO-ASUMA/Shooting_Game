@@ -1,0 +1,65 @@
+\doxysection{gamemanager.\+h}
+\hypertarget{gamemanager_8h_source}{}\label{gamemanager_8h_source}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{//==========================================}}
+\DoxyCodeLine{00002\ \textcolor{comment}{//}}
+\DoxyCodeLine{00003\ \textcolor{comment}{//\ ゲーム管理処理\ [\ gamemanager.h\ ]}}
+\DoxyCodeLine{00004\ \textcolor{comment}{//\ Author:\ Asuma\ Nishio}}
+\DoxyCodeLine{00005\ \textcolor{comment}{//\ }}
+\DoxyCodeLine{00006\ \textcolor{comment}{//==========================================}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \textcolor{comment}{//***************************}}
+\DoxyCodeLine{00009\ \textcolor{comment}{//\ インクルードファイル宣言}}
+\DoxyCodeLine{00010\ \textcolor{comment}{//***************************}}
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#include\ "{}meshcylinder.h"{}}}
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#include\ "{}boss.h"{}}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#include\ "{}block.h"{}}}
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#include\ "{}time.h"{}}}
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#include\ "{}uimanager.h"{}}}
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#include\ "{}barriermanager.h"{}}}
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#include\ "{}rubblemanager.h"{}}}
+\DoxyCodeLine{00018\ }
+\DoxyCodeLine{00019\ \textcolor{comment}{//*****************************}}
+\DoxyCodeLine{00020\ \textcolor{comment}{//\ 前方宣言}}
+\DoxyCodeLine{00021\ \textcolor{comment}{//*****************************}}
+\DoxyCodeLine{00022\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_c_item_manager}{CItemManager}};}
+\DoxyCodeLine{00023\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_c_piler_manager}{CPilerManager}};}
+\DoxyCodeLine{00024\ }
+\DoxyCodeLine{00025\ \textcolor{comment}{//*****************************}}
+\DoxyCodeLine{00026\ \textcolor{comment}{//\ ゲーム状態管理クラスを定義}}
+\DoxyCodeLine{00027\ \textcolor{comment}{//*****************************}}
+\DoxyCodeLine{00028\ \textcolor{keyword}{class\ }CGameManager}
+\DoxyCodeLine{00029\ \{}
+\DoxyCodeLine{00030\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00031\ \ \ \ \ \textcolor{comment}{//\ コンストラクソstring^・デストラクソstring^}}
+\DoxyCodeLine{00032\ \ \ \ \ CGameManager();}
+\DoxyCodeLine{00033\ \ \ \ \ \string~CGameManager();}
+\DoxyCodeLine{00034\ }
+\DoxyCodeLine{00035\ \ \ \ \ \textcolor{comment}{//\ メンバ関数}}
+\DoxyCodeLine{00036\ \ \ \ \ HRESULT\ Init(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00037\ \ \ \ \ \textcolor{keywordtype}{void}\ Uninit(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00038\ \ \ \ \ \textcolor{keywordtype}{void}\ Update(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00039\ }
+\DoxyCodeLine{00040\ \ \ \ \ \textcolor{comment}{//\ 静的メンバ関数}}
+\DoxyCodeLine{00041\ \ \ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{class_c_mesh_cylinder}{CMeshCylinder}}*\ GetCylinder(\textcolor{keywordtype}{void})\ \{\ \textcolor{keywordflow}{return}\ m\_pMeshCylinder;\ \}}
+\DoxyCodeLine{00042\ \ \ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{class_c_boss}{CBoss}}*\ GetBoss(\textcolor{keywordtype}{void})\ \{\ \textcolor{keywordflow}{return}\ m\_pBoss;\ \}}
+\DoxyCodeLine{00043\ \ \ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{class_c_time}{CTime}}*\ GetTime(\textcolor{keywordtype}{void})\ \{\ \textcolor{keywordflow}{return}\ m\_pTime;\ \}}
+\DoxyCodeLine{00044\ \ \ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{class_c_uimanager}{CUimanager}}*\ GetUimanager(\textcolor{keywordtype}{void})\ \{\ \textcolor{keywordflow}{return}\ m\_puimanager;\ \}}
+\DoxyCodeLine{00045\ \ \ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{class_c_barrier_manager}{CBarrierManager}}*\ GetBarrier(\textcolor{keywordtype}{void})\ \{\ \textcolor{keywordflow}{return}\ m\_pBarrier;\ \}}
+\DoxyCodeLine{00046\ \ \ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{class_c_rubble_manager}{CRubbleManager}}*\ GetRubble(\textcolor{keywordtype}{void})\ \{\ \textcolor{keywordflow}{return}\ m\_pRubble;\ \}}
+\DoxyCodeLine{00047\ }
+\DoxyCodeLine{00048\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00049\ \ \ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{class_c_mesh_cylinder}{CMeshCylinder}}*\ m\_pMeshCylinder;\ \ \ \ \ \textcolor{comment}{//\ シリンソ_ー}}
+\DoxyCodeLine{00050\ \ \ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{class_c_boss}{CBoss}}*\ m\_pBoss;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ ソ{ス}}
+\DoxyCodeLine{00051\ \ \ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{class_c_time}{CTime}}*\ m\_pTime;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ ソstring^イソ}ー}}
+\DoxyCodeLine{00052\ \ \ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{class_c_uimanager}{CUimanager}}*\ m\_puimanager;\ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ UIソ}ネージャー}}
+\DoxyCodeLine{00053\ \ \ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{class_c_barrier_manager}{CBarrierManager}}*\ m\_pBarrier;}
+\DoxyCodeLine{00054\ \ \ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{class_c_rubble_manager}{CRubbleManager}}*\ m\_pRubble;}
+\DoxyCodeLine{00055\ }
+\DoxyCodeLine{00056\ \ \ \ \ \mbox{\hyperlink{class_c_item_manager}{CItemManager}}*\ m\_pItemManager;\ \ \ \ \ \ \ \textcolor{comment}{//\ アイテムソ}ネージャーポインソstring^}}
+\DoxyCodeLine{00057\ \ \ \ \ \mbox{\hyperlink{class_c_piler_manager}{CPilerManager}}*\ m\_pPilerManager;}
+\DoxyCodeLine{00058\ }
+\DoxyCodeLine{00059\ \};}
+\DoxyCodeLine{00060\ }
+
+\end{DoxyCode}

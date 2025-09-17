@@ -1,0 +1,194 @@
+\doxysection{CEffect\+Laser Class Reference}
+\hypertarget{class_c_effect_laser}{}\label{class_c_effect_laser}\index{CEffectLaser@{CEffectLaser}}
+Inheritance diagram for CEffect\+Laser\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{class_c_effect_laser}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_c_effect_laser_a90c395ebfaa962897cb4e477b27f4703}\label{class_c_effect_laser_a90c395ebfaa962897cb4e477b27f4703} 
+{\bfseries CEffect\+Laser} (int n\+Priority=static\+\_\+cast$<$ int $>$(CObject\+::\+PRIORITY\+::\+EFFECT))
+\item 
+HRESULT \mbox{\hyperlink{class_c_effect_laser_a811285bbdc2e5a831b64d32ddae1fb81}{Init}} (void)
+\item 
+void \mbox{\hyperlink{class_c_effect_laser_aa0214d48693916373b551cc1c11df72f}{Uninit}} (void)
+\item 
+void \mbox{\hyperlink{class_c_effect_laser_a128fb24091727359a90cbb1f81a5fe39}{Update}} (void)
+\item 
+void \mbox{\hyperlink{class_c_effect_laser_a412b99b567e187ad14821011341923ba}{Draw}} (void)
+\item 
+\Hypertarget{class_c_effect_laser_ade9b0d1c1b0eedfd8950e21ec886fa29}\label{class_c_effect_laser_ade9b0d1c1b0eedfd8950e21ec886fa29} 
+void {\bfseries Set\+Texture} (void)
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_c_billboard}{CBillboard}}}
+\begin{DoxyCompactItemize}
+\item 
+{\bfseries CBillboard} (int n\+Priority=static\+\_\+cast$<$ int $>$(CObject\+::\+PRIORITY\+::\+BILLBOARD))
+\item 
+void {\bfseries Flash} (const int n\+Max\+Flash\+Time, const int Digittime)
+\item 
+void {\bfseries Set\+Pos} (D3\+DXVECTOR3 pos)
+\item 
+void {\bfseries Set\+Rot} (D3\+DXVECTOR3 rot)
+\item 
+void {\bfseries Set\+Col} (D3\+DXCOLOR col)
+\item 
+void {\bfseries Set\+Size} (float f\+Width, float f\+Height)
+\item 
+void {\bfseries Set\+Texture} (void)
+\item 
+void {\bfseries Set\+Enable\+Ztest} (bool isflags)
+\item 
+void {\bfseries Set\+Anim} (const int n\+Max\+Pattern, const int n\+Max\+Anim\+Count, float f\+TexU, float f\+TexV)
+\item 
+void {\bfseries Set\+UV} (float f\+TexU, float f\+Tex\+U1, float f\+TexV)
+\item 
+D3\+DXVECTOR3 {\bfseries Get\+Pos} (void)
+\item 
+D3\+DXVECTOR3 {\bfseries Get\+Rot} (void)
+\item 
+D3\+DXCOLOR {\bfseries Get\+Col} (void)
+\item 
+float {\bfseries Get\+Width} (void)
+\item 
+float {\bfseries Get\+Height} (void)
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_c_object}{CObject}}}
+\begin{DoxyCompactItemize}
+\item 
+{\bfseries CObject} (int n\+Priority=NONE)
+\item 
+void {\bfseries Set\+Obj\+Type} (TYPE type)
+\item 
+TYPE {\bfseries Get\+Obj\+Type} (void)
+\item 
+\mbox{\hyperlink{class_c_object}{CObject}} \texorpdfstring{$\ast$}{*} {\bfseries Get\+Next} (void)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_c_effect_laser_a48953951283a44d45bbbcaf08dc5691b}\label{class_c_effect_laser_a48953951283a44d45bbbcaf08dc5691b} 
+static \mbox{\hyperlink{class_c_effect_laser}{CEffect\+Laser}} \texorpdfstring{$\ast$}{*} {\bfseries Create} (D3\+DXVECTOR3 pos, D3\+DXVECTOR3 Endpos, D3\+DXCOLOR col, D3\+DXVECTOR3 move, int n\+Life, float f\+Radius)
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Member Functions inherited from \mbox{\hyperlink{class_c_billboard}{CBillboard}}}
+\begin{DoxyCompactItemize}
+\item 
+static \mbox{\hyperlink{class_c_billboard}{CBillboard}} \texorpdfstring{$\ast$}{*} {\bfseries Create} (D3\+DXVECTOR3 pos, D3\+DXVECTOR3 rot, float f\+Width, float f\+Height)
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Member Functions inherited from \mbox{\hyperlink{class_c_object}{CObject}}}
+\begin{DoxyCompactItemize}
+\item 
+static void {\bfseries Release\+All} (void)
+\item 
+static void {\bfseries Update\+All} (void)
+\item 
+static void {\bfseries Draw\+All} (void)
+\item 
+static \mbox{\hyperlink{class_c_object}{CObject}} \texorpdfstring{$\ast$}{*} {\bfseries Get\+Top} (int n\+Priority)
+\item 
+static int {\bfseries Get\+Num\+All} (void)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Public Types inherited from \mbox{\hyperlink{class_c_object}{CObject}}}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_c_object_a7263d5eae1a949d02e262e246152a2c6}\label{class_c_object_a7263d5eae1a949d02e262e246152a2c6} 
+enum {\bfseries TYPE} \{ \newline
+{\bfseries TYPE\+\_\+\+NONE} = 0
+, {\bfseries TYPE\+\_\+\+PLAYER}
+, {\bfseries TYPE\+\_\+\+MESH}
+, {\bfseries TYPE\+\_\+\+BULLET}
+, \newline
+{\bfseries TYPE\+\_\+\+BOSS}
+, {\bfseries TYPE\+\_\+\+ENEMY}
+, {\bfseries TYPE\+\_\+\+BLOCK}
+, {\bfseries TYPE\+\_\+\+PAUSE}
+, \newline
+{\bfseries TYPE\+\_\+\+BARRIER}
+, {\bfseries TYPE\+\_\+\+ITEM}
+, {\bfseries TYPE\+\_\+\+RUBBLE}
+, {\bfseries TYPE\+\_\+\+PILER}
+, \newline
+{\bfseries TYPE\+\_\+\+POINT}
+, {\bfseries TYPE\+\_\+\+MAX}
+ \}
+\item 
+\Hypertarget{class_c_object_a0924032649f7068d08cc5da588adc8d0}\label{class_c_object_a0924032649f7068d08cc5da588adc8d0} 
+enum {\bfseries PRIORITY} \{ \newline
+{\bfseries NONE}
+, {\bfseries MESH}
+, {\bfseries BASENUMBER}
+, {\bfseries MODELOBJECT}
+, \newline
+{\bfseries BULLET}
+, {\bfseries SHADOW}
+, {\bfseries IMPACT}
+, {\bfseries CHARACTOR}
+, \newline
+{\bfseries BILLBOARD}
+, {\bfseries EFFECT}
+, {\bfseries UI}
+, {\bfseries PAUSE}
+, \newline
+{\bfseries PRIORITY\+\_\+\+MAX}
+ \}
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Member Functions inherited from \mbox{\hyperlink{class_c_object}{CObject}}}
+\begin{DoxyCompactItemize}
+\item 
+void {\bfseries Release} (void)
+\end{DoxyCompactItemize}
+
+
+\label{doc-func-members}
+\Hypertarget{class_c_effect_laser_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_c_effect_laser_a412b99b567e187ad14821011341923ba}\index{CEffectLaser@{CEffectLaser}!Draw@{Draw}}
+\index{Draw@{Draw}!CEffectLaser@{CEffectLaser}}
+\doxysubsubsection{\texorpdfstring{Draw()}{Draw()}}
+{\footnotesize\ttfamily \label{class_c_effect_laser_a412b99b567e187ad14821011341923ba} 
+void CEffect\+Laser\+::\+Draw (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Reimplemented from \mbox{\hyperlink{class_c_billboard}{CBillboard}}.
+
+\Hypertarget{class_c_effect_laser_a811285bbdc2e5a831b64d32ddae1fb81}\index{CEffectLaser@{CEffectLaser}!Init@{Init}}
+\index{Init@{Init}!CEffectLaser@{CEffectLaser}}
+\doxysubsubsection{\texorpdfstring{Init()}{Init()}}
+{\footnotesize\ttfamily \label{class_c_effect_laser_a811285bbdc2e5a831b64d32ddae1fb81} 
+HRESULT CEffect\+Laser\+::\+Init (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Reimplemented from \mbox{\hyperlink{class_c_billboard}{CBillboard}}.
+
+\Hypertarget{class_c_effect_laser_aa0214d48693916373b551cc1c11df72f}\index{CEffectLaser@{CEffectLaser}!Uninit@{Uninit}}
+\index{Uninit@{Uninit}!CEffectLaser@{CEffectLaser}}
+\doxysubsubsection{\texorpdfstring{Uninit()}{Uninit()}}
+{\footnotesize\ttfamily \label{class_c_effect_laser_aa0214d48693916373b551cc1c11df72f} 
+void CEffect\+Laser\+::\+Uninit (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Reimplemented from \mbox{\hyperlink{class_c_billboard}{CBillboard}}.
+
+\Hypertarget{class_c_effect_laser_a128fb24091727359a90cbb1f81a5fe39}\index{CEffectLaser@{CEffectLaser}!Update@{Update}}
+\index{Update@{Update}!CEffectLaser@{CEffectLaser}}
+\doxysubsubsection{\texorpdfstring{Update()}{Update()}}
+{\footnotesize\ttfamily \label{class_c_effect_laser_a128fb24091727359a90cbb1f81a5fe39} 
+void CEffect\+Laser\+::\+Update (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Reimplemented from \mbox{\hyperlink{class_c_billboard}{CBillboard}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+effectlaser.\+h\item 
+effectlaser.\+cpp\end{DoxyCompactItemize}

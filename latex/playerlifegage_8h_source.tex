@@ -1,0 +1,81 @@
+\doxysection{playerlifegage.\+h}
+\hypertarget{playerlifegage_8h_source}{}\label{playerlifegage_8h_source}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{//=========================================}}
+\DoxyCodeLine{00002\ \textcolor{comment}{//}}
+\DoxyCodeLine{00003\ \textcolor{comment}{//\ プレイヤー体力処理\ [\ playerlifegage.h\ ]}}
+\DoxyCodeLine{00004\ \textcolor{comment}{//\ Author:\ Asuma\ Nishio}}
+\DoxyCodeLine{00005\ \textcolor{comment}{//}}
+\DoxyCodeLine{00006\ \textcolor{comment}{//=========================================}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#ifndef\ \_PLAYERLIFEGAGE\_H\_\ }\textcolor{comment}{//\ このソ}クロ定義がされてなかったら}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#define\ \_PLAYERLIFEGAGE\_H\_\ }\textcolor{comment}{//\ 2重インクルード防蚕string~のソ}クロ定義}}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00011\ \textcolor{comment}{//**********************}}
+\DoxyCodeLine{00012\ \textcolor{comment}{//\ インクルードファイル}}
+\DoxyCodeLine{00013\ \textcolor{comment}{//**********************}}
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#include\ "{}gage.h"{}}}
+\DoxyCodeLine{00015\ }
+\DoxyCodeLine{00016\ \textcolor{comment}{//**********************}}
+\DoxyCodeLine{00017\ \textcolor{comment}{//\ 前方宣言}}
+\DoxyCodeLine{00018\ \textcolor{comment}{//**********************}}
+\DoxyCodeLine{00019\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_c_player}{CPlayer}};}
+\DoxyCodeLine{00020\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_c_object}{CObject}};}
+\DoxyCodeLine{00021\ }
+\DoxyCodeLine{00022\ \textcolor{comment}{//*************************}}
+\DoxyCodeLine{00023\ \textcolor{comment}{//\ 体力ゲージクラスを定義}}
+\DoxyCodeLine{00024\ \textcolor{comment}{//*************************}}
+\DoxyCodeLine{00025\ \textcolor{keyword}{class\ }CPlayerLifeGage\ :\ \textcolor{keyword}{public}\ CGage}
+\DoxyCodeLine{00026\ \{}
+\DoxyCodeLine{00027\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00028\ \ \ \ \ \textcolor{comment}{//**********************}}
+\DoxyCodeLine{00029\ \ \ \ \ \textcolor{comment}{//\ ゲージの種類定義}}
+\DoxyCodeLine{00030\ \ \ \ \ \textcolor{comment}{//**********************}}
+\DoxyCodeLine{00031\ \ \ \ \ \textcolor{keyword}{enum}\ GAGE}
+\DoxyCodeLine{00032\ \ \ \ \ \{}
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ GAGE\_FRAME,}
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ GAGE\_BAR,}
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ GAGE\_MAX}
+\DoxyCodeLine{00036\ \ \ \ \ \};}
+\DoxyCodeLine{00037\ }
+\DoxyCodeLine{00038\ \ \ \ \ \textcolor{comment}{//\ コンストラクソstring^・デストラクソstring^}}
+\DoxyCodeLine{00039\ \ \ \ \ CPlayerLifeGage(\textcolor{keywordtype}{int}\ nPriority\ =\ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{int}\textcolor{keyword}{>}(CObject::PRIORITY::UI));}
+\DoxyCodeLine{00040\ \ \ \ \ \string~CPlayerLifeGage();}
+\DoxyCodeLine{00041\ }
+\DoxyCodeLine{00042\ \ \ \ \ \textcolor{comment}{//\ メンバ関数}}
+\DoxyCodeLine{00043\ \ \ \ \ HRESULT\ Init(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00044\ \ \ \ \ \textcolor{keywordtype}{void}\ Uninit(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00045\ \ \ \ \ \textcolor{keywordtype}{void}\ Update(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00046\ \ \ \ \ \textcolor{keywordtype}{void}\ Draw(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00047\ }
+\DoxyCodeLine{00048\ \ \ \ \ \textcolor{comment}{//\ セッソstring^ー・ゲッソstring^ー}}
+\DoxyCodeLine{00049\ \ \ \ \ \textcolor{keywordtype}{void}\ SetTexture(\textcolor{keywordtype}{int}\ Type);}
+\DoxyCodeLine{00050\ \ \ \ \ \textcolor{keywordtype}{void}\ SetGage(\textcolor{keywordtype}{int}\ type)\ \{\ m\_gage\ =\ type;\ \}}
+\DoxyCodeLine{00051\ \ \ \ \ \textcolor{keywordtype}{void}\ SetShake(\textcolor{keywordtype}{bool}\ isFlags)\ \{\ m\_isShake\ =\ isFlags;\ \}}
+\DoxyCodeLine{00052\ \ \ \ \ \textcolor{keywordtype}{int}\ GetGage(\textcolor{keywordtype}{void})\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ m\_gage;\ \}}
+\DoxyCodeLine{00053\ \ \ \ \ }
+\DoxyCodeLine{00054\ \ \ \ \ \textcolor{comment}{//\ 静的メンバ関数}}
+\DoxyCodeLine{00055\ \ \ \ \ \textcolor{keyword}{static}\ CPlayerLifeGage*\ Create(D3DXVECTOR3\ pos,\ \textcolor{keywordtype}{float}\ fWidth,\ \textcolor{keywordtype}{float}\ fHeight,\ \textcolor{keywordtype}{int}\ gagetype);}
+\DoxyCodeLine{00056\ }
+\DoxyCodeLine{00057\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00058\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{float}\ GAGE\_WIDTH\ =\ 40.0f;\ \ \textcolor{comment}{//\ 基準値に掛ける能{率}}
+\DoxyCodeLine{00059\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{float}\ GAGE\_HEIGHT\ =\ 45.0f;\ \textcolor{comment}{//\ ゲージの高さの固定値}}
+\DoxyCodeLine{00060\ }
+\DoxyCodeLine{00061\ \ \ \ \ \textcolor{keywordtype}{int}\ m\_nIdxTexture;\ \ \ \ \ \ \textcolor{comment}{//\ テクスチャインデックス}}
+\DoxyCodeLine{00062\ \ \ \ \ \textcolor{keywordtype}{int}\ m\_nLifeLength;\ \ \ \ \ \ \textcolor{comment}{//\ バーの長さ基準値}}
+\DoxyCodeLine{00063\ \ \ \ \ \textcolor{keywordtype}{int}\ m\_nMaxLifeLength;\ \ \ \textcolor{comment}{//\ 最初の体力値}}
+\DoxyCodeLine{00064\ \ \ \ \ \textcolor{keywordtype}{int}\ m\_gage;\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 列挙変数}}
+\DoxyCodeLine{00065\ \ \ \ \ \textcolor{keywordtype}{int}\ m\_nMaxLife;\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 最大時の体力}}
+\DoxyCodeLine{00066\ \ \ \ \ \textcolor{keywordtype}{int}\ m\_nShakeTimer;\ \ \ \ \ \ \textcolor{comment}{//\ 振動時間}}
+\DoxyCodeLine{00067\ \ \ \ \ \textcolor{keywordtype}{float}\ m\_fShakeAmplitude;\textcolor{comment}{//\ 振動量}}
+\DoxyCodeLine{00068\ \ \ \ \ \textcolor{keywordtype}{float}\ m\_fShakeOffset;\ \ \ \textcolor{comment}{//\ オフセット}}
+\DoxyCodeLine{00069\ }
+\DoxyCodeLine{00070\ \ \ \ \ \textcolor{keywordtype}{bool}\ m\_isShake;\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 振動するかどうか}}
+\DoxyCodeLine{00071\ }
+\DoxyCodeLine{00072\ \ \ \ \ \mbox{\hyperlink{class_c_player}{CPlayer}}*\ m\_pPlayer;\ \ \ \ \ \ \textcolor{comment}{//\ プレイヤークラスポインソstring^}}
+\DoxyCodeLine{00073\ \ \ \ \ D3DXVECTOR3\ m\_basePos;\ \ \textcolor{comment}{//\ 基準座標}}
+\DoxyCodeLine{00074\ \};}
+\DoxyCodeLine{00075\ }
+\DoxyCodeLine{00076\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

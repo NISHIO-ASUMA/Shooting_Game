@@ -1,0 +1,168 @@
+\doxysection{CEdit\+Model Class Reference}
+\hypertarget{class_c_edit_model}{}\label{class_c_edit_model}\index{CEditModel@{CEditModel}}
+Inheritance diagram for CEdit\+Model\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_c_edit_model}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_c_edit_model_acd187bc81291303f2f2d6bc924ed1a57}\label{class_c_edit_model_acd187bc81291303f2f2d6bc924ed1a57} 
+{\bfseries CEdit\+Model} (int n\+Priority=static\+\_\+cast$<$ int $>$(CObject\+::\+PRIORITY\+::\+MODELOBJECT))
+\item 
+HRESULT \mbox{\hyperlink{class_c_edit_model_a0d21da148aa1ed701f48004a321d86e8}{Init}} (void)
+\item 
+void \mbox{\hyperlink{class_c_edit_model_ae64a3e2d51807b184d1e5e5b59a406dd}{Uninit}} (void)
+\item 
+void \mbox{\hyperlink{class_c_edit_model_af4411b88df7e4d5fe851772697219197}{Update}} (void)
+\item 
+void \mbox{\hyperlink{class_c_edit_model_abc677e18aa1c6b09d99ca9cdf8960ad6}{Draw}} (void)
+\item 
+\Hypertarget{class_c_edit_model_a5536b9cf526953fb081efcce4178571c}\label{class_c_edit_model_a5536b9cf526953fb081efcce4178571c} 
+D3\+DXVECTOR3 {\bfseries Get\+Pos} (void)
+\item 
+\Hypertarget{class_c_edit_model_a6b13dd5c2b7417bd2b12ea6b0bbcca9b}\label{class_c_edit_model_a6b13dd5c2b7417bd2b12ea6b0bbcca9b} 
+D3\+DXVECTOR3 {\bfseries Get\+Rot} (void)
+\item 
+\Hypertarget{class_c_edit_model_a236e74d19d0dd2b5e91a9ce8d479d6d0}\label{class_c_edit_model_a236e74d19d0dd2b5e91a9ce8d479d6d0} 
+D3\+DXMATRIX {\bfseries Get\+Mtx} (void)
+\item 
+\Hypertarget{class_c_edit_model_a0ffe13d4ae2eaf950a1af9061cc95da4}\label{class_c_edit_model_a0ffe13d4ae2eaf950a1af9061cc95da4} 
+int {\bfseries Get\+Idx} (void)
+\item 
+\Hypertarget{class_c_edit_model_a01bf25a6e075337ac5d0bb3719ffa0af}\label{class_c_edit_model_a01bf25a6e075337ac5d0bb3719ffa0af} 
+void {\bfseries Set\+Idx\+Obj} (int n\+Idx)
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_c_object}{CObject}}}
+\begin{DoxyCompactItemize}
+\item 
+{\bfseries CObject} (int n\+Priority=NONE)
+\item 
+void {\bfseries Set\+Obj\+Type} (TYPE type)
+\item 
+TYPE {\bfseries Get\+Obj\+Type} (void)
+\item 
+\mbox{\hyperlink{class_c_object}{CObject}} \texorpdfstring{$\ast$}{*} {\bfseries Get\+Next} (void)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_c_edit_model_ad29d2bea9cb77ea10dfd14425ccb7c49}\label{class_c_edit_model_ad29d2bea9cb77ea10dfd14425ccb7c49} 
+static \mbox{\hyperlink{class_c_edit_model}{CEdit\+Model}} \texorpdfstring{$\ast$}{*} {\bfseries Create} (D3\+DXVECTOR3 pos, D3\+DXVECTOR3 rot)
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Member Functions inherited from \mbox{\hyperlink{class_c_object}{CObject}}}
+\begin{DoxyCompactItemize}
+\item 
+static void {\bfseries Release\+All} (void)
+\item 
+static void {\bfseries Update\+All} (void)
+\item 
+static void {\bfseries Draw\+All} (void)
+\item 
+static \mbox{\hyperlink{class_c_object}{CObject}} \texorpdfstring{$\ast$}{*} {\bfseries Get\+Top} (int n\+Priority)
+\item 
+static int {\bfseries Get\+Num\+All} (void)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Public Types inherited from \mbox{\hyperlink{class_c_object}{CObject}}}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_c_object_a7263d5eae1a949d02e262e246152a2c6}\label{class_c_object_a7263d5eae1a949d02e262e246152a2c6} 
+enum {\bfseries TYPE} \{ \newline
+{\bfseries TYPE\+\_\+\+NONE} = 0
+, {\bfseries TYPE\+\_\+\+PLAYER}
+, {\bfseries TYPE\+\_\+\+MESH}
+, {\bfseries TYPE\+\_\+\+BULLET}
+, \newline
+{\bfseries TYPE\+\_\+\+BOSS}
+, {\bfseries TYPE\+\_\+\+ENEMY}
+, {\bfseries TYPE\+\_\+\+BLOCK}
+, {\bfseries TYPE\+\_\+\+PAUSE}
+, \newline
+{\bfseries TYPE\+\_\+\+BARRIER}
+, {\bfseries TYPE\+\_\+\+ITEM}
+, {\bfseries TYPE\+\_\+\+RUBBLE}
+, {\bfseries TYPE\+\_\+\+PILER}
+, \newline
+{\bfseries TYPE\+\_\+\+POINT}
+, {\bfseries TYPE\+\_\+\+MAX}
+ \}
+\item 
+\Hypertarget{class_c_object_a0924032649f7068d08cc5da588adc8d0}\label{class_c_object_a0924032649f7068d08cc5da588adc8d0} 
+enum {\bfseries PRIORITY} \{ \newline
+{\bfseries NONE}
+, {\bfseries MESH}
+, {\bfseries BASENUMBER}
+, {\bfseries MODELOBJECT}
+, \newline
+{\bfseries BULLET}
+, {\bfseries SHADOW}
+, {\bfseries IMPACT}
+, {\bfseries CHARACTOR}
+, \newline
+{\bfseries BILLBOARD}
+, {\bfseries EFFECT}
+, {\bfseries UI}
+, {\bfseries PAUSE}
+, \newline
+{\bfseries PRIORITY\+\_\+\+MAX}
+ \}
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Member Functions inherited from \mbox{\hyperlink{class_c_object}{CObject}}}
+\begin{DoxyCompactItemize}
+\item 
+void {\bfseries Release} (void)
+\end{DoxyCompactItemize}
+
+
+\label{doc-func-members}
+\Hypertarget{class_c_edit_model_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_c_edit_model_abc677e18aa1c6b09d99ca9cdf8960ad6}\index{CEditModel@{CEditModel}!Draw@{Draw}}
+\index{Draw@{Draw}!CEditModel@{CEditModel}}
+\doxysubsubsection{\texorpdfstring{Draw()}{Draw()}}
+{\footnotesize\ttfamily \label{class_c_edit_model_abc677e18aa1c6b09d99ca9cdf8960ad6} 
+void CEdit\+Model\+::\+Draw (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{class_c_object}{CObject}}.
+
+\Hypertarget{class_c_edit_model_a0d21da148aa1ed701f48004a321d86e8}\index{CEditModel@{CEditModel}!Init@{Init}}
+\index{Init@{Init}!CEditModel@{CEditModel}}
+\doxysubsubsection{\texorpdfstring{Init()}{Init()}}
+{\footnotesize\ttfamily \label{class_c_edit_model_a0d21da148aa1ed701f48004a321d86e8} 
+HRESULT CEdit\+Model\+::\+Init (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{class_c_object}{CObject}}.
+
+\Hypertarget{class_c_edit_model_ae64a3e2d51807b184d1e5e5b59a406dd}\index{CEditModel@{CEditModel}!Uninit@{Uninit}}
+\index{Uninit@{Uninit}!CEditModel@{CEditModel}}
+\doxysubsubsection{\texorpdfstring{Uninit()}{Uninit()}}
+{\footnotesize\ttfamily \label{class_c_edit_model_ae64a3e2d51807b184d1e5e5b59a406dd} 
+void CEdit\+Model\+::\+Uninit (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{class_c_object}{CObject}}.
+
+\Hypertarget{class_c_edit_model_af4411b88df7e4d5fe851772697219197}\index{CEditModel@{CEditModel}!Update@{Update}}
+\index{Update@{Update}!CEditModel@{CEditModel}}
+\doxysubsubsection{\texorpdfstring{Update()}{Update()}}
+{\footnotesize\ttfamily \label{class_c_edit_model_af4411b88df7e4d5fe851772697219197} 
+void CEdit\+Model\+::\+Update (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{class_c_object}{CObject}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+editmodel.\+h\item 
+editmodel.\+cpp\end{DoxyCompactItemize}

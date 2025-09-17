@@ -1,0 +1,227 @@
+\doxysection{CBoss Class Reference}
+\hypertarget{class_c_boss}{}\label{class_c_boss}\index{CBoss@{CBoss}}
+Inheritance diagram for CBoss\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_c_boss}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_c_boss_a7d8610dbdf5279cd8f473af0b11cf291}\label{class_c_boss_a7d8610dbdf5279cd8f473af0b11cf291} 
+enum {\bfseries TYPE} \{ \newline
+{\bfseries TYPE\+\_\+\+NEUTRAL} = 0
+, {\bfseries TYPE\+\_\+\+ACTION}
+, {\bfseries TYPE\+\_\+\+IMPACT}
+, {\bfseries TYPE\+\_\+\+RUBBLE}
+, \newline
+{\bfseries TYPE\+\_\+\+CIRCLE}
+, {\bfseries TYPE\+\_\+\+MAX}
+ \}
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Types inherited from \mbox{\hyperlink{class_c_object}{CObject}}}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_c_object_a7263d5eae1a949d02e262e246152a2c6}\label{class_c_object_a7263d5eae1a949d02e262e246152a2c6} 
+enum {\bfseries TYPE} \{ \newline
+{\bfseries TYPE\+\_\+\+NONE} = 0
+, {\bfseries TYPE\+\_\+\+PLAYER}
+, {\bfseries TYPE\+\_\+\+MESH}
+, {\bfseries TYPE\+\_\+\+BULLET}
+, \newline
+{\bfseries TYPE\+\_\+\+BOSS}
+, {\bfseries TYPE\+\_\+\+ENEMY}
+, {\bfseries TYPE\+\_\+\+BLOCK}
+, {\bfseries TYPE\+\_\+\+PAUSE}
+, \newline
+{\bfseries TYPE\+\_\+\+BARRIER}
+, {\bfseries TYPE\+\_\+\+ITEM}
+, {\bfseries TYPE\+\_\+\+RUBBLE}
+, {\bfseries TYPE\+\_\+\+PILER}
+, \newline
+{\bfseries TYPE\+\_\+\+POINT}
+, {\bfseries TYPE\+\_\+\+MAX}
+ \}
+\item 
+\Hypertarget{class_c_object_a0924032649f7068d08cc5da588adc8d0}\label{class_c_object_a0924032649f7068d08cc5da588adc8d0} 
+enum {\bfseries PRIORITY} \{ \newline
+{\bfseries NONE}
+, {\bfseries MESH}
+, {\bfseries BASENUMBER}
+, {\bfseries MODELOBJECT}
+, \newline
+{\bfseries BULLET}
+, {\bfseries SHADOW}
+, {\bfseries IMPACT}
+, {\bfseries CHARACTOR}
+, \newline
+{\bfseries BILLBOARD}
+, {\bfseries EFFECT}
+, {\bfseries UI}
+, {\bfseries PAUSE}
+, \newline
+{\bfseries PRIORITY\+\_\+\+MAX}
+ \}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_c_boss_a86412bc4d15c708b258600863a95bb5b}\label{class_c_boss_a86412bc4d15c708b258600863a95bb5b} 
+{\bfseries CBoss} (int n\+Priority=static\+\_\+cast$<$ int $>$(CObject\+::\+PRIORITY\+::\+CHARACTOR))
+\item 
+HRESULT \mbox{\hyperlink{class_c_boss_aa468275ba74479079dab1b00d9a85985}{Init}} (void)
+\item 
+void \mbox{\hyperlink{class_c_boss_a0b29d9eed3e30aeb125bb2ea3513f0f0}{Uninit}} (void)
+\item 
+void \mbox{\hyperlink{class_c_boss_a4c0e9280aca0b52379f5d112b336a7b0}{Update}} (void)
+\item 
+void \mbox{\hyperlink{class_c_boss_ab070e6e949a77b94a26d75eb21b5b5d4}{Draw}} (void)
+\item 
+\Hypertarget{class_c_boss_a33db062711f82c84c15ca9dfcdf1f1e9}\label{class_c_boss_a33db062711f82c84c15ca9dfcdf1f1e9} 
+bool {\bfseries Collision\+Right\+Hand} (D3\+DXVECTOR3 \texorpdfstring{$\ast$}{*}p\+Pos)
+\item 
+\Hypertarget{class_c_boss_a42c195e687ef12a05f857f5113004425}\label{class_c_boss_a42c195e687ef12a05f857f5113004425} 
+bool {\bfseries Collision\+Impact\+Scal} (D3\+DXVECTOR3 \texorpdfstring{$\ast$}{*}p\+Pos)
+\item 
+\Hypertarget{class_c_boss_aa5677ba0b21323fba610c6ae95e2c69b}\label{class_c_boss_aa5677ba0b21323fba610c6ae95e2c69b} 
+bool {\bfseries Collision\+Circle} (D3\+DXVECTOR3 \texorpdfstring{$\ast$}{*}p\+Pos, float f\+Hit\+Radius)
+\item 
+\Hypertarget{class_c_boss_a9734483d5ed4bc5089589c5c82df3df9}\label{class_c_boss_a9734483d5ed4bc5089589c5c82df3df9} 
+void {\bfseries Hit} (int n\+Damage, D3\+DXVECTOR3 Hit\+Pos)
+\item 
+\Hypertarget{class_c_boss_aad7bef37ddb2ad1a3355a0bc5b441ee4}\label{class_c_boss_aad7bef37ddb2ad1a3355a0bc5b441ee4} 
+void {\bfseries Change\+State} (\mbox{\hyperlink{class_c_boss_state_bace}{CBoss\+State\+Bace}} \texorpdfstring{$\ast$}{*}p\+New\+State, int Id)
+\item 
+\Hypertarget{class_c_boss_afb6cc756908abddbf88cd3c3ce63a5dc}\label{class_c_boss_afb6cc756908abddbf88cd3c3ce63a5dc} 
+void {\bfseries Roll\+To\+Player} (void)
+\item 
+\Hypertarget{class_c_boss_a391ef79560247ced6092a79023d245da}\label{class_c_boss_a391ef79560247ced6092a79023d245da} 
+void {\bfseries Dec\+Cool\+Time} (void)
+\item 
+\Hypertarget{class_c_boss_a0c6a8d34b2401c15e1b396f0540e96cc}\label{class_c_boss_a0c6a8d34b2401c15e1b396f0540e96cc} 
+void {\bfseries Save\+Hp} (void)
+\item 
+\Hypertarget{class_c_boss_a5f4554d15fd4d0eed7609dc3023a1656}\label{class_c_boss_a5f4554d15fd4d0eed7609dc3023a1656} 
+void {\bfseries Set\+Cool\+Time} (int n\+Cooltime)
+\item 
+\Hypertarget{class_c_boss_ae13464fb077d43a9489a6ee3da27cc9b}\label{class_c_boss_ae13464fb077d43a9489a6ee3da27cc9b} 
+void {\bfseries Set\+Week\+Point} (const D3\+DXVECTOR3 pos)
+\item 
+\Hypertarget{class_c_boss_ac5f2e5bc18ccf17e6a4655748f1b8649}\label{class_c_boss_ac5f2e5bc18ccf17e6a4655748f1b8649} 
+void {\bfseries Set\+Move\+Pos} (bool is\+Flags)
+\item 
+\Hypertarget{class_c_boss_a1e18afa84b49ee3faa5b2c802ff78cd0}\label{class_c_boss_a1e18afa84b49ee3faa5b2c802ff78cd0} 
+D3\+DXVECTOR3 {\bfseries Get\+Pos} (void)
+\item 
+\Hypertarget{class_c_boss_a1c2c087065b038a70518a06839149878}\label{class_c_boss_a1c2c087065b038a70518a06839149878} 
+D3\+DXVECTOR3 {\bfseries Get\+Rot} (void)
+\item 
+\Hypertarget{class_c_boss_a49b06b048ff21ea44ae8543a42f19b26}\label{class_c_boss_a49b06b048ff21ea44ae8543a42f19b26} 
+\mbox{\hyperlink{class_c_parameter}{CParameter}} \texorpdfstring{$\ast$}{*} {\bfseries Get\+Param} (void)
+\item 
+\Hypertarget{class_c_boss_a248002702e3e5ce24e7e832e9c86031b}\label{class_c_boss_a248002702e3e5ce24e7e832e9c86031b} 
+\mbox{\hyperlink{class_c_motion}{CMotion}} \texorpdfstring{$\ast$}{*} {\bfseries Get\+Motion} (void)
+\item 
+\Hypertarget{class_c_boss_aaaa26b47ec630572d1368a5fb3ed08fa}\label{class_c_boss_aaaa26b47ec630572d1368a5fb3ed08fa} 
+int {\bfseries Get\+Cool\+Time} (void) const
+\item 
+\Hypertarget{class_c_boss_a011e5d4eb583cd6add8dc95e84bcf7a3}\label{class_c_boss_a011e5d4eb583cd6add8dc95e84bcf7a3} 
+float {\bfseries Get\+Size} (void)
+\item 
+\Hypertarget{class_c_boss_abe14fa540d2ef29889ecaa9dd613c029}\label{class_c_boss_abe14fa540d2ef29889ecaa9dd613c029} 
+bool {\bfseries Get\+Is\+Set} (void)
+\item 
+\Hypertarget{class_c_boss_a7e0ca9f1d6a865609009f0ca6dff5fb3}\label{class_c_boss_a7e0ca9f1d6a865609009f0ca6dff5fb3} 
+\mbox{\hyperlink{class_c_model}{CModel}} \texorpdfstring{$\ast$}{*} {\bfseries Get\+Model\+Part\+Type} (CModel\+::\+PARTTYPE modelpart)
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_c_object}{CObject}}}
+\begin{DoxyCompactItemize}
+\item 
+{\bfseries CObject} (int n\+Priority=NONE)
+\item 
+void {\bfseries Set\+Obj\+Type} (TYPE type)
+\item 
+TYPE {\bfseries Get\+Obj\+Type} (void)
+\item 
+\mbox{\hyperlink{class_c_object}{CObject}} \texorpdfstring{$\ast$}{*} {\bfseries Get\+Next} (void)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_c_boss_ac24ad7f194847732f618887b974046e9}\label{class_c_boss_ac24ad7f194847732f618887b974046e9} 
+static \mbox{\hyperlink{class_c_boss}{CBoss}} \texorpdfstring{$\ast$}{*} {\bfseries Create} (D3\+DXVECTOR3 pos, float f\+Size, int n\+Life)
+\item 
+\Hypertarget{class_c_boss_a33b00a270b9cb4bc8f6a8e566a450dc4}\label{class_c_boss_a33b00a270b9cb4bc8f6a8e566a450dc4} 
+static bool {\bfseries Is\+Daeth} (void)
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Member Functions inherited from \mbox{\hyperlink{class_c_object}{CObject}}}
+\begin{DoxyCompactItemize}
+\item 
+static void {\bfseries Release\+All} (void)
+\item 
+static void {\bfseries Update\+All} (void)
+\item 
+static void {\bfseries Draw\+All} (void)
+\item 
+static \mbox{\hyperlink{class_c_object}{CObject}} \texorpdfstring{$\ast$}{*} {\bfseries Get\+Top} (int n\+Priority)
+\item 
+static int {\bfseries Get\+Num\+All} (void)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Protected Member Functions inherited from \mbox{\hyperlink{class_c_object}{CObject}}}
+\begin{DoxyCompactItemize}
+\item 
+void {\bfseries Release} (void)
+\end{DoxyCompactItemize}
+
+
+\label{doc-func-members}
+\Hypertarget{class_c_boss_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_c_boss_ab070e6e949a77b94a26d75eb21b5b5d4}\index{CBoss@{CBoss}!Draw@{Draw}}
+\index{Draw@{Draw}!CBoss@{CBoss}}
+\doxysubsubsection{\texorpdfstring{Draw()}{Draw()}}
+{\footnotesize\ttfamily \label{class_c_boss_ab070e6e949a77b94a26d75eb21b5b5d4} 
+void CBoss\+::\+Draw (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{class_c_object}{CObject}}.
+
+\Hypertarget{class_c_boss_aa468275ba74479079dab1b00d9a85985}\index{CBoss@{CBoss}!Init@{Init}}
+\index{Init@{Init}!CBoss@{CBoss}}
+\doxysubsubsection{\texorpdfstring{Init()}{Init()}}
+{\footnotesize\ttfamily \label{class_c_boss_aa468275ba74479079dab1b00d9a85985} 
+HRESULT CBoss\+::\+Init (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{class_c_object}{CObject}}.
+
+\Hypertarget{class_c_boss_a0b29d9eed3e30aeb125bb2ea3513f0f0}\index{CBoss@{CBoss}!Uninit@{Uninit}}
+\index{Uninit@{Uninit}!CBoss@{CBoss}}
+\doxysubsubsection{\texorpdfstring{Uninit()}{Uninit()}}
+{\footnotesize\ttfamily \label{class_c_boss_a0b29d9eed3e30aeb125bb2ea3513f0f0} 
+void CBoss\+::\+Uninit (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{class_c_object}{CObject}}.
+
+\Hypertarget{class_c_boss_a4c0e9280aca0b52379f5d112b336a7b0}\index{CBoss@{CBoss}!Update@{Update}}
+\index{Update@{Update}!CBoss@{CBoss}}
+\doxysubsubsection{\texorpdfstring{Update()}{Update()}}
+{\footnotesize\ttfamily \label{class_c_boss_a4c0e9280aca0b52379f5d112b336a7b0} 
+void CBoss\+::\+Update (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{class_c_object}{CObject}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+boss.\+h\item 
+boss.\+cpp\end{DoxyCompactItemize}

@@ -1,0 +1,40 @@
+\doxysection{parameter.\+h}
+\hypertarget{parameter_8h_source}{}\label{parameter_8h_source}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{//====================================}}
+\DoxyCodeLine{00002\ \textcolor{comment}{//}}
+\DoxyCodeLine{00003\ \textcolor{comment}{//\ パラメーソstring^処理\ [\ parameter.h\ ]}}
+\DoxyCodeLine{00004\ \textcolor{comment}{//\ Author:\ Asuma\ Nishio}}
+\DoxyCodeLine{00005\ \textcolor{comment}{//}}
+\DoxyCodeLine{00006\ \textcolor{comment}{//=====================================}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#ifndef\ \_PARAMETER\_H\_\ }\textcolor{comment}{//\ このソ}クロ定義がされてなかったら}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#define\ \_PARAMETER\_H\_\ }\textcolor{comment}{//\ 2重インクルード防蚕string~のソ}クロ定義}}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00011\ \textcolor{comment}{//******************************}}
+\DoxyCodeLine{00012\ \textcolor{comment}{//\ パラメーソstring^ークラスを定義}}
+\DoxyCodeLine{00013\ \textcolor{comment}{//******************************}}
+\DoxyCodeLine{00014\ \textcolor{keyword}{class\ }CParameter}
+\DoxyCodeLine{00015\ \{}
+\DoxyCodeLine{00016\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00017\ \ \ \ \ \textcolor{comment}{//\ コンストラクソstring^・デストラクソstring^}}
+\DoxyCodeLine{00018\ \ \ \ \ CParameter();}
+\DoxyCodeLine{00019\ \ \ \ \ \string~CParameter();}
+\DoxyCodeLine{00020\ }
+\DoxyCodeLine{00021\ \ \ \ \ \textcolor{comment}{//\ セッソstring^ー}}
+\DoxyCodeLine{00022\ \ \ \ \ \textcolor{keywordtype}{void}\ SetHp(\textcolor{keywordtype}{int}\ nHp)\ \{\ m\_nHp\ =\ nHp;\ \}}
+\DoxyCodeLine{00023\ \ \ \ \ \textcolor{keywordtype}{void}\ SetMaxHp(\textcolor{keywordtype}{int}\ nMaxHp)\ \{\ m\_nMaxHp\ =\ nMaxHp;\ \}}
+\DoxyCodeLine{00024\ \ \ \ \ \textcolor{keywordtype}{void}\ AddHp(\textcolor{keywordtype}{int}\ nValue)\ \{\ m\_nHp\ +=\ nValue;\ \}}
+\DoxyCodeLine{00025\ }
+\DoxyCodeLine{00026\ \ \ \ \ \textcolor{comment}{//\ ゲッソstring^ー}}
+\DoxyCodeLine{00027\ \ \ \ \ \textcolor{keywordtype}{int}\ GetHp()\textcolor{keyword}{const\ }\{\ \textcolor{keywordflow}{return}\ m\_nHp;\ \}}
+\DoxyCodeLine{00028\ \ \ \ \ \textcolor{keywordtype}{int}\ GetMaxHp()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ m\_nMaxHp;\ \}}
+\DoxyCodeLine{00029\ }
+\DoxyCodeLine{00030\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00031\ \ \ \ \ \textcolor{keywordtype}{int}\ m\_nHp;\ \textcolor{comment}{//\ 体力}}
+\DoxyCodeLine{00032\ \ \ \ \ \textcolor{keywordtype}{int}\ m\_nMaxHp;\ \textcolor{comment}{//\ 最大体力}}
+\DoxyCodeLine{00033\ \};}
+\DoxyCodeLine{00034\ }
+\DoxyCodeLine{00035\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

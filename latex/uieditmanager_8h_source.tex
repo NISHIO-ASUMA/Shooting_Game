@@ -1,0 +1,75 @@
+\doxysection{uieditmanager.\+h}
+\hypertarget{uieditmanager_8h_source}{}\label{uieditmanager_8h_source}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{//=================================================}}
+\DoxyCodeLine{00002\ \textcolor{comment}{//}}
+\DoxyCodeLine{00003\ \textcolor{comment}{//\ UIエディソstring^ーシーン管理処理\ [\ uieditmanager.h\ ]}}
+\DoxyCodeLine{00004\ \textcolor{comment}{//\ Author\ :\ Asuma\ Nishio}}
+\DoxyCodeLine{00005\ \textcolor{comment}{//\ }}
+\DoxyCodeLine{00006\ \textcolor{comment}{//\ TODO\ :\ 家で作業する}}
+\DoxyCodeLine{00007\ \textcolor{comment}{//}}
+\DoxyCodeLine{00008\ \textcolor{comment}{//=================================================}}
+\DoxyCodeLine{00009\ }
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#ifndef\ \_UIEDITMANAGER\_H\_\ }\textcolor{comment}{//\ このソ}クロ定義がされてなかったら}}
+\DoxyCodeLine{00011\ \textcolor{preprocessor}{\#define\ \_UIEDITMANAGER\_H\_\ }\textcolor{comment}{//\ 2重インクルード防蚕string~のソ}クロ定義}}
+\DoxyCodeLine{00012\ }
+\DoxyCodeLine{00013\ \textcolor{comment}{//**********************************}}
+\DoxyCodeLine{00014\ \textcolor{comment}{//\ 管理クラスを定義}}
+\DoxyCodeLine{00015\ \textcolor{comment}{//**********************************}}
+\DoxyCodeLine{00016\ \textcolor{keyword}{class\ }CUiEditManager}
+\DoxyCodeLine{00017\ \{}
+\DoxyCodeLine{00018\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00019\ \ \ \ \ \textcolor{comment}{//=====================}}
+\DoxyCodeLine{00020\ \ \ \ \ \textcolor{comment}{//\ 書き出すパスの種類}}
+\DoxyCodeLine{00021\ \ \ \ \ \textcolor{comment}{//=====================}}
+\DoxyCodeLine{00022\ \ \ \ \ \textcolor{keyword}{enum}\ SAVEPASS}
+\DoxyCodeLine{00023\ \ \ \ \ \{}
+\DoxyCodeLine{00024\ \ \ \ \ \ \ \ \ SAVEPASS\_TUTO,}
+\DoxyCodeLine{00025\ \ \ \ \ \ \ \ \ SAVEPASS\_GAME,}
+\DoxyCodeLine{00026\ \ \ \ \ \ \ \ \ SAVEPASS\_MAX}
+\DoxyCodeLine{00027\ \ \ \ \ \};}
+\DoxyCodeLine{00028\ }
+\DoxyCodeLine{00029\ \ \ \ \ \textcolor{comment}{//\ コンストラクソstring^・デストラクソstring^}}
+\DoxyCodeLine{00030\ \ \ \ \ CUiEditManager();}
+\DoxyCodeLine{00031\ \ \ \ \ \string~CUiEditManager();}
+\DoxyCodeLine{00032\ }
+\DoxyCodeLine{00033\ \ \ \ \ \textcolor{comment}{//\ メンバ関数}}
+\DoxyCodeLine{00034\ \ \ \ \ HRESULT\ Init(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00035\ \ \ \ \ \textcolor{keywordtype}{void}\ Uninit(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00036\ \ \ \ \ \textcolor{keywordtype}{void}\ Update(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00037\ \ \ \ \ \textcolor{keywordtype}{void}\ Draw(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00038\ }
+\DoxyCodeLine{00039\ \ \ \ \ \textcolor{keywordtype}{void}\ Save(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00040\ }
+\DoxyCodeLine{00041\ \ \ \ \ \textcolor{comment}{//\ セッソstring^ー}}
+\DoxyCodeLine{00042\ \ \ \ \ D3DXVECTOR3\ SetPos(D3DXVECTOR3\ pos)\ \{\ m\_pos\ =\ pos;\ \}}
+\DoxyCodeLine{00043\ \ \ \ \ D3DXVECTOR3\ SetRot(D3DXVECTOR3\ rot)\ \{\ m\_rot\ =\ rot;\ \}}
+\DoxyCodeLine{00044\ }
+\DoxyCodeLine{00045\ \ \ \ \ \textcolor{comment}{//\ ゲッソstring^ー}}
+\DoxyCodeLine{00046\ \ \ \ \ D3DXVECTOR3\ GetPos()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ m\_pos;\ \}}
+\DoxyCodeLine{00047\ \ \ \ \ D3DXVECTOR3\ GetRot()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ m\_rot;\ \}}
+\DoxyCodeLine{00048\ }
+\DoxyCodeLine{00049\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00050\ \ \ \ \ \textcolor{comment}{//*******************************}}
+\DoxyCodeLine{00051\ \ \ \ \ \textcolor{comment}{//\ ファイルパスを格納するリスト}}
+\DoxyCodeLine{00052\ \ \ \ \ \textcolor{comment}{//*******************************}}
+\DoxyCodeLine{00053\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ FILELIST[SAVEPASS\_MAX]\ =}
+\DoxyCodeLine{00054\ \ \ \ \ \{}
+\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}data\(\backslash\)\(\backslash\)Loader\(\backslash\)\(\backslash\)ui\_tuto.txt"{}},}
+\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}data\(\backslash\)\(\backslash\)Loader\(\backslash\)\(\backslash\)ui\_game.txt"{}},}
+\DoxyCodeLine{00057\ \ \ \ \ \};}
+\DoxyCodeLine{00058\ }
+\DoxyCodeLine{00059\ \ \ \ \ D3DXVECTOR3\ m\_pos;}
+\DoxyCodeLine{00060\ \ \ \ \ D3DXVECTOR3\ m\_rot;}
+\DoxyCodeLine{00061\ \ \ \ \ D3DXMATRIX\ m\_mtxworld;}
+\DoxyCodeLine{00062\ }
+\DoxyCodeLine{00063\ \ \ \ \ \textcolor{keywordtype}{int}\ m\_nTypeIdx;\ \textcolor{comment}{//\ インデックス}}
+\DoxyCodeLine{00064\ \ \ \ \ \textcolor{keywordtype}{int}\ m\_nSelectIndex;\ \textcolor{comment}{//\ 選択中オブジェクトのインデックス}}
+\DoxyCodeLine{00065\ \ \ \ \ \textcolor{keywordtype}{int}\ m\_nSavePassIdx;}
+\DoxyCodeLine{00066\ \ \ \ \ \textcolor{keywordtype}{int}\ m\_nNumAll;\ \ \ \ \ \ \textcolor{comment}{//\ 生成数}}
+\DoxyCodeLine{00067\ }
+\DoxyCodeLine{00068\ \};}
+\DoxyCodeLine{00069\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00070\ }
+
+\end{DoxyCode}

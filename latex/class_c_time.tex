@@ -1,0 +1,168 @@
+\doxysection{CTime Class Reference}
+\hypertarget{class_c_time}{}\label{class_c_time}\index{CTime@{CTime}}
+Inheritance diagram for CTime\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_c_time}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_c_time_aa01d71fc84e7981504b14634eeacabd1}\label{class_c_time_aa01d71fc84e7981504b14634eeacabd1} 
+{\bfseries CTime} (int n\+Priority=static\+\_\+cast$<$ int $>$(CObject\+::\+PRIORITY\+::\+UI))
+\item 
+HRESULT \mbox{\hyperlink{class_c_time_aa10e136a0675184b19384994537c9e04}{Init}} (void)
+\item 
+void \mbox{\hyperlink{class_c_time_a97a68d20e6d72d6eac1ebd4fb46a038a}{Uninit}} (void)
+\item 
+void \mbox{\hyperlink{class_c_time_aa8b17bdd3b88cf12e828161821b695ce}{Update}} (void)
+\item 
+void \mbox{\hyperlink{class_c_time_afc61f10bc8f8984cdd62e80ce862e4ec}{Draw}} (void)
+\item 
+\Hypertarget{class_c_time_a7d416d3ed6db1a13761b26286c975298}\label{class_c_time_a7d416d3ed6db1a13761b26286c975298} 
+void {\bfseries Save} (void)
+\item 
+\Hypertarget{class_c_time_a15186170da895e4affd5693688a68fa6}\label{class_c_time_a15186170da895e4affd5693688a68fa6} 
+void {\bfseries Set\+Texture} (void)
+\item 
+\Hypertarget{class_c_time_ace3ec8d841d3bf9e96e1f02bbcbbb6ad}\label{class_c_time_ace3ec8d841d3bf9e96e1f02bbcbbb6ad} 
+int {\bfseries Get\+All\+Time} (void)
+\item 
+\Hypertarget{class_c_time_a02f42c93152c6f57e0bc35755097e3a3}\label{class_c_time_a02f42c93152c6f57e0bc35755097e3a3} 
+int {\bfseries Getcurrent\+Time} (void)
+\item 
+\Hypertarget{class_c_time_a01a1192166a512cb081a0d1c0edb80c5}\label{class_c_time_a01a1192166a512cb081a0d1c0edb80c5} 
+D3\+DXVECTOR3 {\bfseries Get\+Pos} (void)
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_c_object}{CObject}}}
+\begin{DoxyCompactItemize}
+\item 
+{\bfseries CObject} (int n\+Priority=NONE)
+\item 
+void {\bfseries Set\+Obj\+Type} (TYPE type)
+\item 
+TYPE {\bfseries Get\+Obj\+Type} (void)
+\item 
+\mbox{\hyperlink{class_c_object}{CObject}} \texorpdfstring{$\ast$}{*} {\bfseries Get\+Next} (void)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_c_time_a65b8a0c1a77aa40bf031e5c475b37960}\label{class_c_time_a65b8a0c1a77aa40bf031e5c475b37960} 
+static \mbox{\hyperlink{class_c_time}{CTime}} \texorpdfstring{$\ast$}{*} {\bfseries Create} (D3\+DXVECTOR3 pos, float f\+Width, float f\+Height)
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Member Functions inherited from \mbox{\hyperlink{class_c_object}{CObject}}}
+\begin{DoxyCompactItemize}
+\item 
+static void {\bfseries Release\+All} (void)
+\item 
+static void {\bfseries Update\+All} (void)
+\item 
+static void {\bfseries Draw\+All} (void)
+\item 
+static \mbox{\hyperlink{class_c_object}{CObject}} \texorpdfstring{$\ast$}{*} {\bfseries Get\+Top} (int n\+Priority)
+\item 
+static int {\bfseries Get\+Num\+All} (void)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Public Types inherited from \mbox{\hyperlink{class_c_object}{CObject}}}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_c_object_a7263d5eae1a949d02e262e246152a2c6}\label{class_c_object_a7263d5eae1a949d02e262e246152a2c6} 
+enum {\bfseries TYPE} \{ \newline
+{\bfseries TYPE\+\_\+\+NONE} = 0
+, {\bfseries TYPE\+\_\+\+PLAYER}
+, {\bfseries TYPE\+\_\+\+MESH}
+, {\bfseries TYPE\+\_\+\+BULLET}
+, \newline
+{\bfseries TYPE\+\_\+\+BOSS}
+, {\bfseries TYPE\+\_\+\+ENEMY}
+, {\bfseries TYPE\+\_\+\+BLOCK}
+, {\bfseries TYPE\+\_\+\+PAUSE}
+, \newline
+{\bfseries TYPE\+\_\+\+BARRIER}
+, {\bfseries TYPE\+\_\+\+ITEM}
+, {\bfseries TYPE\+\_\+\+RUBBLE}
+, {\bfseries TYPE\+\_\+\+PILER}
+, \newline
+{\bfseries TYPE\+\_\+\+POINT}
+, {\bfseries TYPE\+\_\+\+MAX}
+ \}
+\item 
+\Hypertarget{class_c_object_a0924032649f7068d08cc5da588adc8d0}\label{class_c_object_a0924032649f7068d08cc5da588adc8d0} 
+enum {\bfseries PRIORITY} \{ \newline
+{\bfseries NONE}
+, {\bfseries MESH}
+, {\bfseries BASENUMBER}
+, {\bfseries MODELOBJECT}
+, \newline
+{\bfseries BULLET}
+, {\bfseries SHADOW}
+, {\bfseries IMPACT}
+, {\bfseries CHARACTOR}
+, \newline
+{\bfseries BILLBOARD}
+, {\bfseries EFFECT}
+, {\bfseries UI}
+, {\bfseries PAUSE}
+, \newline
+{\bfseries PRIORITY\+\_\+\+MAX}
+ \}
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Member Functions inherited from \mbox{\hyperlink{class_c_object}{CObject}}}
+\begin{DoxyCompactItemize}
+\item 
+void {\bfseries Release} (void)
+\end{DoxyCompactItemize}
+
+
+\label{doc-func-members}
+\Hypertarget{class_c_time_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_c_time_afc61f10bc8f8984cdd62e80ce862e4ec}\index{CTime@{CTime}!Draw@{Draw}}
+\index{Draw@{Draw}!CTime@{CTime}}
+\doxysubsubsection{\texorpdfstring{Draw()}{Draw()}}
+{\footnotesize\ttfamily \label{class_c_time_afc61f10bc8f8984cdd62e80ce862e4ec} 
+void CTime\+::\+Draw (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{class_c_object}{CObject}}.
+
+\Hypertarget{class_c_time_aa10e136a0675184b19384994537c9e04}\index{CTime@{CTime}!Init@{Init}}
+\index{Init@{Init}!CTime@{CTime}}
+\doxysubsubsection{\texorpdfstring{Init()}{Init()}}
+{\footnotesize\ttfamily \label{class_c_time_aa10e136a0675184b19384994537c9e04} 
+HRESULT CTime\+::\+Init (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{class_c_object}{CObject}}.
+
+\Hypertarget{class_c_time_a97a68d20e6d72d6eac1ebd4fb46a038a}\index{CTime@{CTime}!Uninit@{Uninit}}
+\index{Uninit@{Uninit}!CTime@{CTime}}
+\doxysubsubsection{\texorpdfstring{Uninit()}{Uninit()}}
+{\footnotesize\ttfamily \label{class_c_time_a97a68d20e6d72d6eac1ebd4fb46a038a} 
+void CTime\+::\+Uninit (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{class_c_object}{CObject}}.
+
+\Hypertarget{class_c_time_aa8b17bdd3b88cf12e828161821b695ce}\index{CTime@{CTime}!Update@{Update}}
+\index{Update@{Update}!CTime@{CTime}}
+\doxysubsubsection{\texorpdfstring{Update()}{Update()}}
+{\footnotesize\ttfamily \label{class_c_time_aa8b17bdd3b88cf12e828161821b695ce} 
+void CTime\+::\+Update (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{class_c_object}{CObject}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+time.\+h\item 
+time.\+cpp\end{DoxyCompactItemize}

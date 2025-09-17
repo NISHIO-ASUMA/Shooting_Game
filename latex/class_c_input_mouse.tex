@@ -1,0 +1,107 @@
+\doxysection{CInput\+Mouse Class Reference}
+\hypertarget{class_c_input_mouse}{}\label{class_c_input_mouse}\index{CInputMouse@{CInputMouse}}
+Inheritance diagram for CInput\+Mouse\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_c_input_mouse}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_c_input_mouse_a3dc7159d84a92f5f45147f6acc6776ba}\label{class_c_input_mouse_a3dc7159d84a92f5f45147f6acc6776ba} 
+enum {\bfseries MOUSE} \{ {\bfseries MOUSE\+\_\+\+LEFT} = 0
+, {\bfseries MOUSE\+\_\+\+RIGHT}
+, {\bfseries MOUSE\+\_\+\+MAX}
+ \}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+HRESULT \mbox{\hyperlink{class_c_input_mouse_a6fc3935edfd5496162be68e7d48f5200}{Init}} (HINSTANCE h\+Instance, HWND h\+Wnd)
+\item 
+void \mbox{\hyperlink{class_c_input_mouse_af88d540ade452931bc6aed401a26a1d0}{Uninit}} (void)
+\item 
+void \mbox{\hyperlink{class_c_input_mouse_a1a6aaacd51eaf8b84538135f859476f0}{Update}} (void)
+\item 
+\Hypertarget{class_c_input_mouse_a0970d574ab0d8b3b0f43967dbce4e05d}\label{class_c_input_mouse_a0970d574ab0d8b3b0f43967dbce4e05d} 
+void {\bfseries Set\+Cursor\+Visibility} (bool visible)
+\item 
+\Hypertarget{class_c_input_mouse_ab74850402be6a7023cac8458eb9e247f}\label{class_c_input_mouse_ab74850402be6a7023cac8458eb9e247f} 
+bool {\bfseries Get\+Trigger\+Down} (int button\+\_\+type)
+\item 
+\Hypertarget{class_c_input_mouse_a64fc9858acd3952c80b5aff789024a48}\label{class_c_input_mouse_a64fc9858acd3952c80b5aff789024a48} 
+bool {\bfseries Get\+Trigger\+Up} (int button\+\_\+type)
+\item 
+\Hypertarget{class_c_input_mouse_a18dfcccf897e66629c746dbe1a48f899}\label{class_c_input_mouse_a18dfcccf897e66629c746dbe1a48f899} 
+bool {\bfseries Get\+Press} (int button\+\_\+type)
+\item 
+\Hypertarget{class_c_input_mouse_a411f818b5a56ac625365ac4354b6c11d}\label{class_c_input_mouse_a411f818b5a56ac625365ac4354b6c11d} 
+bool {\bfseries Get\+State} (DIMOUSESTATE \texorpdfstring{$\ast$}{*}mouse\+State)
+\item 
+\Hypertarget{class_c_input_mouse_ad04c524e6922f6ef4039391bbf53bc4f}\label{class_c_input_mouse_ad04c524e6922f6ef4039391bbf53bc4f} 
+D3\+DXVECTOR2 {\bfseries Get\+Mouse\+Velocity} ()
+\item 
+\Hypertarget{class_c_input_mouse_ac1fc98d836602f8563b2a2448491e7e1}\label{class_c_input_mouse_ac1fc98d836602f8563b2a2448491e7e1} 
+D3\+DXVECTOR2 {\bfseries Get\+Mouse\+Old\+Velocity} ()
+\item 
+\Hypertarget{class_c_input_mouse_a52e66e7f82c1545a1b662cfc1a2828cb}\label{class_c_input_mouse_a52e66e7f82c1545a1b662cfc1a2828cb} 
+BOOL {\bfseries Is\+Mouse\+Wheel\+Present} (void)
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_c_input}{CInput}}}
+\begin{DoxyCompactItemize}
+\item 
+LPDIRECTINPUTDEVICE8 {\bfseries Get\+Input\+Device} (void)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Protected Attributes inherited from \mbox{\hyperlink{class_c_input}{CInput}}}
+\begin{DoxyCompactItemize}
+\item 
+LPDIRECTINPUTDEVICE8 {\bfseries m\+\_\+p\+Device}
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Protected Attributes inherited from \mbox{\hyperlink{class_c_input}{CInput}}}
+\begin{DoxyCompactItemize}
+\item 
+static LPDIRECTINPUT8 {\bfseries m\+\_\+p\+Input} = nullptr
+\end{DoxyCompactItemize}
+
+
+\label{doc-func-members}
+\Hypertarget{class_c_input_mouse_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_c_input_mouse_a6fc3935edfd5496162be68e7d48f5200}\index{CInputMouse@{CInputMouse}!Init@{Init}}
+\index{Init@{Init}!CInputMouse@{CInputMouse}}
+\doxysubsubsection{\texorpdfstring{Init()}{Init()}}
+{\footnotesize\ttfamily \label{class_c_input_mouse_a6fc3935edfd5496162be68e7d48f5200} 
+HRESULT CInput\+Mouse\+::\+Init (\begin{DoxyParamCaption}\item[{HINSTANCE}]{h\+Instance}{, }\item[{HWND}]{h\+Wnd}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Reimplemented from \mbox{\hyperlink{class_c_input}{CInput}}.
+
+\Hypertarget{class_c_input_mouse_af88d540ade452931bc6aed401a26a1d0}\index{CInputMouse@{CInputMouse}!Uninit@{Uninit}}
+\index{Uninit@{Uninit}!CInputMouse@{CInputMouse}}
+\doxysubsubsection{\texorpdfstring{Uninit()}{Uninit()}}
+{\footnotesize\ttfamily \label{class_c_input_mouse_af88d540ade452931bc6aed401a26a1d0} 
+void CInput\+Mouse\+::\+Uninit (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Reimplemented from \mbox{\hyperlink{class_c_input}{CInput}}.
+
+\Hypertarget{class_c_input_mouse_a1a6aaacd51eaf8b84538135f859476f0}\index{CInputMouse@{CInputMouse}!Update@{Update}}
+\index{Update@{Update}!CInputMouse@{CInputMouse}}
+\doxysubsubsection{\texorpdfstring{Update()}{Update()}}
+{\footnotesize\ttfamily \label{class_c_input_mouse_a1a6aaacd51eaf8b84538135f859476f0} 
+void CInput\+Mouse\+::\+Update (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{class_c_input}{CInput}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+input.\+h\item 
+input.\+cpp\end{DoxyCompactItemize}

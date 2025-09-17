@@ -1,0 +1,127 @@
+\doxysection{motion.\+h}
+\hypertarget{motion_8h_source}{}\label{motion_8h_source}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{//=====================================}}
+\DoxyCodeLine{00002\ \textcolor{comment}{//}}
+\DoxyCodeLine{00003\ \textcolor{comment}{//\ モーション処理\ [\ motion.h\ ]}}
+\DoxyCodeLine{00004\ \textcolor{comment}{//\ Author:\ Asuma\ Nishio}}
+\DoxyCodeLine{00005\ \textcolor{comment}{//}}
+\DoxyCodeLine{00006\ \textcolor{comment}{//=====================================}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#ifndef\ \_MOTION\_H\_\ }\textcolor{comment}{//\ このソ}クロ定義がされてなかったら}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#define\ \_MOTION\_H\_\ }\textcolor{comment}{//\ 2重インクルード防蚕string~のソ}クロ定義}}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00011\ \textcolor{comment}{//**********************}}
+\DoxyCodeLine{00012\ \textcolor{comment}{//\ インクルードファイル}}
+\DoxyCodeLine{00013\ \textcolor{comment}{//**********************}}
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#include\ "{}model.h"{}}}
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#include\ <fstream>}}
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#include\ <iostream>}}
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00018\ \textcolor{preprocessor}{\#include\ <sstream>}}
+\DoxyCodeLine{00019\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00020\ }
+\DoxyCodeLine{00021\ \textcolor{comment}{//*****************************}}
+\DoxyCodeLine{00022\ \textcolor{comment}{//\ モーションクラスを定義}}
+\DoxyCodeLine{00023\ \textcolor{comment}{//*****************************}}
+\DoxyCodeLine{00024\ \textcolor{keyword}{class\ }CMotion}
+\DoxyCodeLine{00025\ \{}
+\DoxyCodeLine{00026\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00027\ \ \ \ \ \textcolor{comment}{//***************************}}
+\DoxyCodeLine{00028\ \ \ \ \ \textcolor{comment}{//\ キー構(\backslash\)造体宣言}}
+\DoxyCodeLine{00029\ \ \ \ \ \textcolor{comment}{//***************************}}
+\DoxyCodeLine{00030\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_c_motion_1_1_k_e_y}{KEY}}}
+\DoxyCodeLine{00031\ \ \ \ \ \{}
+\DoxyCodeLine{00032\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ fPosX;\ \ \ \ \textcolor{comment}{//\ 位置X}}
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ fPosY;\ \ \ \ \textcolor{comment}{//\ 位置Y}}
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ fPosZ;\ \ \ \ \textcolor{comment}{//\ 位置Z}}
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ fRotX;\ \ \ \ \textcolor{comment}{//\ 角度X}}
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ fRotY;\ \ \ \ \textcolor{comment}{//\ 角度Y}}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ fRotZ;\ \ \ \ \textcolor{comment}{//\ 角度Z}}
+\DoxyCodeLine{00038\ \ \ \ \ \};}
+\DoxyCodeLine{00039\ }
+\DoxyCodeLine{00040\ \ \ \ \ \textcolor{comment}{//***************************}}
+\DoxyCodeLine{00041\ \ \ \ \ \textcolor{comment}{//\ キー情報の構(\backslash\)造体宣言}}
+\DoxyCodeLine{00042\ \ \ \ \ \textcolor{comment}{//***************************}}
+\DoxyCodeLine{00043\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_c_motion_1_1_k_e_y___i_n_f_o}{KEY\_INFO}}}
+\DoxyCodeLine{00044\ \ \ \ \ \{}
+\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ nFrame;\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ フレーム数}}
+\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ std::vector<KEY>\ aKey;\ \textcolor{comment}{//\ 動的なキー数}}
+\DoxyCodeLine{00047\ \ \ \ \ \};}
+\DoxyCodeLine{00048\ }
+\DoxyCodeLine{00049\ \ \ \ \ \textcolor{comment}{//***************************}}
+\DoxyCodeLine{00050\ \ \ \ \ \textcolor{comment}{//\ モーション情報の構(\backslash\)造体宣言}}
+\DoxyCodeLine{00051\ \ \ \ \ \textcolor{comment}{//***************************}}
+\DoxyCodeLine{00052\ \ \ \ \ \textcolor{keyword}{struct\ }\mbox{\hyperlink{struct_c_motion_1_1_i_n_f_o}{INFO}}}
+\DoxyCodeLine{00053\ \ \ \ \ \{}
+\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{bool}\ bLoop;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ ループするかしないか}}
+\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ nNumKey;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ キーの総数}}
+\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ std::vector<KEY\_INFO>\ aKeyInfo;\ \textcolor{comment}{//\ モーションの動的キーフレーム}}
+\DoxyCodeLine{00057\ \ \ \ \ \};}
+\DoxyCodeLine{00058\ }
+\DoxyCodeLine{00059\ \ \ \ \ \textcolor{comment}{//\ コンストラクソstring^・デストラクソstring^}}
+\DoxyCodeLine{00060\ \ \ \ \ CMotion();}
+\DoxyCodeLine{00061\ \ \ \ \ \string~CMotion();}
+\DoxyCodeLine{00062\ }
+\DoxyCodeLine{00063\ \ \ \ \ \textcolor{comment}{//\ メンバ関数}}
+\DoxyCodeLine{00064\ \ \ \ \ \textcolor{keywordtype}{void}\ Update(\mbox{\hyperlink{class_c_model}{CModel}}**\ ppModel,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ nMaxPart);}
+\DoxyCodeLine{00065\ \ \ \ \ \textcolor{keywordtype}{void}\ UpdateCurrentMotion(\mbox{\hyperlink{class_c_model}{CModel}}**\ ppModel,\ \textcolor{keywordtype}{int}\ nModelCount);}
+\DoxyCodeLine{00066\ \ \ \ \ \textcolor{keywordtype}{void}\ UpdateBlend(\mbox{\hyperlink{class_c_model}{CModel}}**\ ppModel,\ \textcolor{keywordtype}{int}\ nModelCount);}
+\DoxyCodeLine{00067\ \ \ \ \ \textcolor{keywordtype}{void}\ Debug(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00068\ \ \ \ \ \textcolor{keywordtype}{bool}\ CheckFrame(\textcolor{keywordtype}{int}\ nStartMotion,\ \textcolor{keywordtype}{int}\ nEndMotion,\ \textcolor{keywordtype}{int}\ nMotionType);}
+\DoxyCodeLine{00069\ \ \ \ \ \textcolor{keywordtype}{void}\ NorRot(\textcolor{keywordtype}{float}*\ pRotX,\ \textcolor{keywordtype}{float}*\ pRotY,\ \textcolor{keywordtype}{float}*\ pRotZ);}
+\DoxyCodeLine{00070\ }
+\DoxyCodeLine{00071\ \ \ \ \ \textcolor{comment}{//\ セッソstring^ー}}
+\DoxyCodeLine{00072\ \ \ \ \ \textcolor{keywordtype}{void}\ SetMotion(\textcolor{keywordtype}{int}\ motiontype);}
+\DoxyCodeLine{00073\ \ \ \ \ \textcolor{keywordtype}{void}\ SetMotionNum(\textcolor{keywordtype}{int}\ nMotion)\ \{\ m\_nNumMotion\ =\ nMotion;\ \}}
+\DoxyCodeLine{00074\ \ \ \ \ \textcolor{keywordtype}{int}\ SetModels(std::istringstream\&\ iss,\ \textcolor{keywordtype}{int}\ nMaxParts);}
+\DoxyCodeLine{00075\ \ \ \ \ \textcolor{keywordtype}{void}\ SetModelFile(std::istringstream\&\ iss,\ \mbox{\hyperlink{class_c_model}{CModel}}**\ pModel,\ \textcolor{keywordtype}{int}\ nCnt);}
+\DoxyCodeLine{00076\ \ \ \ \ \textcolor{keywordtype}{void}\ SetParts(std::ifstream\&\ file,\ \mbox{\hyperlink{class_c_model}{CModel}}**\ pModel);}
+\DoxyCodeLine{00077\ \ \ \ \ \textcolor{keywordtype}{void}\ SetPartsMotion(std::ifstream\&\ file,\ \mbox{\hyperlink{class_c_motion}{CMotion}}*\ pMotion,\ \textcolor{keywordtype}{int}\ nCntMotion);}
+\DoxyCodeLine{00078\ \ \ \ \ \textcolor{keywordtype}{void}\ SetKey(std::ifstream\&\ file,\ \mbox{\hyperlink{class_c_motion}{CMotion}}*\ pMotion,\ \textcolor{keywordtype}{int}\ nCntMotion,\ \textcolor{keywordtype}{int}\ nCntKey);}
+\DoxyCodeLine{00079\ \ \ \ \ \textcolor{keywordtype}{void}\ SetKeyDate(std::istringstream\&\ ss,\ \textcolor{keyword}{const}\ std::string\&\ param,\ \mbox{\hyperlink{class_c_motion}{CMotion}}*\ pMotion,\ \textcolor{keywordtype}{int}\ nCntMotion,\ \textcolor{keywordtype}{int}\ nCntKey,\ \textcolor{keywordtype}{int}\&\ posKeyIndex,\ \textcolor{keywordtype}{int}\&\ rotKeyIndex);}
+\DoxyCodeLine{00080\ \ \ \ \ \textcolor{keywordtype}{void}\ SetMotion(\textcolor{keywordtype}{int}\ nMotionType,\ \textcolor{keywordtype}{bool}\ isBlend,\ \textcolor{keywordtype}{int}\ nBlendFrame,\ \textcolor{keywordtype}{bool}\ isBoss);}
+\DoxyCodeLine{00081\ \ \ \ \ \textcolor{keywordtype}{void}\ SetResetFrame(\textcolor{keywordtype}{int}\ nFrame)\ \{\ m\_nCounterMotion\ =\ nFrame;\}}
+\DoxyCodeLine{00082\ }
+\DoxyCodeLine{00083\ \ \ \ \ \textcolor{comment}{//\ ゲッソstring^ー}}
+\DoxyCodeLine{00084\ \ \ \ \ \textcolor{keywordtype}{int}\ GetMotionType(\textcolor{keywordtype}{void})\ \{\ \textcolor{keywordflow}{return}\ m\_motiontype;\ \}}
+\DoxyCodeLine{00085\ \ \ \ \ \textcolor{keywordtype}{bool}\ GetFinishMotion(\textcolor{keywordtype}{void})\ \{\ \textcolor{keywordflow}{return}\ m\_isFinishMotion;\ \}}
+\DoxyCodeLine{00086\ }
+\DoxyCodeLine{00087\ \ \ \ \ \textcolor{comment}{//\ 静的メンバ関数}}
+\DoxyCodeLine{00088\ \ \ \ \ \textcolor{keyword}{static}\ CMotion*\ Load(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ pFilename,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ nMaxParts,CModel\ **\ pModel,\textcolor{keywordtype}{int}\ nDestMotions);}
+\DoxyCodeLine{00089\ }
+\DoxyCodeLine{00090\ \textcolor{keyword}{private}:\ }
+\DoxyCodeLine{00091\ \ \ \ \ std::vector<INFO>\ m\_aMotionInfo;\ \textcolor{comment}{//\ モーション情報を動的確保}}
+\DoxyCodeLine{00092\ }
+\DoxyCodeLine{00093\ \ \ \ \ \textcolor{keywordtype}{bool}\ m\_isLoopMotion;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ ループするかどうか}}
+\DoxyCodeLine{00094\ }
+\DoxyCodeLine{00095\ \ \ \ \ \textcolor{keywordtype}{int}\ m\_nNumMotion;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ モーションの総数}}
+\DoxyCodeLine{00096\ \ \ \ \ \textcolor{keywordtype}{int}\ m\_nNumKey;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ キーの総数}}
+\DoxyCodeLine{00097\ \ \ \ \ \textcolor{keywordtype}{int}\ m\_nKey;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 現在のキーNo}}
+\DoxyCodeLine{00098\ \ \ \ \ \textcolor{keywordtype}{int}\ m\_nCounterMotion;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ モーションのカウンソstring^ー}}
+\DoxyCodeLine{00099\ \ \ \ \ \textcolor{keywordtype}{int}\ m\_nNextKey;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 次のキー}}
+\DoxyCodeLine{00100\ \ \ \ \ \textcolor{keywordtype}{int}\ m\_motiontype;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ モーションソstring^イプ}}
+\DoxyCodeLine{00101\ \ \ \ \ \textcolor{keywordtype}{int}\ m\_type;}
+\DoxyCodeLine{00102\ }
+\DoxyCodeLine{00103\ \ \ \ \ \textcolor{keywordtype}{bool}\ m\_isBlendMotion;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ ブレンドがあるかどうか}}
+\DoxyCodeLine{00104\ \ \ \ \ \textcolor{keywordtype}{bool}\ m\_isFinishMotion;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ モーションが終わったかどうか}}
+\DoxyCodeLine{00105\ \ \ \ \ \textcolor{keywordtype}{bool}\ m\_isFirstMotion;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ モーションが始まったフラグ}}
+\DoxyCodeLine{00106\ }
+\DoxyCodeLine{00107\ \ \ \ \ \textcolor{keywordtype}{int}\ m\_motiontypeBlend;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ ブレンドの種類}}
+\DoxyCodeLine{00108\ \ \ \ \ \textcolor{keywordtype}{int}\ m\_nFrameBlend;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ ブレンドのフレーム数}}
+\DoxyCodeLine{00109\ \ \ \ \ \textcolor{keywordtype}{int}\ m\_nCounterBlend;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ ブレンドカウンソstring^ー}}
+\DoxyCodeLine{00110\ \ \ \ \ \textcolor{keywordtype}{int}\ m\_nKeyBlend;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ ブレンドモーションの現在のキー}}
+\DoxyCodeLine{00111\ \ \ \ \ \textcolor{keywordtype}{int}\ m\_nNextKeyBlend;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ ブレンドモーションの次のキー}}
+\DoxyCodeLine{00112\ }
+\DoxyCodeLine{00113\ \ \ \ \ \textcolor{keywordtype}{int}\ m\_nNumModels;}
+\DoxyCodeLine{00114\ \ \ \ \ \textcolor{keywordtype}{int}\ m\_nNumAllFrame;\ \ \ \textcolor{comment}{//\ キーごとのフレーム数}}
+\DoxyCodeLine{00115\ \ \ \ \ \textcolor{keywordtype}{int}\ m\_nAllFrameCount;\ \textcolor{comment}{//\ 全体フレーム数}}
+\DoxyCodeLine{00116\ \ \ \ \ \textcolor{keywordtype}{bool}\ m\_isStopAction;}
+\DoxyCodeLine{00117\ }
+\DoxyCodeLine{00118\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{int}\ NEUTRAL\ =\ 0;\ \textcolor{comment}{//\ ニュートラル番号}}
+\DoxyCodeLine{00119\ \};}
+\DoxyCodeLine{00120\ }
+\DoxyCodeLine{00121\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00122\ }
+
+\end{DoxyCode}

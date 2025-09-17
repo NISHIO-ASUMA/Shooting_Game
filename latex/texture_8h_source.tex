@@ -1,0 +1,101 @@
+\doxysection{texture.\+h}
+\hypertarget{texture_8h_source}{}\label{texture_8h_source}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{//=====================================}}
+\DoxyCodeLine{00002\ \textcolor{comment}{//}}
+\DoxyCodeLine{00003\ \textcolor{comment}{//\ テクスチャ処理\ [\ texture.h\ ]}}
+\DoxyCodeLine{00004\ \textcolor{comment}{//\ Author:\ Asuma\ Nishio}}
+\DoxyCodeLine{00005\ \textcolor{comment}{//}}
+\DoxyCodeLine{00006\ \textcolor{comment}{//=====================================}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#ifndef\ \_TEXTURE\_H\_\ }\textcolor{comment}{//\ このソ}クロ定義がされてなかったら}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#define\ \_TEXTURE\_H\_\ }\textcolor{comment}{//\ 2重インクルード防蚕string~のソ}クロ定義}}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00011\ \textcolor{comment}{//*****************************}}
+\DoxyCodeLine{00012\ \textcolor{comment}{//\ テクスチャ管理クラスを定義}}
+\DoxyCodeLine{00013\ \textcolor{comment}{//*****************************}}
+\DoxyCodeLine{00014\ \textcolor{keyword}{class\ }CTexture}
+\DoxyCodeLine{00015\ \{}
+\DoxyCodeLine{00016\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00017\ \ \ \ \ \textcolor{comment}{//\ コンストラクソstring^・デストラクソstring^}}
+\DoxyCodeLine{00018\ \ \ \ \ CTexture();}
+\DoxyCodeLine{00019\ \ \ \ \ \string~CTexture();}
+\DoxyCodeLine{00020\ }
+\DoxyCodeLine{00021\ \ \ \ \ \textcolor{comment}{//\ メンバ関数}}
+\DoxyCodeLine{00022\ \ \ \ \ HRESULT\ Load(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00023\ \ \ \ \ \textcolor{keywordtype}{void}\ UnLoad(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00024\ \ \ \ \ \textcolor{keywordtype}{int}\ Register(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ pFileName);}
+\DoxyCodeLine{00025\ \ \ \ \ LPDIRECT3DTEXTURE9\ GetAddress(\textcolor{keywordtype}{int}\ nIdx);}
+\DoxyCodeLine{00026\ }
+\DoxyCodeLine{00027\ \ \ \ \ \textcolor{keywordtype}{void}\ TextLoader(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ pFileName);}
+\DoxyCodeLine{00028\ }
+\DoxyCodeLine{00029\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00030\ }
+\DoxyCodeLine{00031\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{inline}\ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{int}\ NUM\_TEXTURE\ =\ 128;\ \ \textcolor{comment}{//\ 最大テクスチャ数}}
+\DoxyCodeLine{00032\ }
+\DoxyCodeLine{00033\ \ \ \ \ \textcolor{comment}{//\ テクスチャ読み込み配列を作成}}
+\DoxyCodeLine{00034\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ TexName[NUM\_TEXTURE]\ =}
+\DoxyCodeLine{00035\ \ \ \ \ \{}
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}data\(\backslash\)\(\backslash\)TEXTURE\(\backslash\)\(\backslash\)explosion000.png"{}},}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}data\(\backslash\)\(\backslash\)TEXTURE\(\backslash\)\(\backslash\)effect000.jpg"{}},}
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}data\(\backslash\)\(\backslash\)TEXTURE\(\backslash\)\(\backslash\)bullet002.png"{}},}
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}data\(\backslash\)\(\backslash\)TEXTURE\(\backslash\)\(\backslash\)num001.png"{}},}
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}data\(\backslash\)\(\backslash\)TEXTURE\(\backslash\)\(\backslash\)field000.jpeg"{}},}
+\DoxyCodeLine{00041\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}data\(\backslash\)\(\backslash\)TEXTURE\(\backslash\)\(\backslash\)DomeTex.jpg"{}},}
+\DoxyCodeLine{00042\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}data\(\backslash\)\(\backslash\)TEXTURE\(\backslash\)\(\backslash\)shadow000.jpg"{}},}
+\DoxyCodeLine{00043\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}data\(\backslash\)\(\backslash\)TEXTURE\(\backslash\)\(\backslash\)lifegage.png"{}},}
+\DoxyCodeLine{00044\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}data\(\backslash\)\(\backslash\)TEXTURE\(\backslash\)\(\backslash\)lifeframe.png"{}},}
+\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}data\(\backslash\)\(\backslash\)TEXTURE\(\backslash\)\(\backslash\)score001.png"{}},}
+\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}data\(\backslash\)\(\backslash\)TEXTURE\(\backslash\)\(\backslash\)PauseBack.png"{}},}
+\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}data\(\backslash\)\(\backslash\)TEXTURE\(\backslash\)\(\backslash\)titlemenu001.png"{}},}
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}data\(\backslash\)\(\backslash\)TEXTURE\(\backslash\)\(\backslash\)titilemenu\_002.png"{}},}
+\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}data\(\backslash\)\(\backslash\)TEXTURE\(\backslash\)\(\backslash\)titlemenu\_003.png"{}},}
+\DoxyCodeLine{00050\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}data\(\backslash\)\(\backslash\)TEXTURE\(\backslash\)\(\backslash\)tutorial\_menu.png"{}},}
+\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}data\(\backslash\)\(\backslash\)TEXTURE\(\backslash\)\(\backslash\)logo.png"{}},}
+\DoxyCodeLine{00052\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}data\(\backslash\)\(\backslash\)TEXTURE\(\backslash\)\(\backslash\)Enterkey.png"{}},}
+\DoxyCodeLine{00053\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}data\(\backslash\)\(\backslash\)TEXTURE\(\backslash\)\(\backslash\)boss\_life.png"{}},}
+\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}data\(\backslash\)\(\backslash\)TEXTURE\(\backslash\)\(\backslash\)boss\_frame.png"{}},}
+\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}data\(\backslash\)\(\backslash\)TEXTURE\(\backslash\)\(\backslash\)pausemenu\_continue.png"{}},}
+\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}data\(\backslash\)\(\backslash\)TEXTURE\(\backslash\)\(\backslash\)pausemenu\_retry.png"{}},}
+\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}data\(\backslash\)\(\backslash\)TEXTURE\(\backslash\)\(\backslash\)pausemenu\_quit.png"{}},}
+\DoxyCodeLine{00058\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}data\(\backslash\)\(\backslash\)TEXTURE\(\backslash\)\(\backslash\)Pause\_ui.png"{}},}
+\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}data\(\backslash\)\(\backslash\)TEXTURE\(\backslash\)\(\backslash\)resultlogo.png"{}},}
+\DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}data\(\backslash\)\(\backslash\)TEXTURE\(\backslash\)\(\backslash\)playerlife\_frame000.png"{}},}
+\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}data\(\backslash\)\(\backslash\)TEXTURE\(\backslash\)\(\backslash\)playerlife\_gage000.png"{}},}
+\DoxyCodeLine{00062\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}data\(\backslash\)\(\backslash\)TEXTURE\(\backslash\)\(\backslash\)time000.png"{}},}
+\DoxyCodeLine{00063\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}data\(\backslash\)\(\backslash\)TEXTURE\(\backslash\)\(\backslash\)alert.png"{}},}
+\DoxyCodeLine{00064\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}data\(\backslash\)\(\backslash\)TEXTURE\(\backslash\)\(\backslash\)alert\_frame.png"{}},}
+\DoxyCodeLine{00065\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}data\(\backslash\)\(\backslash\)TEXTURE\(\backslash\)\(\backslash\)guard.png"{}},}
+\DoxyCodeLine{00066\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}data\(\backslash\)\(\backslash\)TEXTURE\(\backslash\)\(\backslash\)model\_GuardTex.png"{}},}
+\DoxyCodeLine{00067\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}data\(\backslash\)\(\backslash\)TEXTURE\(\backslash\)\(\backslash\)laser.png"{}},}
+\DoxyCodeLine{00068\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}data\(\backslash\)\(\backslash\)TEXTURE\(\backslash\)\(\backslash\)laser\_gage.png"{}},}
+\DoxyCodeLine{00069\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}data\(\backslash\)\(\backslash\)TEXTURE\(\backslash\)\(\backslash\)bosslife\_frame.png"{}},}
+\DoxyCodeLine{00070\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}data\(\backslash\)\(\backslash\)TEXTURE\(\backslash\)\(\backslash\)Boss\_face.png"{}},}
+\DoxyCodeLine{00071\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}data\(\backslash\)\(\backslash\)TEXTURE\(\backslash\)\(\backslash\)MeshPiler.png"{}},}
+\DoxyCodeLine{00072\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}data\(\backslash\)\(\backslash\)TEXTURE\(\backslash\)\(\backslash\)MeshPiler1.jpg"{}},}
+\DoxyCodeLine{00073\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}data\(\backslash\)\(\backslash\)TEXTURE\(\backslash\)\(\backslash\)Item\_life.png"{}},}
+\DoxyCodeLine{00074\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}data\(\backslash\)\(\backslash\)TEXTURE\(\backslash\)\(\backslash\)PointUi.png"{}},}
+\DoxyCodeLine{00075\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}data\(\backslash\)\(\backslash\)TEXTURE\(\backslash\)\(\backslash\)title\_menuselect.png"{}},}
+\DoxyCodeLine{00076\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}data\(\backslash\)\(\backslash\)TEXTURE\(\backslash\)\(\backslash\)Billboard\_startmenu.png"{}},}
+\DoxyCodeLine{00077\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}data\(\backslash\)\(\backslash\)TEXTURE\(\backslash\)\(\backslash\)Laser\_Icon.png"{}},}
+\DoxyCodeLine{00078\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}data\(\backslash\)\(\backslash\)TEXTURE\(\backslash\)\(\backslash\)LoseResult.jpg"{}},}
+\DoxyCodeLine{00079\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}data\(\backslash\)\(\backslash\)TEXTURE\(\backslash\)\(\backslash\)resultback.jpg"{}},}
+\DoxyCodeLine{00080\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}data\(\backslash\)\(\backslash\)TEXTURE\(\backslash\)\(\backslash\)Normal\_bullet.png"{}},}
+\DoxyCodeLine{00081\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}data\(\backslash\)\(\backslash\)TEXTURE\(\backslash\)\(\backslash\)CameraAnimBox.png"{}},}
+\DoxyCodeLine{00082\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}data\(\backslash\)\(\backslash\)TEXTURE\(\backslash\)\(\backslash\)ResultScore.png"{}},}
+\DoxyCodeLine{00083\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}data\(\backslash\)\(\backslash\)TEXTURE\(\backslash\)\(\backslash\)RankBack.jpg"{}},}
+\DoxyCodeLine{00084\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}data/TEXTURE/ComboMenu/Tutorial\_menu\_move.png"{}},}
+\DoxyCodeLine{00085\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}data/TEXTURE/ComboMenu/Tutorial\_menu\_Attack.png"{}},}
+\DoxyCodeLine{00086\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}data/TEXTURE/ComboMenu/Tutorial\_menu\_Jump.png"{}},}
+\DoxyCodeLine{00087\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}data/TEXTURE/ComboMenu/Tutorial\_menu\_JumpAttack.png"{}},}
+\DoxyCodeLine{00088\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}data/TEXTURE/ComboMenu/Tutorial\_menu\_gauge.png"{}},}
+\DoxyCodeLine{00089\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}data/TEXTURE/ComboMenu/Tutorial\_menu\_free.png"{}},}
+\DoxyCodeLine{00090\ \ \ \ \ \};}
+\DoxyCodeLine{00091\ }
+\DoxyCodeLine{00092\ \ \ \ \ LPDIRECT3DTEXTURE9\ m\_apTexture[NUM\_TEXTURE];\ \ \ \ \textcolor{comment}{//\ テクスチャポインソstring^}}
+\DoxyCodeLine{00093\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{int}\ m\_nNumAll;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ テクスチャカウント変数}}
+\DoxyCodeLine{00094\ \};}
+\DoxyCodeLine{00095\ }
+\DoxyCodeLine{00096\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

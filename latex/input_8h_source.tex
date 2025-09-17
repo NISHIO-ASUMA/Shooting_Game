@@ -1,0 +1,177 @@
+\doxysection{input.\+h}
+\hypertarget{input_8h_source}{}\label{input_8h_source}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{//====================================}}
+\DoxyCodeLine{00002\ \textcolor{comment}{//}}
+\DoxyCodeLine{00003\ \textcolor{comment}{//\ 入力関数\ [\ input.h\ ]}}
+\DoxyCodeLine{00004\ \textcolor{comment}{//\ Author:\ Asuma\ Nishio}}
+\DoxyCodeLine{00005\ \textcolor{comment}{//}}
+\DoxyCodeLine{00006\ \textcolor{comment}{//=====================================}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#ifndef\ \_INPUT\_H\_\ }\textcolor{comment}{//\ このソ}クロ定義がされてなかったら}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#define\ \_INPUT\_H\_\ }\textcolor{comment}{//\ 2重インクルード防蚕string~のソ}クロ定義}}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00011\ \textcolor{comment}{//*******************************}}
+\DoxyCodeLine{00012\ \textcolor{comment}{//\ 入力親クラスを定義}}
+\DoxyCodeLine{00013\ \textcolor{comment}{//*******************************}}
+\DoxyCodeLine{00014\ \textcolor{keyword}{class\ }CInput}
+\DoxyCodeLine{00015\ \{}
+\DoxyCodeLine{00016\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00017\ \ \ \ \ \textcolor{comment}{//\ コンストラクソstring^・デストラクソstring^}}
+\DoxyCodeLine{00018\ \ \ \ \ CInput();}
+\DoxyCodeLine{00019\ \ \ \ \ \string~CInput();}
+\DoxyCodeLine{00020\ }
+\DoxyCodeLine{00021\ \ \ \ \ \textcolor{comment}{//\ 仮想・純粋仮想関数}}
+\DoxyCodeLine{00022\ \ \ \ \ \textcolor{keyword}{virtual}\ HRESULT\ Init(HINSTANCE\ hInstance,\ HWND\ hWnd);}
+\DoxyCodeLine{00023\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ Uninit(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00024\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ Update(\textcolor{keywordtype}{void})\ =\ 0;}
+\DoxyCodeLine{00025\ }
+\DoxyCodeLine{00026\ \ \ \ \ \textcolor{comment}{//\ ゲッソstring^ー}}
+\DoxyCodeLine{00027\ \ \ \ \ LPDIRECTINPUTDEVICE8\ GetInputDevice(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00028\ }
+\DoxyCodeLine{00029\ \textcolor{keyword}{protected}:}
+\DoxyCodeLine{00030\ \ \ \ \ \textcolor{keyword}{static}\ LPDIRECTINPUT8\ m\_pInput;\ \textcolor{comment}{//\ 入力変数}}
+\DoxyCodeLine{00031\ \ \ \ \ LPDIRECTINPUTDEVICE8\ m\_pDevice;\ \textcolor{comment}{//\ 入力デバイス}}
+\DoxyCodeLine{00032\ \};}
+\DoxyCodeLine{00033\ }
+\DoxyCodeLine{00034\ \textcolor{comment}{//*******************************}}
+\DoxyCodeLine{00035\ \textcolor{comment}{//\ キーソ{ードクラスを定義}}
+\DoxyCodeLine{00036\ \textcolor{comment}{//*******************************}}
+\DoxyCodeLine{00037\ \textcolor{keyword}{class\ }CInputKeyboard\ :\ \textcolor{keyword}{public}\ CInput}
+\DoxyCodeLine{00038\ \{}
+\DoxyCodeLine{00039\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00040\ \ \ \ \ \textcolor{comment}{//\ コンストラクソstring^・デストラクソstring^}}
+\DoxyCodeLine{00041\ \ \ \ \ CInputKeyboard();}
+\DoxyCodeLine{00042\ \ \ \ \ \string~CInputKeyboard();}
+\DoxyCodeLine{00043\ }
+\DoxyCodeLine{00044\ \ \ \ \ \textcolor{comment}{//\ メンバ関数}}
+\DoxyCodeLine{00045\ \ \ \ \ HRESULT\ Init(HINSTANCE\ hInstance,\ HWND\ hWnd);}
+\DoxyCodeLine{00046\ \ \ \ \ \textcolor{keywordtype}{void}\ Uninit(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00047\ \ \ \ \ \textcolor{keywordtype}{void}\ Update(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00048\ }
+\DoxyCodeLine{00049\ \ \ \ \ \textcolor{comment}{//\ ゲッソstring^ー}}
+\DoxyCodeLine{00050\ \ \ \ \ \textcolor{keywordtype}{bool}\ GetPress(\textcolor{keywordtype}{int}\ nKey);}
+\DoxyCodeLine{00051\ \ \ \ \ \textcolor{keywordtype}{bool}\ GetTrigger(\textcolor{keywordtype}{int}\ nKey);}
+\DoxyCodeLine{00052\ \ \ \ \ \textcolor{keywordtype}{bool}\ GetRelease(\textcolor{keywordtype}{int}\ nKey);}
+\DoxyCodeLine{00053\ \ \ \ \ \textcolor{keywordtype}{bool}\ GetRepeat(\textcolor{keywordtype}{int}\ nKey,\textcolor{keywordtype}{int}\ nMaxTime);}
+\DoxyCodeLine{00054\ }
+\DoxyCodeLine{00055\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00056\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{inline}\ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{int}\ KEY\_MAX\ =\ 256;}
+\DoxyCodeLine{00057\ }
+\DoxyCodeLine{00058\ \ \ \ \ BYTE\ m\_aKeystate[KEY\_MAX];\ \textcolor{comment}{//\ キー入力状態}}
+\DoxyCodeLine{00059\ \ \ \ \ BYTE\ m\_aOldState[KEY\_MAX];\ \textcolor{comment}{//\ 過去の入力内容を保存}}
+\DoxyCodeLine{00060\ }
+\DoxyCodeLine{00061\ \ \ \ \ \textcolor{keywordtype}{int}\ m\_nKeyPressCount;}
+\DoxyCodeLine{00062\ \};}
+\DoxyCodeLine{00063\ }
+\DoxyCodeLine{00064\ \textcolor{comment}{//*******************************}}
+\DoxyCodeLine{00065\ \textcolor{comment}{//\ ゲームパッドクラスを定義}}
+\DoxyCodeLine{00066\ \textcolor{comment}{//*******************************}}
+\DoxyCodeLine{00067\ \textcolor{keyword}{class\ }CJoyPad\ :\ \textcolor{keyword}{public}\ CInput}
+\DoxyCodeLine{00068\ \{}
+\DoxyCodeLine{00069\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00070\ \ \ \ \ \textcolor{comment}{//*********************************}}
+\DoxyCodeLine{00071\ \ \ \ \ \textcolor{comment}{//\ ジョイパッドのキーの列挙圭string^}}
+\DoxyCodeLine{00072\ \ \ \ \ \textcolor{comment}{//*********************************}}
+\DoxyCodeLine{00073\ \ \ \ \ \textcolor{keyword}{enum}\ JOYKEY}
+\DoxyCodeLine{00074\ \ \ \ \ \{}
+\DoxyCodeLine{00075\ \ \ \ \ \ \ \ \ JOYKEY\_UP,\ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 十(\backslash\)字キー(上)}}
+\DoxyCodeLine{00076\ \ \ \ \ \ \ \ \ JOYKEY\_DOWN,\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 十(\backslash\)字キー(下)}}
+\DoxyCodeLine{00077\ \ \ \ \ \ \ \ \ JOYKEY\_LEFT,\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 十(\backslash\)字キー(左)}}
+\DoxyCodeLine{00078\ \ \ \ \ \ \ \ \ JOYKEY\_RIGHT,\ \ \ \ \ \ \ \ \textcolor{comment}{//\ 十(\backslash\)字キー(右)}}
+\DoxyCodeLine{00079\ \ \ \ \ \ \ \ \ JOYKEY\_START,\ \ \ \ \ \ \ \ \textcolor{comment}{//\ スソstring^ートキー}}
+\DoxyCodeLine{00080\ \ \ \ \ \ \ \ \ JOYKEY\_BACK,\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ バックキー}}
+\DoxyCodeLine{00081\ \ \ \ \ \ \ \ \ JOYKEY\_LS,\ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ L3(Lスティック)}}
+\DoxyCodeLine{00082\ \ \ \ \ \ \ \ \ JOYKEY\_RS,\ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ R3(Rスティック)}}
+\DoxyCodeLine{00083\ \ \ \ \ \ \ \ \ JOYKEY\_LEFT\_B,\ \ \ \ \ \ \ \textcolor{comment}{//\ LBキー}}
+\DoxyCodeLine{00084\ \ \ \ \ \ \ \ \ JOYKEY\_RIGHT\_B,\ \ \ \ \ \ \textcolor{comment}{//\ RBキー}}
+\DoxyCodeLine{00085\ \ \ \ \ \ \ \ \ JOYKEY\_LEFT\_TRIGGER,\ \textcolor{comment}{//\ LTキー}}
+\DoxyCodeLine{00086\ \ \ \ \ \ \ \ \ JOYKEY\_RIGHT\_TRIGGER,\textcolor{comment}{//\ RTキー}}
+\DoxyCodeLine{00087\ \ \ \ \ \ \ \ \ JOYKEY\_A,\ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Aソ{ソstring^ン}}
+\DoxyCodeLine{00088\ \ \ \ \ \ \ \ \ JOYKEY\_B,\ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Bソ{ソstring^ン}}
+\DoxyCodeLine{00089\ \ \ \ \ \ \ \ \ JOYKEY\_X,\ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Xソ{ソstring^ン}}
+\DoxyCodeLine{00090\ \ \ \ \ \ \ \ \ JOYKEY\_Y,\ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Yソ{ソstring^ン}}
+\DoxyCodeLine{00091\ \ \ \ \ \ \ \ \ JOYKEY\_MAX\ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ パッドの最大数}}
+\DoxyCodeLine{00092\ \ \ \ \ \};}
+\DoxyCodeLine{00093\ }
+\DoxyCodeLine{00094\ \ \ \ \ \textcolor{comment}{//\ コンストラクソstring^・デストラクソstring^}}
+\DoxyCodeLine{00095\ \ \ \ \ CJoyPad();}
+\DoxyCodeLine{00096\ \ \ \ \ \string~CJoyPad();}
+\DoxyCodeLine{00097\ }
+\DoxyCodeLine{00098\ \ \ \ \ \textcolor{comment}{//\ メンバ関数}}
+\DoxyCodeLine{00099\ \ \ \ \ HRESULT\ Init(HINSTANCE\ hInstance,\ HWND\ hWnd);}
+\DoxyCodeLine{00100\ \ \ \ \ \textcolor{keywordtype}{void}\ Uninit(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00101\ \ \ \ \ \textcolor{keywordtype}{void}\ Update(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00102\ \ \ \ \ \textcolor{keywordtype}{void}\ UpdateVibration(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00103\ }
+\DoxyCodeLine{00104\ \ \ \ \ \textcolor{comment}{//\ セッソstring^ー}}
+\DoxyCodeLine{00105\ \ \ \ \ \textcolor{keywordtype}{void}\ SetVibration(\textcolor{keywordtype}{int}\ leftMotor,\ \textcolor{keywordtype}{int}\ rightMotor,\ \textcolor{keywordtype}{int}\ durationMs);}
+\DoxyCodeLine{00106\ }
+\DoxyCodeLine{00107\ \ \ \ \ \textcolor{comment}{//\ ゲッソstring^ー}}
+\DoxyCodeLine{00108\ \ \ \ \ \textcolor{keywordtype}{bool}\ GetPress(JOYKEY\ Key);}
+\DoxyCodeLine{00109\ \ \ \ \ \textcolor{keywordtype}{bool}\ GetTrigger(JOYKEY\ Key);}
+\DoxyCodeLine{00110\ \ \ \ \ \textcolor{keywordtype}{bool}\ GetRelease(JOYKEY\ Key);}
+\DoxyCodeLine{00111\ \ \ \ \ \textcolor{keywordtype}{bool}\ GetRepeat(JOYKEY\ Key,\ \textcolor{keywordtype}{int}\ nMaXTime);}
+\DoxyCodeLine{00112\ \ \ \ \ \textcolor{keywordtype}{bool}\ GetLeftStick(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00113\ }
+\DoxyCodeLine{00114\ \ \ \ \ XINPUT\_STATE*\ GetStickAngle(\textcolor{keywordtype}{void})\ \{\ \textcolor{keywordflow}{return}\ \&m\_joyKeyState;\ \}}
+\DoxyCodeLine{00115\ }
+\DoxyCodeLine{00116\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00117\ \ \ \ \ XINPUT\_STATE\ m\_joyKeyState;\ \ \ \ \ \ \ \ \textcolor{comment}{//\ ジョイパッドのプレス情報}}
+\DoxyCodeLine{00118\ \ \ \ \ XINPUT\_STATE\ m\_OldKeyState;\ \ \ \ \ \ \ \ \textcolor{comment}{//\ 過去のジョイパッド入力情報}}
+\DoxyCodeLine{00119\ \ \ \ \ XINPUT\_STATE\ m\_joyKeyStateTrigger;\ \textcolor{comment}{//\ ジョイパッドのトリガー情報}}
+\DoxyCodeLine{00120\ \ \ \ \ \textcolor{keywordtype}{int}\ m\_nPressCount;}
+\DoxyCodeLine{00121\ }
+\DoxyCodeLine{00122\ \ \ \ \ \textcolor{comment}{//********************}}
+\DoxyCodeLine{00123\ \ \ \ \ \textcolor{comment}{//\ 振動関数}}
+\DoxyCodeLine{00124\ \ \ \ \ \textcolor{comment}{//********************}}
+\DoxyCodeLine{00125\ \ \ \ \ \textcolor{keywordtype}{int}\ m\_leftMotor;\ \textcolor{comment}{//\ 左モーソstring^ーの強さ}}
+\DoxyCodeLine{00126\ \ \ \ \ \textcolor{keywordtype}{int}\ m\_rightMotor;\ \textcolor{comment}{//\ 右モーソstring^ーの強さ}}
+\DoxyCodeLine{00127\ \ \ \ \ DWORD\ m\_VibrationEndTime;\ \textcolor{comment}{//\ 振動終了時刻}}
+\DoxyCodeLine{00128\ \ \ \ \ \textcolor{keywordtype}{bool}\ m\_isVibration;\ \ \ \textcolor{comment}{//\ 振動中かどうか}}
+\DoxyCodeLine{00129\ \};}
+\DoxyCodeLine{00130\ }
+\DoxyCodeLine{00131\ \textcolor{comment}{//*******************************}}
+\DoxyCodeLine{00132\ \textcolor{comment}{//\ ソ}ウスクラスを定義}}
+\DoxyCodeLine{00133\ \textcolor{comment}{//*******************************}}
+\DoxyCodeLine{00134\ \textcolor{keyword}{class\ }CInputMouse\ :\ \textcolor{keyword}{public}\ CInput}
+\DoxyCodeLine{00135\ \{}
+\DoxyCodeLine{00136\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00137\ \ \ \ \ \textcolor{comment}{//********************}}
+\DoxyCodeLine{00138\ \ \ \ \ \textcolor{comment}{//\ ソ}ウスの列挙圭string^}}
+\DoxyCodeLine{00139\ \ \ \ \ \textcolor{comment}{//********************}}
+\DoxyCodeLine{00140\ \ \ \ \ \textcolor{keyword}{enum}\ MOUSE}
+\DoxyCodeLine{00141\ \ \ \ \ \{}
+\DoxyCodeLine{00142\ \ \ \ \ \ \ \ \ MOUSE\_LEFT\ =\ 0,}
+\DoxyCodeLine{00143\ \ \ \ \ \ \ \ \ MOUSE\_RIGHT,}
+\DoxyCodeLine{00144\ \ \ \ \ \ \ \ \ MOUSE\_MAX}
+\DoxyCodeLine{00145\ \ \ \ \ \};}
+\DoxyCodeLine{00146\ }
+\DoxyCodeLine{00147\ \ \ \ \ \textcolor{comment}{//\ コンストラクソstring^・デストラクソstring^}}
+\DoxyCodeLine{00148\ \ \ \ \ CInputMouse();}
+\DoxyCodeLine{00149\ \ \ \ \ \string~CInputMouse();}
+\DoxyCodeLine{00150\ }
+\DoxyCodeLine{00151\ \ \ \ \ \textcolor{comment}{//\ メンバ関数}}
+\DoxyCodeLine{00152\ \ \ \ \ HRESULT\ Init(HINSTANCE\ hInstance,\ HWND\ hWnd);}
+\DoxyCodeLine{00153\ \ \ \ \ \textcolor{keywordtype}{void}\ Uninit(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00154\ \ \ \ \ \textcolor{keywordtype}{void}\ Update(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00155\ }
+\DoxyCodeLine{00156\ \ \ \ \ \textcolor{comment}{//\ セッソstring^ー}}
+\DoxyCodeLine{00157\ \ \ \ \ \textcolor{keywordtype}{void}\ SetCursorVisibility(\textcolor{keywordtype}{bool}\ visible);}
+\DoxyCodeLine{00158\ }
+\DoxyCodeLine{00159\ \ \ \ \ \textcolor{comment}{//\ ゲッソstring^ー}}
+\DoxyCodeLine{00160\ \ \ \ \ \textcolor{keywordtype}{bool}\ GetTriggerDown(\textcolor{keywordtype}{int}\ button\_type);}
+\DoxyCodeLine{00161\ \ \ \ \ \textcolor{keywordtype}{bool}\ GetTriggerUp(\textcolor{keywordtype}{int}\ button\_type);}
+\DoxyCodeLine{00162\ \ \ \ \ \textcolor{keywordtype}{bool}\ GetPress(\textcolor{keywordtype}{int}\ button\_type);}
+\DoxyCodeLine{00163\ \ \ \ \ \textcolor{keywordtype}{bool}\ GetState(DIMOUSESTATE*\ mouseState);}
+\DoxyCodeLine{00164\ \ \ \ \ D3DXVECTOR2\ GetMouseVelocity()\ \{\ \textcolor{keywordflow}{return}\ D3DXVECTOR2((\textcolor{keywordtype}{float})m\_CurrentMouseState.lX,\ (\textcolor{keywordtype}{float})m\_CurrentMouseState.lY);\ \}}
+\DoxyCodeLine{00165\ \ \ \ \ D3DXVECTOR2\ GetMouseOldVelocity()\ \{\ \textcolor{keywordflow}{return}\ D3DXVECTOR2((\textcolor{keywordtype}{float})m\_PrevState.lX,\ (\textcolor{keywordtype}{float})m\_PrevState.lY);\ \}}
+\DoxyCodeLine{00166\ \ \ \ \ BOOL\ IsMouseWheelPresent(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00167\ }
+\DoxyCodeLine{00168\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00169\ \ \ \ \ DIMOUSESTATE\ m\_PrevState;\ \ \ \ }
+\DoxyCodeLine{00170\ \ \ \ \ DIMOUSESTATE\ m\_CurrentMouseState;}
+\DoxyCodeLine{00171\ \};}
+\DoxyCodeLine{00172\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

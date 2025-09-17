@@ -1,0 +1,71 @@
+\doxysection{bosslifegage.\+h}
+\hypertarget{bosslifegage_8h_source}{}\label{bosslifegage_8h_source}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{//=========================================}}
+\DoxyCodeLine{00002\ \textcolor{comment}{//}}
+\DoxyCodeLine{00003\ \textcolor{comment}{//\ ソ{ス体力処理\ [\ bosslifegage.h\ ]}}
+\DoxyCodeLine{00004\ \textcolor{comment}{//\ Author:\ Asuma\ Nishio}}
+\DoxyCodeLine{00005\ \textcolor{comment}{//}}
+\DoxyCodeLine{00006\ \textcolor{comment}{//=========================================}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#ifndef\ \_BOSSLIFEGAGE\_H\_\ }\textcolor{comment}{//\ このソ}クロ定義がされてなかったら}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#define\ \_BOSSLIFEGAGE\_H\_\ }\textcolor{comment}{//\ 2重インクルード防蚕string~のソ}クロ定義}}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00011\ \textcolor{comment}{//**********************}}
+\DoxyCodeLine{00012\ \textcolor{comment}{//\ インクルードファイル}}
+\DoxyCodeLine{00013\ \textcolor{comment}{//**********************}}
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#include\ "{}object.h"{}}}
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#include\ "{}gage.h"{}}}
+\DoxyCodeLine{00016\ }
+\DoxyCodeLine{00017\ \textcolor{comment}{//**********************}}
+\DoxyCodeLine{00018\ \textcolor{comment}{//\ 前方宣言}}
+\DoxyCodeLine{00019\ \textcolor{comment}{//**********************}}
+\DoxyCodeLine{00020\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_c_boss}{CBoss}};}
+\DoxyCodeLine{00021\ }
+\DoxyCodeLine{00022\ \textcolor{comment}{//***************************}}
+\DoxyCodeLine{00023\ \textcolor{comment}{//\ ソ{ス体力管理クラスを定義}}
+\DoxyCodeLine{00024\ \textcolor{comment}{//***************************}}
+\DoxyCodeLine{00025\ \textcolor{keyword}{class\ }CBossLifeGage\ :\ \textcolor{keyword}{public}\ CGage}
+\DoxyCodeLine{00026\ \{}
+\DoxyCodeLine{00027\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00028\ \ \ \ \ \textcolor{comment}{//***********************}}
+\DoxyCodeLine{00029\ \ \ \ \ \textcolor{comment}{//\ ゲージの種類}}
+\DoxyCodeLine{00030\ \ \ \ \ \textcolor{comment}{//***********************}}
+\DoxyCodeLine{00031\ \ \ \ \ \textcolor{keyword}{enum}\ TYPE}
+\DoxyCodeLine{00032\ \ \ \ \ \{}
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ TYPE\_FRAME,}
+\DoxyCodeLine{00034\ \ \ \ \ \ \ \ \ TYPE\_GAGE,}
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ TYPE\_MAX}
+\DoxyCodeLine{00036\ \ \ \ \ \};}
+\DoxyCodeLine{00037\ }
+\DoxyCodeLine{00038\ \ \ \ \ \textcolor{comment}{//\ コンストラクソstring^・デストラクソstring^}}
+\DoxyCodeLine{00039\ \ \ \ \ CBossLifeGage(\textcolor{keywordtype}{int}\ nPriority\ =\ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{int}\textcolor{keyword}{>}(CObject::PRIORITY::UI));}
+\DoxyCodeLine{00040\ \ \ \ \ \string~CBossLifeGage();}
+\DoxyCodeLine{00041\ }
+\DoxyCodeLine{00042\ \ \ \ \ \textcolor{comment}{//\ メンバ関数}}
+\DoxyCodeLine{00043\ \ \ \ \ HRESULT\ Init(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00044\ \ \ \ \ \textcolor{keywordtype}{void}\ Uninit(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00045\ \ \ \ \ \textcolor{keywordtype}{void}\ Update(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00046\ \ \ \ \ \textcolor{keywordtype}{void}\ Draw(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00047\ }
+\DoxyCodeLine{00048\ \ \ \ \ \textcolor{comment}{//\ セッソstring^ー}}
+\DoxyCodeLine{00049\ \ \ \ \ \textcolor{keywordtype}{void}\ SetType(\textcolor{keywordtype}{int}\ nType)\ \{\ m\_Type\ =\ nType;\ \}}
+\DoxyCodeLine{00050\ \ \ \ \ \textcolor{keywordtype}{void}\ SetTexture(\textcolor{keywordtype}{int}\ nType);}
+\DoxyCodeLine{00051\ }
+\DoxyCodeLine{00052\ \ \ \ \ \textcolor{comment}{//\ 静的メンバ関数}}
+\DoxyCodeLine{00053\ \ \ \ \ \textcolor{keyword}{static}\ CBossLifeGage*\ Create(D3DXVECTOR3\ pos,\ \textcolor{keywordtype}{float}\ fWidth,\ \textcolor{keywordtype}{float}\ fHeight,\ \textcolor{keywordtype}{int}\ nType);}
+\DoxyCodeLine{00054\ }
+\DoxyCodeLine{00055\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00056\ \ \ \ \ \textcolor{keywordtype}{int}\ m\_nCurrentLifeLength;\ \ \ \ \ \ \ \textcolor{comment}{//\ バーの長さ基準値}}
+\DoxyCodeLine{00057\ \ \ \ \ \textcolor{keywordtype}{int}\ m\_nMaxLifeLength;\ \ \ \textcolor{comment}{//\ 最大体力時の長さ}}
+\DoxyCodeLine{00058\ \ \ \ \ \textcolor{keywordtype}{int}\ m\_Type;\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 列挙変数}}
+\DoxyCodeLine{00059\ }
+\DoxyCodeLine{00060\ \ \ \ \ \textcolor{keywordtype}{int}\ m\_nIdxTex;\ \ \textcolor{comment}{//\ テクスチャインデックス}}
+\DoxyCodeLine{00061\ \ \ \ \ \mbox{\hyperlink{class_c_boss}{CBoss}}*\ m\_pBoss;\ \textcolor{comment}{//\ ソ{スのポインソstring^}}
+\DoxyCodeLine{00062\ }
+\DoxyCodeLine{00063\ \};}
+\DoxyCodeLine{00064\ }
+\DoxyCodeLine{00065\ \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{00066\ }
+
+\end{DoxyCode}

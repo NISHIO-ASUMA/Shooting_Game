@@ -1,0 +1,162 @@
+\doxysection{CUi\+Object\+Manager Class Reference}
+\hypertarget{class_c_ui_object_manager}{}\label{class_c_ui_object_manager}\index{CUiObjectManager@{CUiObjectManager}}
+Inheritance diagram for CUi\+Object\+Manager\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_c_ui_object_manager}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_c_ui_object_manager_a69b4b485bcefc63e4b4fd2bc729e7915}\label{class_c_ui_object_manager_a69b4b485bcefc63e4b4fd2bc729e7915} 
+{\bfseries CUi\+Object\+Manager} (int n\+Priority=static\+\_\+cast$<$ int $>$(CObject\+::\+PRIORITY\+::\+UI))
+\item 
+HRESULT \mbox{\hyperlink{class_c_ui_object_manager_aeaef5b6429ed1a2625e1d6d6709334ff}{Init}} (void)
+\item 
+void \mbox{\hyperlink{class_c_ui_object_manager_a7993ae4bfd23bcad46ece8844d791353}{Uninit}} (void)
+\item 
+void \mbox{\hyperlink{class_c_ui_object_manager_a690054f1c3cca127e84bc4ac450bf394}{Update}} (void)
+\item 
+void \mbox{\hyperlink{class_c_ui_object_manager_afe0ac4be0d99f9cbef4693ce91bc641d}{Draw}} (void)
+\item 
+\Hypertarget{class_c_ui_object_manager_a24b505dee48c819b2fff3734e3e56330}\label{class_c_ui_object_manager_a24b505dee48c819b2fff3734e3e56330} 
+void {\bfseries Push\+Back} (\mbox{\hyperlink{class_c_ui_object}{CUi\+Object}} \texorpdfstring{$\ast$}{*}p\+Map\+Ojbect)
+\item 
+\Hypertarget{class_c_ui_object_manager_a8dc6ec82ccffdd92d1485e6861921891}\label{class_c_ui_object_manager_a8dc6ec82ccffdd92d1485e6861921891} 
+\mbox{\hyperlink{class_c_ui_object}{CUi\+Object}} \texorpdfstring{$\ast$}{*} {\bfseries Get\+Info} (const int n\+Idx)
+\item 
+\Hypertarget{class_c_ui_object_manager_ad0bbdfa95c89be94131f35fc0cf2a96c}\label{class_c_ui_object_manager_ad0bbdfa95c89be94131f35fc0cf2a96c} 
+int {\bfseries Get\+Size} () const
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_c_object}{CObject}}}
+\begin{DoxyCompactItemize}
+\item 
+{\bfseries CObject} (int n\+Priority=NONE)
+\item 
+void {\bfseries Set\+Obj\+Type} (TYPE type)
+\item 
+TYPE {\bfseries Get\+Obj\+Type} (void)
+\item 
+\mbox{\hyperlink{class_c_object}{CObject}} \texorpdfstring{$\ast$}{*} {\bfseries Get\+Next} (void)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_c_ui_object_manager_a5dc35473b3e88b90280cb2201764234c}\label{class_c_ui_object_manager_a5dc35473b3e88b90280cb2201764234c} 
+static \mbox{\hyperlink{class_c_ui_object_manager}{CUi\+Object\+Manager}} \texorpdfstring{$\ast$}{*} {\bfseries Craete} (void)
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Member Functions inherited from \mbox{\hyperlink{class_c_object}{CObject}}}
+\begin{DoxyCompactItemize}
+\item 
+static void {\bfseries Release\+All} (void)
+\item 
+static void {\bfseries Update\+All} (void)
+\item 
+static void {\bfseries Draw\+All} (void)
+\item 
+static \mbox{\hyperlink{class_c_object}{CObject}} \texorpdfstring{$\ast$}{*} {\bfseries Get\+Top} (int n\+Priority)
+\item 
+static int {\bfseries Get\+Num\+All} (void)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Public Types inherited from \mbox{\hyperlink{class_c_object}{CObject}}}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_c_object_a7263d5eae1a949d02e262e246152a2c6}\label{class_c_object_a7263d5eae1a949d02e262e246152a2c6} 
+enum {\bfseries TYPE} \{ \newline
+{\bfseries TYPE\+\_\+\+NONE} = 0
+, {\bfseries TYPE\+\_\+\+PLAYER}
+, {\bfseries TYPE\+\_\+\+MESH}
+, {\bfseries TYPE\+\_\+\+BULLET}
+, \newline
+{\bfseries TYPE\+\_\+\+BOSS}
+, {\bfseries TYPE\+\_\+\+ENEMY}
+, {\bfseries TYPE\+\_\+\+BLOCK}
+, {\bfseries TYPE\+\_\+\+PAUSE}
+, \newline
+{\bfseries TYPE\+\_\+\+BARRIER}
+, {\bfseries TYPE\+\_\+\+ITEM}
+, {\bfseries TYPE\+\_\+\+RUBBLE}
+, {\bfseries TYPE\+\_\+\+PILER}
+, \newline
+{\bfseries TYPE\+\_\+\+POINT}
+, {\bfseries TYPE\+\_\+\+MAX}
+ \}
+\item 
+\Hypertarget{class_c_object_a0924032649f7068d08cc5da588adc8d0}\label{class_c_object_a0924032649f7068d08cc5da588adc8d0} 
+enum {\bfseries PRIORITY} \{ \newline
+{\bfseries NONE}
+, {\bfseries MESH}
+, {\bfseries BASENUMBER}
+, {\bfseries MODELOBJECT}
+, \newline
+{\bfseries BULLET}
+, {\bfseries SHADOW}
+, {\bfseries IMPACT}
+, {\bfseries CHARACTOR}
+, \newline
+{\bfseries BILLBOARD}
+, {\bfseries EFFECT}
+, {\bfseries UI}
+, {\bfseries PAUSE}
+, \newline
+{\bfseries PRIORITY\+\_\+\+MAX}
+ \}
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Member Functions inherited from \mbox{\hyperlink{class_c_object}{CObject}}}
+\begin{DoxyCompactItemize}
+\item 
+void {\bfseries Release} (void)
+\end{DoxyCompactItemize}
+
+
+\label{doc-func-members}
+\Hypertarget{class_c_ui_object_manager_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_c_ui_object_manager_afe0ac4be0d99f9cbef4693ce91bc641d}\index{CUiObjectManager@{CUiObjectManager}!Draw@{Draw}}
+\index{Draw@{Draw}!CUiObjectManager@{CUiObjectManager}}
+\doxysubsubsection{\texorpdfstring{Draw()}{Draw()}}
+{\footnotesize\ttfamily \label{class_c_ui_object_manager_afe0ac4be0d99f9cbef4693ce91bc641d} 
+void CUi\+Object\+Manager\+::\+Draw (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{class_c_object}{CObject}}.
+
+\Hypertarget{class_c_ui_object_manager_aeaef5b6429ed1a2625e1d6d6709334ff}\index{CUiObjectManager@{CUiObjectManager}!Init@{Init}}
+\index{Init@{Init}!CUiObjectManager@{CUiObjectManager}}
+\doxysubsubsection{\texorpdfstring{Init()}{Init()}}
+{\footnotesize\ttfamily \label{class_c_ui_object_manager_aeaef5b6429ed1a2625e1d6d6709334ff} 
+HRESULT CUi\+Object\+Manager\+::\+Init (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{class_c_object}{CObject}}.
+
+\Hypertarget{class_c_ui_object_manager_a7993ae4bfd23bcad46ece8844d791353}\index{CUiObjectManager@{CUiObjectManager}!Uninit@{Uninit}}
+\index{Uninit@{Uninit}!CUiObjectManager@{CUiObjectManager}}
+\doxysubsubsection{\texorpdfstring{Uninit()}{Uninit()}}
+{\footnotesize\ttfamily \label{class_c_ui_object_manager_a7993ae4bfd23bcad46ece8844d791353} 
+void CUi\+Object\+Manager\+::\+Uninit (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{class_c_object}{CObject}}.
+
+\Hypertarget{class_c_ui_object_manager_a690054f1c3cca127e84bc4ac450bf394}\index{CUiObjectManager@{CUiObjectManager}!Update@{Update}}
+\index{Update@{Update}!CUiObjectManager@{CUiObjectManager}}
+\doxysubsubsection{\texorpdfstring{Update()}{Update()}}
+{\footnotesize\ttfamily \label{class_c_ui_object_manager_a690054f1c3cca127e84bc4ac450bf394} 
+void CUi\+Object\+Manager\+::\+Update (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{class_c_object}{CObject}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+uiobjectmanager.\+h\item 
+uiobjectmanager.\+cpp\end{DoxyCompactItemize}

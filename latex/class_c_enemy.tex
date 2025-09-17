@@ -1,0 +1,234 @@
+\doxysection{CEnemy Class Reference}
+\hypertarget{class_c_enemy}{}\label{class_c_enemy}\index{CEnemy@{CEnemy}}
+Inheritance diagram for CEnemy\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=3.000000cm]{class_c_enemy}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_c_enemy_a0597e60b218becb37a88f9b8b853d722}\label{class_c_enemy_a0597e60b218becb37a88f9b8b853d722} 
+enum {\bfseries STATE} \{ {\bfseries STATE\+\_\+\+FALL}
+, {\bfseries STATE\+\_\+\+ROLLING}
+, {\bfseries STATE\+\_\+\+DEATH}
+, {\bfseries STATE\+\_\+\+MAX}
+ \}
+\item 
+\Hypertarget{class_c_enemy_a2ff72b0ab36d6459d5ae7d3d88ccb15c}\label{class_c_enemy_a2ff72b0ab36d6459d5ae7d3d88ccb15c} 
+enum {\bfseries TYPE} \{ {\bfseries TYPE\+\_\+\+NONE} = 0
+, {\bfseries TYPE\+\_\+\+RIGHT}
+, {\bfseries TYPE\+\_\+\+KEFT}
+, {\bfseries TYPE\+\_\+\+MAX}
+ \}
+\item 
+\Hypertarget{class_c_enemy_a2d1e8c0225eed17cb58d06ffd7d55d4c}\label{class_c_enemy_a2d1e8c0225eed17cb58d06ffd7d55d4c} 
+enum {\bfseries ENEMYSTATE} \{ {\bfseries ENEMYSTATE\+\_\+\+NONE} = 0
+, {\bfseries ENEMYSTATE\+\_\+\+NORMAL}
+, {\bfseries ENEMYSTATE\+\_\+\+DAMAGE}
+, {\bfseries ENEMYSTATE\+\_\+\+MAX}
+ \}
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Types inherited from \mbox{\hyperlink{class_c_object}{CObject}}}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_c_object_a7263d5eae1a949d02e262e246152a2c6}\label{class_c_object_a7263d5eae1a949d02e262e246152a2c6} 
+enum {\bfseries TYPE} \{ \newline
+{\bfseries TYPE\+\_\+\+NONE} = 0
+, {\bfseries TYPE\+\_\+\+PLAYER}
+, {\bfseries TYPE\+\_\+\+MESH}
+, {\bfseries TYPE\+\_\+\+BULLET}
+, \newline
+{\bfseries TYPE\+\_\+\+BOSS}
+, {\bfseries TYPE\+\_\+\+ENEMY}
+, {\bfseries TYPE\+\_\+\+BLOCK}
+, {\bfseries TYPE\+\_\+\+PAUSE}
+, \newline
+{\bfseries TYPE\+\_\+\+BARRIER}
+, {\bfseries TYPE\+\_\+\+ITEM}
+, {\bfseries TYPE\+\_\+\+RUBBLE}
+, {\bfseries TYPE\+\_\+\+PILER}
+, \newline
+{\bfseries TYPE\+\_\+\+POINT}
+, {\bfseries TYPE\+\_\+\+MAX}
+ \}
+\item 
+\Hypertarget{class_c_object_a0924032649f7068d08cc5da588adc8d0}\label{class_c_object_a0924032649f7068d08cc5da588adc8d0} 
+enum {\bfseries PRIORITY} \{ \newline
+{\bfseries NONE}
+, {\bfseries MESH}
+, {\bfseries BASENUMBER}
+, {\bfseries MODELOBJECT}
+, \newline
+{\bfseries BULLET}
+, {\bfseries SHADOW}
+, {\bfseries IMPACT}
+, {\bfseries CHARACTOR}
+, \newline
+{\bfseries BILLBOARD}
+, {\bfseries EFFECT}
+, {\bfseries UI}
+, {\bfseries PAUSE}
+, \newline
+{\bfseries PRIORITY\+\_\+\+MAX}
+ \}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_c_enemy_a5addd3a7b41825fd094a13a44d4cb44d}\label{class_c_enemy_a5addd3a7b41825fd094a13a44d4cb44d} 
+{\bfseries CEnemy} (int n\+Priority=static\+\_\+cast$<$ int $>$(CObject\+::\+PRIORITY\+::\+CHARACTOR))
+\item 
+HRESULT \mbox{\hyperlink{class_c_enemy_a714afb70be90d861a1206911525a7887}{Init}} (void) override
+\item 
+void \mbox{\hyperlink{class_c_enemy_a2e89b0bc976d4d6ce3004db008795fd3}{Uninit}} (void) override
+\item 
+void \mbox{\hyperlink{class_c_enemy_a8c03e118d48ca4377dd9af71a87fc31d}{Update}} (void) override
+\item 
+void \mbox{\hyperlink{class_c_enemy_a1e2fc9a1da5153a0eb79e49072435735}{Draw}} (void) override
+\item 
+\Hypertarget{class_c_enemy_a154c0196e190f903306ce99e4e7d0339}\label{class_c_enemy_a154c0196e190f903306ce99e4e7d0339} 
+void {\bfseries Set\+Type} (const TYPE type)
+\item 
+\Hypertarget{class_c_enemy_a8f5ec0b7aa7fbd8496e1f63ced29cbb1}\label{class_c_enemy_a8f5ec0b7aa7fbd8496e1f63ced29cbb1} 
+TYPE {\bfseries Get\+Type} (void) const
+\item 
+\Hypertarget{class_c_enemy_acb3a2971446bd697f5cd233a460d4da6}\label{class_c_enemy_acb3a2971446bd697f5cd233a460d4da6} 
+void {\bfseries Hit\+Enemy} (int n\+Damage)
+\item 
+\Hypertarget{class_c_enemy_aa45e350eb3a7a84b886681c8ccc657aa}\label{class_c_enemy_aa45e350eb3a7a84b886681c8ccc657aa} 
+bool {\bfseries Collision} (D3\+DXVECTOR3 \texorpdfstring{$\ast$}{*}p\+Pos)
+\item 
+\Hypertarget{class_c_enemy_a72159a28423b5b1d3e3b3f911a7ff367}\label{class_c_enemy_a72159a28423b5b1d3e3b3f911a7ff367} 
+void {\bfseries Change\+State} (\mbox{\hyperlink{class_c_enemy_state_base}{CEnemy\+State\+Base}} \texorpdfstring{$\ast$}{*}p\+New\+State, int id)
+\item 
+\Hypertarget{class_c_enemy_a98c47622ef74258b3b3a797680ed108a}\label{class_c_enemy_a98c47622ef74258b3b3a797680ed108a} 
+void {\bfseries Update\+Moving} (void)
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_c_object_x}{CObjectX}}}
+\begin{DoxyCompactItemize}
+\item 
+{\bfseries CObjectX} (int n\+Priority=static\+\_\+cast$<$ int $>$(CObject\+::\+PRIORITY\+::\+MODELOBJECT))
+\item 
+HRESULT \mbox{\hyperlink{class_c_object_x_a847767341403f8245dcaeff654a8d4e8}{Init}} (void)
+\item 
+void \mbox{\hyperlink{class_c_object_x_acdc96ed7b96db25dbf30b06a0ad865d9}{Uninit}} (void)
+\item 
+void \mbox{\hyperlink{class_c_object_x_a5b265df5e9d645e2bd50ee23135b90e5}{Update}} (void)
+\item 
+void \mbox{\hyperlink{class_c_object_x_a506817897c8d93f88bf6353999f38941}{Draw}} (void)
+\item 
+void {\bfseries Set\+File\+Pass} (const char \texorpdfstring{$\ast$}{*}p\+File\+Pass)
+\item 
+void {\bfseries Set\+Pos} (D3\+DXVECTOR3 pos)
+\item 
+void {\bfseries Set\+Rot} (D3\+DXVECTOR3 rot)
+\item 
+void {\bfseries Set\+Use\+Quat} (bool is\+Flags)
+\item 
+void {\bfseries Set\+Mtx\+World} (D3\+DXMATRIX mtxworld)
+\item 
+D3\+DXVECTOR3 {\bfseries Get\+Pos} (void)
+\item 
+D3\+DXVECTOR3 {\bfseries Get\+Rot} (void)
+\item 
+D3\+DXMATRIX {\bfseries Get\+Mtx\+World} (void)
+\item 
+const char \texorpdfstring{$\ast$}{*} {\bfseries Get\+File\+Name} () const
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_c_object}{CObject}}}
+\begin{DoxyCompactItemize}
+\item 
+{\bfseries CObject} (int n\+Priority=NONE)
+\item 
+void {\bfseries Set\+Obj\+Type} (TYPE type)
+\item 
+TYPE {\bfseries Get\+Obj\+Type} (void)
+\item 
+\mbox{\hyperlink{class_c_object}{CObject}} \texorpdfstring{$\ast$}{*} {\bfseries Get\+Next} (void)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_c_enemy_a9406e1ada95fe8d8fa81bd2d5553533c}\label{class_c_enemy_a9406e1ada95fe8d8fa81bd2d5553533c} 
+static \mbox{\hyperlink{class_c_enemy}{CEnemy}} \texorpdfstring{$\ast$}{*} {\bfseries Create} (const char \texorpdfstring{$\ast$}{*}p\+File\+Name, const D3\+DXVECTOR3 pos, const D3\+DXVECTOR3 rot, TYPE n\+Type, int n\+Hp)
+\item 
+\Hypertarget{class_c_enemy_af43aadd096300f40e0129b74b7fbef9b}\label{class_c_enemy_af43aadd096300f40e0129b74b7fbef9b} 
+static int {\bfseries Get\+Enemy} (void)
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Member Functions inherited from \mbox{\hyperlink{class_c_object_x}{CObjectX}}}
+\begin{DoxyCompactItemize}
+\item 
+static \mbox{\hyperlink{class_c_object_x}{CObjectX}} \texorpdfstring{$\ast$}{*} {\bfseries Create} (const char \texorpdfstring{$\ast$}{*}p\+File\+Name, D3\+DXVECTOR3 pos)
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Member Functions inherited from \mbox{\hyperlink{class_c_object}{CObject}}}
+\begin{DoxyCompactItemize}
+\item 
+static void {\bfseries Release\+All} (void)
+\item 
+static void {\bfseries Update\+All} (void)
+\item 
+static void {\bfseries Draw\+All} (void)
+\item 
+static \mbox{\hyperlink{class_c_object}{CObject}} \texorpdfstring{$\ast$}{*} {\bfseries Get\+Top} (int n\+Priority)
+\item 
+static int {\bfseries Get\+Num\+All} (void)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Protected Member Functions inherited from \mbox{\hyperlink{class_c_object}{CObject}}}
+\begin{DoxyCompactItemize}
+\item 
+void {\bfseries Release} (void)
+\end{DoxyCompactItemize}
+
+
+\label{doc-func-members}
+\Hypertarget{class_c_enemy_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_c_enemy_a1e2fc9a1da5153a0eb79e49072435735}\index{CEnemy@{CEnemy}!Draw@{Draw}}
+\index{Draw@{Draw}!CEnemy@{CEnemy}}
+\doxysubsubsection{\texorpdfstring{Draw()}{Draw()}}
+{\footnotesize\ttfamily \label{class_c_enemy_a1e2fc9a1da5153a0eb79e49072435735} 
+void CEnemy\+::\+Draw (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{class_c_object}{CObject}}.
+
+\Hypertarget{class_c_enemy_a714afb70be90d861a1206911525a7887}\index{CEnemy@{CEnemy}!Init@{Init}}
+\index{Init@{Init}!CEnemy@{CEnemy}}
+\doxysubsubsection{\texorpdfstring{Init()}{Init()}}
+{\footnotesize\ttfamily \label{class_c_enemy_a714afb70be90d861a1206911525a7887} 
+HRESULT CEnemy\+::\+Init (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{class_c_object}{CObject}}.
+
+\Hypertarget{class_c_enemy_a2e89b0bc976d4d6ce3004db008795fd3}\index{CEnemy@{CEnemy}!Uninit@{Uninit}}
+\index{Uninit@{Uninit}!CEnemy@{CEnemy}}
+\doxysubsubsection{\texorpdfstring{Uninit()}{Uninit()}}
+{\footnotesize\ttfamily \label{class_c_enemy_a2e89b0bc976d4d6ce3004db008795fd3} 
+void CEnemy\+::\+Uninit (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{class_c_object}{CObject}}.
+
+\Hypertarget{class_c_enemy_a8c03e118d48ca4377dd9af71a87fc31d}\index{CEnemy@{CEnemy}!Update@{Update}}
+\index{Update@{Update}!CEnemy@{CEnemy}}
+\doxysubsubsection{\texorpdfstring{Update()}{Update()}}
+{\footnotesize\ttfamily \label{class_c_enemy_a8c03e118d48ca4377dd9af71a87fc31d} 
+void CEnemy\+::\+Update (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [override]}, {\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{class_c_object}{CObject}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+enemy.\+h\item 
+enemy.\+cpp\end{DoxyCompactItemize}

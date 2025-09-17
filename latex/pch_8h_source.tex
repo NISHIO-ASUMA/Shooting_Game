@@ -1,0 +1,102 @@
+\doxysection{pch.\+h}
+\hypertarget{pch_8h_source}{}\label{pch_8h_source}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{//====================================}}
+\DoxyCodeLine{00002\ \textcolor{comment}{//}}
+\DoxyCodeLine{00003\ \textcolor{comment}{//\ プリコンパイルヘッソ_ー\ [\ pch.h\ ]}}
+\DoxyCodeLine{00004\ \textcolor{comment}{//\ Author:\ Asuma\ Nishio}}
+\DoxyCodeLine{00005\ \textcolor{comment}{//}}
+\DoxyCodeLine{00006\ \textcolor{comment}{//=====================================}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#ifndef\ \_PCH\_H\_\ }\textcolor{comment}{//\ このソ}クロ定義がされてなかったら}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#define\ \_PCH\_H\_\ }\textcolor{comment}{//\ 2重インクルード防蚕string~のソ}クロ定義}}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00011\ \textcolor{comment}{//***************************}}
+\DoxyCodeLine{00012\ \textcolor{comment}{//\ インクルードファイル宣言}}
+\DoxyCodeLine{00013\ \textcolor{comment}{//***************************}}
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#include\ <windows.h>}}
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#include\ "{}d3dx9.h"{}}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 描画処理に必要}}
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#include\ "{}d3d9.h"{}}}
+\DoxyCodeLine{00017\ \textcolor{preprocessor}{\#define\ DIRECTINPUT\_VERSION\ (0x0800)}\textcolor{comment}{//\ ビルド時警告対処用のソ}クロ}}
+\DoxyCodeLine{00018\ \textcolor{preprocessor}{\#include\ "{}dinput.h"{}}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 入力処理に必要}}
+\DoxyCodeLine{00019\ \textcolor{preprocessor}{\#include\ "{}Xinput.h"{}}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ ジョイパッド処理に必要}}
+\DoxyCodeLine{00020\ \textcolor{preprocessor}{\#include\ "{}xaudio2.h"{}}}
+\DoxyCodeLine{00021\ \textcolor{preprocessor}{\#include\ <time.h>}}
+\DoxyCodeLine{00022\ \textcolor{preprocessor}{\#include\ <Shlwapi.h>}}
+\DoxyCodeLine{00023\ \textcolor{preprocessor}{\#include\ <assert.h>}\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ アサート関数ヘッソ_ー}}
+\DoxyCodeLine{00024\ \textcolor{preprocessor}{\#include\ <stdlib.h>}}
+\DoxyCodeLine{00025\ \textcolor{preprocessor}{\#include\ <cstdio>}}
+\DoxyCodeLine{00026\ }
+\DoxyCodeLine{00027\ \textcolor{comment}{//**************************}}
+\DoxyCodeLine{00028\ \textcolor{comment}{//\ ライブラリのリンク宣言}}
+\DoxyCodeLine{00029\ \textcolor{comment}{//**************************}}
+\DoxyCodeLine{00030\ \textcolor{preprocessor}{\#pragma\ comment(lib,"{}d3d9.lib"{})\ \ \ \ \ }\textcolor{comment}{//\ 描画処理に必要}}
+\DoxyCodeLine{00031\ \textcolor{preprocessor}{\#pragma\ comment(lib,"{}d3dx9.lib"{})\ \ \ \ }\textcolor{comment}{//\ [d3d9.lib]の拡張ライブラリ}}
+\DoxyCodeLine{00032\ \textcolor{preprocessor}{\#pragma\ comment(lib,"{}dxguid.lib"{})\ \ \ }\textcolor{comment}{//\ DirectXコンポーネント(部品)使用に必要}}
+\DoxyCodeLine{00033\ \textcolor{preprocessor}{\#pragma\ comment(lib,"{}dinput8.lib"{})}}
+\DoxyCodeLine{00034\ \textcolor{preprocessor}{\#pragma\ comment(lib,"{}xinput.lib"{})\ \ \ }\textcolor{comment}{//\ ジョイパッド処理に必要}}
+\DoxyCodeLine{00035\ \textcolor{preprocessor}{\#pragma\ comment(lib,"{}Winmm.lib"{})}}
+\DoxyCodeLine{00036\ \textcolor{preprocessor}{\#pragma\ comment(lib,"{}shlwapi.lib"{})}}
+\DoxyCodeLine{00037\ }
+\DoxyCodeLine{00038\ \textcolor{comment}{//**************************}}
+\DoxyCodeLine{00039\ \textcolor{comment}{//\ ソ}クロ定義}}
+\DoxyCodeLine{00040\ \textcolor{comment}{//**************************}}
+\DoxyCodeLine{00041\ \textcolor{preprocessor}{\#define\ SCREEN\_WIDTH\ (1280)\ \ \ \ \ }\textcolor{comment}{//\ ウインドウの幅}}
+\DoxyCodeLine{00042\ \textcolor{preprocessor}{\#define\ SCREEN\_HEIGHT\ (720)\ \ \ \ \ }\textcolor{comment}{//\ ウインドウの高さ}}
+\DoxyCodeLine{00043\ \textcolor{preprocessor}{\#define\ CLASS\_NAME\ "{}WindowClass"{}\ \ \ \ \ \ \ \ }\textcolor{comment}{//\ ウインドウクラスの名前}}
+\DoxyCodeLine{00044\ \textcolor{preprocessor}{\#define\ WINDOW\_NAME\ "{}Circle\ Shot!"{}\ \ \ \ \ \ }\textcolor{comment}{//\ ウインドウの名前}}
+\DoxyCodeLine{00045\ \textcolor{preprocessor}{\#define\ FVF\_VERTEX\_2D\ (D3DFVF\_XYZRHW\ |\ D3DFVF\_DIFFUSE\ |\ D3DFVF\_TEX1)\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ }\textcolor{comment}{//\ 頂貼_フォーソ}ット[2D]}}
+\DoxyCodeLine{00046\ \textcolor{preprocessor}{\#define\ FVF\_VERTEX\_3D\ (D3DFVF\_XYZ\ |\ D3DFVF\_NORMAL\ |\ \ D3DFVF\_DIFFUSE\ |\ D3DFVF\_TEX1)\ \ }\textcolor{comment}{//\ 座標,法線,カラー,テクスチャ}}
+\DoxyCodeLine{00047\ \textcolor{preprocessor}{\#define\ FVF\_VERTEX\_3D\_MULTI\ (D3DFVF\_XYZ\ |\ D3DFVF\_NORMAL\ |\ D3DFVF\_DIFFUSE\ |\ D3DFVF\_TEX2)\ }\textcolor{comment}{//\ 座標,法線,カラー,ソ}ルチテクスチャ}}
+\DoxyCodeLine{00048\ }
+\DoxyCodeLine{00049\ \textcolor{preprocessor}{\#define\ VECTOR3\_NULL\ (D3DXVECTOR3(0.0f,\ 0.0f,\ 0.0f))\ \ \ \ \ \ \ \ }\textcolor{comment}{//\ 座標初期化}}
+\DoxyCodeLine{00050\ \textcolor{preprocessor}{\#define\ COLOR\_BLACK\ (D3DXCOLOR(0.0f,\ 0.0f,\ 0.0f,\ 1.0f))\ \ \ \ \ }\textcolor{comment}{//\ 黒}}
+\DoxyCodeLine{00051\ \textcolor{preprocessor}{\#define\ COLOR\_WHITE\ (D3DXCOLOR(1.0f,\ 1.0f,\ 1.0f,\ 1.0f))\ \ \ \ \ }\textcolor{comment}{//\ 白}}
+\DoxyCodeLine{00052\ \textcolor{preprocessor}{\#define\ COLOR\_RED\ \ \ (D3DXCOLOR(1.0f,\ 0.0f,\ 0.0f,\ 1.0f))\ \ \ \ \ }\textcolor{comment}{//\ 赤}}
+\DoxyCodeLine{00053\ \textcolor{preprocessor}{\#define\ COLOR\_GREEN\ (D3DXCOLOR(0.0f,\ 1.0f,\ 0.0f,\ 1.0f))\ \ \ \ \ }\textcolor{comment}{//\ 緑}}
+\DoxyCodeLine{00054\ \textcolor{preprocessor}{\#define\ COLOR\_YERROW\ (D3DXCOLOR(1.0f,\ 1.0f,\ 0.0f,\ 1.0f))\ \ \ \ }\textcolor{comment}{//\ 黄色}}
+\DoxyCodeLine{00055\ \textcolor{preprocessor}{\#define\ COLOR\_BLUE\ \ \ (D3DXCOLOR(0.0f,\ 0.0f,\ 1.0f,\ 1.0f))\ \ \ \ }\textcolor{comment}{//\ 青}}
+\DoxyCodeLine{00056\ \textcolor{preprocessor}{\#define\ COLOR\_PURPLE\ (D3DXCOLOR(1.0f,\ 0.0f,\ 1.0f,\ 1.0f))\ \ \ \ }\textcolor{comment}{//\ 紫}}
+\DoxyCodeLine{00057\ \textcolor{preprocessor}{\#define\ COLOR\_GLAY\ \ \ (D3DXCOLOR(1.0f,\ 1.0f,\ 1.0f,\ 0.7f))\ \ \ \ }\textcolor{comment}{//\ グレー}}
+\DoxyCodeLine{00058\ \textcolor{preprocessor}{\#define\ LASER\ \ \ \ \ \ \ \ (D3DXCOLOR(0.05f,\ 0.05f,\ 1.0f,\ 1.0f))\ \ }\textcolor{comment}{//\ レーザーエフェクト}}
+\DoxyCodeLine{00059\ \textcolor{preprocessor}{\#define\ COLOR\_NULL\ \ \ (D3DXCOLOR(0.0f,\ 0.0f,\ 0.0f,\ 0.0f))\ \ \ \ }\textcolor{comment}{//\ 完全透明}}
+\DoxyCodeLine{00060\ }
+\DoxyCodeLine{00061\ \textcolor{preprocessor}{\#define\ MAX\_WORD\ (256)\ \ \ \ \ \ }\textcolor{comment}{//\ 最大文字配列数}}
+\DoxyCodeLine{00062\ }
+\DoxyCodeLine{00063\ \textcolor{comment}{//**********************}}
+\DoxyCodeLine{00064\ \textcolor{comment}{//\ 頂貼_情報[2D]の構(\backslash\)造体}}
+\DoxyCodeLine{00065\ \textcolor{comment}{//**********************}}
+\DoxyCodeLine{00066\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct}}
+\DoxyCodeLine{00067\ \{}
+\DoxyCodeLine{00068\ \ \ \ \ D3DXVECTOR3\ pos;\ \ \ \ \textcolor{comment}{//\ 頂貼_座標}}
+\DoxyCodeLine{00069\ \ \ \ \ \textcolor{keywordtype}{float}\ rhw;\ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 座標変換用係数(1.0fで固定)}}
+\DoxyCodeLine{00070\ \ \ \ \ D3DCOLOR\ col;\ \ \ \ \ \ \ \textcolor{comment}{//\ 頂貼_カラー}}
+\DoxyCodeLine{00071\ \ \ \ \ D3DXVECTOR2\ tex;\ \ \ \ \textcolor{comment}{//\ テクスチャ座標}}
+\DoxyCodeLine{00072\ \}\mbox{\hyperlink{struct_v_e_r_t_e_x__2_d}{VERTEX\_2D}};}
+\DoxyCodeLine{00073\ }
+\DoxyCodeLine{00074\ \textcolor{comment}{//**********************}}
+\DoxyCodeLine{00075\ \textcolor{comment}{//\ 頂貼_情報[3D]の構(\backslash\)造体}}
+\DoxyCodeLine{00076\ \textcolor{comment}{//**********************}}
+\DoxyCodeLine{00077\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct}}
+\DoxyCodeLine{00078\ \{}
+\DoxyCodeLine{00079\ \ \ \ \ D3DXVECTOR3\ pos;\ \ \ \ \textcolor{comment}{//\ 頂貼_座標}}
+\DoxyCodeLine{00080\ \ \ \ \ D3DXVECTOR3\ nor;\ \ \ \ \textcolor{comment}{//\ 法線ベクトル}}
+\DoxyCodeLine{00081\ \ \ \ \ D3DCOLOR\ col;\ \ \ \ \ \ \ \textcolor{comment}{//\ 頂貼_カラー}}
+\DoxyCodeLine{00082\ \ \ \ \ D3DXVECTOR2\ tex;\ \ \ \ \textcolor{comment}{//\ テクスチャ座標}}
+\DoxyCodeLine{00083\ \}\mbox{\hyperlink{struct_v_e_r_t_e_x__3_d}{VERTEX\_3D}};}
+\DoxyCodeLine{00084\ }
+\DoxyCodeLine{00085\ \textcolor{comment}{//*****************************}}
+\DoxyCodeLine{00086\ \textcolor{comment}{//\ 頂貼_情報[3D\_ソ}ルチ]の構(\backslash\)造体}}
+\DoxyCodeLine{00087\ \textcolor{comment}{//*****************************}}
+\DoxyCodeLine{00088\ \textcolor{keyword}{typedef}\ \textcolor{keyword}{struct}}
+\DoxyCodeLine{00089\ \{}
+\DoxyCodeLine{00090\ \ \ \ \ D3DXVECTOR3\ pos;\ \ \ \ \textcolor{comment}{//\ 頂貼_座標}}
+\DoxyCodeLine{00091\ \ \ \ \ D3DXVECTOR3\ nor;\ \ \ \ \textcolor{comment}{//\ 法線ベクトル}}
+\DoxyCodeLine{00092\ \ \ \ \ D3DCOLOR\ col;\ \ \ \ \ \ \ \textcolor{comment}{//\ 頂貼_カラー}}
+\DoxyCodeLine{00093\ \ \ \ \ D3DXVECTOR2\ tex;\ \ \ \ \textcolor{comment}{//\ テクスチャ座標}}
+\DoxyCodeLine{00094\ \ \ \ \ D3DXVECTOR2\ texM;\ \ \ \textcolor{comment}{//\ ソ}ルチテクスチャ}}
+\DoxyCodeLine{00095\ \}\mbox{\hyperlink{struct_v_e_r_t_e_x__3_d___m_u_l_t_i}{VERTEX\_3D\_MULTI}};}
+\DoxyCodeLine{00096\ }
+\DoxyCodeLine{00097\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

@@ -1,0 +1,153 @@
+\doxysection{CMesh\+Circle Class Reference}
+\hypertarget{class_c_mesh_circle}{}\label{class_c_mesh_circle}\index{CMeshCircle@{CMeshCircle}}
+Inheritance diagram for CMesh\+Circle\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_c_mesh_circle}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_c_mesh_circle_af32b7e9615454b68b394eb4a433849ea}\label{class_c_mesh_circle_af32b7e9615454b68b394eb4a433849ea} 
+{\bfseries CMesh\+Circle} (int n\+Priority=static\+\_\+cast$<$ int $>$(CObject\+::\+PRIORITY\+::\+MESH))
+\item 
+HRESULT \mbox{\hyperlink{class_c_mesh_circle_a5e5e84647475da84408d972b77ddab5d}{Init}} (void)
+\item 
+void \mbox{\hyperlink{class_c_mesh_circle_aeb31468d6a7dc1f055c1c923890e14bc}{Uninit}} (void)
+\item 
+void \mbox{\hyperlink{class_c_mesh_circle_ae9a17a9ec1e66efa72850778cebc3c09}{Update}} (void)
+\item 
+void \mbox{\hyperlink{class_c_mesh_circle_aa94041fd19c9b86dcaab8714e8239c43}{Draw}} (void)
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_c_object}{CObject}}}
+\begin{DoxyCompactItemize}
+\item 
+{\bfseries CObject} (int n\+Priority=NONE)
+\item 
+void {\bfseries Set\+Obj\+Type} (TYPE type)
+\item 
+TYPE {\bfseries Get\+Obj\+Type} (void)
+\item 
+\mbox{\hyperlink{class_c_object}{CObject}} \texorpdfstring{$\ast$}{*} {\bfseries Get\+Next} (void)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_c_mesh_circle_ad2dc67560b8082b9582145bbb827552a}\label{class_c_mesh_circle_ad2dc67560b8082b9582145bbb827552a} 
+static \mbox{\hyperlink{class_c_mesh_circle}{CMesh\+Circle}} \texorpdfstring{$\ast$}{*} {\bfseries Create} (D3\+DXVECTOR3 pos)
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Member Functions inherited from \mbox{\hyperlink{class_c_object}{CObject}}}
+\begin{DoxyCompactItemize}
+\item 
+static void {\bfseries Release\+All} (void)
+\item 
+static void {\bfseries Update\+All} (void)
+\item 
+static void {\bfseries Draw\+All} (void)
+\item 
+static \mbox{\hyperlink{class_c_object}{CObject}} \texorpdfstring{$\ast$}{*} {\bfseries Get\+Top} (int n\+Priority)
+\item 
+static int {\bfseries Get\+Num\+All} (void)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Public Types inherited from \mbox{\hyperlink{class_c_object}{CObject}}}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_c_object_a7263d5eae1a949d02e262e246152a2c6}\label{class_c_object_a7263d5eae1a949d02e262e246152a2c6} 
+enum {\bfseries TYPE} \{ \newline
+{\bfseries TYPE\+\_\+\+NONE} = 0
+, {\bfseries TYPE\+\_\+\+PLAYER}
+, {\bfseries TYPE\+\_\+\+MESH}
+, {\bfseries TYPE\+\_\+\+BULLET}
+, \newline
+{\bfseries TYPE\+\_\+\+BOSS}
+, {\bfseries TYPE\+\_\+\+ENEMY}
+, {\bfseries TYPE\+\_\+\+BLOCK}
+, {\bfseries TYPE\+\_\+\+PAUSE}
+, \newline
+{\bfseries TYPE\+\_\+\+BARRIER}
+, {\bfseries TYPE\+\_\+\+ITEM}
+, {\bfseries TYPE\+\_\+\+RUBBLE}
+, {\bfseries TYPE\+\_\+\+PILER}
+, \newline
+{\bfseries TYPE\+\_\+\+POINT}
+, {\bfseries TYPE\+\_\+\+MAX}
+ \}
+\item 
+\Hypertarget{class_c_object_a0924032649f7068d08cc5da588adc8d0}\label{class_c_object_a0924032649f7068d08cc5da588adc8d0} 
+enum {\bfseries PRIORITY} \{ \newline
+{\bfseries NONE}
+, {\bfseries MESH}
+, {\bfseries BASENUMBER}
+, {\bfseries MODELOBJECT}
+, \newline
+{\bfseries BULLET}
+, {\bfseries SHADOW}
+, {\bfseries IMPACT}
+, {\bfseries CHARACTOR}
+, \newline
+{\bfseries BILLBOARD}
+, {\bfseries EFFECT}
+, {\bfseries UI}
+, {\bfseries PAUSE}
+, \newline
+{\bfseries PRIORITY\+\_\+\+MAX}
+ \}
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Member Functions inherited from \mbox{\hyperlink{class_c_object}{CObject}}}
+\begin{DoxyCompactItemize}
+\item 
+void {\bfseries Release} (void)
+\end{DoxyCompactItemize}
+
+
+\label{doc-func-members}
+\Hypertarget{class_c_mesh_circle_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_c_mesh_circle_aa94041fd19c9b86dcaab8714e8239c43}\index{CMeshCircle@{CMeshCircle}!Draw@{Draw}}
+\index{Draw@{Draw}!CMeshCircle@{CMeshCircle}}
+\doxysubsubsection{\texorpdfstring{Draw()}{Draw()}}
+{\footnotesize\ttfamily \label{class_c_mesh_circle_aa94041fd19c9b86dcaab8714e8239c43} 
+void CMesh\+Circle\+::\+Draw (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{class_c_object}{CObject}}.
+
+\Hypertarget{class_c_mesh_circle_a5e5e84647475da84408d972b77ddab5d}\index{CMeshCircle@{CMeshCircle}!Init@{Init}}
+\index{Init@{Init}!CMeshCircle@{CMeshCircle}}
+\doxysubsubsection{\texorpdfstring{Init()}{Init()}}
+{\footnotesize\ttfamily \label{class_c_mesh_circle_a5e5e84647475da84408d972b77ddab5d} 
+HRESULT CMesh\+Circle\+::\+Init (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{class_c_object}{CObject}}.
+
+\Hypertarget{class_c_mesh_circle_aeb31468d6a7dc1f055c1c923890e14bc}\index{CMeshCircle@{CMeshCircle}!Uninit@{Uninit}}
+\index{Uninit@{Uninit}!CMeshCircle@{CMeshCircle}}
+\doxysubsubsection{\texorpdfstring{Uninit()}{Uninit()}}
+{\footnotesize\ttfamily \label{class_c_mesh_circle_aeb31468d6a7dc1f055c1c923890e14bc} 
+void CMesh\+Circle\+::\+Uninit (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{class_c_object}{CObject}}.
+
+\Hypertarget{class_c_mesh_circle_ae9a17a9ec1e66efa72850778cebc3c09}\index{CMeshCircle@{CMeshCircle}!Update@{Update}}
+\index{Update@{Update}!CMeshCircle@{CMeshCircle}}
+\doxysubsubsection{\texorpdfstring{Update()}{Update()}}
+{\footnotesize\ttfamily \label{class_c_mesh_circle_ae9a17a9ec1e66efa72850778cebc3c09} 
+void CMesh\+Circle\+::\+Update (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{class_c_object}{CObject}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+meshcircle.\+h\item 
+meshcircle.\+cpp\end{DoxyCompactItemize}

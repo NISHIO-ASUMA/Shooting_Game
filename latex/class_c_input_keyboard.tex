@@ -1,0 +1,86 @@
+\doxysection{CInput\+Keyboard Class Reference}
+\hypertarget{class_c_input_keyboard}{}\label{class_c_input_keyboard}\index{CInputKeyboard@{CInputKeyboard}}
+Inheritance diagram for CInput\+Keyboard\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_c_input_keyboard}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+HRESULT \mbox{\hyperlink{class_c_input_keyboard_a6079e980f243bfe236775cb26feab5a3}{Init}} (HINSTANCE h\+Instance, HWND h\+Wnd)
+\item 
+void \mbox{\hyperlink{class_c_input_keyboard_a9eccb04445ed8eb13a12596419107e5b}{Uninit}} (void)
+\item 
+void \mbox{\hyperlink{class_c_input_keyboard_ac30a29e01547d4e10281a82688dea26f}{Update}} (void)
+\item 
+\Hypertarget{class_c_input_keyboard_a4a61e7607c43dee140f1c5e2058c99ce}\label{class_c_input_keyboard_a4a61e7607c43dee140f1c5e2058c99ce} 
+bool {\bfseries Get\+Press} (int n\+Key)
+\item 
+\Hypertarget{class_c_input_keyboard_a198a4d057d08832ab32f5fd58892e945}\label{class_c_input_keyboard_a198a4d057d08832ab32f5fd58892e945} 
+bool {\bfseries Get\+Trigger} (int n\+Key)
+\item 
+\Hypertarget{class_c_input_keyboard_a908e8267a09aff013fb9aa4ba6523047}\label{class_c_input_keyboard_a908e8267a09aff013fb9aa4ba6523047} 
+bool {\bfseries Get\+Release} (int n\+Key)
+\item 
+\Hypertarget{class_c_input_keyboard_abe901f60c8f33c30f3cdde545e0df79b}\label{class_c_input_keyboard_abe901f60c8f33c30f3cdde545e0df79b} 
+bool {\bfseries Get\+Repeat} (int n\+Key, int n\+Max\+Time)
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_c_input}{CInput}}}
+\begin{DoxyCompactItemize}
+\item 
+LPDIRECTINPUTDEVICE8 {\bfseries Get\+Input\+Device} (void)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Protected Attributes inherited from \mbox{\hyperlink{class_c_input}{CInput}}}
+\begin{DoxyCompactItemize}
+\item 
+LPDIRECTINPUTDEVICE8 {\bfseries m\+\_\+p\+Device}
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Protected Attributes inherited from \mbox{\hyperlink{class_c_input}{CInput}}}
+\begin{DoxyCompactItemize}
+\item 
+static LPDIRECTINPUT8 {\bfseries m\+\_\+p\+Input} = nullptr
+\end{DoxyCompactItemize}
+
+
+\label{doc-func-members}
+\Hypertarget{class_c_input_keyboard_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_c_input_keyboard_a6079e980f243bfe236775cb26feab5a3}\index{CInputKeyboard@{CInputKeyboard}!Init@{Init}}
+\index{Init@{Init}!CInputKeyboard@{CInputKeyboard}}
+\doxysubsubsection{\texorpdfstring{Init()}{Init()}}
+{\footnotesize\ttfamily \label{class_c_input_keyboard_a6079e980f243bfe236775cb26feab5a3} 
+HRESULT CInput\+Keyboard\+::\+Init (\begin{DoxyParamCaption}\item[{HINSTANCE}]{h\+Instance}{, }\item[{HWND}]{h\+Wnd}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Reimplemented from \mbox{\hyperlink{class_c_input}{CInput}}.
+
+\Hypertarget{class_c_input_keyboard_a9eccb04445ed8eb13a12596419107e5b}\index{CInputKeyboard@{CInputKeyboard}!Uninit@{Uninit}}
+\index{Uninit@{Uninit}!CInputKeyboard@{CInputKeyboard}}
+\doxysubsubsection{\texorpdfstring{Uninit()}{Uninit()}}
+{\footnotesize\ttfamily \label{class_c_input_keyboard_a9eccb04445ed8eb13a12596419107e5b} 
+void CInput\+Keyboard\+::\+Uninit (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Reimplemented from \mbox{\hyperlink{class_c_input}{CInput}}.
+
+\Hypertarget{class_c_input_keyboard_ac30a29e01547d4e10281a82688dea26f}\index{CInputKeyboard@{CInputKeyboard}!Update@{Update}}
+\index{Update@{Update}!CInputKeyboard@{CInputKeyboard}}
+\doxysubsubsection{\texorpdfstring{Update()}{Update()}}
+{\footnotesize\ttfamily \label{class_c_input_keyboard_ac30a29e01547d4e10281a82688dea26f} 
+void CInput\+Keyboard\+::\+Update (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{class_c_input}{CInput}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+input.\+h\item 
+input.\+cpp\end{DoxyCompactItemize}

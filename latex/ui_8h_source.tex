@@ -1,0 +1,60 @@
+\doxysection{ui.\+h}
+\hypertarget{ui_8h_source}{}\label{ui_8h_source}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{//====================================}}
+\DoxyCodeLine{00002\ \textcolor{comment}{//}}
+\DoxyCodeLine{00003\ \textcolor{comment}{//\ UI処理\ [\ ui.h\ ]}}
+\DoxyCodeLine{00004\ \textcolor{comment}{//\ Author:\ Asuma\ Nishio}}
+\DoxyCodeLine{00005\ \textcolor{comment}{//}}
+\DoxyCodeLine{00006\ \textcolor{comment}{//=====================================}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#ifndef\ \_UI\_H\_\ }\textcolor{comment}{//\ このソ}クロ定義がされてなかったら}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#define\ \_UI\_H\_\ }\textcolor{comment}{//\ 2重インクルード防蚕string~のソ}クロ定義}}
+\DoxyCodeLine{00009\ }
+\DoxyCodeLine{00010\ \textcolor{comment}{//****************************}}
+\DoxyCodeLine{00011\ \textcolor{comment}{//\ インクルードファイル宣言}}
+\DoxyCodeLine{00012\ \textcolor{comment}{//****************************}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\#include\ "{}object2D.h"{}}}
+\DoxyCodeLine{00014\ }
+\DoxyCodeLine{00015\ \textcolor{comment}{//****************************}}
+\DoxyCodeLine{00016\ \textcolor{comment}{//\ UIクラスを定義}}
+\DoxyCodeLine{00017\ \textcolor{comment}{//****************************}}
+\DoxyCodeLine{00018\ \textcolor{keyword}{class\ }CUi\ :\ \textcolor{keyword}{public}\ CObject2D}
+\DoxyCodeLine{00019\ \{}
+\DoxyCodeLine{00020\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00021\ \ \ \ \ \textcolor{comment}{//***************************}}
+\DoxyCodeLine{00022\ \ \ \ \ \textcolor{comment}{//\ 状態管理}}
+\DoxyCodeLine{00023\ \ \ \ \ \textcolor{comment}{//***************************}}
+\DoxyCodeLine{00024\ \ \ \ \ \textcolor{keyword}{enum}\ STATE}
+\DoxyCodeLine{00025\ \ \ \ \ \{}
+\DoxyCodeLine{00026\ \ \ \ \ \ \ \ \ STATE\_NONE,}
+\DoxyCodeLine{00027\ \ \ \ \ \ \ \ \ STATE\_FALL,}
+\DoxyCodeLine{00028\ \ \ \ \ \ \ \ \ TYPE\_MAX}
+\DoxyCodeLine{00029\ \ \ \ \ \};}
+\DoxyCodeLine{00030\ }
+\DoxyCodeLine{00031\ \ \ \ \ \textcolor{comment}{//\ コンストラクソstring^・デストラクソstring^}}
+\DoxyCodeLine{00032\ \ \ \ \ CUi(\textcolor{keywordtype}{int}\ nPriority\ =\ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{int}\textcolor{keyword}{>}(CObject::PRIORITY::UI));}
+\DoxyCodeLine{00033\ \ \ \ \ \string~CUi();}
+\DoxyCodeLine{00034\ }
+\DoxyCodeLine{00035\ \ \ \ \ \textcolor{comment}{//\ メンバ関数}}
+\DoxyCodeLine{00036\ \ \ \ \ HRESULT\ Init(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00037\ \ \ \ \ \textcolor{keywordtype}{void}\ Uninit(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00038\ \ \ \ \ \textcolor{keywordtype}{void}\ Update(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00039\ \ \ \ \ \textcolor{keywordtype}{void}\ Draw(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00040\ }
+\DoxyCodeLine{00041\ \ \ \ \ \textcolor{comment}{//\ セッソstring^ー}}
+\DoxyCodeLine{00042\ \ \ \ \ \textcolor{keywordtype}{void}\ SetTexture(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *\ pRegistername);}
+\DoxyCodeLine{00043\ \ \ \ \ \textcolor{keywordtype}{void}\ SetUseFall(\textcolor{keywordtype}{bool}\ isFlags,\textcolor{keywordtype}{int}\ nState)\ \{\ m\_isFlash\ =\ isFlags,m\_nState\ =\ nState;\}}
+\DoxyCodeLine{00044\ }
+\DoxyCodeLine{00045\ \ \ \ \ \textcolor{comment}{//\ 静的メンバ関数}}
+\DoxyCodeLine{00046\ \ \ \ \ \textcolor{keyword}{static}\ CUi*\ Create(D3DXVECTOR3\ pos,\ \textcolor{keywordtype}{int}\ nFlashFrame,\textcolor{keywordtype}{float}\ fWidth,\ \textcolor{keywordtype}{float}\ fHeight,\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *\ Filename,\textcolor{keywordtype}{bool}\ isUse);}
+\DoxyCodeLine{00047\ }
+\DoxyCodeLine{00048\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00049\ \ \ \ \ \textcolor{keywordtype}{int}\ m\_nTexIdxType;\ \ \ \ \ \ \textcolor{comment}{//\ テクスチャインデックス}}
+\DoxyCodeLine{00050\ \ \ \ \ \textcolor{keywordtype}{int}\ m\_nFlashFrame;\ \ \ \ \ \ \textcolor{comment}{//\ 貼_滅間隔}}
+\DoxyCodeLine{00051\ \ \ \ \ \textcolor{keywordtype}{bool}\ m\_isFlash;\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 貼_滅するかどうか}}
+\DoxyCodeLine{00052\ \ \ \ \ \textcolor{keywordtype}{int}\ m\_nState;}
+\DoxyCodeLine{00053\ \};}
+\DoxyCodeLine{00054\ }
+\DoxyCodeLine{00055\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

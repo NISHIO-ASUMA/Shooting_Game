@@ -1,0 +1,126 @@
+\doxysection{CJoy\+Pad Class Reference}
+\hypertarget{class_c_joy_pad}{}\label{class_c_joy_pad}\index{CJoyPad@{CJoyPad}}
+Inheritance diagram for CJoy\+Pad\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_c_joy_pad}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_c_joy_pad_a27a815685ef3d17f239a293d0b90b95f}\label{class_c_joy_pad_a27a815685ef3d17f239a293d0b90b95f} 
+enum {\bfseries JOYKEY} \{ \newline
+{\bfseries JOYKEY\+\_\+\+UP}
+, {\bfseries JOYKEY\+\_\+\+DOWN}
+, {\bfseries JOYKEY\+\_\+\+LEFT}
+, {\bfseries JOYKEY\+\_\+\+RIGHT}
+, \newline
+{\bfseries JOYKEY\+\_\+\+START}
+, {\bfseries JOYKEY\+\_\+\+BACK}
+, {\bfseries JOYKEY\+\_\+\+LS}
+, {\bfseries JOYKEY\+\_\+\+RS}
+, \newline
+{\bfseries JOYKEY\+\_\+\+LEFT\+\_\+B}
+, {\bfseries JOYKEY\+\_\+\+RIGHT\+\_\+B}
+, {\bfseries JOYKEY\+\_\+\+LEFT\+\_\+\+TRIGGER}
+, {\bfseries JOYKEY\+\_\+\+RIGHT\+\_\+\+TRIGGER}
+, \newline
+{\bfseries JOYKEY\+\_\+A}
+, {\bfseries JOYKEY\+\_\+B}
+, {\bfseries JOYKEY\+\_\+X}
+, {\bfseries JOYKEY\+\_\+Y}
+, \newline
+{\bfseries JOYKEY\+\_\+\+MAX}
+ \}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+HRESULT \mbox{\hyperlink{class_c_joy_pad_ace05834dcf77eeae6b9dc144b6eecb94}{Init}} (HINSTANCE h\+Instance, HWND h\+Wnd)
+\item 
+void \mbox{\hyperlink{class_c_joy_pad_a050ec916caedbe30e03d597268894296}{Uninit}} (void)
+\item 
+void \mbox{\hyperlink{class_c_joy_pad_a41a1491fe3fab904ebef8d84e9b93802}{Update}} (void)
+\item 
+\Hypertarget{class_c_joy_pad_a6864846258ff2b0b6a0a0f91761ba14a}\label{class_c_joy_pad_a6864846258ff2b0b6a0a0f91761ba14a} 
+void {\bfseries Update\+Vibration} (void)
+\item 
+\Hypertarget{class_c_joy_pad_a1397ee9c72b7da27dd9230f2713a5242}\label{class_c_joy_pad_a1397ee9c72b7da27dd9230f2713a5242} 
+void {\bfseries Set\+Vibration} (int left\+Motor, int right\+Motor, int duration\+Ms)
+\item 
+\Hypertarget{class_c_joy_pad_a9b667e71cc66962ba4ee1f1f9571edeb}\label{class_c_joy_pad_a9b667e71cc66962ba4ee1f1f9571edeb} 
+bool {\bfseries Get\+Press} (JOYKEY Key)
+\item 
+\Hypertarget{class_c_joy_pad_afb8b41eec4ca075d7ec9f80b336e7845}\label{class_c_joy_pad_afb8b41eec4ca075d7ec9f80b336e7845} 
+bool {\bfseries Get\+Trigger} (JOYKEY Key)
+\item 
+\Hypertarget{class_c_joy_pad_ac99dfcab18e8a6c6bfe39a5b0077aedf}\label{class_c_joy_pad_ac99dfcab18e8a6c6bfe39a5b0077aedf} 
+bool {\bfseries Get\+Release} (JOYKEY Key)
+\item 
+\Hypertarget{class_c_joy_pad_a389366affa7b495c1f3b3426d6655d0a}\label{class_c_joy_pad_a389366affa7b495c1f3b3426d6655d0a} 
+bool {\bfseries Get\+Repeat} (JOYKEY Key, int n\+Ma\+XTime)
+\item 
+\Hypertarget{class_c_joy_pad_aa27dca35e2e4903676b91e418605548b}\label{class_c_joy_pad_aa27dca35e2e4903676b91e418605548b} 
+bool {\bfseries Get\+Left\+Stick} (void)
+\item 
+\Hypertarget{class_c_joy_pad_a9cd738770d1e46ca238cfee7baf0d1ad}\label{class_c_joy_pad_a9cd738770d1e46ca238cfee7baf0d1ad} 
+XINPUT\+\_\+\+STATE \texorpdfstring{$\ast$}{*} {\bfseries Get\+Stick\+Angle} (void)
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_c_input}{CInput}}}
+\begin{DoxyCompactItemize}
+\item 
+LPDIRECTINPUTDEVICE8 {\bfseries Get\+Input\+Device} (void)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Protected Attributes inherited from \mbox{\hyperlink{class_c_input}{CInput}}}
+\begin{DoxyCompactItemize}
+\item 
+LPDIRECTINPUTDEVICE8 {\bfseries m\+\_\+p\+Device}
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Protected Attributes inherited from \mbox{\hyperlink{class_c_input}{CInput}}}
+\begin{DoxyCompactItemize}
+\item 
+static LPDIRECTINPUT8 {\bfseries m\+\_\+p\+Input} = nullptr
+\end{DoxyCompactItemize}
+
+
+\label{doc-func-members}
+\Hypertarget{class_c_joy_pad_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_c_joy_pad_ace05834dcf77eeae6b9dc144b6eecb94}\index{CJoyPad@{CJoyPad}!Init@{Init}}
+\index{Init@{Init}!CJoyPad@{CJoyPad}}
+\doxysubsubsection{\texorpdfstring{Init()}{Init()}}
+{\footnotesize\ttfamily \label{class_c_joy_pad_ace05834dcf77eeae6b9dc144b6eecb94} 
+HRESULT CJoy\+Pad\+::\+Init (\begin{DoxyParamCaption}\item[{HINSTANCE}]{h\+Instance}{, }\item[{HWND}]{h\+Wnd}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Reimplemented from \mbox{\hyperlink{class_c_input}{CInput}}.
+
+\Hypertarget{class_c_joy_pad_a050ec916caedbe30e03d597268894296}\index{CJoyPad@{CJoyPad}!Uninit@{Uninit}}
+\index{Uninit@{Uninit}!CJoyPad@{CJoyPad}}
+\doxysubsubsection{\texorpdfstring{Uninit()}{Uninit()}}
+{\footnotesize\ttfamily \label{class_c_joy_pad_a050ec916caedbe30e03d597268894296} 
+void CJoy\+Pad\+::\+Uninit (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Reimplemented from \mbox{\hyperlink{class_c_input}{CInput}}.
+
+\Hypertarget{class_c_joy_pad_a41a1491fe3fab904ebef8d84e9b93802}\index{CJoyPad@{CJoyPad}!Update@{Update}}
+\index{Update@{Update}!CJoyPad@{CJoyPad}}
+\doxysubsubsection{\texorpdfstring{Update()}{Update()}}
+{\footnotesize\ttfamily \label{class_c_joy_pad_a41a1491fe3fab904ebef8d84e9b93802} 
+void CJoy\+Pad\+::\+Update (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{class_c_input}{CInput}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+input.\+h\item 
+input.\+cpp\end{DoxyCompactItemize}

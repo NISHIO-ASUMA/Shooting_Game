@@ -1,0 +1,274 @@
+\doxysection{CCharge Class Reference}
+\hypertarget{class_c_charge}{}\label{class_c_charge}\index{CCharge@{CCharge}}
+Inheritance diagram for CCharge\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=4.000000cm]{class_c_charge}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_c_charge_ae1993966ed521f959c3584fc50216dae}\label{class_c_charge_ae1993966ed521f959c3584fc50216dae} 
+enum {\bfseries CHARGE} \{ {\bfseries CHARGE\+\_\+\+FRAME}
+, {\bfseries CHARGE\+\_\+\+BAR}
+, {\bfseries CHARGE\+\_\+\+MAX}
+ \}
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Types inherited from \mbox{\hyperlink{class_c_object2_d}{CObject2D}}}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_c_object2_d_a483a21d4e8003ebe21db4c85942c9403}\label{class_c_object2_d_a483a21d4e8003ebe21db4c85942c9403} 
+enum {\bfseries ANCHORTYPE} \{ \newline
+{\bfseries ANCHORTYPE\+\_\+\+NONE}
+, {\bfseries ANCHORTYPE\+\_\+\+CENTER}
+, {\bfseries ANCHORTYPE\+\_\+\+LEFTSIDE}
+, {\bfseries ANCHORTYPE\+\_\+\+RIGHTSIDE}
+, \newline
+{\bfseries ANCHORTYPE\+\_\+\+MAX}
+ \}
+\item 
+\Hypertarget{class_c_object2_d_a2ad1272aa34ca2ae2d6df2cc154299cf}\label{class_c_object2_d_a2ad1272aa34ca2ae2d6df2cc154299cf} 
+enum {\bfseries DRAWTYPE} \{ {\bfseries DRAWTYPE\+\_\+\+NONE}
+, {\bfseries DRAWTYPE\+\_\+\+ANIM}
+, {\bfseries DRAWTYPE\+\_\+\+MAX}
+ \}
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Types inherited from \mbox{\hyperlink{class_c_object}{CObject}}}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_c_object_a7263d5eae1a949d02e262e246152a2c6}\label{class_c_object_a7263d5eae1a949d02e262e246152a2c6} 
+enum {\bfseries TYPE} \{ \newline
+{\bfseries TYPE\+\_\+\+NONE} = 0
+, {\bfseries TYPE\+\_\+\+PLAYER}
+, {\bfseries TYPE\+\_\+\+MESH}
+, {\bfseries TYPE\+\_\+\+BULLET}
+, \newline
+{\bfseries TYPE\+\_\+\+BOSS}
+, {\bfseries TYPE\+\_\+\+ENEMY}
+, {\bfseries TYPE\+\_\+\+BLOCK}
+, {\bfseries TYPE\+\_\+\+PAUSE}
+, \newline
+{\bfseries TYPE\+\_\+\+BARRIER}
+, {\bfseries TYPE\+\_\+\+ITEM}
+, {\bfseries TYPE\+\_\+\+RUBBLE}
+, {\bfseries TYPE\+\_\+\+PILER}
+, \newline
+{\bfseries TYPE\+\_\+\+POINT}
+, {\bfseries TYPE\+\_\+\+MAX}
+ \}
+\item 
+\Hypertarget{class_c_object_a0924032649f7068d08cc5da588adc8d0}\label{class_c_object_a0924032649f7068d08cc5da588adc8d0} 
+enum {\bfseries PRIORITY} \{ \newline
+{\bfseries NONE}
+, {\bfseries MESH}
+, {\bfseries BASENUMBER}
+, {\bfseries MODELOBJECT}
+, \newline
+{\bfseries BULLET}
+, {\bfseries SHADOW}
+, {\bfseries IMPACT}
+, {\bfseries CHARACTOR}
+, \newline
+{\bfseries BILLBOARD}
+, {\bfseries EFFECT}
+, {\bfseries UI}
+, {\bfseries PAUSE}
+, \newline
+{\bfseries PRIORITY\+\_\+\+MAX}
+ \}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_c_charge_a934f8e6c1d26a32e8db28a9fa6031525}\label{class_c_charge_a934f8e6c1d26a32e8db28a9fa6031525} 
+{\bfseries CCharge} (int n\+Priority=static\+\_\+cast$<$ int $>$(CObject\+::\+PRIORITY\+::\+UI))
+\item 
+HRESULT \mbox{\hyperlink{class_c_charge_ab4c5e5aeb213cdc9530d6635f3d3a745}{Init}} (void)
+\item 
+void \mbox{\hyperlink{class_c_charge_a9b3b57c71142091caf99dbe0ceefd094}{Uninit}} (void)
+\item 
+void \mbox{\hyperlink{class_c_charge_af3fb88962ad16ce1ba3ea857f8fdf50b}{Update}} (void)
+\item 
+void \mbox{\hyperlink{class_c_charge_a3f37bc1cb7e11820bc3c259cc26bd880}{Draw}} (void)
+\item 
+\Hypertarget{class_c_charge_a0c537e32cd8a6ad8bc4faa40606aed76}\label{class_c_charge_a0c537e32cd8a6ad8bc4faa40606aed76} 
+void {\bfseries Set\+Type} (int n\+Type)
+\item 
+\Hypertarget{class_c_charge_a320455eeec0f1606fd45c3601a9985dc}\label{class_c_charge_a320455eeec0f1606fd45c3601a9985dc} 
+void {\bfseries Set\+Texture} (int n\+Type)
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_c_gage}{CGage}}}
+\begin{DoxyCompactItemize}
+\item 
+{\bfseries CGage} (int n\+Priority=static\+\_\+cast$<$ int $>$(CObject\+::\+PRIORITY\+::\+UI))
+\item 
+HRESULT \mbox{\hyperlink{class_c_gage_a4849f5729d695569d7cce59c75ff8ed3}{Init}} (void)
+\item 
+void \mbox{\hyperlink{class_c_gage_a8001af23ef3184f3dd0251fa158661c8}{Uninit}} (void)
+\item 
+void \mbox{\hyperlink{class_c_gage_aa3a660f2612193128d55551fe7f1a658}{Update}} (void)
+\item 
+void \mbox{\hyperlink{class_c_gage_a1325e9c1c90c0a9e35faac694d42545a}{Draw}} (void)
+\item 
+void {\bfseries Set\+Gage\+Length} (const int n\+Max\+Life, const int n\+Current\+Life, float f\+Value, float Height)
+\item 
+void {\bfseries FSet\+Gage\+Length} (float f\+Max, float f\+Current, float f\+Max\+Width, float f\+Height)
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_c_object2_d}{CObject2D}}}
+\begin{DoxyCompactItemize}
+\item 
+{\bfseries CObject2D} (int n\+Priority=static\+\_\+cast$<$ int $>$(CObject\+::\+PRIORITY\+::\+UI))
+\item 
+HRESULT \mbox{\hyperlink{class_c_object2_d_a7744dbebf59d9b5a84c6aa5a084e0785}{Init}} (void)
+\item 
+void \mbox{\hyperlink{class_c_object2_d_a87f629d430f2331e50f3c6f58bfd8fb5}{Uninit}} (void)
+\item 
+void \mbox{\hyperlink{class_c_object2_d_a458fdeaac5e996ebdbd65f363d59614c}{Update}} (void)
+\item 
+void \mbox{\hyperlink{class_c_object2_d_ace9e01032c2ee4925b6e00ad5918e670}{Draw}} (void)
+\item 
+void {\bfseries Set\+UV} (float TexU, float TexV)
+\item 
+void {\bfseries Set\+Col} (D3\+DXCOLOR col)
+\item 
+void {\bfseries Set\+Pos} (D3\+DXVECTOR3 pos)
+\item 
+void {\bfseries Set\+Rot} (D3\+DXVECTOR3 rot)
+\item 
+void {\bfseries Set\+Size} (float f\+Width, float f\+Height)
+\item 
+void {\bfseries Set\+Width} (float f\+Width)
+\item 
+void {\bfseries Set\+Height} (float f\+Height)
+\item 
+void {\bfseries Set\+Flash} (const int n\+Firstcount, const int n\+Endcount, const D3\+DXCOLOR col)
+\item 
+void {\bfseries Set\+Anchor} (int Type)
+\item 
+void {\bfseries Set\+Draw\+Type} (int n\+Type)
+\item 
+void {\bfseries Set\+Center} (void)
+\item 
+void {\bfseries Set\+Left} (void)
+\item 
+void {\bfseries Set\+Right} (void)
+\item 
+D3\+DXVECTOR3 {\bfseries Get\+Pos} (void)
+\item 
+D3\+DXVECTOR3 {\bfseries Get\+Rot} (void)
+\item 
+D3\+DXCOLOR {\bfseries Get\+Col} (void)
+\item 
+float {\bfseries Get\+Width} (void)
+\item 
+float {\bfseries Get\+Height} (void)
+\item 
+int {\bfseries Get\+Draw\+Type} (void)
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_c_object}{CObject}}}
+\begin{DoxyCompactItemize}
+\item 
+{\bfseries CObject} (int n\+Priority=NONE)
+\item 
+void {\bfseries Set\+Obj\+Type} (TYPE type)
+\item 
+TYPE {\bfseries Get\+Obj\+Type} (void)
+\item 
+\mbox{\hyperlink{class_c_object}{CObject}} \texorpdfstring{$\ast$}{*} {\bfseries Get\+Next} (void)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_c_charge_a87bb364b0d3ed5b815a39772bbf449d3}\label{class_c_charge_a87bb364b0d3ed5b815a39772bbf449d3} 
+static \mbox{\hyperlink{class_c_charge}{CCharge}} \texorpdfstring{$\ast$}{*} {\bfseries Create} (D3\+DXVECTOR3 pos, float f\+Width, float f\+Height, int n\+Type)
+\item 
+\Hypertarget{class_c_charge_a739aff982e02e8a707e4c2e3ea458ffc}\label{class_c_charge_a739aff982e02e8a707e4c2e3ea458ffc} 
+static void {\bfseries Add\+Charge} (float f\+Value)
+\item 
+\Hypertarget{class_c_charge_aeb45f3792f555a440c457b436964f01d}\label{class_c_charge_aeb45f3792f555a440c457b436964f01d} 
+static void {\bfseries Dec\+Charge} (float f\+Value)
+\item 
+\Hypertarget{class_c_charge_aa9eecd689a3ef80328c5db34f0827900}\label{class_c_charge_aa9eecd689a3ef80328c5db34f0827900} 
+static bool {\bfseries Get\+Charge\+Flag} (void)
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Member Functions inherited from \mbox{\hyperlink{class_c_gage}{CGage}}}
+\begin{DoxyCompactItemize}
+\item 
+static \mbox{\hyperlink{class_c_gage}{CGage}} \texorpdfstring{$\ast$}{*} {\bfseries Create} (D3\+DXVECTOR3 pos, float f\+Width, float f\+Height)
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Member Functions inherited from \mbox{\hyperlink{class_c_object2_d}{CObject2D}}}
+\begin{DoxyCompactItemize}
+\item 
+static \mbox{\hyperlink{class_c_object2_d}{CObject2D}} \texorpdfstring{$\ast$}{*} {\bfseries Create} (void)
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Member Functions inherited from \mbox{\hyperlink{class_c_object}{CObject}}}
+\begin{DoxyCompactItemize}
+\item 
+static void {\bfseries Release\+All} (void)
+\item 
+static void {\bfseries Update\+All} (void)
+\item 
+static void {\bfseries Draw\+All} (void)
+\item 
+static \mbox{\hyperlink{class_c_object}{CObject}} \texorpdfstring{$\ast$}{*} {\bfseries Get\+Top} (int n\+Priority)
+\item 
+static int {\bfseries Get\+Num\+All} (void)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Protected Member Functions inherited from \mbox{\hyperlink{class_c_object}{CObject}}}
+\begin{DoxyCompactItemize}
+\item 
+void {\bfseries Release} (void)
+\end{DoxyCompactItemize}
+
+
+\label{doc-func-members}
+\Hypertarget{class_c_charge_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_c_charge_a3f37bc1cb7e11820bc3c259cc26bd880}\index{CCharge@{CCharge}!Draw@{Draw}}
+\index{Draw@{Draw}!CCharge@{CCharge}}
+\doxysubsubsection{\texorpdfstring{Draw()}{Draw()}}
+{\footnotesize\ttfamily \label{class_c_charge_a3f37bc1cb7e11820bc3c259cc26bd880} 
+void CCharge\+::\+Draw (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{class_c_object}{CObject}}.
+
+\Hypertarget{class_c_charge_ab4c5e5aeb213cdc9530d6635f3d3a745}\index{CCharge@{CCharge}!Init@{Init}}
+\index{Init@{Init}!CCharge@{CCharge}}
+\doxysubsubsection{\texorpdfstring{Init()}{Init()}}
+{\footnotesize\ttfamily \label{class_c_charge_ab4c5e5aeb213cdc9530d6635f3d3a745} 
+HRESULT CCharge\+::\+Init (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{class_c_object}{CObject}}.
+
+\Hypertarget{class_c_charge_a9b3b57c71142091caf99dbe0ceefd094}\index{CCharge@{CCharge}!Uninit@{Uninit}}
+\index{Uninit@{Uninit}!CCharge@{CCharge}}
+\doxysubsubsection{\texorpdfstring{Uninit()}{Uninit()}}
+{\footnotesize\ttfamily \label{class_c_charge_a9b3b57c71142091caf99dbe0ceefd094} 
+void CCharge\+::\+Uninit (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{class_c_object}{CObject}}.
+
+\Hypertarget{class_c_charge_af3fb88962ad16ce1ba3ea857f8fdf50b}\index{CCharge@{CCharge}!Update@{Update}}
+\index{Update@{Update}!CCharge@{CCharge}}
+\doxysubsubsection{\texorpdfstring{Update()}{Update()}}
+{\footnotesize\ttfamily \label{class_c_charge_af3fb88962ad16ce1ba3ea857f8fdf50b} 
+void CCharge\+::\+Update (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{class_c_object}{CObject}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+charge.\+h\item 
+charge.\+cpp\end{DoxyCompactItemize}

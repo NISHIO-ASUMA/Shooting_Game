@@ -1,0 +1,162 @@
+\doxysection{CMesh\+Impact Class Reference}
+\hypertarget{class_c_mesh_impact}{}\label{class_c_mesh_impact}\index{CMeshImpact@{CMeshImpact}}
+Inheritance diagram for CMesh\+Impact\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_c_mesh_impact}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_c_mesh_impact_a5de58020eb29329d4db96aa098be9cba}\label{class_c_mesh_impact_a5de58020eb29329d4db96aa098be9cba} 
+{\bfseries CMesh\+Impact} (int n\+Priority=static\+\_\+cast$<$ int $>$(CObject\+::\+PRIORITY\+::\+IMPACT))
+\item 
+HRESULT \mbox{\hyperlink{class_c_mesh_impact_adf80fe3bbaa5c25e6bc60b4415ad95c4}{Init}} (void)
+\item 
+void \mbox{\hyperlink{class_c_mesh_impact_af780baf891457c9c2b66f6700506d097}{Uninit}} (void)
+\item 
+void \mbox{\hyperlink{class_c_mesh_impact_a6e01c2942f76cf94d0f1a9d5227ee6ad}{Update}} (void)
+\item 
+void \mbox{\hyperlink{class_c_mesh_impact_aeee9cf4391d8f4066169605acb527cdf}{Draw}} (void)
+\item 
+\Hypertarget{class_c_mesh_impact_ae218256b16f9d31883913907c54e4a10}\label{class_c_mesh_impact_ae218256b16f9d31883913907c54e4a10} 
+bool {\bfseries Collision} (D3\+DXVECTOR3 \texorpdfstring{$\ast$}{*}p\+Pos)
+\item 
+\Hypertarget{class_c_mesh_impact_a95c4c0ac6cd183491fb39c2716a60f20}\label{class_c_mesh_impact_a95c4c0ac6cd183491fb39c2716a60f20} 
+void {\bfseries Set\+Col} (D3\+DXCOLOR col)
+\item 
+\Hypertarget{class_c_mesh_impact_a0f706a35112b6c21f2e38d7e58068a7f}\label{class_c_mesh_impact_a0f706a35112b6c21f2e38d7e58068a7f} 
+D3\+DXVECTOR3 {\bfseries Get\+Pos} (void)
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_c_object}{CObject}}}
+\begin{DoxyCompactItemize}
+\item 
+{\bfseries CObject} (int n\+Priority=NONE)
+\item 
+void {\bfseries Set\+Obj\+Type} (TYPE type)
+\item 
+TYPE {\bfseries Get\+Obj\+Type} (void)
+\item 
+\mbox{\hyperlink{class_c_object}{CObject}} \texorpdfstring{$\ast$}{*} {\bfseries Get\+Next} (void)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_c_mesh_impact_adbc6e8fffa87a1f22cf9ec9c52b39761}\label{class_c_mesh_impact_adbc6e8fffa87a1f22cf9ec9c52b39761} 
+static \mbox{\hyperlink{class_c_mesh_impact}{CMesh\+Impact}} \texorpdfstring{$\ast$}{*} {\bfseries Create} (D3\+DXVECTOR3 pos, int n\+Life, float f\+Radius, float f\+In\+Radius, float f\+Speed)
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Member Functions inherited from \mbox{\hyperlink{class_c_object}{CObject}}}
+\begin{DoxyCompactItemize}
+\item 
+static void {\bfseries Release\+All} (void)
+\item 
+static void {\bfseries Update\+All} (void)
+\item 
+static void {\bfseries Draw\+All} (void)
+\item 
+static \mbox{\hyperlink{class_c_object}{CObject}} \texorpdfstring{$\ast$}{*} {\bfseries Get\+Top} (int n\+Priority)
+\item 
+static int {\bfseries Get\+Num\+All} (void)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Public Types inherited from \mbox{\hyperlink{class_c_object}{CObject}}}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_c_object_a7263d5eae1a949d02e262e246152a2c6}\label{class_c_object_a7263d5eae1a949d02e262e246152a2c6} 
+enum {\bfseries TYPE} \{ \newline
+{\bfseries TYPE\+\_\+\+NONE} = 0
+, {\bfseries TYPE\+\_\+\+PLAYER}
+, {\bfseries TYPE\+\_\+\+MESH}
+, {\bfseries TYPE\+\_\+\+BULLET}
+, \newline
+{\bfseries TYPE\+\_\+\+BOSS}
+, {\bfseries TYPE\+\_\+\+ENEMY}
+, {\bfseries TYPE\+\_\+\+BLOCK}
+, {\bfseries TYPE\+\_\+\+PAUSE}
+, \newline
+{\bfseries TYPE\+\_\+\+BARRIER}
+, {\bfseries TYPE\+\_\+\+ITEM}
+, {\bfseries TYPE\+\_\+\+RUBBLE}
+, {\bfseries TYPE\+\_\+\+PILER}
+, \newline
+{\bfseries TYPE\+\_\+\+POINT}
+, {\bfseries TYPE\+\_\+\+MAX}
+ \}
+\item 
+\Hypertarget{class_c_object_a0924032649f7068d08cc5da588adc8d0}\label{class_c_object_a0924032649f7068d08cc5da588adc8d0} 
+enum {\bfseries PRIORITY} \{ \newline
+{\bfseries NONE}
+, {\bfseries MESH}
+, {\bfseries BASENUMBER}
+, {\bfseries MODELOBJECT}
+, \newline
+{\bfseries BULLET}
+, {\bfseries SHADOW}
+, {\bfseries IMPACT}
+, {\bfseries CHARACTOR}
+, \newline
+{\bfseries BILLBOARD}
+, {\bfseries EFFECT}
+, {\bfseries UI}
+, {\bfseries PAUSE}
+, \newline
+{\bfseries PRIORITY\+\_\+\+MAX}
+ \}
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Member Functions inherited from \mbox{\hyperlink{class_c_object}{CObject}}}
+\begin{DoxyCompactItemize}
+\item 
+void {\bfseries Release} (void)
+\end{DoxyCompactItemize}
+
+
+\label{doc-func-members}
+\Hypertarget{class_c_mesh_impact_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_c_mesh_impact_aeee9cf4391d8f4066169605acb527cdf}\index{CMeshImpact@{CMeshImpact}!Draw@{Draw}}
+\index{Draw@{Draw}!CMeshImpact@{CMeshImpact}}
+\doxysubsubsection{\texorpdfstring{Draw()}{Draw()}}
+{\footnotesize\ttfamily \label{class_c_mesh_impact_aeee9cf4391d8f4066169605acb527cdf} 
+void CMesh\+Impact\+::\+Draw (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{class_c_object}{CObject}}.
+
+\Hypertarget{class_c_mesh_impact_adf80fe3bbaa5c25e6bc60b4415ad95c4}\index{CMeshImpact@{CMeshImpact}!Init@{Init}}
+\index{Init@{Init}!CMeshImpact@{CMeshImpact}}
+\doxysubsubsection{\texorpdfstring{Init()}{Init()}}
+{\footnotesize\ttfamily \label{class_c_mesh_impact_adf80fe3bbaa5c25e6bc60b4415ad95c4} 
+HRESULT CMesh\+Impact\+::\+Init (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{class_c_object}{CObject}}.
+
+\Hypertarget{class_c_mesh_impact_af780baf891457c9c2b66f6700506d097}\index{CMeshImpact@{CMeshImpact}!Uninit@{Uninit}}
+\index{Uninit@{Uninit}!CMeshImpact@{CMeshImpact}}
+\doxysubsubsection{\texorpdfstring{Uninit()}{Uninit()}}
+{\footnotesize\ttfamily \label{class_c_mesh_impact_af780baf891457c9c2b66f6700506d097} 
+void CMesh\+Impact\+::\+Uninit (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{class_c_object}{CObject}}.
+
+\Hypertarget{class_c_mesh_impact_a6e01c2942f76cf94d0f1a9d5227ee6ad}\index{CMeshImpact@{CMeshImpact}!Update@{Update}}
+\index{Update@{Update}!CMeshImpact@{CMeshImpact}}
+\doxysubsubsection{\texorpdfstring{Update()}{Update()}}
+{\footnotesize\ttfamily \label{class_c_mesh_impact_a6e01c2942f76cf94d0f1a9d5227ee6ad} 
+void CMesh\+Impact\+::\+Update (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{class_c_object}{CObject}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+meshimpact.\+h\item 
+meshimpact.\+cpp\end{DoxyCompactItemize}

@@ -1,0 +1,81 @@
+\doxysection{titleplayer.\+h}
+\hypertarget{titleplayer_8h_source}{}\label{titleplayer_8h_source}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{//=========================================}}
+\DoxyCodeLine{00002\ \textcolor{comment}{//}}
+\DoxyCodeLine{00003\ \textcolor{comment}{//\ ソstring^イトルプレイヤー処理\ [\ titleplayer.h\ ]}}
+\DoxyCodeLine{00004\ \textcolor{comment}{//\ Author:\ Asuma\ Nishio}}
+\DoxyCodeLine{00005\ \textcolor{comment}{//}}
+\DoxyCodeLine{00006\ \textcolor{comment}{//=========================================}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#ifndef\ \_TITLEPLAYER\_H\_\ }\textcolor{comment}{//\ このソ}クロ定義がされてなかったら}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#define\ \_TITLEPLAYER\_H\_\ }\textcolor{comment}{//\ 2重インクルード防蚕string~のソ}クロ定義}}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00011\ \textcolor{comment}{//********************************}}
+\DoxyCodeLine{00012\ \textcolor{comment}{//\ インクルードファイル宣言}}
+\DoxyCodeLine{00013\ \textcolor{comment}{//********************************}}
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#include\ "{}object.h"{}}}
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#include\ "{}model.h"{}}}
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#include\ "{}motion.h"{}}}
+\DoxyCodeLine{00017\ }
+\DoxyCodeLine{00018\ \textcolor{comment}{//********************************}}
+\DoxyCodeLine{00019\ \textcolor{comment}{//\ 前方宣言}}
+\DoxyCodeLine{00020\ \textcolor{comment}{//********************************}}
+\DoxyCodeLine{00021\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_c_input_keyboard}{CInputKeyboard}};}
+\DoxyCodeLine{00022\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_c_shadow_s}{CShadowS}};}
+\DoxyCodeLine{00023\ }
+\DoxyCodeLine{00024\ \textcolor{comment}{//********************************************}}
+\DoxyCodeLine{00025\ \textcolor{comment}{//\ ソstring^イトルプレイヤーオブジェクトクラスを定義}}
+\DoxyCodeLine{00026\ \textcolor{comment}{//********************************************}}
+\DoxyCodeLine{00027\ \textcolor{keyword}{class\ }CTitlePlayer\ :\ \textcolor{keyword}{public}\ CObject}
+\DoxyCodeLine{00028\ \{}
+\DoxyCodeLine{00029\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00030\ \ \ \ \ \textcolor{comment}{//***********************}}
+\DoxyCodeLine{00031\ \ \ \ \ \textcolor{comment}{//\ 使用モーション}}
+\DoxyCodeLine{00032\ \ \ \ \ \textcolor{comment}{//***********************}}
+\DoxyCodeLine{00033\ \ \ \ \ \textcolor{keyword}{enum}\ TITLEMOTION}
+\DoxyCodeLine{00034\ \ \ \ \ \{}
+\DoxyCodeLine{00035\ \ \ \ \ \ \ \ \ TITLEMOTION\_NEUTORAL,}
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ TITLEMOTION\_ACTION,}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ TITLEMOTION\_MAX}
+\DoxyCodeLine{00038\ \ \ \ \ \};}
+\DoxyCodeLine{00039\ }
+\DoxyCodeLine{00040\ \ \ \ \ \textcolor{comment}{//\ コンストラクソstring^・デストラクソstring^}}
+\DoxyCodeLine{00041\ \ \ \ \ CTitlePlayer(\textcolor{keywordtype}{int}\ nPriority\ =\ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{int}\textcolor{keyword}{>}(CObject::PRIORITY::CHARACTOR));}
+\DoxyCodeLine{00042\ \ \ \ \ \string~CTitlePlayer();}
+\DoxyCodeLine{00043\ }
+\DoxyCodeLine{00044\ \ \ \ \ \textcolor{comment}{//\ メンバ関数}}
+\DoxyCodeLine{00045\ \ \ \ \ HRESULT\ Init(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00046\ \ \ \ \ \textcolor{keywordtype}{void}\ Uninit(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00047\ \ \ \ \ \textcolor{keywordtype}{void}\ Update(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00048\ \ \ \ \ \textcolor{keywordtype}{void}\ Draw(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00049\ }
+\DoxyCodeLine{00050\ \ \ \ \ \textcolor{comment}{//\ ゲッソstring^ー}}
+\DoxyCodeLine{00051\ \ \ \ \ D3DXVECTOR3\ GetPos(\textcolor{keywordtype}{void})\ \{\ \textcolor{keywordflow}{return}\ m\_pos;\ \}}
+\DoxyCodeLine{00052\ \ \ \ \ \textcolor{keywordtype}{int}\ GetPlayerIndex()\textcolor{keyword}{\ const\ }\{\ \textcolor{keywordflow}{return}\ m\_nIdxPlayer;\ \}}
+\DoxyCodeLine{00053\ }
+\DoxyCodeLine{00054\ \ \ \ \ \textcolor{comment}{//\ 静的メンバ関数}}
+\DoxyCodeLine{00055\ \ \ \ \ \textcolor{keyword}{static}\ CTitlePlayer*\ Create(D3DXVECTOR3\ pos,\ D3DXVECTOR3\ rot,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ nIdxParson,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ pFilename);\ }
+\DoxyCodeLine{00056\ \ \ \ \ \textcolor{keyword}{static}\ CTitlePlayer*\ GetIdxPlayer(\textcolor{keywordtype}{int}\ Idx);}
+\DoxyCodeLine{00057\ }
+\DoxyCodeLine{00058\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00059\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{inline}\ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{int}\ TITLE\_MODEL\ =\ 19;\ \textcolor{comment}{//\ 階層構(\backslash\)造モデル数}}
+\DoxyCodeLine{00060\ }
+\DoxyCodeLine{00061\ \ \ \ \ D3DXVECTOR3\ m\_move;\ \ \ \ \ \textcolor{comment}{//\ 移動量}}
+\DoxyCodeLine{00062\ \ \ \ \ D3DXVECTOR3\ m\_rotDest;\ \ \textcolor{comment}{//\ 目的角}}
+\DoxyCodeLine{00063\ }
+\DoxyCodeLine{00064\ \ \ \ \ D3DXVECTOR3\ m\_pos;\ \ \ \ \ \ \textcolor{comment}{//\ 階層構(\backslash\)造設定座標}}
+\DoxyCodeLine{00065\ \ \ \ \ D3DXVECTOR3\ m\_rot;\ \ \ \ \ \ \textcolor{comment}{//\ 角度}}
+\DoxyCodeLine{00066\ \ \ \ \ D3DXMATRIX\ m\_mtxworld;\ \ \textcolor{comment}{//\ ワールドソ}トリックス}}
+\DoxyCodeLine{00067\ }
+\DoxyCodeLine{00068\ \ \ \ \ \mbox{\hyperlink{class_c_model}{CModel}}*\ m\_apModel[TITLE\_MODEL];\ \textcolor{comment}{//\ 使うモデルのポインソstring^}}
+\DoxyCodeLine{00069\ \ \ \ \ \mbox{\hyperlink{class_c_motion}{CMotion}}*\ m\_pMotion;\ \ \ \ \ \ \textcolor{comment}{//\ モーションのポインソstring^}}
+\DoxyCodeLine{00070\ }
+\DoxyCodeLine{00071\ \ \ \ \ \textcolor{keywordtype}{int}\ m\_nIdxPlayer;\ \ \ \ \ \ \ \textcolor{comment}{//\ プレイヤーの識別番号}}
+\DoxyCodeLine{00072\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ m\_pFilename;\ \textcolor{comment}{//\ 読み込むファイル名}}
+\DoxyCodeLine{00073\ }
+\DoxyCodeLine{00074\ \};}
+\DoxyCodeLine{00075\ }
+\DoxyCodeLine{00076\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

@@ -1,0 +1,49 @@
+\doxysection{block\+Manager.\+h}
+\hypertarget{block_manager_8h_source}{}\label{block_manager_8h_source}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{//==============================================}}
+\DoxyCodeLine{00002\ \textcolor{comment}{//}}
+\DoxyCodeLine{00003\ \textcolor{comment}{//\ ブロック全体の管理を行う\ [\ blockmanager.h\ ]}}
+\DoxyCodeLine{00004\ \textcolor{comment}{//\ Author:\ Asuma\ Nishio}}
+\DoxyCodeLine{00005\ \textcolor{comment}{//\ }}
+\DoxyCodeLine{00006\ \textcolor{comment}{//==============================================}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#ifndef\ \_BLOCKMANAGER\_H\_\ }\textcolor{comment}{//\ このソ}クロ定義がされてなかったら}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#define\ \_BLOCKMANAGER\_H\_\ }\textcolor{comment}{//\ 2重インクルード防蚕string~のソ}クロ定義}}
+\DoxyCodeLine{00010\ \ }
+\DoxyCodeLine{00011\ \textcolor{comment}{//*******************************}}
+\DoxyCodeLine{00012\ \textcolor{comment}{//\ インクルードファイル宣言}}
+\DoxyCodeLine{00013\ \textcolor{comment}{//*******************************}}
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#include\ "{}objectX.h"{}}}
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\#include\ "{}block.h"{}}}
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00017\ }
+\DoxyCodeLine{00018\ \textcolor{comment}{//********************************}}
+\DoxyCodeLine{00019\ \textcolor{comment}{//\ ブロックソ}ネージャークラス定義}}
+\DoxyCodeLine{00020\ \textcolor{comment}{//********************************}}
+\DoxyCodeLine{00021\ \textcolor{keyword}{class\ }CBlockManager}
+\DoxyCodeLine{00022\ \{}
+\DoxyCodeLine{00023\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00024\ \ \ \ \ \textcolor{comment}{//\ コンストラクソstring^・デストラクソstring^}}
+\DoxyCodeLine{00025\ \ \ \ \ CBlockManager();}
+\DoxyCodeLine{00026\ \ \ \ \ \string~CBlockManager();}
+\DoxyCodeLine{00027\ }
+\DoxyCodeLine{00028\ \ \ \ \ \textcolor{comment}{//\ メンバ関数}}
+\DoxyCodeLine{00029\ \ \ \ \ HRESULT\ Init(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *\ filename\ ,\ D3DXVECTOR3\ pos);}
+\DoxyCodeLine{00030\ \ \ \ \ \textcolor{keywordtype}{void}\ Uninit(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00031\ \ \ \ \ \textcolor{keywordtype}{void}\ Update(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00032\ }
+\DoxyCodeLine{00033\ \ \ \ \ \textcolor{comment}{//\ 静的メンバ関数}}
+\DoxyCodeLine{00034\ \ \ \ \ \textcolor{keyword}{static}\ \mbox{\hyperlink{class_c_block}{CBlock}}*\ Create(\textcolor{keyword}{const}\ \textcolor{keywordtype}{char}*\ pfileName,\ D3DXVECTOR3\ pos,\ D3DXVECTOR3\ rot,\textcolor{keywordtype}{float}\ Size);}
+\DoxyCodeLine{00035\ }
+\DoxyCodeLine{00036\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00037\ \ \ \ \ \textcolor{keyword}{static}\ std::vector<CBlock*>\ m\_blocks;\ \textcolor{comment}{//\ 配列}}
+\DoxyCodeLine{00038\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keywordtype}{int}\ m\_nIdxCount;\ \textcolor{comment}{//\ モデルインデックス番号}}
+\DoxyCodeLine{00039\ }
+\DoxyCodeLine{00040\ \};}
+\DoxyCodeLine{00041\ }
+\DoxyCodeLine{00042\ \textcolor{preprocessor}{\#endif\ }\textcolor{comment}{//\ !\_BLOCKMANAGER\_H\_}}
+\DoxyCodeLine{00043\ }
+\DoxyCodeLine{00044\ }
+
+\end{DoxyCode}

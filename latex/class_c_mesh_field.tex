@@ -1,0 +1,162 @@
+\doxysection{CMesh\+Field Class Reference}
+\hypertarget{class_c_mesh_field}{}\label{class_c_mesh_field}\index{CMeshField@{CMeshField}}
+Inheritance diagram for CMesh\+Field\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_c_mesh_field}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_c_mesh_field_a1fd531eca2852f1024129504a3b41ab2}\label{class_c_mesh_field_a1fd531eca2852f1024129504a3b41ab2} 
+{\bfseries CMesh\+Field} (int n\+Prio=static\+\_\+cast$<$ int $>$(CObject\+::\+PRIORITY\+::\+MESH))
+\item 
+HRESULT \mbox{\hyperlink{class_c_mesh_field_a9e5b79a6dd7e2effb1c501c7a73e94aa}{Init}} (void)
+\item 
+void \mbox{\hyperlink{class_c_mesh_field_aa07a6a511f502a9de8163f9a6bca0c89}{Uninit}} (void)
+\item 
+void \mbox{\hyperlink{class_c_mesh_field_ac529704ee70e640d7d1ef2ad33971498}{Update}} (void)
+\item 
+void \mbox{\hyperlink{class_c_mesh_field_abcab9654b1923664393683e7511fd345}{Draw}} (void)
+\item 
+\Hypertarget{class_c_mesh_field_a41af4628f122e1ea295d2650f10554be}\label{class_c_mesh_field_a41af4628f122e1ea295d2650f10554be} 
+void {\bfseries Set\+Texture} (void)
+\item 
+\Hypertarget{class_c_mesh_field_ab1d41fb70c7608f4703838171de2bb0b}\label{class_c_mesh_field_ab1d41fb70c7608f4703838171de2bb0b} 
+D3\+DXVECTOR3 {\bfseries Get\+Pos} (void)
+\item 
+\Hypertarget{class_c_mesh_field_ab4483821d14e4b9ebd424301b7ca6855}\label{class_c_mesh_field_ab4483821d14e4b9ebd424301b7ca6855} 
+D3\+DXVECTOR3 {\bfseries Get\+Rot} (void)
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_c_object}{CObject}}}
+\begin{DoxyCompactItemize}
+\item 
+{\bfseries CObject} (int n\+Priority=NONE)
+\item 
+void {\bfseries Set\+Obj\+Type} (TYPE type)
+\item 
+TYPE {\bfseries Get\+Obj\+Type} (void)
+\item 
+\mbox{\hyperlink{class_c_object}{CObject}} \texorpdfstring{$\ast$}{*} {\bfseries Get\+Next} (void)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_c_mesh_field_adc12617abb37e1c1a95cde8e808be19f}\label{class_c_mesh_field_adc12617abb37e1c1a95cde8e808be19f} 
+static \mbox{\hyperlink{class_c_mesh_field}{CMesh\+Field}} \texorpdfstring{$\ast$}{*} {\bfseries Create} (D3\+DXVECTOR3 pos, float f\+Radius)
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Member Functions inherited from \mbox{\hyperlink{class_c_object}{CObject}}}
+\begin{DoxyCompactItemize}
+\item 
+static void {\bfseries Release\+All} (void)
+\item 
+static void {\bfseries Update\+All} (void)
+\item 
+static void {\bfseries Draw\+All} (void)
+\item 
+static \mbox{\hyperlink{class_c_object}{CObject}} \texorpdfstring{$\ast$}{*} {\bfseries Get\+Top} (int n\+Priority)
+\item 
+static int {\bfseries Get\+Num\+All} (void)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Additional Inherited Members}
+\doxysubsection*{Public Types inherited from \mbox{\hyperlink{class_c_object}{CObject}}}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_c_object_a7263d5eae1a949d02e262e246152a2c6}\label{class_c_object_a7263d5eae1a949d02e262e246152a2c6} 
+enum {\bfseries TYPE} \{ \newline
+{\bfseries TYPE\+\_\+\+NONE} = 0
+, {\bfseries TYPE\+\_\+\+PLAYER}
+, {\bfseries TYPE\+\_\+\+MESH}
+, {\bfseries TYPE\+\_\+\+BULLET}
+, \newline
+{\bfseries TYPE\+\_\+\+BOSS}
+, {\bfseries TYPE\+\_\+\+ENEMY}
+, {\bfseries TYPE\+\_\+\+BLOCK}
+, {\bfseries TYPE\+\_\+\+PAUSE}
+, \newline
+{\bfseries TYPE\+\_\+\+BARRIER}
+, {\bfseries TYPE\+\_\+\+ITEM}
+, {\bfseries TYPE\+\_\+\+RUBBLE}
+, {\bfseries TYPE\+\_\+\+PILER}
+, \newline
+{\bfseries TYPE\+\_\+\+POINT}
+, {\bfseries TYPE\+\_\+\+MAX}
+ \}
+\item 
+\Hypertarget{class_c_object_a0924032649f7068d08cc5da588adc8d0}\label{class_c_object_a0924032649f7068d08cc5da588adc8d0} 
+enum {\bfseries PRIORITY} \{ \newline
+{\bfseries NONE}
+, {\bfseries MESH}
+, {\bfseries BASENUMBER}
+, {\bfseries MODELOBJECT}
+, \newline
+{\bfseries BULLET}
+, {\bfseries SHADOW}
+, {\bfseries IMPACT}
+, {\bfseries CHARACTOR}
+, \newline
+{\bfseries BILLBOARD}
+, {\bfseries EFFECT}
+, {\bfseries UI}
+, {\bfseries PAUSE}
+, \newline
+{\bfseries PRIORITY\+\_\+\+MAX}
+ \}
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Member Functions inherited from \mbox{\hyperlink{class_c_object}{CObject}}}
+\begin{DoxyCompactItemize}
+\item 
+void {\bfseries Release} (void)
+\end{DoxyCompactItemize}
+
+
+\label{doc-func-members}
+\Hypertarget{class_c_mesh_field_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_c_mesh_field_abcab9654b1923664393683e7511fd345}\index{CMeshField@{CMeshField}!Draw@{Draw}}
+\index{Draw@{Draw}!CMeshField@{CMeshField}}
+\doxysubsubsection{\texorpdfstring{Draw()}{Draw()}}
+{\footnotesize\ttfamily \label{class_c_mesh_field_abcab9654b1923664393683e7511fd345} 
+void CMesh\+Field\+::\+Draw (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{class_c_object}{CObject}}.
+
+\Hypertarget{class_c_mesh_field_a9e5b79a6dd7e2effb1c501c7a73e94aa}\index{CMeshField@{CMeshField}!Init@{Init}}
+\index{Init@{Init}!CMeshField@{CMeshField}}
+\doxysubsubsection{\texorpdfstring{Init()}{Init()}}
+{\footnotesize\ttfamily \label{class_c_mesh_field_a9e5b79a6dd7e2effb1c501c7a73e94aa} 
+HRESULT CMesh\+Field\+::\+Init (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{class_c_object}{CObject}}.
+
+\Hypertarget{class_c_mesh_field_aa07a6a511f502a9de8163f9a6bca0c89}\index{CMeshField@{CMeshField}!Uninit@{Uninit}}
+\index{Uninit@{Uninit}!CMeshField@{CMeshField}}
+\doxysubsubsection{\texorpdfstring{Uninit()}{Uninit()}}
+{\footnotesize\ttfamily \label{class_c_mesh_field_aa07a6a511f502a9de8163f9a6bca0c89} 
+void CMesh\+Field\+::\+Uninit (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{class_c_object}{CObject}}.
+
+\Hypertarget{class_c_mesh_field_ac529704ee70e640d7d1ef2ad33971498}\index{CMeshField@{CMeshField}!Update@{Update}}
+\index{Update@{Update}!CMeshField@{CMeshField}}
+\doxysubsubsection{\texorpdfstring{Update()}{Update()}}
+{\footnotesize\ttfamily \label{class_c_mesh_field_ac529704ee70e640d7d1ef2ad33971498} 
+void CMesh\+Field\+::\+Update (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{class_c_object}{CObject}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+meshfield.\+h\item 
+meshfield.\+cpp\end{DoxyCompactItemize}

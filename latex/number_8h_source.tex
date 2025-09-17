@@ -1,0 +1,55 @@
+\doxysection{number.\+h}
+\hypertarget{number_8h_source}{}\label{number_8h_source}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{comment}{//====================================}}
+\DoxyCodeLine{00002\ \textcolor{comment}{//}}
+\DoxyCodeLine{00003\ \textcolor{comment}{//\ 数字処理\ [\ number.h\ ]}}
+\DoxyCodeLine{00004\ \textcolor{comment}{//\ Author:\ Asuma\ Nishio}}
+\DoxyCodeLine{00005\ \textcolor{comment}{//}}
+\DoxyCodeLine{00006\ \textcolor{comment}{//=====================================}}
+\DoxyCodeLine{00007\ }
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#ifndef\ \_NUMBER\_H\_\ }\textcolor{comment}{//\ このソ}クロ定義がされてなかったら}}
+\DoxyCodeLine{00009\ \textcolor{preprocessor}{\#define\ \_NUMBER\_H\_\ }\textcolor{comment}{//\ 2重インクルード防蚕string~のソ}クロ定義}}
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00011\ \textcolor{comment}{//**********************}}
+\DoxyCodeLine{00012\ \textcolor{comment}{//\ ナンバークラスを定義}}
+\DoxyCodeLine{00013\ \textcolor{comment}{//**********************}}
+\DoxyCodeLine{00014\ \textcolor{keyword}{class\ }CNumber}
+\DoxyCodeLine{00015\ \{}
+\DoxyCodeLine{00016\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00017\ \ \ \ \ \textcolor{comment}{//\ コンストラクソstring^・デストラクソstring^}}
+\DoxyCodeLine{00018\ \ \ \ \ CNumber();}
+\DoxyCodeLine{00019\ \ \ \ \ \string~CNumber();}
+\DoxyCodeLine{00020\ }
+\DoxyCodeLine{00021\ \ \ \ \ \textcolor{comment}{//\ メンバ関数}}
+\DoxyCodeLine{00022\ \ \ \ \ HRESULT\ Init(D3DXVECTOR3\ pos,\ \textcolor{keywordtype}{float}\ fwidth,\ \textcolor{keywordtype}{float}\ fheight);}
+\DoxyCodeLine{00023\ \ \ \ \ \textcolor{keywordtype}{void}\ Uninit(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00024\ \ \ \ \ \textcolor{keywordtype}{void}\ Update(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00025\ \ \ \ \ \textcolor{keywordtype}{void}\ Draw(\textcolor{keywordtype}{void});}
+\DoxyCodeLine{00026\ }
+\DoxyCodeLine{00027\ \ \ \ \ \textcolor{comment}{//\ セッソstring^ー}}
+\DoxyCodeLine{00028\ \ \ \ \ \textcolor{keywordtype}{void}\ SetPos(D3DXVECTOR3\ pos)\ \{\ m\_pos\ =\ pos;\}}
+\DoxyCodeLine{00029\ \ \ \ \ \textcolor{keywordtype}{void}\ SetSize(\textcolor{keywordtype}{float}\ fWidth,\ \textcolor{keywordtype}{float}\ fHeight);}
+\DoxyCodeLine{00030\ \ \ \ \ \textcolor{keywordtype}{void}\ SetDigit(\textcolor{keywordtype}{int}\ nDigit);}
+\DoxyCodeLine{00031\ \ \ \ \ \textcolor{keywordtype}{void}\ SetCol(D3DXCOLOR\ col);}
+\DoxyCodeLine{00032\ \ \ \ \ \textcolor{keywordtype}{void}\ SetFlash(\textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ nStartFrame,\ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ nEndFrame,\ D3DXCOLOR\ col);}
+\DoxyCodeLine{00033\ }
+\DoxyCodeLine{00034\ \ \ \ \ \textcolor{comment}{//\ ゲッソstring^ー}}
+\DoxyCodeLine{00035\ \ \ \ \ \textcolor{keywordtype}{float}\ GetWidth(\textcolor{keywordtype}{void})\ \{\ \textcolor{keywordflow}{return}\ m\_fWidth;\ \}}
+\DoxyCodeLine{00036\ \ \ \ \ \textcolor{keywordtype}{float}\ GetHeight(\textcolor{keywordtype}{void})\ \{\ \textcolor{keywordflow}{return}\ m\_fHeight;\ \}}
+\DoxyCodeLine{00037\ }
+\DoxyCodeLine{00038\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00039\ \ \ \ \ \textcolor{keyword}{static}\ \textcolor{keyword}{constexpr}\ \textcolor{keywordtype}{float}\ DIGIT\_VALUE\ =\ 0.1f;\ \textcolor{comment}{//\ テクスチャ分割数割合}}
+\DoxyCodeLine{00040\ }
+\DoxyCodeLine{00041\ \ \ \ \ LPDIRECT3DVERTEXBUFFER9\ m\_pVtxBuff;\ \textcolor{comment}{//\ 頂貼_バッファのポインソstring^}}
+\DoxyCodeLine{00042\ }
+\DoxyCodeLine{00043\ \ \ \ \ D3DXVECTOR3\ m\_pos;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 座標情報}}
+\DoxyCodeLine{00044\ \ \ \ \ D3DXCOLOR\ m\_col;\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ 色情報}}
+\DoxyCodeLine{00045\ \ \ \ \ \textcolor{keywordtype}{float}\ m\_fWidth,\ m\_fHeight;\ \ \ \ \ \ \textcolor{comment}{//\ 横幅,高さ}}
+\DoxyCodeLine{00046\ \ \ \ \ \textcolor{keywordtype}{float}\ m\_TexU,\ m\_TexU1,m\_TexV;\ \ \ \textcolor{comment}{//\ テクスチャ座標}}
+\DoxyCodeLine{00047\ \ \ \ \ \textcolor{keywordtype}{int}\ n\_nColorCount;}
+\DoxyCodeLine{00048\ \};}
+\DoxyCodeLine{00049\ }
+\DoxyCodeLine{00050\ \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

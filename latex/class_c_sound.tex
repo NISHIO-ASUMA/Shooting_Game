@@ -1,0 +1,58 @@
+\doxysection{CSound Class Reference}
+\hypertarget{class_c_sound}{}\label{class_c_sound}\index{CSound@{CSound}}
+\doxysubsubsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_c_sound_a6c727d4e58011d2a549633ecdd09d63c}\label{class_c_sound_a6c727d4e58011d2a549633ecdd09d63c} 
+enum {\bfseries SOUND\+\_\+\+LABEL} \{ \newline
+{\bfseries SOUND\+\_\+\+LABEL\+\_\+\+TITLE\+\_\+\+BGM}
+, {\bfseries SOUND\+\_\+\+LABEL\+\_\+\+GAMEBGM}
+, {\bfseries SOUND\+\_\+\+LABEL\+\_\+\+RESULTBGM}
+, {\bfseries SOUND\+\_\+\+LABEL\+\_\+\+TUTORIALBGM}
+, \newline
+{\bfseries SOUND\+\_\+\+LABEL\+\_\+\+LOSERESULTBGM}
+, {\bfseries SOUND\+\_\+\+LABEL\+\_\+\+SELECT}
+, {\bfseries SOUND\+\_\+\+LABEL\+\_\+\+RETURN}
+, {\bfseries SOUND\+\_\+\+LABEL\+\_\+\+ITEM}
+, \newline
+{\bfseries SOUND\+\_\+\+LABEL\+\_\+\+ALART}
+, {\bfseries SOUND\+\_\+\+LABEL\+\_\+\+BULLET}
+, {\bfseries SOUND\+\_\+\+LABEL\+\_\+\+LASER}
+, {\bfseries SOUND\+\_\+\+LABEL\+\_\+\+LIFE}
+, \newline
+{\bfseries SOUND\+\_\+\+LABEL\+\_\+\+DAMAGE}
+, {\bfseries SOUND\+\_\+\+LABEL\+\_\+\+CIRCLE}
+, {\bfseries SOUND\+\_\+\+LABEL\+\_\+\+CLEAR}
+, {\bfseries SOUND\+\_\+\+LABEL\+\_\+\+MAX}
+ \}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_c_sound_a8d922c112346f6d5c5836a30cc327960}\label{class_c_sound_a8d922c112346f6d5c5836a30cc327960} 
+HRESULT {\bfseries Init} (HWND h\+Wnd)
+\item 
+\Hypertarget{class_c_sound_a9c2d9a8319e7d7c9c7c18fd3a99f2a28}\label{class_c_sound_a9c2d9a8319e7d7c9c7c18fd3a99f2a28} 
+void {\bfseries Uninit} (void)
+\item 
+\Hypertarget{class_c_sound_a9428154831aeb73836617c5732b1d688}\label{class_c_sound_a9428154831aeb73836617c5732b1d688} 
+HRESULT {\bfseries Play\+Sound} (SOUND\+\_\+\+LABEL label)
+\item 
+\Hypertarget{class_c_sound_a5a3f99d07270453ee1bae1136f3e3be5}\label{class_c_sound_a5a3f99d07270453ee1bae1136f3e3be5} 
+void {\bfseries Stop\+Sound} (SOUND\+\_\+\+LABEL label)
+\item 
+\Hypertarget{class_c_sound_af2c53fef29fd25dbea4a7a9e17765670}\label{class_c_sound_af2c53fef29fd25dbea4a7a9e17765670} 
+void {\bfseries Stop\+Sound} (void)
+\item 
+\Hypertarget{class_c_sound_a82ad08369ec25e43a4343b22f27c4f7f}\label{class_c_sound_a82ad08369ec25e43a4343b22f27c4f7f} 
+HRESULT {\bfseries Check\+Chunk} (HANDLE h\+File, DWORD format, DWORD \texorpdfstring{$\ast$}{*}p\+Chunk\+Size, DWORD \texorpdfstring{$\ast$}{*}p\+Chunk\+Data\+Position)
+\item 
+\Hypertarget{class_c_sound_a85fea83cf11444f5e24089c87d4f0637}\label{class_c_sound_a85fea83cf11444f5e24089c87d4f0637} 
+HRESULT {\bfseries Read\+Chunk\+Data} (HANDLE h\+File, void \texorpdfstring{$\ast$}{*}p\+Buffer, DWORD dw\+Buffersize, DWORD dw\+Bufferoffset)
+\end{DoxyCompactItemize}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+sound.\+h\item 
+sound.\+cpp\end{DoxyCompactItemize}

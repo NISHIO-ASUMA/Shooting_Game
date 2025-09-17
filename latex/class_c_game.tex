@@ -1,0 +1,121 @@
+\doxysection{CGame Class Reference}
+\hypertarget{class_c_game}{}\label{class_c_game}\index{CGame@{CGame}}
+Inheritance diagram for CGame\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{class_c_game}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_c_game_a49b424b5a8295b1d2fb3ba4c7b44b42a}\label{class_c_game_a49b424b5a8295b1d2fb3ba4c7b44b42a} 
+enum {\bfseries GAMESTATE} \{ \newline
+{\bfseries GAMESTATE\+\_\+\+NONE}
+, {\bfseries GAMESTATE\+\_\+\+NORMAL}
+, {\bfseries GAMESTATE\+\_\+\+END}
+, {\bfseries GAMESTATE\+\_\+\+LOSEEND}
+, \newline
+{\bfseries GAMESTATE\+\_\+\+MAX}
+ \}
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Types inherited from \mbox{\hyperlink{class_c_scene}{CScene}}}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_c_scene_ac89c656e1679c326e23527fd48d9861d}\label{class_c_scene_ac89c656e1679c326e23527fd48d9861d} 
+enum {\bfseries MODE} \{ \newline
+{\bfseries MODE\+\_\+\+NONE}
+, {\bfseries MODE\+\_\+\+TITLE}
+, {\bfseries MODE\+\_\+\+TUTORIAL}
+, {\bfseries MODE\+\_\+\+GAME}
+, \newline
+{\bfseries MODE\+\_\+\+RESULT}
+, {\bfseries MODE\+\_\+\+LOSERESULT}
+, {\bfseries MODE\+\_\+\+RANKING}
+, {\bfseries MODE\+\_\+\+EDIT}
+, \newline
+{\bfseries MODE\+\_\+\+CAMERAEDIT}
+, {\bfseries MODE\+\_\+\+MAX}
+ \}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+HRESULT \mbox{\hyperlink{class_c_game_a979ced204ccd48d454e2ce6f24c0320d}{Init}} (void)
+\item 
+void \mbox{\hyperlink{class_c_game_a3dfc999935702c2d1dfe802493b07fc0}{Uninit}} (void)
+\item 
+void \mbox{\hyperlink{class_c_game_a5ae6e5940c6336b58ae95c0b14b8463e}{Update}} (void)
+\item 
+void \mbox{\hyperlink{class_c_game_a8c333f62d147212075e828236d445eb9}{Draw}} (void)
+\item 
+\Hypertarget{class_c_game_ac4ab627a315da46eb16066aa8e3a6086}\label{class_c_game_ac4ab627a315da46eb16066aa8e3a6086} 
+void {\bfseries Set\+State} (int state)
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions inherited from \mbox{\hyperlink{class_c_scene}{CScene}}}
+\begin{DoxyCompactItemize}
+\item 
+{\bfseries CScene} (MODE mode)
+\item 
+MODE {\bfseries Get\+Scene} (void) const
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_c_game_a64d481c87031a46312658d469f3841fe}\label{class_c_game_a64d481c87031a46312658d469f3841fe} 
+static \mbox{\hyperlink{class_c_game}{CGame}} \texorpdfstring{$\ast$}{*} {\bfseries Create} (void)
+\item 
+\Hypertarget{class_c_game_a7a6abf597608231546a75b7468362da6}\label{class_c_game_a7a6abf597608231546a75b7468362da6} 
+static \mbox{\hyperlink{class_c_pause_manager}{CPause\+Manager}} \texorpdfstring{$\ast$}{*} {\bfseries Get\+Pause} (void)
+\end{DoxyCompactItemize}
+
+
+\label{doc-func-members}
+\Hypertarget{class_c_game_doc-func-members}
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_c_game_a8c333f62d147212075e828236d445eb9}\index{CGame@{CGame}!Draw@{Draw}}
+\index{Draw@{Draw}!CGame@{CGame}}
+\doxysubsubsection{\texorpdfstring{Draw()}{Draw()}}
+{\footnotesize\ttfamily \label{class_c_game_a8c333f62d147212075e828236d445eb9} 
+void CGame\+::\+Draw (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{class_c_scene}{CScene}}.
+
+\Hypertarget{class_c_game_a979ced204ccd48d454e2ce6f24c0320d}\index{CGame@{CGame}!Init@{Init}}
+\index{Init@{Init}!CGame@{CGame}}
+\doxysubsubsection{\texorpdfstring{Init()}{Init()}}
+{\footnotesize\ttfamily \label{class_c_game_a979ced204ccd48d454e2ce6f24c0320d} 
+HRESULT CGame\+::\+Init (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{class_c_scene}{CScene}}.
+
+\Hypertarget{class_c_game_a3dfc999935702c2d1dfe802493b07fc0}\index{CGame@{CGame}!Uninit@{Uninit}}
+\index{Uninit@{Uninit}!CGame@{CGame}}
+\doxysubsubsection{\texorpdfstring{Uninit()}{Uninit()}}
+{\footnotesize\ttfamily \label{class_c_game_a3dfc999935702c2d1dfe802493b07fc0} 
+void CGame\+::\+Uninit (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{class_c_scene}{CScene}}.
+
+\Hypertarget{class_c_game_a5ae6e5940c6336b58ae95c0b14b8463e}\index{CGame@{CGame}!Update@{Update}}
+\index{Update@{Update}!CGame@{CGame}}
+\doxysubsubsection{\texorpdfstring{Update()}{Update()}}
+{\footnotesize\ttfamily \label{class_c_game_a5ae6e5940c6336b58ae95c0b14b8463e} 
+void CGame\+::\+Update (\begin{DoxyParamCaption}\item[{void}]{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{class_c_scene}{CScene}}.
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+game.\+h\item 
+game.\+cpp\end{DoxyCompactItemize}
