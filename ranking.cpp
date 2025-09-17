@@ -1,9 +1,9 @@
-//=====================================
+//=======================================
 //
 // ランキングシーン処理 [ ranking.cpp ]
 // Author: Asuma Nishio
 //
-//=====================================
+//=======================================
 
 //******************************
 // インクルードファイル宣言
@@ -29,6 +29,24 @@ CRanking::CRanking() : CScene(CScene::MODE_RANKING)
 CRanking::~CRanking()
 {
 	// 無し
+}
+//===================================
+// 生成処理
+//===================================
+CRanking* CRanking::Create(void)
+{
+	// インスタンス生成
+	CRanking* pRanking = new CRanking;
+	if (pRanking == nullptr) return nullptr;
+
+	// 初期化失敗時
+	if (FAILED(pRanking->Init()))
+	{
+		return nullptr;
+	}
+
+	// 生成されたポインタを返す
+	return pRanking;
 }
 //===================================
 // 初期化処理
@@ -97,23 +115,5 @@ void CRanking::Update(void)
 //===================================
 void CRanking::Draw(void)
 {
-
-}
-//===================================
-// 生成処理
-//===================================
-CRanking* CRanking::Create(void)
-{
-	// インスタンス生成
-	CRanking* pRanking = new CRanking;
-	if (pRanking == nullptr) return nullptr;
-
-	// 初期化失敗時
-	if (FAILED(pRanking->Init()))
-	{
-		return nullptr;
-	}
-
-	// 生成されたポインタを返す
-	return pRanking;
+	// 無し
 }

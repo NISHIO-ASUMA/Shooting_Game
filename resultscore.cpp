@@ -1,6 +1,6 @@
 //=======================================
 //
-// リザルトスコア処理 [ resultscore.h ]
+// リザルトスコア処理 [ resultscore.cpp ]
 // Author: Asuma Nishio
 // 
 //=======================================
@@ -11,6 +11,16 @@
 #include "resultscore.h"
 #include "manager.h"
 #include "texture.h"
+
+//**********************
+// 名前空間
+//**********************
+namespace RESULTSCOREINFO
+{
+	constexpr int MAXSCORE = 50000; // 最大スコア
+	constexpr float MAX_VALUESCORE = 120.0f; // 計算割合
+	const char* FILENAME = "data\\Loader\\RankScore.txt";
+};
 
 //================================
 // コンストラクタ
@@ -26,9 +36,9 @@ CResultScore::CResultScore(int nPriority) : CObject(nPriority)
 	m_nDestTimeScore = NULL;
 	m_nLastScore = NULL;
 
-	m_fScale = 20.0f;		// 最初は大きく
-	m_fTargetScale = 1.0f;	// 通常サイズ
-	m_fScaleSpeed = 0.7f;	// 縮小速度
+	m_fScale = NULL;		// 最初は大きく
+	m_fTargetScale = NULL;	// 通常サイズ
+	m_fScaleSpeed = NULL;	// 縮小速度
 
 	m_pos = VECTOR3_NULL;
 	m_DestPos = VECTOR3_NULL;
@@ -100,9 +110,12 @@ HRESULT CResultScore::Init(void)
 	// テクスチャセット
 	SetTexture();
 
+	m_fScale = 20.0f;		// 最初は大きく
+	m_fTargetScale = 1.0f;	// 通常サイズ
+	m_fScaleSpeed = 0.7f;	// 縮小速度
+
 	// 初期化結果を返す
 	return S_OK;
-
 }
 //================================
 // 終了処理
@@ -282,7 +295,6 @@ void CResultScore::Draw(void)
 
 		// ナンバー描画
 		m_apNumber[nCnt]->Draw();
-	
 	}
 }
 //================================
@@ -293,19 +305,18 @@ void CResultScore::Save(void)
 	// 最大5件
 	int nScores[NUM_SAVESCORE] = { NULL };
 
-	// カウント用
-	int nCnt = 0;
+	// 読み込み件数
+	int nCnt = NULL;
 
-	// 既存のスコアを読み込み
-	std::ifstream inFile("data\\Loader\\RankScore.txt");
+	// ファイルから読み込み
+	std::ifstream inFile(RESULTSCOREINFO::FILENAME);
 
 	// ファイルが開けたら
 	if (inFile.is_open())
 	{
-		// カウントが最大値以下
+		// 5件分読み込む
 		while (nCnt < NUM_SAVESCORE && inFile >> nScores[nCnt])
 		{
-			// カウントを進める
 			nCnt++;
 		}
 
@@ -313,36 +324,37 @@ void CResultScore::Save(void)
 		inFile.close();
 	}
 
-	// 今回のスコアを追加する
+	// 今回のスコアをランキングに入れるか判定
 	if (nCnt < NUM_SAVESCORE)
 	{
-		// 配列に一時保存
+		// まだ枠が埋まっていないなら追加
 		nScores[nCnt++] = m_nLastScore;
 	}
 	else
 	{
-		// 最後に入れる
-		nScores[NUM_SAVESCORE - 1] = m_nLastScore;
-	}
+		// 最小値を探す
+		int nMinData = 0;
 
-	// バブルソート
-	for (int nCntScore = 0; nCntScore < nCnt - 1; nCntScore++)
-	{
-		for (int nCnt1 = nCntScore + 1; nCnt1 < nCnt; nCnt1++)
+		// 1番目から
+		for (int nScoreData = 1; nScoreData < NUM_SAVESCORE; nScoreData++)
 		{
-			if (nScores[nCntScore] < nScores[nCnt1])
+			// スコアの値が低いなら
+			if (nScores[nScoreData] < nScores[nMinData])
 			{
-				// 値が小さいなら入れ替え
-				int nDestScore = nScores[nCntScore];
-				nScores[nCntScore] = nScores[nCnt1];
-				nScores[nCnt1] = nDestScore;
+				// 配列番号に代入
+				nMinData = nScoreData;
 			}
+		}
+
+		// 新スコアが最小値より大きければ差し替え
+		if (m_nLastScore > nScores[nMinData])
+		{
+			nScores[nMinData] = m_nLastScore;
 		}
 	}
 
-	// 上位5件に絞る
 	// ファイルに書き出し
-	std::ofstream outFile("data\\Loader\\RankScore.txt");
+	std::ofstream outFile(RESULTSCOREINFO::FILENAME);
 
 	// 開けたら
 	if (outFile.is_open())
@@ -358,10 +370,10 @@ void CResultScore::Save(void)
 	}
 	else
 	{
+		// 例外メッセージ
 		MessageBox(NULL, "RankScore.txt が開けませんでした", "エラー", MB_OK);
 	}
 }
-
 //================================
 // テクスチャ処理
 //================================
@@ -379,30 +391,24 @@ void CResultScore::SetTexture(void)
 int CResultScore::MathTimescore(void)
 {
 	// 読み込んだ値
-	float fValue = (float)m_nTimeScore;
+	float fValue = static_cast<float>(m_nTimeScore);
 
 	// もし0なら
 	if (m_nTimeScore == 0)
 	{
-		// 0を返す
-		return 0;
+		// 最大値を返す
+		return RESULTSCOREINFO::MAXSCORE;
 	}
 
-	// 上限値
-	const float fMaxReadValue = 120.0f;
-
-	// 最大スコア
-	const int nMaxTimeScore = 50000;
-
 	// 比率を算出
-	float fRatio = 1.0f - (fValue / fMaxReadValue);
+	float fRatio = 1.0f - (fValue / RESULTSCOREINFO::MAX_VALUESCORE);
 
 	// 範囲補正
 	if (fRatio < 0.0f) fRatio = 0.0f;
 	if (fRatio > 1.0f) fRatio = 1.0f;
 
 	// スコア計算
-	int nMathscore = (int)(nMaxTimeScore * fRatio);
+	int nMathscore = (int)(RESULTSCOREINFO::MAXSCORE * fRatio);
 
 	return nMathscore;
 }

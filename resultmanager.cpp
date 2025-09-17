@@ -52,8 +52,8 @@ HRESULT CResultManager::Init(void)
 	Load();
 
 	// スコアを生成する
-	m_pResultScore[0] = CResultScore::Create(D3DXVECTOR3(1120.0f, 260.0f, 0.0f), 300.0f, 60.0f,0);
-	m_pResultScore[1] = CResultScore::Create(D3DXVECTOR3(1120.0f, 415.0f, 0.0f), 300.0f, 60.0f,1);
+	m_pResultScore[0] = CResultScore::Create(D3DXVECTOR3(1120.0f, 260.0f, 0.0f), 270.0f, 50.0f,0);
+	m_pResultScore[1] = CResultScore::Create(D3DXVECTOR3(1120.0f, 415.0f, 0.0f), 270.0f, 50.0f,1);
 	m_pResultScore[2] = CResultScore::Create(D3DXVECTOR3(1120.0f, 600.0f, 0.0f), 300.0f, 60.0f,2);
 
 	// 討伐スコア
