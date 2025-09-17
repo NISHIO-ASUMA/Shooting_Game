@@ -24,8 +24,6 @@ public:
 	int Register(const char* pFileName);
 	LPDIRECT3DTEXTURE9 GetAddress(int nIdx);
 
-	void TextLoader(const char* pFileName);
-
 private:
 
 	static inline constexpr int NUM_TEXTURE = 128;	// 最大テクスチャ数
@@ -81,6 +79,9 @@ private:
 		"data\\TEXTURE\\CameraAnimBox.png",
 		"data\\TEXTURE\\ResultScore.png",
 		"data\\TEXTURE\\RankBack.jpg",
+		"data\\TEXTURE\\star.jpg",
+		"data\\TEXTURE\\color.jpg",
+		"data\\TEXTURE\\handeffect.jpg",
 		"data/TEXTURE/ComboMenu/Tutorial_menu_move.png",
 		"data/TEXTURE/ComboMenu/Tutorial_menu_Attack.png",
 		"data/TEXTURE/ComboMenu/Tutorial_menu_Jump.png",

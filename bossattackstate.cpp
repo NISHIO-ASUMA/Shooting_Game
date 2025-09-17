@@ -185,3 +185,61 @@ void CBosscircleAttack::OnExit(void)
 {
 	// 無し
 }
+
+//====================================
+// コンストラクタ
+//====================================
+CBossArmAttack::CBossArmAttack()
+{
+	// IDをセット
+	SetID(ID_ACTION);
+}
+//====================================
+// デストラクタ
+//====================================
+CBossArmAttack::~CBossArmAttack()
+{
+	// 無し
+}
+//====================================
+// ステート開始関数
+//====================================
+void CBossArmAttack::OnStart(void)
+{
+	// フレーム初期化
+	m_pBoss->GetMotion()->SetResetFrame(NULL);
+
+	// 向かせる
+	m_pBoss->RollToPlayer();
+
+	// モーションセット
+	m_pBoss->GetMotion()->SetMotion(CBoss::TYPE_ARMRIGHTLEFT);
+
+	// クールタイムセット
+	m_pBoss->SetCoolTime(320);
+}
+//====================================
+// ステート更新関数
+//====================================
+void CBossArmAttack::OnUpdate(void)
+{
+	// 現在のクールタイム取得
+	int nCooltime = m_pBoss->GetCoolTime();
+
+	// クールタイムがなくなったら
+	if (nCooltime <= 0)
+	{
+		// 状態変更
+		m_pBoss->ChangeState(new CBossStateNeutral(180), ID_NEUTRAL);
+
+		// ここで処理を返す
+		return;
+	}
+}
+//====================================
+// ステート終了関数
+//====================================
+void CBossArmAttack::OnExit(void)
+{
+	// 無し
+}

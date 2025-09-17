@@ -1,0 +1,7 @@
+<map id="CEffectLaser" name="CEffectLaser">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,155,103,181"/>
+<area shape="rect" id="Node000002" href="$class_c_billboard.html" title=" " alt="" coords="13,80,95,107"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="57,122,57,154,51,154,51,122"/>
+<area shape="rect" id="Node000003" href="$class_c_object.html" title=" " alt="" coords="19,5,89,32"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="57,48,57,80,51,80,51,48"/>
+</map>

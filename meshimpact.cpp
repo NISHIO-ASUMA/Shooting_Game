@@ -35,7 +35,7 @@ CMeshImpact::CMeshImpact(int nPriority) : CObject(nPriority)
 	// 値のクリア
 	m_pos = VECTOR3_NULL;
 	m_rot = VECTOR3_NULL;
-	m_col = COLOR_WHITE;
+	m_col = D3DXCOLOR(1.0f,1.0f,0.0f,0.7f);
 	m_mtxWorld = {};
 	m_pIdx = nullptr;
 	m_pVtx = nullptr;
@@ -43,6 +43,7 @@ CMeshImpact::CMeshImpact(int nPriority) : CObject(nPriority)
 	m_nLife = NULL;
 	m_fOutRadius = NULL;
 	m_fSpeed = NULL;
+	m_DecAlpha = NULL;
 }
 //===============================
 // デストラクタ
@@ -221,9 +222,6 @@ void CMeshImpact::Update(void)
 	// 頂点計算変数
 	int nCntVertex = NULL;
 
-	// カラー設定
-	m_col = D3DXCOLOR(1.0f, 1.0f, 0.0f,0.7f);
-
 	// 速度を加算,だんだん広げる
 	m_fOutRadius += m_fSpeed;
 	m_fInRadius += m_fSpeed;
@@ -277,9 +275,7 @@ void CMeshImpact::Update(void)
 
 	// 寿命を減らす
 	m_nLife--;
-
-	// TODO : ここを体力に応じて透明にしていく処理に変更
-	m_col.a -= 0.5f;
+	m_col.a -= m_DecAlpha;
 
 	// 寿命が尽きた
 	if (m_nLife <= 0)
@@ -371,8 +367,9 @@ CMeshImpact* CMeshImpact::Create(D3DXVECTOR3 pos, int nLife,float fOutRadius,flo
 	pMesh->m_nLife = nLife;			// 継続時間
 	pMesh->m_fSpeed = fSpeed;		// 拡散速度
 	pMesh->SetObjType(TYPE_MESH);   // オブジェクトのタイプを設定
-
-	// 初期化失敗時
+	pMesh->m_DecAlpha = pMesh->m_col.a / nLife;
+	
+	// 初期化失敗
 	if (FAILED(pMesh->Init()))
 	{
 		// ポインタの破棄

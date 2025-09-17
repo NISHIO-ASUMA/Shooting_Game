@@ -1,4 +1,4 @@
-//====================================
+//=====================================
 //
 // モーション処理 [ motion.cpp ]
 // Author: Asuma Nishio
@@ -191,7 +191,7 @@ void CMotion::SetMotion(int nMotionType, bool isBlend, int nBlendFrame,bool isBo
 
 		if (isBoss == false)
 		{
-			m_isFinishMotion = false;			// 終了判定を無効化
+			m_isFinishMotion = false;		// 終了判定を無効化
 		}
 
 	}

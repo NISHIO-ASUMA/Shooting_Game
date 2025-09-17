@@ -1,0 +1,37 @@
+<map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
+<area shape="rect" id="Node000000" href="$class_c_state_base.html" title=" " alt="" coords="5,335,98,361"/>
+<area shape="rect" id="Node000001" href="$class_c_boss_state_bace.html" title=" " alt="" coords="151,157,274,184"/>
+<area shape="poly" id="edge156_Node000000_Node000001" title=" " alt="" coords="73,321,197,183,201,186,77,325"/>
+<area shape="rect" id="Node000008" href="$class_c_enemy_state_base.html" title=" " alt="" coords="146,335,279,361"/>
+<area shape="poly" id="edge163_Node000000_Node000008" title=" " alt="" coords="113,345,145,345,145,351,113,351"/>
+<area shape="rect" id="Node000011" href="$class_c_player_state_base.html" title=" " alt="" coords="148,512,277,539"/>
+<area shape="poly" id="edge166_Node000000_Node000011" title=" " alt="" coords="77,371,201,510,197,513,73,375"/>
+<area shape="rect" id="Node000002" href="$class_c_boss_state_attack.html" title=" " alt="" coords="336,5,466,32"/>
+<area shape="poly" id="edge157_Node000001_Node000002" title=" " alt="" coords="229,143,269,92,296,65,326,42,348,30,350,35,328,46,300,69,273,95,233,146"/>
+<area shape="rect" id="Node000003" href="$class_c_boss_state_event.html" title=" " alt="" coords="338,56,464,83"/>
+<area shape="poly" id="edge158_Node000001_Node000003" title=" " alt="" coords="242,146,281,118,326,92,353,81,355,86,328,97,284,123,245,150"/>
+<area shape="rect" id="Node000004" href="$class_c_boss_state_neutral.html" title=" " alt="" coords="334,107,468,133"/>
+<area shape="poly" id="edge159_Node000001_Node000004" title=" " alt="" coords="279,150,348,131,349,137,280,155"/>
+<area shape="rect" id="Node000005" href="$class_c_bosscircle_attack.html" title=" " alt="" coords="336,157,466,184"/>
+<area shape="poly" id="edge160_Node000001_Node000005" title=" " alt="" coords="289,168,336,168,336,173,289,173"/>
+<area shape="rect" id="Node000006" href="$class_c_bosshand_attack.html" title=" " alt="" coords="338,208,465,235"/>
+<area shape="poly" id="edge161_Node000001_Node000006" title=" " alt="" coords="280,186,349,205,348,210,279,191"/>
+<area shape="rect" id="Node000007" href="$class_c_bossimpact_attack.html" title=" " alt="" coords="332,259,470,285"/>
+<area shape="poly" id="edge162_Node000001_Node000007" title=" " alt="" coords="245,191,284,218,328,244,355,256,353,261,326,249,281,223,242,196"/>
+<area shape="rect" id="Node000009" href="$class_c_enemy_state_fall.html" title=" " alt="" coords="339,309,463,336"/>
+<area shape="poly" id="edge164_Node000008_Node000009" title=" " alt="" coords="294,334,338,328,339,334,295,340"/>
+<area shape="rect" id="Node000010" href="$class_c_enemy_state_move.html" title=" " alt="" coords="334,360,469,387"/>
+<area shape="poly" id="edge165_Node000008_Node000010" title=" " alt="" coords="295,356,333,362,333,367,294,362"/>
+<area shape="rect" id="Node000012" href="$class_c_player_state_action.html" title=" " alt="" coords="333,411,469,437"/>
+<area shape="poly" id="edge167_Node000011_Node000012" title=" " alt="" coords="242,500,281,473,326,447,353,435,355,440,328,452,284,478,245,505"/>
+<area shape="rect" id="Node000013" href="$class_c_player_state_damage.html" title=" " alt="" coords="327,461,475,488"/>
+<area shape="poly" id="edge168_Node000011_Node000013" title=" " alt="" coords="279,505,348,486,349,491,280,510"/>
+<area shape="rect" id="Node000014" href="$class_c_player_state_guard.html" title=" " alt="" coords="334,512,468,539"/>
+<area shape="poly" id="edge169_Node000011_Node000014" title=" " alt="" coords="292,523,333,523,333,528,292,528"/>
+<area shape="rect" id="Node000015" href="$class_c_player_state_jump.html" title=" " alt="" coords="336,563,467,589"/>
+<area shape="poly" id="edge170_Node000011_Node000015" title=" " alt="" coords="280,541,349,559,348,565,279,546"/>
+<area shape="rect" id="Node000016" href="$class_c_player_state_move.html" title=" " alt="" coords="336,613,467,640"/>
+<area shape="poly" id="edge171_Node000011_Node000016" title=" " alt="" coords="245,546,284,573,328,599,355,610,353,615,326,604,281,578,242,550"/>
+<area shape="rect" id="Node000017" href="$class_c_player_state_neutral.html" title=" " alt="" coords="330,664,472,691"/>
+<area shape="poly" id="edge172_Node000011_Node000017" title=" " alt="" coords="233,550,273,601,300,627,328,650,350,661,348,666,326,654,296,631,269,604,229,553"/>
+</map>

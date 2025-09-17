@@ -1,0 +1,7 @@
+<map id="CBullet" name="CBullet">
+<area shape="rect" id="Node000001" title=" " alt="" coords="14,155,78,181"/>
+<area shape="rect" id="Node000002" href="$class_c_billboard.html" title=" " alt="" coords="5,80,87,107"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="49,122,49,154,43,154,43,122"/>
+<area shape="rect" id="Node000003" href="$class_c_object.html" title=" " alt="" coords="11,5,81,32"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="49,48,49,80,43,80,43,48"/>
+</map>

@@ -1,0 +1,7 @@
+<map id="CPlayerStateNeutral" name="CPlayerStateNeutral">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,155,147,181"/>
+<area shape="rect" id="Node000002" href="$class_c_player_state_base.html" title=" " alt="" coords="11,80,141,107"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="79,122,79,154,73,154,73,122"/>
+<area shape="rect" id="Node000003" href="$class_c_state_base.html" title=" " alt="" coords="30,5,122,32"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="79,48,79,80,73,80,73,48"/>
+</map>

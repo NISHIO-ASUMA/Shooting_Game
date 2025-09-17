@@ -1,0 +1,21 @@
+<map id="CScene" name="CScene">
+<area shape="rect" id="Node000001" title=" " alt="" coords="432,5,501,32"/>
+<area shape="rect" id="Node000002" href="$class_c_camera_mode.html" title=" " alt="" coords="5,80,115,107"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="418,31,127,83,116,85,115,79,126,77,417,26"/>
+<area shape="rect" id="Node000003" href="$class_c_edit.html" title=" " alt="" coords="138,80,192,107"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="418,33,205,83,194,86,192,81,203,77,416,28"/>
+<area shape="rect" id="Node000004" href="$class_c_game.html" title=" " alt="" coords="216,80,282,107"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="419,39,284,83,282,78,417,34"/>
+<area shape="rect" id="Node000005" href="$class_c_lose_result.html" title=" " alt="" coords="306,80,403,107"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="436,43,376,82,373,77,433,38"/>
+<area shape="rect" id="Node000006" href="$class_c_ranking.html" title=" " alt="" coords="427,80,506,107"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="469,48,469,80,464,80,464,48"/>
+<area shape="rect" id="Node000007" href="$class_c_result.html" title=" " alt="" coords="531,80,600,107"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="498,39,550,77,547,82,494,44"/>
+<area shape="rect" id="Node000008" href="$class_c_title.html" title=" " alt="" coords="624,80,680,107"/>
+<area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="514,36,625,79,623,84,512,41"/>
+<area shape="rect" id="Node000009" href="$class_c_tutorial.html" title=" " alt="" coords="704,80,778,107"/>
+<area shape="poly" id="edge8_Node000001_Node000009" title=" " alt="" coords="517,30,704,80,703,85,515,36"/>
+<area shape="rect" id="Node000010" href="$class_c_uiedit.html" title=" " alt="" coords="802,80,867,107"/>
+<area shape="poly" id="edge9_Node000001_Node000010" title=" " alt="" coords="517,25,642,47,791,77,802,80,801,85,790,83,641,52,516,31"/>
+</map>

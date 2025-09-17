@@ -82,4 +82,27 @@ private:
 
 };
 
+//************************************
+// 振り下ろし攻撃状態管理クラスを定義
+//************************************
+class CBossArmAttack : public CBossStateBace
+{
+public:
+	// コンストラクタ・デストラクタ
+	CBossArmAttack();
+	~CBossArmAttack();
+
+	// ステートが始まるときに一度だけ呼ばれる関数
+	void OnStart(void);
+
+	// ステートが更新されるときに呼ばれる関数
+	void OnUpdate(void);
+
+	// ステートが終了する時に一度だけ呼ばれる関数
+	void OnExit(void);
+
+private:
+
+};
+
 #endif

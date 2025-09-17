@@ -24,6 +24,7 @@
 #include "gamemanager.h"
 #include "score.h"
 #include "signal.h"
+#include "handeffect.h"
 
 //****************************
 // 名前空間
@@ -451,7 +452,7 @@ bool CBoss::CollisionImpactScal(D3DXVECTOR3* pPos)
 		if (D3DXVec3Length(&diff) <= fHitRadius)
 		{
 			// メッシュ衝撃波を生成	
-			CMeshImpact::Create(D3DXVECTOR3(HandCenterPos.x, 5.0f, HandCenterPos.z), 200, 120.0f, 5.0f, 15.0f);
+			CMeshImpact::Create(D3DXVECTOR3(HandCenterPos.x, 5.0f, HandCenterPos.z), 100, 120.0f, 5.0f, 15.0f);
 			return true;
 
 		}
@@ -463,7 +464,7 @@ bool CBoss::CollisionImpactScal(D3DXVECTOR3* pPos)
 		if (D3DXVec3Length(&diff) <= fHitRadius)
 		{
 			// メッシュ衝撃波を生成	
-			CMeshImpact::Create(D3DXVECTOR3(HandCenterPos.x, 5.0f, HandCenterPos.z), 200, 120.0f, 5.0f, 15.0f);
+			CMeshImpact::Create(D3DXVECTOR3(HandCenterPos.x, 5.0f, HandCenterPos.z), 100, 120.0f, 5.0f, 15.0f);
 			return true;
 		}
 	}
@@ -472,7 +473,7 @@ bool CBoss::CollisionImpactScal(D3DXVECTOR3* pPos)
 	if (m_pMotion->CheckFrame(100, 100, TYPE_IMPACT) && !m_isdaeth)
 	{
 		// メッシュ衝撃波を生成	
-		CMeshImpact::Create(D3DXVECTOR3(HandCenterPos.x, 5.0f, HandCenterPos.z), 200, 120.0f, 5.0f, 15.0f);
+		CMeshImpact::Create(D3DXVECTOR3(HandCenterPos.x, 5.0f, HandCenterPos.z), 80, 120.0f, 5.0f, 15.0f);
 	}
 
 	// 当たらないとき
@@ -485,7 +486,6 @@ bool CBoss::CollisionCircle(D3DXVECTOR3* pPos,float fHitRadius)
 {
 	// 生成フラグを作成
 	static bool isCreate = false;
-	bool isCollision = false;
 
 	// サウンド取得
 	CSound* pSound = CManager::GetSound();
@@ -526,6 +526,9 @@ bool CBoss::CollisionCircle(D3DXVECTOR3* pPos,float fHitRadius)
 
 		// 座標に設定
 		D3DXVECTOR3 handPos(mtxWorld._41, mtxWorld._42, mtxWorld._43);
+
+		// エフェクト生成
+		CHandEffect::Create(handPos, D3DXCOLOR(1.0f,1.0f,1.0f,0.5f), VECTOR3_NULL, 60, 90.0f);
 
 		// プレイヤーとの距離差分
 		float fDisX = pPos->x - handPos.x;
@@ -617,7 +620,149 @@ bool CBoss::CollisionCircle(D3DXVECTOR3* pPos,float fHitRadius)
 	}
 #endif
 }
+//=========================================
+// 振り下ろし攻撃の当たり判定
+//=========================================
+bool CBoss::CollisionSwing(D3DXVECTOR3* pPos, float fHitRadius)
+{
+	// 生成フラグを作成
+	static bool isCreate = false;
 
+	// サウンド取得
+	CSound* pSound = CManager::GetSound();
+
+	// 一定フレーム内
+	if ((m_pMotion->CheckFrame(40, 40, TYPE_ARMRIGHTLEFT) || m_pMotion->CheckFrame(150, 150, TYPE_ARMRIGHTLEFT))&& !isCreate)
+	{
+		// 再生
+		pSound->PlaySound(CSound::SOUND_LABEL_ALART);
+
+		// 攻撃サインを生成
+		CSignal::Create();
+
+		// 生成フラグを有効化
+		isCreate = true;
+	}
+	else
+	{
+		// フレーム外ならリセット
+		isCreate = false;
+	}
+
+	//  一定フレーム内
+	if ((m_pMotion->CheckFrame(100, 160, TYPE_ARMRIGHTLEFT)) && m_isdaeth == false)
+	{
+		// 右手のパーツ取得
+		CModel* pRightHand = GetModelPartType(CModel::PARTTYPE_RIGHT_HAND);
+		if (!pRightHand) return false;
+
+		// 右手のワールドマトリックスを取得
+		D3DXMATRIX mtxWorld = pRightHand->GetMtxWorld();
+
+		// 座標に設定
+		D3DXVECTOR3 handPos(mtxWorld._41, mtxWorld._42, mtxWorld._43);
+
+		// プレイヤーとの距離差分
+		float fDisX = pPos->x - handPos.x;
+		float fDisY = pPos->y - handPos.y;
+		float fDisZ = pPos->z - handPos.z;
+
+		// 半径を設定
+		float fBossradius = 25.0f;
+
+		// 半径のサイズを計算
+		float fradX = fBossradius + fHitRadius;
+		float fradY = fBossradius + fHitRadius;
+		float fradZ = fBossradius + fHitRadius;
+
+		float fDissAll = (fDisX * fDisX) + (fDisY * fDisY) + (fDisZ * fDisZ);
+		float fRadAll = (fradX + fradY + fradZ) * (fradX + fradY + fradZ);
+
+		// 衝撃波
+		if ((m_pMotion->CheckFrame(130, 130, TYPE_ARMRIGHTLEFT)))
+		{
+			// メッシュ衝撃波を生成	
+			CMeshImpact::Create(D3DXVECTOR3(handPos.x, 5.0f, handPos.z), 100, 120.0f, 5.0f, 15.0f);
+		}
+
+		// 半径内に入っていたら
+		if (fDissAll <= fRadAll)
+		{			
+			// コリジョン判定を返す
+			return true;
+		}
+	}
+
+	if ((m_pMotion->CheckFrame(200, 200, TYPE_ARMRIGHTLEFT)))
+	{
+		// 向く
+		RollToPlayer();
+	}
+
+	//  一定フレーム内
+	if ((m_pMotion->CheckFrame(260, 310, TYPE_ARMRIGHTLEFT)) && m_isdaeth == false)
+	{
+		// 半径を設定
+		float fBossradius = 60.0f;
+
+		// 半径のサイズを計算
+		float fradX = fBossradius + fHitRadius;
+		float fradY = fBossradius + fHitRadius;
+		float fradZ = fBossradius + fHitRadius;
+		float fRadAll = (fradX + fradY + fradZ) * (fradX + fradY + fradZ);
+
+		// 右手のパーツ取得
+		CModel* pRightHand = GetModelPartType(CModel::PARTTYPE_RIGHT_HAND);
+		D3DXMATRIX mtxWorldR = pRightHand->GetMtxWorld();
+		D3DXVECTOR3 handPosR(mtxWorldR._41, mtxWorldR._42, mtxWorldR._43);
+
+		// 左手のパーツ取得
+		CModel* pLeftHand = GetModelPartType(CModel::PARTTYPE_LEFT_HAND);
+		D3DXMATRIX mtxWorldL = pLeftHand->GetMtxWorld();
+		D3DXVECTOR3 handPosL(mtxWorldL._41, mtxWorldL._42, mtxWorldL._43);
+
+		// 中央座標
+		D3DXVECTOR3 CenterPos = (handPosL + handPosR) * 0.5f;
+
+		// 衝撃波
+		if ((m_pMotion->CheckFrame(270, 270, TYPE_ARMRIGHTLEFT)))
+		{
+			// メッシュ衝撃波を生成	
+			CMeshImpact::Create(D3DXVECTOR3(CenterPos.x, 5.0f, CenterPos.z), 200, 120.0f, 5.0f, 15.0f);
+		}
+
+		if (pRightHand)
+		{
+			float fDisX = pPos->x - handPosR.x;
+			float fDisY = pPos->y - handPosR.y;
+			float fDisZ = pPos->z - handPosR.z;
+
+			float fDissAll = (fDisX * fDisX) + (fDisY * fDisY) + (fDisZ * fDisZ);
+
+			if (fDissAll <= fRadAll)
+			{
+				return true; // 右手に当たり
+			}
+		}
+
+		if (pLeftHand)
+		{
+			float fDisX = pPos->x - handPosL.x;
+			float fDisY = pPos->y - handPosL.y;
+			float fDisZ = pPos->z - handPosL.z;
+
+			float fDissAll = (fDisX * fDisX) + (fDisY * fDisY) + (fDisZ * fDisZ);
+
+			if (fDissAll <= fRadAll)
+			{
+				return true; // 左手に当たり
+			}
+		}
+	}
+
+	// 当たってないとき
+	return false;
+}
 //====================================
 // ヒット処理
 //====================================

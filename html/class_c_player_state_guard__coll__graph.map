@@ -1,0 +1,11 @@
+<map id="CPlayerStateGuard" name="CPlayerStateGuard">
+<area shape="rect" id="Node000001" title=" " alt="" coords="20,256,155,283"/>
+<area shape="rect" id="Node000002" href="$class_c_player_state_base.html" title=" " alt="" coords="23,180,152,207"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="90,222,90,256,85,256,85,222"/>
+<area shape="rect" id="Node000003" href="$class_c_state_base.html" title=" " alt="" coords="5,81,98,108"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="64,122,85,179,80,181,59,124"/>
+<area shape="rect" id="Node000004" href="$class_c_player.html" title=" " alt="" coords="121,81,190,108"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="140,123,98,181,94,178,136,119"/>
+<area shape="rect" id="Node000005" href="$class_c_object.html" title=" " alt="" coords="121,5,190,32"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="158,47,158,81,153,81,153,47"/>
+</map>

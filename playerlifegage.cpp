@@ -160,6 +160,7 @@ void CPlayerLifeGage::Update(void)
 //========================
 void CPlayerLifeGage::Draw(void)
 {
+#if 0
 	// デバイスの取得
 	LPDIRECT3DDEVICE9 pDevice = CManager::GetRenderer()->GetDevice();
 
@@ -171,6 +172,7 @@ void CPlayerLifeGage::Draw(void)
 
 	// 親クラスの描画
 	CObject2D::Draw();
+#endif
 }
 //========================
 // 生成処理

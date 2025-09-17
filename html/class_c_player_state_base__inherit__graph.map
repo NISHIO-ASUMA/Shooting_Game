@@ -1,0 +1,17 @@
+<map id="CPlayerStateBase" name="CPlayerStateBase">
+<area shape="rect" id="Node000001" title=" " alt="" coords="146,132,275,159"/>
+<area shape="rect" id="Node000003" href="$class_c_player_state_action.html" title=" " alt="" coords="329,5,465,32"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="231,119,271,80,322,42,346,30,348,35,324,46,274,84,235,123"/>
+<area shape="rect" id="Node000004" href="$class_c_player_state_damage.html" title=" " alt="" coords="323,56,471,83"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="253,123,322,92,353,81,355,86,324,97,255,128"/>
+<area shape="rect" id="Node000005" href="$class_c_player_state_guard.html" title=" " alt="" coords="330,107,464,133"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="290,132,329,126,330,132,291,137"/>
+<area shape="rect" id="Node000006" href="$class_c_player_state_jump.html" title=" " alt="" coords="332,157,463,184"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="291,154,332,159,331,164,290,159"/>
+<area shape="rect" id="Node000007" href="$class_c_player_state_move.html" title=" " alt="" coords="332,208,463,235"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="255,163,324,194,355,205,353,210,322,198,253,168"/>
+<area shape="rect" id="Node000008" href="$class_c_player_state_neutral.html" title=" " alt="" coords="326,259,468,285"/>
+<area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="235,168,274,207,324,244,348,256,346,260,322,249,271,211,231,172"/>
+<area shape="rect" id="Node000002" href="$class_c_state_base.html" title=" " alt="" coords="5,132,98,159"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="113,143,145,143,145,148,113,148"/>
+</map>

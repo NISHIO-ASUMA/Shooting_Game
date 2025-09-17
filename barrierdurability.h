@@ -39,9 +39,11 @@ public:
 	void SetIdx(int nValue) { m_nIdx = nValue; }
 	
 	/**
-	* @brief クラス
-	* @param m_nIdx 
-	* @return 戻り値
+	* @brief 静的関数
+	* @param pos 座標
+	* @param rot 角度
+	* @param pFilename ファイルパス
+	* @return クラスのポインタ
 	*/
 	static CBarrierDurability* Create(D3DXVECTOR3 pos,D3DXVECTOR3 rot,const char * pFilename);
 

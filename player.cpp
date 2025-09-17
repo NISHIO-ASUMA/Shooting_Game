@@ -1031,6 +1031,11 @@ void CPlayer::Collision(void)
 				isHit = pBoss->CollisionCircle(&m_pos, PLAYERINFO::HITRADIUS);
 				break;
 
+			case CBoss::TYPE_ARMRIGHTLEFT:
+				// 振り下ろし
+				isHit = pBoss->CollisionSwing(&m_pos, PLAYERINFO::HITRADIUS);
+				break;
+
 			default:
 				// デフォルト判定
 				isHit = pBoss->CollisionRightHand(&m_pos);

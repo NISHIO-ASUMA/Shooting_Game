@@ -1,0 +1,9 @@
+<map id="CPlayerLifeGage" name="CPlayerLifeGage">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,229,126,256"/>
+<area shape="rect" id="Node000002" href="$class_c_gage.html" title=" " alt="" coords="34,155,97,181"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="68,197,68,229,63,229,63,197"/>
+<area shape="rect" id="Node000003" href="$class_c_object2_d.html" title=" " alt="" coords="22,80,109,107"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="68,122,68,154,63,154,63,122"/>
+<area shape="rect" id="Node000004" href="$class_c_object.html" title=" " alt="" coords="31,5,100,32"/>
+<area shape="poly" id="edge3_Node000003_Node000004" title=" " alt="" coords="68,48,68,80,63,80,63,48"/>
+</map>

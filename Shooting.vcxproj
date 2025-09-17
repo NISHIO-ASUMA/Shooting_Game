@@ -188,6 +188,7 @@
     <ClCompile Include="gage.cpp" />
     <ClCompile Include="game.cpp" />
     <ClCompile Include="gamemanager.cpp" />
+    <ClCompile Include="handeffect.cpp" />
     <ClCompile Include="input.cpp" />
     <ClCompile Include="item.cpp" />
     <ClCompile Include="itemmanager.cpp" />
@@ -300,6 +301,7 @@
     <ClInclude Include="gage.h" />
     <ClInclude Include="game.h" />
     <ClInclude Include="gamemanager.h" />
+    <ClInclude Include="handeffect.h" />
     <ClInclude Include="input.h" />
     <ClInclude Include="item.h" />
     <ClInclude Include="itemmanager.h" />

@@ -84,7 +84,7 @@ void CBossStateNeutral::OnUpdate(void)
 	if (m_pBoss->GetCoolTime() <= 0)
 	{
 		// ランダムでパターンを決定
-		int attackType = rand() % 5;
+		int attackType = rand() % 7;
 
 		switch (attackType)
 		{
@@ -100,7 +100,9 @@ void CBossStateNeutral::OnUpdate(void)
 			m_pBoss->ChangeState(new CBosscircleAttack(), ID_ACTION);
 			return;
 
-
+		case CBoss::TYPE_ARMRIGHTLEFT: // 振り下ろし
+			m_pBoss->ChangeState(new CBossArmAttack(), ID_ACTION);
+			return;
 		}
 	}
 	else

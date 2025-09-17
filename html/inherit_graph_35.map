@@ -1,0 +1,21 @@
+<map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
+<area shape="rect" id="Node000000" href="$class_c_scene.html" title=" " alt="" coords="5,208,74,235"/>
+<area shape="rect" id="Node000001" href="$class_c_camera_mode.html" title=" " alt="" coords="122,5,231,32"/>
+<area shape="poly" id="edge147_Node000000_Node000001" title=" " alt="" coords="45,192,70,119,92,78,120,42,136,30,139,35,124,46,96,81,75,121,50,193"/>
+<area shape="rect" id="Node000002" href="$class_c_edit.html" title=" " alt="" coords="149,56,204,83"/>
+<area shape="poly" id="edge148_Node000000_Node000002" title=" " alt="" coords="51,192,78,143,97,116,120,93,147,76,150,81,123,97,102,120,83,145,55,195"/>
+<area shape="rect" id="Node000003" href="$class_c_game.html" title=" " alt="" coords="143,107,210,133"/>
+<area shape="poly" id="edge149_Node000000_Node000003" title=" " alt="" coords="62,195,88,168,120,143,141,131,144,136,123,148,92,172,65,198"/>
+<area shape="rect" id="Node000004" href="$class_c_lose_result.html" title=" " alt="" coords="128,157,225,184"/>
+<area shape="poly" id="edge150_Node000000_Node000004" title=" " alt="" coords="87,201,137,182,139,187,89,206"/>
+<area shape="rect" id="Node000005" href="$class_c_ranking.html" title=" " alt="" coords="137,208,216,235"/>
+<area shape="poly" id="edge151_Node000000_Node000005" title=" " alt="" coords="89,219,136,219,136,224,89,224"/>
+<area shape="rect" id="Node000006" href="$class_c_result.html" title=" " alt="" coords="142,259,211,285"/>
+<area shape="poly" id="edge152_Node000000_Node000006" title=" " alt="" coords="89,237,142,257,140,262,87,242"/>
+<area shape="rect" id="Node000007" href="$class_c_title.html" title=" " alt="" coords="148,309,204,336"/>
+<area shape="poly" id="edge153_Node000000_Node000007" title=" " alt="" coords="65,244,92,270,123,295,149,309,146,314,120,300,88,274,62,248"/>
+<area shape="rect" id="Node000008" href="$class_c_tutorial.html" title=" " alt="" coords="139,360,214,387"/>
+<area shape="poly" id="edge154_Node000000_Node000008" title=" " alt="" coords="55,248,83,297,102,323,123,346,140,357,137,362,120,350,97,326,78,300,51,250"/>
+<area shape="rect" id="Node000009" href="$class_c_uiedit.html" title=" " alt="" coords="144,411,209,437"/>
+<area shape="poly" id="edge155_Node000000_Node000009" title=" " alt="" coords="50,249,75,322,96,361,123,397,145,411,142,416,120,401,92,364,70,324,45,251"/>
+</map>

@@ -18,7 +18,6 @@
 #include "gamemanager.h"
 #include "titleplayer.h"
 #include "template.h"
-
 #include <fstream>
 #include <iostream>
 #include <sstream>
@@ -359,9 +358,8 @@ void CCamera::SetCamera(void)
 	// 描画開始
 	CDebugproc::Draw(0, 20);
 
-	CDebugproc::Print("Camera : Rot [ %.2f, %.2f, %.2f ]\n", m_pCamera.rot.x, m_pCamera.rot.y, m_pCamera.rot.z);
-	CDebugproc::Draw(0, 40);
-
+	//CDebugproc::Print("Camera : Rot [ %.2f, %.2f, %.2f ]\n", m_pCamera.rot.x, m_pCamera.rot.y, m_pCamera.rot.z);
+	//CDebugproc::Draw(0, 40);
 
 	CDebugproc::Print("アニメーションキー番号 [ %d ]", m_nAnimNowKey);
 	CDebugproc::Draw(0, 500);
@@ -720,7 +718,6 @@ void CCamera::ShakeCamera(int WaveTime)
 
 	m_isShake = true;
 	m_nShakeTime = WaveTime;
-	// m_isStopCurrentAnim = true;
 }
 //=================================
 // イベントカメラを開始する関数
@@ -1193,6 +1190,23 @@ void CCamera::UpdateAnimCamera(void)
 
 	// アニメーションカウントを加算
 	m_pCamera.nCntAnim++;
+
+	// アニメーションスキップ
+	if (CManager::GetInputKeyboard()->GetTrigger(DIK_RETURN) && CGameManager::GetBoss()->GetIsSet() && m_nFileIdx == 0)
+	{
+		// モード変更
+		m_pCamera.nMode = MODE_LOCKON;
+
+		m_nAnimNowKey = 0;
+		m_pCamera.nCntAnim = 0;
+
+		// 終了判定
+		m_isAnimTime = true;
+		m_isLoad = false;
+
+		// 処理終了
+		return;
+	}
 }
 //=============================
 // 振動更新関数

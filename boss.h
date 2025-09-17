@@ -38,6 +38,7 @@ public:
 		TYPE_IMPACT,		// í@Ç´Ç¬ÇØè’åÇîg
 		TYPE_RUBBLE,		// ä¢‚IçUåÇ
 		TYPE_CIRCLE,		// ì„Ç¨ï•Ç¢
+		TYPE_ARMRIGHTLEFT,	// êUÇËâ∫ÇÎÇµçUåÇ
 		TYPE_MAX
 	};
 
@@ -53,6 +54,8 @@ public:
 	bool CollisionRightHand(D3DXVECTOR3* pPos);
 	bool CollisionImpactScal(D3DXVECTOR3* pPos);
 	bool CollisionCircle(D3DXVECTOR3* pPos, float fHitRadius);
+	bool CollisionSwing(D3DXVECTOR3* pPos, float fHitRadius);
+
 	void Hit(int nDamage,D3DXVECTOR3 HitPos);
 	void ChangeState(CBossStateBace* pNewState, int Id);
 	void RollToPlayer(void);

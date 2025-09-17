@@ -232,7 +232,7 @@ void CObject::DrawAll(void)
 		}
 	}
 
-	//// デバッグフォント
-	//CDebugproc::Print("現在のオブジェクト数 : %d", m_nNumAll);
-	//CDebugproc::Draw(0, 120);
+	// デバッグフォント
+	CDebugproc::Print("現在のオブジェクト数 : %d", m_nNumAll);
+	CDebugproc::Draw(0, 60);
 }

@@ -50,6 +50,7 @@ private:
 	float m_fInRadius;
 	float m_fOutRadius;
 	int m_nLife;
+	float m_DecAlpha;
 	float m_fSpeed;
 };
 
