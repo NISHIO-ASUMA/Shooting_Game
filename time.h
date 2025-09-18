@@ -31,30 +31,35 @@ public:
 	void Draw(void);
 	void Save(void);
 
-	// セッター
-	void SetTexture(void);
-
 	// ゲッター
 	int GetAllTime(void) { return m_nAllTime; }
-	int GetcurrentTime(void) { return m_nCurrentTime; }
+	int GetcurrentTime(void) { return m_nSecond; }
 	D3DXVECTOR3 GetPos(void) { return m_pos; }
 
 	// 静的メンバ関数
 	static CTime* Create(D3DXVECTOR3 pos, float fWidth, float fHeight);
 
 private:
-	static inline constexpr int DIGIT_TIME = 3;	// 桁数
+	// メンバ関数
+	void Second(void);
+	void Minute(void);
+
+	static inline constexpr int DIGIT_TIME = 2;	// 桁数
 	static inline constexpr int NUMTIME = 120;	// 最大タイマー
 	static inline constexpr int CARVETIME = 60;	// カウント上限
 	static inline constexpr int DIVIDE = 10;	// 桁分割の値
 
-	int m_nCurrentTime;		// 現在時間
-	int m_nAllTime;			// 最大時間
-	int m_nDecTime;			// 減った時間量
-	int m_nIdxTexture;			// テクスチャインデックス
+	int m_nAllTime;		// 全体の時間
+	int m_nSecond;		// 現在の時間 ( 秒 )
+	int m_nMinute;		// 現在時間 (分 )
+	int m_nDecTime;		// 減った時間量
+	int m_nCount;		// 時間カウンター
+	int m_nIdxTexture;		// テクスチャインデックス
 	float m_fHeight, m_fWidth;	// 横幅,高さ
 
-	CNumber* m_pNumber[DIGIT_TIME];	// ナンバー型の静的変数
+	CNumber* m_pNumberMinute[DIGIT_TIME];	// 分
+	CNumber* m_pNumberSecond[DIGIT_TIME];	// 秒
+
 	D3DXVECTOR3 m_pos;		// 座標
 };
 #endif

@@ -263,7 +263,9 @@ void CTitleManager::Update(void)
 		switch (m_nIdx)
 		{
 		case CTitleUi::MENU_GAME:		// ゲームモード
-			if (pFade != nullptr) pFade->SetFade(new CGame());	// ゲームシーンに遷移
+			if (pFade != nullptr) 
+				pFade->SetFade(new CGame());	// ゲームシーンに遷移
+				pCamera->SetAnim(false);		// アニメーション起動
 			break;
 
 		case CTitleUi::MENU_TUTORIAL:	// チュートリアルモード

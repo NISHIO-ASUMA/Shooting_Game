@@ -56,7 +56,6 @@ public:
 private:
 	static constexpr int NUM_RESULTSCORE = 5; // 桁数
 	static constexpr int NUM_RESULTDIGIT = 10; // 表示する分割桁数の値
-	static constexpr int NUM_SAVESCORE = 5;
 
 	int m_nScore;			// スコア保持用
 	int m_nDestScore;		// 目的のスコア

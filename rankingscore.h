@@ -40,10 +40,13 @@ public:
 
 	// 静的メンバ関数
 	static CRankingScore* Create(D3DXVECTOR3 pos, float fWidth, float fHeight);
+	static void SetRankInScoreIdx(int nIdxScore) { m_nNewRankingScore = nIdxScore; }
 
 private:
 	static constexpr int RANKSCOREDIGIT = 5;
 	static constexpr int RANKING_MAX = 5;    // ランキング数
+
+	static int m_nNewRankingScore;	// 順位に入っているかどうか
 
 	int m_nIdxTex;				// テクスチャインデックス
 	int m_aRankScore[RANKING_MAX];	// スコア配列

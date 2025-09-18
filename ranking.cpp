@@ -106,6 +106,7 @@ void CRanking::Update(void)
 		CManager::GetCamera()->SetFinishRotation(false);
 		CManager::GetCamera()->SetIsRotation(false);
 		CManager::GetCamera()->SetKey(false);
+		CManager::GetCamera()->SetAnim(false);
 
 		return;
 	}

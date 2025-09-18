@@ -263,16 +263,16 @@ void CBoss::Update(void)
 	//==========================
 	// 一個目の弱点パーツを取得
 	//==========================
-	CModel* pWeakHead = GetModelPartType(CModel::PARTTYPE_HEAD);
+	CModel* pWeakHead = GetModelPartType(CModel::PARTTYPE_RIGHT_HAND);
 
 	// 弱点パーツのワールド座標を取得
 	D3DXMATRIX mtx = pWeakHead->GetMtxWorld();
 
 	// 弱点座標を設定
-	D3DXVECTOR3 weakPos(mtx._41, mtx._42 + 40.0f, mtx._43);
+	D3DXVECTOR3 weakPos(mtx._41, mtx._42, mtx._43);
 
 	// エフェクト
-	CEffect::Create(weakPos, COLOR_RED, VECTOR3_NULL, 50, 60.0f);
+	// CEffect::Create(weakPos, COLOR_RED, VECTOR3_NULL, 50, 60.0f);
 
 	// モーション全体更新
 	m_pMotion->Update(m_pModel, NUMMODELS);
@@ -356,19 +356,25 @@ bool CBoss::CollisionRightHand(D3DXVECTOR3* pPos)
 		// フレーム外ならリセット
 		isCreate = false;
 	}
+	// モデルのパーツ取得
+	CModel* pRightHand = GetModelPartType(CModel::PARTTYPE_RIGHT_HAND); // 右手
+
+	// nullだったら
+	if (!pRightHand) return false;
+
+	// 右手のワールドマトリックスを取得
+	D3DXMATRIX mtxWorld = pRightHand->GetMtxWorld();
+	D3DXVECTOR3 Pos = D3DXVECTOR3(mtxWorld._41, mtxWorld._42, mtxWorld._43);
+
+	if (m_pMotion->CheckFrame(50, 130, TYPE_ACTION))
+	{
+		// エフェクト生成 TODO : ここの座標を修正する
+		CEffect::Create(D3DXVECTOR3(Pos.x - 180.0f, Pos.y, Pos.z - 30.0f), D3DCOLOR_RGBA(65, 105, 225, 255), VECTOR3_NULL, 50, 100.0f);
+	}
 
 	// 一定フレーム内
 	if (m_pMotion->CheckFrame(100, 130, TYPE_ACTION) && m_isdaeth == false)
 	{
-		// モデルのパーツ取得
-		CModel* pRightHand = GetModelPartType(CModel::PARTTYPE_RIGHT_HAND); // 右手
-
-		// nullだったら
-		if (!pRightHand) return false;
-
-		// 右手のワールドマトリックスを取得
-		D3DXMATRIX mtxWorld = pRightHand->GetMtxWorld();
-
 		// 差分計算
 		D3DXVECTOR3 diff = *pPos - D3DXVECTOR3(mtxWorld._41, mtxWorld._42, mtxWorld._43);
 
@@ -439,6 +445,10 @@ bool CBoss::CollisionImpactScal(D3DXVECTOR3* pPos)
 	// 一定フレーム内
 	if (m_pMotion->CheckFrame(90, 120, TYPE_IMPACT) && !m_isdaeth)
 	{
+		// パーティクル生成
+		CParticle::Create(D3DXVECTOR3(posRight.x, posRight.y + 20.0f, posRight.z - 30.0f), D3DCOLOR_RGBA(250, 250, 210, 255), 70, 900, 900, 50);
+		CParticle::Create(D3DXVECTOR3(posLeft.x, posLeft.y + 20.0f, posLeft.z + 15.0f), D3DCOLOR_RGBA(250, 250, 210, 255), 70, 900, 900, 50);
+
 		// プレイヤーとの距離を測定
 		const float fHitRadius = 20.0f * BOSSINFO::HITRANGE; // 判定半径
 
@@ -662,6 +672,10 @@ bool CBoss::CollisionSwing(D3DXVECTOR3* pPos, float fHitRadius)
 		// 座標に設定
 		D3DXVECTOR3 handPos(mtxWorld._41, mtxWorld._42, mtxWorld._43);
 
+		// パーティクル生成
+		// CParticle::Create(D3DXVECTOR3(handPos.x, handPos.y + 20.0f, handPos.z - 30.0f), D3DCOLOR_RGBA(0, 255,127,255), 70, 900, 900, 50);
+		CEffect::Create(D3DXVECTOR3(handPos.x, handPos.y, handPos.z - 30.0f), D3DCOLOR_RGBA(0, 255, 127, 255), VECTOR3_NULL,50,100.0f);
+
 		// プレイヤーとの距離差分
 		float fDisX = pPos->x - handPos.x;
 		float fDisY = pPos->y - handPos.y;
@@ -700,10 +714,10 @@ bool CBoss::CollisionSwing(D3DXVECTOR3* pPos, float fHitRadius)
 	}
 
 	//  一定フレーム内
-	if ((m_pMotion->CheckFrame(260, 310, TYPE_ARMRIGHTLEFT)) && m_isdaeth == false)
+	if ((m_pMotion->CheckFrame(230, 310, TYPE_ARMRIGHTLEFT)) && m_isdaeth == false)
 	{
 		// 半径を設定
-		float fBossradius = 60.0f;
+		float fBossradius = 55.0f;
 
 		// 半径のサイズを計算
 		float fradX = fBossradius + fHitRadius;
@@ -723,6 +737,10 @@ bool CBoss::CollisionSwing(D3DXVECTOR3* pPos, float fHitRadius)
 
 		// 中央座標
 		D3DXVECTOR3 CenterPos = (handPosL + handPosR) * 0.5f;
+
+		// エフェクト生成
+		CEffect::Create(D3DXVECTOR3(handPosR.x, handPosR.y, handPosR.z - 30.0f), D3DCOLOR_RGBA(0, 255, 127, 255), VECTOR3_NULL, 50, 100.0f);
+		CEffect::Create(D3DXVECTOR3(handPosL.x, handPosL.y, handPosL.z), D3DCOLOR_RGBA(0, 255, 127, 255), VECTOR3_NULL, 50, 100.0f);
 
 		// 衝撃波
 		if ((m_pMotion->CheckFrame(270, 270, TYPE_ARMRIGHTLEFT)))

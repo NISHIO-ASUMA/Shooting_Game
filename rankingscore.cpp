@@ -14,6 +14,11 @@
 #include "number.h"
 #include <algorithm>
 
+//******************************
+// 静的メンバ変数
+//******************************
+int CRankingScore::m_nNewRankingScore = -1; // 初期化
+
 //===============================
 // オーバーロードコンストラクタ
 //===============================
@@ -97,11 +102,11 @@ HRESULT CRankingScore::Init(void)
 
 			// サイズ設定
 			m_apNumber[nRank][nDigit]->SetSize(fTexPos, m_fHeight);
+
+			// テクスチャ設定
+			m_apNumber[nRank][nDigit]->SetTexture("score001.png");
 		}
 	}
-
-	// テクスチャセット
-	SetTexture();
 
 	return S_OK;
 }
@@ -143,7 +148,15 @@ void CRankingScore::Update(void)
 			int num = score % 10;  // 1桁取り出す
 			score /= 10;
 
+			// 桁更新
 			m_apNumber[rank][digit]->SetDigit(num);
+
+			// 該当スコアがランクインしてたら
+			if (rank == m_nNewRankingScore)
+			{
+				// 点滅処理を実行
+				// m_apNumber[rank][digit]->SetFlash(5,10,D3DXCOLOR(0.0f, 1.0f, 0.0f, 1.0f));
+			}
 		}
 	}
 }
@@ -163,9 +176,6 @@ void CRankingScore::Draw(void)
 	{
 		for (int nCnt = 0; nCnt < RANKSCOREDIGIT; nCnt++)
 		{
-			// テクスチャセット
-			pDevice->SetTexture(0, pTexture->GetAddress(m_nIdxTex));
-
 			// ナンバー描画
 			m_apNumber[nRankData][nCnt]->Draw();
 		}
@@ -176,10 +186,12 @@ void CRankingScore::Draw(void)
 //===============================
 void CRankingScore::Load(void)
 {
+	// 開くファイル設定
 	std::ifstream LoadFile("data\\Loader\\RankScore.txt");
 
 	if (LoadFile.is_open())
 	{
+		// スコアを5件分読み込む
 		for (int nCnt = 0; nCnt < RANKING_MAX; nCnt++)
 		{
 			if (!(LoadFile >> m_aRankScore[nCnt]))
@@ -190,9 +202,6 @@ void CRankingScore::Load(void)
 
 		// ファイルを閉じる
 		LoadFile.close();
-
-		// 降順にソート
-		std::sort(m_aRankScore, m_aRankScore + RANKING_MAX, std::greater<int>());
 	}
 	else
 	{
@@ -208,5 +217,5 @@ void CRankingScore::SetTexture(void)
 	CTexture* pTexture = CManager::GetTexture();
 
 	// テクスチャ割り当て
-	m_nIdxTex = pTexture->Register("data\\TEXTURE\\ResultScore.png");
+	m_nIdxTex = pTexture->Register("data\\TEXTURE\\num001.png");
 }

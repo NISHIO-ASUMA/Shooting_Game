@@ -17,6 +17,7 @@
 #include "playerlifegage.h"
 #include "bosslifegage.h"
 #include "charge.h"
+#include "ui.h"
 
 #include <fstream>
 #include <iostream>
@@ -241,6 +242,11 @@ void CSceneLoader::SplitLoad(int nIdx)
 				{
 					// レーザーゲージ
 					CCharge::Create(pos, width, height, category);
+				}
+				else if (createType == "BACEUI")
+				{
+					// UI生成
+					// CUi::Create();
 				}
 			}
 		}

@@ -1131,6 +1131,9 @@ void CCamera::UpdateAnimCamera(void)
 
 		// 振動開始
 		m_nAnimShakeFlame = 120;
+
+		// パッドの振動
+		CManager::GetJoyPad()->SetVibration(58000, 58000, 300);
 	}
 
 	// 振動処理

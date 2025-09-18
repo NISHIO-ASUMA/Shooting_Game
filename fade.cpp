@@ -164,6 +164,9 @@ void CFade::Draw(void)
 	// 頂点フォーマットの設定
 	pDevice->SetFVF(FVF_VERTEX_2D);
 
+	// テクスチャを絶対に消す
+	pDevice->SetTexture(0, NULL);
+
 	// ポリゴンの描画
 	pDevice->DrawPrimitive(D3DPT_TRIANGLESTRIP, 0, 2);
 }

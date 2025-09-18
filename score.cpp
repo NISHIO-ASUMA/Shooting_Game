@@ -179,7 +179,7 @@ void CScore::AddScore(int nValue)
 	m_nScore += nValue;
 }
 //==========================================
-// スコア減算処理 ( TODO : どう減らすか少し考える )
+// スコア減算処理
 //==========================================
 void CScore::DecScore(void)
 {

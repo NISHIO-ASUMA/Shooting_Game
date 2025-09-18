@@ -11,6 +11,7 @@
 #include "number.h"
 #include "manager.h"
 #include "template.h"
+#include "texture.h"
 
 //=================================
 // コンストラクタ
@@ -27,6 +28,7 @@ CNumber::CNumber()
 	m_pVtxBuff = nullptr;
 	m_col = COLOR_WHITE;
 	n_nColorCount = NULL;
+	m_nIdxTexture = -1;
 }
 //=================================
 // デストラクタ
@@ -122,11 +124,29 @@ void CNumber::Draw(void)
 	// 頂点フォーマットの設定
 	pDevice->SetFVF(FVF_VERTEX_2D);
 
+	// テクスチャ戻す
+	pDevice->SetTexture(0, CManager::GetTexture()->GetAddress(m_nIdxTexture));
+
 	// ポリゴンの描画
 	pDevice->DrawPrimitive(D3DPT_TRIANGLESTRIP, 0, 2);
+}
+//==================================
+// テクスチャ処理
+//==================================
+void CNumber::SetTexture(const char* pTexName)
+{
+	// テクスチャポインタ取得
+	CTexture* pTexture = CManager::GetTexture();
+	if (pTexture == nullptr) return;
 
-	// テクスチャ戻す
-	pDevice->SetTexture(0, NULL);
+	// パス設定
+	std::string TexPath = "data\\TEXTURE\\";
+
+	// パス連結
+	TexPath += pTexName;
+
+	// テクスチャ割り当て
+	m_nIdxTexture = pTexture->Register(TexPath.c_str());
 }
 //==================================
 // サイズ処理

@@ -12,9 +12,12 @@
 #include "manager.h"
 
 //**********************
-// 定数宣言
+// 名前空間
 //**********************
-constexpr float SHADOW_SIZE = 30.0f; // 影の大きさ
+namespace SHADOWINFO
+{
+	constexpr float SHADOW_SIZE = 30.0f; // 影の大きさ
+}
 
 //=================================
 // オーバーロードコンストラクタ
@@ -45,7 +48,7 @@ CShadow* CShadow::Create(D3DXVECTOR3 pos, D3DXVECTOR3 rot)
 	// オブジェクト設定
 	pShadow->SetPos(pos);
 	pShadow->SetRot(rot);
-	pShadow->SetSize(SHADOW_SIZE, SHADOW_SIZE);
+	pShadow->SetSize(SHADOWINFO::SHADOW_SIZE, SHADOWINFO::SHADOW_SIZE);
 	pShadow->SetTexture();
 
 	// 初期化失敗時

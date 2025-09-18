@@ -11,15 +11,17 @@
 #include "resultscore.h"
 #include "manager.h"
 #include "texture.h"
+#include "rankingscore.h"
+#include <algorithm>
 
 //**********************
 // 名前空間
 //**********************
 namespace RESULTSCOREINFO
 {
-	constexpr int MAXSCORE = 50000; // 最大スコア
+	constexpr int MAXSCORE = 40000; // 最大スコア
 	constexpr float MAX_VALUESCORE = 120.0f; // 計算割合
-	const char* FILENAME = "data\\Loader\\RankScore.txt";
+	const char* FILENAME = "data\\Loader\\RankScore.txt"; // ファイルパス
 };
 
 //================================
@@ -101,14 +103,15 @@ HRESULT CResultScore::Init(void)
 
 		// 座標設定
 		m_apNumber[nCnt]->SetPos(m_pos);
+
 		// 初期化処理
 		m_apNumber[nCnt]->Init(D3DXVECTOR3(m_pos.x - (fTexPos * 2.0f * nCnt), m_pos.y, 0.0f), fTexPos, m_fHeight);
+
 		// ナンバー変数のサイズ
 		m_apNumber[nCnt]->SetSize(fTexPos, m_fHeight);
-	}
 
-	// テクスチャセット
-	SetTexture();
+		m_apNumber[nCnt]->SetTexture("score001.png");
+	}
 
 	m_fScale = 20.0f;		// 最初は大きく
 	m_fTargetScale = 1.0f;	// 通常サイズ
@@ -159,9 +162,9 @@ void CResultScore::Update(void)
 	}	
 	
 	// 座標のイージング補間
-	float ease = 0.2f; // 補間の値
-	m_pos.x += (m_DestPos.x - m_pos.x) * ease;
-	m_pos.y += (m_DestPos.y - m_pos.y) * ease;
+	float fEase = 0.2f; // 補間の値
+	m_pos.x += (m_DestPos.x - m_pos.x) * fEase;
+	m_pos.y += (m_DestPos.y - m_pos.y) * fEase;
 
 	// スコア種類によって計算を変える
 	switch (m_nType)
@@ -290,9 +293,6 @@ void CResultScore::Draw(void)
 	// 使っている桁数分の描画
 	for (int nCnt = 0; nCnt < NUM_RESULTSCORE; nCnt++)
 	{
-		// テクスチャセット
-		pDevice->SetTexture(0, pTexture->GetAddress(m_nIdxTexture));
-
 		// ナンバー描画
 		m_apNumber[nCnt]->Draw();
 	}
@@ -303,7 +303,7 @@ void CResultScore::Draw(void)
 void CResultScore::Save(void)
 {
 	// 最大5件
-	int nScores[NUM_SAVESCORE] = { NULL };
+	int nScores[NUM_RESULTSCORE] = { NULL };
 
 	// 読み込み件数
 	int nCnt = NULL;
@@ -315,7 +315,7 @@ void CResultScore::Save(void)
 	if (inFile.is_open())
 	{
 		// 5件分読み込む
-		while (nCnt < NUM_SAVESCORE && inFile >> nScores[nCnt])
+		while (nCnt < NUM_RESULTSCORE && inFile >> nScores[nCnt])
 		{
 			nCnt++;
 		}
@@ -325,9 +325,8 @@ void CResultScore::Save(void)
 	}
 
 	// 今回のスコアをランキングに入れるか判定
-	if (nCnt < NUM_SAVESCORE)
+	if (nCnt < NUM_RESULTSCORE)
 	{
-		// まだ枠が埋まっていないなら追加
 		nScores[nCnt++] = m_nLastScore;
 	}
 	else
@@ -336,7 +335,7 @@ void CResultScore::Save(void)
 		int nMinData = 0;
 
 		// 1番目から
-		for (int nScoreData = 1; nScoreData < NUM_SAVESCORE; nScoreData++)
+		for (int nScoreData = 1; nScoreData < NUM_RESULTSCORE; nScoreData++)
 		{
 			// スコアの値が低いなら
 			if (nScores[nScoreData] < nScores[nMinData])
@@ -349,6 +348,7 @@ void CResultScore::Save(void)
 		// 新スコアが最小値より大きければ差し替え
 		if (m_nLastScore > nScores[nMinData])
 		{
+			// スコアをセットする
 			nScores[nMinData] = m_nLastScore;
 		}
 	}
@@ -359,8 +359,11 @@ void CResultScore::Save(void)
 	// 開けたら
 	if (outFile.is_open())
 	{
-		// 書き出す分回す
-		for (int nCntScore = 0; nCntScore < NUM_SAVESCORE; nCntScore++)
+		// 先にソートを実行
+		std::sort(nScores, nScores + NUM_RESULTSCORE, std::greater<int>());
+
+		// ソート後に書き出す
+		for (int nCntScore = 0; nCntScore < NUM_RESULTSCORE; nCntScore++)
 		{
 			outFile << nScores[nCntScore] << std::endl;
 		}
@@ -373,6 +376,18 @@ void CResultScore::Save(void)
 		// 例外メッセージ
 		MessageBox(NULL, "RankScore.txt が開けませんでした", "エラー", MB_OK);
 	}
+
+	for (int nCntSave = 0; nCntSave < NUM_RESULTSCORE; nCntSave++)
+	{
+		// 該当スコアと一致していたら
+		if (nScores[nCntSave] == m_nLastScore)
+		{
+			// 最終的な順位を記録
+			CRankingScore::SetRankInScoreIdx(nCntSave);
+
+			break;
+		}
+	}
 }
 //================================
 // テクスチャ処理
@@ -383,7 +398,7 @@ void CResultScore::SetTexture(void)
 	CTexture* pTexture = CManager::GetTexture();
 
 	// テクスチャ割り当て
-	m_nIdxTexture = pTexture->Register("data\\TEXTURE\\ResultScore.png");
+	m_nIdxTexture = pTexture->Register("data\\TEXTURE\\num001.png");
 }
 //================================
 // クリアタイムのスコアを計算
@@ -393,7 +408,7 @@ int CResultScore::MathTimescore(void)
 	// 読み込んだ値
 	float fValue = static_cast<float>(m_nTimeScore);
 
-	// もし0なら
+	// もし0なら ( 最小クリアタイム時 )
 	if (m_nTimeScore == 0)
 	{
 		// 最大値を返す
@@ -403,7 +418,7 @@ int CResultScore::MathTimescore(void)
 	// 比率を算出
 	float fRatio = 1.0f - (fValue / RESULTSCOREINFO::MAX_VALUESCORE);
 
-	// 範囲補正
+	// 範囲内で割合を算出
 	if (fRatio < 0.0f) fRatio = 0.0f;
 	if (fRatio > 1.0f) fRatio = 1.0f;
 

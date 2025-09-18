@@ -98,7 +98,7 @@ void CEffect::Update(void)
 	Effectpos += m_move;
 
 	// 半径をデクリメント
-	m_fRadius -= 0.01f;
+	m_fRadius -= 0.005f;
 
 	// α値を減少
 	col.a -= 0.005f;

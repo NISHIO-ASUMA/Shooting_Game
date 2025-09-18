@@ -23,6 +23,7 @@ public:
 	void Uninit(void);
 	void Update(void);
 	void Draw(void);
+	void SetTexture(const char * pTexName);
 
 	// セッター
 	void SetPos(D3DXVECTOR3 pos) { m_pos = pos;}
@@ -45,6 +46,7 @@ private:
 	float m_fWidth, m_fHeight;		// 横幅,高さ
 	float m_TexU, m_TexU1,m_TexV;	// テクスチャ座標
 	int n_nColorCount;
+	int m_nIdxTexture;				// テクスチャインデックス
 };
 
 #endif
