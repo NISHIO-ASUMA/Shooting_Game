@@ -23,6 +23,7 @@
 #include <sstream>
 #include <string>
 #include <iomanip>
+#include "moveui.h"
 
 //**********************
 // 定数宣言
@@ -259,17 +260,18 @@ void CCamera::Update(void)
 		{
 			// 読み込む
 			Load(m_nFileIdx);
-		}
 
-		if (!m_isStopCurrentAnim)
-		{
-			// アニメーション開始
-			UpdateAnimCamera();
+			// アニメーション時のUIセット
+			CMoveUi::Create(D3DXVECTOR3(SCREEN_WIDTH, 30.0f, 0.0f), "data\\TEXTURE\\CameraAnimBox.png", CMoveUi::MOVETYPE_RIGHT);
+			CMoveUi::Create(D3DXVECTOR3(0.0f, 690.0f, 0.0f), "data\\TEXTURE\\CameraAnimBox.png", CMoveUi::MOVETYPE_LEFT);
 		}
+		// アニメーション開始
+		UpdateAnimCamera();
 	}
 
 	if (m_isShake)
 	{
+		// 振動更新
 		UpdateShake();
 	}
 

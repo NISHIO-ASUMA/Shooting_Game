@@ -60,7 +60,6 @@ public:
 	void ChangeState(CBossStateBace* pNewState, int Id);
 	void RollToPlayer(void);
 	void DecCoolTime(void) { if (m_nCoolTime > 0) m_nCoolTime--; }
-	void SaveHp(void);
 
 	// セッター
 	void SetCoolTime(int nCooltime) { m_nCoolTime = nCooltime; }
@@ -86,7 +85,7 @@ public:
 private:
 
 	static constexpr int NUMMODELS = 21; // 使うモデル数
-	static constexpr float WEEKPOINTSIZE = 100.0f;
+	static constexpr float WEEKPOINTSIZE = 100.0f; // 弱点サイズ
 
 	D3DXVECTOR3 m_pos;
 	D3DXVECTOR3 m_rot;
@@ -104,9 +103,9 @@ private:
 
 	float m_fSize;			// サイズ
 	bool m_isEvent;			// イベントを行ったか
-	bool m_isSet;				// セットポジションに入ったか
-
-	static bool m_isdaeth;
+	bool m_isSet;			// セットポジションに入ったか
+	bool m_isDamegeBarrier;	// バリアにダメージを与えたか
+	static bool m_isdaeth;	// 死亡フラグ
 };
 
 #endif

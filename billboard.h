@@ -60,8 +60,8 @@ private:
 
 	int m_nIdxTexture;			// テクスチャインデックス
 	int m_FlashCount;
-	float m_fHeight, m_fWidth;  // 横幅,高さ
-	bool m_isTests;			// Zテストするかどうか
+	float m_fHeight, m_fWidth;	// 横幅,高さ
+	bool m_isTests;				// Zテストするかどうか
 	int m_nCountAnim;
 	int m_nPatterAnim;
 };

@@ -58,17 +58,19 @@ void CSceneLoader::SplitLoad(int nIdx)
 	std::string line;
 
 	// 読み込んだ名前
-	std::string objName, motionPath, filePath, createType;
+	std::string objName, motionPath, filePath, createType,TexPath;
 
 	// 読み込み情報格納
 	D3DXVECTOR3 pos = VECTOR3_NULL;
 	D3DXVECTOR3 rot = VECTOR3_NULL;
 	int life = 0;
+	int index = -1, type = -1, category = -1;
+	int nFlashFrame = 0;
+	int nUse = 0;
 	float radius = 0.0f;
 	float size = 0.0f;
 	float width = 0.0f;
 	float height = 0.0f;
-	int index = -1, type = -1, category = -1;
 
 	// 読み込み終わりまで回す
 	while (std::getline(loadFile, line))
@@ -85,10 +87,15 @@ void CSceneLoader::SplitLoad(int nIdx)
 		{// "FILENAME"読み取り時
 
 			// 変数の初期化
-			objName.clear(); motionPath.clear(); filePath.clear(); createType.clear();
+			objName.clear(); 
+			motionPath.clear(); 
+			filePath.clear(); 
+			createType.clear();
+			TexPath.clear();
+
 			pos = VECTOR3_NULL;
 			rot = VECTOR3_NULL;
-			life = 0;
+			life = nFlashFrame = nUse = 0;
 			radius = size = width = height = 0.0f;
 			index = type = category = -1;
 
@@ -146,6 +153,14 @@ void CSceneLoader::SplitLoad(int nIdx)
 			// 読み込んだXファイル情報をセット
 			iss >> eq >> filePath;
 		}
+		else if (token == "TEXNAME")
+		{// テクスチャパス情報
+			// "="を格納
+			std::string eq;
+
+			// 読み込んだテクスチャ情報をセット
+			iss >> eq >> TexPath;
+		}
 		else if (token == "TYPE")
 		{// 種類情報
 			// "="を格納
@@ -202,6 +217,22 @@ void CSceneLoader::SplitLoad(int nIdx)
 			// 読み取った内訳をセット
 			iss >> eq >> category;
 		}
+		else if (token == "STARTFRAME")
+		{// フレーム情報
+			// "="を格納
+			std::string eq;
+
+			// 読み取った値をセット
+			iss >> eq >> nFlashFrame;
+		}
+		else if (token == "USE")
+		{// 点滅かどうか
+			// "="を格納
+			std::string eq;
+
+			// 読み取った値をセット
+			iss >> eq >> nUse;
+		}
 		else if (token == "ENDSET")
 		{// 最終読み取り
 			// 各種生成
@@ -246,7 +277,10 @@ void CSceneLoader::SplitLoad(int nIdx)
 				else if (createType == "BACEUI")
 				{
 					// UI生成
-					// CUi::Create();
+					CUi::Create(pos, nFlashFrame,width,height, TexPath.c_str(),nUse);
+
+					// パスのクリア
+					TexPath.clear();
 				}
 			}
 		}

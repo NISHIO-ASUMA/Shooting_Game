@@ -52,7 +52,7 @@ CLoseResult* CLoseResult::Create(void)
 HRESULT CLoseResult::Init(void)
 {
 	// UIê∂ê¨
-	CUi::Create(D3DXVECTOR3(SCREEN_WIDTH * 0.5f, SCREEN_HEIGHT * 0.5f, 0.0f), 0, SCREEN_WIDTH * 0.5f, SCREEN_HEIGHT * 0.5f, "data\\TEXTURE\\LoseResult.jpg",false);
+	CUi::Create(D3DXVECTOR3(SCREEN_WIDTH * 0.5f, SCREEN_HEIGHT * 0.5f, 0.0f), 0, SCREEN_WIDTH * 0.5f, SCREEN_HEIGHT * 0.5f, "LoseResult.jpg",false);
 
 	// ÉTÉEÉìÉhéÊìæ
 	CSound* pSound = CManager::GetSound();

@@ -77,10 +77,6 @@ HRESULT CGameManager::Init(void)
 	// タイマー生成
 	m_pTime = CTime::Create(D3DXVECTOR3(1030.0f, 40.0f, 0.0f), 60.0f, 40.0f);
 
-	// フレーム作成
-	CUi::Create(D3DXVECTOR3(SCREEN_WIDTH * 0.5f, 65.0f, 0.0f), 0, 65.0f, 65.0f, "data/TEXTURE/alert_frame.png", false);
-	CUi::Create(D3DXVECTOR3(1160.0f, 135.0f, 0.0f), 0, 110.0f, 30.0f, "data\\TEXTURE\\Pause_ui.png", false);
-
 	// 現在の弾表示アイコン
 	CBulletIcon::Create(D3DXVECTOR3(90.0f, 180.0f, 0.0f), "data\\TEXTURE\\Normal_bullet.png", 0);
 	CBulletIcon::Create(D3DXVECTOR3(180.0f, 180.0f, 0.0f), "data\\TEXTURE\\Laser_Icon.png", 1);
@@ -92,7 +88,7 @@ HRESULT CGameManager::Init(void)
 	if (pSound == nullptr) return E_FAIL;
 
 	// サウンド再生
-	// pSound->PlaySound(CSound::SOUND_LABEL_GAMEBGM);
+	pSound->PlaySound(CSound::SOUND_LABEL_GAMEBGM);
 
 	// バリアマネージャー生成
 	 m_pBarrier = new CBarrierManager;
@@ -138,13 +134,13 @@ HRESULT CGameManager::Init(void)
 	CCamera* pCamera = CManager::GetCamera();
 	if (pCamera == nullptr) return E_FAIL;
 
-	//// アニメーションセット
-	//pCamera->SetLoadPass(0);
-	//pCamera->SetCameraMode(CCamera::MODE_ANIM);
+	// アニメーションセット
+	pCamera->SetLoadPass(0);
+	pCamera->SetCameraMode(CCamera::MODE_ANIM);
 
-	//// アニメーション時のUIセット
-	//CMoveUi::Create(D3DXVECTOR3(SCREEN_WIDTH, 30.0f, 0.0f), "data\\TEXTURE\\CameraAnimBox.png", CMoveUi::MOVETYPE_RIGHT);
-	//CMoveUi::Create(D3DXVECTOR3(0.0f, 690.0f, 0.0f), "data\\TEXTURE\\CameraAnimBox.png", CMoveUi::MOVETYPE_LEFT);
+	// アニメーション時のUIセット
+	CMoveUi::Create(D3DXVECTOR3(SCREEN_WIDTH, 30.0f, 0.0f), "data\\TEXTURE\\CameraAnimBox.png", CMoveUi::MOVETYPE_RIGHT);
+	CMoveUi::Create(D3DXVECTOR3(0.0f, 690.0f, 0.0f), "data\\TEXTURE\\CameraAnimBox.png", CMoveUi::MOVETYPE_LEFT);
 
 	// 初期化結果を返す
 	return S_OK;
@@ -286,8 +282,6 @@ void CGameManager::Update(void)
 
 	if (CManager::GetInputKeyboard()->GetTrigger(DIK_G))
 	{
-		CCamera* pCamera = CManager::GetCamera();
-
 		pCamera->SetCameraMode(CCamera::MODE_ANIM);
 	}
 #endif

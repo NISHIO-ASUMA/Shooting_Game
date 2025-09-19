@@ -1042,10 +1042,11 @@ void CPlayer::Collision(void)
 				break;
 			}
 
-			if (isHit)
+			if (isHit == true)
 			{
 				// ダメージステートに遷移
 				ChangeState(new CPlayerStateDamage(1), CPlayerStateBase::ID_DAMAGE);
+
 				return;
 			}
 		}
@@ -1071,9 +1072,9 @@ void CPlayer::Collision(void)
 			{
 				// ステート変更
 				ChangeState(new CPlayerStateDamage(1), CPlayerStateBase::ID_DAMAGE);
-
+				
 				// 一回当たったら抜ける
-				return;
+				break;
 			}
 		}
 
@@ -1104,56 +1105,13 @@ void CPlayer::Collision(void)
 			{
 				// ステート変更
 				ChangeState(new CPlayerStateDamage(1), CPlayerStateBase::ID_DAMAGE);
-
-				return;
-			}
-		}
-
-		// 次のオブジェクトを検出する
-		pObjPiler = pObjPiler->GetNext();
-	}
-	//=============================
-	// 敵との当たり判定
-	//=============================
-	// オブジェクト取得
-	CObject* pObjEnemy = CObject::GetTop(static_cast<int>(CObject::PRIORITY::CHARACTOR));
-
-	// nullptrじゃないとき
-	while (pObjEnemy != nullptr)
-	{
-		// 敵のオブジェクトタイプを取得
-		if (pObjEnemy->GetObjType() == CObject::TYPE_ENEMY)
-		{
-			// 敵にキャスト
-			CEnemy* pEnemy = static_cast<CEnemy*>(pObjEnemy);
-
-			if (m_nIdxPlayer != PLAYERINFO::NUMBER_MAIN) break;
-
-			// コリジョンしたとき
-			if (pEnemy->Collision(&m_pos) == true)
-			{
-				// バリアマネージャーを取得
-				CBarrierManager* pBarrier = CGameManager::GetBarrier();
-
-				// nullじゃない かつ 耐久値があるなら
-				if (pBarrier && pBarrier->GetNumBarrier() > 0)
-				{
-					// バリアで防ぐ
-					pBarrier->DamageBarrier(1);
-				}
-				else
-				{
-					// ステート変更
-					ChangeState(new CPlayerStateDamage(1), CPlayerStateBase::ID_DAMAGE);
-				}
-
-				// 一回当たったら抜ける
+				
 				break;
 			}
 		}
 
 		// 次のオブジェクトを検出する
-		pObjEnemy = pObjEnemy->GetNext();
+		pObjPiler = pObjPiler->GetNext();
 	}
 
 	//==========================
@@ -1405,6 +1363,19 @@ CPlayer::PLAYERMOTION CPlayer::GetNowMotion() const
 //===============================
 void CPlayer::HitDamage(int nDamage)
 {
+	// バリア取得
+	CBarrierManager* pBarrier = CGameManager::GetBarrier();
+
+	// バリアが0以上
+	if (pBarrier != nullptr && pBarrier->GetNumBarrier() > 0)
+	{
+		// バリアを減らす
+		pBarrier->DamageBarrier(nDamage);
+
+		// 処理終了
+		return;
+	}
+
 	// パラメーター取得
 	int nHp = m_pParameter->GetHp();
 

@@ -160,7 +160,7 @@ void CPlayerLifeGage::Update(void)
 //========================
 void CPlayerLifeGage::Draw(void)
 {
-#if 0
+#if 1
 	// デバイスの取得
 	LPDIRECT3DDEVICE9 pDevice = CManager::GetRenderer()->GetDevice();
 

@@ -19,7 +19,7 @@ public:
 	//*************************
 	enum TYPE
 	{
-		TYPE_NONE = 0,
+		TYPE_NONE,
 		TYPE_PLAYER,
 		TYPE_MESH,
 		TYPE_BULLET,
@@ -50,7 +50,7 @@ public:
 		CHARACTOR,	// プレイヤー
 		BILLBOARD,	// ビルボード
 		EFFECT,		// エフェクト
-		UI,			// 2DUI関係
+		UI,			// 2DUI
 		PAUSE,		// ポーズ
 		PRIORITY_MAX // 最大数
 	};
@@ -77,7 +77,7 @@ public:
 
 	// ゲッター
 	TYPE GetObjType(void) { return m_Type; }
-	CObject* GetNext(void) { return m_pNext; }		// 次を取得
+	CObject* GetNext(void) { return m_pNext; }
 
 protected:
 	void Release(void); // 解放

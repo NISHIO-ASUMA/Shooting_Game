@@ -14,6 +14,9 @@
 #include "gamemanager.h"
 #include "parameter.h"
 #include "pausemanager.h"
+#include "particle.h"
+#include "barrierdurability.h"
+#include "barriermanager.h"
 
 //******************************
 // 定数宣言
@@ -349,6 +352,9 @@ void CPlayerStateDamage::OnStart()
 
 	// 判定を有効化
 	m_pPlayer->SetIsDamege(true);
+
+	// パーティクル生成
+	CParticle::Create(D3DXVECTOR3(m_pPlayer->GetPos().x,5.0f,m_pPlayer->GetPos().z),  D3DCOLOR_RGBA(0, 191, 255,255), 80, 200, 200, 180);
 }
 //==================================
 // ダメージ状態更新関数

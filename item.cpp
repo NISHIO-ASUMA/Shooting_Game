@@ -17,12 +17,14 @@
 #include "gamemanager.h"
 #include "player.h"
 #include "parameter.h"
+#include "particle.h"
 
 //**************************
 // 名前空間
 //**************************
 namespace ITEMINFO
 {
+	constexpr int UPPER_HP = 2;		  // 体力の加算量
 	constexpr float HITRANGE = 60.0f; // 当たり半径の範囲
 	constexpr float ROTVALUE = 0.03f; // 回転角の加算量
 	constexpr const char* GUARDMODEL = "data\\MODEL\\STAGEOBJ\\Guard000.x";
@@ -155,6 +157,9 @@ bool CItem::Collision(D3DXVECTOR3* pPos)
 		// 対象のオブジェクト消去
 		Uninit();
 		
+		// パーティクル生成
+		CParticle::Create(D3DXVECTOR3(pPos->x, pPos->y + 10.0f, pPos->z), D3DCOLOR_RGBA(127, 255, 0, 255),100,200,200,120);
+
 		switch (m_nType)
 		{
 		case TYPE_GUARD:
@@ -187,7 +192,7 @@ bool CItem::Collision(D3DXVECTOR3* pPos)
 			int nHp = pParam->GetHp();
 
 			// 体力値を加算
-			nHp += 2;
+			nHp += ITEMINFO::UPPER_HP;
 
 			// 最大値オーバーの時
 			if (nHp >= pPlayer->GetParameter()->GetMaxHp())

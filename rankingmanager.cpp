@@ -33,7 +33,7 @@ CRankingManager::~CRankingManager()
 HRESULT CRankingManager::Init(void)
 {
 	// Ui背景生成
-	CUi::Create(D3DXVECTOR3(SCREEN_WIDTH * 0.5f, SCREEN_HEIGHT * 0.5f, 0.0f), 0, SCREEN_WIDTH * 0.5f, SCREEN_HEIGHT * 0.5f, "data\\TEXTURE\\RankBack.jpg", false);
+	CUi::Create(D3DXVECTOR3(SCREEN_WIDTH * 0.5f, SCREEN_HEIGHT * 0.5f, 0.0f), 0, SCREEN_WIDTH * 0.5f, SCREEN_HEIGHT * 0.5f, "RankBack.jpg", false);
 
 	// ランキングスコア生成
 	CRankingScore::Create(D3DXVECTOR3(1050.0f, 200.0f, 0.0f), 250.0f, 40.0f);

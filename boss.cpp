@@ -247,8 +247,6 @@ void CBoss::Update(void)
 		return;
 	}
 
-	// 死んでいたら
-	if (m_isdaeth) return;
 
 	// 減算
 	DecCoolTime();
@@ -369,7 +367,7 @@ bool CBoss::CollisionRightHand(D3DXVECTOR3* pPos)
 	// 一定フレーム内
 	if (m_pMotion->CheckFrame(50, 130, TYPE_ACTION))
 	{
-		// エフェクト生成 TODO : ここの座標を修正する
+		// エフェクト生成
 		CEffect::Create(D3DXVECTOR3(Pos.x + 10.0f, Pos.y - 30.0f, Pos.z- 120.0f), D3DCOLOR_RGBA(178, 34, 34, 255), VECTOR3_NULL, 50, 90.0f);
 	}
 
@@ -446,9 +444,9 @@ bool CBoss::CollisionImpactScal(D3DXVECTOR3* pPos)
 	// 一定フレーム内
 	if (m_pMotion->CheckFrame(90, 120, TYPE_IMPACT) && !m_isdaeth)
 	{
-		// パーティクル生成
-		CParticle::Create(D3DXVECTOR3(posRight.x, posRight.y + 20.0f, posRight.z - 30.0f), D3DCOLOR_RGBA(250, 250, 210, 255), 70, 900, 900, 50);
-		CParticle::Create(D3DXVECTOR3(posLeft.x, posLeft.y + 20.0f, posLeft.z + 15.0f), D3DCOLOR_RGBA(250, 250, 210, 255), 70, 900, 900, 50);
+		// エフェクト生成
+		CEffect::Create(D3DXVECTOR3(posRight.x, posRight.y + 20.0f, posRight.z - 30.0f), D3DCOLOR_RGBA(250, 250, 210, 255), VECTOR3_NULL, 70, 90.0f);
+		CEffect::Create(D3DXVECTOR3(posLeft.x, posLeft.y + 20.0f, posLeft.z - 30.0f), D3DCOLOR_RGBA(250, 250, 210, 255), VECTOR3_NULL, 70, 90.0f);
 
 		// プレイヤーとの距離を測定
 		const float fHitRadius = 20.0f * BOSSINFO::HITRANGE; // 判定半径
@@ -464,6 +462,10 @@ bool CBoss::CollisionImpactScal(D3DXVECTOR3* pPos)
 		{
 			// メッシュ衝撃波を生成	
 			CMeshImpact::Create(D3DXVECTOR3(HandCenterPos.x, 5.0f, HandCenterPos.z), 100, 120.0f, 5.0f, 15.0f);
+
+			// パーティクル生成
+			CParticle::Create(D3DXVECTOR3(HandCenterPos.x, 5.0f, HandCenterPos.z), D3DCOLOR_RGBA(255, 215, 0, 255), 100, 400, 400, 200);
+
 			return true;
 
 		}
@@ -476,6 +478,10 @@ bool CBoss::CollisionImpactScal(D3DXVECTOR3* pPos)
 		{
 			// メッシュ衝撃波を生成	
 			CMeshImpact::Create(D3DXVECTOR3(HandCenterPos.x, 5.0f, HandCenterPos.z), 100, 120.0f, 5.0f, 15.0f);
+
+			// パーティクル生成
+			CParticle::Create(D3DXVECTOR3(HandCenterPos.x, 5.0f, HandCenterPos.z), D3DCOLOR_RGBA(255, 215, 0, 255), 100, 400, 400, 200);
+
 			return true;
 		}
 	}
@@ -485,6 +491,9 @@ bool CBoss::CollisionImpactScal(D3DXVECTOR3* pPos)
 	{
 		// メッシュ衝撃波を生成	
 		CMeshImpact::Create(D3DXVECTOR3(HandCenterPos.x, 5.0f, HandCenterPos.z), 80, 120.0f, 5.0f, 15.0f);
+
+		// パーティクル生成
+		CParticle::Create(D3DXVECTOR3(HandCenterPos.x, 5.0f, HandCenterPos.z), D3DCOLOR_RGBA(255, 215, 0, 255), 100, 400, 400, 200);
 	}
 
 	// 当たらないとき
@@ -698,6 +707,9 @@ bool CBoss::CollisionSwing(D3DXVECTOR3* pPos, float fHitRadius)
 		{
 			// メッシュ衝撃波を生成	
 			CMeshImpact::Create(D3DXVECTOR3(handPos.x, 5.0f, handPos.z), 100, 120.0f, 5.0f, 15.0f);
+
+			// パーティクル生成
+			CParticle::Create(D3DXVECTOR3(handPos.x, 5.0f, handPos.z), D3DCOLOR_RGBA(255, 215, 0, 255), 100, 400, 400, 200);
 		}
 
 		// 半径内に入っていたら
@@ -715,7 +727,7 @@ bool CBoss::CollisionSwing(D3DXVECTOR3* pPos, float fHitRadius)
 	}
 
 	//  一定フレーム内
-	if ((m_pMotion->CheckFrame(230, 310, TYPE_ARMRIGHTLEFT)) && m_isdaeth == false)
+	if ((m_pMotion->CheckFrame(230, 300, TYPE_ARMRIGHTLEFT)) && m_isdaeth == false)
 	{
 		// 半径を設定
 		float fBossradius = 55.0f;
@@ -746,6 +758,9 @@ bool CBoss::CollisionSwing(D3DXVECTOR3* pPos, float fHitRadius)
 		// 衝撃波
 		if ((m_pMotion->CheckFrame(270, 270, TYPE_ARMRIGHTLEFT)))
 		{
+			// パーティクル生成
+			CParticle::Create(D3DXVECTOR3(CenterPos.x, 5.0f, CenterPos.z), D3DCOLOR_RGBA(255,215,0,255), 100, 400, 400, 200);
+
 			// メッシュ衝撃波を生成	
 			CMeshImpact::Create(D3DXVECTOR3(CenterPos.x, 5.0f, CenterPos.z), 200, 120.0f, 5.0f, 15.0f);
 		}

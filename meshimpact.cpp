@@ -13,6 +13,8 @@
 #include "debugproc.h"
 #include "player.h"
 #include "effect.h"
+#include "barriermanager.h"
+#include "gamemanager.h"
 
 //**********************
 // 定数宣言
@@ -396,6 +398,9 @@ bool CMeshImpact::Collision(D3DXVECTOR3* pPos)
 	// フラグ変数
 	bool isHit = false;
 
+	// バリア取得
+	CBarrierManager* pBarrier = CGameManager::GetBarrier();
+
 	// 頂点をロック
 	m_pVtx->Lock(0, 0, (void**)&pVtx, 0);
 
@@ -422,6 +427,16 @@ bool CMeshImpact::Collision(D3DXVECTOR3* pPos)
 		// 差分が小さくなったら
 		if (fDisVerTexXZ <= fDisSize)
 		{
+			// nullじゃない かつ 耐久値があるなら
+			if (pBarrier != nullptr && pBarrier->GetNumBarrier() > 0)
+			{
+				// バリアで防ぐ
+				pBarrier->DamageBarrier(1);
+
+				// 処理を返す
+				return false;
+			}
+
 			// 当たっている
 			isHit = true;
 		}

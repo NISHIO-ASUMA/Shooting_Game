@@ -46,7 +46,7 @@ CResultManager::~CResultManager()
 HRESULT CResultManager::Init(void)
 {	
 	// UIê∂ê¨
-	CUi::Create(D3DXVECTOR3(SCREEN_WIDTH * 0.5f, SCREEN_HEIGHT * 0.5f, 0.0f), 0, SCREEN_WIDTH * 0.5f, SCREEN_HEIGHT * 0.5f, "data\\TEXTURE\\resultback.jpg", false);
+	CUi::Create(D3DXVECTOR3(SCREEN_WIDTH * 0.5f, SCREEN_HEIGHT * 0.5f, 0.0f), 0, SCREEN_WIDTH * 0.5f, SCREEN_HEIGHT * 0.5f, "resultback.jpg", false);
 
 	// ÉfÅ[É^ÇÃì«Ç›çûÇ›
 	Load();

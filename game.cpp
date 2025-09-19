@@ -183,14 +183,15 @@ void CGame::Update(void)
 		// タイマーが0秒以下なら
 		if (Numtime <= 0)
 		{
-			// 状態変更
-			m_nGametype = GAMESTATE_END;
+			// 負けリザルト遷移
+			m_nGametype = GAMESTATE_LOSEEND;
+			return;
 		}
 
 		// ボス取得
 		CBoss* pBoss = CGameManager::GetBoss();
 
-		// ボス死亡フラグが有効なら
+		// ボス死亡フラグが有効なら TODO : ここにanimation終了していたらのフラグ設定
 		if (pBoss->IsDaeth())
 		{
 #if 0

@@ -59,12 +59,24 @@ void CItemManager::Update(void)
 	// 最終出現時間を保持
 	static int lastSpawnTime = -1;
 
-	// 7秒ごとに生成
-	if (NowTime % 7 == 0 && NowTime != lastSpawnTime)
+	// 15秒ごとに生成
+	if (NowTime % 3 == 0 && NowTime != lastSpawnTime)
 	{
-		// ランダム生成
+		// 出現座標ランダム生成
 		int nActivePos = rand() % NUMPOINT;
-		int nTypeItem = rand() % CItem::TYPE_MAX;
+
+		// アイテムの出現割合を8:2にする
+		int nRand = rand() % 10;
+		int nTypeItem = 0;
+
+		if (nRand < 9)
+		{// 90%で回復アイテム
+			nTypeItem = CItem::TYPE_LIFE;
+		}
+		else
+		{// シールドアイテム
+			nTypeItem = CItem::TYPE_GUARD;
+		}
 
 		// アイテム生成
 		CItem::Create(m_ActivePointPos[nActivePos], VECTOR3_NULL, nTypeItem);

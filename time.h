@@ -54,7 +54,7 @@ private:
 	int m_nMinute;		// 現在時間 (分 )
 	int m_nDecTime;		// 減った時間量
 	int m_nCount;		// 時間カウンター
-	int m_nIdxTexture;		// テクスチャインデックス
+	int m_nIdxTexture;	// テクスチャインデックス
 	float m_fHeight, m_fWidth;	// 横幅,高さ
 
 	CNumber* m_pNumberMinute[DIGIT_TIME];	// 分

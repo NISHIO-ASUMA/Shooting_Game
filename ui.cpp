@@ -140,10 +140,16 @@ void CUi::SetTexture(const char* pRegistername)
 	// テクスチャポインタ取得
 	CTexture* pTexture = CManager::GetTexture();
 
+	// 文字列生成
+	std::string TexPath = "data\\TEXTURE\\";
+
+	// パス連結
+	TexPath += pRegistername;
+
 	// nullじゃなかったら
 	if (pTexture != nullptr)
 	{
 		// テクスチャ設定
-		m_nTexIdxType = pTexture->Register(pRegistername);
+		m_nTexIdxType = pTexture->Register(TexPath.c_str());
 	}
 }
