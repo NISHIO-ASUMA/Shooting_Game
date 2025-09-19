@@ -366,10 +366,11 @@ bool CBoss::CollisionRightHand(D3DXVECTOR3* pPos)
 	D3DXMATRIX mtxWorld = pRightHand->GetMtxWorld();
 	D3DXVECTOR3 Pos = D3DXVECTOR3(mtxWorld._41, mtxWorld._42, mtxWorld._43);
 
+	// 一定フレーム内
 	if (m_pMotion->CheckFrame(50, 130, TYPE_ACTION))
 	{
 		// エフェクト生成 TODO : ここの座標を修正する
-		CEffect::Create(D3DXVECTOR3(Pos.x - 180.0f, Pos.y, Pos.z - 30.0f), D3DCOLOR_RGBA(65, 105, 225, 255), VECTOR3_NULL, 50, 100.0f);
+		CEffect::Create(D3DXVECTOR3(Pos.x + 10.0f, Pos.y - 30.0f, Pos.z- 120.0f), D3DCOLOR_RGBA(178, 34, 34, 255), VECTOR3_NULL, 50, 90.0f);
 	}
 
 	// 一定フレーム内
