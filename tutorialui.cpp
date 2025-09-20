@@ -186,6 +186,10 @@ void CTutorialUi::SetTexture(const char* pFileName)
 	// 取得時,nullだったら
 	if (pTexture == nullptr) return;
 
+	// テクスチャ名省略
+	std::string TexName = "data\\TEXTURE\\ComboMenu\\";
+	TexName += pFileName;
+
 	// テクスチャ割り当て
-	m_nIdxTexture = pTexture->Register(pFileName);
+	m_nIdxTexture = pTexture->Register(TexName.c_str());
 }
