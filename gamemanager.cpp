@@ -244,7 +244,7 @@ void CGameManager::Update(void)
 	if (m_pPilerManager != nullptr)
 	{
 		// XVˆ—
-		// m_pPilerManager->Update(&pos);
+		m_pPilerManager->Update(&pos);
 	}
 
 #ifdef _DEBUG

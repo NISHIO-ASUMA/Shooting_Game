@@ -74,7 +74,6 @@ public:
 
 	int GetCoolTime(void) const { return m_nCoolTime; }
 	float GetSize(void) { return m_fSize; }
-
 	bool GetIsSet(void) { return m_isSet; }
 
 	// Ã“Iƒƒ“ƒoŠÖ”

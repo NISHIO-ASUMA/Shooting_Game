@@ -96,7 +96,7 @@ void CPlayerStateNeutral::OnUpdate()
 	if (m_pPlayer->GetStateMachine()->GetNowStateID() == ID_DAMAGE) return;
 
 	// 移動入力があれば移動状態へ
-	if ((m_pPlayer->isMoveInputKey(pInput) || m_pPlayer->isMovePadButton(pPad)) &&
+	if ((m_pPlayer->isMoveInputKey(pInput) || m_pPlayer->isMovePadButton(pPad) || pPad->GetLeftStick()) &&
 		m_pPlayer->GetNowMotion() != CPlayer::PLAYERMOTION_DAMAGE)
 	{
 		// 状態変更
@@ -268,6 +268,7 @@ void CPlayerStateMove::OnUpdate()
 		// シリンダー座標の取得
 		MeshPos = VECTOR3_NULL;
 	}
+
 
 	// 移動処理実行
 	m_pPlayer->UpdateMove(MeshPos, pInput, pPad);

@@ -1148,7 +1148,6 @@ void CPlayer::Collision(void)
 		pObjItem = pObjItem->GetNext();
 	}
 
-
 	//==========================
 	// Š¢âI‚Æ‚Ì“–‚½‚è”»’è
 	//==========================
@@ -1214,14 +1213,7 @@ void CPlayer::StickState(void)
 			// ƒAƒ“ƒOƒ‹‚ğ³‹K‰»
 			float normalizeX = (LStickAngleX / magnitude);
 			float normalizeY = (LStickAngleY / magnitude);
-
-			// Ú‘±”»’è‚ğ—LŒø‰»
-			m_isConectPad = true;
 		}
-	}
-	else
-	{
-		m_isConectPad = false;
 	}
 }
 //===============================

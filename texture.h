@@ -84,6 +84,7 @@ private:
 		"data\\TEXTURE\\color.jpg",
 		"data\\TEXTURE\\handeffect.jpg",
 		"data\\TEXTURE\\alert_frame.png",
+		"data\\TEXTURE\\tutorial_Boss_week.png",
 		"data\\TEXTURE\\ComboMenu\\Tutorial_menu_move.png",
 		"data\\TEXTURE\\ComboMenu\\Tutorial_menu_Attack.png",
 		"data\\TEXTURE\\ComboMenu\\Tutorial_menu_Jump.png",
