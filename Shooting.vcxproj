@@ -377,6 +377,9 @@
     <ClInclude Include="uiobject.h" />
     <ClInclude Include="uiobjectmanager.h" />
   </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="Shooting.rc" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

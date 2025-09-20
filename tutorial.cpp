@@ -46,7 +46,7 @@ HRESULT CTutorial::Init(void)
 	if (pSound == nullptr) return E_FAIL;
 
 	// ƒTƒEƒ“ƒhÄ¶
-	pSound->PlaySound(CSound::SOUND_LABEL_TUTORIALBGM);
+	// pSound->PlaySound(CSound::SOUND_LABEL_TUTORIALBGM);
 
 	// ‰Šú‰»Œ‹‰Ê‚ğ•Ô‚·
 	return S_OK;

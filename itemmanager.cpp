@@ -69,8 +69,8 @@ void CItemManager::Update(void)
 		int nRand = rand() % 10;
 		int nTypeItem = 0;
 
-		if (nRand < 9)
-		{// 90%で回復アイテム
+		if (nRand < 8)
+		{// 80%で回復アイテム
 			nTypeItem = CItem::TYPE_LIFE;
 		}
 		else

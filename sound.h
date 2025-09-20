@@ -35,6 +35,7 @@ public:
 		SOUND_LABEL_DAMAGE, // ダメージSE
 		SOUND_LABEL_CIRCLE,	// メッシュ攻撃SE
 		SOUND_LABEL_CLEAR,	// タスク完了SE
+		SOUND_LABEL_GUARD,	// ガード音SE
 		SOUND_LABEL_MAX
 	};
 
@@ -83,6 +84,7 @@ private:
 		{"data/SE/Damage.wav",0},			 // ダメージSE
 		{"data/SE/MeshCircle.wav",0},		 // メッシュ攻撃SE
 		{"data/SE/TutoClear.wav",0},		 // タスク完了SE
+		{"data/SE/Guard.wav",0},			 // ガード音SE
 	};
 
 	IXAudio2* m_pXAudio2;									// XAudio2オブジェクトへのインターフェイス

@@ -104,7 +104,7 @@ HRESULT CTitleManager::Init(void)
 	if (pSound == nullptr) return E_FAIL;
 
 	// サウンド再生
-	pSound->PlaySound(CSound::SOUND_LABEL_TITLE_BGM);
+	// pSound->PlaySound(CSound::SOUND_LABEL_TITLE_BGM);
 
 	// 初期化結果を返す
 	return S_OK;
@@ -151,7 +151,7 @@ void CTitleManager::Update(void)
 		m_pUi->SetUseFall(false,CUi::STATE_FALL);
 
 		// UI生成
-		CUi::Create(D3DXVECTOR3(SCREEN_WIDTH * 0.5f, 660.0f, 0.0f), 0, 520.0f,55.0f, "title_menuselect.png", false);
+		CUi::Create(D3DXVECTOR3(SCREEN_WIDTH * 0.5f, 660.0f, 0.0f),0,520.0f,55.0f, "title_menuselect.png", false);
 
 		// タイトルのuiを生成
 		for (int nCnt = 0; nCnt < m_Info.TITLE_MENU; nCnt++)

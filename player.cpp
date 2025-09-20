@@ -421,8 +421,8 @@ void CPlayer::Update(void)
 	CModel* pModelWeapon = GetModelPartType(CModel::PARTTYPE_WEAPON);
 	if (!pModelWeapon) return;
 
-	// イベント時は当たり判定をとおさない
-	if (CManager::GetCamera()->GetMode() != CManager::GetCamera()->MODE_EVENT)
+	// イベント時は当たり判定をとおさない かつ 一人目のみと判定する
+	if (CManager::GetCamera()->GetMode() != CManager::GetCamera()->MODE_EVENT && m_nIdxPlayer == PLAYERINFO::NUMBER_MAIN)
 	{
 		// 当たり判定処理関数
 		Collision();
@@ -1074,6 +1074,10 @@ void CPlayer::Collision(void)
 				ChangeState(new CPlayerStateDamage(1), CPlayerStateBase::ID_DAMAGE);
 				
 				// 一回当たったら抜ける
+				break;
+			}
+			else
+			{
 				break;
 			}
 		}

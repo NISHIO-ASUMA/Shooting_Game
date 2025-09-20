@@ -1,6 +1,6 @@
 //{{NO_DEPENDENCIES}}
 // Microsoft Visual C++ で生成されたインクルード ファイル。
-// .rc で使用
+// Shooting.rc で使用
 //
 #define IDI_ICON1                       101
 

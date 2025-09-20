@@ -455,9 +455,6 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="resource.h">
-      <Filter>ヘッダー ファイル</Filter>
-    </ClInclude>
     <ClInclude Include="barrierdurability.h">
       <Filter>ヘッダー ファイル\Xfile</Filter>
     </ClInclude>
@@ -788,5 +785,13 @@
     <ClInclude Include="uiobjectmanager.h">
       <Filter>ヘッダー ファイル\UiEdit</Filter>
     </ClInclude>
+    <ClInclude Include="resource.h">
+      <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="Shooting.rc">
+      <Filter>リソース ファイル</Filter>
+    </ResourceCompile>
   </ItemGroup>
 </Project>
