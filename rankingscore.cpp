@@ -155,7 +155,7 @@ void CRankingScore::Update(void)
 			if (rank == m_nNewRankingScore)
 			{
 				// “_–Åˆ—‚ðŽÀs
-				m_apNumber[rank][digit]->SetFlash(5,10,D3DXCOLOR(0.0f, 1.0f, 0.0f, 1.0f));
+				m_apNumber[rank][digit]->SetFlash(10,20,D3DCOLOR_RGBA(255, 0, 0,255));
 			}
 		}
 	}
