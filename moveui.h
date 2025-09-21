@@ -24,10 +24,22 @@ public:
 	//**********************
 	enum MOVETYPE
 	{
+		MOVETYPE_NONE,
 		MOVETYPE_RIGHT,
 		MOVETYPE_LEFT,
 		MOVETYPE_CENTER,
 		MOVETYPE_MAX
+	};
+
+	//**********************
+	// 拡大方向種類
+	//**********************
+	enum SCALETYPE
+	{
+		SCALETYPE_NONE,
+		SCALETYPE_CENTER,
+		SCALETYPE_LEFTDOWN,
+		SCALETYPE_MAX
 	};
 
 	// コンストラクタ・デストラクタ
@@ -44,10 +56,11 @@ public:
 	void SetTexture(const char* pRegistername);
 
 	// 静的メンバ関数
-	static CMoveUi* Create(D3DXVECTOR3 pos, const char* pFileName, MOVETYPE type);
+	static CMoveUi* Create(D3DXVECTOR3 pos, float fWidth, float fHeight, const char* pFileName, MOVETYPE movetype, SCALETYPE sceletype);
 
 private:
 	int m_nIdxTexture;	// テクスチャインデックス
 	MOVETYPE m_nMoveType;	// 移動種類
+	SCALETYPE m_nScaleType;	// 拡大種類
 };
 #endif

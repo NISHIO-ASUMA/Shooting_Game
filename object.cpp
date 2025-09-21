@@ -125,6 +125,15 @@ void CObject::UpdateAll(void)
 			// 次のオブジェクト保存
 			CObject* pObjeNext = pObject->m_pNext;
 
+			// 死んでたら
+			if (pObject->m_isDeath)
+			{
+				// 次のオブジェクトを代入
+				pObject = pObjeNext;
+
+				continue;
+			}
+
 			// ポーズオブジェクトのみを更新
 			if (CPauseManager::GetPause() == true)
 			{

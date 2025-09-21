@@ -12,6 +12,14 @@
 #include "manager.h"
 #include "texture.h"
 
+//**********************
+// 名前空間
+//**********************
+namespace MOVEUIINFO
+{
+	constexpr float MOVESPEED_X = 12.0f;
+};
+
 //=================================
 // オーバーロードコンストラクタ
 //=================================
@@ -19,6 +27,8 @@ CMoveUi::CMoveUi(int nPriority) : CObject2D(nPriority)
 {
 	// 値のクリア
 	m_nIdxTexture = NULL;
+	m_nMoveType = MOVETYPE_NONE;
+	m_nScaleType = SCALETYPE_NONE;
 }
 //=================================
 // デストラクタ
@@ -30,7 +40,7 @@ CMoveUi::~CMoveUi()
 //=================================
 // 生成処理処理
 //=================================
-CMoveUi* CMoveUi::Create(D3DXVECTOR3 pos, const char* pFileName, MOVETYPE type)
+CMoveUi* CMoveUi::Create(D3DXVECTOR3 pos, float fWidth,float fHeight,const char* pFileName, MOVETYPE movetype,SCALETYPE sceletype)
 {
 	// インスタンス生成
 	CMoveUi* pMoveUi = new CMoveUi;
@@ -44,9 +54,10 @@ CMoveUi* CMoveUi::Create(D3DXVECTOR3 pos, const char* pFileName, MOVETYPE type)
 
 	// 2Dオブジェクト設定
 	pMoveUi->SetPos(pos);
-	pMoveUi->SetSize(SCREEN_WIDTH * 0.5f, 30.0f);
+	pMoveUi->SetSize(fWidth, fHeight);
 	pMoveUi->SetTexture(pFileName);
-	pMoveUi->m_nMoveType = type;
+	pMoveUi->m_nMoveType = movetype;
+	pMoveUi->m_nScaleType = sceletype;
 	pMoveUi->SetAnchor(CObject2D::ANCHORTYPE_CENTER);
 	pMoveUi->SetDrawType(1);
 
@@ -82,15 +93,17 @@ void CMoveUi::Update(void)
 
 	// 画面中央座標
 	float fCenterPos = SCREEN_WIDTH * 0.5f;
-	float fSpeed = 12.0f;		// 移動スピード
 
 	switch (m_nMoveType)
 	{
+	case MOVETYPE_NONE:
+		break;
+
 	case MOVETYPE_RIGHT: // 右から中央へ
 
 		if (NowPos.x > fCenterPos)
 		{
-			NowPos.x -= fSpeed;
+			NowPos.x -= MOVEUIINFO::MOVESPEED_X;
 
 			if (NowPos.x <= fCenterPos)
 			{
@@ -106,7 +119,7 @@ void CMoveUi::Update(void)
 
 		if (NowPos.x < fCenterPos)
 		{
-			NowPos.x += fSpeed;
+			NowPos.x += MOVEUIINFO::MOVESPEED_X;
 
 			if (NowPos.x >= fCenterPos)
 			{
@@ -126,8 +139,66 @@ void CMoveUi::Update(void)
 		break;
 	}
 
+	switch (m_nScaleType)
+	{
+	case CMoveUi::SCALETYPE_NONE:
+		break;
+
+	case CMoveUi::SCALETYPE_CENTER: // 中央から
+	{
+		// 最大幅
+		const float fMaxWidth = 150.0f;		// 好きな値にする
+		// 拡大スピード
+		const float fAddWidth = 10.0f;		// フレーム毎の加算量
+
+		// 現在の幅
+		float fWidth = GetWidth();
+
+		if (fWidth < fMaxWidth)
+		{
+			fWidth += fAddWidth;
+
+			if (fWidth >= fMaxWidth)
+			{
+				fWidth = fMaxWidth;
+				m_nScaleType = SCALETYPE_LEFTDOWN; //左に移動する
+			}
+
+			SetWidth(fWidth);
+		}
+	}
+	break;
+
+	case SCALETYPE_LEFTDOWN:
+	{
+		// 目標座標
+		D3DXVECTOR3 DestPos = { 200.0f, 600.0f, 0.0f };
+
+		// 移動スピード
+		const float fLerpSpeed = 0.05f; //
+
+		// 線形補間
+		NowPos.x += (DestPos.x - NowPos.x) * fLerpSpeed;
+		NowPos.y += (DestPos.y - NowPos.y) * fLerpSpeed;
+
+		SetPos(NowPos);
+
+		// 座標固定
+		if (fabs(DestPos.x - NowPos.x) < 1.0f &&
+			fabs(DestPos.y - NowPos.y) < 1.0f)
+		{
+			SetPos(DestPos);				// 最終座標に固定
+			m_nScaleType = SCALETYPE_NONE;	// 動作終了
+		}
+	}
+		break;
+
+	default:
+		break;
+	}
+
 	// カメラアニメーションが終わったら
-	if (CManager::GetCamera()->GetAnim())
+	if (CManager::GetCamera()->GetAnim() && m_nMoveType > 0)
 	{
 		// 半分より上の座標なら上に,半分より下の座標なら下に消えていく
 		float fCenterY = SCREEN_HEIGHT * 0.5f;
@@ -182,10 +253,13 @@ void CMoveUi::SetTexture(const char* pRegistername)
 	// テクスチャポインタ取得
 	CTexture* pTexture = CManager::GetTexture();
 
+	std::string TexName = "data\\TEXTURE\\";
+	TexName += pRegistername;
+
 	// nullじゃなかったら
 	if (pTexture != nullptr)
 	{
 		// テクスチャ設定
-		m_nIdxTexture = pTexture->Register(pRegistername);
+		m_nIdxTexture = pTexture->Register(TexName.c_str());
 	}
 }

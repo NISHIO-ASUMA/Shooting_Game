@@ -65,6 +65,7 @@ public:
 	void SetCoolTime(int nCooltime) { m_nCoolTime = nCooltime; }
 	void SetWeekPoint(const D3DXVECTOR3 pos) { m_WeekPointPos = pos; }
 	void SetMovePos(bool isFlags) { m_isSet = isFlags; }
+	void SetPos(D3DXVECTOR3 pos) { m_pos = pos; }
 
 	// ÉQÉbÉ^Å[
 	D3DXVECTOR3 GetPos(void) { return m_pos;}

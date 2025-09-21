@@ -228,6 +228,12 @@ void CPauseManager::Update(void)
 //===========================
 void CPauseManager::SetEnablePause(void)
 {
+	// カメラ取得
+	CCamera * pCamera = CManager::GetCamera();
+
+	// アニメ―ション中なら処理を通さない
+	if (pCamera->GetMode() == CCamera::MODE_ANIM) return;
+
 	// Pキー or Start が押された
 	if (CManager::GetInputKeyboard()->GetTrigger(DIK_P) ||
 		CManager::GetJoyPad()->GetTrigger(CJoyPad::JOYKEY_START))

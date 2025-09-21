@@ -59,8 +59,8 @@ void CItemManager::Update(void)
 	// 最終出現時間を保持
 	static int lastSpawnTime = -1;
 
-	// 20秒ごとに生成
-	if (NowTime % 20 == 0 && NowTime != lastSpawnTime)
+	// 15秒ごとに生成
+	if (NowTime % 15 == 0 && NowTime != lastSpawnTime)
 	{
 		// 出現座標ランダム生成
 		int nActivePos = rand() % NUMPOINT;

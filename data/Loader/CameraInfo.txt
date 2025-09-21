@@ -21,7 +21,7 @@
 	END_KEYSET
 
 	KEYSET		# --- << KEY  1 / 7 >> --- 
-		FRAME = 80
+		FRAME = 70
 		POSV = -991.81 403.24 -232.20
 		POSR = -230.74 233.41 -188.30
 		ROT = 1.79 1.51 0.00
@@ -29,7 +29,7 @@
 	END_KEYSET
 
 	KEYSET		# --- << KEY  2 / 7 >> --- 
-		FRAME = 80
+		FRAME = 70
 		POSV = -646.57 64.48 -723.99
 		POSR = -57.33 174.08 -223.21
 		ROT = 1.43 0.87 0.00
@@ -37,7 +37,7 @@
 	END_KEYSET
 
 	KEYSET		# --- << KEY  3 / 7 >> --- 
-		FRAME = 105
+		FRAME = 95
 		POSV = 2.93 320.97 -692.83
 		POSR = 0.10 174.08 88.19
 		ROT = 1.76 -0.00 0.00
@@ -45,7 +45,7 @@
 	END_KEYSET
 
 	KEYSET		# --- << KEY  4 / 7 >> --- 
-		FRAME = 120
+		FRAME = 100
 		POSV = 26.31 44.11 -996.78
 		POSR = -15.55 91.56 -216.88
 		ROT = 1.51 -0.05 0.00
@@ -53,7 +53,7 @@
 	END_KEYSET
 
 	KEYSET		# --- << KEY  5 / 7 >> --- 
-		FRAME = 120
+		FRAME = 100
 		POSV = 30.06 44.11 -1066.68
 		POSR = -11.80 91.56 -286.77
 		ROT = 1.51 -0.05 0.00

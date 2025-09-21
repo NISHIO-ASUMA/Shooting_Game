@@ -289,6 +289,9 @@ void CPlayer::Uninit(void)
 //============================================================
 void CPlayer::Update(void)
 {
+	// 死んでるなら処理しない
+	if (m_isDeath) return;
+
 	// 現在シーン取得
 	CScene::MODE nMode = CManager::GetScene();
 
@@ -945,6 +948,9 @@ void CPlayer::UpdateJumpAction(CInputKeyboard* pInputKeyboard, D3DXMATRIX pMtx, 
 //=============================
 void CPlayer::Collision(void)
 {
+	// カメラ取得
+	CCamera* pCamera = CManager::GetCamera();
+
 	// シーン取得
 	CScene::MODE nMode = CManager::GetScene();
 
@@ -975,6 +981,9 @@ void CPlayer::Collision(void)
 						if (pFade != nullptr)
 						{
 							pFade->SetFade(new CGame());
+
+							// カメラの設定を初期化
+							pCamera->SetAnim(false);		// アニメーション起動
 
 							return;
 						}
@@ -1179,41 +1188,6 @@ void CPlayer::Collision(void)
 
 		// 次のオブジェクトを検出する
 		pObjRubble = pObjRubble->GetNext();
-	}
-}
-//===============================
-// パッドの左スティック入力関数
-//===============================
-void CPlayer::StickState(void)
-{
-	// パッド取得
-	CJoyPad* pPad = CManager::GetJoyPad();
-
-	// スティック変数
-	XINPUT_STATE* pStick;
-
-	// 角度取得
-	pStick = pPad->GetStickAngle();
-
-	if (pPad->GetLeftStick() == true)
-	{
-		// Lスティックの角度
-		float LStickAngleY = pStick->Gamepad.sThumbLY;
-		float LStickAngleX = pStick->Gamepad.sThumbLX;
-
-		// デッドゾーン
-		float deadzone = 10920;
-
-		// スティックの傾けた角度を求める
-		float magnitude = sqrtf(LStickAngleX * LStickAngleX + LStickAngleY * LStickAngleY);
-
-		// 動かせる
-		if (magnitude > deadzone)
-		{
-			// アングルを正規化
-			float normalizeX = (LStickAngleX / magnitude);
-			float normalizeY = (LStickAngleY / magnitude);
-		}
 	}
 }
 //===============================

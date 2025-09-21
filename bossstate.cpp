@@ -183,11 +183,8 @@ void CBossStateEvent::OnStart(void)
 	// カメラの振動
 	pCamera->ShakeCamera(240);
 
-	// ランダムで出現する瓦礫のファイルを設定
-	int nType = rand() % 3;
-
 	// 瓦礫読み込み
-	pRubble->LoadSplitFile(nType);
+	pRubble->LoadSplitFile(0);
 
 	// イベントカメラ開始
 	pCamera->StartEventCamera(camPos, targetPos, 250);

@@ -24,6 +24,8 @@
 #include "exitpoint.h"
 #include "block.h"
 #include "charge.h"
+#include "bulleticon.h"
+#include "moveui.h"
 
 //==========================
 // コンストラクタ
@@ -33,6 +35,7 @@ CTutorialManager::CTutorialManager()
 	// 値のクリア
 	m_pTutoui = nullptr;
 	m_pTask = nullptr;
+	m_pMoveui = nullptr;
 	m_isFreeDone = false;
 	m_Tasktype = TASKTYPE_MOVE;
 }
@@ -53,6 +56,10 @@ HRESULT CTutorialManager::Init(void)
 
 	// ボス生成
 	CTutorialBoss::Create(D3DXVECTOR3(0.0f, -600.0f, 0.0f));
+
+	// 現在の弾表示アイコン
+	CBulletIcon::Create(D3DXVECTOR3(90.0f, 180.0f, 0.0f), "data\\TEXTURE\\Normal_bullet.png", 0);
+	CBulletIcon::Create(D3DXVECTOR3(180.0f, 180.0f, 0.0f), "data\\TEXTURE\\Laser_Icon.png", 1);
 
 	// タスク生成
 	m_pTask = new CTutoTask;
@@ -137,6 +144,10 @@ void CTutorialManager::Update(void)
 		if ((pKey->GetTrigger(DIK_SPACE) || pJoyPad->GetTrigger(pJoyPad->JOYKEY_A)))
 		{
 			isCheck = true;
+
+			// ここで弱点説明UI生成する
+			m_pMoveui = CMoveUi::Create(D3DXVECTOR3(SCREEN_WIDTH * 0.5f, 360.0f, 0.0f), 0.0f, 120.0f, "tutorial_Boss_week.jpg", CMoveUi::MOVETYPE_NONE, CMoveUi::SCALETYPE_CENTER);
+
 		}
 		break;
 
@@ -153,6 +164,13 @@ void CTutorialManager::Update(void)
 		{
 			isCheck = true;
 			isJump = false; // 一度判定取ったらリセット
+
+			if (m_pMoveui != nullptr)
+			{
+				m_pMoveui->Uninit();
+				m_pMoveui = nullptr;
+			}
+
 		}
 		break;
 

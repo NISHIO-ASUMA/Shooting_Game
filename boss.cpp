@@ -827,8 +827,8 @@ void CBoss::Hit(int nDamage,D3DXVECTOR3 HitPos)
 		// 判定範囲内なら
 		if (fDist <= WEEKPOINTSIZE)
 		{
-			// ダメージ3倍にする
-			realDamage = nDamage * 3;
+			// ダメージ2倍にする
+			realDamage = nDamage * 2;
 		}
 	}
 

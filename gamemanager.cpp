@@ -69,7 +69,7 @@ HRESULT CGameManager::Init(void)
 	m_pMeshCylinder = CMeshCylinder::Create(D3DXVECTOR3(0.0f, -20.0f, 0.0f), 550.0f);
 
 	// ボス生成
-	m_pBoss = CBoss::Create(D3DXVECTOR3(0.0f, -800.0f, 0.0f), 60.0f, 500);
+	m_pBoss = CBoss::Create(D3DXVECTOR3(0.0f, -800.0f, 0.0f), 60.0f, 400);
 
 	// シーンオブジェクト読み込み
 	CSceneLoader::SplitLoad(2);
@@ -88,7 +88,7 @@ HRESULT CGameManager::Init(void)
 	if (pSound == nullptr) return E_FAIL;
 
 	// サウンド再生
-	// pSound->PlaySound(CSound::SOUND_LABEL_GAMEBGM);
+	pSound->PlaySound(CSound::SOUND_LABEL_GAMEBGM);
 
 	// バリアマネージャー生成
 	 m_pBarrier = new CBarrierManager;
@@ -139,8 +139,8 @@ HRESULT CGameManager::Init(void)
 	pCamera->SetCameraMode(CCamera::MODE_ANIM);
 
 	// アニメーション時のUIセット
-	CMoveUi::Create(D3DXVECTOR3(SCREEN_WIDTH, 30.0f, 0.0f), "data\\TEXTURE\\CameraAnimBox.png", CMoveUi::MOVETYPE_RIGHT);
-	CMoveUi::Create(D3DXVECTOR3(0.0f, 690.0f, 0.0f), "data\\TEXTURE\\CameraAnimBox.png", CMoveUi::MOVETYPE_LEFT);
+	CMoveUi::Create(D3DXVECTOR3(SCREEN_WIDTH, 30.0f, 0.0f),SCREEN_WIDTH * 0.5f,30.0f, "CameraAnimBox.png", CMoveUi::MOVETYPE_RIGHT, CMoveUi::SCALETYPE_NONE);
+	CMoveUi::Create(D3DXVECTOR3(0.0f, 690.0f, 0.0f),SCREEN_WIDTH * 0.5f, 30.0f,"CameraAnimBox.png", CMoveUi::MOVETYPE_LEFT, CMoveUi::SCALETYPE_NONE);
 
 	// 初期化結果を返す
 	return S_OK;

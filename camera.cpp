@@ -262,8 +262,8 @@ void CCamera::Update(void)
 			Load(m_nFileIdx);
 
 			// アニメーション時のUIセット
-			CMoveUi::Create(D3DXVECTOR3(SCREEN_WIDTH, 30.0f, 0.0f), "data\\TEXTURE\\CameraAnimBox.png", CMoveUi::MOVETYPE_RIGHT);
-			CMoveUi::Create(D3DXVECTOR3(0.0f, 690.0f, 0.0f), "data\\TEXTURE\\CameraAnimBox.png", CMoveUi::MOVETYPE_LEFT);
+			CMoveUi::Create(D3DXVECTOR3(SCREEN_WIDTH, 30.0f, 0.0f), SCREEN_WIDTH * 0.5f, 30.0f, "CameraAnimBox.png", CMoveUi::MOVETYPE_RIGHT, CMoveUi::SCALETYPE_NONE);
+			CMoveUi::Create(D3DXVECTOR3(0.0f, 690.0f, 0.0f), SCREEN_WIDTH * 0.5f, 30.0f, "CameraAnimBox.png", CMoveUi::MOVETYPE_LEFT, CMoveUi::SCALETYPE_NONE);
 		}
 		// アニメーション開始
 		UpdateAnimCamera();
@@ -1129,7 +1129,7 @@ void CCamera::UpdateAnimCamera(void)
 	if (m_nAnimNowKey == 4) // キー4に入った瞬間
 	{
 		// ブラー開始
-		CManager::GetRenderer()->SetBuller(true, 125);
+		CManager::GetRenderer()->SetBuller(true, 120);
 
 		// 振動開始
 		m_nAnimShakeFlame = 120;
@@ -1197,7 +1197,7 @@ void CCamera::UpdateAnimCamera(void)
 	m_pCamera.nCntAnim++;
 
 	// アニメーションスキップ
-	if (CManager::GetInputKeyboard()->GetTrigger(DIK_RETURN) && CGameManager::GetBoss()->GetIsSet() && m_nFileIdx == 0)
+	if (CManager::GetInputKeyboard()->GetTrigger(DIK_RETURN) && m_nFileIdx == 0)
 	{
 		// モード変更
 		m_pCamera.nMode = MODE_LOCKON;
@@ -1208,6 +1208,17 @@ void CCamera::UpdateAnimCamera(void)
 		// 終了判定
 		m_isAnimTime = true;
 		m_isLoad = false;
+
+		// ブラーオフ
+		CManager::GetRenderer()->SetBuller(false, 0);
+
+		// ゲームマネージャーから取得
+		CBoss* pBoss = CGameManager::GetBoss();
+
+		if (pBoss != nullptr)
+		{
+			pBoss->SetPos(D3DXVECTOR3(0.0f, -600.0f, 0.0f));
+		}
 
 		// 処理終了
 		return;
