@@ -277,7 +277,7 @@ bool CBullet::Collision(D3DXVECTOR3 pos)
 				CBullet::Uninit();
 
 				// ƒQ[ƒW’l‚ğ‰ÁZ‚·‚é
-				CCharge::AddCharge(1.0f);
+				CCharge::AddCharge(1.5f);
 
 				// “–‚½‚Á‚½”»’è‚ğ•Ô‚·
 				return true;

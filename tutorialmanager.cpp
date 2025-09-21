@@ -26,6 +26,8 @@
 #include "charge.h"
 #include "bulleticon.h"
 #include "moveui.h"
+#include "item.h"
+#include "ui.h"
 
 //==========================
 // コンストラクタ
@@ -36,8 +38,15 @@ CTutorialManager::CTutorialManager()
 	m_pTutoui = nullptr;
 	m_pTask = nullptr;
 	m_pMoveui = nullptr;
+	m_pMoveItemUi = nullptr;
 	m_isFreeDone = false;
+	m_isCreate = false;
 	m_Tasktype = TASKTYPE_MOVE;
+
+	for (int nCnt = 0; nCnt < 2; nCnt++)
+	{
+		m_pItem[nCnt] = nullptr;
+	}
 }
 //==========================
 // デストラクタ
@@ -51,6 +60,9 @@ CTutorialManager::~CTutorialManager()
 //==========================
 HRESULT CTutorialManager::Init(void)
 {
+	// 初期化
+	m_isCreate = false;
+
 	// シーンテキスト読み込み
 	CSceneLoader::SplitLoad(1);
 
@@ -58,8 +70,11 @@ HRESULT CTutorialManager::Init(void)
 	CTutorialBoss::Create(D3DXVECTOR3(0.0f, -600.0f, 0.0f));
 
 	// 現在の弾表示アイコン
-	CBulletIcon::Create(D3DXVECTOR3(90.0f, 180.0f, 0.0f), "data\\TEXTURE\\Normal_bullet.png", 0);
-	CBulletIcon::Create(D3DXVECTOR3(180.0f, 180.0f, 0.0f), "data\\TEXTURE\\Laser_Icon.png", 1);
+	CBulletIcon::Create(D3DXVECTOR3(160.0f, 175.0f, 0.0f), "data\\TEXTURE\\Normal_bullet.png", 0);
+	CBulletIcon::Create(D3DXVECTOR3(230.0f, 175.0f, 0.0f), "data\\TEXTURE\\Laser_Icon.png", 1);
+
+	// ui生成
+	CUi::Create(D3DXVECTOR3(65.0f, 175.0f, 0.0f), 0, 60.0f, 30.0f, "aaa.png", false);
 
 	// タスク生成
 	m_pTask = new CTutoTask;
@@ -107,6 +122,13 @@ void CTutorialManager::Update(void)
 	CInputKeyboard* pKey = CManager::GetInputKeyboard();
 	CJoyPad* pJoyPad = CManager::GetJoyPad();
 
+	// プレイヤー取得
+	CPlayer* pPlayer = CPlayer::GetIdxPlayer(0);
+	D3DXVECTOR3 pPos = pPlayer->GetPos();
+
+	CPlayer* pPlayer1 = CPlayer::GetIdxPlayer(1);
+	D3DXVECTOR3 pPos1 = pPlayer1->GetPos();
+
 	// 取得失敗時
 	if (pKey == nullptr) return;
 	if (pJoyPad == nullptr) return;
@@ -144,11 +166,15 @@ void CTutorialManager::Update(void)
 		if ((pKey->GetTrigger(DIK_SPACE) || pJoyPad->GetTrigger(pJoyPad->JOYKEY_A)))
 		{
 			isCheck = true;
+		}
 
+		if (!m_isCreate)
+		{
 			// ここで弱点説明UI生成する
 			m_pMoveui = CMoveUi::Create(D3DXVECTOR3(SCREEN_WIDTH * 0.5f, 360.0f, 0.0f), 0.0f, 120.0f, "tutorial_Boss_week.jpg", CMoveUi::MOVETYPE_NONE, CMoveUi::SCALETYPE_CENTER);
-
+			m_isCreate = true;
 		}
+
 		break;
 
 	case CTutorialManager::TASKTYPE_JUMPATTACK: // ジャンプ攻撃
@@ -164,13 +190,6 @@ void CTutorialManager::Update(void)
 		{
 			isCheck = true;
 			isJump = false; // 一度判定取ったらリセット
-
-			if (m_pMoveui != nullptr)
-			{
-				m_pMoveui->Uninit();
-				m_pMoveui = nullptr;
-			}
-
 		}
 		break;
 
@@ -199,16 +218,55 @@ void CTutorialManager::Update(void)
 		{
 			isCheck = true;
 			isLaserActionDone = true;
+
+			// アイテム生成
+			CItem::Create(D3DXVECTOR3(-530.0f, 50.0f, -150.0f), VECTOR3_NULL, CItem::TYPE_GUARD);
+			CItem::Create(D3DXVECTOR3(530.0f, 50.0f, -150.0f), VECTOR3_NULL, CItem::TYPE_LIFE);
+			CItem::Create(D3DXVECTOR3(100.0f, 50.0f, -550.0f), VECTOR3_NULL, CItem::TYPE_GUARD);
+			CItem::Create(D3DXVECTOR3(-100.0f, 50.0f, 550.0f), VECTOR3_NULL, CItem::TYPE_LIFE);
 		}
 
 		break;
 
 	case CTutorialManager::TASKTYPE_FREE: // フリー
+
+		// 破棄
+		if (m_pMoveui != nullptr)
+		{
+			m_pMoveui->Uninit();
+			m_pMoveui = nullptr;
+		}
+
+		if (m_pMoveui == nullptr && m_isCreate)
+		{
+			// UI生成
+			m_pMoveItemUi = CMoveUi::Create(D3DXVECTOR3(120.0f, 640.0f, 0.0f), 120.0f, 80.0f, "Item_info.jpg", CMoveUi::MOVETYPE_NONE, CMoveUi::SCALETYPE_NONE);
+			m_isCreate = false;
+		}
+
+		if (!CCharge::GetChargeFlag())
+		{
+			CCharge::AddCharge(100.0f);
+
+			CCharge::SetCharge(true);
+		}
+
+		if (CCharge::GetChargeFlag())
+		{
+			// キー入力している
+			if ((pKey->GetPress(DIK_RETURN) || pJoyPad->GetPress(pJoyPad->JOYKEY_X)) && CBullet::GetType() == CBullet::BTYPE_LASER)
+			{
+				// 減算
+				CCharge::DecCharge(0.5f);
+			}
+		}
+
 		if (!m_isFreeDone)  // まだ処理してないときだけ
 		{
 			isFinish = true;
 			m_isFreeDone = true; // 1回処理したらロック
 		}
+
 		break;
 
 	default:

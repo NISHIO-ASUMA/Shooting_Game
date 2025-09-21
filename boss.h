@@ -39,6 +39,7 @@ public:
 		TYPE_RUBBLE,		// Š¢âIUŒ‚
 		TYPE_CIRCLE,		// “ã‚¬•¥‚¢
 		TYPE_ARMRIGHTLEFT,	// U‚è‰º‚ë‚µUŒ‚
+		TYPE_DEATH,			// Ž€–Sƒ‚[ƒVƒ‡ƒ“
 		TYPE_MAX
 	};
 

@@ -33,6 +33,8 @@
 #include "exitpoint.h"
 #include "game.h"
 #include "effectsmoke.h"
+#include "sound.h"
+#include "particlepiler.h"
 
 //**********************
 // 名前空間
@@ -357,6 +359,7 @@ void CPlayer::Update(void)
 
 			// 座標設定
 			m_pos.x = DestPos.x - sinf(IdxAngle) * fRadius;
+			m_pos.y = pMain->m_pos.y;
 			m_pos.z = DestPos.z - cosf(IdxAngle) * fRadius;
 		}
 
@@ -424,6 +427,36 @@ void CPlayer::Update(void)
 	CModel* pModelWeapon = GetModelPartType(CModel::PARTTYPE_WEAPON);
 	if (!pModelWeapon) return;
 
+	// 腕のワールドマトリックスを取得
+	D3DXMATRIX mtxWorld = pModelWeapon->GetMtxWorld();
+
+	//==========================
+	// アイテムとの当たり判定
+	//==========================
+	// オブジェクト取得
+	CObject* pObjItem = CObject::GetTop(static_cast<int>(CObject::PRIORITY::MODELOBJECT));
+
+	// nullptrじゃないとき
+	while (pObjItem != nullptr)
+	{
+		// アイテムのオブジェクトタイプを取得
+		if (pObjItem->GetObjType() == CObject::TYPE_ITEM)
+		{
+			// アイテムにキャスト
+			CItem* pItem = static_cast<CItem*>(pObjItem);
+
+			// コリジョンしたとき
+			if (pItem->Collision(&m_pos) == true)
+			{
+				// 一回当たったら抜ける
+				break;
+			}
+		}
+
+		// 次のオブジェクトを検出する
+		pObjItem = pObjItem->GetNext();
+	}
+
 	// イベント時は当たり判定をとおさない かつ 一人目のみと判定する
 	if (CManager::GetCamera()->GetMode() != CManager::GetCamera()->MODE_EVENT && m_nIdxPlayer == PLAYERINFO::NUMBER_MAIN)
 	{
@@ -458,8 +491,22 @@ void CPlayer::Update(void)
 	// チャージ上限に達したとき かつ フラグが有効なら
 	if ((pInput->GetTrigger(DIK_F) || pJoyPad->GetTrigger(pJoyPad->JOYKEY_LEFT_B))&& CCharge::GetChargeFlag())
 	{
+		// サウンド再生
+		CSound * pSound = CManager::GetSound();
+		if (pSound != nullptr)
+		{
+			pSound->PlaySound(CSound::SOUND_LABEL_CHANGEWEPON);
+		}
+
 		// 弾の種類を切り替え可能にする
 		CBullet::SetType(CBullet::BTYPE_LASER);
+	}
+
+	// レーザーの時
+	if (CBullet::GetType() == CBullet::BTYPE_LASER)
+	{
+		// パーティクル生成
+		CParticlePiler::Create(D3DXVECTOR3(mtxWorld._41, mtxWorld._42 - 5.0f, mtxWorld._43), D3DXCOLOR(0.2f, 0.6f, 1.0f, 1.0f), 20, 30, 20, 20);
 	}
 
 	// モーションの全体更新
@@ -980,7 +1027,12 @@ void CPlayer::Collision(void)
 						CFade* pFade = CManager::GetFade();
 						if (pFade != nullptr)
 						{
+							// 画面遷移
 							pFade->SetFade(new CGame());
+
+							// チャージフラグをfalseにする
+							CCharge::SetCharge(false);
+							CCharge::DecCharge(100.0f);
 
 							// カメラの設定を初期化
 							pCamera->SetAnim(false);		// アニメーション起動
@@ -1125,36 +1177,6 @@ void CPlayer::Collision(void)
 
 		// 次のオブジェクトを検出する
 		pObjPiler = pObjPiler->GetNext();
-	}
-
-	//==========================
-	// アイテムとの当たり判定
-	//==========================
-	// オブジェクト取得
-	CObject* pObjItem = CObject::GetTop(static_cast<int>(CObject::PRIORITY::MODELOBJECT));
-
-	// nullptrじゃないとき
-	while (pObjItem != nullptr)
-	{
-		// アイテムのオブジェクトタイプを取得
-		if (pObjItem->GetObjType() == CObject::TYPE_ITEM)
-		{
-			// アイテムにキャスト
-			CItem* pItem = static_cast<CItem*>(pObjItem);
-
-			// 2体目なら
-			if (m_nIdxPlayer != PLAYERINFO::NUMBER_MAIN) break;
-
-			// コリジョンしたとき
-			if (pItem->Collision(&m_pos) == true)
-			{
-				// 一回当たったら抜ける
-				break;
-			}
-		}
-
-		// 次のオブジェクトを検出する
-		pObjItem = pObjItem->GetNext();
 	}
 
 	//==========================

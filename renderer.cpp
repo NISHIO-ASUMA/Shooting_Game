@@ -348,13 +348,6 @@ void CRenderer::Update(void)
 		// ワイヤーフレームOFF
 		OffWireFrame();
 	}
-
-	//// ブラー起動
-	//if (pInput->GetTrigger(DIK_F5))
-	//{
-	//	SetBuller(true, 60);
-	//}
-
 #endif // _DEBUG
 }
 //===============================
@@ -382,7 +375,6 @@ void CRenderer::Draw(void)
 	m_pD3DDevice->GetDepthStencilSurface(&pZBuffDef);
 	m_pD3DDevice->GetViewport(&viewport);
 
-
 	m_pD3DDevice->SetRenderTarget(0, m_apRenderMT[0]);
 	m_pD3DDevice->SetDepthStencilSurface(m_pZBuffMT);
 	m_pD3DDevice->SetViewport(&m_viewportMT);
@@ -397,12 +389,11 @@ void CRenderer::Draw(void)
 
 		if (m_isbuller)
 		{
-			// ターゲット設定 ( カメラ座標と同じにする )
+			// ターゲット設定
 			ChangeTarget(CManager::GetCamera()->GetPos(),CManager::GetCamera()->GetPosR(), D3DXVECTOR3(0.0f, 1.0f, 0.0f));
 
-			// 画面クリア関数
+			// 画面クリア
 			m_pD3DDevice->Clear(0, NULL, (D3DCLEAR_TARGET | D3DCLEAR_ZBUFFER | D3DCLEAR_STENCIL), D3DCOLOR_RGBA(0, 0, 0, 225), 1.0f, 0);
-
 		}
 
 		// 全オブジェクト描画

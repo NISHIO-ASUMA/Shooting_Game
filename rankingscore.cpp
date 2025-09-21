@@ -90,7 +90,7 @@ HRESULT CRankingScore::Init(void)
 			m_apNumber[nRank][nDigit] = new CNumber;
 
 			// YÀ•W‚ð‚¸‚ç‚·
-			float yOffset = m_pos.y + (m_fHeight + 60.0f) * nRank;
+			float yOffset = m_pos.y + (m_fHeight + 65.0f) * nRank;
 
 			// ‰Šú‰»ˆ—
 			m_apNumber[nRank][nDigit]->Init
@@ -155,7 +155,7 @@ void CRankingScore::Update(void)
 			if (rank == m_nNewRankingScore)
 			{
 				// “_–Åˆ—‚ðŽÀs
-				// m_apNumber[rank][digit]->SetFlash(5,10,D3DXCOLOR(0.0f, 1.0f, 0.0f, 1.0f));
+				m_apNumber[rank][digit]->SetFlash(5,10,D3DXCOLOR(0.0f, 1.0f, 0.0f, 1.0f));
 			}
 		}
 	}

@@ -147,12 +147,14 @@ void CMoveUi::Update(void)
 	case CMoveUi::SCALETYPE_CENTER: // 中央から
 	{
 		// 最大幅
-		const float fMaxWidth = 150.0f;		// 好きな値にする
+		const float fMaxWidth = 150.0f;		// 横幅
+
 		// 拡大スピード
-		const float fAddWidth = 10.0f;		// フレーム毎の加算量
+		const float fAddWidth = 3.0f;		// フレーム毎の加算量
 
 		// 現在の幅
 		float fWidth = GetWidth();
+		float fHeight = GetHeight();
 
 		if (fWidth < fMaxWidth)
 		{
@@ -172,24 +174,36 @@ void CMoveUi::Update(void)
 	case SCALETYPE_LEFTDOWN:
 	{
 		// 目標座標
-		D3DXVECTOR3 DestPos = { 200.0f, 600.0f, 0.0f };
+		D3DXVECTOR3 DestPos = { 135.0f, 600.0f, 0.0f };
+
+		const float fDestHeight = 40.0f;	// 高さ
 
 		// 移動スピード
-		const float fLerpSpeed = 0.05f; //
+		const float fLerpSpeed = 0.05f;
+
+		// 現在値取得
+		float fHeight = GetHeight();
 
 		// 線形補間
 		NowPos.x += (DestPos.x - NowPos.x) * fLerpSpeed;
 		NowPos.y += (DestPos.y - NowPos.y) * fLerpSpeed;
 
-		SetPos(NowPos);
+		// 高さを徐々に縮小
+		fHeight += (fDestHeight - fHeight) * fLerpSpeed;
 
-		// 座標固定
+		SetPos(NowPos);
+		SetHeight(fHeight);
+		SetWidth(140.0f);
+
+		// 終了判定
 		if (fabs(DestPos.x - NowPos.x) < 1.0f &&
-			fabs(DestPos.y - NowPos.y) < 1.0f)
+			fabs(DestPos.y - NowPos.y) < 1.0f &&
+			fabs(fDestHeight - fHeight) < 1.0f)
 		{
-			SetPos(DestPos);				// 最終座標に固定
-			m_nScaleType = SCALETYPE_NONE;	// 動作終了
-		}
+			SetPos(DestPos);		// オブジェクトセット
+			SetHeight(fDestHeight);	// オブジェクトセット
+			m_nScaleType = SCALETYPE_NONE;
+		}	
 	}
 		break;
 

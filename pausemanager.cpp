@@ -204,6 +204,10 @@ void CPauseManager::Update(void)
 			if (pFade != nullptr) pFade->SetFade(new CGame());	// ゲームシーンに遷移
 			SetEnablePause(false);	// ポーズ終了
 			pCamera->SetAnim(false); // アニメーション起動
+
+			// 画面クリアをして前の描画情報をなしにする
+			CManager::GetRenderer()->GetDevice()->Clear(0, NULL, (D3DCLEAR_TARGET | D3DCLEAR_ZBUFFER | D3DCLEAR_STENCIL), D3DCOLOR_RGBA(0, 0, 0, 225), 1.0f, 0);
+
 			break;
 
 		case CPause::MENU_CONTINUE:	// コンテニュー時

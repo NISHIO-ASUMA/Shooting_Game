@@ -14,6 +14,7 @@
 class CTutorialUi;
 class CTutoTask;
 class CMoveUi;
+class CItem;
 
 //********************************
 // チュートリアル管理クラスを定義
@@ -49,8 +50,13 @@ private:
 	CTutorialUi* m_pTutoui; // チュートリアルuiクラスのポインタ
 	CTutoTask* m_pTask;		// タスククラスポインタ	
 	TASKTYPE m_Tasktype;	// 種類
+
 	CMoveUi* m_pMoveui;
+	CMoveUi* m_pMoveItemUi;
+	CItem* m_pItem[2];
+
 	bool m_isFreeDone;
+	bool m_isCreate;
 };
 
 #endif

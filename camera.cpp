@@ -103,6 +103,8 @@ CCamera::CCamera()
 	m_nFileIdx = NULL;
 	m_isStopCurrentAnim = false;
 	m_nAnimShakeFlame = NULL;
+	m_isSoundPlay = false;
+	m_isCreate = false;
 }
 //=================================
 // デストラクタ
@@ -1043,6 +1045,13 @@ void CCamera::UpdateAnimCamera(void)
 		nextKey = (m_nAnimNowKey + 1) % m_pCamera.nUseKey;
 	}
 
+	if (m_nAnimNowKey == 0 && !m_isCreate)
+	{
+		// ui生成
+		CMoveUi::Create(D3DXVECTOR3(SCREEN_WIDTH, 685.0f, 0.0f), 120.0f, 30.0f, "Enterskip.png", CMoveUi::MOVETYPE_RIGHT, CMoveUi::SCALETYPE_NONE);
+		m_isCreate = true;
+	}
+
 	// 座標セット
 	float fPosVX = m_pCamera.m_AnimData.KeyInfo[m_nAnimNowKey].fPosVX;
 	float fPosVY = m_pCamera.m_AnimData.KeyInfo[m_nAnimNowKey].fPosVY;
@@ -1129,10 +1138,17 @@ void CCamera::UpdateAnimCamera(void)
 	if (m_nAnimNowKey == 4) // キー4に入った瞬間
 	{
 		// ブラー開始
-		CManager::GetRenderer()->SetBuller(true, 120);
+		CManager::GetRenderer()->SetBuller(true, 117);
 
 		// 振動開始
 		m_nAnimShakeFlame = 120;
+
+		if (!m_isSoundPlay)
+		{
+			// サウンド再生
+			CManager::GetSound()->PlaySound(CManager::GetSound()->SOUND_LABEL_BOSS);
+			m_isSoundPlay = true;
+		}
 
 		// パッドの振動
 		CManager::GetJoyPad()->SetVibration(58000, 58000, 300);
@@ -1178,6 +1194,8 @@ void CCamera::UpdateAnimCamera(void)
 		m_isAnimTime = true;
 		m_isLoad = false;
 
+		m_isSoundPlay = false;
+		m_isCreate = false;
 		// 処理終了
 		return;
 	}
@@ -1197,7 +1215,7 @@ void CCamera::UpdateAnimCamera(void)
 	m_pCamera.nCntAnim++;
 
 	// アニメーションスキップ
-	if (CManager::GetInputKeyboard()->GetTrigger(DIK_RETURN) && m_nFileIdx == 0)
+	if ((CManager::GetInputKeyboard()->GetTrigger(DIK_RETURN) || CManager::GetJoyPad()->GetTrigger(CManager::GetJoyPad()->JOYKEY_START)) && m_nFileIdx == 0)
 	{
 		// モード変更
 		m_pCamera.nMode = MODE_LOCKON;
@@ -1209,17 +1227,20 @@ void CCamera::UpdateAnimCamera(void)
 		m_isAnimTime = true;
 		m_isLoad = false;
 
+		m_isSoundPlay = false;
+
 		// ブラーオフ
 		CManager::GetRenderer()->SetBuller(false, 0);
 
 		// ゲームマネージャーから取得
 		CBoss* pBoss = CGameManager::GetBoss();
-
 		if (pBoss != nullptr)
 		{
+			// セットポジションに合わせる
 			pBoss->SetPos(D3DXVECTOR3(0.0f, -600.0f, 0.0f));
 		}
 
+		m_isCreate = false;
 		// 処理終了
 		return;
 	}

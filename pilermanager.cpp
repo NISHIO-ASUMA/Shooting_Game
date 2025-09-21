@@ -13,6 +13,7 @@
 #include "meshcircle.h"
 #include "effectsmoke.h"
 #include "manager.h"
+#include "signal.h"
 
 //**********************************
 // 名前空間
@@ -78,12 +79,21 @@ void CPilerManager::Update(D3DXVECTOR3* DestPos)
 	CSound* pSound = CManager::GetSound();
 	if (pSound == nullptr) return;
 
+	static bool isSet = false;
+
 	// アクティブタイムを減算
 	m_nActiveTime--;
 
 	// 0以下になったら
 	if (m_nActiveTime <= 0)
 	{
+		if (!isSet)
+		{
+			// 警告出現
+			CSignal::Create();
+			isSet = true;
+		}
+
 		// ランダム値を設定
 		int nNumActive = (rand() % PILERMANAGERINFO::RANDAM) + PILERMANAGERINFO::ACTIVEBACE;
 
@@ -138,6 +148,7 @@ void CPilerManager::Update(D3DXVECTOR3* DestPos)
 				{
 					// 状態変更
 					m_State = STATE_COOLTIME;
+					isSet = false;
 				}
 				else
 				{

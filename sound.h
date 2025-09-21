@@ -36,6 +36,9 @@ public:
 		SOUND_LABEL_CIRCLE,	// メッシュ攻撃SE
 		SOUND_LABEL_CLEAR,	// タスク完了SE
 		SOUND_LABEL_GUARD,	// ガード音SE
+		SOUND_LABEL_EXPLOSION, // 衝撃音SE
+		SOUND_LABEL_BOSS,		// ボス叫びSE
+		SOUND_LABEL_CHANGEWEPON, // 武器切り替え
 		SOUND_LABEL_MAX
 	};
 
@@ -85,6 +88,9 @@ private:
 		{"data/SE/MeshCircle.wav",0},		 // メッシュ攻撃SE
 		{"data/SE/TutoClear.wav",0},		 // タスク完了SE
 		{"data/SE/Guard.wav",0},			 // ガード音SE
+		{"data/SE/Explosion.wav",0},
+		{"data/SE/BossShout.wav",0},
+		{"data/SE/Break.wav",0},
 	};
 
 	IXAudio2* m_pXAudio2;									// XAudio2オブジェクトへのインターフェイス

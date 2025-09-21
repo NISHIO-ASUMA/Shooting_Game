@@ -50,6 +50,7 @@ public:
 	static void AddCharge(float fValue);
 	static void DecCharge(float fValue);
 	static bool GetChargeFlag(void) { return m_isCharge; }
+	static void SetCharge(bool isFlags) { m_isCharge = isFlags; }
 
 private:
 	int m_nIdxTex;

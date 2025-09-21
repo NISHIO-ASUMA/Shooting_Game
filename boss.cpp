@@ -226,6 +226,19 @@ void CBoss::Uninit(void)
 //====================================
 void CBoss::Update(void)
 {
+	// 死んでるなら
+	if (m_isdaeth)
+	{
+		// モーションセット
+		m_pMotion->SetMotion(CBoss::TYPE_DEATH);
+
+		// モーション全体更新
+		m_pMotion->Update(m_pModel, NUMMODELS);
+
+		return;
+	}
+
+
 	// 高さが-600.0f以下
 	if (m_pos.y < -600.0f && !m_isSet)
 	{
@@ -256,20 +269,6 @@ void CBoss::Update(void)
 		// ステート更新
 		m_pState->Update();
 	}
-
-	//==========================
-	// 一個目の弱点パーツを取得
-	//==========================
-	CModel* pWeakHead = GetModelPartType(CModel::PARTTYPE_RIGHT_HAND);
-
-	// 弱点パーツのワールド座標を取得
-	D3DXMATRIX mtx = pWeakHead->GetMtxWorld();
-
-	// 弱点座標を設定
-	D3DXVECTOR3 weakPos(mtx._41, mtx._42, mtx._43);
-
-	// エフェクト
-	// CEffect::Create(weakPos, COLOR_RED, VECTOR3_NULL, 50, 60.0f);
 
 	// モーション全体更新
 	m_pMotion->Update(m_pModel, NUMMODELS);
@@ -453,10 +452,13 @@ bool CBoss::CollisionImpactScal(D3DXVECTOR3* pPos)
 		if (D3DXVec3Length(&diff) <= fHitRadius)
 		{
 			// メッシュ衝撃波を生成	
-			CMeshImpact::Create(D3DXVECTOR3(HandCenterPos.x, 5.0f, HandCenterPos.z), 100, 120.0f, 5.0f, 15.0f);
+			CMeshImpact::Create(D3DXVECTOR3(HandCenterPos.x, 5.0f, HandCenterPos.z), 100, 120.0f, 15.0f, 10.0f);
 
 			// パーティクル生成
 			CParticle::Create(D3DXVECTOR3(HandCenterPos.x, 5.0f, HandCenterPos.z), D3DCOLOR_RGBA(255, 215, 0, 255), 100, 400, 400, 200);
+
+			// 再生
+			pSound->PlaySound(CSound::SOUND_LABEL_EXPLOSION);
 
 			return true;
 
@@ -469,10 +471,13 @@ bool CBoss::CollisionImpactScal(D3DXVECTOR3* pPos)
 		if (D3DXVec3Length(&diff) <= fHitRadius)
 		{
 			// メッシュ衝撃波を生成	
-			CMeshImpact::Create(D3DXVECTOR3(HandCenterPos.x, 5.0f, HandCenterPos.z), 100, 120.0f, 5.0f, 15.0f);
+			CMeshImpact::Create(D3DXVECTOR3(HandCenterPos.x, 5.0f, HandCenterPos.z), 100, 120.0f, 15.0f, 10.0f);
 
 			// パーティクル生成
 			CParticle::Create(D3DXVECTOR3(HandCenterPos.x, 5.0f, HandCenterPos.z), D3DCOLOR_RGBA(255, 215, 0, 255), 100, 400, 400, 200);
+
+			// 再生
+			pSound->PlaySound(CSound::SOUND_LABEL_EXPLOSION);
 
 			return true;
 		}
@@ -482,10 +487,12 @@ bool CBoss::CollisionImpactScal(D3DXVECTOR3* pPos)
 	if (m_pMotion->CheckFrame(100, 100, TYPE_IMPACT) && !m_isdaeth)
 	{
 		// メッシュ衝撃波を生成	
-		CMeshImpact::Create(D3DXVECTOR3(HandCenterPos.x, 5.0f, HandCenterPos.z), 80, 120.0f, 5.0f, 15.0f);
+		CMeshImpact::Create(D3DXVECTOR3(HandCenterPos.x, 5.0f, HandCenterPos.z), 80, 120.0f, 15.0f, 10.0f);
 
 		// パーティクル生成
 		CParticle::Create(D3DXVECTOR3(HandCenterPos.x, 5.0f, HandCenterPos.z), D3DCOLOR_RGBA(255, 215, 0, 255), 100, 400, 400, 200);
+		// 再生
+		pSound->PlaySound(CSound::SOUND_LABEL_EXPLOSION);
 	}
 
 	// 当たらないとき
@@ -675,16 +682,15 @@ bool CBoss::CollisionSwing(D3DXVECTOR3* pPos, float fHitRadius)
 		D3DXVECTOR3 handPos(mtxWorld._41, mtxWorld._42, mtxWorld._43);
 
 		// パーティクル生成
-		// CParticle::Create(D3DXVECTOR3(handPos.x, handPos.y + 20.0f, handPos.z - 30.0f), D3DCOLOR_RGBA(0, 255,127,255), 70, 900, 900, 50);
 		CEffect::Create(D3DXVECTOR3(handPos.x, handPos.y, handPos.z - 30.0f), D3DCOLOR_RGBA(0, 255, 127, 255), VECTOR3_NULL,50,100.0f);
 
 		// プレイヤーとの距離差分
-		float fDisX = pPos->x - handPos.x;
-		float fDisY = pPos->y - handPos.y;
-		float fDisZ = pPos->z - handPos.z;
+		float fDisX = pPos->x - ( handPos.x * 0.9f);
+		float fDisY = pPos->y - ( handPos.y);
+		float fDisZ = pPos->z - ( handPos.z * 0.9f);
 
 		// 半径を設定
-		float fBossradius = 25.0f;
+		float fBossradius = 30.0f;
 
 		// 半径のサイズを計算
 		float fradX = fBossradius + fHitRadius;
@@ -698,10 +704,12 @@ bool CBoss::CollisionSwing(D3DXVECTOR3* pPos, float fHitRadius)
 		if ((m_pMotion->CheckFrame(130, 130, TYPE_ARMRIGHTLEFT)))
 		{
 			// メッシュ衝撃波を生成	
-			CMeshImpact::Create(D3DXVECTOR3(handPos.x, 5.0f, handPos.z), 100, 120.0f, 5.0f, 15.0f);
+			CMeshImpact::Create(D3DXVECTOR3(handPos.x, 5.0f, handPos.z), 100, 120.0f, 15.0f, 10.0f);
 
 			// パーティクル生成
 			CParticle::Create(D3DXVECTOR3(handPos.x, 5.0f, handPos.z), D3DCOLOR_RGBA(255, 215, 0, 255), 100, 400, 400, 200);
+			// 再生
+			pSound->PlaySound(CSound::SOUND_LABEL_EXPLOSION);
 		}
 
 		// 半径内に入っていたら
@@ -719,10 +727,10 @@ bool CBoss::CollisionSwing(D3DXVECTOR3* pPos, float fHitRadius)
 	}
 
 	//  一定フレーム内
-	if ((m_pMotion->CheckFrame(230, 300, TYPE_ARMRIGHTLEFT)) && m_isdaeth == false)
+	if ((m_pMotion->CheckFrame(225, 280, TYPE_ARMRIGHTLEFT)) && m_isdaeth == false)
 	{
 		// 半径を設定
-		float fBossradius = 55.0f;
+		float fBossradius = 60.0f;
 
 		// 半径のサイズを計算
 		float fradX = fBossradius + fHitRadius;
@@ -742,6 +750,7 @@ bool CBoss::CollisionSwing(D3DXVECTOR3* pPos, float fHitRadius)
 
 		// 中央座標
 		D3DXVECTOR3 CenterPos = (handPosL + handPosR) * 0.5f;
+		D3DXVECTOR3 CenterPosHit = (handPosL + handPosR) * 0.8f;
 
 		// エフェクト生成
 		CEffect::Create(D3DXVECTOR3(handPosR.x, handPosR.y, handPosR.z - 30.0f), D3DCOLOR_RGBA(0, 255, 127, 255), VECTOR3_NULL, 50, 100.0f);
@@ -754,14 +763,16 @@ bool CBoss::CollisionSwing(D3DXVECTOR3* pPos, float fHitRadius)
 			CParticle::Create(D3DXVECTOR3(CenterPos.x, 5.0f, CenterPos.z), D3DCOLOR_RGBA(255,215,0,255), 100, 400, 400, 200);
 
 			// メッシュ衝撃波を生成	
-			CMeshImpact::Create(D3DXVECTOR3(CenterPos.x, 5.0f, CenterPos.z), 200, 120.0f, 5.0f, 15.0f);
+			CMeshImpact::Create(D3DXVECTOR3(CenterPos.x, 5.0f, CenterPos.z), 200, 120.0f, 15.0f, 10.0f);
+			// 再生
+			pSound->PlaySound(CSound::SOUND_LABEL_EXPLOSION);
 		}
 
 		if (pRightHand)
 		{
-			float fDisX = pPos->x - handPosR.x;
-			float fDisY = pPos->y - handPosR.y;
-			float fDisZ = pPos->z - handPosR.z;
+			float fDisX = pPos->x - ( handPosR.x * 0.88f);
+			float fDisY = pPos->y - ( handPosR.y);
+			float fDisZ = pPos->z - ( handPosR.z * 0.88f);
 
 			float fDissAll = (fDisX * fDisX) + (fDisY * fDisY) + (fDisZ * fDisZ);
 
@@ -829,6 +840,9 @@ void CBoss::Hit(int nDamage,D3DXVECTOR3 HitPos)
 		{
 			// ダメージ2倍にする
 			realDamage = nDamage * 2;
+
+			// パーティクル生成
+			CParticle::Create(HitPos, COLOR_YERROW, 50, 150, 100, 150);
 		}
 	}
 

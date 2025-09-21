@@ -65,7 +65,7 @@ HRESULT CRubble::Init(void)
 	SetObjType(CObject::TYPE_RUBBLE);
 
 	// 初期値を設定
-	m_Fallingspeed = { 0.0f,3.0f,0.0f };
+	m_Fallingspeed = { 0.0f,2.0f,0.0f };
 
 	// 影オブジェクトを生成
 	m_pShadow = CShadow::Create(VECTOR3_NULL, VECTOR3_NULL);
@@ -140,7 +140,7 @@ bool CRubble::Collision(D3DXVECTOR3 * DestPos)
 	float fDisZ = DestPos->z - NowPos.z;
 
 	// 半径を設定
-	float fRadius = 25.0f;
+	float fRadius = 15.0f;
 
 	// 半径のサイズを計算
 	float fradX = fRadius + 25.0f;

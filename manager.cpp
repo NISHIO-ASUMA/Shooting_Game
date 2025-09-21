@@ -13,6 +13,7 @@
 #include "game.h"
 #include "tutorial.h"
 #include "result.h"
+#include "ranking.h"
 
 //**************************
 // 静的メンバ変数宣言
@@ -138,7 +139,7 @@ HRESULT CManager::Init(HINSTANCE hInstance, HWND hWnd, BOOL bWindow)
 
 #ifdef _DEBUG
 	// シーンセット
-	m_pFade->SetFade(new CGame());
+	m_pFade->SetFade(new CRanking());
 #else
 	// シーンセット
 	m_pFade->SetFade(new CTitle(true));

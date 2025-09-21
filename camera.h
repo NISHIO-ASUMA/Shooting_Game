@@ -165,6 +165,8 @@ private:
 	bool m_isAnimTime;		// アニメーション中かどうか
 	bool m_isLoad;			// 読み込んだかどうか
 	bool m_isStopCurrentAnim;
+	bool m_isSoundPlay;
+	bool m_isCreate;
 
 	D3DXVECTOR3 m_lastBossPos;		// ボスの最後の座標
 

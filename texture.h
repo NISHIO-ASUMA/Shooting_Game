@@ -26,7 +26,7 @@ public:
 
 private:
 
-	static inline constexpr int NUM_TEXTURE = 128;	// 最大テクスチャ数
+	static inline constexpr int NUM_TEXTURE = 160;	// 最大テクスチャ数
 
 	// テクスチャ読み込み配列を作成
 	const char* TexName[NUM_TEXTURE] =
@@ -85,12 +85,16 @@ private:
 		"data\\TEXTURE\\handeffect.jpg",
 		"data\\TEXTURE\\alert_frame.png",
 		"data\\TEXTURE\\tutorial_Boss_week.jpg",
+		"data\\TEXTURE\\Item_info.jpg",
+		"data\\TEXTURE\\aaa.png",
 		"data\\TEXTURE\\ComboMenu\\Tutorial_menu_move.png",
 		"data\\TEXTURE\\ComboMenu\\Tutorial_menu_Attack.png",
 		"data\\TEXTURE\\ComboMenu\\Tutorial_menu_Jump.png",
 		"data\\TEXTURE\\ComboMenu\\Tutorial_menu_JumpAttack.png",
 		"data\\TEXTURE\\ComboMenu\\Tutorial_menu_gauge.png",
 		"data\\TEXTURE\\ComboMenu\\Tutorial_menu_free.png",
+		"data\\TEXTURE\\ComboMenu\\Tutorial_menu_Item.png",
+		"data\\TEXTURE\\Enterskip.png",
 	};
 
 	LPDIRECT3DTEXTURE9 m_apTexture[NUM_TEXTURE];	// テクスチャポインタ

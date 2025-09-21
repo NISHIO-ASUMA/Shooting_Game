@@ -151,6 +151,16 @@ void CCharge::Update(void)
 		FSetGageLength(CHARGEINFO::MAX_CHARGE, m_fCharge, CHARGEINFO::CHAGE_LENGTH, CHARGEINFO::BAR_MAXHEIGHT);
 	}
 
+	if (m_isCharge && m_nType == CHARGE_BAR)
+	{
+		// 点滅
+		CObject2D::SetFlash(0, 5, COLOR_GLAY);
+	}
+	else
+	{
+		SetCol(COLOR_WHITE);
+	}
+
 	// 親クラスの更新処理
 	CObject2D::Update();
 }

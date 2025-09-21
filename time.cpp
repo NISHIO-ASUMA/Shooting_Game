@@ -261,9 +261,16 @@ void CTime::Second(void)
 		// 分の桁数を更新する
 		if (m_pNumberMinute[nCnt] != nullptr)
 		{
+			// 十秒以下
+			if (m_nAllTime <= 10)
+			{
+				m_pNumberMinute[nCnt]->SetCol(COLOR_RED);
+			}
+
 			m_pNumberMinute[nCnt]->Update();
 			m_pNumberMinute[nCnt]->SetDigit(aPosTexU);
 		}
+
 	}
 }
 //===============================
@@ -285,6 +292,12 @@ void CTime::Minute(void)
 		// 秒の桁数を更新する
 		if (m_pNumberSecond[nCnt] != nullptr)
 		{
+			// 十秒以下
+			if (m_nAllTime <= 10)
+			{
+				m_pNumberSecond[nCnt]->SetCol(COLOR_RED);
+			}
+
 			m_pNumberSecond[nCnt]->Update();
 			m_pNumberSecond[nCnt]->SetDigit(aPosTexU);
 		}
