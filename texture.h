@@ -95,6 +95,7 @@ private:
 		"data\\TEXTURE\\ComboMenu\\Tutorial_menu_free.png",
 		"data\\TEXTURE\\ComboMenu\\Tutorial_menu_Item.png",
 		"data\\TEXTURE\\Enterskip.png",
+		"data\\TEXTURE\\alert_Footsign.png",
 	};
 
 	LPDIRECT3DTEXTURE9 m_apTexture[NUM_TEXTURE];	// テクスチャポインタ

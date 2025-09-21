@@ -8,6 +8,8 @@
 #ifndef _PILERMANAGER_H_ // このマクロ定義がされてなかったら
 #define _PILERMANAGER_H_ // 2重インクルード防止のマクロ定義
 
+class CUi;
+
 //**********************************
 // 管理クラスを定義
 //**********************************
@@ -39,6 +41,7 @@ private:
 
 	STATE m_State;		// 状態管理変数
 	D3DXVECTOR3 m_LastCirclePos;	// 最後に出現した座標
+	CUi* m_pUi;
 };
 
 #endif

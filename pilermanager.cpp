@@ -14,6 +14,7 @@
 #include "effectsmoke.h"
 #include "manager.h"
 #include "signal.h"
+#include "ui.h"
 
 //**********************************
 // 名前空間
@@ -38,6 +39,7 @@ CPilerManager::CPilerManager()
 	m_nActiveTime = NULL;
 	m_LastCirclePos = VECTOR3_NULL;
 	m_State = STATE_IDLE;
+	m_pUi = nullptr;
 }
 //===============================
 // デストラクタ
@@ -90,7 +92,10 @@ void CPilerManager::Update(D3DXVECTOR3* DestPos)
 		if (!isSet)
 		{
 			// 警告出現
-			CSignal::Create();
+			if (m_pUi == nullptr)
+			{
+				m_pUi = CUi::Create(D3DXVECTOR3(640.0f, 300.0f, 0.0f), 5, 180.0f, 60.0f, "alert_Footsign.png", true);
+			}
 			isSet = true;
 		}
 
@@ -121,6 +126,7 @@ void CPilerManager::Update(D3DXVECTOR3* DestPos)
 
 				// 状態を変更
 				m_State = STATE_WAIT_PILER;
+
 			}
 			break;
 		
@@ -148,7 +154,6 @@ void CPilerManager::Update(D3DXVECTOR3* DestPos)
 				{
 					// 状態変更
 					m_State = STATE_COOLTIME;
-					isSet = false;
 				}
 				else
 				{
@@ -159,6 +164,13 @@ void CPilerManager::Update(D3DXVECTOR3* DestPos)
 			break;
 
 		case STATE_COOLTIME:	// クールタイム
+
+			// 破棄
+			if (m_pUi != nullptr)
+			{
+				m_pUi->Uninit();
+				m_pUi = nullptr;
+			}
 
 			// カウントを加算
 			m_nTimer++;
@@ -171,6 +183,7 @@ void CPilerManager::Update(D3DXVECTOR3* DestPos)
 				m_nCount = NULL;
 				m_State = STATE_IDLE;
 				m_nActiveTime = PILERMANAGERINFO::MAX_ACTIVETIME;
+				isSet = false;
 			}
 			break;
 		}

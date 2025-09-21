@@ -1215,7 +1215,7 @@ void CCamera::UpdateAnimCamera(void)
 	m_pCamera.nCntAnim++;
 
 	// アニメーションスキップ
-	if ((CManager::GetInputKeyboard()->GetTrigger(DIK_RETURN) || CManager::GetJoyPad()->GetTrigger(CManager::GetJoyPad()->JOYKEY_START)) && m_nFileIdx == 0)
+	if ((CManager::GetInputKeyboard()->GetTrigger(DIK_RETURN) || CManager::GetJoyPad()->GetTrigger(CManager::GetJoyPad()->JOYKEY_A)) && m_nFileIdx == 0)
 	{
 		// モード変更
 		m_pCamera.nMode = MODE_LOCKON;
