@@ -842,7 +842,7 @@ void CBoss::Hit(int nDamage,D3DXVECTOR3 HitPos)
 			realDamage = nDamage * 2;
 
 			// パーティクル生成
-			CParticle::Create(HitPos, COLOR_YERROW, 50, 150, 100, 150);
+			CParticle::Create(HitPos, COLOR_GREEN, 50, 300, 400, 150);
 		}
 	}
 
@@ -913,15 +913,34 @@ void CBoss::RollToPlayer(void)
 {
 	// プレイヤーの取得
 	CPlayer* pPlayer = CPlayer::GetIdxPlayer(0);
+	CPlayer* pPlayer1 = CPlayer::GetIdxPlayer(1);
 
 	// nullなら
 	if (pPlayer == nullptr) return;
+	if (pPlayer1 == nullptr) return;
 
 	// プレイヤーの座標を取得
 	D3DXVECTOR3 pPos = pPlayer->GetPos();
+	D3DXVECTOR3 pPos1 = pPlayer1->GetPos();
+
+	// ランダム生成
+	int nRcokOn = rand() % 2;
+	D3DXVECTOR3 VecPlayer = VECTOR3_NULL;
 
 	// ボスからプレイヤーに一本のベクトルを生成する
-	D3DXVECTOR3 VecPlayer = m_pos - pPos;
+	switch (nRcokOn)
+	{
+	case 0:
+		VecPlayer = m_pos - pPos;
+		break;
+
+	case 1:
+		VecPlayer = m_pos - pPos1;
+		break;
+
+	default:
+		break;
+	}
 
 	// 水平方向の角度を求める
 	float angle = atan2f(VecPlayer.x, VecPlayer.z);

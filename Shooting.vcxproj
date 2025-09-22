@@ -246,6 +246,7 @@
     <ClCompile Include="sound.cpp" />
     <ClCompile Include="spread.cpp" />
     <ClCompile Include="state.cpp" />
+    <ClCompile Include="subplayer.cpp" />
     <ClCompile Include="texture.cpp" />
     <ClCompile Include="time.cpp" />
     <ClCompile Include="title.cpp" />
@@ -359,6 +360,7 @@
     <ClInclude Include="sound.h" />
     <ClInclude Include="spread.h" />
     <ClInclude Include="state.h" />
+    <ClInclude Include="subplayer.h" />
     <ClInclude Include="template.h" />
     <ClInclude Include="texture.h" />
     <ClInclude Include="time.h" />

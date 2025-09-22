@@ -41,7 +41,7 @@
 //**********************
 namespace PLAYERINFO
 {
-	constexpr float MOVE = 0.012f;		 // 1フレームの移動量
+	constexpr float MOVE = 0.020f;		 // 1フレームの移動量
 	constexpr float JUMPVALUE = 18.3f;	 // ジャンプ量
 	constexpr float GRAVITY = 1.5f;		 // 重力値
 	constexpr float HITRADIUS = 25.0f;	 // 当たり判定の半径

@@ -54,7 +54,7 @@ public:
 	static CResultScore* Create(D3DXVECTOR3 pos, float fWidth, float fHeight,int nType);
 
 private:
-	static constexpr int NUM_RESULTSCORE = 5; // 桁数
+	static constexpr int NUM_RESULTSCORE = 6; // 桁数
 	static constexpr int NUM_RESULTDIGIT = 10; // 表示する分割桁数の値
 
 	int m_nScore;			// スコア保持用

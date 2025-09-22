@@ -43,12 +43,12 @@ public:
 	static void SetRankInScoreIdx(int nIdxScore) { m_nNewRankingScore = nIdxScore; }
 
 private:
-	static constexpr int RANKSCOREDIGIT = 5;
+	static constexpr int RANKSCOREDIGIT = 6;
 	static constexpr int RANKING_MAX = 5;    // ランキング数
 
 	static int m_nNewRankingScore;	// 順位に入っているかどうか
 
-	int m_nIdxTex;				// テクスチャインデックス
+	int m_nIdxTex;					// テクスチャインデックス
 	int m_aRankScore[RANKING_MAX];	// スコア配列
 	CNumber* m_apNumber[RANKING_MAX][RANKSCOREDIGIT]; // 各スコアと桁数
 

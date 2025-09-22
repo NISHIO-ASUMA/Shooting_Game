@@ -39,6 +39,7 @@ public:
 	// Ã“Iƒƒ“ƒoŠÖ”
 	static CScore* Create(D3DXVECTOR3 pos, float fWidth, float fHeight);
 	static void AddScore(int nValue);
+	static void DeleteScore(void);
 	static void DecScore(void);
 	static int GetScore(void) { return m_nScore; }
 	static void SaveScore(void);

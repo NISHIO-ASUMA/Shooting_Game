@@ -29,6 +29,8 @@
 #include "item.h"
 #include "ui.h"
 
+CBarrierManager* CTutorialManager::m_pBarrierManger = nullptr;
+
 //==========================
 // コンストラクタ
 //==========================
@@ -86,6 +88,9 @@ HRESULT CTutorialManager::Init(void)
 		m_pTask->Init();
 	}
 
+	m_pBarrierManger = new CBarrierManager;
+	m_pBarrierManger->Init();
+
 	// 初期化結果を返す
 	return S_OK;
 }
@@ -106,6 +111,19 @@ void CTutorialManager::Uninit(void)
 		// null初期化
 		m_pTask = nullptr;
 	}
+
+	// nullチェック
+	if (m_pBarrierManger != nullptr)
+	{
+		// 終了処理
+		m_pBarrierManger->Uninit();
+
+		// 破棄
+		delete m_pBarrierManger;
+
+		// null初期化
+		m_pBarrierManger = nullptr;
+	}
 }
 //==========================
 // 更新処理
@@ -116,6 +134,12 @@ void CTutorialManager::Update(void)
 	if (m_pTask != nullptr)
 	{
 		m_pTask->Update();
+	}
+
+	// クラスの更新処理
+	if (m_pBarrierManger != nullptr)
+	{
+		m_pBarrierManger->Update();
 	}
 
 	// 入力デバイス取得
@@ -264,6 +288,7 @@ void CTutorialManager::Update(void)
 		if (!m_isFreeDone)  // まだ処理してないときだけ
 		{
 			isFinish = true;
+			isLaserActionDone = false;
 			m_isFreeDone = true; // 1回処理したらロック
 		}
 

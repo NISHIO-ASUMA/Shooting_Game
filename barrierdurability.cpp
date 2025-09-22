@@ -15,6 +15,7 @@
 #include "player.h"
 #include "gamemanager.h"
 #include "particle.h"
+#include "tutorialmanager.h"
 
 //*********************************
 // 名前空間
@@ -106,8 +107,27 @@ void CBarrierDurability::Update(void)
 	float fDistance = BARRIERINFO::DISTANCE;
 	float DestPosY = pPlayer->GetPos().y + BARRIERINFO::DISTANCE;
 
+	CScene::MODE nMode = CManager::GetScene();
+
+	// ポインタ
+	CBarrierManager* pBarrier = nullptr;
+
+	if (pBarrier == nullptr)
+	{
+		if (nMode == CScene::MODE_GAME)
+		{
+			// ポインタ取得
+			pBarrier = CGameManager::GetBarrier();
+		}
+		else
+		{
+			// ポインタ取得
+			pBarrier = CTutorialManager::GetBarrier();
+		}
+	}
+
 	// バリアごとの角度オフセット
-	float angleOffset = (2.0f * D3DX_PI / CGameManager::GetBarrier()->GetNumBarrier()) * m_nIdx;
+	float angleOffset = (2.0f * D3DX_PI / pBarrier->GetNumBarrier()) * m_nIdx;
 	float currentAngle = fValueAngle + angleOffset;
 
 	// 座標を計算

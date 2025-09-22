@@ -23,7 +23,7 @@ namespace PILERMANAGERINFO
 {
 	constexpr int MAX_ACTIVETIME = 600;	// 最大カウント
 	constexpr int SIRCLECOUNT = 20;		// 円形生成カウント
-	constexpr int PILERCOUNT = 45;		// 円柱生成カウント
+	constexpr int PILERCOUNT = 60;		// 円柱生成カウント
 	constexpr int RANDAM = 3;			// 生成数ランダムの最高値
 	constexpr int ACTIVEBACE = 3;		// 生成規定値
 };

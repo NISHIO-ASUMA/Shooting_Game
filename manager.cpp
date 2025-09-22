@@ -139,7 +139,7 @@ HRESULT CManager::Init(HINSTANCE hInstance, HWND hWnd, BOOL bWindow)
 
 #ifdef _DEBUG
 	// シーンセット
-	m_pFade->SetFade(new CResult());
+	m_pFade->SetFade(new CTutorial());
 #else
 	// シーンセット
 	m_pFade->SetFade(new CTitle(true));

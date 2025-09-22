@@ -18,6 +18,7 @@
 #include "player.h"
 #include "parameter.h"
 #include "particle.h"
+#include "tutorialmanager.h"
 
 //**************************
 // 名前空間
@@ -147,6 +148,9 @@ bool CItem::Collision(D3DXVECTOR3* pPos)
 	// 線分の長さを算出
 	float fRange = D3DXVec3Length(&CollisionPos);
 
+	// 現在シーン取得
+	CScene::MODE nMode = CManager::GetScene();
+
 	// ヒット半径よりも小さい値になったら
 	if (fRange <= ITEMINFO::HITRANGE)
 	{
@@ -164,14 +168,30 @@ bool CItem::Collision(D3DXVECTOR3* pPos)
 		{
 		case TYPE_GUARD:
 		{
-			// バリアマネージャを取得
-			CBarrierManager* pBarrierMgr = CGameManager::GetBarrier();
 
-			// nullじゃなかったら
-			if (pBarrierMgr != nullptr)
+			if (nMode == CScene::MODE_TUTORIAL)
 			{
-				// バリア加算
-				pBarrierMgr->AddBarrier(1, *pPos, 50.0f);
+				// バリアマネージャを取得
+				CBarrierManager* pBarrierMgrTuto = CTutorialManager::GetBarrier();
+
+				// nullじゃなかったら
+				if (pBarrierMgrTuto != nullptr)
+				{
+					// バリア加算
+					pBarrierMgrTuto->AddBarrier(1, *pPos, 50.0f);
+				}
+			}
+			else
+			{
+				// バリアマネージャを取得
+				CBarrierManager* pBarrierMgr = CGameManager::GetBarrier();
+
+				// nullじゃなかったら
+				if (pBarrierMgr != nullptr)
+				{
+					// バリア加算
+					pBarrierMgr->AddBarrier(1, *pPos, 50.0f);
+				}
 			}
 
 			// サウンド再生

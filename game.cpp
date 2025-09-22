@@ -16,6 +16,7 @@
 #include "loseresult.h"
 #include "gamemanager.h"
 #include "player.h"
+#include "score.h"
 
 //**************************
 // 静的メンバ変数宣言
@@ -70,6 +71,9 @@ HRESULT CGame::Init(void)
 
 	// 通常進行状態
 	m_nGametype = GAMESTATE_NORMAL;
+
+	// 初期化
+	CScore::DeleteScore();
 
 	// 初期化結果を返す
 	return S_OK;
@@ -191,7 +195,7 @@ void CGame::Update(void)
 		// ボス取得
 		CBoss* pBoss = CGameManager::GetBoss();
 
-		// ボス死亡フラグが有効なら TODO : ここにanimation終了していたらのフラグ設定
+		// ボス死亡フラグが有効なら
 		if (pBoss->IsDaeth())
 		{
 #if 0
