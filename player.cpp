@@ -41,7 +41,7 @@
 //**********************
 namespace PLAYERINFO
 {
-	constexpr float MOVE = 0.020f;		 // 1フレームの移動量
+	constexpr float MOVE = 0.019f;		 // 1フレームの移動量
 	constexpr float JUMPVALUE = 18.3f;	 // ジャンプ量
 	constexpr float GRAVITY = 1.5f;		 // 重力値
 	constexpr float HITRADIUS = 25.0f;	 // 当たり判定の半径
@@ -1034,8 +1034,8 @@ void CPlayer::Collision(void)
 							CCharge::SetCharge(false);
 							CCharge::DecCharge(100.0f);
 
-							// カメラの設定を初期化
-							pCamera->SetAnim(false);		// アニメーション起動
+							// アニメーション起動
+							pCamera->SetAnim(false);
 
 							return;
 						}

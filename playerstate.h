@@ -32,13 +32,13 @@ public:
 		ID_JUMP, // ジャンプ
 		ID_GUARD, // 防御
 		ID_DAMAGE,// ダメージ
+		ID_INVITE, // ひきつけ
 		ID_MAX
 	};
 
 	// コンストラクタ・デストラクタ
 	CPlayerStateBase();
 	~CPlayerStateBase();
-
 
 	// ステートが始まるときに一度だけ呼ばれる関数
 	virtual void OnStart() {}

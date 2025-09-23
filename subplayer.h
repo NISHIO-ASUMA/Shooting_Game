@@ -36,15 +36,15 @@ public:
 	//****************************************
 	enum SUBPLAYERMOTION
 	{
-		SUNPLAYERMOTION_NEUTRAL,	// ニュートラル
-		SUNPLAYERMOTION_MOVE,		// 移動
-		SUNPLAYERMOTION_ACTION,		// アクション
-		SUNPLAYERMOTION_JUMP,		// ジャンプ
-		SUNPLAYERMOTION_LANDING,	// 着地
-		SUNPLAYERMOTION_JUMPATTACK,	// ジャンプ攻撃
-		SUNPLAYERMOTION_DAMAGE,		// ダメージ
-		SUNPLAYERMOTION_INVITE,		// ひきつけ
-		SUNPLAYERMOTION_MAX
+		SUBPLAYERMOTION_NEUTRAL,	// ニュートラル
+		SUBPLAYERMOTION_MOVE,		// 移動
+		SUBPLAYERMOTION_ACTION,		// アクション
+		SUBPLAYERMOTION_JUMP,		// ジャンプ
+		SUBPLAYERMOTION_LANDING,	// 着地
+		SUBPLAYERMOTION_JUMPATTACK,	// ジャンプ攻撃
+		SUBPLAYERMOTION_DAMAGE,		// ダメージ
+		SUBPLAYERMOTION_INVITE,		// ひきつけ
+		SUBPLAYERMOTION_MAX
 	};
 
 	// コンストラクタ・デストラクタ
@@ -82,7 +82,6 @@ public:
 	bool isAttackeyPress(CInputKeyboard* pKeyInput);
 	bool isLanding(void) { return m_isJump; }
 	bool GetLanding(void) { return m_isLanding; }
-	bool GetIsDamege(void) { return m_isDecHp; }
 
 	// ゲッター
 	
@@ -117,9 +116,7 @@ private:
 	bool m_isJump;			// ジャンプ判定
 	bool m_isMoving;		// 移動キー判定
 	bool m_isAttack;		// 攻撃判定
-	bool m_isShadow;
 	bool m_isInvite;
-	bool m_isDecHp;
 
 	float m_fAngle;			// 現在の角度
 };

@@ -913,34 +913,35 @@ void CBoss::RollToPlayer(void)
 {
 	// プレイヤーの取得
 	CPlayer* pPlayer = CPlayer::GetIdxPlayer(0);
-	CPlayer* pPlayer1 = CPlayer::GetIdxPlayer(1);
+	// CPlayer* pPlayer1 = CPlayer::GetIdxPlayer(1);
 
 	// nullなら
 	if (pPlayer == nullptr) return;
-	if (pPlayer1 == nullptr) return;
+	// if (pPlayer1 == nullptr) return;
 
 	// プレイヤーの座標を取得
 	D3DXVECTOR3 pPos = pPlayer->GetPos();
-	D3DXVECTOR3 pPos1 = pPlayer1->GetPos();
+	// D3DXVECTOR3 pPos1 = pPlayer1->GetPos();
 
 	// ランダム生成
-	int nRcokOn = rand() % 2;
+	// int nRcokOn = rand() % 2;
 	D3DXVECTOR3 VecPlayer = VECTOR3_NULL;
+	VecPlayer = m_pos - pPos;
 
-	// ボスからプレイヤーに一本のベクトルを生成する
-	switch (nRcokOn)
-	{
-	case 0:
-		VecPlayer = m_pos - pPos;
-		break;
+	//// ボスからプレイヤーに一本のベクトルを生成する
+	//switch (nRcokOn)
+	//{
+	//case 0:
+	//	VecPlayer = m_pos - pPos;
+	//	break;
 
-	case 1:
-		VecPlayer = m_pos - pPos1;
-		break;
+	//case 1:
+	//	VecPlayer = m_pos - pPos1;
+	//	break;
 
-	default:
-		break;
-	}
+	//default:
+	//	break;
+	//}
 
 	// 水平方向の角度を求める
 	float angle = atan2f(VecPlayer.x, VecPlayer.z);

@@ -453,10 +453,13 @@
     <ClCompile Include="uiobjectmanager.cpp">
       <Filter>ソース ファイル\UiEdit</Filter>
     </ClCompile>
-    <ClCompile Include="particlepiler.cpp">
-      <Filter>ソース ファイル</Filter>
-    </ClCompile>
     <ClCompile Include="subplayer.cpp">
+      <Filter>ソース ファイル\Charactor\Player</Filter>
+    </ClCompile>
+    <ClCompile Include="particlepiler.cpp">
+      <Filter>ソース ファイル\Effect</Filter>
+    </ClCompile>
+    <ClCompile Include="subplayerstate.cpp">
       <Filter>ソース ファイル</Filter>
     </ClCompile>
   </ItemGroup>
@@ -798,6 +801,9 @@
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
     <ClInclude Include="subplayer.h">
+      <Filter>ヘッダー ファイル</Filter>
+    </ClInclude>
+    <ClInclude Include="subplayerstate.h">
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
   </ItemGroup>
