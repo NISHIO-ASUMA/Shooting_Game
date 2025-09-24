@@ -242,10 +242,7 @@ void CPauseManager::SetEnablePause(void)
 	if (CManager::GetInputKeyboard()->GetTrigger(DIK_P) ||
 		CManager::GetJoyPad()->GetTrigger(CJoyPad::JOYKEY_START))
 	{
-		if (CManager::GetCamera()->GetShake() == false)
-		{
-			// フラグ変更
-			m_isPause = m_isPause ? false : true;
-		}
+		// フラグ変更
+		m_isPause = m_isPause ? false : true;
 	}
 }

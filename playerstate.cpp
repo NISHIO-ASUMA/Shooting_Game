@@ -128,16 +128,22 @@ void CPlayerStateNeutral::OnUpdate()
 		return;
 	}
 
-	// Qキー もしくは R1ボタン
-	if ((pInput->GetPress(DIK_Q) || pPad->GetPress(CJoyPad::JOYKEY_RIGHT_B)) &&
-		m_pPlayer->GetNowMotion() != CPlayer::PLAYERMOTION_DAMAGE)
-	{
-		// ステート変更
-		m_pPlayer->ChangeState(new CPlayerStateInvite, ID_INVITE);
+	//// INVITEキー入力時
+	//if (m_pPlayer->GetPlayerIndex() == 0 &&
+	//	(pInput->GetPress(DIK_Q)) &&
+	//	m_pPlayer->GetNowMotion() != CPlayer::PLAYERMOTION_DAMAGE)
+	//{
+	//	m_pPlayer->ChangeState(new CPlayerStateInvite, ID_INVITE);
+	//	return;
+	//}
 
-		// ここで処理を返す
-		return;
-	}
+	//if (m_pPlayer->GetPlayerIndex() == 1 &&
+	//	(pInput->GetPress(DIK_E)) &&
+	//	m_pPlayer->GetNowMotion() != CPlayer::PLAYERMOTION_DAMAGE)
+	//{
+	//	m_pPlayer->ChangeState(new CPlayerStateInvite, ID_INVITE);
+	//	return;
+	//}
 }
 //==================================
 // 待機状態時終了関数
@@ -483,6 +489,7 @@ CPlayerStateInvite::CPlayerStateInvite()
 {
 	// 値のクリア
 	m_nInviteCount = NULL;
+	m_isRotation = false;
 
 	// IDセット
 	SetID(ID_INVITE);
@@ -502,13 +509,12 @@ void CPlayerStateInvite::OnStart()
 	// カメラ取得
 	CCamera* pCamera = CManager::GetCamera();
 
-	// mainプレイヤーだったら
 	if (m_pPlayer->GetPlayerIndex() == 0)
 	{
 		// サブを映す
 		pCamera->SetCameraMode(CCamera::MODE_SUB);
 	}
-
+	
 	// モーションセット
 	m_pPlayer->GetMotion()->SetMotion(CPlayer::PLAYERMOTION_INVITE, false, 0, false);
 
@@ -527,6 +533,8 @@ void CPlayerStateInvite::OnUpdate()
 	{
 		// 値を更新
 		m_nInviteCount = 0;
+
+		m_isRotation = false;
 
 		// ステート変更
 		m_pPlayer->ChangeState(new CPlayerStateNeutral(), ID_NEUTRAL);

@@ -81,17 +81,11 @@ HRESULT CGameManager::Init(void)
 	m_pTime = CTime::Create(D3DXVECTOR3(1030.0f, 40.0f, 0.0f), 60.0f, 40.0f);
 
 	// 現在の弾表示アイコン
-	CBulletIcon::Create(D3DXVECTOR3(160.0f, 175.0f, 0.0f), "data\\TEXTURE\\Normal_bullet.png", 0);
-	CBulletIcon::Create(D3DXVECTOR3(230.0f, 175.0f, 0.0f), "data\\TEXTURE\\Laser_Icon.png", 1);
+	CBulletIcon::Create(D3DXVECTOR3(200.0f, 200.0f, 0.0f), "data\\TEXTURE\\Normal_bullet.png", 0);
+	CBulletIcon::Create(D3DXVECTOR3(320.0f, 200.0f, 0.0f), "data\\TEXTURE\\Laser_Icon.png", 1);
 
 	// ui生成
 	CUi::Create(D3DXVECTOR3(65.0f, 175.0f, 0.0f), 0, 60.0f, 30.0f, "aaa.png", false);
-
-	// 生成
-	// m_pPlayerManager = CPlayerManager::Create();
-
-	// 生成
-	// m_pSubPlayer = CSubPlayer::Create(D3DXVECTOR3(0.0f, 0.0f, -550.0f), D3DXVECTOR3(0.0f,-D3DX_PI,0.0f), 10);
 
 	// サウンド取得
 	CSound* pSound = CManager::GetSound();
@@ -100,7 +94,7 @@ HRESULT CGameManager::Init(void)
 	if (pSound == nullptr) return E_FAIL;
 
 	// サウンド再生
-	pSound->PlaySound(CSound::SOUND_LABEL_GAMEBGM);
+	// pSound->PlaySound(CSound::SOUND_LABEL_GAMEBGM);
 
 	// バリアマネージャー生成
 	 m_pBarrier = new CBarrierManager;

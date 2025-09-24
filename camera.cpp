@@ -337,11 +337,42 @@ void CCamera::Update(void)
 //=======================================
 void CCamera::ChangeLockOn(D3DXVECTOR3 NowPos, D3DXVECTOR3 DestPos)
 {
-	// 対象座標から現在の座標へのベクトルを生成
-	D3DXVECTOR3 VecMove = DestPos - NowPos;
+	// 回転の中心を決める
+	D3DXVECTOR3 center = m_pCamera.posV;
 
-	// 対象座標までの動きを補完 ( 平行移動 )
+	// 中心基準にしたベクトル
+	D3DXVECTOR3 vNow = NowPos - center;
+	D3DXVECTOR3 vDest = DestPos - center;
 
+	// 角度を求める
+	float angleNow = atan2f(vNow.z, vNow.x);
+	float angleDest = atan2f(vDest.z, vDest.x);
+
+	// 差分角度
+	float delta = angleDest - angleNow;
+	if (delta > D3DX_PI)  delta -= D3DX_PI * 2.0f;
+	if (delta < -D3DX_PI) delta += D3DX_PI * 2.0f;
+
+	// 補間係数
+	float fLerp = 0.2f;
+
+	// 新しい角度
+	float angleNew = angleNow + delta * fLerp;
+
+	// 距離を補間
+	float lenNow = D3DXVec3Length(&vNow);
+	float lenDest = D3DXVec3Length(&vDest);
+	float lenNew = lenNow + (lenDest - lenNow) * fLerp;
+
+	// XZ平面で回転した新しい位置
+	D3DXVECTOR3 vNew(
+		cosf(angleNew) * lenNew,
+		vNow.y + (vDest.y - vNow.y) * fLerp, 
+		sinf(angleNew) * lenNew
+	);
+
+	// カメラの注視点を更新
+	m_pCamera.posR = center + vNew;
 }
 //=======================================
 // 2体目ロックオンカメラ

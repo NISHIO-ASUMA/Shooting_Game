@@ -18,7 +18,7 @@
 //***************************
 namespace BULLETICONINFO
 {
-	constexpr float ICONSIZE = 25.0f;	// アイコンのサイズ
+	constexpr float ICONSIZE = 50.0f;	// アイコンのサイズ
 };
 
 //==================================
@@ -97,7 +97,7 @@ void CBulletIcon::Update(void)
 	else
 	{
 		// カラー変更
-		SetCol(COLOR_GLAY);
+		SetCol(D3DXCOLOR(1.0f, 1.0f, 1.0f, 0.4f));
 	}
 
 	// 親クラスの更新処理

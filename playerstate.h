@@ -207,6 +207,7 @@ public:
 
 private:
 	int m_nInviteCount;
+	bool m_isRotation;
 };
 
 #endif

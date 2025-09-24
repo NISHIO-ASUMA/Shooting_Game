@@ -393,11 +393,25 @@ void CPlayer::Update(void)
 		// モーションを統一する
 		m_pMotion->SetMotion(pMain->GetNowMotion());
 
-		// MAINと状態が一致したら同期許可
-		if (m_pStateMachine->GetNowStateID() == pMain->m_pStateMachine->GetNowStateID())
+		// MAINとSUBのステート取得
+		int mainStateID = pMain->m_pStateMachine->GetNowStateID();
+		int subStateID = m_pStateMachine->GetNowStateID();
+
+		// INVITE が絡んでいたら同期解除
+		if (mainStateID == CPlayerStateBase::ID_INVITE ||
+			subStateID == CPlayerStateBase::ID_INVITE)
 		{
-			m_isStateSynchro = true;
+			m_isStateSynchro = false; // 解除
 		}
+		else
+		{
+			// 両方同じなら同期許可
+			if (mainStateID == subStateID)
+			{
+				m_isStateSynchro = true;
+			}
+		}
+
 
 		// モーション一致していたら
 		if (m_isStateSynchro)
@@ -405,11 +419,10 @@ void CPlayer::Update(void)
 			// モーションを統一する
 			m_pMotion->SetMotion(pMain->GetNowMotion());
 
-			// ステートが異なる場合のみ変更
-			int mainStateID = pMain->m_pStateMachine->GetNowStateID();
-			int subStateID = m_pStateMachine->GetNowStateID();
-
-			if (mainStateID != subStateID)
+			// INVITだけは同期しない
+			if (mainStateID != subStateID &&
+				mainStateID != CPlayerStateBase::ID_INVITE &&
+				subStateID != CPlayerStateBase::ID_INVITE)
 			{
 				switch (mainStateID)
 				{

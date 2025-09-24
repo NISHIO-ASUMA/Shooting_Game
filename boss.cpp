@@ -770,28 +770,34 @@ bool CBoss::CollisionSwing(D3DXVECTOR3* pPos, float fHitRadius)
 
 		if (pRightHand)
 		{
-			float fDisX = pPos->x - ( handPosR.x * 0.88f);
-			float fDisY = pPos->y - ( handPosR.y);
-			float fDisZ = pPos->z - ( handPosR.z * 0.88f);
+			float fDisX = pPos->x - ( handPosR.x * 0.5f);
+			float fDisY = pPos->y - ( handPosR.y);	 
+			float fDisZ = pPos->z - ( handPosR.z * 0.5f);
 
 			float fDissAll = (fDisX * fDisX) + (fDisY * fDisY) + (fDisZ * fDisZ);
 
 			if (fDissAll <= fRadAll)
 			{
+				// メッシュ衝撃波を生成	
+				CMeshImpact::Create(D3DXVECTOR3(CenterPos.x, 5.0f, CenterPos.z), 200, 120.0f, 15.0f, 10.0f);
+
 				return true; // 右手に当たり
 			}
 		}
 
 		if (pLeftHand)
 		{
-			float fDisX = pPos->x - handPosL.x;
-			float fDisY = pPos->y - handPosL.y;
-			float fDisZ = pPos->z - handPosL.z;
+			float fDisX = pPos->x -( handPosL.x * 0.5f);
+			float fDisY = pPos->y -( handPosL.y);	
+			float fDisZ = pPos->z -( handPosL.z * 0.5f);
 
 			float fDissAll = (fDisX * fDisX) + (fDisY * fDisY) + (fDisZ * fDisZ);
 
 			if (fDissAll <= fRadAll)
 			{
+				// メッシュ衝撃波を生成	
+				CMeshImpact::Create(D3DXVECTOR3(CenterPos.x, 5.0f, CenterPos.z), 200, 120.0f, 15.0f, 10.0f);
+
 				return true; // 左手に当たり
 			}
 		}
@@ -913,35 +919,14 @@ void CBoss::RollToPlayer(void)
 {
 	// プレイヤーの取得
 	CPlayer* pPlayer = CPlayer::GetIdxPlayer(0);
-	// CPlayer* pPlayer1 = CPlayer::GetIdxPlayer(1);
 
 	// nullなら
 	if (pPlayer == nullptr) return;
-	// if (pPlayer1 == nullptr) return;
 
 	// プレイヤーの座標を取得
 	D3DXVECTOR3 pPos = pPlayer->GetPos();
-	// D3DXVECTOR3 pPos1 = pPlayer1->GetPos();
-
-	// ランダム生成
-	// int nRcokOn = rand() % 2;
 	D3DXVECTOR3 VecPlayer = VECTOR3_NULL;
 	VecPlayer = m_pos - pPos;
-
-	//// ボスからプレイヤーに一本のベクトルを生成する
-	//switch (nRcokOn)
-	//{
-	//case 0:
-	//	VecPlayer = m_pos - pPos;
-	//	break;
-
-	//case 1:
-	//	VecPlayer = m_pos - pPos1;
-	//	break;
-
-	//default:
-	//	break;
-	//}
 
 	// 水平方向の角度を求める
 	float angle = atan2f(VecPlayer.x, VecPlayer.z);
