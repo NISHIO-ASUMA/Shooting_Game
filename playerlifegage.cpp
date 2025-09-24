@@ -98,62 +98,65 @@ void CPlayerLifeGage::Update(void)
 		SetGageLength(m_nMaxLifeLength, m_nLifeLength, 0.28f, GAGE_HEIGHT);
 	}
 
-	// ダメージを負ったフラグが有効時
-	if (m_pPlayer->GetIsDamege() && !m_isShake)
+	if (m_pPlayer != nullptr)
 	{
-		// 振動ON
-		m_isShake = true;
-
-		// 40フレーム振動
-		m_nShakeTimer = 40;	
-
-		// 振れ幅の初期値
-		m_fShakeAmplitude = 25.0f; 
-	}
-
-	if (m_isShake)
-	{
-		// 差分を計算
-		float t = (40 - m_nShakeTimer) / 40.0f;
-
-		// 減衰量を計算
-		float decay = (1.0f - t);
-
-		// ランダム値を設定
-		float randX = (rand() % 400 - 100) / 100.0f;
-		float randY = (rand() % 400 - 100) / 100.0f;
-
-		// 座標を計算
-		float fOffsetX = randX * m_fShakeAmplitude * decay;
-		float fOffsetY = randY * m_fShakeAmplitude * decay;
-
-		// 座標にセット
-		SetPos(m_basePos + D3DXVECTOR3(fOffsetX, fOffsetY, 0.0f));
-
-		// 振動時間を減らす
-		m_nShakeTimer--;
-
-		if (m_nShakeTimer <= 0)
+		// ダメージを負ったフラグが有効時
+		if (m_pPlayer->GetIsDamege() && !m_isShake)
 		{
-			// フラグを無効化
-			m_isShake = false;
-			m_nShakeTimer = 0;
+			// 振動ON
+			m_isShake = true;
 
-			// 判定を無効化
-			m_pPlayer->SetIsDamege(false);
+			// 40フレーム振動
+			m_nShakeTimer = 40;
 
-			// 基準座標へ戻す
-			SetPos(m_basePos); 
+			// 振れ幅の初期値
+			m_fShakeAmplitude = 25.0f;
 		}
-	}
-	else
-	{
-		// 基準座標に固定
-		SetPos(m_basePos);
-	}
 
-	// 親クラスの更新処理
-	CObject2D::Update();
+		if (m_isShake)
+		{
+			// 差分を計算
+			float t = (40 - m_nShakeTimer) / 40.0f;
+
+			// 減衰量を計算
+			float decay = (1.0f - t);
+
+			// ランダム値を設定
+			float randX = (rand() % 400 - 100) / 100.0f;
+			float randY = (rand() % 400 - 100) / 100.0f;
+
+			// 座標を計算
+			float fOffsetX = randX * m_fShakeAmplitude * decay;
+			float fOffsetY = randY * m_fShakeAmplitude * decay;
+
+			// 座標にセット
+			SetPos(m_basePos + D3DXVECTOR3(fOffsetX, fOffsetY, 0.0f));
+
+			// 振動時間を減らす
+			m_nShakeTimer--;
+
+			if (m_nShakeTimer <= 0)
+			{
+				// フラグを無効化
+				m_isShake = false;
+				m_nShakeTimer = 0;
+
+				// 判定を無効化
+				m_pPlayer->SetIsDamege(false);
+
+				// 基準座標へ戻す
+				SetPos(m_basePos);
+			}
+		}
+		else
+		{
+			// 基準座標に固定
+			SetPos(m_basePos);
+		}
+
+		// 親クラスの更新処理
+		CObject2D::Update();
+	}
 }
 //========================
 // 描画処理

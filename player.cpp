@@ -41,7 +41,7 @@
 //**********************
 namespace PLAYERINFO
 {
-	constexpr float MOVE = 0.019f;		 // 1フレームの移動量
+	constexpr float MOVE = 0.015f;		 // 1フレームの移動量
 	constexpr float JUMPVALUE = 18.3f;	 // ジャンプ量
 	constexpr float GRAVITY = 1.5f;		 // 重力値
 	constexpr float HITRADIUS = 25.0f;	 // 当たり判定の半径
@@ -96,6 +96,7 @@ CPlayer::CPlayer(int nPriority) : CObject(nPriority)
 	m_isConectPad = false;
 	m_isGuard = false;
 	m_isDecHp = false;
+	m_isControll = false;
 }
 //===============================
 // デストラクタ
@@ -326,6 +327,32 @@ void CPlayer::Update(void)
 
 			// 角度を適用
 			m_rot.y = atan2f(-DestPos.x, -DestPos.z);
+		}
+	}
+
+	// ひきつけ中か確認
+	if (m_pStateMachine->GetNowStateID() == CPlayerStateBase::ID_INVITE)
+	{		
+		// モデルカラーフラグ
+		for (int nCnt = 0; nCnt < MAX_MODEL; nCnt++)
+		{
+			m_apModel[nCnt]->SetColorChange(true);
+		}
+
+		// ステート更新
+		m_pStateMachine->Update();
+
+		// モーションの更新をする
+		m_pMotion->Update(m_apModel, MAX_MODEL);
+
+		return;
+	}
+	else
+	{
+		// モデルカラーフラグ
+		for (int nCnt = 0; nCnt < MAX_MODEL; nCnt++)
+		{
+			m_apModel[nCnt]->SetColorChange(false);
 		}
 	}
 
@@ -561,6 +588,7 @@ void CPlayer::Draw(void)
 	// デバッグフォント描画
 	CDebugproc::Draw(0, 200);
 
+#if 0
 	// 識別描画
 	CDebugproc::Print("SUBプレイヤーの座標 { %.2f,%.2f,%.2f }", CPlayer::GetIdxPlayer(1)->GetPos().x, CPlayer::GetIdxPlayer(1)->GetPos().y, CPlayer::GetIdxPlayer(1)->GetPos().z);
 	// デバッグフォント描画
@@ -580,11 +608,11 @@ void CPlayer::Draw(void)
 	CDebugproc::Print("SUBプレイヤーのモーション { %d } ", CPlayer::GetIdxPlayer(PLAYERINFO::NUMBER_SUB)->GetNowMotion());
 	// デバッグフォント描画
 	CDebugproc::Draw(0, 620);
-
-	CDebugproc::Print("MAIN角度 { %.2f }", CPlayer::GetIdxPlayer(PLAYERINFO::NUMBER_MAIN)->m_fAngle);
-	CDebugproc::Draw(0, 660);
 	CDebugproc::Print("SUB 角度 { %.2f }", CPlayer::GetIdxPlayer(PLAYERINFO::NUMBER_SUB)->m_fAngle);
 	CDebugproc::Draw(0, 680);
+#endif
+	CDebugproc::Print("MAIN角度 { %.2f }", CPlayer::GetIdxPlayer(PLAYERINFO::NUMBER_MAIN)->m_fAngle);
+	CDebugproc::Draw(0, 660);
 
 	CDebugproc::Print("プレイヤーの状態 { %d }", GetIdxPlayer(PLAYERINFO::NUMBER_MAIN)->GetStateMachine()->GetNowStateID());
 	CDebugproc::Draw(1100, 500);

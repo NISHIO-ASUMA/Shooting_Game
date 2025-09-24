@@ -45,7 +45,7 @@ public:
 		PLAYERMOTION_LANDING,		// 着地
 		PLAYERMOTION_JUMPATTACK,	// ジャンプ攻撃
 		PLAYERMOTION_DAMAGE,		// ダメージ
-		PLAYERMOTION_GUARD,			// ガード
+		PLAYERMOTION_INVITE,		// 
 		PLAYERMOTION_MAX
 	};
 
@@ -59,7 +59,7 @@ public:
 	void Update(void);
 	void Draw(void);
 	void ChangeState(CPlayerStateBase* pNewState,int Id); // ステート変更
-	void UpdateAction(CInputKeyboard* pInputKeyboard, D3DXMATRIX pMtx, const D3DXVECTOR3 DestPos, CJoyPad* pPad); // 通常攻撃更新関数
+	void UpdateAction(CInputKeyboard* pInputKeyboard, D3DXMATRIX pMtx, const D3DXVECTOR3 DestMove, CJoyPad* pPad); // 通常攻撃更新関数
 	void UpdateMove(const D3DXVECTOR3 DestPos, CInputKeyboard* pInputKeyboard, CJoyPad* pPad);					  // 移動更新関数
 	void UpdateJumpAction(CInputKeyboard* pInputKeyboard, D3DXMATRIX pMtx, const D3DXVECTOR3 DestMove, CJoyPad* pPad);
 	void UpdateGuard(void);
@@ -94,6 +94,7 @@ public:
 	CMotion* GetMotion(void) { return m_pMotion; }
 	CParameter* GetParameter(void) { return m_pParameter; }
 	CStateMachine* GetStateMachine() { return m_pStateMachine; }	// プレイヤーのステートマシンを取得
+	CModel** GetModel(void) { return m_apModel; }
 
 	int GetType(void) { return m_type; }
 	int GetPlayerIndex() const { return m_nIdxPlayer; }
@@ -146,7 +147,7 @@ private:
 	bool m_isConectPad;
 	bool m_isGuard;
 	bool m_isDecHp;
-
+	bool m_isControll;
 	float m_fAngle;			// 現在の角度
 	float m_fValue;
 

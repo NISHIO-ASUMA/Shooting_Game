@@ -17,7 +17,7 @@
 //*********************************
 // サブプレイヤーのベース状態管理
 //*********************************
-class CSubPlayerState : public CStateBase
+class CSubPlayerStateBase : public CStateBase
 {
 public:
 	//***************************
@@ -26,18 +26,18 @@ public:
 	enum ID
 	{
 		ID_NEUTRAL, // 待機
-		ID_MOVE, // 移動
-		ID_ACTION, // 攻撃
-		ID_JUMP, // ジャンプ
-		ID_GUARD, // 防御
-		ID_DAMAGE,// ダメージ
-		ID_INVITE, // ひきつけ
+		ID_MOVE,	// 移動
+		ID_ACTION,	// 攻撃
+		ID_JUMP,	// ジャンプ
+		ID_GUARD,	// 防御
+		ID_DAMAGE,	// ダメージ
+		ID_INVITE,	// ひきつけ
 		ID_MAX
 	};
 
 	// コンストラクタ・デストラクタ
-	CSubPlayerState();
-	~CSubPlayerState();
+	CSubPlayerStateBase();
+	~CSubPlayerStateBase();
 
 	// ステートが始まるときに一度だけ呼ばれる関数
 	virtual void OnStart() {}
@@ -60,7 +60,177 @@ protected:
 
 private:
 	ID m_ID;		// 列挙型のポインタ
+};
+
+//***************************************
+// 待機状態処理
+//***************************************
+class CSubPlayerStateNeutral : public CSubPlayerStateBase
+{
+public:
+	// コンストラクタ・デストラクタ
+	CSubPlayerStateNeutral();
+	~CSubPlayerStateNeutral();
+
+	// ステートが始まるときに一度だけ呼ばれる関数
+	void OnStart();
+
+	// ステートが更新されるときに呼ばれる関数
+	void OnUpdate();
+
+	// ステートが終了する時に一度だけ呼ばれる関数
+	void OnExit();
+
+private:
 
 };
+
+//***************************************
+// 移動状態処理
+//***************************************
+class CSubPlayerStateMove : public CSubPlayerStateBase
+{
+public:
+	// コンストラクタ・デストラクタ
+	CSubPlayerStateMove();
+	~CSubPlayerStateMove();
+
+	// ステートが始まるときに一度だけ呼ばれる関数
+	void OnStart();
+
+	// ステートが更新されるときに呼ばれる関数
+	void OnUpdate();
+
+	// ステートが終了する時に一度だけ呼ばれる関数
+	void OnExit();
+
+private:
+
+};
+
+//***************************************
+// 攻撃状態処理
+//***************************************
+class CSubPlayerStateAction : public CSubPlayerStateBase
+{
+public:
+	// コンストラクタ・デストラクタ
+	CSubPlayerStateAction();
+	~CSubPlayerStateAction();
+
+	// ステートが始まるときに一度だけ呼ばれる関数
+	void OnStart();
+
+	// ステートが更新されるときに呼ばれる関数
+	void OnUpdate();
+
+	// ステートが終了する時に一度だけ呼ばれる関数
+	void OnExit();
+
+private:
+
+};
+
+//***************************************
+// ジャンプ状態処理
+//***************************************
+class CSubPlayerStateJump : public CSubPlayerStateBase
+{
+public:
+	// コンストラクタ・デストラクタ
+	CSubPlayerStateJump();
+	~CSubPlayerStateJump();
+
+	// ステートが始まるときに一度だけ呼ばれる関数
+	void OnStart();
+
+	// ステートが更新されるときに呼ばれる関数
+	void OnUpdate();
+
+	// ステートが終了する時に一度だけ呼ばれる関数
+	void OnExit();
+
+private:
+};
+
+//***************************************
+// ダメージ状態処理
+//***************************************
+class CSubPlayerStateDamage : public CSubPlayerStateBase
+{
+public:
+	//**************************
+	// ダメージ状態列挙型
+	//**************************
+	enum DAMAGESTATE
+	{
+		DAMAGESTATE_NONE,
+		DAMAGESTATE_NORMAL,
+		DAMAGESTATE_DAMAGE,
+		DAMAGESTATE_INVINCIBLE,
+		DAMAGESTATE_MAX
+	};
+
+	// コンストラクタ・デストラクタ
+	CSubPlayerStateDamage(int nDamage);
+	~CSubPlayerStateDamage();
+
+	// ステートが始まるときに一度だけ呼ばれる関数
+	void OnStart();
+
+	// ステートが更新されるときに呼ばれる関数
+	void OnUpdate();
+
+	// ステートが終了する時に一度だけ呼ばれる関数
+	void OnExit();
+
+	// ゲッター
+	int GetState()const { return m_nStateCount; }
+
+private:
+	static constexpr int DAMAGECOUNT = 45;
+
+	int m_nStateCount;		// 管理カウント
+	int m_nDamage;			// ダメージ数
+	int m_nCurrentstate;	// 現在状態
+
+};
+
+
+//***************************************
+// 挑発状態処理
+//***************************************
+class CSubPlayerStateInvite : public CSubPlayerStateBase
+{
+public:
+	// コンストラクタ・デストラクタ
+	CSubPlayerStateInvite();
+	~CSubPlayerStateInvite();
+
+	// ステートが始まるときに一度だけ呼ばれる関数
+	void OnStart();
+
+	// ステートが更新されるときに呼ばれる関数
+	void OnUpdate();
+
+	// ステートが終了する時に一度だけ呼ばれる関数
+	void OnExit();
+
+	// ゲッター
+	int GetState()const { return m_nStateCount; }
+
+private:
+	static constexpr int INVITECOUNT = 300; // ひきつけフレーム
+
+	int m_nStateCount;		// 管理カウント
+	int m_nCurrentstate;	// 現在状態
+
+};
+
+
+
+
+
+
 
 #endif

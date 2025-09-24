@@ -35,6 +35,7 @@
 #include "bulleticon.h"
 #include "result.h"
 #include "moveui.h"
+#include "playermanager.h"
 
 //**************************
 // Ã“Iƒƒ“ƒo•Ï”éŒ¾
@@ -45,6 +46,7 @@ CTime* CGameManager::m_pTime = nullptr;					// ƒ^ƒCƒ}[
 CUimanager* CGameManager::m_puimanager = nullptr;		// UIƒ}ƒl[ƒWƒƒ[
 CBarrierManager* CGameManager::m_pBarrier = nullptr;	// ƒoƒŠƒAƒ}ƒl[ƒWƒƒ[
 CRubbleManager* CGameManager::m_pRubble = nullptr;		// Š¢âIƒIƒuƒWƒFƒNƒgƒ}ƒl[ƒWƒƒ[
+CSubPlayer* CGameManager::m_pSubPlayer = nullptr;		// ƒvƒŒƒCƒ„[
 
 //========================
 // ƒRƒ“ƒXƒgƒ‰ƒNƒ^
@@ -52,6 +54,7 @@ CRubbleManager* CGameManager::m_pRubble = nullptr;		// Š¢âIƒIƒuƒWƒFƒNƒgƒ}ƒl[ƒWƒ
 CGameManager::CGameManager()
 {
 	// ’l‚ÌƒNƒŠƒA
+	m_pPlayerManager = nullptr;
 }
 //========================
 // ƒfƒXƒgƒ‰ƒNƒ^
@@ -83,6 +86,12 @@ HRESULT CGameManager::Init(void)
 
 	// ui¶¬
 	CUi::Create(D3DXVECTOR3(65.0f, 175.0f, 0.0f), 0, 60.0f, 30.0f, "aaa.png", false);
+
+	// ¶¬
+	// m_pPlayerManager = CPlayerManager::Create();
+
+	// ¶¬
+	// m_pSubPlayer = CSubPlayer::Create(D3DXVECTOR3(0.0f, 0.0f, -550.0f), D3DXVECTOR3(0.0f,-D3DX_PI,0.0f), 10);
 
 	// ƒTƒEƒ“ƒhŽæ“¾
 	CSound* pSound = CManager::GetSound();
@@ -212,6 +221,13 @@ void CGameManager::Uninit(void)
 
 		// null‰Šú‰»
 		m_pPilerManager = nullptr;
+	}
+
+	if (m_pPlayerManager != nullptr)
+	{
+		m_pPlayerManager->Uninit();
+		delete m_pPlayerManager;
+		m_pPlayerManager = nullptr;
 	}
 }
 //========================

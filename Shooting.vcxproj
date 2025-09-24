@@ -225,6 +225,7 @@
     <ClCompile Include="pilermanager.cpp" />
     <ClCompile Include="player.cpp" />
     <ClCompile Include="playerlifegage.cpp" />
+    <ClCompile Include="playermanager.cpp" />
     <ClCompile Include="playerstate.cpp" />
     <ClCompile Include="pointui.cpp" />
     <ClCompile Include="ranking.cpp" />
@@ -339,6 +340,7 @@
     <ClInclude Include="pilermanager.h" />
     <ClInclude Include="player.h" />
     <ClInclude Include="playerlifegage.h" />
+    <ClInclude Include="playermanager.h" />
     <ClInclude Include="playerstate.h" />
     <ClInclude Include="pointui.h" />
     <ClInclude Include="ranking.h" />

@@ -48,6 +48,7 @@ public:
 	void OffSetPos(D3DXVECTOR3 offpos) { m_offPos = offpos; }
 	void OffSetRot(D3DXVECTOR3 offrot) { m_offRot = offrot; }
 	void SetPartType(PARTTYPE nDestPartType) { m_parttype = nDestPartType; }
+	void SetColorChange(bool isFlags) { m_isColorChange = isFlags; }
 
 	// ゲッター
 	D3DXMATRIX GetMtxWorld(void) { return m_mtxworld; }
@@ -78,6 +79,7 @@ private:
 
 	bool m_isPlayer; // プレイヤーに対応したモデルかどうか
 	bool m_isBoss;
+	bool m_isColorChange;
 };
 
 #endif

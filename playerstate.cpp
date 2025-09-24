@@ -127,6 +127,17 @@ void CPlayerStateNeutral::OnUpdate()
 		// ここで処理を返す
 		return;
 	}
+
+	// Qキー もしくは R1ボタン
+	if ((pInput->GetPress(DIK_Q) || pPad->GetPress(CJoyPad::JOYKEY_RIGHT_B)) &&
+		m_pPlayer->GetNowMotion() != CPlayer::PLAYERMOTION_DAMAGE)
+	{
+		// ステート変更
+		m_pPlayer->ChangeState(new CPlayerStateInvite, ID_INVITE);
+
+		// ここで処理を返す
+		return;
+	}
 }
 //==================================
 // 待機状態時終了関数
@@ -462,58 +473,71 @@ void CPlayerStateJump::OnUpdate()
 //==================================
 void CPlayerStateJump::OnExit()
 {
-	//// ジャンプを未使用
-	//m_pPlayer->SetJump(false);
-
-	//// 着地を未使用
-	//m_pPlayer->SetLanding(true);
-
+	// 無し
 }
 
 //==================================
-// ガード状態時コンスタラクタ
+// ひきつけ状態コンストラクタ
 //==================================
-CPlayerStateGuard::CPlayerStateGuard()
+CPlayerStateInvite::CPlayerStateInvite()
 {
-	// IDをセット
-	SetID(ID_GUARD);
+	// 値のクリア
+	m_nInviteCount = NULL;
+
+	// IDセット
+	SetID(ID_INVITE);
 }
 //==================================
-// ガード状態時デストラクタ
+// デストラクタ
 //==================================
-CPlayerStateGuard::~CPlayerStateGuard()
+CPlayerStateInvite::~CPlayerStateInvite()
 {
 	// 無し
 }
 //==================================
-// ガード状態時開始関数
+// 開始関数
 //==================================
-void CPlayerStateGuard::OnStart()
-{
-	// モーション変更
-	m_pPlayer->GetMotion()->SetMotion(CPlayer::PLAYERMOTION_GUARD);
-}
-//==================================
-// ガード状態時更新関数
-//==================================
-void CPlayerStateGuard::OnUpdate()
+void CPlayerStateInvite::OnStart()
 {
 	// カメラ取得
 	CCamera* pCamera = CManager::GetCamera();
 
-	// イベントモードなら
-	if (pCamera->GetMode() == CCamera::MODE_EVENT) return;
+	// mainプレイヤーだったら
+	if (m_pPlayer->GetPlayerIndex() == 0)
+	{
+		// サブを映す
+		pCamera->SetCameraMode(CCamera::MODE_SUB);
+	}
 
-	// ステート変更
-	m_pPlayer->ChangeState(new CPlayerStateNeutral(), ID_NEUTRAL);
+	// モーションセット
+	m_pPlayer->GetMotion()->SetMotion(CPlayer::PLAYERMOTION_INVITE, false, 0, false);
 
-	// ここで処理を返す
-	return;
+	// カウントセット
+	m_nInviteCount = 600;
 }
 //==================================
-// ガード状態時終了関数
+// 更新関数
 //==================================
-void CPlayerStateGuard::OnExit()
+void CPlayerStateInvite::OnUpdate()
+{
+	// 減算
+	m_nInviteCount--;
+
+	if (m_nInviteCount <= NULL)
+	{
+		// 値を更新
+		m_nInviteCount = 0;
+
+		// ステート変更
+		m_pPlayer->ChangeState(new CPlayerStateNeutral(), ID_NEUTRAL);
+
+		return;
+	}
+}
+//==================================
+// 終了関数
+//==================================
+void CPlayerStateInvite::OnExit()
 {
 	// 無し
 }

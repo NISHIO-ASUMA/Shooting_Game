@@ -24,6 +24,7 @@ class CCamera;
 class CParameter;
 class CShadowS;
 class CStateMachine;
+class CSubPlayerStateBase;
 
 //*****************************
 // サブプレイヤークラスを定義
@@ -57,11 +58,24 @@ public:
 	void Update(void);
 	void Draw(void);
 
-	// void ChangeState(CSubPlayerState * pNewState, int Id); // ステート変更
-	// void UpdateAction(CInputKeyboard* pInputKeyboard, D3DXMATRIX pMtx, const D3DXVECTOR3 DestPos, CJoyPad* pPad); // 通常攻撃更新関数
-	// void UpdateMove(const D3DXVECTOR3 DestPos, CInputKeyboard* pInputKeyboard, CJoyPad* pPad);					  // 移動更新関数
-	// void UpdateJumpAction(CInputKeyboard* pInputKeyboard, D3DXMATRIX pMtx, const D3DXVECTOR3 DestMove, CJoyPad* pPad);
+	void ChangeState(CSubPlayerStateBase* pNewState, int Id); // ステート変更
+	void UpdateAction(CInputKeyboard* pInputKeyboard, D3DXMATRIX pMtx,const D3DXVECTOR3 DestMove,CJoyPad* pPad); // 通常攻撃更新関数
+	void UpdateMove(const D3DXVECTOR3 DestPos, CInputKeyboard* pInputKeyboard, CJoyPad* pPad);					  // 移動更新関数
+	void UpdateJumpAction(CInputKeyboard* pInputKeyboard, D3DXMATRIX pMtx, const D3DXVECTOR3 DestMove, CJoyPad* pPad);
 	void Collision(void);
+
+	D3DXVECTOR3 VecToBoss(const D3DXVECTOR3& pPos);
+	D3DXVECTOR3 VecToCenter(const D3DXVECTOR3& pPos);
+
+	void StartJump(void);
+	void GravityScal(void);
+	void HitDamage(int nDamage);
+
+	// セッター
+	void SetRotDest(D3DXVECTOR3 rotDest) { m_rotDest = rotDest; }
+	void SetJump(bool isJump) { m_isJump = isJump; }
+	void SetLanding(bool isLanding) { m_isLanding = isLanding; }
+	void AddMove(void) { m_pos += m_move; }
 
 	// ゲッター
 	D3DXVECTOR3 GetPos(void) { return m_pos; }			// 現在の座標を取得
@@ -75,16 +89,17 @@ public:
 	CParameter* GetParameter(void) { return m_pParameter; }
 	CStateMachine* GetStateMachine() { return m_pStateMachine; }	// プレイヤーのステートマシンを取得
 
+	int GetType(void) { return m_type; }
+	int GetPlayerIndex() const { return m_nIdxPlayer; }
+
 	// フラグメント関数
-	bool IsJumping() { return m_isJump; } 	// ジャンプ状態の確認
+	bool IsJumping(void) { return m_isJump; } 	// ジャンプ状態の確認
 	bool isMoveInputKey(CInputKeyboard* pKeyInput);
 	bool isMovePadButton(CJoyPad* pPad);
 	bool isAttackeyPress(CInputKeyboard* pKeyInput);
 	bool isLanding(void) { return m_isJump; }
 	bool GetLanding(void) { return m_isLanding; }
 
-	// ゲッター
-	
 	// 静的メンバ関数
 	static CSubPlayer* Create(D3DXVECTOR3 pos, D3DXVECTOR3 rot, int nLife);
 
@@ -93,7 +108,6 @@ private:
 
 	D3DXVECTOR3 m_move;		// 移動量
 	D3DXVECTOR3 m_rotDest;  // 目的角
-
 	D3DXVECTOR3 m_pos;		// 階層構造設定座標
 	D3DXVECTOR3 m_posOld;	// 過去の座標情報
 	D3DXVECTOR3 m_rot;		// 角度

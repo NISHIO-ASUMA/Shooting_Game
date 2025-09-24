@@ -187,14 +187,14 @@ private:
 };
 
 //*********************************
-// ガード状態時の管理
+// ひきつけ状態時の管理
 //*********************************
-class CPlayerStateGuard : public CPlayerStateBase
+class CPlayerStateInvite : public CPlayerStateBase
 {
 public:
 	// コンストラクタ・デストラクタ
-	CPlayerStateGuard();
-	~CPlayerStateGuard();
+	CPlayerStateInvite();
+	~CPlayerStateInvite();
 
 	// ステートが始まるときに一度だけ呼ばれる関数
 	void OnStart();
@@ -206,7 +206,7 @@ public:
 	void OnExit();
 
 private:
-
+	int m_nInviteCount;
 };
 
 #endif

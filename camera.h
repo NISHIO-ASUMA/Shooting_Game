@@ -31,7 +31,21 @@ public:
 		MODE_SHAKE,
 		MODE_EVENT,
 		MODE_ANIM,
+		MODE_MAIN,
+		MODE_SUB,
 		MODE_MAX
+	
+	};
+
+	//**********************
+	// ロックオン時列挙型
+	//**********************
+	enum LOCKONMODE
+	{
+		LOCK_NONE,
+		LOCK_PLAYER,
+		LOCK_SUBPLAYER,
+		LOCK_MAX
 	};
 
 	// コンストラクタ・デストラクタ
@@ -46,6 +60,8 @@ public:
 
 	void MouseView(CInputMouse* pMouse);
 	void LockOn(void);
+	void LockOnMain(void);
+	void LockOnSub(void);
 	void PlayerFollow(void);
 	void Rotation(void);
 	void TitleCamera(void);
@@ -53,6 +69,7 @@ public:
 	void AnimCamera(void);
 	void UpdateAnimCamera(void);
 	void UpdateShake(void);
+	void ChangeLockOn(D3DXVECTOR3 NowPos ,D3DXVECTOR3 DestPos);
 
 	void Load(int nIdx);
 	void Save(void);
@@ -66,6 +83,8 @@ public:
 	void SetKey(bool isFlags) { m_isKey = isFlags; }
 	void SetLoadPass(int nIdxPass) { m_nFileIdx = nIdxPass; }
 	void SetAnim(bool isFlags) { m_isAnimTime = isFlags; }
+	void SetLockOnObject(LOCKONMODE lockObj) { m_LockMode = lockObj; }
+
 
 	// ゲッター
 	D3DXVECTOR3 GetRot(void) { return m_pCamera.rot; }
@@ -151,6 +170,7 @@ private:
 
 	EventData m_event;		// イベント用データ
 	Camera m_pCamera;		// カメラ構造体変数
+	LOCKONMODE m_LockMode;
 
 	int m_nShakeTime;				// 振動時間
 	int m_nAnimNowKey;				// 現在キーNo
@@ -168,6 +188,7 @@ private:
 	bool m_isSoundPlay;
 	bool m_isCreate;
 
+	D3DXVECTOR3 m_SetPos;
 	D3DXVECTOR3 m_lastBossPos;		// ボスの最後の座標
 
 	const char* ANIMFILE[ANIMFILENUM] =
