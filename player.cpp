@@ -98,6 +98,7 @@ CPlayer::CPlayer(int nPriority) : CObject(nPriority)
 	m_isDecHp = false;
 	m_isControll = false;
 	m_isCollisionBlock = false;
+	m_isJumpAttack = false;
 }
 //===============================
 // デストラクタ
@@ -395,7 +396,6 @@ void CPlayer::Update(void)
 			// モーションを統一する
 			m_pMotion->SetMotion(pMain->GetNowMotion());
 
-			// INVITだけは同期しない
 			if (mainStateID != subStateID &&
 				mainStateID != CPlayerStateBase::ID_INVITE &&
 				subStateID != CPlayerStateBase::ID_INVITE)
@@ -440,9 +440,6 @@ void CPlayer::Update(void)
 	// 腕のワールドマトリックスを取得
 	D3DXMATRIX mtxWorld = pModelWeapon->GetMtxWorld();
 
-	// 座標保持
-	m_posOld = m_pos;
-
 	// nullptrじゃないとき
 	if (m_pStateMachine != nullptr)
 	{
@@ -477,34 +474,6 @@ void CPlayer::Update(void)
 		pObjItem = pObjItem->GetNext();
 	}
 
-	CObject* ppp = CObject::GetTop(static_cast<int>(CObject::PRIORITY::MODELOBJECT));
-
-	// nullptrじゃないとき
-	while (ppp != nullptr)
-	{
-		// アイテムのオブジェクトタイプを取得
-		if (ppp->GetObjType() == CObject::TYPE_COLLBLOCK)
-		{
-			// アイテムにキャスト
-			CBlock* pBlock = static_cast<CBlock*>(ppp);
-
-			// コリジョンしたとき
-			if (pBlock->Colliosion(&m_pos,&m_posOld,&m_move,m_fSize,m_isLanding))
-			{
-				m_isCollisionBlock = true;
-			}
-			else
-			{
-				m_isCollisionBlock = false;
-				// 一回当たったら抜ける
-				break;
-			}
-		}
-
-		// 次のオブジェクトを検出する
-		ppp = ppp->GetNext();
-	}
-
 	// イベント時は当たり判定をとおさない かつ 一人目のみと判定する
 	if (CManager::GetCamera()->GetMode() != CManager::GetCamera()->MODE_EVENT && m_nIdxPlayer == PLAYERINFO::NUMBER_MAIN)
 	{
@@ -512,7 +481,11 @@ void CPlayer::Update(void)
 		Collision();
 	}
 
-	m_move.y -= 0.7f;
+	if (!m_isJumpAttack)
+	{
+		m_move.y -= 0.7f;
+	}
+
 	m_pos += m_move;
 
 	// 現在のy座標が0.0f以下の時
@@ -589,7 +562,6 @@ void CPlayer::Draw(void)
 	D3DXMatrixTranslation(&mtxTrans, m_pos.x, m_pos.y, m_pos.z);
 	D3DXMatrixMultiply(&m_mtxworld, &m_mtxworld, &mtxTrans);
 
-
 	// ワールドマトリックスの設定
 	pDevice->SetTransform(D3DTS_WORLD, &m_mtxworld);
 
@@ -612,7 +584,7 @@ void CPlayer::Draw(void)
 	// デバッグフォント描画
 	CDebugproc::Draw(0, 200);
 
-#if 0
+#if 1
 	// 識別描画
 	CDebugproc::Print("SUBプレイヤーの座標 { %.2f,%.2f,%.2f }", CPlayer::GetIdxPlayer(1)->GetPos().x, CPlayer::GetIdxPlayer(1)->GetPos().y, CPlayer::GetIdxPlayer(1)->GetPos().z);
 	// デバッグフォント描画
@@ -795,7 +767,7 @@ void CPlayer::UpdateMove(const D3DXVECTOR3 DestPos,CInputKeyboard* pInputKeyboar
 	{
 		return; // この時は移動や方向変更なし
 	}
-
+	
 	// シーン取得
 	CScene::MODE nMode = CManager::GetScene();
 
@@ -820,16 +792,9 @@ void CPlayer::UpdateMove(const D3DXVECTOR3 DestPos,CInputKeyboard* pInputKeyboar
 		// キー入力時の角度計算
 		if (pInputKeyboard->GetPress(DIK_A) || (pPad->GetPress(pPad->JOYKEY_LEFT)))
 		{
-			if (m_isCollisionBlock)
-			{
-				 m_fAngle = 0.0f;
-			}
-			else
-			{
-				// 角度更新
-				m_fAngle += PLAYERINFO::MOVE;
-			}
-
+			// 角度更新
+			m_fAngle += PLAYERINFO::MOVE;
+			
 			// 目的角を計算
 			m_rotDest.y = m_fAngle - D3DX_PI * 0.5f; // 左向きに設定
 
@@ -838,16 +803,8 @@ void CPlayer::UpdateMove(const D3DXVECTOR3 DestPos,CInputKeyboard* pInputKeyboar
 		else if (pInputKeyboard->GetPress(DIK_D) || (pPad->GetPress(pPad->JOYKEY_RIGHT)))
 		{
 			// 角度更新
-			if (m_isCollisionBlock)
-			{
-				m_fAngle = 0.0f;
-			}
-			else
-			{
-				// 角度更新
-				m_fAngle -= PLAYERINFO::MOVE;
-			}
-
+			m_fAngle -= PLAYERINFO::MOVE;
+			
 			// 目的角を計算
 			m_rotDest.y = m_fAngle + D3DX_PI * 0.5f; // 右向きに設定
 
@@ -865,15 +822,8 @@ void CPlayer::UpdateMove(const D3DXVECTOR3 DestPos,CInputKeyboard* pInputKeyboar
 		// キー入力時の角度計算
 		if (pInputKeyboard->GetPress(DIK_A) || (pPad->GetPress(pPad->JOYKEY_LEFT))) // Aキー
 		{
-			if (m_isCollisionBlock)
-			{
-				m_fAngle = 0.0f;
-			}
-			else
-			{
-				// 角度更新
-				m_fAngle = PLAYERINFO::MOVE;
-			}
+			// 角度更新
+			m_fAngle -= PLAYERINFO::MOVE;
 
 			// 目的角を計算
 			m_rotDest.y = m_fAngle - D3DX_PI * 0.5f; // 左向きに設定
@@ -882,15 +832,8 @@ void CPlayer::UpdateMove(const D3DXVECTOR3 DestPos,CInputKeyboard* pInputKeyboar
 		}
 		else if (pInputKeyboard->GetPress(DIK_D) || (pPad->GetPress(pPad->JOYKEY_RIGHT))) // Dキー
 		{
-			if (m_isCollisionBlock)
-			{
-				m_fAngle = 0.0f;
-			}
-			else
-			{
-				// 角度更新
-				m_fAngle += PLAYERINFO::MOVE;
-			}
+			// 角度更新
+			m_fAngle += PLAYERINFO::MOVE;
 
 			// 目的角を計算
 			m_rotDest.y = m_fAngle + D3DX_PI * 0.5f; // 右向きに設定
@@ -935,8 +878,8 @@ void CPlayer::UpdateMove(const D3DXVECTOR3 DestPos,CInputKeyboard* pInputKeyboar
 		m_rot.y += (m_rotDest.y - m_rot.y);
 	}
 
-	//// 座標更新
-	//m_posOld = m_pos;
+	// 座標更新
+	m_posOld = m_pos;
 }
 
 //=========================================
@@ -970,6 +913,19 @@ void CPlayer::UpdateJumpAction(CInputKeyboard* pInputKeyboard, D3DXMATRIX pMtx, 
 
 		 // 移動処理呼び出し
 		 UpdateMove(DestPos, pInputKeyboard, pPad);
+	 }
+
+	 // ジャンプ攻撃中に空中で静止する
+	 if (isJumpAttacking && ((pInputKeyboard->GetPress(DIK_RETURN)) || (pPad->GetPress(pPad->JOYKEY_X))))
+	 {
+		 m_isJumpAttack = true;
+
+		 // 一定の高さで静止する
+		 m_move.y = 0.0f;
+	 }
+	 else
+	 {
+		 m_isJumpAttack = false;
 	 }
 
 	// ジャンプ中処理

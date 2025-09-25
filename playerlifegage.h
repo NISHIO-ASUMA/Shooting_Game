@@ -46,19 +46,17 @@ public:
 	void Draw(void);
 
 	// セッター・ゲッター
-	void SetTexture(int Type);
 	void SetGage(int type) { m_gage = type; }
 	void SetShake(bool isFlags) { m_isShake = isFlags; }
 	int GetGage(void) const { return m_gage; }
 	
 	// 静的メンバ関数
-	static CPlayerLifeGage* Create(D3DXVECTOR3 pos, float fWidth, float fHeight, int gagetype);
+	static CPlayerLifeGage* Create(D3DXVECTOR3 pos, float fWidth, float fHeight, int gagetype,const char * pTexName);
 
 private:
 	static constexpr float GAGE_WIDTH = 40.0f;	// 基準値に掛ける倍率
 	static constexpr float GAGE_HEIGHT = 45.0f; // ゲージの高さの固定値
 
-	int m_nIdxTexture;		// テクスチャインデックス
 	int m_nLifeLength;		// バーの長さ基準値
 	int m_nMaxLifeLength;	// 最初の体力値
 	int m_gage;				// 列挙変数

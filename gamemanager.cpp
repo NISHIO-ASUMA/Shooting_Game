@@ -81,11 +81,11 @@ HRESULT CGameManager::Init(void)
 	m_pTime = CTime::Create(D3DXVECTOR3(1030.0f, 40.0f, 0.0f), 60.0f, 40.0f);
 
 	// 現在の弾表示アイコン
-	CBulletIcon::Create(D3DXVECTOR3(200.0f, 200.0f, 0.0f), "data\\TEXTURE\\Normal_bullet.png", 0);
-	CBulletIcon::Create(D3DXVECTOR3(320.0f, 200.0f, 0.0f), "data\\TEXTURE\\Laser_Icon.png", 1);
+	CBulletIcon::Create(D3DXVECTOR3(200.0f, 200.0f, 0.0f), "Normal_bullet.png", 0);
+	CBulletIcon::Create(D3DXVECTOR3(320.0f, 200.0f, 0.0f), "Laser_Icon.png", 1);
 
 	// ui生成
-	CUi::Create(D3DXVECTOR3(65.0f, 175.0f, 0.0f), 0, 60.0f, 30.0f, "aaa.png", false);
+	CUi::Create(D3DXVECTOR3(65.0f, 200.0f, 0.0f), 0, 60.0f, 30.0f, "bullet.png", false);
 
 	// サウンド取得
 	CSound* pSound = CManager::GetSound();
@@ -151,9 +151,6 @@ HRESULT CGameManager::Init(void)
 	// フラグ変更
 	CCharge::SetCharge(false);
 	CCharge::DecCharge(100.0f);
-
-	// ブロック生成
-	CBlock::Create("data\\MODEL\\STAGEOBJ\\block000.x", D3DXVECTOR3(60.0f, 40.0f, -550.0f), VECTOR3_NULL);
 
 	// 初期化結果を返す
 	return S_OK;
@@ -237,7 +234,7 @@ void CGameManager::Update(void)
 	if (pPlayer == nullptr) return;
 
 	// 過去の座標取得
-	D3DXVECTOR3 pos = pPlayer->GetOldPos();
+	D3DXVECTOR3 pos = pPlayer->GetPos();
 
 	// カメラ取得
 	CCamera* pCamera = CManager::GetCamera();

@@ -18,7 +18,6 @@
 CResultUi::CResultUi(int nPriority) : CObject2D(nPriority)
 {
 	// 値のクリア
-	m_nIdxTex = NULL;
 }
 //============================
 // デストラクタ
@@ -62,18 +61,6 @@ void CResultUi::Update(void)
 //============================
 void CResultUi::Draw(void)
 {
-	// デバイス取得
-	LPDIRECT3DDEVICE9 pDevice = CManager::GetRenderer()->GetDevice();
-
-	// テクスチャ取得
-	CTexture* pTexture = CManager::GetTexture();
-
-	// nullだったらここで処理終了
-	if (pTexture == nullptr) return;
-
-	// テクスチャセット
-	pDevice->SetTexture(0, pTexture->GetAddress(m_nIdxTex));
-
 	// 2Dオブジェクトの描画処理
 	CObject2D::Draw();
 }
@@ -99,30 +86,8 @@ CResultUi* CResultUi::Create(D3DXVECTOR3 pos, D3DXCOLOR col, float fWidth, float
 	pResultUi->SetPos(pos);
 	pResultUi->SetCol(col);
 	pResultUi->SetSize(fWidth, fHeight);
-	pResultUi->SetTexture(nType);
+	pResultUi->SetTexture("resultlogo.png");
 
 	// 生成されたポインタを返す
 	return pResultUi;
-}
-//============================
-// テクスチャ割り当て
-//============================
-void CResultUi::SetTexture(int nType)
-{
-	// テクスチャ取得
-	CTexture* pTexture = CManager::GetTexture();
-
-	// nullだったらここで処理終了
-	if (pTexture == nullptr) return;
-
-	switch (nType)
-	{
-	case CResultUi::TYPE_NONE:
-		m_nIdxTex = pTexture->Register("data\\TEXTURE\\resultlogo.png");
-		break;
-
-	default:
-		m_nIdxTex = -1;
-		break;
-	}
 }

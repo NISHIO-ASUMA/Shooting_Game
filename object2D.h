@@ -68,6 +68,7 @@ public:
 	void SetCenter(void);
 	void SetLeft(void);
 	void SetRight(void);
+	void SetTexture(const char* pRegisterName);
 
 	// ゲッター
 	D3DXVECTOR3 GetPos(void) { return m_Pos; }	// 現在の座標を取得
@@ -89,6 +90,7 @@ private:
 	int m_nAnchorType;	// 基準座標設定
 	int m_nColorCount;	// 点滅カウント
 	int m_nDrawType;	// 描画タイプ
+	int m_nIdxTexture;	// インデックス
 	float m_fWidth;		// 横幅
 	float m_fHeight;	// 高さ
 };

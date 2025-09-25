@@ -44,14 +44,10 @@ public:
 	void Update(void);
 	void Draw(void);
 
-	// セッター
-	void SetTexture(int nType);
-
 	// 静的メンバ関数
 	static CResultUi* Create(D3DXVECTOR3 pos, D3DXCOLOR col, float fWidth, float fHeight, int nType);
 
 private:
-	int m_nIdxTex;		// テクスチャインデックス
 
 };
 

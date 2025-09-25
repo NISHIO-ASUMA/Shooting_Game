@@ -52,7 +52,6 @@ public:
 	static CTitleUi* Create(D3DXVECTOR3 pos,D3DXCOLOR col,float fWidth,float fHeight,int nType);
 
 private:
-	int m_nTexIdx; // テクスチャインデックス
 };
 
 #endif

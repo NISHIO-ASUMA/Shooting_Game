@@ -72,11 +72,11 @@ HRESULT CTutorialManager::Init(void)
 	CTutorialBoss::Create(D3DXVECTOR3(0.0f, -600.0f, 0.0f));
 
 	// 現在の弾表示アイコン
-	CBulletIcon::Create(D3DXVECTOR3(160.0f, 175.0f, 0.0f), "data\\TEXTURE\\Normal_bullet.png", 0);
-	CBulletIcon::Create(D3DXVECTOR3(230.0f, 175.0f, 0.0f), "data\\TEXTURE\\Laser_Icon.png", 1);
+	CBulletIcon::Create(D3DXVECTOR3(200.0f, 200.0f, 0.0f), "Normal_bullet.png", 0);
+	CBulletIcon::Create(D3DXVECTOR3(320.0f, 200.0f, 0.0f), "Laser_Icon.png", 1);
 
 	// ui生成
-	CUi::Create(D3DXVECTOR3(65.0f, 175.0f, 0.0f), 0, 60.0f, 30.0f, "aaa.png", false);
+	CUi::Create(D3DXVECTOR3(65.0f, 200.0f, 0.0f), 0, 60.0f, 30.0f, "bullet.png", false);
 
 	// タスク生成
 	m_pTask = new CTutoTask;

@@ -28,13 +28,11 @@ public:
 	void Uninit(void);
 	void Update(void);
 	void Draw(void);
-	void SetTexture(const char * pTexName);
 
 	// 静的メンバ関数
 	static CBulletIcon* Create(D3DXVECTOR3 pos, const char* pTexName, int nIdx);
 
 private:
-	int m_nIdxTex;	// テクスチャインデックス
 	int m_nIdx;
 };
 

@@ -163,16 +163,7 @@ void CPlayerLifeGage::Update(void)
 //========================
 void CPlayerLifeGage::Draw(void)
 {
-#if 0
-	// デバイスの取得
-	LPDIRECT3DDEVICE9 pDevice = CManager::GetRenderer()->GetDevice();
-
-	// テクスチャ取得
-	CTexture* pTexture = CManager::GetTexture();
-
-	// テクスチャ読み込み
-	pDevice->SetTexture(0, pTexture->GetAddress(m_nIdxTexture));
-
+#if 1
 	// 親クラスの描画
 	CObject2D::Draw();
 #endif
@@ -180,7 +171,7 @@ void CPlayerLifeGage::Draw(void)
 //========================
 // 生成処理
 //========================
-CPlayerLifeGage* CPlayerLifeGage::Create(D3DXVECTOR3 pos, float fWidth, float fHeight, int gagetype)
+CPlayerLifeGage* CPlayerLifeGage::Create(D3DXVECTOR3 pos, float fWidth, float fHeight, int gagetype, const char* pTexName)
 {
 	// インスタンス生成
 	CPlayerLifeGage* pLifeGage = new CPlayerLifeGage;
@@ -200,35 +191,9 @@ CPlayerLifeGage* CPlayerLifeGage::Create(D3DXVECTOR3 pos, float fWidth, float fH
 	pLifeGage->m_basePos = pos;
 	pLifeGage->SetSize(fWidth, fHeight);
 	pLifeGage->SetGage(gagetype);
-	pLifeGage->SetTexture(gagetype);
+	pLifeGage->SetTexture(pTexName);
 	pLifeGage->SetAnchor(ANCHORTYPE_LEFTSIDE);
 
 	// 生成されたポインタを返す
 	return pLifeGage;
-}
-//========================
-// テクスチャ割り当て処理
-//========================
-void CPlayerLifeGage::SetTexture(int Type)
-{
-	// テクスチャポインタ取得
-	CTexture* pTexture = CManager::GetTexture();
-
-	// 種類に応じて割り当て
-	switch (Type)
-	{
-	case GAGE_FRAME:	// フレーム
-		// 割り当て
-		m_nIdxTexture = pTexture->Register("data\\TEXTURE\\playerlife_frame000.png");
-		break;
-
-	case GAGE_BAR:	// 本体ゲージ
-		// 割り当て
-		m_nIdxTexture = pTexture->Register("data\\TEXTURE\\playerlife_gage000.png");
-		break;
-
-	default:
-		m_nIdxTexture = -1;
-		break;
-	}
 }

@@ -27,7 +27,6 @@ namespace BULLETICONINFO
 CBulletIcon::CBulletIcon(int nPriority) : CObject2D(nPriority)
 {
 	// 値のクリア
-	m_nIdxTex = NULL;
 	m_nIdx = NULL;
 }
 //==================================
@@ -108,32 +107,7 @@ void CBulletIcon::Update(void)
 //==================================
 void CBulletIcon::Draw(void)
 {
-	// デバイス取得
-	LPDIRECT3DDEVICE9 pDevice = CManager::GetRenderer()->GetDevice();
-
-	// テクスチャ取得
-	CTexture* pTexture = CManager::GetTexture();
-
-	// nullチェック
-	if (pTexture == nullptr) return;
-
-	// テクスチャセット
-	pDevice->SetTexture(0, pTexture->GetAddress(m_nIdxTex));
 
 	// オブジェクト描画
 	CObject2D::Draw();
-}
-//==================================
-// テクスチャ処理
-//==================================
-void CBulletIcon::SetTexture(const char* pTexName)
-{
-	// テクスチャポインタ取得
-	CTexture* pTexture = CManager::GetTexture();
-
-	// nullチェック
-	if (pTexture == nullptr) return;
-
-	// パスを設定
-	m_nIdxTex = pTexture->Register(pTexName);
 }

@@ -147,7 +147,7 @@ bool CBlock::Colliosion(D3DXVECTOR3* pPos, D3DXVECTOR3 *pPosOld,D3DXVECTOR3 * pM
 			if (fPosOldMaxX < fBlockPosMinX &&
 				fPosMaxX > fBlockPosMinX)
 			{
-				pPos->x = GetPos().x - Blocksize.x * BLOCKHALF - fSize.x * BLOCKHALF - 0.1f;
+				pPos->x = GetPos().x - Blocksize.x * BLOCKHALF - fSize.x * BLOCKHALF - 0.3f;
 				pMove->x = 0.0f;
 				isCheck = true;
 
@@ -156,7 +156,7 @@ bool CBlock::Colliosion(D3DXVECTOR3* pPos, D3DXVECTOR3 *pPosOld,D3DXVECTOR3 * pM
 			else if (fPosOldMinX > fBlockPosMaxX &&
 					 fPosMinX < fBlockPosMaxX)
 			{
-				pPos->x = GetPos().x + Blocksize.x * BLOCKHALF + fSize.x * BLOCKHALF + 0.1f;
+				pPos->x = GetPos().x + Blocksize.x * BLOCKHALF + fSize.x * BLOCKHALF + 0.8f;
 				pMove->x = 0.0f;
 				isCheck = true;
 			}

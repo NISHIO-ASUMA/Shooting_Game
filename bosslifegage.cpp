@@ -29,7 +29,6 @@ namespace BOSSLIFE
 CBossLifeGage::CBossLifeGage(int nPriority) : CGage(nPriority)
 {
 	// 値のクリア
-	m_nIdxTex = NULL;
 	m_pBoss = nullptr;
 
 	m_nCurrentLifeLength = NULL;
@@ -46,7 +45,7 @@ CBossLifeGage::~CBossLifeGage()
 //===============================
 // 生成処理
 //===============================
-CBossLifeGage* CBossLifeGage::Create(D3DXVECTOR3 pos, float fWidth, float fHeight,int nType)
+CBossLifeGage* CBossLifeGage::Create(D3DXVECTOR3 pos, float fWidth, float fHeight,int nType,const char* pTexName)
 {
 	// インスタンス生成
 	CBossLifeGage* pBossLife = new CBossLifeGage;
@@ -64,7 +63,7 @@ CBossLifeGage* CBossLifeGage::Create(D3DXVECTOR3 pos, float fWidth, float fHeigh
 	pBossLife->SetPos(pos);
 	pBossLife->SetSize(fWidth, fHeight);
 	pBossLife->SetType(nType);
-	pBossLife->SetTexture(nType);
+	pBossLife->SetTexture(pTexName);
 	pBossLife->SetAnchor(CObject2D::ANCHORTYPE_LEFTSIDE);
 
 	// 生成されたポインタを返す
@@ -134,42 +133,6 @@ void CBossLifeGage::Update(void)
 //===============================
 void CBossLifeGage::Draw(void)
 {
-	// デバイスの取得
-	LPDIRECT3DDEVICE9 pDevice = CManager::GetRenderer()->GetDevice();
-
-	// テクスチャ取得
-	CTexture* pTexture = CManager::GetTexture();
-
-	// テクスチャ読み込み
-	pDevice->SetTexture(0, pTexture->GetAddress(m_nIdxTex));
-
 	// 親クラスの描画
 	CObject2D::Draw();
-}
-//===============================
-// テクスチャ割り当て処理
-//===============================
-void CBossLifeGage::SetTexture(int nType)
-{
-	// テクスチャポインタ取得
-	CTexture* pTexture = CManager::GetTexture();
-
-	switch (nType)
-	{
-	case CBossLifeGage::TYPE_FRAME:	// 外枠
-
-		// テクスチャ割り当て
-		m_nIdxTex = pTexture->Register("data\\TEXTURE\\bosslife_frame.png");
-		break;
-
-	case CBossLifeGage::TYPE_GAGE:	// 体力バー
-
-		// テクスチャ割り当て
-		m_nIdxTex = pTexture->Register("data\\TEXTURE\\boss_life.png");
-		break;
-
-	default:
-		m_nIdxTex = -1;
-		break;
-	}
 }

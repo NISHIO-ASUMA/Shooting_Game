@@ -31,6 +31,7 @@ CObject2D::CObject2D(int nPriority) : CObject(nPriority)
 	m_nAnchorType = ANCHORTYPE_NONE;
 	m_nColorCount = NULL;
 	m_nDrawType = NULL;
+	m_nIdxTexture = -1;
 }
 //===============================
 // デストラクタ
@@ -163,11 +164,51 @@ void CObject2D::Draw(void)
 	// カメラがアニメーション状態の時
 	int nType = CManager::GetCamera()->GetMode();
 
+
+	;
+
 	// タイプがアニメーションの物を描画
 	if (nType == CManager::GetCamera()->MODE_ANIM)
 	{
 		// 自分がアニメーション用のオブジェクトなら描画
 		if (m_nDrawType == DRAWTYPE_ANIM)
+		{
+			// デバイスの取得
+			LPDIRECT3DDEVICE9 pDevice = CManager::GetRenderer()->GetDevice();
+
+			// 頂点バッファをデータストリームに設定
+			pDevice->SetStreamSource(0, m_pVtxBuff, 0, sizeof(VERTEX_2D));
+
+			// nullなら
+			if (m_nIdxTexture == -1)
+			{
+				// テクスチャを戻す
+				pDevice->SetTexture(0, NULL);
+			}
+			else
+			{
+				// テクスチャ取得
+				CTexture* pTexture = CManager::GetTexture();
+				if (pTexture == nullptr) return;
+
+				// テクスチャセット
+				pDevice->SetTexture(0, pTexture->GetAddress(m_nIdxTexture));
+			}
+
+			// 頂点フォーマットの設定
+			pDevice->SetFVF(FVF_VERTEX_2D);
+
+			// ポリゴンの描画
+			pDevice->DrawPrimitive(D3DPT_TRIANGLESTRIP, 0, 2);
+
+			// テクスチャを戻す
+			pDevice->SetTexture(0, NULL);
+		}
+	}
+	else
+	{// それ以外
+
+		if (CObject::GetObjType() == TYPE_PAUSE)
 		{
 			// デバイスの取得
 			LPDIRECT3DDEVICE9 pDevice = CManager::GetRenderer()->GetDevice();
@@ -184,25 +225,41 @@ void CObject2D::Draw(void)
 			// テクスチャを戻す
 			pDevice->SetTexture(0, NULL);
 		}
+		else
+		{
+			// デバイスの取得
+			LPDIRECT3DDEVICE9 pDevice = CManager::GetRenderer()->GetDevice();
+
+			// 頂点バッファをデータストリームに設定
+			pDevice->SetStreamSource(0, m_pVtxBuff, 0, sizeof(VERTEX_2D));
+
+			// nullなら
+			if (m_nIdxTexture == -1)
+			{
+				// テクスチャを戻す
+				pDevice->SetTexture(0, NULL);
+			}
+			else
+			{
+				// テクスチャ取得
+				CTexture* pTexture = CManager::GetTexture();
+				if (pTexture == nullptr) return;
+
+				// テクスチャセット
+				pDevice->SetTexture(0, pTexture->GetAddress(m_nIdxTexture));
+			}
+
+			// 頂点フォーマットの設定
+			pDevice->SetFVF(FVF_VERTEX_2D);
+
+			// ポリゴンの描画
+			pDevice->DrawPrimitive(D3DPT_TRIANGLESTRIP, 0, 2);
+
+			// テクスチャを戻す
+			pDevice->SetTexture(0, NULL);
+
+		}
 	}
-	else
-	{// それ以外
-		// デバイスの取得
-		LPDIRECT3DDEVICE9 pDevice = CManager::GetRenderer()->GetDevice();
-
-		// 頂点バッファをデータストリームに設定
-		pDevice->SetStreamSource(0, m_pVtxBuff, 0, sizeof(VERTEX_2D));
-
-		// 頂点フォーマットの設定
-		pDevice->SetFVF(FVF_VERTEX_2D);
-
-		// ポリゴンの描画
-		pDevice->DrawPrimitive(D3DPT_TRIANGLESTRIP, 0, 2);
-
-		// テクスチャを戻す
-		pDevice->SetTexture(0, NULL);
-	}
-
 }
 //======================================
 // UV座標設定関数
@@ -381,4 +438,20 @@ void CObject2D::SetRight(void)
 
 	// アンロック
 	m_pVtxBuff->Unlock();
+}
+//============================================
+// テクスチャ割り当て処理
+//============================================
+void CObject2D::SetTexture(const char* pRegisterName)
+{
+	// テクスチャ取得
+	CTexture* pTexture = CManager::GetTexture();
+	if (pTexture == nullptr) return;
+
+	// パスを連結する
+	std::string TexName = "data\\TEXTURE\\";
+	TexName += pRegisterName;
+
+	// インデックスに割り当て
+	m_nIdxTexture = pTexture->Register(TexName.c_str());
 }

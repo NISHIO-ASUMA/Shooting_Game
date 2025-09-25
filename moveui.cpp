@@ -40,7 +40,7 @@ CMoveUi::~CMoveUi()
 //=================================
 // 生成処理処理
 //=================================
-CMoveUi* CMoveUi::Create(D3DXVECTOR3 pos, float fWidth,float fHeight,const char* pFileName, MOVETYPE movetype,SCALETYPE sceletype)
+CMoveUi* CMoveUi::Create(D3DXVECTOR3 pos, float fWidth,float fHeight, const char * pTexName,MOVETYPE movetype,SCALETYPE sceletype)
 {
 	// インスタンス生成
 	CMoveUi* pMoveUi = new CMoveUi;
@@ -55,7 +55,7 @@ CMoveUi* CMoveUi::Create(D3DXVECTOR3 pos, float fWidth,float fHeight,const char*
 	// 2Dオブジェクト設定
 	pMoveUi->SetPos(pos);
 	pMoveUi->SetSize(fWidth, fHeight);
-	pMoveUi->SetTexture(pFileName);
+	pMoveUi->SetTexture(pTexName);
 	pMoveUi->m_nMoveType = movetype;
 	pMoveUi->m_nScaleType = sceletype;
 	pMoveUi->SetAnchor(CObject2D::ANCHORTYPE_CENTER);
@@ -247,33 +247,6 @@ void CMoveUi::Update(void)
 //=================================
 void CMoveUi::Draw(void)
 {
-	// デバイス取得
-	LPDIRECT3DDEVICE9 pDevice = CManager::GetRenderer()->GetDevice();
-
-	// テクスチャセット
-	CTexture* pTexture = CManager::GetTexture();
-
-	// 割り当て
-	pDevice->SetTexture(0, pTexture->GetAddress(m_nIdxTexture));
-
 	// オブジェクトの描画
 	CObject2D::Draw();
-}
-//=================================
-// テクスチャ処理
-//=================================
-void CMoveUi::SetTexture(const char* pRegistername)
-{
-	// テクスチャポインタ取得
-	CTexture* pTexture = CManager::GetTexture();
-
-	std::string TexName = "data\\TEXTURE\\";
-	TexName += pRegistername;
-
-	// nullじゃなかったら
-	if (pTexture != nullptr)
-	{
-		// テクスチャ設定
-		m_nIdxTexture = pTexture->Register(TexName.c_str());
-	}
 }

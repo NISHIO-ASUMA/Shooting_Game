@@ -35,7 +35,6 @@ bool CCharge::m_isCharge = false;					// チャージ完了フラグ
 CCharge::CCharge(int nPriority) : CGage(nPriority)
 {
 	// 値のクリア
-	m_nIdxTex = NULL;
 	m_nType = NULL;
 }
 //================================
@@ -48,7 +47,7 @@ CCharge::~CCharge()
 //================================
 // 生成処理
 //================================
-CCharge* CCharge::Create(D3DXVECTOR3 pos,float fWidth, float fHeight, int nType)
+CCharge* CCharge::Create(D3DXVECTOR3 pos,float fWidth, float fHeight, int nType,const char * pTexName)
 {
 	// インスタンス生成
 	CCharge* pCharge = new CCharge;
@@ -66,7 +65,7 @@ CCharge* CCharge::Create(D3DXVECTOR3 pos,float fWidth, float fHeight, int nType)
 	pCharge->SetPos(pos);
 	pCharge->SetSize(fWidth, fHeight);
 	pCharge->SetType(nType);
-	pCharge->SetTexture(nType);
+	pCharge->SetTexture(pTexName);
 	pCharge->SetAnchor(ANCHORTYPE_LEFTSIDE);
 
 	// 生成されたポインタを返す
@@ -169,41 +168,6 @@ void CCharge::Update(void)
 //================================
 void CCharge::Draw(void)
 {
-	// デバイスの取得
-	LPDIRECT3DDEVICE9 pDevice = CManager::GetRenderer()->GetDevice();
-
-	// テクスチャ取得
-	CTexture* pTexture = CManager::GetTexture();
-
-	// テクスチャ読み込み
-	pDevice->SetTexture(0, pTexture->GetAddress(m_nIdxTex));
-
 	// 親クラスの描画処理
 	CObject2D::Draw();
-}
-//================================
-// テクスチャ割り当て処理
-//================================
-void CCharge::SetTexture(int nType)
-{
-	// テクスチャポインタ取得
-	CTexture* pTexture = CManager::GetTexture();
-
-	// もしnullなら
-	if (pTexture == nullptr) return;
-
-	switch (nType)
-	{
-	case CHARGE_FRAME:	// 枠
-		m_nIdxTex = pTexture->Register("data\\TEXTURE\\laser.png");
-		break;
-
-	case CHARGE_BAR:	// 本体
-		m_nIdxTex = pTexture->Register("data\\TEXTURE\\laser_gage.png");
-		break;
-
-	default:
-		m_nIdxTex = -1;	// 例外の値
-		break;
-	}
 }

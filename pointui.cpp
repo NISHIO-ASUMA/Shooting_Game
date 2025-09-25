@@ -27,7 +27,6 @@ namespace POINTINFO
 CPointUi::CPointUi(int nPriority) : CObject2D(nPriority)
 {
 	// 値のクリア
-	m_nIdxTex = NULL;
 }
 //==============================
 // デストラクタ
@@ -55,7 +54,7 @@ CPointUi* CPointUi::Create(D3DXVECTOR3 pos)
 	pPoint->SetPos(pos);
 	pPoint->SetSize(POINTINFO::POINTWIDTH, POINTINFO::POINTHEIGHT);
 	pPoint->SetAnchor(CObject2D::ANCHORTYPE_CENTER);
-	pPoint->SetTexture();
+	pPoint->SetTexture("PointUi.png");
 
 	// 生成されたポインタを返す
 	return pPoint;
@@ -92,32 +91,6 @@ void CPointUi::Update(void)
 //==============================
 void CPointUi::Draw(void)
 {
-	// デバイス取得
-	LPDIRECT3DDEVICE9 pDevice = CManager::GetRenderer()->GetDevice();
-
-	// テクスチャ取得
-	CTexture* pTexture = CManager::GetTexture();
-
-	// nullだったらここで処理終了
-	if (pTexture == nullptr) return;
-
-	// テクスチャセット
-	pDevice->SetTexture(0, pTexture->GetAddress(m_nIdxTex));
-
 	// 親クラスの描画処理
 	CObject2D::Draw();
-}
-//==============================
-// テクスチャ割り当て処理
-//==============================
-void CPointUi::SetTexture(void)
-{
-	// テクスチャ取得
-	CTexture* pTexture = CManager::GetTexture();
-
-	// nullだったらここで処理終了
-	if (pTexture == nullptr) return;
-
-	// 割り当て
-	m_nIdxTex = pTexture->Register("data\\TEXTURE\\PointUi.png");
 }

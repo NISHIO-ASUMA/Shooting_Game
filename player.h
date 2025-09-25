@@ -152,6 +152,7 @@ private:
 	bool m_isDecHp;
 	bool m_isControll;
 	bool m_isCollisionBlock;
+	bool m_isJumpAttack;
 
 	float m_fAngle;			// åªç›ÇÃäpìx
 	float m_fValue;

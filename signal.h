@@ -34,14 +34,10 @@ public:
 	void Update(void);
 	void Draw(void);
 
-	// セッター
-	void SetTexture(void);
-
 	// 静的メンバ関数
 	static CSignal* Create(void);
 
 private:
-	int m_nidxTex;		// テクスチャインデックス
 	int m_nLife;		// 寿命
 };
 

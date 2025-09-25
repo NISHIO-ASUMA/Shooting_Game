@@ -19,7 +19,6 @@
 CTitleLogo::CTitleLogo(int nPriority) : CObject2D(nPriority)
 {
 	// 値のクリア
-	m_nTexIdx = NULL;
 	m_move = VECTOR3_NULL;
 	m_isAnimating = false;
 	m_nFrame = NULL;
@@ -53,7 +52,7 @@ CTitleLogo* CTitleLogo::Create(D3DXVECTOR3 pos, float fWidth, float fHeight)
 	pTitlelogo->SetPos(pos);
 	pTitlelogo->SetSize(fWidth, fHeight);
 	pTitlelogo->SetAnchor(CObject2D::ANCHORTYPE_CENTER);
-	pTitlelogo->SetTexture();
+	pTitlelogo->SetTexture("logo.png");
 
 	// 生成されたポインタを返す
 	return pTitlelogo;
@@ -145,32 +144,6 @@ void CTitleLogo::Update(void)
 //================================
 void CTitleLogo::Draw(void)
 {
-	// デバイス取得
-	LPDIRECT3DDEVICE9 pDevice = CManager::GetRenderer()->GetDevice();
-
-	// テクスチャポインタ取得
-	CTexture* pTexture = CManager::GetTexture();
-
-	// nullチェック
-	if (pTexture == nullptr) return;
-
-	// テクスチャセット
-	pDevice->SetTexture(0, pTexture->GetAddress(m_nTexIdx));
-
 	// 親クラスの描画処理
 	CObject2D::Draw();
-}
-//================================
-// テクスチャ割り当て処理
-//================================
-void CTitleLogo::SetTexture(void)
-{
-	// テクスチャポインタ取得
-	CTexture* pTexture = CManager::GetTexture();
-
-	// nullチェック
-	if (pTexture == nullptr) return;
-
-	// テクスチャ割り当て
-	m_nTexIdx = pTexture->Register("data\\TEXTURE\\logo.png");
 }

@@ -18,7 +18,6 @@
 #include "bosslifegage.h"
 #include "charge.h"
 #include "ui.h"
-
 #include <fstream>
 #include <iostream>
 #include <sstream>
@@ -252,7 +251,7 @@ void CSceneLoader::SplitLoad(int nIdx)
 			else if (objName == "BLOCK")
 			{
 				// ブロック
-				// CBlock::Create(filePath.c_str(), pos, rot);
+				CBlock::Create(filePath.c_str(), pos, rot);
 
 				// パスのクリア
 				filePath.clear();
@@ -262,17 +261,23 @@ void CSceneLoader::SplitLoad(int nIdx)
 				if (createType == "PLAYER")
 				{
 					// 体力ゲージ
-					CPlayerLifeGage::Create(pos, width, height, category);
+					CPlayerLifeGage::Create(pos, width, height, category,TexPath.c_str());
+
+					TexPath.clear();
 				}
 				else if (createType == "BOSS")
 				{
 					// 体力ゲージ
-					CBossLifeGage::Create(pos, width, height, category);
+					CBossLifeGage::Create(pos, width, height, category, TexPath.c_str());
+
+					TexPath.clear();
 				}
 				else if (createType == "LASER")
 				{
 					// レーザーゲージ
-					CCharge::Create(pos, width, height, category);
+					CCharge::Create(pos, width, height, category, TexPath.c_str());
+
+					TexPath.clear();
 				}
 				else if (createType == "BACEUI")
 				{

@@ -43,21 +43,18 @@ public:
 
 	// セッター
 	void SetType(int nType) { m_nType = nType; }
-	void SetTexture(int nType);
 
 	// 静的メンバ関数
-	static CCharge* Create(D3DXVECTOR3 pos, float fWidth, float fHeight, int nType);
+	static CCharge* Create(D3DXVECTOR3 pos, float fWidth, float fHeight, int nType,const char * pTexName);
 	static void AddCharge(float fValue);
 	static void DecCharge(float fValue);
 	static bool GetChargeFlag(void) { return m_isCharge; }
 	static void SetCharge(bool isFlags) { m_isCharge = isFlags; }
 
 private:
-	int m_nIdxTex;
 	int m_nType;
 
 	static bool m_isCharge;
-
 	static float m_fCharge;
 };
 

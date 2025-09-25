@@ -47,17 +47,14 @@ public:
 
 	// セッター
 	void SetType(int nType) { m_Type = nType; }
-	void SetTexture(int nType);
 
 	// 静的メンバ関数
-	static CBossLifeGage* Create(D3DXVECTOR3 pos, float fWidth, float fHeight, int nType);
+	static CBossLifeGage* Create(D3DXVECTOR3 pos, float fWidth, float fHeight, int nType,const char * pTexName);
 
 private:
 	int m_nCurrentLifeLength;		// バーの長さ基準値
 	int m_nMaxLifeLength;	// 最大体力時の長さ
 	int m_Type;				// 列挙変数
-
-	int m_nIdxTex;	// テクスチャインデックス
 	CBoss* m_pBoss; // ボスのポインタ
 
 };

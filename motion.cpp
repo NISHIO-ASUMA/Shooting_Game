@@ -163,7 +163,7 @@ void CMotion::SetMotion(int motiontype)
 	m_isFinishMotion = false;
 }
 //======================================
-// モーションセット情報 (ブレンド実験)
+// モーションセット情報
 //======================================
 void CMotion::SetMotion(int nMotionType, bool isBlend, int nBlendFrame,bool isBoss)
 {

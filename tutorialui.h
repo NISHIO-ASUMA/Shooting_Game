@@ -42,7 +42,6 @@ public:
 	void Draw(void);
 
 	// セッター
-	void SetTexture(const char * pFileName);
 	void SetState(int nState) { m_nState = nState; }
 
 	// ゲッター
@@ -52,7 +51,6 @@ public:
 	static CTutorialUi* Create(D3DXVECTOR3 pos, float fWidth, float fHeight,const char * pFileName,int nState);
 
 private:
-	int m_nIdxTexture;	// テクスチャインデックス
 	int m_nState;		// UIの状態
 	float m_fAlpha;		// 透明度
 };

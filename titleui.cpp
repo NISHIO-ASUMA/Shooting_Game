@@ -18,7 +18,6 @@
 CTitleUi::CTitleUi(int nPriority) : CObject2D(nPriority)
 {
 	// 値のクリア
-	m_nTexIdx = NULL;
 }
 //=========================
 // デストラクタ
@@ -62,18 +61,6 @@ void CTitleUi::Update(void)
 //=========================
 void CTitleUi::Draw(void)
 {
-	// デバイス取得
-	LPDIRECT3DDEVICE9 pDevice = CManager::GetRenderer()->GetDevice();
-
-	// テクスチャ取得
-	CTexture* pTexture = CManager::GetTexture();
-
-	// nullだったらここで処理終了
-	if (pTexture == nullptr) return;
-
-	// テクスチャセット
-	pDevice->SetTexture(0, pTexture->GetAddress(m_nTexIdx));
-
 	// 2Dオブジェクトの描画処理
 	CObject2D::Draw();
 }
@@ -109,29 +96,37 @@ CTitleUi* CTitleUi::Create(D3DXVECTOR3 pos, D3DXCOLOR col, float fWidth, float f
 //=========================
 void CTitleUi::SetTexture(int nType)
 {
-	// テクスチャ取得
-	CTexture* pTexture = CManager::GetTexture();
-
-	// nullだったらここで処理終了
-	if (pTexture == nullptr) return;
+	// ファイル名を決定
+	const char* szFileName = nullptr;
 
 	switch (nType)
 	{
-	case MENU_GAME:			// ゲームメニュー
-		m_nTexIdx = pTexture->Register("data\\TEXTURE\\titlemenu001.png");
+	case MENU_GAME:				 // ゲームメニュー
+		szFileName = "titlemenu001.png";
 		break;
 
-	case MENU_TUTORIAL:		// チュートリアルメニュー
-		m_nTexIdx = pTexture->Register("data\\TEXTURE\\titilemenu_002.png");
+	case MENU_TUTORIAL:			// チュートリアルメニュー
+		szFileName = "titilemenu_002.png";
 		break;
 
-	case MENU_EXIT:			// 終了選択
-		m_nTexIdx = pTexture->Register("data\\TEXTURE\\titlemenu_003.png");
+	case MENU_EXIT:				// 終了選択
+		szFileName = "titlemenu_003.png";
 		break;
 
 	default:
-		m_nTexIdx = -1;
+		szFileName = nullptr;
 		break;
 	}
 
+	// ファイル名が決まっていれば設定
+	if (szFileName)
+	{
+		// パスセット
+		CObject2D::SetTexture(szFileName);
+	}
+	else
+	{
+		// 無し
+		CObject2D::SetTexture(nullptr);
+	}
 }

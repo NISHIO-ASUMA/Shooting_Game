@@ -29,7 +29,6 @@ namespace TUTORIAL_UIINFO
 CTutorialUi::CTutorialUi(int nPriority) : CObject2D(nPriority)
 {
 	// 値のクリア
-	m_nIdxTexture = NULL;
 	m_nState = STATE_AWAIT;
 	m_fAlpha = 1.0f;
 }
@@ -152,21 +151,8 @@ void CTutorialUi::Update(void)
 //==============================
 void CTutorialUi::Draw(void)
 {
-	// デバイス取得
-	LPDIRECT3DDEVICE9 pDevice = CManager::GetRenderer()->GetDevice();
-
-	// テクスチャポインタ取得
-	CTexture * pTexture = CManager::GetTexture();
-
-	// 取得時,nullだったら
-	if (pTexture == nullptr) return;
-
-	// テクスチャ割り当て
-	pDevice->SetTexture(0, pTexture->GetAddress(m_nIdxTexture));
-
 	// オブジェクト2Dの描画処理
 	CObject2D::Draw();
-	
 }
 //==============================
 // カラー判定を取得
@@ -174,22 +160,4 @@ void CTutorialUi::Draw(void)
 bool CTutorialUi::IsFinished() const
 {
 	return (m_fAlpha <= 0.0f);
-}
-//==============================
-// テクスチャ割り当て処理
-//==============================
-void CTutorialUi::SetTexture(const char* pFileName)
-{
-	// テクスチャポインタを取得
-	CTexture* pTexture = CManager::GetTexture();
-
-	// 取得時,nullだったら
-	if (pTexture == nullptr) return;
-
-	// テクスチャ名省略
-	std::string TexName = "data\\TEXTURE\\ComboMenu\\";
-	TexName += pFileName;
-
-	// テクスチャ割り当て
-	m_nIdxTexture = pTexture->Register(TexName.c_str());
 }

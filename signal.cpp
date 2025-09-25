@@ -28,7 +28,6 @@ namespace SIGNINFO
 CSignal::CSignal(int nPriority) : CObject2D(nPriority)
 {
 	// 値のクリア
-	m_nidxTex = NULL;
 	m_nLife = NULL;
 }
 //==============================
@@ -89,35 +88,10 @@ void CSignal::Update(void)
 //==============================
 void CSignal::Draw(void)
 {
-	// デバイス取得
-	LPDIRECT3DDEVICE9 pDevice = CManager::GetRenderer()->GetDevice();
-
-	// テクスチャ取得
-	CTexture* pTexture = CManager::GetTexture();
-
-	// nullチェック
-	if (pTexture == nullptr) return;
-
-	// テクスチャセット
-	pDevice->SetTexture(0, pTexture->GetAddress(m_nidxTex));
-
 	// オブジェクト描画
 	CObject2D::Draw();
 }
-//==============================
-// テクスチャ割り当て
-//==============================
-void CSignal::SetTexture(void)
-{
-	// テクスチャポインタ取得
-	CTexture* pTexture = CManager::GetTexture();
 
-	// nullチェック
-	if (pTexture == nullptr) return;
-
-	// パスを設定
-	m_nidxTex = pTexture->Register("data\\TEXTURE\\alert.png");
-}
 //==============================
 // 生成処理
 //==============================
@@ -131,7 +105,7 @@ CSignal* CSignal::Create(void)
 	pSign->SetPos(SIGNINFO::ACTIVEPOS);
 	pSign->SetSize(SIGNINFO::UISIZE, SIGNINFO::UISIZE);
 	pSign->SetAnchor(ANCHORTYPE_CENTER);
-	pSign->SetTexture();
+	pSign->SetTexture("alert.png");
 
 	// 初期化失敗時
 	if (FAILED(pSign->Init()))

@@ -52,11 +52,8 @@ public:
 	void Update(void);
 	void Draw(void);
 
-	// セッター
-	void SetTexture(const char* pRegistername);
-
 	// 静的メンバ関数
-	static CMoveUi* Create(D3DXVECTOR3 pos, float fWidth, float fHeight, const char* pFileName, MOVETYPE movetype, SCALETYPE sceletype);
+	static CMoveUi* Create(D3DXVECTOR3 pos, float fWidth, float fHeight, const char* pTexName, MOVETYPE movetype, SCALETYPE sceletype);
 
 private:
 	int m_nIdxTexture;	// テクスチャインデックス

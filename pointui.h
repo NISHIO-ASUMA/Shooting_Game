@@ -28,13 +28,11 @@ public:
 	void Uninit(void);
 	void Update(void);
 	void Draw(void);
-	void SetTexture(void);
 
 	// 静的メンバ関数
 	static CPointUi* Create(D3DXVECTOR3 pos);
 
 private:
-	int m_nIdxTex;	// テクスチャインデックス
 
 };
 

@@ -19,7 +19,6 @@
 CUi::CUi(int nPriority) : CObject2D(nPriority)
 {
 	// 値のクリア
-	m_nTexIdxType = NULL;
 	m_isFlash = false;
 	m_nFlashFrame = NULL;
 	m_nState = STATE_NONE;
@@ -91,15 +90,6 @@ void CUi::Update(void)
 //===============================
 void CUi::Draw(void)
 {
-	// デバイス取得
-	LPDIRECT3DDEVICE9 pDevice = CManager::GetRenderer()->GetDevice();
-
-	// テクスチャセット
-	CTexture* pTexture = CManager::GetTexture();
-
-	// 割り当て
-	pDevice->SetTexture(0, pTexture->GetAddress(m_nTexIdxType));
-
 	// オブジェクトの描画
 	CObject2D::Draw();
 }
@@ -131,25 +121,4 @@ CUi* CUi::Create(D3DXVECTOR3 pos, int nFlashFrame,float fWidth, float fHeight, c
 
 	// 生成されたポインタを返す
 	return pUi;
-}
-//===============================
-// テクスチャセット処理
-//===============================
-void CUi::SetTexture(const char* pRegistername)
-{
-	// テクスチャポインタ取得
-	CTexture* pTexture = CManager::GetTexture();
-
-	// 文字列生成
-	std::string TexPath = "data\\TEXTURE\\";
-
-	// パス連結
-	TexPath += pRegistername;
-
-	// nullじゃなかったら
-	if (pTexture != nullptr)
-	{
-		// テクスチャ設定
-		m_nTexIdxType = pTexture->Register(TexPath.c_str());
-	}
 }
