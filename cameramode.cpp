@@ -62,7 +62,7 @@ HRESULT CCameraMode::Init(void)
 	CMeshDome::Create(D3DXVECTOR3(0.0f, -70.0f, 0.0f), 890.0f);
 
 	// ÉuÉçÉbÉNê∂ê¨
-	CBlock::Create("data\\MODEL\\STAGEOBJ\\Field000.x", D3DXVECTOR3(0.0f, -90.0f, 0.0f), VECTOR3_NULL, 80.0f, 0);
+	CBlock::Create("data\\MODEL\\STAGEOBJ\\Field000.x", D3DXVECTOR3(0.0f, -90.0f, 0.0f), VECTOR3_NULL);
 
 	return S_OK;
 }

@@ -82,6 +82,7 @@ public:
 	void SetValue(float fValue) { m_fValue = fValue; }
 	void JumpMove(void) { m_move.y = m_fValue; }
 	void SetIsDamege(bool isFlags) { m_isDecHp = isFlags; }
+	void SetActive(bool isActiveFlags) { m_isControll = isActiveFlags; }
 
 	// ゲッター
 	D3DXVECTOR3 GetPos(void) { return m_pos; }			// 現在の座標を取得
@@ -107,6 +108,7 @@ public:
 	bool isLanding(void) { return m_isJump; }
 	bool GetLanding(void) { return m_isLanding; }
 	bool GetIsDamege(void) { return m_isDecHp; }
+	bool GetIsActive(void) { return m_isControll; }
 
 	// 静的メンバ関数
 	static CPlayer* Create(D3DXVECTOR3 pos, D3DXVECTOR3 rot, int nLife, const int nIdxParson, const char* pFilename); // 生成処理
@@ -123,6 +125,7 @@ private:
 	D3DXVECTOR3 m_posOld;	// 過去の座標情報
 	D3DXVECTOR3 m_rot;		// 角度
 	D3DXVECTOR3 m_Scal;
+	D3DXVECTOR3 m_fSize;
 	D3DXMATRIX m_mtxworld;	// ワールドマトリックス
 
 	CModel* m_apModel[MAX_MODEL]; // 使うモデルのポインタ
@@ -148,6 +151,8 @@ private:
 	bool m_isGuard;
 	bool m_isDecHp;
 	bool m_isControll;
+	bool m_isCollisionBlock;
+
 	float m_fAngle;			// 現在の角度
 	float m_fValue;
 

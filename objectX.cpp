@@ -24,6 +24,10 @@ CObjectX::CObjectX(int nPriority) : CObject(nPriority)
 	m_pMesh = nullptr;
 	m_pos = VECTOR3_NULL;
 	m_rot = VECTOR3_NULL;
+	m_fsize = VECTOR3_NULL;
+	m_Vtxmin = VECTOR3_NULL;
+	m_Vtxmax = VECTOR3_NULL;
+
 	m_pTexture = nullptr;
 	m_pFileName = {};
 
@@ -59,6 +63,71 @@ HRESULT CObjectX::Init(void)
 
 	// マテリアルデータへのポインタを取得
 	pMat = (D3DXMATERIAL*)m_pBuffMat->GetBufferPointer();
+
+	// オブジェクトのサイズを設定
+	int nNumVtx;		// 頂点数
+	DWORD sizeFVF;		// 頂点フォーマットのサイズ
+	BYTE* pVtxBuff;		// 頂点バッファのポインタ
+
+	// 頂点数の取得
+	nNumVtx = m_pMesh->GetNumVertices();
+
+	// 頂点のサイズを取得
+	sizeFVF = D3DXGetFVFVertexSize(m_pMesh->GetFVF());
+
+	// 頂点バッファをロック
+	m_pMesh->LockVertexBuffer(D3DLOCK_READONLY, (void**)&pVtxBuff);
+
+	// 頂点数分回す
+	for (int nCnt = 0; nCnt < nNumVtx; nCnt++)
+	{
+		// 頂点座標の代入
+		D3DXVECTOR3 Vtx = *(D3DXVECTOR3*)pVtxBuff;
+
+		// 頂点座標の比較
+		if (Vtx.x > m_Vtxmax.x)
+		{// xが最大値より大きかったら
+			// 代入
+			m_Vtxmax.x = Vtx.x;
+		}
+		if (Vtx.y > m_Vtxmax.y)
+		{// yが最大値より大きかったら
+			// 代入
+			m_Vtxmax.y = Vtx.y;
+		}
+		if (Vtx.z > m_Vtxmax.z)
+		{// zが最大値より大きかったら
+			// 代入
+			m_Vtxmax.z = Vtx.z;
+		}
+
+		if (Vtx.x < m_Vtxmin.x)
+		{// xが最小値より小さかったら
+			// 代入
+			m_Vtxmin.x = Vtx.x;
+		}
+		if (Vtx.y < m_Vtxmin.y)
+		{// yが最小値より小さかったら
+			// 代入
+			m_Vtxmin.y = Vtx.y;
+		}
+		if (Vtx.z < m_Vtxmin.z)
+		{// zが最小値より小さかったら
+			// 代入
+			m_Vtxmin.z = Vtx.z;
+		}
+
+		// 頂点フォーマットのサイズ分進める
+		pVtxBuff += sizeFVF;
+	}
+
+	// サイズを代入する
+	m_fsize.x = m_Vtxmax.x - m_Vtxmin.x;	// sizeのx
+	m_fsize.y = m_Vtxmax.y - m_Vtxmin.y;	// sizeのy
+	m_fsize.z = m_Vtxmax.z - m_Vtxmin.z;	// sizeのz
+
+	// アンロック
+	m_pMesh->UnlockVertexBuffer();
 
 	// テクスチャインデックス配列の動的確保
 	m_pTexture = new int[m_dwNumMat];

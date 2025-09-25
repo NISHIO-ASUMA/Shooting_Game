@@ -45,7 +45,7 @@ private:
 	void Minute(void);
 
 	static inline constexpr int DIGIT_TIME = 2;	// 桁数
-	static inline constexpr int NUMTIME = 120;	// 最大タイマー
+	static inline constexpr int NUMTIME = 300;	// 最大タイマー
 	static inline constexpr int CARVETIME = 60;	// カウント上限
 	static inline constexpr int DIVIDE = 10;	// 桁分割の値
 

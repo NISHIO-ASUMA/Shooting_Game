@@ -52,8 +52,6 @@ OBJNAME = BLOCK # [5] ブロック
 XFILEPASS = data/MODEL/STAGEOBJ/Field000.x
 POS = 0.0 -90.0 0.0
 ROT = 0.0 0.0 0.0
-SIZE = 80.0
-TYPE = 0
 ENDSET
 
 #============================================================================

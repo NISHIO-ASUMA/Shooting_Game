@@ -13,22 +13,17 @@
 //**********************
 #include "objectX.h"
 
+//********************************
+// 前方宣言
+//********************************
+class CPlayer;
+
 //************************************
 // ブロッククラスを定義
 //************************************
 class CBlock : public CObjectX
 {
 public:
-	//***************************
-	// 回転の種類
-	//***************************
-	enum ROTTYPE
-	{
-		ROTTYPE_NOROTATION,
-		ROTTYPE_ROTATION,
-		ROTTYPE_MAX
-	};
-
 	// コンストラクタ・デストラクタ
 	CBlock(int nPriority = static_cast<int>(CObject::PRIORITY::MODELOBJECT));
 	~CBlock();
@@ -38,15 +33,13 @@ public:
 	void Uninit(void);
 	void Update(void);
 	void Draw(void);
-
-	// ゲッター
-	float GetSize(void) const { return m_size; }
+	bool Colliosion(D3DXVECTOR3 * pPos, D3DXVECTOR3* pPosOld, D3DXVECTOR3* pMove, D3DXVECTOR3 fSize, bool& bLanding);
 
 	// 静的メンバ関数
-	static CBlock* Create(const char* pFileName, D3DXVECTOR3 pos,D3DXVECTOR3 rot, float fSize,int nType);
+	static CBlock* Create(const char* pFileName, D3DXVECTOR3 pos,D3DXVECTOR3 rot);
 
 private:
-	float m_size; // サイズ設定用
+	static constexpr float BLOCKHALF = 0.5f;	// サイズ
 	int m_nType;	// 種類
 };
 

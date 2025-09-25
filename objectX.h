@@ -40,7 +40,9 @@ public:
 	// ゲッター
 	D3DXVECTOR3 GetPos(void) { return m_pos; };
 	D3DXVECTOR3 GetRot(void) { return m_rot; };
+	D3DXVECTOR3 GetSize(void) { return m_fsize; }
 	D3DXMATRIX GetMtxWorld(void) { return m_mtxWorld; }
+
 	const char* GetFileName()const { return m_pFileName; }
 
 	// 静的メンバ関数
@@ -54,6 +56,9 @@ private:
 
 	D3DXVECTOR3 m_pos;		// 座標
 	D3DXVECTOR3 m_rot;		// 角度
+	D3DXVECTOR3 m_fsize;	// サイズ
+	D3DXVECTOR3 m_Vtxmin;
+	D3DXVECTOR3 m_Vtxmax;
 
 	int m_nIdxTexture;		// テクスチャインデックス
 	int* m_pTexture;		// テクスチャポインタ

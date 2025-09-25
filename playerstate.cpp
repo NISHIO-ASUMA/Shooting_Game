@@ -127,23 +127,6 @@ void CPlayerStateNeutral::OnUpdate()
 		// ここで処理を返す
 		return;
 	}
-
-	//// INVITEキー入力時
-	//if (m_pPlayer->GetPlayerIndex() == 0 &&
-	//	(pInput->GetPress(DIK_Q)) &&
-	//	m_pPlayer->GetNowMotion() != CPlayer::PLAYERMOTION_DAMAGE)
-	//{
-	//	m_pPlayer->ChangeState(new CPlayerStateInvite, ID_INVITE);
-	//	return;
-	//}
-
-	//if (m_pPlayer->GetPlayerIndex() == 1 &&
-	//	(pInput->GetPress(DIK_E)) &&
-	//	m_pPlayer->GetNowMotion() != CPlayer::PLAYERMOTION_DAMAGE)
-	//{
-	//	m_pPlayer->ChangeState(new CPlayerStateInvite, ID_INVITE);
-	//	return;
-	//}
 }
 //==================================
 // 待機状態時終了関数
@@ -506,6 +489,9 @@ CPlayerStateInvite::~CPlayerStateInvite()
 //==================================
 void CPlayerStateInvite::OnStart()
 {
+	// 有効状態
+	m_pPlayer->SetActive(true);
+
 	// カメラ取得
 	CCamera* pCamera = CManager::GetCamera();
 
@@ -534,10 +520,11 @@ void CPlayerStateInvite::OnUpdate()
 		// 値を更新
 		m_nInviteCount = 0;
 
-		m_isRotation = false;
-
 		// ステート変更
 		m_pPlayer->ChangeState(new CPlayerStateNeutral(), ID_NEUTRAL);
+
+		// 判定を消す
+		m_pPlayer->SetActive(false);
 
 		return;
 	}

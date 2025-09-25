@@ -75,7 +75,7 @@ private:
 	DWORD m_dwNumMat;		// マテリアル数
 	int* m_pTexture;		// テクスチャポインタ
 
-	PARTTYPE m_parttype;    // モデルの種類
+	PARTTYPE m_parttype;	// モデルの種類
 
 	bool m_isPlayer; // プレイヤーに対応したモデルかどうか
 	bool m_isBoss;

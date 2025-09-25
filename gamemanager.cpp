@@ -152,6 +152,9 @@ HRESULT CGameManager::Init(void)
 	CCharge::SetCharge(false);
 	CCharge::DecCharge(100.0f);
 
+	// ƒuƒƒbƒN¶¬
+	CBlock::Create("data\\MODEL\\STAGEOBJ\\block000.x", D3DXVECTOR3(60.0f, 40.0f, -550.0f), VECTOR3_NULL);
+
 	// ‰Šú‰»Œ‹‰Ê‚ğ•Ô‚·
 	return S_OK;
 }

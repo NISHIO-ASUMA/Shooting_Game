@@ -226,6 +226,7 @@ void CBoss::Uninit(void)
 //====================================
 void CBoss::Update(void)
 {
+#if 0
 	// 死んでるなら
 	if (m_isdaeth)
 	{
@@ -270,6 +271,7 @@ void CBoss::Update(void)
 		m_pState->Update();
 	}
 
+#endif
 	// モーション全体更新
 	m_pMotion->Update(m_pModel, NUMMODELS);
 }
@@ -278,6 +280,7 @@ void CBoss::Update(void)
 //====================================
 void CBoss::Draw(void)
 {
+#if 0
 	// デバイスポインタを宣言
 	LPDIRECT3DDEVICE9 pDevice = CManager::GetRenderer()->GetDevice();
 
@@ -323,6 +326,7 @@ void CBoss::Draw(void)
 
 	// デバッグフォント
 	m_pMotion->Debug();
+#endif
 }
 //====================================
 // 右手とプレイヤーの当たり判定

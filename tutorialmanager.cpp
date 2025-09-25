@@ -304,8 +304,8 @@ void CTutorialManager::Update(void)
 		CExitPoint::Create(D3DXVECTOR3(0.0f, 0.0f, -550.0f), 0.5f);
 
 		// ÉuÉçÉbÉNê∂ê¨
-		CBlock::Create("data\\MODEL\\STAGEOBJ\\yajirusi.x", D3DXVECTOR3(0.0f, 180.0f, -550.0f), D3DXVECTOR3(-D3DX_PI * 0.5f, 0.0f, 0.0f), 0.0f,1);
-		CBlock::Create("data\\MODEL\\STAGEOBJ\\Billboard_kanban.x", D3DXVECTOR3(0.0f, 190.0f, -550.0f), VECTOR3_NULL, 0.0f, 0);
+		CBlock::Create("data\\MODEL\\STAGEOBJ\\yajirusi.x", D3DXVECTOR3(0.0f, 180.0f, -550.0f), D3DXVECTOR3(-D3DX_PI * 0.5f, 0.0f, 0.0f));
+		CBlock::Create("data\\MODEL\\STAGEOBJ\\Billboard_kanban.x", D3DXVECTOR3(0.0f, 190.0f, -550.0f), VECTOR3_NULL);
 
 		// ñ≥å¯âªÇ∑ÇÈ
 		isFinish = false;

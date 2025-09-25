@@ -252,7 +252,7 @@ void CSceneLoader::SplitLoad(int nIdx)
 			else if (objName == "BLOCK")
 			{
 				// ブロック
-				CBlock::Create(filePath.c_str(), pos, rot, size,type);
+				// CBlock::Create(filePath.c_str(), pos, rot);
 
 				// パスのクリア
 				filePath.clear();
