@@ -13,7 +13,7 @@
 //*********************************
 namespace TEMPLATE
 {
-	constexpr float VALUE_FLOAT = 2.0f;
+	constexpr float VALUE_FLOAT = D3DX_PI * 2.0f;
 }
 
 //*********************************
@@ -42,8 +42,9 @@ template <class T>T Wrap(const T t, const T min, const T max)
 template <class T>T NormalAngle(T Angle)
 {
 	// Šp“x‚Ì³‹K‰»ˆ—
-	if (Angle > D3DX_PI) Angle -= D3DX_PI * TEMPLATE::VALUE_FLOAT;
-	if (Angle < D3DX_PI) Angle += D3DX_PI * TEMPLATE::VALUE_FLOAT;
+	if (Angle > D3DX_PI) Angle -= TEMPLATE::VALUE_FLOAT;
+	if (Angle < -D3DX_PI) Angle += TEMPLATE::VALUE_FLOAT;
+
 	return Angle;
 }
 

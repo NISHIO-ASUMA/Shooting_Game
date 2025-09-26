@@ -13,6 +13,8 @@
 #include "meshfield.h"
 #include "meshdome.h"
 #include "block.h"
+#include "camera.h"
+#include "manager.h"
 
 //==============================
 // オーバーロードコンストラクタ
@@ -51,6 +53,9 @@ CCameraMode* CCameraMode::Create(void)
 //==============================
 HRESULT CCameraMode::Init(void)
 {
+	CCamera* pCamera = CManager::GetCamera();
+	pCamera->SetRot(D3DXVECTOR3(D3DX_PI * 0.5f,0.0f,0.0f));
+
 	// ボス生成
 	CTutorialBoss::Create(D3DXVECTOR3(0.0f, -600.0f, 0.0f));
 

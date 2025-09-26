@@ -543,8 +543,12 @@ void CCamera::SetCamera(void)
 	// 描画開始
 	CDebugproc::Draw(0, 20);
 
-	//CDebugproc::Print("Camera : Rot [ %.2f, %.2f, %.2f ]\n", m_pCamera.rot.x, m_pCamera.rot.y, m_pCamera.rot.z);
-	//CDebugproc::Draw(0, 40);
+	CDebugproc::Print("Camera : PosR [ %.2f, %.2f, %.2f ]\n", m_pCamera.posR.x, m_pCamera.posR.y, m_pCamera.posR.z);
+	CDebugproc::Draw(0, 40);
+
+	CDebugproc::Print("Camera : Rot [ %.2f, %.2f, %.2f ]\n", m_pCamera.rot.x, m_pCamera.rot.y, m_pCamera.rot.z);
+	CDebugproc::Draw(0, 80);
+
 
 	CDebugproc::Print("アニメーションキー番号 [ %d ]", m_nAnimNowKey);
 	CDebugproc::Draw(0, 500);
@@ -799,7 +803,6 @@ void CCamera::TitleCamera(void)
 	m_pCamera.posV = D3DXVECTOR3(0.0f, 150.0f, -950.0f); // カメラの位置
 	m_pCamera.posR = VECTOR3_NULL;						 // カメラの見ている位置
 	m_pCamera.vecU = D3DXVECTOR3(0.0f, 1.0f, 0.0f);		 // 上方向ベクトル
-	m_pCamera.rot = VECTOR3_NULL;						 // 角度
 
 	if (!m_isRotation)
 	{
@@ -1044,10 +1047,7 @@ void CCamera::AnimCamera(void)
 	if (CManager::GetInputKeyboard()->GetTrigger(DIK_TAB))
 	{
 		// 場所リセット
-		m_pCamera.posV = D3DXVECTOR3(0.0f, 150.0f, -950.0f); // カメラの位置
-		m_pCamera.posR = VECTOR3_NULL;						 // カメラの見ている位置
-		m_pCamera.vecU = D3DXVECTOR3(0.0f, 1.0f, 0.0f);		 // 上方向ベクトル
-		m_pCamera.rot = VECTOR3_NULL;						 // 角度
+		Init();
 	}
 }
 

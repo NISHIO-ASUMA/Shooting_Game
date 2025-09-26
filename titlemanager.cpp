@@ -295,6 +295,7 @@ void CTitleManager::Update(void)
 	{
 		CFade* pFade = CManager::GetFade();
 		if (pFade != nullptr) pFade->SetFade(new CCameraMode());
+
 		return;
 	}
 

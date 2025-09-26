@@ -32,7 +32,7 @@ public:
 		ID_JUMP, // ジャンプ
 		ID_GUARD, // 防御
 		ID_DAMAGE,// ダメージ
-		ID_INVITE, // ひきつけ
+		ID_AVOID, // ひきつけ
 		ID_MAX
 	};
 
@@ -184,17 +184,18 @@ public:
 	void OnExit();
 
 private:
+
 };
 
 //*********************************
-// ひきつけ状態時の管理
+// 回避状態時の管理
 //*********************************
-class CPlayerStateInvite : public CPlayerStateBase
+class CPlayerStateAvoid : public CPlayerStateBase
 {
 public:
 	// コンストラクタ・デストラクタ
-	CPlayerStateInvite();
-	~CPlayerStateInvite();
+	CPlayerStateAvoid();
+	~CPlayerStateAvoid();
 
 	// ステートが始まるときに一度だけ呼ばれる関数
 	void OnStart();
@@ -206,8 +207,7 @@ public:
 	void OnExit();
 
 private:
-	int m_nInviteCount;
-	bool m_isRotation;
+
 };
 
 #endif

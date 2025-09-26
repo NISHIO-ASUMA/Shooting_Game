@@ -375,13 +375,6 @@ void CPlayer::Update(void)
 		int mainStateID = pMain->m_pStateMachine->GetNowStateID();
 		int subStateID = m_pStateMachine->GetNowStateID();
 
-		// INVITE が絡んでいたら同期解除
-		if (mainStateID == CPlayerStateBase::ID_INVITE ||
-			subStateID == CPlayerStateBase::ID_INVITE)
-		{
-			m_isStateSynchro = false; // 解除
-		}
-		else
 		{
 			// 両方同じなら同期許可
 			if (mainStateID == subStateID)
@@ -396,9 +389,7 @@ void CPlayer::Update(void)
 			// モーションを統一する
 			m_pMotion->SetMotion(pMain->GetNowMotion());
 
-			if (mainStateID != subStateID &&
-				mainStateID != CPlayerStateBase::ID_INVITE &&
-				subStateID != CPlayerStateBase::ID_INVITE)
+			if (mainStateID != subStateID )
 			{
 				switch (mainStateID)
 				{
@@ -418,13 +409,16 @@ void CPlayer::Update(void)
 					ChangeState(new CPlayerStateDamage(0), CPlayerStateBase::ID_DAMAGE);
 					break;
 
+				case CPlayerStateBase::ID_AVOID:	// 回避
+					ChangeState(new CPlayerStateAvoid(), CPlayerStateBase::ID_AVOID);
+					break;
+
 				default:
 					break;
 				}
 			}
 		}
 	}
-
 
 	// 入力デバイスのポインタ取得
 	CInputKeyboard* pInput = nullptr;

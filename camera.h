@@ -84,7 +84,7 @@ public:
 	void SetLoadPass(int nIdxPass) { m_nFileIdx = nIdxPass; }
 	void SetAnim(bool isFlags) { m_isAnimTime = isFlags; }
 	void SetLockOnObject(LOCKONMODE lockObj) { m_LockMode = lockObj; }
-
+	void SetRot(D3DXVECTOR3 rot) { m_pCamera.rot = rot; }
 
 	// ÉQÉbÉ^Å[
 	D3DXVECTOR3 GetRot(void) { return m_pCamera.rot; }

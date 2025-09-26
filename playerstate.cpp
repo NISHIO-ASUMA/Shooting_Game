@@ -127,6 +127,18 @@ void CPlayerStateNeutral::OnUpdate()
 		// ここで処理を返す
 		return;
 	}
+
+	// Qキー もしくは PadのBキー
+	if ((pInput->GetPress(DIK_Q) || pPad->GetPress(CJoyPad::JOYKEY_B)) &&
+		m_pPlayer->GetNowMotion() != CPlayer::PLAYERMOTION_DAMAGE)
+	{
+		// ステート変更
+		m_pPlayer->ChangeState(new CPlayerStateAvoid, ID_AVOID);
+
+		// ここで処理を返す
+		return;
+	}
+
 }
 //==================================
 // 待機状態時終了関数
@@ -465,66 +477,40 @@ void CPlayerStateJump::OnExit()
 	// 無し
 }
 
-//==================================
-// ひきつけ状態コンストラクタ
-//==================================
-CPlayerStateInvite::CPlayerStateInvite()
-{
-	// 値のクリア
-	m_nInviteCount = NULL;
-	m_isRotation = false;
 
+//==================================
+// 回避状態コンストラクタ
+//==================================
+CPlayerStateAvoid::CPlayerStateAvoid()
+{
 	// IDセット
-	SetID(ID_INVITE);
+	SetID(ID_AVOID);
 }
 //==================================
 // デストラクタ
 //==================================
-CPlayerStateInvite::~CPlayerStateInvite()
+CPlayerStateAvoid::~CPlayerStateAvoid()
 {
 	// 無し
 }
 //==================================
 // 開始関数
 //==================================
-void CPlayerStateInvite::OnStart()
+void CPlayerStateAvoid::OnStart()
 {
-	// 有効状態
-	m_pPlayer->SetActive(true);
-
-	// カメラ取得
-	CCamera* pCamera = CManager::GetCamera();
-
-	if (m_pPlayer->GetPlayerIndex() == 0)
-	{
-		// サブを映す
-		pCamera->SetCameraMode(CCamera::MODE_SUB);
-	}
-	
 	// モーションセット
-	m_pPlayer->GetMotion()->SetMotion(CPlayer::PLAYERMOTION_INVITE, false, 0, false);
-
-	// カウントセット
-	m_nInviteCount = 600;
+	m_pPlayer->GetMotion()->SetMotion(CPlayer::PLAYERMOTION_AVOID, false, 0, false);
 }
 //==================================
 // 更新関数
 //==================================
-void CPlayerStateInvite::OnUpdate()
+void CPlayerStateAvoid::OnUpdate()
 {
-	// 減算
-	m_nInviteCount--;
-
-	if (m_nInviteCount <= NULL)
+	// ニュートラルに遷移
+	if (m_pPlayer->GetMotion()->GetFinishMotion())
 	{
-		// 値を更新
-		m_nInviteCount = 0;
-
 		// ステート変更
 		m_pPlayer->ChangeState(new CPlayerStateNeutral(), ID_NEUTRAL);
-
-		// 判定を消す
-		m_pPlayer->SetActive(false);
 
 		return;
 	}
@@ -532,7 +518,7 @@ void CPlayerStateInvite::OnUpdate()
 //==================================
 // 終了関数
 //==================================
-void CPlayerStateInvite::OnExit()
+void CPlayerStateAvoid::OnExit()
 {
 	// 無し
 }

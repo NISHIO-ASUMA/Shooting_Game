@@ -353,7 +353,7 @@ void CMotion::Update(CModel** ppModel, const int nMaxPart)
 	}
 
 	// 着地モーションの終了判定
-	if (isPlayer && m_motiontype == CPlayer::PLAYERMOTION_LANDING)
+	if (isPlayer && (m_motiontype == CPlayer::PLAYERMOTION_LANDING || m_motiontype == CPlayer::PLAYERMOTION_AVOID))
 	{
 		// 最後のキーに達していて、カウンターも終了フレームを超えていたら
 		if (m_nKey >= nLastKey -1&&
@@ -427,6 +427,11 @@ void CMotion::UpdateCurrentMotion(CModel** ppModel, int nModelCount)
 	rotMotion.x = NextKey.fRotX - NowKey.fRotX;
 	rotMotion.y = NextKey.fRotY - NowKey.fRotY; 
 	rotMotion.z = NextKey.fRotZ - NowKey.fRotZ;
+
+	// 正規化
+	rotMotion.x = NormalAngle(rotMotion.x);
+	rotMotion.y = NormalAngle(rotMotion.y);
+	rotMotion.z = NormalAngle(rotMotion.z);
 
 	// 求める値を保存する変数を宣言
 	D3DXVECTOR3 Pos, Rot;
@@ -540,6 +545,11 @@ void CMotion::UpdateBlend(CModel** ppModel, int nModelCount)
 	LastPos.x = CurrentPos.x + (BlendPos.x - CurrentPos.x) * fBlendFrame;
 	LastPos.y = CurrentPos.y + (BlendPos.y - CurrentPos.y) * fBlendFrame;
 	LastPos.z = CurrentPos.z + (BlendPos.z - CurrentPos.z) * fBlendFrame;
+
+	// 正規化
+	LastRot.x = NormalAngle(LastRot.x);
+	LastRot.y = NormalAngle(LastRot.y);
+	LastRot.z = NormalAngle(LastRot.z);
 
 	//===============================
 	// モデルにセット
