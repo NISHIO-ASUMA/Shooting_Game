@@ -62,9 +62,8 @@ public:
 	void UpdateAction(CInputKeyboard* pInputKeyboard, D3DXMATRIX pMtx, const D3DXVECTOR3 DestMove, CJoyPad* pPad); // 通常攻撃更新関数
 	void UpdateMove(const D3DXVECTOR3 DestPos, CInputKeyboard* pInputKeyboard, CJoyPad* pPad);					  // 移動更新関数
 	void UpdateJumpAction(CInputKeyboard* pInputKeyboard, D3DXMATRIX pMtx, const D3DXVECTOR3 DestMove, CJoyPad* pPad);
-	void UpdateGuard(void);
+	void UpdateAvoid(bool isRight, bool isLeft);
 	void Collision(void);
-	void StickState(void);
 
 	D3DXVECTOR3 VecToBoss(const D3DXVECTOR3& pPos);
 	D3DXVECTOR3 VecToCenter(const D3DXVECTOR3& pPos);
@@ -83,6 +82,8 @@ public:
 	void JumpMove(void) { m_move.y = m_fValue; }
 	void SetIsDamege(bool isFlags) { m_isDecHp = isFlags; }
 	void SetActive(bool isActiveFlags) { m_isControll = isActiveFlags; }
+	void SetLeft(bool isLeft) { m_isLeft = isLeft; }
+	void SetRight(bool isRight) { m_isRight = isRight; }
 
 	// ゲッター
 	D3DXVECTOR3 GetPos(void) { return m_pos; }			// 現在の座標を取得
@@ -109,6 +110,8 @@ public:
 	bool GetLanding(void) { return m_isLanding; }
 	bool GetIsDamege(void) { return m_isDecHp; }
 	bool GetIsActive(void) { return m_isControll; }
+	bool GetLeft(void) {return m_isLeft; }
+	bool GetRight(void) { return m_isRight; }
 
 	// 静的メンバ関数
 	static CPlayer* Create(D3DXVECTOR3 pos, D3DXVECTOR3 rot, int nLife, const int nIdxParson, const char* pFilename); // 生成処理
@@ -153,6 +156,8 @@ private:
 	bool m_isControll;
 	bool m_isCollisionBlock;
 	bool m_isJumpAttack;
+	bool m_isLeft;
+	bool m_isRight;
 
 	float m_fAngle;			// 現在の角度
 	float m_fValue;

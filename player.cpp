@@ -99,6 +99,8 @@ CPlayer::CPlayer(int nPriority) : CObject(nPriority)
 	m_isControll = false;
 	m_isCollisionBlock = false;
 	m_isJumpAttack = false;
+	m_isLeft = false;
+	m_isRight = false;
 }
 //===============================
 // デストラクタ
@@ -1002,6 +1004,108 @@ void CPlayer::UpdateJumpAction(CInputKeyboard* pInputKeyboard, D3DXMATRIX pMtx, 
 		// ここで処理を返す
 		return;
 	}
+}
+//=============================
+// 回避状態更新関数  TODO : ここの処理を修正する
+//=============================
+void CPlayer::UpdateAvoid(bool isRight,bool isLeft)
+{
+	// SUBプレイヤーがステート未同期なら処理しない
+	if (m_nIdxPlayer == PLAYERINFO::NUMBER_SUB && !m_isStateSynchro) return;
+
+	// ジャンプ攻撃中なら移動処理を禁止
+	if (m_pMotion->GetMotionType() == PLAYERMOTION_JUMPATTACK)
+	{
+		return; // この時は移動や方向変更なし
+	}
+
+	// シーン取得
+	CScene::MODE nMode = CManager::GetScene();
+
+	// 円柱の半径を取得
+	float fRadius = NULL;
+
+	// ゲームシーン
+	if (nMode == CScene::MODE_GAME)
+	{
+		fRadius = CGameManager::GetCylinder()->GetRadius();
+	}
+	else
+	{
+		fRadius = 550.0f;
+	}
+
+	// 識別番号で処理を分別する
+	switch (m_nIdxPlayer)
+	{
+	case PLAYERINFO::NUMBER_MAIN: // メインプレイヤー
+
+		if (isRight == true)
+		{
+			// 角度更新
+			m_fAngle -= PLAYERINFO::MOVE;
+		}
+		else if (isLeft == true)
+		{
+			// 角度更新
+			m_fAngle += PLAYERINFO::MOVE;
+		}
+
+		// 目的角を計算
+		m_rotDest.y = m_fAngle - D3DX_PI * 0.5f; // 左向きに設定
+	break;
+
+	case PLAYERINFO::NUMBER_SUB: // 対角線上のプレイヤー
+
+		if (isRight == true)
+		{
+			// 角度更新
+			m_fAngle += PLAYERINFO::MOVE;
+		}
+		else if (isLeft == true)
+		{
+			// 角度更新
+			m_fAngle -= PLAYERINFO::MOVE;
+		}
+
+		// 目的角を計算
+		m_rotDest.y = m_fAngle - D3DX_PI * 0.5f; // 左向きに設定
+
+		break;
+
+	default:
+		break;
+	}
+
+	// 角度を正規化
+	if (m_rotDest.y - m_rot.y > D3DX_PI)
+	{
+		m_rot.y += D3DX_PI * 2.0f;
+	}
+	else if (m_rot.y - m_rotDest.y > D3DX_PI)
+	{
+		m_rot.y -= D3DX_PI * 2.0f;
+	}
+
+	// 自身の角度を計算
+	float IdxAngle = (m_nIdxPlayer == PLAYERINFO::NUMBER_MAIN) ? m_fAngle : m_fAngle + D3DX_PI;
+
+	// 対角線座標を中心から計算
+	m_pos.x = 0.0f - sinf(IdxAngle) * fRadius;
+	m_pos.z = 0.0f - cosf(IdxAngle) * fRadius;
+
+	// 現在の角度を設定する
+	if (m_nIdxPlayer == PLAYERINFO::NUMBER_MAIN)
+	{
+		m_rot.y += (m_rotDest.y - m_rot.y) + D3DX_PI;
+	}
+	else if (m_nIdxPlayer == PLAYERINFO::NUMBER_SUB)
+	{
+		m_rot.y += (m_rotDest.y - m_rot.y);
+	}
+
+	// 座標更新
+	m_posOld = m_pos;
 }
 //=============================
 // コリジョン処理関数

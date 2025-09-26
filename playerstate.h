@@ -52,15 +52,22 @@ public:
 	// ゲッター
 	int GetID() const override { return m_ID; }
 	void SetID(ID id) { m_ID = id; }
+	bool GetRight(void) { return m_isRightRotation; }
+	bool GetLeft(void) { return m_isLeftRotation; }
 
 	// セッター
 	void SetOwner(CPlayer* pPlayer) { m_pPlayer = pPlayer; }
+	void SetRight(bool isRight) { m_isRightRotation = isRight; }
+	void SetLeft(bool isLeft) { m_isLeftRotation = isLeft; }
 
 protected:
 	CPlayer* m_pPlayer;		// プレイヤーのポインタ
 
 private:
 	ID m_ID;		// 列挙型のポインタ
+	bool m_isRightRotation; // 右回り
+	bool m_isLeftRotation;  // 左回り
+
 };
 
 //*********************************
@@ -81,7 +88,10 @@ public:
 
 	// ステートが終了する時に一度だけ呼ばれる関数
 	void OnExit();
+
+private:
 };
+
 
 //*********************************
 // 移動時の状態管理

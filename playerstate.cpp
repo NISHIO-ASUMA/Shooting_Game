@@ -34,6 +34,8 @@ CPlayerStateBase::CPlayerStateBase()
 	// 値のクリア
 	m_pPlayer = nullptr;
 	m_ID = ID_NEUTRAL;
+	m_isRightRotation = false;
+	m_isLeftRotation = false;
 }
 //==================================
 // プレイヤー状態デストラクタ
@@ -128,16 +130,36 @@ void CPlayerStateNeutral::OnUpdate()
 		return;
 	}
 
-	// Qキー もしくは PadのBキー
-	if ((pInput->GetPress(DIK_Q) || pPad->GetPress(CJoyPad::JOYKEY_B)) &&
+	// Qキー もしくは PadのLBキー
+	if ((pInput->GetPress(DIK_Q) || pPad->GetPress(CJoyPad::JOYKEY_LEFT_B)) &&
 		m_pPlayer->GetNowMotion() != CPlayer::PLAYERMOTION_DAMAGE)
 	{
 		// ステート変更
 		m_pPlayer->ChangeState(new CPlayerStateAvoid, ID_AVOID);
 
+		// フラグセット
+		SetLeft(true);
+		SetRight(false);
+
 		// ここで処理を返す
 		return;
 	}
+
+	// Eキー もしくは PadのRBキー
+	if ((pInput->GetPress(DIK_E) || pPad->GetPress(CJoyPad::JOYKEY_RIGHT_B)) &&
+		m_pPlayer->GetNowMotion() != CPlayer::PLAYERMOTION_DAMAGE)
+	{
+		// ステート変更
+		m_pPlayer->ChangeState(new CPlayerStateAvoid, ID_AVOID);
+
+		// フラグセット
+		SetLeft(false);
+		SetRight(true);
+
+		// ここで処理を返す
+		return;
+	}
+
 
 }
 //==================================
@@ -307,6 +329,19 @@ void CPlayerStateMove::OnUpdate()
 		// ここで処理を返す
 		return;
 	}
+
+	// 回避キー入力時にステート変更
+	if ((pInput->GetPress(DIK_Q) || pPad->GetPress(CJoyPad::JOYKEY_B)) &&
+		m_pPlayer->GetNowMotion() != CPlayer::PLAYERMOTION_DAMAGE &&
+		!m_pPlayer->IsJumping())
+	{
+		// ジャンプに遷移
+		m_pPlayer->ChangeState(new CPlayerStateAvoid, ID_AVOID);
+
+		// ここで処理を返す
+		return;
+	}
+
 }
 //==================================
 // 移動状態終了関数
@@ -506,6 +541,19 @@ void CPlayerStateAvoid::OnStart()
 //==================================
 void CPlayerStateAvoid::OnUpdate()
 {
+	// TODO : プレイヤーにフラグ持たせる
+	// 入力キー
+	if (GetRight() == true)
+	{
+		// 回避更新
+		m_pPlayer->UpdateAvoid(true,false);
+	}
+	else if (GetLeft() == true)
+	{
+		// 回避更新
+		m_pPlayer->UpdateAvoid(false, true);
+	}
+
 	// ニュートラルに遷移
 	if (m_pPlayer->GetMotion()->GetFinishMotion())
 	{
