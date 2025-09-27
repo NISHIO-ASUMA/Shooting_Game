@@ -26,7 +26,8 @@ public:
 
 private:
 
-	static constexpr int NUMPOINT = 4;											   // 出現ポイントの数
+	static constexpr int NUMPOINT = 4;		// 出現ポイントの数
+	static constexpr int ACTIVETIME = 15;	// 出現時間
 	static constexpr const char* MODELNAME = "data\\MODEL\\STAGEOBJ\\Item_life.x"; // オブジェクトファイル名
 
 	//*************************

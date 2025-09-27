@@ -53,5 +53,5 @@ void CRankingManager::Uninit(void)
 //================================
 void CRankingManager::Update(void)
 {
-	// ŠeíXV
+	// –³‚µ
 }

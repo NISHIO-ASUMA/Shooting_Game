@@ -67,7 +67,7 @@ void CResultUi::Draw(void)
 //============================
 // 生成処理
 //============================
-CResultUi* CResultUi::Create(D3DXVECTOR3 pos, D3DXCOLOR col, float fWidth, float fHeight, int nType)
+CResultUi* CResultUi::Create(D3DXVECTOR3 pos, D3DXCOLOR col, float fWidth, float fHeight)
 {
 	// インスタンス生成
 	 CResultUi* pResultUi = new CResultUi;

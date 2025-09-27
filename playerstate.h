@@ -32,7 +32,8 @@ public:
 		ID_JUMP, // ジャンプ
 		ID_GUARD, // 防御
 		ID_DAMAGE,// ダメージ
-		ID_AVOID, // ひきつけ
+		ID_AVOIDRIGHT, // 回避
+		ID_AVOIDLEFT, // 回避
 		ID_MAX
 	};
 

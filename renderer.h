@@ -42,10 +42,10 @@ public:
 	UINT GetHeight(void) { return m_Height; }
 	LPDIRECT3DTEXTURE9 GetTextureFeedMT(void) { return m_apTextureMT[0]; }
 	bool GetBuller(void) { return m_isbuller; }
+	void GetFps(int nFps);
 
 	// 静的メンバ関数
 	static CDebugproc* GetDebug(void) { return m_pDebug; }
-	static void GetFps(int nFps);
 
 private:
 	static inline constexpr int NUM_FEEDBACKPOLYGON = 2; // フィードバック用ポリゴン
@@ -53,7 +53,7 @@ private:
 	LPDIRECT3D9 m_pD3D;					// Direct3Dオブジェクトへのポインタ
 	LPDIRECT3DDEVICE9 m_pD3DDevice;		// Direct3Dデバイスへのポインタ
 	static CDebugproc* m_pDebug;		// デバッグ
-	static int m_fps;					// fps
+	int m_fps;							// fps
 	int m_nBullerTime;					// 継続時間
 	bool m_isDeviceLost;				// デバイスロスト対処
 	bool m_isbuller;					// ブラーかどうか

@@ -9,6 +9,7 @@
 // インクルードファイル
 //**********************
 #include "time.h"
+#include "number.h"
 #include "manager.h"
 
 //===============================
@@ -23,7 +24,6 @@ CTime::CTime(int nPriority) : CObject(nPriority)
 	m_nAllTime = NULL;
 	m_nSecond = NULL;
 	m_nMinute = NULL;
-	m_nIdxTexture = NULL;
 	m_nDecTime = NULL;
 	m_nCount = NULL;
 
@@ -74,10 +74,10 @@ HRESULT CTime::Init(void)
 	// メンバ変数の初期化
 	m_nAllTime = NUMTIME;
 
-	// 分
+	// 分を計算
 	m_nMinute = m_nAllTime / CARVETIME;
 
-	// 秒を減らす
+	// 秒を計算
 	m_nSecond = m_nAllTime % CARVETIME;
 
 	// 横幅計算
@@ -88,6 +88,7 @@ HRESULT CTime::Init(void)
 	{
 		// インスタンス生成
 		m_pNumberMinute[nCnt] = new CNumber;
+
 		// ナンバー変数の初期化
 		m_pNumberMinute[nCnt]->SetPos(m_pos);
 		m_pNumberMinute[nCnt]->Init(D3DXVECTOR3(m_pos.x + (fTexPos * 2.0f * nCnt), m_pos.y, 0.0f), fTexPos, m_fHeight);
@@ -96,7 +97,7 @@ HRESULT CTime::Init(void)
 	}
 
 	// ずらす値
-	m_pos.x += 150.0f;
+	m_pos.x += VALUE_WIDTH;
 
 	// 秒生成
 	for (int nCnt = 0; nCnt < DIGIT_TIME; nCnt++)
@@ -204,12 +205,6 @@ void CTime::Draw(void)
 		return;
 	}
 
-	// デバイスの取得
-	LPDIRECT3DDEVICE9 pDevice = CManager::GetRenderer()->GetDevice();
-
-	// テクスチャ読み込み
-	CTexture* pTexture = CManager::GetTexture();
-
 	// 桁数分描画
 	for (int nCnt = 0; nCnt < DIGIT_TIME; nCnt++)
 	{
@@ -247,23 +242,24 @@ void CTime::Save(void)
 //===============================
 void CTime::Second(void)
 {
-	int aData = 100;
-	int aData2 = 10;
+	int aData = DIVIDE * DIVIDE;
+	int aData2 = DIVIDE;
 
 	// 分計算
 	for (int nCnt = 0; nCnt < DIGIT_TIME; nCnt++)
 	{
 		// 桁数計算
 		int aPosTexU = m_nMinute % aData / aData2;
-		aData /= 10;
-		aData2 /= 10;
+		aData /= DIVIDE;
+		aData2 /= DIVIDE;
 
 		// 分の桁数を更新する
 		if (m_pNumberMinute[nCnt] != nullptr)
 		{
 			// 十秒以下
-			if (m_nAllTime <= 10)
+			if (m_nAllTime <= REDTIMEZONE)
 			{
+				// カラー変更
 				m_pNumberMinute[nCnt]->SetCol(COLOR_RED);
 			}
 
@@ -278,23 +274,24 @@ void CTime::Second(void)
 //===============================
 void CTime::Minute(void)
 {
-	int aData = 100;
-	int aData2 = 10;
+	int aData = DIVIDE * DIVIDE;
+	int aData2 = DIVIDE;
 
 	// 秒計算
 	for (int nCnt = 0; nCnt < DIGIT_TIME; nCnt++)
 	{
 		// 桁数計算
 		int aPosTexU = m_nSecond % aData / aData2;
-		aData /= 10;
-		aData2 /= 10;
+		aData /= DIVIDE;
+		aData2 /= DIVIDE;
 
 		// 秒の桁数を更新する
 		if (m_pNumberSecond[nCnt] != nullptr)
 		{
-			// 十秒以下
-			if (m_nAllTime <= 10)
+			// 10秒以下
+			if (m_nAllTime <= REDTIMEZONE)
 			{
+				// カラー変更
 				m_pNumberSecond[nCnt]->SetCol(COLOR_RED);
 			}
 

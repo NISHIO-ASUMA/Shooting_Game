@@ -35,9 +35,9 @@ CBlockManager::~CBlockManager()
 //===============================
 // 初期化
 //===============================
-HRESULT CBlockManager::Init(const char* filename, D3DXVECTOR3 pos)
+HRESULT CBlockManager::Init(void)
 {
-	// 配列を初期化 (サイズを0にする)
+	// 配列を初期化
 	m_blocks.clear();
 
 	return S_OK;
@@ -47,7 +47,7 @@ HRESULT CBlockManager::Init(const char* filename, D3DXVECTOR3 pos)
 //===============================
 void CBlockManager::Uninit(void)
 {
-	// 配列を空にする (サイズを0にする)
+	// 配列を空にする
 	m_blocks.clear();
 }
 //===============================
@@ -60,7 +60,7 @@ void CBlockManager::Update(void)
 //===============================
 // 生成処理
 //===============================
-CBlock* CBlockManager::Create(const char* pfileName,D3DXVECTOR3 pos,D3DXVECTOR3 rot,float Size)
+CBlock* CBlockManager::Create(const char* pfileName,D3DXVECTOR3 pos,D3DXVECTOR3 rot)
 {
 	// インスタンス生成
 	CBlock* pNewBlock = CBlock::Create(pfileName,pos,rot);

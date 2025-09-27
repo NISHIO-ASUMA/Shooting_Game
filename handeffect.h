@@ -34,15 +34,11 @@ public:
 	void Update(void);
 	void Draw(void);
 
-	// セッター
-	void SetTexture(void);
-
 	// 静的メンバ関数
 	static CHandEffect* Create(D3DXVECTOR3 pos, D3DXCOLOR col, D3DXVECTOR3 move, int nLife, float fRadius);
 
 private:
 	int m_nLife;			// 寿命
-	int m_nIdxTexture;		// テクスチャインデックス
 	float m_fRadius;		// 半径
 	D3DXVECTOR3 m_move;		// 移動量
 };

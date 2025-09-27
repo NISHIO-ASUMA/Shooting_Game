@@ -127,7 +127,7 @@ void CBarrierDurability::Update(void)
 	}
 
 	// バリアごとの角度オフセット
-	float angleOffset = (2.0f * D3DX_PI / pBarrier->GetNumBarrier()) * m_nIdx;
+	float angleOffset = (D3DX_PI * 2.0f / pBarrier->GetNumBarrier()) * m_nIdx;
 	float currentAngle = fValueAngle + angleOffset;
 
 	// 座標を計算

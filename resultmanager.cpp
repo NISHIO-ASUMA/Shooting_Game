@@ -18,6 +18,16 @@
 #include "ui.h"
 #include "ranking.h"
 
+//**************************
+// 定数宣言
+//**************************
+namespace RESULTINFO
+{
+	constexpr int BOSS_SCOREIDX = 0; // ボススコアのインデックス
+	constexpr int TIME_SCOREIDX = 1; // タイムスコアのインデックス
+	constexpr int LAST_SCOREIDX = 2; // 最終スコアのインデックス
+};
+
 //=================================
 // コンストラクタ
 //=================================
@@ -57,15 +67,15 @@ HRESULT CResultManager::Init(void)
 	m_pResultScore[2] = CResultScore::Create(D3DXVECTOR3(1120.0f, 600.0f, 0.0f), 300.0f, 60.0f,2);
 
 	// 討伐スコア
-	m_pResultScore[0]->SetScore(m_nGameScore);
+	m_pResultScore[RESULTINFO::BOSS_SCOREIDX]->SetScore(m_nGameScore);
 
 	// タイムスコア
-	m_pResultScore[1]->SetTimeScore(m_nLastTime);
-	int nScore = m_pResultScore[1]->MathTimescore();
-	m_pResultScore[1]->SetTimeScore(nScore);
+	m_pResultScore[RESULTINFO::TIME_SCOREIDX]->SetTimeScore(m_nLastTime);
+	int nScore = m_pResultScore[RESULTINFO::TIME_SCOREIDX]->MathTimescore();
+	m_pResultScore[RESULTINFO::TIME_SCOREIDX]->SetTimeScore(nScore);
 
 	// 最終スコア
-	m_pResultScore[2]->SetLastScore(m_nGameScore, nScore);
+	m_pResultScore[RESULTINFO::LAST_SCOREIDX]->SetLastScore(m_nGameScore, nScore);
 
 
 	// サウンド取得
@@ -118,8 +128,8 @@ void CResultManager::Update(void)
 			// フラグ有効化
 			m_isKeyDown = true;
 
-			// スコアを書き出す
-			m_pResultScore[2]->Save();
+			// 最終スコアを書き出す
+			m_pResultScore[RESULTINFO::LAST_SCOREIDX]->Save();
 
 			// シーン遷移
 			pFade->SetFade(new CRanking());
@@ -143,8 +153,8 @@ void CResultManager::Update(void)
 void CResultManager::Load(void)
 {
 	// 読み取った値を格納するメンバ変数
-	m_nGameScore = 0;
-	m_nLastTime = 0;
+	m_nGameScore = NULL;
+	m_nLastTime = NULL;
 
 	//==============================
 	// GameScore.txt

@@ -91,7 +91,7 @@ CSubPlayer::~CSubPlayer()
 //=================================
 // 生成処理
 //=================================
-CSubPlayer* CSubPlayer::Create(D3DXVECTOR3 pos, D3DXVECTOR3 rot, int nLife)
+CSubPlayer* CSubPlayer::Create(D3DXVECTOR3 pos, D3DXVECTOR3 rot)
 {
 	// インスタンス生成
 	CSubPlayer* pSubPlayer = new CSubPlayer;
@@ -106,6 +106,7 @@ CSubPlayer* CSubPlayer::Create(D3DXVECTOR3 pos, D3DXVECTOR3 rot, int nLife)
 	// オブジェクト設定
 	pSubPlayer->m_pos = pos;
 	pSubPlayer->m_rot = rot;
+	
 	
 	// 生成されたポインタを返す
 	return pSubPlayer;

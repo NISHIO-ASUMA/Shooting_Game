@@ -33,7 +33,7 @@ public:
 	static CBulletIcon* Create(D3DXVECTOR3 pos, const char* pTexName, int nIdx);
 
 private:
-	int m_nIdx;
+	int m_nIdx; // ¯•Ê”Ô†
 };
 
 #endif

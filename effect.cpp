@@ -17,7 +17,6 @@
 CEffect::CEffect(int nPriority) : CBillboard(nPriority)
 {
 	// 値のクリア
-	m_nIdxTexture = NULL;
 	m_nLife = NULL;
 	m_fRadius = NULL;
 	m_move = VECTOR3_NULL;
@@ -40,9 +39,6 @@ CEffect* CEffect::Create(D3DXVECTOR3 pos, D3DXCOLOR col, D3DXVECTOR3 move, int n
 	// nullptrだったら
 	if (pEffect == nullptr) return nullptr;
 
-	// テクスチャセット
-	pEffect->SetTexture();
-
 	// 初期化に失敗したら
 	if (FAILED(pEffect->Init()))
 	{
@@ -53,6 +49,7 @@ CEffect* CEffect::Create(D3DXVECTOR3 pos, D3DXCOLOR col, D3DXVECTOR3 move, int n
 	pEffect->SetSize(fRadius, fRadius);
 	pEffect->SetPos(pos);
 	pEffect->SetCol(col);
+	pEffect->SetTexture("effect000.jpg");
 
 	// 半径を代入
 	pEffect->m_fRadius = fRadius;
@@ -97,18 +94,22 @@ void CEffect::Update(void)
 	// 移動量の更新
 	Effectpos += m_move;
 
+	// 減算する値を設定
+	const float fDecPow = 0.005f;
+
 	// 半径をデクリメント
-	m_fRadius -= 0.005f;
+	m_fRadius -= fDecPow;
 
 	// α値を減少
-	col.a -= 0.005f;
+	col.a -= fDecPow;
 
 	// 座標をセットする
 	SetPos(Effectpos);
 
-	// 色
+	// カラーをセット
 	SetCol(col);
 
+	// 0以下なら
 	if (m_fRadius <= 0.0f)
 	{
 		m_fRadius = 0.0f;
@@ -121,7 +122,7 @@ void CEffect::Update(void)
 	m_nLife--;
 
 	// 0以下の時
-	if (m_nLife <= 0)
+	if (m_nLife <= NULL)
 	{
 		// 削除する
 		Uninit();
@@ -134,12 +135,6 @@ void CEffect::Draw(void)
 {
 	// デバイスの取得
 	LPDIRECT3DDEVICE9 pDevice = CManager::GetRenderer()->GetDevice();
-
-	// テクスチャ読み込み
-	CTexture* pTexture = CManager::GetTexture();
-
-	// テクスチャセット
-	pDevice->SetTexture(0, pTexture->GetAddress(m_nIdxTexture));
 
 	// αブレンディングの加算合成
 	pDevice->SetRenderState(D3DRS_BLENDOP, D3DBLENDOP_ADD);
@@ -169,15 +164,4 @@ void CEffect::Draw(void)
 	// Zテストを戻す
 	pDevice->SetRenderState(D3DRS_ZFUNC, D3DCMP_LESSEQUAL);
 	pDevice->SetRenderState(D3DRS_ZWRITEENABLE, TRUE);
-}
-//===============================
-// テクスチャセット
-//===============================
-void CEffect::SetTexture(void)
-{
-	// テクスチャポインタ取得
-	CTexture* pTexture = CManager::GetTexture();
-
-	// テクスチャを登録する
-	m_nIdxTexture = pTexture->Register("data\\TEXTURE\\effect000.jpg");
 }

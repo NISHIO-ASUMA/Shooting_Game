@@ -25,11 +25,11 @@
 //**************************
 namespace ITEMINFO
 {
-	constexpr int UPPER_HP = 2;		  // ‘Ì—Í‚Ì‰ÁŽZ—Ê
+	constexpr int UPPER_HP = 1;		  // ‘Ì—Í‚Ì‰ÁŽZ—Ê
 	constexpr float HITRANGE = 75.0f; // “–‚½‚è”¼Œa‚Ì”ÍˆÍ
 	constexpr float ROTVALUE = 0.03f; // ‰ñ“]Šp‚Ì‰ÁŽZ—Ê
-	constexpr const char* GUARDMODEL = "data\\MODEL\\STAGEOBJ\\Guard000.x";
-	constexpr const char* LIFEMOODEL = "data\\MODEL\\STAGEOBJ\\Item_life.x";
+	constexpr const char* GUARDMODEL = "data\\MODEL\\STAGEOBJ\\Guard000.x"; // ƒ‚ƒfƒ‹ƒpƒX
+	constexpr const char* LIFEMOODEL = "data\\MODEL\\STAGEOBJ\\Item_life.x"; // ƒ‚ƒfƒ‹ƒpƒX
 };
 
 //=================================

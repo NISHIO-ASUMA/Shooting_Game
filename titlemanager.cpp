@@ -293,7 +293,7 @@ void CTitleManager::Update(void)
 
 	if (pKey->GetTrigger(DIK_F6))
 	{
-		CFade* pFade = CManager::GetFade();
+		// カメラワークモード
 		if (pFade != nullptr) pFade->SetFade(new CCameraMode());
 
 		return;

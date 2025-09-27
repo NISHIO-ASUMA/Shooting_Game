@@ -107,7 +107,6 @@ void CBulletIcon::Update(void)
 //==================================
 void CBulletIcon::Draw(void)
 {
-
 	// オブジェクト描画
 	CObject2D::Draw();
 }

@@ -45,7 +45,8 @@ namespace PLAYERINFO
 	constexpr float JUMPVALUE = 18.3f;	 // ジャンプ量
 	constexpr float GRAVITY = 1.5f;		 // 重力値
 	constexpr float HITRADIUS = 25.0f;	 // 当たり判定の半径
-	constexpr float AVOID_COOLTIME = 10.0f;	// クールタイム
+	constexpr float AVOID_COOLTIME = 5.0f;	// 回避のクールタイム
+	constexpr float RADIUS = 550.0f;		// 半径
 	constexpr int   NUMBER_MAIN = 0;	 // メイン操作プレイヤー番号
 	constexpr int   NUMBER_SUB = 1;		 // 分身操作プレイヤー番号
 	constexpr int   KeyRepeatCount = 15; // キーのリピート最大カウント
@@ -377,7 +378,7 @@ void CPlayer::Update(void)
 		else if (nMode == CScene::MODE_TUTORIAL)
 		{
 			// 座標統一
-			float fRadius = 550.0f;
+			float fRadius = PLAYERINFO::RADIUS;
 			float IdxAngle = m_fAngle + D3DX_PI;
 			D3DXVECTOR3 DestPos = VECTOR3_NULL;
 
@@ -428,8 +429,12 @@ void CPlayer::Update(void)
 					ChangeState(new CPlayerStateDamage(0), CPlayerStateBase::ID_DAMAGE);
 					break;
 
-				case CPlayerStateBase::ID_AVOID:	// 回避
-					ChangeState(new CPlayerStateAvoidRight(), CPlayerStateBase::ID_AVOID);
+				case CPlayerStateBase::ID_AVOIDRIGHT:	// 回避
+					ChangeState(new CPlayerStateAvoidRight(), CPlayerStateBase::ID_AVOIDRIGHT);
+					break;
+
+				case CPlayerStateBase::ID_AVOIDLEFT:	// 回避
+					ChangeState(new CPlayerStateAvoidLeft(), CPlayerStateBase::ID_AVOIDLEFT);
 					break;
 
 				default:
@@ -795,8 +800,11 @@ void CPlayer::UpdateMove(const D3DXVECTOR3 DestPos,CInputKeyboard* pInputKeyboar
 	}
 	else
 	{
-		fRadius = 550.0f;
+		fRadius = PLAYERINFO::RADIUS;
 	}
+
+	// サウンド取得
+	CSound* pSound = CManager::GetSound();
 
 	// 識別番号で処理を分別する
 	switch (m_nIdxPlayer)
@@ -819,8 +827,11 @@ void CPlayer::UpdateMove(const D3DXVECTOR3 DestPos,CInputKeyboard* pInputKeyboar
 			if (!m_isJump)
 			{
 				// キー入力で回避発動
-				if ((pInputKeyboard->GetTrigger(DIK_W) || pPad->GetTrigger(pPad->JOYKEY_B)) && m_fAvoidTime <= 0.0f && !m_isAvoid)
+				if ((pInputKeyboard->GetTrigger(DIK_W) || pPad->GetTrigger(pPad->JOYKEY_RIGHT_B)) && m_fAvoidTime <= 0.0f && !m_isAvoid)
 				{
+					// 回避SE
+					pSound->PlaySound(CSound::SOUND_LABEL_AVOID);
+
 					// 入力フラグを有効化
 					m_isAvoid = true;
 
@@ -828,7 +839,7 @@ void CPlayer::UpdateMove(const D3DXVECTOR3 DestPos,CInputKeyboard* pInputKeyboar
 					m_fAvoidTime = PLAYERINFO::AVOID_COOLTIME;
 
 					// ステート変更
-					ChangeState(new CPlayerStateAvoidLeft(), CPlayerStateBase::ID_AVOID);
+					ChangeState(new CPlayerStateAvoidLeft(), CPlayerStateBase::ID_AVOIDLEFT);
 
 					return;
 				}
@@ -851,8 +862,11 @@ void CPlayer::UpdateMove(const D3DXVECTOR3 DestPos,CInputKeyboard* pInputKeyboar
 			if (!m_isJump)
 			{
 				// キー入力で回避発動
-				if ((pInputKeyboard->GetTrigger(DIK_W) || pPad->GetTrigger(pPad->JOYKEY_B)) && m_fAvoidTime <= 0.0f && !m_isAvoid)
+				if ((pInputKeyboard->GetTrigger(DIK_W) || pPad->GetTrigger(pPad->JOYKEY_RIGHT_B)) && m_fAvoidTime <= 0.0f && !m_isAvoid)
 				{
+					// 回避SE
+					pSound->PlaySound(CSound::SOUND_LABEL_AVOID);
+
 					// 入力フラグを有効化
 					m_isAvoid = true;
 
@@ -860,7 +874,7 @@ void CPlayer::UpdateMove(const D3DXVECTOR3 DestPos,CInputKeyboard* pInputKeyboar
 					m_fAvoidTime = PLAYERINFO::AVOID_COOLTIME;
 
 					// ステート変更
-					ChangeState(new CPlayerStateAvoidRight(), CPlayerStateBase::ID_AVOID);
+					ChangeState(new CPlayerStateAvoidRight(), CPlayerStateBase::ID_AVOIDRIGHT);
 
 					return;
 				}
@@ -893,8 +907,11 @@ void CPlayer::UpdateMove(const D3DXVECTOR3 DestPos,CInputKeyboard* pInputKeyboar
 			if (!m_isJump)
 			{
 				// キー入力で回避発動
-				if ((pInputKeyboard->GetTrigger(DIK_W) || pPad->GetTrigger(pPad->JOYKEY_B)) && m_fAvoidTime <= 0.0f && !m_isAvoid)
+				if ((pInputKeyboard->GetTrigger(DIK_W) || pPad->GetTrigger(pPad->JOYKEY_RIGHT_B)) && m_fAvoidTime <= 0.0f && !m_isAvoid)
 				{
+					// 回避SE
+					pSound->PlaySound(CSound::SOUND_LABEL_AVOID);
+
 					// 入力フラグを無効化
 					m_isAvoid = true;
 
@@ -902,7 +919,7 @@ void CPlayer::UpdateMove(const D3DXVECTOR3 DestPos,CInputKeyboard* pInputKeyboar
 					m_fAvoidTime = PLAYERINFO::AVOID_COOLTIME;
 
 					// ステート変更
-					ChangeState(new CPlayerStateAvoidLeft(), CPlayerStateBase::ID_AVOID);
+					ChangeState(new CPlayerStateAvoidLeft(), CPlayerStateBase::ID_AVOIDLEFT);
 
 					return;
 				}
@@ -926,8 +943,11 @@ void CPlayer::UpdateMove(const D3DXVECTOR3 DestPos,CInputKeyboard* pInputKeyboar
 			if (!m_isJump)
 			{
 				// 回避遷移
-				if ((pInputKeyboard->GetTrigger(DIK_W) || pPad->GetTrigger(pPad->JOYKEY_B)) && m_fAvoidTime <= 0.0f && m_isAvoid)
+				if ((pInputKeyboard->GetTrigger(DIK_W) || pPad->GetTrigger(pPad->JOYKEY_RIGHT_B)) && m_fAvoidTime <= 0.0f && m_isAvoid)
 				{
+					// 回避SE
+					pSound->PlaySound(CSound::SOUND_LABEL_AVOID);
+
 					// 入力を無効化
 					m_isAvoid = true;
 
@@ -935,7 +955,7 @@ void CPlayer::UpdateMove(const D3DXVECTOR3 DestPos,CInputKeyboard* pInputKeyboar
 					m_fAvoidTime = PLAYERINFO::AVOID_COOLTIME;
 
 					// ステート変更
-					ChangeState(new CPlayerStateAvoidRight(), CPlayerStateBase::ID_AVOID);
+					ChangeState(new CPlayerStateAvoidRight(), CPlayerStateBase::ID_AVOIDRIGHT);
 
 					return;
 				}
@@ -1138,7 +1158,7 @@ void CPlayer::UpdateAvoidRight(void)
 	}
 	else
 	{
-		fRadius = 550.0f;
+		fRadius = PLAYERINFO::RADIUS;
 	}
 
 	// 識別番号で処理を分別する
@@ -1222,7 +1242,7 @@ void CPlayer::UpdateAvoidLeft(void)
 	}
 	else
 	{
-		fRadius = 550.0f;
+		fRadius = PLAYERINFO::RADIUS;
 	}
 
 	// 識別番号で処理を分別する
@@ -1345,7 +1365,7 @@ void CPlayer::Collision(void)
 		return;
 
 	// 回避中か確認
-	if (GetStateMachine()->GetNowStateID() == CPlayerStateBase::ID_AVOID)
+	if (GetStateMachine()->GetNowStateID() == CPlayerStateBase::ID_AVOIDRIGHT || GetStateMachine()->GetNowStateID() == CPlayerStateBase::ID_AVOIDLEFT)
 		return;
 
 	//=============================
@@ -1577,7 +1597,7 @@ void CPlayer::InitPos(float fAngle)
 	}
 	else
 	{
-		fRadius = 550.0f;
+		fRadius = PLAYERINFO::RADIUS;
 		DestPos = VECTOR3_NULL;
 	}
 

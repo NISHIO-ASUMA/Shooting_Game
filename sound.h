@@ -25,20 +25,21 @@ public:
 		SOUND_LABEL_TUTORIALBGM,	// チュートリアルBGM
 		SOUND_LABEL_LOSERESULTBGM,	// 敗北リザルト
 
-		SOUND_LABEL_SELECT, // キー選択SE
-		SOUND_LABEL_RETURN, // 決定キーSE
-		SOUND_LABEL_ITEM,	// アイテムSE
-		SOUND_LABEL_ALART,	// 警告音SE
-		SOUND_LABEL_BULLET,	// 通常弾SE
-		SOUND_LABEL_LASER,	// レーザーSE
-		SOUND_LABEL_LIFE,	// 回復SE
-		SOUND_LABEL_DAMAGE, // ダメージSE
-		SOUND_LABEL_CIRCLE,	// メッシュ攻撃SE
-		SOUND_LABEL_CLEAR,	// タスク完了SE
-		SOUND_LABEL_GUARD,	// ガード音SE
-		SOUND_LABEL_EXPLOSION, // 衝撃音SE
+		SOUND_LABEL_SELECT,		// キー選択SE
+		SOUND_LABEL_RETURN,		// 決定キーSE
+		SOUND_LABEL_ITEM,		// アイテムSE
+		SOUND_LABEL_ALART,		// 警告音SE
+		SOUND_LABEL_BULLET,		// 通常弾SE
+		SOUND_LABEL_LASER,		// レーザーSE
+		SOUND_LABEL_LIFE,		// 回復SE
+		SOUND_LABEL_DAMAGE,		// ダメージSE
+		SOUND_LABEL_CIRCLE,		// メッシュ攻撃SE
+		SOUND_LABEL_CLEAR,		// タスク完了SE
+		SOUND_LABEL_GUARD,		// ガード音SE
+		SOUND_LABEL_EXPLOSION,	// 衝撃音SE
 		SOUND_LABEL_BOSS,		// ボス叫びSE
-		SOUND_LABEL_CHANGEWEPON, // 武器切り替え
+		SOUND_LABEL_CHANGEWEPON,// 武器切り替え
+		SOUND_LABEL_AVOID,		// 回避SE
 		SOUND_LABEL_MAX
 	};
 
@@ -88,9 +89,10 @@ private:
 		{"data/SE/MeshCircle.wav",0},		 // メッシュ攻撃SE
 		{"data/SE/TutoClear.wav",0},		 // タスク完了SE
 		{"data/SE/Guard.wav",0},			 // ガード音SE
-		{"data/SE/Explosion.wav",0},
-		{"data/SE/BossShout.wav",0},
-		{"data/SE/Break.wav",0},
+		{"data/SE/Explosion.wav",0},		 // 衝撃音SE
+		{"data/SE/BossShout.wav",0},		 // 叫び声SE
+		{"data/SE/Change.wav",0},			 // 武器切り替えSE
+		{"data/SE/Avoid.wav",0},			 // 回避SE
 	};
 
 	IXAudio2* m_pXAudio2;									// XAudio2オブジェクトへのインターフェイス

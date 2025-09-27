@@ -36,6 +36,32 @@ CMeshDome::~CMeshDome()
 	// 無し
 }
 //==================================
+// 生成処理
+//==================================
+CMeshDome* CMeshDome::Create(D3DXVECTOR3 pos, float nRadius)
+{
+	// インスタンス生成
+	CMeshDome* pMeshDome = new CMeshDome;
+
+	// nullptrだったら
+	if (pMeshDome == nullptr) return nullptr;
+
+	// オブジェクト設定
+	pMeshDome->m_pos = pos;
+	pMeshDome->m_nRadius = nRadius;
+	pMeshDome->SetTexture();
+
+	// 初期化失敗時
+	if (FAILED(pMeshDome->Init()))
+	{
+		// nulptrを返す
+		return nullptr;
+	}
+
+	// ドームのポインタを返す
+	return pMeshDome;
+}
+//==================================
 // 初期化処理
 //==================================
 HRESULT CMeshDome::Init(void)
@@ -217,32 +243,6 @@ void CMeshDome::Draw(void)
 
 	// テクスチャNULL
 	pDevice->SetTexture(0, NULL);
-}
-//==================================
-// 生成処理
-//==================================
-CMeshDome* CMeshDome::Create(D3DXVECTOR3 pos, float nRadius)
-{
-	// インスタンス生成
-	CMeshDome* pMeshDome = new CMeshDome;
-
-	// nullptrだったら
-	if (pMeshDome == nullptr) return nullptr;
-
-	// オブジェクト設定
-	pMeshDome->m_pos = pos;
-	pMeshDome->m_nRadius = nRadius;
-	pMeshDome->SetTexture();
-
-	// 初期化失敗時
-	if (FAILED(pMeshDome->Init()))
-	{
-		// nulptrを返す
-		return nullptr;
-	}
-
-	// ドームのポインタを返す
-	return pMeshDome;
 }
 //==================================
 // テクスチャ設定

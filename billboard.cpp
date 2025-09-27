@@ -10,6 +10,7 @@
 //**********************
 #include "billboard.h"
 #include "manager.h"
+#include <string>
 
 //================================
 // コンストラクタ
@@ -20,7 +21,7 @@ CBillboard::CBillboard(int nPriority) : CObject(nPriority)
 	m_col = COLOR_WHITE;
 	m_pos = VECTOR3_NULL;
 	m_rot = VECTOR3_NULL;
-	m_nIdxTexture = NULL;
+	m_nIdxTexture = -1;
 	m_pVtxBuff = nullptr;
 	m_mtxWorld = {};
 	m_fWidth = NULL;
@@ -40,7 +41,7 @@ CBillboard::~CBillboard()
 //================================
 // 生成処理
 //================================
-CBillboard* CBillboard::Create(D3DXVECTOR3 pos, D3DXVECTOR3 rot,float fWidth, float fHeight)
+CBillboard* CBillboard::Create(D3DXVECTOR3 pos, D3DXVECTOR3 rot,float fWidth, float fHeight,const char * pTexName)
 {
 	// インスタンス生成
 	CBillboard* pBillboard = new CBillboard;
@@ -52,7 +53,7 @@ CBillboard* CBillboard::Create(D3DXVECTOR3 pos, D3DXVECTOR3 rot,float fWidth, fl
 	pBillboard->SetPos(pos);
 	pBillboard->SetSize(fWidth, fHeight);
 	pBillboard->SetRot(rot);
-	pBillboard->SetTexture();
+	pBillboard->SetTexture(pTexName);
 
 	// 初期化失敗時
 	if (FAILED(pBillboard->Init()))
@@ -178,9 +179,6 @@ void CBillboard::Draw(void)
 	// ライトを無効にする
 	pDevice->SetRenderState(D3DRS_LIGHTING, FALSE);
 
-	// テクスチャを戻す
-	// pDevice->SetTexture(0, CManager::GetTexture()->GetAddress(m_nIdxTexture));
-
 	if (m_isTests)
 	{
 		// Zテストを適用
@@ -225,6 +223,17 @@ void CBillboard::Draw(void)
 	// 頂点フォーマットの設定
 	pDevice->SetFVF(FVF_VERTEX_3D);
 
+	if (m_nIdxTexture == -1)
+	{
+		// テクスチャを設定
+		pDevice->SetTexture(0, NULL);
+	}
+	else
+	{
+		// テクスチャを設定
+		pDevice->SetTexture(0, CManager::GetTexture()->GetAddress(m_nIdxTexture));
+	}
+
 	// ポリゴンの描画
 	pDevice->DrawPrimitive(D3DPT_TRIANGLESTRIP, 0, 2);
 
@@ -244,13 +253,18 @@ void CBillboard::Draw(void)
 //================================
 // テクスチャセット
 //================================
-void CBillboard::SetTexture(void)
+void CBillboard::SetTexture(const char * pTexName)
 {
 	// テクスチャポインタ取得
 	CTexture* pTexture = CManager::GetTexture();
+	if (pTexture == nullptr) return;
+
+	// パスを連結
+	std::string TexName = "data\\TEXTURE\\";
+	TexName += pTexName;
 
 	// 割り当て
-	m_nIdxTexture = pTexture->Register("data\\TEXTURE\\Billboard_startmenu.png");
+	m_nIdxTexture = pTexture->Register(TexName.c_str());
 }
 //================================
 // UV設定処理
@@ -283,7 +297,7 @@ void CBillboard::SetAnim(const int nMaxPattern,const int nMaxAnimCount,float fTe
 	// カウントが上限より大きくなった時
 	if (m_nCountAnim >= nMaxAnimCount)
 	{
-		m_nCountAnim = 0;		// カウンターを初期値に戻す
+		m_nCountAnim = NULL;		// カウンターを初期値に戻す
 
 		m_nPatterAnim++;		// パターンナンバーを更新
 
@@ -294,7 +308,7 @@ void CBillboard::SetAnim(const int nMaxPattern,const int nMaxAnimCount,float fTe
 	// パターンナンバーが最大値より大きくなった時
 	if (m_nPatterAnim > nMaxPattern)
 	{
-		m_nPatterAnim = 0;			// パターンナンバーを初期値に戻す
+		m_nPatterAnim = NULL;			// パターンナンバーを初期値に戻す
 	}
 }
 //================================
@@ -317,22 +331,22 @@ void CBillboard::Flash(const int nMaxFlashTime, const int Digittime)
 	// 点滅カウントと一致したとき
 	if (m_FlashCount == Digittime)		
 	{
-		//頂点カラーの設定
-		col = D3DXCOLOR(1.0f, 1.0f, 0.0f, 0.7f);
-		col = D3DXCOLOR(1.0f, 1.0f, 0.0f, 0.7f);
-		col = D3DXCOLOR(1.0f, 1.0f, 0.0f, 0.7f);
-		col = D3DXCOLOR(1.0f, 1.0f, 0.0f, 0.7f);
+		// 頂点カラーの設定
+		col = 
+		col = 
+		col = 
+		col = COLOR_GLAY;
 
 		// カラーセット
 		SetCol(col);
 	}
 	else if (m_FlashCount == nMaxFlashTime)	// 最大継続時間と一致したとき
 	{
-		//頂点カラーの設定
-		col = D3DXCOLOR(1.0f, 1.0f, 1.0f, 1.0f);
-		col = D3DXCOLOR(1.0f, 1.0f, 1.0f, 1.0f);
-		col = D3DXCOLOR(1.0f, 1.0f, 1.0f, 1.0f);
-		col = D3DXCOLOR(1.0f, 1.0f, 1.0f, 1.0f);
+		// 頂点カラーの設定
+		col = 
+		col = 
+		col = 
+		col = COLOR_WHITE;
 
 		// カラーセット
 		SetCol(col);
@@ -343,5 +357,4 @@ void CBillboard::Flash(const int nMaxFlashTime, const int Digittime)
 
 	//アンロック
 	m_pVtxBuff->Unlock();
-
 }

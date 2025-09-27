@@ -165,12 +165,6 @@ void CRankingScore::Update(void)
 //===============================
 void CRankingScore::Draw(void)
 {
-	// デバイスの取得
-	LPDIRECT3DDEVICE9 pDevice = CManager::GetRenderer()->GetDevice();
-
-	// テクスチャ読み込み
-	CTexture* pTexture = CManager::GetTexture();
-
 	// 使っている桁数分の描画
 	for (int nRankData = 0; nRankData < RANKING_MAX; nRankData++)
 	{

@@ -24,9 +24,9 @@ namespace IMPACTINFO
 	constexpr int NUM_X = 30; // X平面の分割数
 	constexpr int NUM_Z = 1;  // Z平面の分割数
 	constexpr int VERTEX = (NUM_X + 1) * (NUM_Z + 1); // 頂点数
-	constexpr int PRIM = (VERTEX - 2);				  // ポリゴン数
-	constexpr int INDEX = (VERTEX + 2);				  // インデックスバッファ数
-	constexpr float HEIGHTSIZE = 3.0f;
+	constexpr int PRIM = (VERTEX - 2);		// ポリゴン数
+	constexpr int INDEX = (VERTEX + 2);		// インデックスバッファ数
+	constexpr float HEIGHTSIZE = 3.0f;		// 上昇速度
 }
 
 //===============================
@@ -174,7 +174,7 @@ HRESULT CMeshImpact::Init(void)
 			IdxCnt += 2;
 		}
 
-		// NOTE:最後の行じゃなかったら
+		// 最後の行じゃなかったら
 		if (IndxCount1 < IMPACTINFO::NUM_Z - 1)
 		{
 			pIdx[IdxCnt] = Num - 1;

@@ -9,9 +9,10 @@
 // インクルードファイル
 //**********************
 #include "resultscore.h"
+#include "rankingscore.h"
 #include "manager.h"
 #include "texture.h"
-#include "rankingscore.h"
+#include "number.h"
 #include <algorithm>
 
 //**********************
@@ -284,12 +285,6 @@ void CResultScore::Update(void)
 //================================
 void CResultScore::Draw(void)
 {
-	// デバイスの取得
-	LPDIRECT3DDEVICE9 pDevice = CManager::GetRenderer()->GetDevice();
-
-	// テクスチャ読み込み
-	CTexture* pTexture = CManager::GetTexture();
-
 	// 使っている桁数分の描画
 	for (int nCnt = 0; nCnt < NUM_RESULTSCORE; nCnt++)
 	{

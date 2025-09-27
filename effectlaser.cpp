@@ -10,14 +10,13 @@
 //**********************
 #include "effectlaser.h"
 #include "manager.h"
-#include "texture.h"
 
 //====================================
 // オーバーロードコンストラクタ
 //====================================
 CEffectLaser::CEffectLaser(int nPriority) : CBillboard(nPriority)
 {
-	m_nIdxTex = NULL;
+	// 値のクリア
 	m_nLife = NULL;
 	m_fRadius = NULL;
 	m_move = VECTOR3_NULL;
@@ -50,10 +49,10 @@ CEffectLaser* CEffectLaser::Create(D3DXVECTOR3 pos, D3DXVECTOR3 Endpos, D3DXCOLO
 	}
 
 	// オブジェクト設定
-	pLaser->SetTexture();
 	pLaser->SetPos(pos);
 	pLaser->SetSize(fRadius, fRadius);
 	pLaser->SetCol(col);
+	pLaser->SetTexture("effect000.jpg");
 
 	pLaser->m_fRadius = fRadius;
 	pLaser->m_nLife = nLife;
@@ -141,12 +140,6 @@ void CEffectLaser::Draw(void)
 	// デバイスの取得
 	LPDIRECT3DDEVICE9 pDevice = CManager::GetRenderer()->GetDevice();
 
-	// テクスチャ読み込み
-	CTexture* pTexture = CManager::GetTexture();
-
-	// テクスチャセット
-	pDevice->SetTexture(0, pTexture->GetAddress(m_nIdxTex));
-
 	// αブレンディングの加算合成
 	pDevice->SetRenderState(D3DRS_BLENDOP, D3DBLENDOP_ADD);
 	pDevice->SetRenderState(D3DRS_SRCBLEND, D3DBLEND_SRCALPHA);
@@ -161,7 +154,7 @@ void CEffectLaser::Draw(void)
 	pDevice->SetRenderState(D3DRS_ZFUNC, D3DCMP_LESSEQUAL);
 	pDevice->SetRenderState(D3DRS_ZWRITEENABLE, FALSE);
 
-	//　親クラス描画
+	// 親クラス描画
 	CBillboard::Draw();
 
 	// αテストを無効
@@ -175,18 +168,4 @@ void CEffectLaser::Draw(void)
 	// Zテストを戻す
 	pDevice->SetRenderState(D3DRS_ZFUNC, D3DCMP_LESSEQUAL);
 	pDevice->SetRenderState(D3DRS_ZWRITEENABLE, TRUE);
-}
-//====================================
-// テクスチャ割り当て処理
-//====================================
-void CEffectLaser::SetTexture(void)
-{
-	// テクスチャポインタ取得
-	CTexture* pTexture = CManager::GetTexture();
-
-	// nullなら
-	if (pTexture == nullptr) return;
-
-	// テクスチャ割り当て
-	m_nIdxTex = pTexture->Register("data\\TEXTURE\\effect000.jpg");
 }

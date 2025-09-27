@@ -11,8 +11,12 @@
 //**********************
 // インクルードファイル
 //**********************
-#include "number.h"
 #include "object.h"
+
+//**********************
+// 前方宣言
+//**********************
+class CNumber;
 
 //****************************
 // リザルトスコアクラスを定義
@@ -41,14 +45,13 @@ public:
 	void Update(void);
 	void Draw(void);
 	void Save(void);
+	int MathTimescore(void);
 
 	// セッター
 	void SetTexture(void);
 	void SetScore(int nResultValue) { m_nScore = nResultValue; }
 	void SetTimeScore(int nResultValue) { m_nTimeScore = nResultValue; }
 	void SetLastScore(int nResultValue, int nResultValue1) { m_nLastScore = nResultValue + nResultValue1; }
-
-	int MathTimescore(void);
 
 	// 静的メンバ関数
 	static CResultScore* Create(D3DXVECTOR3 pos, float fWidth, float fHeight,int nType);

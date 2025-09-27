@@ -54,9 +54,8 @@ public:
 private:
 	int m_nCurrentLifeLength;		// バーの長さ基準値
 	int m_nMaxLifeLength;	// 最大体力時の長さ
-	int m_Type;				// 列挙変数
-	CBoss* m_pBoss; // ボスのポインタ
-
+	int m_Type;				// 種類
+	CBoss* m_pBoss;			// ボスのポインタ
 };
 
 #endif

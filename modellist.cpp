@@ -145,6 +145,7 @@ void CModelList::Load(void)
 //======================
 void CModelList::UnLoad(void)
 {
+	// î•ñ‚Ì”jŠü
 	for (auto iter = m_ModelInfo.begin(); iter != m_ModelInfo.end(); iter++)
 	{
 		if ((*iter).pMesh != nullptr)

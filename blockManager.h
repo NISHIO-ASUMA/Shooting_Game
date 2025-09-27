@@ -26,12 +26,12 @@ public:
 	~CBlockManager();
 
 	// メンバ関数
-	HRESULT Init(const char * filename , D3DXVECTOR3 pos);
+	HRESULT Init(void);
 	void Uninit(void);
 	void Update(void);
 
 	// 静的メンバ関数
-	static CBlock* Create(const char* pfileName, D3DXVECTOR3 pos, D3DXVECTOR3 rot,float Size);
+	static CBlock* Create(const char* pfileName, D3DXVECTOR3 pos, D3DXVECTOR3 rot);
 
 private:
 	static std::vector<CBlock*> m_blocks; // 配列

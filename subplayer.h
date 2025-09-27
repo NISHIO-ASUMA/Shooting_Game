@@ -58,9 +58,9 @@ public:
 	void Update(void);
 	void Draw(void);
 
-	void ChangeState(CSubPlayerStateBase* pNewState, int Id); // ステート変更
-	void UpdateAction(CInputKeyboard* pInputKeyboard, D3DXMATRIX pMtx,const D3DXVECTOR3 DestMove,CJoyPad* pPad); // 通常攻撃更新関数
-	void UpdateMove(const D3DXVECTOR3 DestPos, CInputKeyboard* pInputKeyboard, CJoyPad* pPad);					  // 移動更新関数
+	void ChangeState(CSubPlayerStateBase* pNewState, int Id);
+	void UpdateAction(CInputKeyboard* pInputKeyboard, D3DXMATRIX pMtx,const D3DXVECTOR3 DestMove,CJoyPad* pPad);
+	void UpdateMove(const D3DXVECTOR3 DestPos, CInputKeyboard* pInputKeyboard, CJoyPad* pPad);
 	void UpdateJumpAction(CInputKeyboard* pInputKeyboard, D3DXMATRIX pMtx, const D3DXVECTOR3 DestMove, CJoyPad* pPad);
 	void Collision(void);
 
@@ -78,30 +78,29 @@ public:
 	void AddMove(void) { m_pos += m_move; }
 
 	// ゲッター
-	D3DXVECTOR3 GetPos(void) { return m_pos; }			// 現在の座標を取得
-	D3DXVECTOR3 GetOldPos(void) { return m_posOld; }	// 過去の座標を取得
-	D3DXVECTOR3 GetRot(void) { return m_rot; }			// 現在の角度を取得
-	D3DXVECTOR3 GetRotDest(void) { return m_rotDest; }	// 目的角を取得
+	D3DXVECTOR3 GetPos(void) { return m_pos; }		
+	D3DXVECTOR3 GetOldPos(void) { return m_posOld; }
+	D3DXVECTOR3 GetRot(void) { return m_rot; }		
+	D3DXVECTOR3 GetRotDest(void) { return m_rotDest; }
 	SUBPLAYERMOTION GetNowMotion(void) const;
 
 	CModel* GetModelPartType(CModel::PARTTYPE modelpart);
 	CMotion* GetMotion(void) { return m_pMotion; }
 	CParameter* GetParameter(void) { return m_pParameter; }
-	CStateMachine* GetStateMachine() { return m_pStateMachine; }	// プレイヤーのステートマシンを取得
+	CStateMachine* GetStateMachine() { return m_pStateMachine; }
 
 	int GetType(void) { return m_type; }
 	int GetPlayerIndex() const { return m_nIdxPlayer; }
 
 	// フラグメント関数
-	bool IsJumping(void) { return m_isJump; } 	// ジャンプ状態の確認
+	bool IsJumping(void) { return m_isJump; }
 	bool isMoveInputKey(CInputKeyboard* pKeyInput);
 	bool isMovePadButton(CJoyPad* pPad);
-	bool isAttackeyPress(CInputKeyboard* pKeyInput);
 	bool isLanding(void) { return m_isJump; }
 	bool GetLanding(void) { return m_isLanding; }
 
 	// 静的メンバ関数
-	static CSubPlayer* Create(D3DXVECTOR3 pos, D3DXVECTOR3 rot, int nLife);
+	static CSubPlayer* Create(D3DXVECTOR3 pos, D3DXVECTOR3 rot);
 
 private:
 	static inline constexpr int MAX_MODEL = 19; // サブプレイヤーで使うモデルの数

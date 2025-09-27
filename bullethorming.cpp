@@ -140,7 +140,7 @@ void CBulletHorming::Update(void)
 //==================================
 void CBulletHorming::Draw(void)
 {
-	// Xファイルオブジェクト描画処理
+	// 親クラスの描画処理
 	CObjectX::Draw();
 }
 //==================================

@@ -11,7 +11,6 @@
 #include "object.h"
 #include "manager.h"
 #include "debugproc.h"
-#include "shadowS.h"
 #include "pausemanager.h"
 
 //**********************
@@ -46,8 +45,8 @@ CObject::CObject(int nPriority)
 		m_pTop[nPriority] = this;
 	}
 
-	m_pCur[nPriority] = this;			// 自分を最後尾として記録
-	m_nNumAll++;						// 総数をカウントアップ
+	m_pCur[nPriority] = this;	// 自分を最後尾として記録
+	m_nNumAll++;				// 総数をカウントアップ
 }
 //===============================
 // デストラクタ

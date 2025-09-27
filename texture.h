@@ -26,7 +26,7 @@ public:
 
 private:
 
-	static inline constexpr int NUM_TEXTURE = 160;	// 最大テクスチャ数
+	static constexpr int NUM_TEXTURE = 128;	// 最大テクスチャ数
 
 	// テクスチャ読み込み配列を作成
 	const char* TexName[NUM_TEXTURE] =
@@ -42,8 +42,8 @@ private:
 		"data\\TEXTURE\\lifeframe.png",
 		"data\\TEXTURE\\score001.png",
 		"data\\TEXTURE\\PauseBack.png",
-		"data\\TEXTURE\\titlemenu001.png",
-		"data\\TEXTURE\\titilemenu_002.png",
+		"data\\TEXTURE\\titlemenu_001.png",
+		"data\\TEXTURE\\titlemenu_002.png",
 		"data\\TEXTURE\\titlemenu_003.png",
 		"data\\TEXTURE\\tutorial_menu.png",
 		"data\\TEXTURE\\logo.png",
@@ -65,8 +65,7 @@ private:
 		"data\\TEXTURE\\laser_gage.png",
 		"data\\TEXTURE\\bosslife_frame.png",
 		"data\\TEXTURE\\Boss_face.png",
-		"data\\TEXTURE\\MeshPiler.png",
-		"data\\TEXTURE\\MeshPiler1.jpg",
+		"data\\TEXTURE\\MeshPiler.jpg",
 		"data\\TEXTURE\\Item_life.png",
 		"data\\TEXTURE\\PointUi.png",
 		"data\\TEXTURE\\title_menuselect.png",
@@ -92,6 +91,7 @@ private:
 		"data\\TEXTURE\\ComboMenu/Tutorial_menu_Jump.png",
 		"data\\TEXTURE\\ComboMenu/Tutorial_menu_JumpAttack.png",
 		"data\\TEXTURE\\ComboMenu/Tutorial_menu_gauge.png",
+		"data\\TEXTURE\\ComboMenu/Tutorial_menu_Avoid.png",
 		"data\\TEXTURE\\ComboMenu/Tutorial_menu_free.png",
 		"data\\TEXTURE\\ComboMenu\\Tutorial_menu_Item.png",
 		"data\\TEXTURE\\Enterskip.png",

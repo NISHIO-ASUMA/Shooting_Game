@@ -28,7 +28,6 @@ public:
 	void Uninit(void);
 	void Update(void);
 	void Draw(void);
-	void SetTexture(void);
 
 	// Ã“Iƒƒ“ƒoŠÖ”
 	static CEffectPiler* Create(D3DXVECTOR3 pos, D3DXVECTOR3 rot, float fRadius, int nLife);
@@ -36,7 +35,6 @@ public:
 private:
 	int m_nLife;		// ‘Ì—Í
 	float m_fRadius;	// ”¼Œa
-	int m_nIdxTex;
 };
 
 #endif

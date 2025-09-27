@@ -14,12 +14,14 @@
 //***********************************
 // 定数宣言
 //***********************************
-#define NUM_PATTERN (8)
-#define NUM_ANIM (2)
-#define TEX_U (0.125f)
-#define TEX_V (1.0f)
-#define EXPLOSION_SIZE_X (100.0f)
-#define EXPLOSION_SIZE_Y (100.0f)
+namespace EXPLOSION
+{
+	constexpr int NUM_PATTERN = 8; // パターン数
+	constexpr int NUM_ANIM = 2;	   // アニメ―ション数
+	constexpr float TEX_U = 0.125f; // 分割する値
+	constexpr float TEX_V = 1.0f;   // 最大値
+	constexpr float SIZE = 100.0f;  // 大きさ
+}
 
 //===============================
 // オーバーロードコンストラクタ
@@ -27,7 +29,6 @@
 CExplosion::CExplosion(int nPriority) : CObject2D(nPriority)
 {
 	// 値のクリア
-	m_nIdxTexture = NULL;
 }
 //===============================
 // デストラクタ
@@ -44,9 +45,6 @@ CExplosion* CExplosion::Create(const D3DXVECTOR3 pos, const D3DXVECTOR3 rot,D3DX
 	// 爆発のインスタンス生成
 	CExplosion* pExplsion = new CExplosion;
 
-	// テクスチャセット
-	pExplsion->SetTexture();
-
 	// 初期化に失敗したら
 	if (FAILED(pExplsion->Init())) 
 	{
@@ -59,9 +57,10 @@ CExplosion* CExplosion::Create(const D3DXVECTOR3 pos, const D3DXVECTOR3 rot,D3DX
 
 	// 2Dオブジェクト設定
 	pExplsion->SetRot(rot);
-	pExplsion->SetSize(EXPLOSION_SIZE_X, EXPLOSION_SIZE_Y);
+	pExplsion->SetSize(EXPLOSION::SIZE, EXPLOSION::SIZE);
 	pExplsion->SetPos(pos);
 	pExplsion->SetCol(col);
+	pExplsion->SetTexture("explosion000.png");
 
 	return pExplsion;
 }
@@ -88,39 +87,13 @@ void CExplosion::Uninit(void)
 //===============================
 void CExplosion::Update(void)
 {
-	// 現在の座標を取得
-	D3DXVECTOR3 pos = GetPos();
-
-	// 座標セット
-	SetPos(pos);
-
-	// アニメーションセット
-	// SetAnim(NUM_PATTERN,NUM_ANIM, TEX_U, TEX_V);
+	// 無し
 }
 //===============================
 // 爆発の描画処理
 //===============================
 void CExplosion::Draw(void)
 {
-	// デバイスの取得
-	LPDIRECT3DDEVICE9 pDevice = CManager::GetRenderer()->GetDevice();
-
-	// テクスチャ読み込み
-	CTexture* pTexture = CManager::GetTexture();
-
-	pDevice->SetTexture(0, pTexture->GetAddress(m_nIdxTexture));
-
 	// オブジェクト描画
 	CObject2D::Draw();
-}
-//===============================
-// テクスチャセット
-//===============================
-void CExplosion::SetTexture()
-{
-	// テクスチャポインタ取得
-	CTexture* pTexture = CManager::GetTexture();
-
-	m_nIdxTexture = pTexture->Register("data\\TEXTURE\\explosion000.png");
-
 }

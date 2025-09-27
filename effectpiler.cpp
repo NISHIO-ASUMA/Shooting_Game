@@ -2,9 +2,6 @@
 //
 // 柱状エフェクト処理 [ effectpiler.cpp ]
 // Author: Asuma Nishio
-//
-// 
-// TODO : 柱状のエフェクト作成
 // 
 //==========================================
 
@@ -13,7 +10,6 @@
 //***************************
 #include "effectpiler.h"
 #include "manager.h"
-#include "template.h"
 
 //===============================
 // オーバーロードコンストラクタ
@@ -23,7 +19,6 @@ CEffectPiler::CEffectPiler(int nPriority) : CBillboard(nPriority)
 	// 値のクリア
 	m_nLife = NULL;
 	m_fRadius = NULL;
-	m_nIdxTex = NULL;
 }
 //===============================
 // デストラクタ
@@ -52,7 +47,7 @@ CEffectPiler* CEffectPiler::Create(D3DXVECTOR3 pos, D3DXVECTOR3 rot, float fRadi
 	pEffect->SetRot(rot);
 	pEffect->SetSize(fRadius, fRadius);
 	pEffect->SetCol(LASER);
-	pEffect->SetTexture();
+	pEffect->SetTexture("effect000.jpg");
 
 	pEffect->m_nLife = nLife;
 	pEffect->m_fRadius = fRadius;
@@ -128,12 +123,6 @@ void CEffectPiler::Draw(void)
 	// デバイスの取得
 	LPDIRECT3DDEVICE9 pDevice = CManager::GetRenderer()->GetDevice();
 
-	// テクスチャ読み込み
-	CTexture* pTexture = CManager::GetTexture();
-
-	// テクスチャセット
-	pDevice->SetTexture(0, pTexture->GetAddress(m_nIdxTex));
-
 	// αブレンディングの加算合成
 	pDevice->SetRenderState(D3DRS_BLENDOP, D3DBLENDOP_ADD);
 	pDevice->SetRenderState(D3DRS_SRCBLEND, D3DBLEND_SRCALPHA);
@@ -162,18 +151,4 @@ void CEffectPiler::Draw(void)
 	// Zテストを戻す
 	pDevice->SetRenderState(D3DRS_ZFUNC, D3DCMP_LESSEQUAL);
 	pDevice->SetRenderState(D3DRS_ZWRITEENABLE, TRUE);
-}
-//====================================
-// テクスチャ割り当て処理
-//====================================
-void CEffectPiler::SetTexture(void)
-{
-	// テクスチャポインタ取得
-	CTexture* pTexture = CManager::GetTexture();
-
-	// nullなら
-	if (pTexture == nullptr) return;
-
-	// テクスチャ割り当て
-	m_nIdxTex = pTexture->Register("data\\TEXTURE\\effect000.jpg");
 }

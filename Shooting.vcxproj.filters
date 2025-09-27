@@ -459,11 +459,11 @@
     <ClCompile Include="particlepiler.cpp">
       <Filter>ソース ファイル\Effect</Filter>
     </ClCompile>
-    <ClCompile Include="subplayerstate.cpp">
-      <Filter>ソース ファイル</Filter>
-    </ClCompile>
     <ClCompile Include="playermanager.cpp">
-      <Filter>ソース ファイル</Filter>
+      <Filter>ソース ファイル\Manager</Filter>
+    </ClCompile>
+    <ClCompile Include="subplayerstate.cpp">
+      <Filter>ソース ファイル\StateMachine</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -801,16 +801,16 @@
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
     <ClInclude Include="particlepiler.h">
-      <Filter>ヘッダー ファイル</Filter>
-    </ClInclude>
-    <ClInclude Include="subplayer.h">
-      <Filter>ヘッダー ファイル</Filter>
-    </ClInclude>
-    <ClInclude Include="subplayerstate.h">
-      <Filter>ヘッダー ファイル</Filter>
+      <Filter>ヘッダー ファイル\Effect</Filter>
     </ClInclude>
     <ClInclude Include="playermanager.h">
-      <Filter>ヘッダー ファイル</Filter>
+      <Filter>ヘッダー ファイル\Manager</Filter>
+    </ClInclude>
+    <ClInclude Include="subplayer.h">
+      <Filter>ヘッダー ファイル\Charactor\Player</Filter>
+    </ClInclude>
+    <ClInclude Include="subplayerstate.h">
+      <Filter>ヘッダー ファイル\StateMachine</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -160,7 +160,7 @@ void CRubbleManager::LoadAllList(const char* pFileList)
 void CRubbleManager::LoadSplitFile(int type)
 {
 	// 種類番号が0以下 または ファイルサイズを超過するとき
-	if (type < 0 || type >= m_SubListFiles.size()) return;
+	if (type < NULL || type >= m_SubListFiles.size()) return;
 
 	// 読み込むファイルのタイプを保存する
 	const std::string& FilePath = m_SubListFiles[type];

@@ -26,33 +26,31 @@ int WINAPI WinMain(_In_ HINSTANCE hInstance, _In_opt_  HINSTANCE /*hInstancePrev
 {
 #ifdef _DEBUG
 	_CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF | _CRTDBG_CHECK_ALWAYS_DF);			// メモリリーク検知用のフラグ
-
-	// _CrtSetBreakAlloc(221); // {7585} の割り当てでブレークする
 #endif // _DEBUG
 
 	// マネージャーのインスタンスを生成
-	CManager* pManager = NULL;
+	CManager* pManager = nullptr;
 
 	// FPSカウント
-	int nCountFPS = 0;
+	int nCountFPS = NULL;
 
-	DWORD dwCurrentTime;			// 現在時刻
-	DWORD dwExecLastTime;			// 終了時刻
+	DWORD dwCurrentTime;		// 現在時刻
+	DWORD dwExecLastTime;		// 終了時刻
 
 	WNDCLASSEX wcex =
 	{
-		sizeof(WNDCLASSEX),				 // WNDCLASSEXのメモリサイズ
-		CS_CLASSDC,						 // ウインドウのスタイル
-		WindowProc,						 // ウインドウプロシージャ
-		0,								 // 0にする
-		0,								 // 0にする
-		hInstance,						 // インスタンスハンドル
-		LoadIcon(NULL,IDI_APPLICATION),  // タスクバーアイコン
-		LoadCursor(NULL,IDC_ARROW),      // マウスカーソル
-		(HBRUSH)(COLOR_WINDOW + 1),      // クライアント領域の背景色
-		NULL,                            // メニューバー
-		CLASS_NAME,                      // ウインドウクラスの名前
-		LoadIcon(NULL,IDI_APPLICATION),  // ファイルアイコン
+		sizeof(WNDCLASSEX),				// WNDCLASSEXのメモリサイズ
+		CS_CLASSDC,						// ウインドウのスタイル
+		WindowProc,						// ウインドウプロシージャ
+		0,								// 0にする
+		0,								// 0にする
+		hInstance,						// インスタンスハンドル
+		LoadIcon(NULL,IDI_APPLICATION), // タスクバーアイコン
+		LoadCursor(NULL,IDC_ARROW),     // マウスカーソル
+		(HBRUSH)(COLOR_WINDOW + 1),     // クライアント領域の背景色
+		NULL,                           // メニューバー
+		CLASS_NAME,                     // ウインドウクラスの名前
+		LoadIcon(NULL,IDI_APPLICATION), // ファイルアイコン
 	};
 
 	HWND hWnd;  // ウインドウハンドル(識別子)
@@ -74,8 +72,8 @@ int WINAPI WinMain(_In_ HINSTANCE hInstance, _In_opt_  HINSTANCE /*hInstancePrev
 		WS_OVERLAPPEDWINDOW,			// ウインドウスタイル
 		CW_USEDEFAULT,					// ウインドウの左上のX座標
 		CW_USEDEFAULT,					// ウインドウの左上のY座標
-		(rect.right - rect.left),       // ウインドウ幅
-		(rect.bottom - rect.top),       // ウインドウの高さ
+		(rect.right - rect.left),		// ウインドウ幅
+		(rect.bottom - rect.top),		// ウインドウの高さ
 		NULL,
 		NULL,
 		hInstance,						// インスタンスハンドル
@@ -89,6 +87,7 @@ int WINAPI WinMain(_In_ HINSTANCE hInstance, _In_opt_  HINSTANCE /*hInstancePrev
 
 	// 分解能を設定
 	timeBeginPeriod(1);
+
 	dwCurrentTime = 0;					// 初期化
 	dwExecLastTime = timeGetTime();		// 現在時刻を保存
 
@@ -132,7 +131,8 @@ int WINAPI WinMain(_In_ HINSTANCE hInstance, _In_opt_  HINSTANCE /*hInstancePrev
 
 				dwFrameCount = 0;				// 0に戻す
 
-				CRenderer::GetFps(nCountFPS);	// FPS取得
+				// FPS生成
+				CManager::GetRenderer()->GetFps(nCountFPS);
 			}
 
 			if ((dwCurrentTime - dwExecLastTime) >= (1000 / 60))

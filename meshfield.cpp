@@ -13,14 +13,16 @@
 #include "texture.h"
 
 //*******************************
-// マクロ定義
+// 定数宣言
 //*******************************
-#define XVTX (1) // Xの値
-#define ZVTX (1) // Zの値
-
-#define VERTEX ((XVTX + 1) * (ZVTX + 1))				 // 頂点数
-#define POLYGON (((XVTX * ZVTX) * 2)) + (4 * (ZVTX - 1)) // ポリゴン数
-#define INDEX (POLYGON + 2)								 // インデックス数
+namespace MESHFIELD
+{
+	constexpr int XVTX = 1; // X方向の分割数
+	constexpr int ZVTX = 1; // Z方向の分割数
+	constexpr int VERTEX = ((XVTX + 1) * (ZVTX + 1)); // 頂点数
+	constexpr int POLYGON = (((XVTX * ZVTX) * 2)) + (4 * (ZVTX - 1)); // ポリゴン数
+	constexpr int INDEX = POLYGON + 2; // インデックス数
+};
 
 //============================================
 // コンストラクタ
@@ -97,7 +99,7 @@ HRESULT CMeshField::Init(void)
 	LPDIRECT3DDEVICE9 pDevice = CManager::GetRenderer()->GetDevice();
 
 	//頂点バッファの生成
-	pDevice->CreateVertexBuffer(sizeof(VERTEX_3D) * VERTEX,
+	pDevice->CreateVertexBuffer(sizeof(VERTEX_3D) * MESHFIELD::VERTEX,
 		D3DUSAGE_WRITEONLY,
 		FVF_VERTEX_3D,
 		D3DPOOL_MANAGED,
@@ -105,7 +107,7 @@ HRESULT CMeshField::Init(void)
 		NULL);
 
 	//インデックスバッファの生成
-	pDevice->CreateIndexBuffer(sizeof(WORD) * INDEX,
+	pDevice->CreateIndexBuffer(sizeof(WORD) * MESHFIELD::INDEX,
 		D3DUSAGE_WRITEONLY,
 		D3DFMT_INDEX16,
 		D3DPOOL_MANAGED,
@@ -122,21 +124,21 @@ HRESULT CMeshField::Init(void)
 	m_pVtx->Lock(0, 0, (void**)&pVtx, 0);
 
 	// テクスチャ座標を計算する変数
-	float fTexX = 1.0f / XVTX;
-	float fTexY = 1.0f / ZVTX;
+	float fTexX = 1.0f / MESHFIELD::XVTX;
+	float fTexY = 1.0f / MESHFIELD::ZVTX;
 	int nCnt = 0;
 
 	//縦
-	for (int nCntZ = 0; nCntZ <= ZVTX; nCntZ++)
+	for (int nCntZ = 0; nCntZ <= MESHFIELD::ZVTX; nCntZ++)
 	{
 		//横
-		for (int nCntX = 0; nCntX <= XVTX; nCntX++)
+		for (int nCntX = 0; nCntX <= MESHFIELD::XVTX; nCntX++)
 		{
 			// 頂点座標の設定
 			pVtx[nCnt].pos = D3DXVECTOR3(
-				(0.0f + (m_fRadius / XVTX) * nCntX) - (m_fRadius * 0.5f),
+				(0.0f + (m_fRadius / MESHFIELD::XVTX) * nCntX) - (m_fRadius * 0.5f),
 				 0.0f,
-				 m_fRadius - ((m_fRadius / XVTX) * nCntZ) - (m_fRadius * 0.5f));
+				 m_fRadius - ((m_fRadius / MESHFIELD::XVTX) * nCntZ) - (m_fRadius * 0.5f));
 
 			// 法線ベクトルの設定
 			pVtx[nCnt].nor = D3DXVECTOR3(0.0f, 1.0f, 0.0f);
@@ -161,24 +163,24 @@ HRESULT CMeshField::Init(void)
 	// インデックスバッファのロック
 	m_pIdx->Lock(0, 0, (void**)&pIdx, 0);
 
-	WORD IndxNum = XVTX + 1;// X
+	WORD IndxNum = MESHFIELD::XVTX + 1;// X
 
 	WORD IdxCnt = 0;// 配列
 
 	WORD Num = 0;
 
 	// インデックスの設定
-	for (int IndxCount1 = 0; IndxCount1 < ZVTX; IndxCount1++)
+	for (int IndxCount1 = 0; IndxCount1 < MESHFIELD::ZVTX; IndxCount1++)
 	{
-		for (int IndxCount2 = 0; IndxCount2 <= XVTX; IndxCount2++, IndxNum++, Num++)
+		for (int IndxCount2 = 0; IndxCount2 <= MESHFIELD::XVTX; IndxCount2++, IndxNum++, Num++)
 		{
 			pIdx[IdxCnt] = IndxNum;
 			pIdx[IdxCnt + 1] = Num;
 			IdxCnt += 2;
 		}
 
-		// NOTE:最後の行じゃなかったら
-		if (IndxCount1 < ZVTX - 1)
+		// 最後の行じゃなかったら
+		if (IndxCount1 < MESHFIELD::ZVTX - 1)
 		{
 			pIdx[IdxCnt] = Num - 1;
 			pIdx[IdxCnt + 1] = IndxNum;
@@ -261,7 +263,7 @@ void CMeshField::Draw(void)
 	pDevice->SetFVF(FVF_VERTEX_3D);
 
 	// ポリゴンの描画
-	pDevice->DrawIndexedPrimitive(D3DPT_TRIANGLESTRIP, 0, 0, VERTEX, 0, POLYGON);
+	pDevice->DrawIndexedPrimitive(D3DPT_TRIANGLESTRIP, 0, 0, MESHFIELD::VERTEX, 0, MESHFIELD::POLYGON);
 
 	// テクスチャを戻す
 	pDevice->SetTexture(0, NULL);

@@ -102,14 +102,14 @@ void CTitleUi::SetTexture(int nType)
 	switch (nType)
 	{
 	case MENU_GAME:				 // ゲームメニュー
-		szFileName = "titlemenu001.png";
+		szFileName = "titlemenu_001.png";
 		break;
 
 	case MENU_TUTORIAL:			// チュートリアルメニュー
-		szFileName = "titilemenu_002.png";
+		szFileName = "titlemenu_002.png";
 		break;
 
-	case MENU_EXIT:				// 終了選択
+	case MENU_EXIT:				// 終了メニュー
 		szFileName = "titlemenu_003.png";
 		break;
 

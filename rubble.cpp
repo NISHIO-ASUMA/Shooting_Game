@@ -105,8 +105,11 @@ void CRubble::Update(void)
 	// 影の座標設定
 	m_pShadow->UpdatePos(D3DXVECTOR3(NowPos.x,2.0f, NowPos.z));
 
+	// 画面下の高さ
+	const float fDownPosY = -15.0f;
+
 	// 画面下
-	if (NowPos.y <= -15.0f)
+	if (NowPos.y <= -fDownPosY)
 	{
 		// 終了処理
 		Uninit();
@@ -127,7 +130,7 @@ void CRubble::Draw(void)
 	CObjectX::Draw();
 }
 //====================================
-// 当たり判定処理関数 ( 球座標で計算 )
+// 当たり判定処理関数
 //====================================
 bool CRubble::Collision(D3DXVECTOR3 * DestPos)
 {

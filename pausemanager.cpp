@@ -121,10 +121,6 @@ void CPauseManager::Update(void)
 	// nullだったら
 	if (pSound == nullptr) return;
 
-	// 選択インデックス範囲
-	const int SELECT_BEGIN = 1;
-	const int SELECT_END = SELECT_MAX - 1;
-
 	// 上キー入力
 	if (pKey->GetTrigger(DIK_UP) || pKey->GetTrigger(DIK_W) || pJoyPad->GetTrigger(pJoyPad->JOYKEY_UP))
 	{

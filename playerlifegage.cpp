@@ -17,6 +17,21 @@
 #include "texture.h"
 #include "object2D.h"
 
+//*************************
+// 定数宣言
+//*************************
+namespace PLAYERLIFEINFO
+{
+	constexpr float GAGE_HEIGHT = 45.0f; // ゲージの高さの固定
+	constexpr float VALUELENGTH = 0.28f; // 長さの倍率
+	constexpr float SHAKEFLOAT = 25.0f; // 振れ幅の初期値
+	constexpr float DIGIT = 40.0f;		// 計算変数
+	constexpr float RANDOMDIGIT = 100.0f; // ランダムの割る値
+	constexpr int SHAKEVALUE = 40;	// 振動の値
+	constexpr int RANDOM_MAX = 400; // 最大値
+	constexpr int RANDOM_MIN = 100; // 最小値
+};
+
 //========================
 // コンストラクタ
 //========================
@@ -30,7 +45,7 @@ CPlayerLifeGage::CPlayerLifeGage(int nPriority) : CGage(nPriority)
 	m_nMaxLife = NULL;
 	m_isShake = false;
 	m_nShakeTimer = NULL;
-	m_fShakeAmplitude = NULL; // 初期振幅
+	m_fShakeAmplitude = NULL;
 	m_fShakeOffset = NULL;
 	m_basePos = VECTOR3_NULL;
 }
@@ -53,7 +68,7 @@ HRESULT CPlayerLifeGage::Init(void)
 	if (m_pPlayer == nullptr)
 	{
 		// プレイヤー取得
-		m_pPlayer = CPlayer::GetIdxPlayer(1);
+		m_pPlayer = CPlayer::GetIdxPlayer(0);
 	}
 
 	// 取得できたら
@@ -95,7 +110,7 @@ void CPlayerLifeGage::Update(void)
 		m_nLifeLength = pParam->GetHp();
 
 		// ゲージの長さ設定
-		SetGageLength(m_nMaxLifeLength, m_nLifeLength, 0.28f, GAGE_HEIGHT);
+		SetGageLength(m_nMaxLifeLength, m_nLifeLength, PLAYERLIFEINFO::VALUELENGTH, PLAYERLIFEINFO::GAGE_HEIGHT);
 	}
 
 	if (m_pPlayer != nullptr)
@@ -106,24 +121,24 @@ void CPlayerLifeGage::Update(void)
 			// 振動ON
 			m_isShake = true;
 
-			// 40フレーム振動
-			m_nShakeTimer = 40;
+			// フレーム振動
+			m_nShakeTimer = PLAYERLIFEINFO::SHAKEVALUE;
 
 			// 振れ幅の初期値
-			m_fShakeAmplitude = 25.0f;
+			m_fShakeAmplitude = PLAYERLIFEINFO::SHAKEFLOAT;
 		}
 
 		if (m_isShake)
 		{
 			// 差分を計算
-			float t = (40 - m_nShakeTimer) / 40.0f;
+			float t = (PLAYERLIFEINFO::SHAKEVALUE - m_nShakeTimer) / PLAYERLIFEINFO::DIGIT;
 
 			// 減衰量を計算
 			float decay = (1.0f - t);
 
 			// ランダム値を設定
-			float randX = (rand() % 400 - 100) / 100.0f;
-			float randY = (rand() % 400 - 100) / 100.0f;
+			float randX = (rand() % PLAYERLIFEINFO::RANDOM_MAX - PLAYERLIFEINFO::RANDOM_MIN) / PLAYERLIFEINFO::RANDOMDIGIT;
+			float randY = (rand() % PLAYERLIFEINFO::RANDOM_MAX - PLAYERLIFEINFO::RANDOM_MIN) / PLAYERLIFEINFO::RANDOMDIGIT;
 
 			// 座標を計算
 			float fOffsetX = randX * m_fShakeAmplitude * decay;
@@ -135,11 +150,11 @@ void CPlayerLifeGage::Update(void)
 			// 振動時間を減らす
 			m_nShakeTimer--;
 
-			if (m_nShakeTimer <= 0)
+			if (m_nShakeTimer <= NULL)
 			{
 				// フラグを無効化
 				m_isShake = false;
-				m_nShakeTimer = 0;
+				m_nShakeTimer = NULL;
 
 				// 判定を無効化
 				m_pPlayer->SetIsDamege(false);
@@ -163,10 +178,8 @@ void CPlayerLifeGage::Update(void)
 //========================
 void CPlayerLifeGage::Draw(void)
 {
-#if 1
 	// 親クラスの描画
 	CObject2D::Draw();
-#endif
 }
 //========================
 // 生成処理

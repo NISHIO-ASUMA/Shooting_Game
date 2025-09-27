@@ -21,8 +21,9 @@ namespace CIRCLEINFO
 {
 	constexpr int NUM_XVERTEX = 30;	// 頂点分割数 ( X )
 	constexpr int NUM_ZVERTEX = 1;	// 頂点分割数 ( Z )
-	constexpr float CIRCLERADIUS = 60.0f;	// 最大の半径
 	constexpr int NUMSPREAD = 16;	// 拡散オブジェクト最大出現数
+	constexpr int MAX_LIFE = 90;	// 最大体力
+	constexpr float CIRCLERADIUS = 60.0f;	// 最大の半径
 };
 
 //===================================
@@ -204,7 +205,7 @@ HRESULT CMeshCircle::Init(void)
 	m_pIdx->Unlock();
 
 	// 体力値を設定
-	m_nLife = 90;
+	m_nLife = CIRCLEINFO::MAX_LIFE;
 
 	// サークルの円周上に石つぶてを生成
 	for (int nCntSpred = 0; nCntSpred < CIRCLEINFO::NUMSPREAD; nCntSpred++)
@@ -266,7 +267,7 @@ void CMeshCircle::Update(void)
 	// 時間経過で終了処理
 	m_nLife--;
 
-	if (m_nLife <= 0)
+	if (m_nLife <= NULL)
 	{
 		// 終了処理
 		Uninit();

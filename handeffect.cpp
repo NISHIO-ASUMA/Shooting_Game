@@ -10,7 +10,6 @@
 //**********************
 #include "handeffect.h"
 #include "manager.h"
-#include "texture.h"
 
 //==============================
 // オーバーロードコンストラクタ
@@ -18,18 +17,16 @@
 CHandEffect::CHandEffect(int nPriority) : CBillboard(nPriority)
 {
 	// 値のクリア
-	m_nIdxTexture = NULL;
 	m_nLife = NULL;
 	m_fRadius = NULL;
 	m_move = VECTOR3_NULL;
-
 }
 //==============================
 // デストラクタ
 //==============================
 CHandEffect::~CHandEffect()
 {
-
+	// 無し
 }
 //==============================
 // 生成処理
@@ -42,9 +39,6 @@ CHandEffect* CHandEffect::Create(D3DXVECTOR3 pos, D3DXCOLOR col, D3DXVECTOR3 mov
 	// nullptrだったら
 	if (pEffect == nullptr) return nullptr;
 
-	// テクスチャセット
-	pEffect->SetTexture();
-
 	// 初期化に失敗したら
 	if (FAILED(pEffect->Init()))
 	{
@@ -55,6 +49,7 @@ CHandEffect* CHandEffect::Create(D3DXVECTOR3 pos, D3DXCOLOR col, D3DXVECTOR3 mov
 	pEffect->SetSize(fRadius, fRadius);
 	pEffect->SetPos(pos);
 	pEffect->SetCol(col);
+	pEffect->SetTexture("handeffect.jpg");
 
 	// メンバ変数に代入
 	pEffect->m_fRadius = fRadius;
@@ -102,13 +97,16 @@ void CHandEffect::Update(void)
 	// 半径をデクリメント
 	m_fRadius -= 0.015f;
 
+	// 減算する値を設定
+	const float fDecPow = 0.005f;
+
 	// α値を減少
-	col.a -= 0.005f;
+	col.a -= fDecPow;
 
 	// 座標をセットする
 	SetPos(Effectpos);
 
-	// 色
+	// カラーを変更
 	SetCol(col);
 
 	if (m_fRadius <= 0.0f)
@@ -136,12 +134,6 @@ void CHandEffect::Draw(void)
 {
 	// デバイスの取得
 	LPDIRECT3DDEVICE9 pDevice = CManager::GetRenderer()->GetDevice();
-
-	// テクスチャ読み込み
-	CTexture* pTexture = CManager::GetTexture();
-
-	// テクスチャセット
-	pDevice->SetTexture(0, pTexture->GetAddress(m_nIdxTexture));
 
 	// αブレンディングの加算合成
 	pDevice->SetRenderState(D3DRS_BLENDOP, D3DBLENDOP_ADD);
@@ -172,15 +164,4 @@ void CHandEffect::Draw(void)
 	pDevice->SetRenderState(D3DRS_ZFUNC, D3DCMP_LESSEQUAL);
 	pDevice->SetRenderState(D3DRS_ZWRITEENABLE, TRUE);
 
-}
-//==============================
-// テクスチャ割り当て処理
-//==============================
-void CHandEffect::SetTexture(void)
-{
-	// テクスチャポインタ取得
-	CTexture* pTexture = CManager::GetTexture();
-
-	// テクスチャを登録する
-	m_nIdxTexture = pTexture->Register("data\\TEXTURE\\handeffect.jpg");
 }

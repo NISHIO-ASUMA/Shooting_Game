@@ -46,7 +46,6 @@ public:
 
 	// セッター
 	static void SetType(BTYPE type);
-	void SetTexture(BTYPE type);
 
 	// ゲッター
 	static BTYPE GetType(void) { return m_Type; }
@@ -56,7 +55,6 @@ private:
 	D3DXVECTOR3 m_OldPos;	// 過去の座標
 	static BTYPE m_Type;	// 種類
 	D3DCOLOR m_col;			// 弾のカラー
-	int m_nIdxTexture;		// テクスチャインデックス
 	int m_nLife;			// 体力
 };
 #endif

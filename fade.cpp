@@ -142,10 +142,10 @@ void CFade::Update(void)
 	m_pVtx->Lock(0, 0, (void**)&pVtx, 0);
 
 	//頂点カラーの設定
-	pVtx[0].col = D3DXCOLOR(m_col);
-	pVtx[1].col = D3DXCOLOR(m_col);
-	pVtx[2].col = D3DXCOLOR(m_col);
-	pVtx[3].col = D3DXCOLOR(m_col);
+	pVtx[0].col = 
+	pVtx[1].col = 
+	pVtx[2].col = 
+	pVtx[3].col = m_col;
 
 	// アンロック
 	m_pVtx->Unlock();

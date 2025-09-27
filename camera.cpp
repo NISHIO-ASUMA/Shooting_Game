@@ -155,7 +155,6 @@ void CCamera::Update(void)
 {
 	// 入力情報を取得
 	CInputMouse* pMouse = CManager::GetMouse();
-	CInputKeyboard* pInput = CManager::GetInputKeyboard();
 
 	// 現在シーンの取得
 	CScene::MODE pMode = CManager::GetScene();
@@ -1217,6 +1216,7 @@ void CCamera::Save(void)
 //=================================
 void CCamera::UpdateAnimCamera(void)
 {
+	// 次のキ―変数
 	int nextKey = 0;
 
 	if (m_nAnimNowKey < m_pCamera.nUseKey - 1)
@@ -1225,10 +1225,13 @@ void CCamera::UpdateAnimCamera(void)
 		nextKey = (m_nAnimNowKey + 1) % m_pCamera.nUseKey;
 	}
 
+	// 0キー目でフラグが未使用の時
 	if (m_nAnimNowKey == 0 && !m_isCreate)
 	{
 		// ui生成
 		CMoveUi::Create(D3DXVECTOR3(SCREEN_WIDTH, 685.0f, 0.0f), 120.0f, 30.0f, "Enterskip.png", CMoveUi::MOVETYPE_RIGHT, CMoveUi::SCALETYPE_NONE);
+
+		// 生成フラグを有効化
 		m_isCreate = true;
 	}
 
@@ -1251,17 +1254,11 @@ void CCamera::UpdateAnimCamera(void)
 	float DiffPosVX = m_pCamera.m_AnimData.KeyInfo[nextKey].fPosVX - fPosVX;
 	float DiffPosVY = m_pCamera.m_AnimData.KeyInfo[nextKey].fPosVY - fPosVY;
 	float DiffPosVZ = m_pCamera.m_AnimData.KeyInfo[nextKey].fPosVZ - fPosVZ;
-	float DiffPosRX = m_pCamera.m_AnimData.KeyInfo[nextKey].fPosRX - fPosRX;
-	float DiffPosRY = m_pCamera.m_AnimData.KeyInfo[nextKey].fPosRY - fPosRY;
-	float DiffPosRZ = m_pCamera.m_AnimData.KeyInfo[nextKey].fPosRZ - fPosRZ;
 
 	// 次のキ―との差分を求める
 	float DiffRotX = m_pCamera.m_AnimData.KeyInfo[nextKey].fRotX - fRotX;
 	float DiffRotY = m_pCamera.m_AnimData.KeyInfo[nextKey].fRotY - fRotY;
 	float DiffRotZ = m_pCamera.m_AnimData.KeyInfo[nextKey].fRotZ - fRotZ;
-
-	// 距離の差分を求める
-	float DiffDictance = m_pCamera.m_AnimData.KeyInfo[nextKey].fDistance - m_pCamera.m_AnimData.KeyInfo[m_nAnimNowKey].fDistance;
 
 	// 角度の正規化
 	if (DiffRotX > D3DX_PI)
@@ -1297,7 +1294,6 @@ void CCamera::UpdateAnimCamera(void)
 	// 現在の向きを算出
 	float fCurrentRotX = fRotX + DiffRotX * fRateFrame;
 	float fCurrentRotY = fRotY + DiffRotY * fRateFrame;
-	float fCurrentRotZ = fRotZ + DiffRotZ * fRateFrame;
 
 	// 視点を更新
 	m_pCamera.posV.x = sinf(fCurrentRotY) + fPosVX + DiffPosVX * fRateFrame;

@@ -28,16 +28,14 @@ public:
 	void Uninit(void);
 	void Update(void);
 	void Draw(void);
-	void SetTexture(void);
 
 	// 静的メンバ関数
 	static CEffectLaser* Create(D3DXVECTOR3 pos, D3DXVECTOR3 Endpos,D3DXCOLOR col, D3DXVECTOR3 move, int nLife, float fRadius);
 
 private:
 	int m_nLife;		// 体力
-	int m_nIdxTex;		// テクスチャインデックス
 	float m_fRadius;	// 半径
-	float m_fLength;
+	float m_fLength;	// 長さ
 	D3DXVECTOR3 m_move;	// 移動量
 	D3DXVECTOR3 m_EndPos; // 終点座標
 	D3DXVECTOR3 m_OldPos; // 過去の座標

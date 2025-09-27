@@ -10,10 +10,6 @@
 //**********************
 #include "texture.h"
 #include "manager.h"
-#include <fstream>
-#include <iostream>
-#include <string>
-#include <sstream>
 
 //**********************
 // Ã“Iƒƒ“ƒo•Ï”

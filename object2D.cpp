@@ -161,11 +161,8 @@ void CObject2D::Update(void)
 //===============================
 void CObject2D::Draw(void)
 {
-	// カメラがアニメーション状態の時
+	// カメラの状態を取得
 	int nType = CManager::GetCamera()->GetMode();
-
-
-	;
 
 	// タイプがアニメーションの物を描画
 	if (nType == CManager::GetCamera()->MODE_ANIM)
@@ -257,7 +254,6 @@ void CObject2D::Draw(void)
 
 			// テクスチャを戻す
 			pDevice->SetTexture(0, NULL);
-
 		}
 	}
 }

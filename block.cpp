@@ -162,53 +162,53 @@ bool CBlock::Colliosion(D3DXVECTOR3* pPos, D3DXVECTOR3 *pPosOld,D3DXVECTOR3 * pM
 			}
 		}
 
-		//// 前後の当たり判定------------------------------
-		//if (pPosOld->x - SizeZ < fBlockPosMaxX &&
-		//	fPosMaxX > fBlockPosMinX)
-		//{
-		//	// 手前からめり込む
-		//	if (fPosOldMaxZ < fBlockPosMinZ &&
-		//		fPosMaxZ > fBlockPosMinZ)
-		//	{
-		//		pPos->z = GetPos().z - Blocksize.z * BLOCKHALF - fSize.z * BLOCKHALF - 0.3f;
-		//		isCheck = true;
+		// 前後の当たり判定------------------------------
+		if (pPosOld->x - SizeZ < fBlockPosMaxX &&
+			fPosMaxX > fBlockPosMinX)
+		{
+			// 手前からめり込む
+			if (fPosOldMaxZ < fBlockPosMinZ &&
+				fPosMaxZ > fBlockPosMinZ)
+			{
+				pPos->z = GetPos().z - Blocksize.z * BLOCKHALF - fSize.z * BLOCKHALF - 0.3f;
+				isCheck = true;
 
-		//	}
-		//	// 奥からめり込む
-		//	else if (fPosOldMinZ > fBlockPosMaxZ &&
-		//		fPosMinZ < fBlockPosMaxZ)
-		//	{
-		//		pPos->z = GetPos().z + Blocksize.z * BLOCKHALF + fSize.z * BLOCKHALF + 0.4f;
-		//		isCheck = true;
-		//	}
-		//}
+			}
+			// 奥からめり込む
+			else if (fPosOldMinZ > fBlockPosMaxZ &&
+				fPosMinZ < fBlockPosMaxZ)
+			{
+				pPos->z = GetPos().z + Blocksize.z * BLOCKHALF + fSize.z * BLOCKHALF + 0.4f;
+				isCheck = true;
+			}
+		}
 
-		//// 縦の当たり判定--------------------------
-		//if (fPosMinX < fBlockPosMaxX &&
-		//	fPosMaxZ > fBlockPosMinX)
-		//{
-		//	if (fPosOldMinZ < fBlockPosMaxZ &&
-		//		fPosMaxZ > fBlockPosMinZ)
-		//	{
-		//		// 上からめり込んだ時
-		//		if (pPosOld->y >= fBlockPosMaxY &&
-		//			pPos->y < fBlockPosMaxY)
-		//		{
-		//			bLanding = true;
-		//			pPos->y = (GetPos().y + Blocksize.y);
-		//			pMove->y = 0.0f;
-		//			isCheck = true;
-		//		}
-		//		// 下からめり込んだ時
-		//		else if (pPosOld->y + fSize.y <= fBlockPosMinY &&
-		//			pPos->y + fSize.y > fBlockPosMinY)
-		//		{
-		//			pPos->y = (GetPos().y - Blocksize.y) - SizeY;
-		//			pMove->y = 0.0f;
-		//			isCheck = true;
-		//		}
-		//	}
-		//}
+		// 縦の当たり判定--------------------------
+		if (fPosMinX < fBlockPosMaxX &&
+			fPosMaxZ > fBlockPosMinX)
+		{
+			if (fPosOldMinZ < fBlockPosMaxZ &&
+				fPosMaxZ > fBlockPosMinZ)
+			{
+				// 上からめり込んだ時
+				if (pPosOld->y >= fBlockPosMaxY &&
+					pPos->y < fBlockPosMaxY)
+				{
+					bLanding = true;
+					pPos->y = (GetPos().y + Blocksize.y);
+					pMove->y = 0.0f;
+					isCheck = true;
+				}
+				// 下からめり込んだ時
+				else if (pPosOld->y + fSize.y <= fBlockPosMinY &&
+					pPos->y + fSize.y > fBlockPosMinY)
+				{
+					pPos->y = (GetPos().y - Blocksize.y) - SizeY;
+					pMove->y = 0.0f;
+					isCheck = true;
+				}
+			}
+		}
 	}
 
 	return isCheck;

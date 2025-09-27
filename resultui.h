@@ -45,7 +45,7 @@ public:
 	void Draw(void);
 
 	// Ã“Iƒƒ“ƒoŠÖ”
-	static CResultUi* Create(D3DXVECTOR3 pos, D3DXCOLOR col, float fWidth, float fHeight, int nType);
+	static CResultUi* Create(D3DXVECTOR3 pos, D3DXCOLOR col, float fWidth, float fHeight);
 
 private:
 

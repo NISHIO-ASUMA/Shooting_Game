@@ -10,7 +10,6 @@
 //**********************************
 #include "effectsmoke.h"
 #include "manager.h"
-#include "texture.h"
 
 //=====================================
 // オーバーロードコンストラクタ
@@ -18,7 +17,6 @@
 CEffectSmoke::CEffectSmoke(int nPriority) : CBillboard(nPriority)
 {
 	// 値のクリア
-	m_nIdxTex = NULL;
 	m_fRadius = NULL;
 	m_nLife = NULL;
 	m_move = VECTOR3_NULL;
@@ -51,6 +49,7 @@ CEffectSmoke* CEffectSmoke::Create(D3DXVECTOR3 pos, D3DXCOLOR col, D3DXVECTOR3 m
 	pEffect->SetSize(fRadius, 40.0f);
 	pEffect->SetPos(pos);
 	pEffect->SetCol(col);
+	pEffect->SetTexture("explosion000.png");
 	pEffect->m_fRadius = fRadius;
 	pEffect->m_move = move;
 	pEffect->m_nLife = nLife;
@@ -109,12 +108,6 @@ void CEffectSmoke::Draw(void)
 	// デバイスの取得
 	LPDIRECT3DDEVICE9 pDevice = CManager::GetRenderer()->GetDevice();
 
-	// テクスチャ読み込み
-	CTexture* pTexture = CManager::GetTexture();
-
-	// テクスチャセット
-	pDevice->SetTexture(0, pTexture->GetAddress(m_nIdxTex));
-
 	// αブレンディングの加算合成
 	pDevice->SetRenderState(D3DRS_BLENDOP, D3DBLENDOP_ADD);
 	pDevice->SetRenderState(D3DRS_SRCBLEND, D3DBLEND_SRCALPHA);
@@ -143,16 +136,4 @@ void CEffectSmoke::Draw(void)
 	// Zテストを戻す
 	pDevice->SetRenderState(D3DRS_ZFUNC, D3DCMP_LESSEQUAL);
 	pDevice->SetRenderState(D3DRS_ZWRITEENABLE, TRUE);
-}
-//=====================================
-// テクスチャ割り当て処理
-//=====================================
-void CEffectSmoke::SetTexture(void)
-{
-	// テクスチャ取得
-	CTexture* pTexture = CManager::GetTexture();
-	if (pTexture == nullptr) return;
-
-	// 割り当て
-	m_nIdxTex = pTexture->Register("data\\TEXTURE\\explosion000.png");
 }

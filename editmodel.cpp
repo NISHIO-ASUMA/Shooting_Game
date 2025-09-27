@@ -34,7 +34,7 @@ CEditModel::~CEditModel()
 //=============================
 // 生成
 //=============================
-CEditModel* CEditModel::Create(D3DXVECTOR3 pos, D3DXVECTOR3 rot)
+CEditModel* CEditModel::Create()
 {
 	// インスタンス生成	
 	CEditModel* pEdit = new CEditModel;

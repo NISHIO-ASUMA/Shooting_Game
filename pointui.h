@@ -33,7 +33,6 @@ public:
 	static CPointUi* Create(D3DXVECTOR3 pos);
 
 private:
-
 };
 
 #endif

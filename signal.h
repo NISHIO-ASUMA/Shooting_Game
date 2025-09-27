@@ -38,7 +38,7 @@ public:
 	static CSignal* Create(void);
 
 private:
-	int m_nLife;		// Žõ–½
+	int m_nLife;	// Žõ–½
 };
 
 #endif

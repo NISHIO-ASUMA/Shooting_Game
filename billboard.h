@@ -34,8 +34,8 @@ public:
 	void SetPos(D3DXVECTOR3 pos) { m_pos = pos; }
 	void SetRot(D3DXVECTOR3 rot) { m_rot = rot; }
 	void SetCol(D3DXCOLOR col) { m_col = col; }
+	void SetTexture(const char* pTexName);
 	void SetSize(float fWidth, float fHeight) { m_fWidth = fWidth, m_fHeight = fHeight; }
-	void SetTexture(void);
 	void SetEnableZtest(bool isflags) { m_isTests = isflags; }
 	void SetAnim(const int nMaxPattern, const int nMaxAnimCount, float fTexU, float fTexV);
 	void SetUV(float fTexU, float fTexU1, float fTexV);
@@ -48,22 +48,21 @@ public:
 	float GetHeight(void) { return m_fHeight; }
 
 	// 静的メンバ関数
-	static CBillboard* Create(D3DXVECTOR3 pos, D3DXVECTOR3 rot, float fWidth, float fHeight);
+	static CBillboard* Create(D3DXVECTOR3 pos, D3DXVECTOR3 rot, float fWidth, float fHeight, const char* pTexName);
 
 private:
-	LPDIRECT3DVERTEXBUFFER9 m_pVtxBuff; // 頂点バッファ
-	D3DXMATRIX m_mtxWorld;				// ワールドマトリックス
+	LPDIRECT3DVERTEXBUFFER9 m_pVtxBuff;	// 頂点バッファ
+	D3DXVECTOR3 m_rot;	// 角度情報
+	D3DXVECTOR3 m_pos;	// 座標情報
+	D3DXCOLOR m_col;	// 色情報
+	D3DXMATRIX m_mtxWorld;	// ワールドマトリックス
 
-	D3DXVECTOR3 m_rot;  // 角度情報
-	D3DXVECTOR3 m_pos;  // 座標情報
-	D3DXCOLOR m_col;    // 色情報
-
-	int m_nIdxTexture;			// テクスチャインデックス
-	int m_FlashCount;
+	int m_nIdxTexture;	// テクスチャインデックス
+	int m_FlashCount;	// 点滅間隔
+	int m_nCountAnim;	// アニメ―ション間隔
+	int m_nPatterAnim;	// アニメ―ションパターン
 	float m_fHeight, m_fWidth;	// 横幅,高さ
 	bool m_isTests;				// Zテストするかどうか
-	int m_nCountAnim;
-	int m_nPatterAnim;
 };
 
 #endif

@@ -118,7 +118,7 @@ void CParticle::Update(void)
 		float fRadius = ((float)(rand() % m_nRadius) / 10.0f + 0.7f);
 
 		// 寿命の設定
-		int nLife = ((float)(rand() % m_nLife) / 10);
+		int nLife = (static_cast<float>(rand() % m_nLife) / 10);
 
 		// エフェクト生成
 		CEffect* pEffect = CEffect::Create(pos, col, Move, nLife, fRadius);

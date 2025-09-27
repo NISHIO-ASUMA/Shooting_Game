@@ -121,7 +121,7 @@ void CBarrierManager::DamageBarrier(int nValue)
 	m_nBarrierNum -= nValue;
 
 	// 0以下なら
-	if (m_nBarrierNum < 0) m_nBarrierNum = 0; // 最小制限
+	if (m_nBarrierNum < NULL) m_nBarrierNum = NULL; // 最小制限
 
 	  // 不要になったバリアを削除
 	for (int nCnt = 0; nCnt < MAX_GUARD; nCnt++)

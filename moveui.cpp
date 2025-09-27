@@ -154,7 +154,6 @@ void CMoveUi::Update(void)
 
 		// åªç›ÇÃïù
 		float fWidth = GetWidth();
-		float fHeight = GetHeight();
 
 		if (fWidth < fMaxWidth)
 		{

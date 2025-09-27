@@ -37,7 +37,8 @@ namespace BULLETINFO
 	constexpr float BULLET_LASER = 30.0f;   // レーザー幅
 	constexpr float BULLET_NORMAL = 10.0f;	// 通常弾の幅
 	constexpr float BULLET_SPEED = 15.0f;	// 進む速度
-
+	constexpr float DECGAGE = 7.0f;			// ゲージ減算量
+	constexpr float ADDGAGE = 1.5f;			// ゲージ加算量
 	const D3DXVECTOR3 DestPos = { 0.0f,10.0f,0.0f };	// エフェクト出現座標
 }
 
@@ -48,7 +49,6 @@ CBullet::CBullet(int nPriority) : CBillboard(nPriority)
 {
 	// 値のクリア
 	m_nLife = NULL;
-	m_nIdxTexture = NULL;
 	m_move = VECTOR3_NULL;
 	m_OldPos = VECTOR3_NULL;
 }
@@ -71,7 +71,7 @@ CBullet* CBullet::Create(const D3DXVECTOR3 pos, const D3DXVECTOR3 rot, BTYPE nTy
 	if (pBullet == nullptr) return nullptr;
 
 	// オブジェクト設定
-	pBullet->SetTexture(nType);
+	pBullet->SetTexture("bullet002.png");
 	pBullet->SetPos(pos);
 	pBullet->SetType(nType);
 	pBullet->SetSize(fWidth, fHeight);
@@ -96,25 +96,6 @@ void CBullet::SetType(BTYPE type)
 	m_Type = type;
 }
 //===============================
-// 種類ごとのテクスチャセット
-//===============================
-void CBullet::SetTexture(BTYPE type)
-{
-	// テクスチャポインタ取得
-	CTexture* pTexture = CManager::GetTexture();
-
-	// テクスチャ設定
-	switch (type)
-	{
-	case BTYPE_PLAYER:
-		m_nIdxTexture = pTexture->Register("data\\TEXTURE\\bullet002.png");
-		break;
-
-	default:
-		break;
-	}
-}
-//===============================
 // 弾の初期化
 //===============================
 HRESULT CBullet::Init(D3DXVECTOR3 rot)
@@ -131,7 +112,7 @@ HRESULT CBullet::Init(D3DXVECTOR3 rot)
 	// サウンド取得
 	CSound* pSound = CManager::GetSound();
 	
-	// ここにサウンドのタイプ
+	// 種類に応じてサウンドの生成を変更
 	switch (m_Type)
 	{
 	case CBullet::BTYPE_PLAYER:
@@ -209,7 +190,7 @@ void CBullet::Update(void)
 	bool isHit = Collision(BulletPos);
 
 	// 体力が0以下 かつ 敵に当たっていなかったら
-	if (m_nLife <= 0 && !isHit)
+	if (m_nLife <= NULL && !isHit)
 	{
 		// 未使用状態
 		Uninit();
@@ -221,21 +202,12 @@ void CBullet::Update(void)
 void CBullet::Draw(void)
 {
 #ifdef _DEBUG
-	// デバイスの取得
-	LPDIRECT3DDEVICE9 pDevice = CManager::GetRenderer()->GetDevice();
-
-	// テクスチャ取得
-	CTexture* pTexture = CManager::GetTexture();
-
-	// テクスチャ読み込み
-	pDevice->SetTexture(0, pTexture->GetAddress(m_nIdxTexture));
-
 	// オブジェクトの描画
 	CBillboard::Draw();
 #endif
 }
 //====================================
-// 当たり判定処理 ( 引数 : 弾の座標 )
+// 当たり判定処理
 //====================================
 bool CBullet::Collision(D3DXVECTOR3 pos)
 {
@@ -251,11 +223,12 @@ bool CBullet::Collision(D3DXVECTOR3 pos)
 			D3DXVECTOR3 BossPos = pBoss->GetPos();
 			float fBossSize = pBoss->GetSize();
 
-			// 
-			D3DXVECTOR3 testPos = pos;
-			testPos.y = BossPos.y; 
+			// 座標設定
+			D3DXVECTOR3 Pos = pos;
+			Pos.y = BossPos.y; 
 
-			D3DXVECTOR3 diff = BossPos - testPos;
+			// ベクトルを引く
+			D3DXVECTOR3 diff = BossPos - Pos;
 			float fDistanceSq = D3DXVec3LengthSq(&diff);
 
 			// ボスと弾の半径の合計
@@ -277,7 +250,7 @@ bool CBullet::Collision(D3DXVECTOR3 pos)
 				CBullet::Uninit();
 
 				// ゲージ値を加算する
-				CCharge::AddCharge(1.5f);
+				CCharge::AddCharge(BULLETINFO::BULLET_DAMAGE);
 
 				// 当たった判定を返す
 				return true;
@@ -316,7 +289,7 @@ bool CBullet::Collision(D3DXVECTOR3 pos)
 				CBullet::Uninit();
 
 				//  ゲージ値を減算
-				CCharge::DecCharge(7.0f);
+				CCharge::DecCharge(BULLETINFO::DECGAGE);
 
 				// 当たった判定を返す
 				return true;

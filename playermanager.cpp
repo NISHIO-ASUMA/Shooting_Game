@@ -64,7 +64,6 @@ HRESULT CPlayerManager::Init(void)
 
 	// ƒvƒŒƒCƒ„[¶¬
 	m_pPlayer = CPlayer::Create(D3DXVECTOR3(0.0f, 0.0f, -550.0f), VECTOR3_NULL, 10, 0, "data\\MOTION\\Player\\Player100motion.txt");
-	m_pSubPlayer = CSubPlayer::Create(D3DXVECTOR3(0.0f, 0.0f, 550.0f), D3DXVECTOR3(0.0f, D3DX_PI, 0.0f), 10);
 
 	// ‰Šú‰»Œ‹‰Ê
 	return S_OK;

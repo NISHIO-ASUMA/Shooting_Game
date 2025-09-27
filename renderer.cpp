@@ -18,7 +18,6 @@
 // 静的メンバ変数宣言
 //******************************************
 CDebugproc* CRenderer::m_pDebug = nullptr;	// デバッグプロセスへのポインタ
-int CRenderer::m_fps = 0;					// FPSカウント
 
 //===============================
 // コンストラクタ
@@ -41,6 +40,7 @@ CRenderer::CRenderer()
 
 	m_pVtxMT = nullptr;
 	m_nBullerTime = NULL;
+	m_fps = NULL;
 }
 //===============================
 // デストラクタ
@@ -319,23 +319,25 @@ void CRenderer::Uninit(void)
 //===============================
 void CRenderer::Update(void)
 {
-	// キーボードのポインタ
-	CInputKeyboard* pInput = CManager::GetInputKeyboard();
-
 	// デバッグ情報の更新処理
 	m_pDebug->Update();
 
 	// 全オブジェクト更新処理
 	CObject::UpdateAll();
 
+	// ブラータイムを減算
 	m_nBullerTime--;
 
+	// 0以下の時に未使用
 	if (m_nBullerTime <= 0)
 	{
 		m_isbuller = false;
 	}
 
 #ifdef _DEBUG
+
+	// キー入力情報取得
+	CInputKeyboard* pInput = CManager::GetInputKeyboard();
 
 	// ワイヤーフレーム設定
 	if (pInput->GetTrigger(DIK_F3))
@@ -405,9 +407,11 @@ void CRenderer::Draw(void)
 		// nullじゃなかったら
 		if (pScene != nullptr)
 		{
+			// シーンの描画
 			pScene->Draw();
 		}
 
+		// ブラー有効時
 		if (m_isbuller)
 		{
 			// Texture[1]番のポリゴンを描画
@@ -443,6 +447,7 @@ void CRenderer::Draw(void)
 
 		// フォントセット
 		m_pDebug->Print("FPS : %d\n", m_fps);
+
 		// デバッグフォントの描画
 		m_pDebug->Draw(0, 0);
 

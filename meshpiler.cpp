@@ -383,5 +383,5 @@ void CMeshPiler::SetTexture(void)
 	if (pTexture == nullptr) return;
 
 	// テクスチャ割り当て
-	m_nTexIdx = pTexture->Register("data\\TEXTURE\\MeshPiler1.jpg");
+	m_nTexIdx = pTexture->Register("data\\TEXTURE\\MeshPiler.jpg");
 }

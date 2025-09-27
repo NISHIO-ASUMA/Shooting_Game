@@ -55,8 +55,8 @@ HRESULT CManager::Init(HINSTANCE hInstance, HWND hWnd, BOOL bWindow)
 	// 初期化に失敗したら
 	if (FAILED(m_pInputKeyboard->Init(hInstance, hWnd)))
 	{
-		// -1を返す
-		return -1;
+		// E_FAILを返す
+		return E_FAIL;
 	}
 
 	// ジョイパッドオブジェクトの生成処理
@@ -65,8 +65,8 @@ HRESULT CManager::Init(HINSTANCE hInstance, HWND hWnd, BOOL bWindow)
 	// 初期化に失敗したら
 	if (FAILED(m_pJoyPad->Init(hInstance, hWnd)))
 	{
-		// -1を返す
-		return -1;
+		// E_FAILを返す
+		return E_FAIL;
 	}
 
 	// マウスオブジェクトの生成処理
@@ -75,8 +75,8 @@ HRESULT CManager::Init(HINSTANCE hInstance, HWND hWnd, BOOL bWindow)
 	// 初期化に失敗したら
 	if (FAILED(m_pInputMouse->Init(hInstance, hWnd)))
 	{
-		// -1を返す
-		return -1;
+		// E_FAILを返す
+		return E_FAIL;
 	}
 
 	// サウンドの生成処理
@@ -84,8 +84,8 @@ HRESULT CManager::Init(HINSTANCE hInstance, HWND hWnd, BOOL bWindow)
 
 	if (FAILED(m_pSound->Init(hWnd)))
 	{
-		// -1を返す
-		return -1;
+		// E_FAILを返す
+		return E_FAIL;
 	}
 
 	// カメラ生成
@@ -94,8 +94,8 @@ HRESULT CManager::Init(HINSTANCE hInstance, HWND hWnd, BOOL bWindow)
 	// 初期化に失敗したら
 	if (FAILED(m_pCamera->Init()))
 	{
-		// -1を返す
-		return -1;
+		// E_FAILを返す
+		return E_FAIL;
 	}
 
 	// レンダラーの生成処理
@@ -104,8 +104,8 @@ HRESULT CManager::Init(HINSTANCE hInstance, HWND hWnd, BOOL bWindow)
 	// 初期化に失敗したら
 	if (FAILED(m_pRenderer->Init(hWnd, bWindow)))
 	{
-		// -1を返す
-		return -1;
+		// E_FAILを返す
+		return E_FAIL;
 	}
 
 	// ライト生成
@@ -114,8 +114,8 @@ HRESULT CManager::Init(HINSTANCE hInstance, HWND hWnd, BOOL bWindow)
 	// 初期化に失敗したら
 	if (FAILED(m_pLight->Init()))
 	{
-		// -1を返す
-		return -1;
+		// E_FAILを返す
+		return E_FAIL;
 	}
 
 	// コリジョン生成
@@ -128,7 +128,7 @@ HRESULT CManager::Init(HINSTANCE hInstance, HWND hWnd, BOOL bWindow)
 	if (FAILED(m_pFade->Init()))
 	{
 		// -1を返す
-		return -1;
+		return E_FAIL;
 	}
 
 	// テクスチャ生成

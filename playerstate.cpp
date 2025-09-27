@@ -472,7 +472,7 @@ void CPlayerStateJump::OnExit()
 CPlayerStateAvoidLeft::CPlayerStateAvoidLeft()
 {
 	// IDセット
-	SetID(ID_AVOID);
+	SetID(ID_AVOIDLEFT);
 }
 //==================================
 // デストラクタ
@@ -524,7 +524,7 @@ void CPlayerStateAvoidLeft::OnExit()
 CPlayerStateAvoidRight::CPlayerStateAvoidRight()
 {
 	// IDセット
-	SetID(ID_AVOID);
+	SetID(ID_AVOIDRIGHT);
 }
 //==================================
 // デストラクタ

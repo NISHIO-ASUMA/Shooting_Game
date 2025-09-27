@@ -47,6 +47,32 @@ CMeshCylinder::~CMeshCylinder()
 	// 無し
 }
 //===============================
+// 生成処理
+//===============================
+CMeshCylinder* CMeshCylinder::Create(D3DXVECTOR3 pos, float fRadius)
+{
+	// インスタンス生成
+	CMeshCylinder* pMeshcylinder = new CMeshCylinder;
+
+	// nullptrだったら
+	if (pMeshcylinder == nullptr) return nullptr;
+
+	// オブジェクト設定
+	pMeshcylinder->SetTexture();
+	pMeshcylinder->m_pos = pos;
+	pMeshcylinder->m_fRadius = fRadius;
+
+	// 初期化失敗時
+	if (FAILED(pMeshcylinder->Init()))
+	{
+		// nullポインタを返す
+		return nullptr;
+	}
+
+	// ポインタを返す
+	return pMeshcylinder;
+}
+//===============================
 // 初期化処理
 //===============================
 HRESULT CMeshCylinder::Init(void)
@@ -247,30 +273,4 @@ void CMeshCylinder::SetTexture(void)
 
 	// テクスチャ割り当て
 	m_nTexIdx = pTexture->Register("data\\TEXTURE\\field100.jpg");
-}
-//===============================
-// 生成処理
-//===============================
-CMeshCylinder* CMeshCylinder::Create(D3DXVECTOR3 pos, float fRadius)
-{
-	// インスタンス生成
-	CMeshCylinder* pMeshcylinder = new CMeshCylinder;
-
-	// nullptrだったら
-	if (pMeshcylinder == nullptr) return nullptr;
-
-	// オブジェクト設定
-	pMeshcylinder->SetTexture();
-	pMeshcylinder->m_pos = pos;
-	pMeshcylinder->m_fRadius = fRadius;
-
-	// 初期化失敗時
-	if (FAILED(pMeshcylinder->Init()))
-	{
-		// nullポインタを返す
-		return nullptr;
-	}
-
-	// ポインタを返す
-	return pMeshcylinder;
 }

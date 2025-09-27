@@ -96,17 +96,14 @@ void CParticlePiler::Update(void)
 	// パーティクルの生成
 	for (int nCntApper = 0; nCntApper < m_nMaxParticle; nCntApper++)
 	{
-		// 角度をランダムに決定
+		// 角度をランダムに設定
 		float fAngle = (float)(rand() % 628 - 314) / 100.0f;
 
-		// 半径をランダムに（0.5～m_nRadius）
+		// 半径をランダムに設定
 		float fRadius = ((float)(rand() % m_nRadius) / 10.0f + 0.5f);
 
-		// 上昇速度（縦方向のスピード）
+		// 上昇速度
 		float fRise = (float)(rand() % m_nLength) / 50.0f + 0.1f;
-
-		// 回転運動のスピード（角速度）
-		float fRotSpeed = (float)(rand() % 50) / 500.0f + 0.02f;
 
 		// 移動量
 		D3DXVECTOR3 Move = VECTOR3_NULL;

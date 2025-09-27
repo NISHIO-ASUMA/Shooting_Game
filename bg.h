@@ -14,45 +14,30 @@
 #include "object2D.h"
 
 //**********************
+// 前方宣言
+//**********************
+class CObject;
+
+//**********************
 // 背景クラスを宣言
 //**********************
 class CBg : public CObject2D
 {
 public:
-	// 背景種類
-	typedef enum
-	{
-		BG_BACK = 0,
-		BG_CENTER,
-		BG_FRONT,
-		BG_MAX
-	}BG;
-
-	CBg(int nPriority = 2);
+	// コンストラクタ・デストラクタ
+	CBg(int nPriority = static_cast<int>(CObject::PRIORITY::BASENUMBER));
 	~CBg();
 
+	// メンバ関数
 	HRESULT Init(void);
 	void Uninit(void);
 	void Update(void);
 	void Draw(void);
 
-	static CBg* Create(int nIdxBg);
-
-	void SetTexture(int nType);
+	// 静的メンバ関数
+	static CBg* Create(void);
 
 private:
-	void SetScrollSpeed(float speed) { m_ScrollSpeed = speed; }	// スクロール関数
-
-	D3DXVECTOR2 m_TexScroll;	// テクスチャスクロール変数
-
-	int m_IndexBg;				// レイヤー番号
-	float m_ScrollSpeed;		// スクロールの速度
-
-	static LPDIRECT3DTEXTURE9 m_pTexture[BG_MAX]; // テクスチャポインタ
-
-
-	int m_nIdxTexture;
-
 };
 
 #endif

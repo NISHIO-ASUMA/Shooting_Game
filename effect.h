@@ -31,7 +31,6 @@ public:
 
 	// セッター
 	void SetLife(int nLife) { m_nLife = nLife; }
-	void SetTexture(void);
 
 	// ゲッター
 	int GetLife(void) { return m_nLife; }
@@ -43,7 +42,6 @@ private:
 	int m_nLife;						  // 体力
 	float m_fRadius;					  // 半径
 	D3DXVECTOR3 m_move;					  // 移動量
-	int m_nIdxTexture;					  // テクスチャインデックス
 };
 
 #endif

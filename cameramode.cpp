@@ -28,7 +28,7 @@ CCameraMode::CCameraMode() : CScene(CScene::MODE_CAMERAEDIT)
 //==============================
 CCameraMode::~CCameraMode()
 {
-
+	// –³‚µ
 }
 //==============================
 // ¶¬ˆ—
@@ -53,6 +53,7 @@ CCameraMode* CCameraMode::Create(void)
 //==============================
 HRESULT CCameraMode::Init(void)
 {
+	// ƒJƒƒ‰Žæ“¾
 	CCamera* pCamera = CManager::GetCamera();
 	pCamera->SetRot(D3DXVECTOR3(D3DX_PI * 0.5f,0.0f,0.0f));
 

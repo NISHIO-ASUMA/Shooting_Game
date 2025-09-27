@@ -161,7 +161,7 @@ void CEnemy::Uninit(void)
 	m_NumEnemy--;
 }
 //===========================================
-// 敵の更新処理 ( 円柱の外側を回るイメージ )
+// 敵の更新処理
 //===========================================
 void CEnemy::Update(void)
 {
@@ -172,7 +172,6 @@ void CEnemy::Update(void)
 	m_fValueRot += 0.03f;
 
 	m_fRadius = CGameManager::GetCylinder()->GetRadius();
-	float fLength = D3DX_PI * 2.0f * 30.0f;
 
 	// 位置を計算
 	float posx = Pos.x + cosf(m_fValueRot) * m_fRadius;
@@ -184,15 +183,9 @@ void CEnemy::Update(void)
 
 	// 回転軸を計算する
 	m_VecAxis = D3DXVECTOR3(0.0f, 1.0f, 0.0f);
-	
-
-#if 0
-	// 状態の更新
-	m_pStateMachine->Update();
-#endif
 }
 //===========================================
-// 敵の描画処理 ( クォータニオンを適用する )
+// 敵の描画処理
 //===========================================
 void CEnemy::Draw(void)
 {

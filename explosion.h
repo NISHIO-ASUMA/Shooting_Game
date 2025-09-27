@@ -30,15 +30,10 @@ public:
 	void Update(void);
 	void Draw(void);
 
-	// セッター
-	void SetTexture();
-
 	// 静的メンバ関数
 	static CExplosion* Create(const D3DXVECTOR3 pos, const D3DXVECTOR3 rot,D3DXCOLOR col);
 
-
 private:
-	int m_nIdxTexture;	// テクスチャインデックス
 };
 
 #endif

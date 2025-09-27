@@ -23,7 +23,7 @@ namespace PILERMANAGERINFO
 {
 	constexpr int MAX_ACTIVETIME = 600;	// 最大カウント
 	constexpr int SIRCLECOUNT = 20;		// 円形生成カウント
-	constexpr int PILERCOUNT = 60;		// 円柱生成カウント
+	constexpr int PILERCOUNT = 50;		// 円柱生成カウント
 	constexpr int RANDAM = 3;			// 生成数ランダムの最高値
 	constexpr int ACTIVEBACE = 3;		// 生成規定値
 };
@@ -96,6 +96,7 @@ void CPilerManager::Update(D3DXVECTOR3* DestPos)
 			{
 				m_pUi = CUi::Create(D3DXVECTOR3(640.0f, 300.0f, 0.0f), 5, 180.0f, 60.0f, "alert_Footsign.png", true);
 			}
+
 			isSet = true;
 		}
 
@@ -115,7 +116,7 @@ void CPilerManager::Update(D3DXVECTOR3* DestPos)
 				// 出現音再生
 				pSound->PlaySound(CSound::SOUND_LABEL_CIRCLE);
 
-				// サークル出現 ( 地面固定 )
+				// サークル出現
 				CMeshCircle::Create(D3DXVECTOR3(DestPos->x,0.0f,DestPos->z));
 				
 				// 出現した位置を保存

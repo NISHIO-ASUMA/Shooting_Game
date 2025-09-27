@@ -20,11 +20,11 @@
 #include "player.h"
 #include "effect.h"
 #include "sound.h"
-#include <ctime>
 #include "gamemanager.h"
 #include "score.h"
 #include "signal.h"
 #include "handeffect.h"
+#include <ctime>
 
 //****************************
 // 名前空間
@@ -32,8 +32,10 @@
 namespace BOSSINFO
 {
 	constexpr float HITRANGE = 11.0f; // コリジョンサイズ
+	constexpr float CIRCLEHITRANGE = 200.0f; // 当たり判定の範囲
+	constexpr float SETPOS_Y = -600.0f;	// 高さの最大値
+	constexpr float MOVESPEED = 1.0f;
 	constexpr int COOLTIME = 180;	  // 初期クールタイム
-	constexpr float CIRCLEHITRANGE = 200.0f;
 }
 
 //****************************
@@ -55,16 +57,16 @@ CBoss::CBoss(int nPriority) : CObject(nPriority)
 	m_pParam = nullptr;
 	m_pState = nullptr;
 
+	for (int nCnt = 0; nCnt < NUMMODELS; nCnt++)
+	{
+		m_pModel[nCnt] = nullptr;
+	}
+
 	m_type = NULL;
 	m_nCoolTime = NULL;
 	m_fSize = NULL;
 
 	m_mtxworld = {};
-
-	for (int nCnt = 0; nCnt < NUMMODELS; nCnt++)
-	{
-		m_pModel[nCnt] = nullptr;
-	}
 
 	m_isEvent = false;
 	m_isSet = false;
@@ -158,7 +160,7 @@ HRESULT CBoss::Init(void)
 	m_pState = new CStateMachine;
 
 	// 初期状態をセット
-	ChangeState(new CBossStateNeutral(120), CBossStateBace::ID_NEUTRAL);
+	ChangeState(new CBossStateNeutral(m_nCoolTime), CBossStateBace::ID_NEUTRAL);
 
 	// 初期化結果を返す
 	return S_OK;
@@ -226,7 +228,6 @@ void CBoss::Uninit(void)
 //====================================
 void CBoss::Update(void)
 {
-#if 1
 	// 死んでるなら
 	if (m_isdaeth)
 	{
@@ -239,17 +240,16 @@ void CBoss::Update(void)
 		return;
 	}
 
-
-	// 高さが-600.0f以下
-	if (m_pos.y < -600.0f && !m_isSet)
+	// 高さが SETPOS_Y以下
+	if (m_pos.y < BOSSINFO::SETPOS_Y && !m_isSet)
 	{
 		// 上に移動
-		m_pos.y += 1.0f;
+		m_pos.y += BOSSINFO::MOVESPEED;
 
-		if (m_pos.y >= -600.0f)
+		if (m_pos.y >= BOSSINFO::SETPOS_Y)
 		{
 			// 座標セット
-			m_pos.y = -600.0f;
+			m_pos.y = BOSSINFO::SETPOS_Y;
 
 			// フラグを有効化
 			m_isSet = true;
@@ -271,7 +271,6 @@ void CBoss::Update(void)
 		m_pState->Update();
 	}
 
-#endif
 	// モーション全体更新
 	m_pMotion->Update(m_pModel, NUMMODELS);
 }
@@ -280,7 +279,6 @@ void CBoss::Update(void)
 //====================================
 void CBoss::Draw(void)
 {
-#if 1
 	// デバイスポインタを宣言
 	LPDIRECT3DDEVICE9 pDevice = CManager::GetRenderer()->GetDevice();
 
@@ -308,6 +306,8 @@ void CBoss::Draw(void)
 		m_pModel[nCnt]->Draw();
 	}
 
+#ifdef _DEBUG
+
 	// デバッグ表示
 	CDebugproc::Print("ボス座標 [ %.2f ,%.2f , %.2f]", m_pos.x, m_pos.y, m_pos.z);
 	CDebugproc::Draw(0, 40);
@@ -326,7 +326,8 @@ void CBoss::Draw(void)
 
 	// デバッグフォント
 	m_pMotion->Debug();
-#endif
+#endif // _DEBUG
+
 }
 //====================================
 // 右手とプレイヤーの当たり判定
@@ -356,6 +357,7 @@ bool CBoss::CollisionRightHand(D3DXVECTOR3* pPos)
 		// フレーム外ならリセット
 		isCreate = false;
 	}
+
 	// モデルのパーツ取得
 	CModel* pRightHand = GetModelPartType(CModel::PARTTYPE_RIGHT_HAND); // 右手
 
@@ -579,69 +581,6 @@ bool CBoss::CollisionCircle(D3DXVECTOR3* pPos,float fHitRadius)
 
 	// 当たってないとき
 	return false;
-
-#if 0
-
-	// 一定フレーム内
-	if (m_pMotion->CheckFrame(90, 155, TYPE_CIRCLE) && m_isdaeth == false)
-	{
-		// モデルのパーツ取得
-		CModel* pRightHand = GetModelPartType(CModel::PARTTYPE_RIGHT_HAND); // 右手
-
-		// nullだったら
-		if (!pRightHand) return false;
-
-		// 右手のワールドマトリックスを取得
-		D3DXMATRIX mtxWorld = pRightHand->GetMtxWorld();
-
-		// 差分計算
-		D3DXVECTOR3 diff = *pPos - D3DXVECTOR3(mtxWorld._41, mtxWorld._42, mtxWorld._43);
-
-		// 計算した差分の長さ取得
-		float fDist = D3DXVec3Length(&diff);
-
-		// 差分以下なら
-		if (fDist <= BOSSINFO::CIRCLEHITRANGE)
-		{
-			// 距離を返す
-			return true;
-		}
-
-		return false;
-	}
-	// 一定フレーム内
-	else if (m_pMotion->CheckFrame(195, 250, TYPE_CIRCLE) && m_isdaeth == false)
-	{
-		// モデルのパーツ取得
-		CModel* pRightHand = GetModelPartType(CModel::PARTTYPE_RIGHT_HAND); // 右手
-
-		// nullだったら
-		if (!pRightHand) return false;
-
-		// 右手のワールドマトリックスを取得
-		D3DXMATRIX mtxWorld = pRightHand->GetMtxWorld();
-
-		// 差分計算
-		D3DXVECTOR3 diff = *pPos - D3DXVECTOR3(mtxWorld._41, mtxWorld._42, mtxWorld._43);
-
-		// 計算した差分の長さ取得
-		float fDist = D3DXVec3Length(&diff);
-
-		// 差分以下なら
-		if (fDist <= BOSSINFO::CIRCLEHITRANGE)
-		{
-			// 距離を返す
-			return true;
-		}
-
-		return false;
-	}
-	else
-	{
-		// 当たらないとき
-		return false;
-	}
-#endif
 }
 //=========================================
 // 振り下ろし攻撃の当たり判定
@@ -768,10 +707,12 @@ bool CBoss::CollisionSwing(D3DXVECTOR3* pPos, float fHitRadius)
 
 			// メッシュ衝撃波を生成	
 			CMeshImpact::Create(D3DXVECTOR3(CenterPos.x, 5.0f, CenterPos.z), 200, 120.0f, 15.0f, 10.0f);
-			// 再生
+
+			// サウンド再生
 			pSound->PlaySound(CSound::SOUND_LABEL_EXPLOSION);
 		}
 
+		// 右手
 		if (pRightHand)
 		{
 			float fDisX = pPos->x - ( handPosR.x * 0.5f);
@@ -785,10 +726,12 @@ bool CBoss::CollisionSwing(D3DXVECTOR3* pPos, float fHitRadius)
 				// メッシュ衝撃波を生成	
 				CMeshImpact::Create(D3DXVECTOR3(CenterPos.x, 5.0f, CenterPos.z), 200, 120.0f, 15.0f, 10.0f);
 
-				return true; // 右手に当たり
+				// コリジョン判定
+				return true; 
 			}
 		}
 
+		// 左手
 		if (pLeftHand)
 		{
 			float fDisX = pPos->x -( handPosL.x * 0.5f);
@@ -802,7 +745,8 @@ bool CBoss::CollisionSwing(D3DXVECTOR3* pPos, float fHitRadius)
 				// メッシュ衝撃波を生成	
 				CMeshImpact::Create(D3DXVECTOR3(CenterPos.x, 5.0f, CenterPos.z), 200, 120.0f, 15.0f, 10.0f);
 
-				return true; // 左手に当たり
+				// コリジョン判定
+				return true; 
 			}
 		}
 	}

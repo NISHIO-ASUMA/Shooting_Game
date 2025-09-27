@@ -31,7 +31,7 @@ public:
 	void Load(void);
 
 private:
-	static constexpr int SCORELISTNUM = 3;
+	static constexpr int SCORELISTNUM = 3; // 最大数
 
 	bool m_isKeyDown; // キー入力フラグ
 	int m_nGameScore; // スコアを格納

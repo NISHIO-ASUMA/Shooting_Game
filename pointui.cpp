@@ -1,6 +1,6 @@
 //=====================================
 //
-// 選択ポイントUI処理 [ pointui.h ]
+// 選択ポイントUI処理 [ pointui.cpp ]
 // Author: Asuma Nishio
 //
 //=====================================
@@ -9,16 +9,14 @@
 // インクルードファイル
 //*****************************
 #include "pointui.h"
-#include "manager.h"
-#include "texture.h"
 
 //*****************************
 // 名前空間
 //*****************************
 namespace POINTINFO
 {
-	constexpr float POINTWIDTH = 30.0f;	// 横幅
-	constexpr float POINTHEIGHT = 40.0f;// 高さ
+	constexpr float POINTWIDTH = 30.0f;		// 横幅
+	constexpr float POINTHEIGHT = 40.0f;	// 高さ
 };
 
 //==============================

@@ -29,6 +29,9 @@
 #include "item.h"
 #include "ui.h"
 
+//********************************
+// 静的メンバ変数宣言
+//********************************
 CBarrierManager* CTutorialManager::m_pBarrierManger = nullptr;
 
 //==========================
@@ -136,7 +139,7 @@ void CTutorialManager::Update(void)
 		m_pTask->Update();
 	}
 
-	// クラスの更新処理
+	// バリアクラスの更新処理
 	if (m_pBarrierManger != nullptr)
 	{
 		m_pBarrierManger->Update();
@@ -217,6 +220,16 @@ void CTutorialManager::Update(void)
 		}
 		break;
 
+	case CTutorialManager::TASKTYPE_AVOID: // 回避
+
+		// キー入力がされたら
+		if (pKey->GetTrigger(DIK_W) || pJoyPad->GetTrigger(pJoyPad->JOYKEY_RIGHT_B))
+		{
+			isCheck = true;
+		}
+		
+		break;
+
 	case CTutorialManager::TASKTYPE_LASER: // 武器切り替え
 
 		// チャージ加算
@@ -268,10 +281,13 @@ void CTutorialManager::Update(void)
 			m_isCreate = false;
 		}
 
+		// チャージする
 		if (!CCharge::GetChargeFlag())
 		{
+			// チャージを戻す
 			CCharge::AddCharge(100.0f);
 
+			// フラグを有効化
 			CCharge::SetCharge(true);
 		}
 
@@ -300,7 +316,7 @@ void CTutorialManager::Update(void)
 
 	if (isFinish)
 	{
-		// ポイント生成
+		// 画面遷移ポイント生成
 		CExitPoint::Create(D3DXVECTOR3(0.0f, 0.0f, -550.0f), 0.5f);
 
 		// ブロック生成

@@ -37,11 +37,10 @@ public:
 
 private:
 
-	static inline constexpr int MAX_GUARD = 3; // 最大バリア数
+	static constexpr int MAX_GUARD = 3; // 最大バリア数
 
 	int m_nBarrierNum; // バリア枚数
 	CBarrierDurability* m_pBarrierObj[MAX_GUARD]; // バリアオブジェクトのポインタ
-
 };
 
 #endif

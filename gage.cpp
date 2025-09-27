@@ -9,8 +9,6 @@
 // インクルードファイル
 //**********************
 #include "gage.h"
-#include "texture.h"
-#include "manager.h"
 
 //===============================
 // オーバーロードコンストラクタ
@@ -79,7 +77,7 @@ CGage* CGage::Create(D3DXVECTOR3 pos, float fWidth, float fHeight)
 		return nullptr;
 	}
 
-	// 2Dオブジェクト設定
+	// オブジェクト設定
 	pGage->SetPos(pos);
 	pGage->SetSize(fWidth, fHeight);
 
@@ -108,7 +106,7 @@ void CGage::SetGageLength(const int nMaxLife, const int nCurrentLife, float fVal
 	SetSize(fMaxWidth * fRatio, Height);
 }
 //===============================
-// ゲージの長さ設定処理 ( float )
+// ゲージの長さ設定処理
 //===============================
 void CGage::FSetGageLength(float fMax, float fCurrent, float fMaxWidth, float fHeight)
 {
