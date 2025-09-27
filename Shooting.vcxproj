@@ -167,6 +167,7 @@
     <ClCompile Include="bulleticon.cpp" />
     <ClCompile Include="camera.cpp" />
     <ClCompile Include="cameramode.cpp" />
+    <ClCompile Include="chargesignal.cpp" />
     <ClCompile Include="character.cpp" />
     <ClCompile Include="charge.cpp" />
     <ClCompile Include="collision.cpp" />
@@ -284,6 +285,7 @@
     <ClInclude Include="bulleticon.h" />
     <ClInclude Include="camera.h" />
     <ClInclude Include="cameramode.h" />
+    <ClInclude Include="chargesignal.h" />
     <ClInclude Include="character.h" />
     <ClInclude Include="charge.h" />
     <ClInclude Include="collision.h" />

@@ -465,6 +465,9 @@
     <ClCompile Include="subplayerstate.cpp">
       <Filter>ソース ファイル\StateMachine</Filter>
     </ClCompile>
+    <ClCompile Include="chargesignal.cpp">
+      <Filter>ソース ファイル</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="barrierdurability.h">
@@ -811,6 +814,9 @@
     </ClInclude>
     <ClInclude Include="subplayerstate.h">
       <Filter>ヘッダー ファイル\StateMachine</Filter>
+    </ClInclude>
+    <ClInclude Include="chargesignal.h">
+      <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

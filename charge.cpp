@@ -11,6 +11,7 @@
 #include "charge.h"
 #include "manager.h"
 #include "texture.h"
+#include "chargesignal.h"
 
 //**********************************
 // 名前空間
@@ -81,6 +82,15 @@ void CCharge::AddCharge(float fValue)
 	{
 		// 最大値の長さに設定
 		m_fCharge = CHARGEINFO::MAX_CHARGE;
+
+		if (!m_isCharge)
+		{
+			// サウンド再生
+			CManager::GetSound()->PlaySound(CManager::GetSound()->SOUND_LABEL_CHANGEWEPON);
+
+			// 生成
+			CChargeSignal::Create(D3DXVECTOR3(SCREEN_WIDTH * 0.5f, 400.0f, 0.0f));
+		}
 
 		// 判定をセット
 		m_isCharge = true;

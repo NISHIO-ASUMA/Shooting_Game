@@ -86,6 +86,7 @@ private:
 		"data\\TEXTURE\\tutorial_Boss_week.jpg",
 		"data\\TEXTURE\\Item_info.jpg",
 		"data\\TEXTURE\\bullet.png",
+		"data\\TEXTURE\\laserchageUp.png",
 		"data\\TEXTURE\\ComboMenu/Tutorial_menu_move.png",
 		"data\\TEXTURE\\ComboMenu/Tutorial_menu_Attack.png",
 		"data\\TEXTURE\\ComboMenu/Tutorial_menu_Jump.png",
