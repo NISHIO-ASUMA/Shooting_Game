@@ -34,8 +34,6 @@ CPlayerStateBase::CPlayerStateBase()
 	// 値のクリア
 	m_pPlayer = nullptr;
 	m_ID = ID_NEUTRAL;
-	m_isRightRotation = false;
-	m_isLeftRotation = false;
 }
 //==================================
 // プレイヤー状態デストラクタ
@@ -129,38 +127,6 @@ void CPlayerStateNeutral::OnUpdate()
 		// ここで処理を返す
 		return;
 	}
-
-	// Qキー もしくは PadのLBキー
-	if ((pInput->GetPress(DIK_Q) || pPad->GetPress(CJoyPad::JOYKEY_LEFT_B)) &&
-		m_pPlayer->GetNowMotion() != CPlayer::PLAYERMOTION_DAMAGE)
-	{
-		// ステート変更
-		m_pPlayer->ChangeState(new CPlayerStateAvoid, ID_AVOID);
-
-		// フラグセット
-		SetLeft(true);
-		SetRight(false);
-
-		// ここで処理を返す
-		return;
-	}
-
-	// Eキー もしくは PadのRBキー
-	if ((pInput->GetPress(DIK_E) || pPad->GetPress(CJoyPad::JOYKEY_RIGHT_B)) &&
-		m_pPlayer->GetNowMotion() != CPlayer::PLAYERMOTION_DAMAGE)
-	{
-		// ステート変更
-		m_pPlayer->ChangeState(new CPlayerStateAvoid, ID_AVOID);
-
-		// フラグセット
-		SetLeft(false);
-		SetRight(true);
-
-		// ここで処理を返す
-		return;
-	}
-
-
 }
 //==================================
 // 待機状態時終了関数
@@ -329,19 +295,6 @@ void CPlayerStateMove::OnUpdate()
 		// ここで処理を返す
 		return;
 	}
-
-	// 回避キー入力時にステート変更
-	if ((pInput->GetPress(DIK_Q) || pPad->GetPress(CJoyPad::JOYKEY_B)) &&
-		m_pPlayer->GetNowMotion() != CPlayer::PLAYERMOTION_DAMAGE &&
-		!m_pPlayer->IsJumping())
-	{
-		// ジャンプに遷移
-		m_pPlayer->ChangeState(new CPlayerStateAvoid, ID_AVOID);
-
-		// ここで処理を返す
-		return;
-	}
-
 }
 //==================================
 // 移動状態終了関数
@@ -516,7 +469,7 @@ void CPlayerStateJump::OnExit()
 //==================================
 // 回避状態コンストラクタ
 //==================================
-CPlayerStateAvoid::CPlayerStateAvoid()
+CPlayerStateAvoidLeft::CPlayerStateAvoidLeft()
 {
 	// IDセット
 	SetID(ID_AVOID);
@@ -524,14 +477,14 @@ CPlayerStateAvoid::CPlayerStateAvoid()
 //==================================
 // デストラクタ
 //==================================
-CPlayerStateAvoid::~CPlayerStateAvoid()
+CPlayerStateAvoidLeft::~CPlayerStateAvoidLeft()
 {
 	// 無し
 }
 //==================================
 // 開始関数
 //==================================
-void CPlayerStateAvoid::OnStart()
+void CPlayerStateAvoidLeft::OnStart()
 {
 	// モーションセット
 	m_pPlayer->GetMotion()->SetMotion(CPlayer::PLAYERMOTION_AVOID, false, 0, false);
@@ -539,24 +492,17 @@ void CPlayerStateAvoid::OnStart()
 //==================================
 // 更新関数
 //==================================
-void CPlayerStateAvoid::OnUpdate()
+void CPlayerStateAvoidLeft::OnUpdate()
 {
-	// TODO : プレイヤーにフラグ持たせる
-	// 入力キー
-	if (GetRight() == true)
-	{
-		// 回避更新
-		m_pPlayer->UpdateAvoid(true,false);
-	}
-	else if (GetLeft() == true)
-	{
-		// 回避更新
-		m_pPlayer->UpdateAvoid(false, true);
-	}
-
+	// 回避更新
+	m_pPlayer->UpdateAvoidLeft();
+	
 	// ニュートラルに遷移
 	if (m_pPlayer->GetMotion()->GetFinishMotion())
 	{
+		// 入力変更
+		m_pPlayer->SetAvoid(false);
+
 		// ステート変更
 		m_pPlayer->ChangeState(new CPlayerStateNeutral(), ID_NEUTRAL);
 
@@ -566,7 +512,60 @@ void CPlayerStateAvoid::OnUpdate()
 //==================================
 // 終了関数
 //==================================
-void CPlayerStateAvoid::OnExit()
+void CPlayerStateAvoidLeft::OnExit()
+{
+	// 無し
+}
+
+
+//==================================
+// 右回避状態コンストラクタ
+//==================================
+CPlayerStateAvoidRight::CPlayerStateAvoidRight()
+{
+	// IDセット
+	SetID(ID_AVOID);
+}
+//==================================
+// デストラクタ
+//==================================
+CPlayerStateAvoidRight::~CPlayerStateAvoidRight()
+{
+	// 無し
+}
+//==================================
+// 開始関数
+//==================================
+void CPlayerStateAvoidRight::OnStart()
+{
+
+	// モーションセット
+	m_pPlayer->GetMotion()->SetMotion(CPlayer::PLAYERMOTION_AVOID, false, 0, false);
+}
+//==================================
+// 更新関数
+//==================================
+void CPlayerStateAvoidRight::OnUpdate()
+{
+	// 右向き更新関数
+	m_pPlayer->UpdateAvoidRight();
+
+	// ニュートラルに遷移
+	if (m_pPlayer->GetMotion()->GetFinishMotion())
+	{
+		// 入力変更
+		m_pPlayer->SetAvoid(false);
+
+		// ステート変更
+		m_pPlayer->ChangeState(new CPlayerStateNeutral(), ID_NEUTRAL);
+
+		return;
+	}
+}
+//==================================
+// 終了関数
+//==================================
+void CPlayerStateAvoidRight::OnExit()
 {
 	// 無し
 }

@@ -52,21 +52,15 @@ public:
 	// ゲッター
 	int GetID() const override { return m_ID; }
 	void SetID(ID id) { m_ID = id; }
-	bool GetRight(void) { return m_isRightRotation; }
-	bool GetLeft(void) { return m_isLeftRotation; }
 
 	// セッター
 	void SetOwner(CPlayer* pPlayer) { m_pPlayer = pPlayer; }
-	void SetRight(bool isRight) { m_isRightRotation = isRight; }
-	void SetLeft(bool isLeft) { m_isLeftRotation = isLeft; }
 
 protected:
 	CPlayer* m_pPlayer;		// プレイヤーのポインタ
 
 private:
 	ID m_ID;		// 列挙型のポインタ
-	bool m_isRightRotation; // 右回り
-	bool m_isLeftRotation;  // 左回り
 
 };
 
@@ -198,14 +192,37 @@ private:
 };
 
 //*********************************
-// 回避状態時の管理
+// 左回避状態時の管理
 //*********************************
-class CPlayerStateAvoid : public CPlayerStateBase
+class CPlayerStateAvoidLeft : public CPlayerStateBase
 {
 public:
 	// コンストラクタ・デストラクタ
-	CPlayerStateAvoid();
-	~CPlayerStateAvoid();
+	CPlayerStateAvoidLeft();
+	~CPlayerStateAvoidLeft();
+
+	// ステートが始まるときに一度だけ呼ばれる関数
+	void OnStart();
+
+	// ステートが更新されるときに呼ばれる関数
+	void OnUpdate();
+
+	// ステートが終了する時に一度だけ呼ばれる関数
+	void OnExit();
+
+private:
+
+};
+
+//*********************************
+// 右回避状態時の管理
+//*********************************
+class CPlayerStateAvoidRight : public CPlayerStateBase
+{
+public:
+	// コンストラクタ・デストラクタ
+	CPlayerStateAvoidRight();
+	~CPlayerStateAvoidRight();
 
 	// ステートが始まるときに一度だけ呼ばれる関数
 	void OnStart();

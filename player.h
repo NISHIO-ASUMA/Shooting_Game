@@ -62,7 +62,10 @@ public:
 	void UpdateAction(CInputKeyboard* pInputKeyboard, D3DXMATRIX pMtx, const D3DXVECTOR3 DestMove, CJoyPad* pPad); // 通常攻撃更新関数
 	void UpdateMove(const D3DXVECTOR3 DestPos, CInputKeyboard* pInputKeyboard, CJoyPad* pPad);					  // 移動更新関数
 	void UpdateJumpAction(CInputKeyboard* pInputKeyboard, D3DXMATRIX pMtx, const D3DXVECTOR3 DestMove, CJoyPad* pPad);
-	void UpdateAvoid(bool isRight, bool isLeft);
+	void UpdateAvoid(void);
+	void UpdateAvoidRight(void);
+	void UpdateAvoidLeft(void);
+
 	void Collision(void);
 
 	D3DXVECTOR3 VecToBoss(const D3DXVECTOR3& pPos);
@@ -84,6 +87,7 @@ public:
 	void SetActive(bool isActiveFlags) { m_isControll = isActiveFlags; }
 	void SetLeft(bool isLeft) { m_isLeft = isLeft; }
 	void SetRight(bool isRight) { m_isRight = isRight; }
+	void SetAvoid(bool isAvoid) { m_isAvoid = isAvoid; }
 
 	// ゲッター
 	D3DXVECTOR3 GetPos(void) { return m_pos; }			// 現在の座標を取得
@@ -100,6 +104,8 @@ public:
 
 	int GetType(void) { return m_type; }
 	int GetPlayerIndex() const { return m_nIdxPlayer; }
+
+	float GetCoolTime(void) { return m_fAvoidTime; }
 
 	// フラグメント関数
 	bool IsJumping() { return m_isJump; } 	// ジャンプ状態の確認
@@ -158,10 +164,11 @@ private:
 	bool m_isJumpAttack;
 	bool m_isLeft;
 	bool m_isRight;
+	bool m_isAvoid;
 
 	float m_fAngle;			// 現在の角度
 	float m_fValue;
-
+	float m_fAvoidTime;
 	const char* m_pFilename; // 読み込むファイル名
 
 	static bool m_isDeath; // 静的

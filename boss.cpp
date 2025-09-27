@@ -32,7 +32,7 @@
 namespace BOSSINFO
 {
 	constexpr float HITRANGE = 11.0f; // コリジョンサイズ
-	constexpr int COOLTIME = 60;	  // 初期クールタイム
+	constexpr int COOLTIME = 180;	  // 初期クールタイム
 	constexpr float CIRCLEHITRANGE = 200.0f;
 }
 
@@ -226,7 +226,7 @@ void CBoss::Uninit(void)
 //====================================
 void CBoss::Update(void)
 {
-#if 0
+#if 1
 	// 死んでるなら
 	if (m_isdaeth)
 	{
@@ -280,7 +280,7 @@ void CBoss::Update(void)
 //====================================
 void CBoss::Draw(void)
 {
-#if 0
+#if 1
 	// デバイスポインタを宣言
 	LPDIRECT3DDEVICE9 pDevice = CManager::GetRenderer()->GetDevice();
 
@@ -437,7 +437,7 @@ bool CBoss::CollisionImpactScal(D3DXVECTOR3* pPos)
 	D3DXVECTOR3 HandCenterPos = (posRight + posLeft) * 0.5f;
 
 	// 一定フレーム内
-	if (m_pMotion->CheckFrame(90, 120, TYPE_IMPACT) && !m_isdaeth)
+	if (m_pMotion->CheckFrame(90, 110, TYPE_IMPACT) && !m_isdaeth)
 	{
 		// エフェクト生成
 		CEffect::Create(D3DXVECTOR3(posRight.x, posRight.y + 20.0f, posRight.z - 30.0f), D3DCOLOR_RGBA(250, 250, 210, 255), VECTOR3_NULL, 70, 90.0f);
@@ -488,7 +488,7 @@ bool CBoss::CollisionImpactScal(D3DXVECTOR3* pPos)
 	}
 
 	// 一定フレーム内
-	if (m_pMotion->CheckFrame(100, 100, TYPE_IMPACT) && !m_isdaeth)
+	if (m_pMotion->CheckFrame(95, 95, TYPE_IMPACT) && !m_isdaeth)
 	{
 		// メッシュ衝撃波を生成	
 		CMeshImpact::Create(D3DXVECTOR3(HandCenterPos.x, 5.0f, HandCenterPos.z), 80, 120.0f, 15.0f, 10.0f);
