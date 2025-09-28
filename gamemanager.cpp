@@ -72,7 +72,7 @@ HRESULT CGameManager::Init(void)
 	m_pMeshCylinder = CMeshCylinder::Create(D3DXVECTOR3(0.0f, -20.0f, 0.0f), 550.0f);
 
 	// ボス生成
-	m_pBoss = CBoss::Create(D3DXVECTOR3(0.0f, -800.0f, 0.0f), 60.0f, 400);
+	m_pBoss = CBoss::Create(D3DXVECTOR3(0.0f, -800.0f, 0.0f), 60.0f, 300);
 
 	// シーンオブジェクト読み込み
 	CSceneLoader::SplitLoad(2);

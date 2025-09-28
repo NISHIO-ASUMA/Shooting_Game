@@ -466,7 +466,7 @@
       <Filter>ソース ファイル\StateMachine</Filter>
     </ClCompile>
     <ClCompile Include="chargesignal.cpp">
-      <Filter>ソース ファイル</Filter>
+      <Filter>ソース ファイル\2D</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
