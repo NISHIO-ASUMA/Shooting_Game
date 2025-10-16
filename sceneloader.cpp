@@ -234,16 +234,8 @@ void CSceneLoader::SplitLoad(int nIdx)
 		}
 		else if (token == "ENDSET")
 		{// 最終読み取り
-			// 各種生成
-			if (objName == "PLAYER")
-			{
-				// ゲームプレイヤー
-				CPlayer::Create(pos, rot, life, index, motionPath.c_str());
 
-				// パスのクリア
-				motionPath.clear();
-			}
-			else if (objName == "MESH")
+			if (objName == "MESH")
 			{
 				if (type == 0) CMeshDome::Create(pos, radius); 	// メッシュドーム
 				else if (type == 1) CMeshField::Create(pos, radius); // メッシュフィールド

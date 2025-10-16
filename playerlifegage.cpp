@@ -16,6 +16,8 @@
 #include "manager.h"
 #include "texture.h"
 #include "object2D.h"
+#include "gamemanager.h"
+#include "tutorialmanager.h"
 
 //*************************
 // 定数宣言
@@ -64,11 +66,22 @@ HRESULT CPlayerLifeGage::Init(void)
 	// 親クラスの初期化処理
 	CObject2D::Init();
 
+	// 現在シーン取得
+	CScene::MODE nMode = CManager::GetScene();
+
 	// nullだったら
 	if (m_pPlayer == nullptr)
 	{
-		// プレイヤー取得
-		m_pPlayer = CPlayer::GetIdxPlayer(0);
+		if (nMode == CScene::MODE_GAME)
+		{
+			// プレイヤー取得
+			m_pPlayer = CGameManager::GetPlayer();
+		}
+		else
+		{
+			// プレイヤー取得
+			m_pPlayer = CTutorialManager::GetPlayer();
+		}
 	}
 
 	// 取得できたら

@@ -15,7 +15,6 @@
 #include "time.h"
 #include "meshdome.h"
 #include "meshfield.h"
-#include "player.h"
 #include "meshimpact.h"
 #include "playerlifegage.h"
 #include "bosslifegage.h"
@@ -46,7 +45,7 @@ CTime* CGameManager::m_pTime = nullptr;					// タイマー
 CUimanager* CGameManager::m_puimanager = nullptr;		// UIマネージャー
 CBarrierManager* CGameManager::m_pBarrier = nullptr;	// バリアマネージャー
 CRubbleManager* CGameManager::m_pRubble = nullptr;		// 瓦礫オブジェクトマネージャー
-CSubPlayer* CGameManager::m_pSubPlayer = nullptr;		// プレイヤー
+CPlayer* CGameManager::m_pPlayer = nullptr;
 
 //========================
 // コンストラクタ
@@ -54,7 +53,6 @@ CSubPlayer* CGameManager::m_pSubPlayer = nullptr;		// プレイヤー
 CGameManager::CGameManager()
 {
 	// 値のクリア
-	m_pPlayerManager = nullptr;
 }
 //========================
 // デストラクタ
@@ -73,6 +71,8 @@ HRESULT CGameManager::Init(void)
 
 	// ボス生成
 	m_pBoss = CBoss::Create(D3DXVECTOR3(0.0f, -800.0f, 0.0f), 60.0f, 300);
+
+	m_pPlayer = CPlayer::Create(VECTOR3_NULL, VECTOR3_NULL, 10, "data/MOTION/Player/Player100motion.txt");
 
 	// シーンオブジェクト読み込み
 	CSceneLoader::SplitLoad(2);
@@ -164,6 +164,7 @@ void CGameManager::Uninit(void)
 	m_pBoss = nullptr;
 	m_pMeshCylinder = nullptr;
 	m_pTime = nullptr;
+	m_pPlayer = nullptr;
 
 	// nullじゃなかったら
 	if (m_pBarrier != nullptr)
@@ -216,25 +217,14 @@ void CGameManager::Uninit(void)
 		// null初期化
 		m_pPilerManager = nullptr;
 	}
-
-	if (m_pPlayerManager != nullptr)
-	{
-		m_pPlayerManager->Uninit();
-		delete m_pPlayerManager;
-		m_pPlayerManager = nullptr;
-	}
 }
 //========================
 // 更新処理
 //========================
 void CGameManager::Update(void)
 {
-	// プレイヤー取得
-	CPlayer* pPlayer = CPlayer::GetIdxPlayer(0);
-	if (pPlayer == nullptr) return;
-
-	// 過去の座標取得
-	D3DXVECTOR3 pos = pPlayer->GetPos();
+	// 座標取得
+	D3DXVECTOR3 pos = m_pPlayer->GetPos();
 
 	// カメラ取得
 	CCamera* pCamera = CManager::GetCamera();

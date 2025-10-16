@@ -38,6 +38,8 @@ namespace ITEMINFO
 CItem::CItem(int nPriority) : CObjectX(nPriority)
 {
 	// 値のクリア
+	m_nType = NULL;
+	m_pPlayer = nullptr;
 }
 //=================================
 // デストラクタ
@@ -168,7 +170,6 @@ bool CItem::Collision(D3DXVECTOR3* pPos)
 		{
 		case TYPE_GUARD:
 		{
-
 			if (nMode == CScene::MODE_TUTORIAL)
 			{
 				// バリアマネージャを取得
@@ -201,27 +202,35 @@ bool CItem::Collision(D3DXVECTOR3* pPos)
 
 		case TYPE_LIFE:
 		{
-			// プレイヤー取得
-			CPlayer* pPlayer = CPlayer::GetIdxPlayer(0);
+			if (nMode == CScene::MODE_TUTORIAL)
+			{
+				// プレイヤー取得
+				m_pPlayer = CTutorialManager::GetPlayer();
+			}
+			else
+			{
+				// プレイヤー取得
+				m_pPlayer = CGameManager::GetPlayer();
+			}
 
 			// nullなら
-			if (pPlayer == nullptr) return false;
+			if (m_pPlayer == nullptr) return false;
 
 			// パラメーター取得
-			CParameter* pParam = pPlayer->GetParameter();
+			CParameter* pParam = m_pPlayer->GetParameter();
 			int nHp = pParam->GetHp();
 
 			// 体力値を加算
 			nHp += ITEMINFO::UPPER_HP;
 
 			// 最大値オーバーの時
-			if (nHp >= pPlayer->GetParameter()->GetMaxHp())
+			if (nHp >= m_pPlayer->GetParameter()->GetMaxHp())
 			{
-				nHp = pPlayer->GetParameter()->GetMaxHp();
+				nHp = m_pPlayer->GetParameter()->GetMaxHp();
 			}
 
 			// セット
-			pPlayer->GetParameter()->SetHp(nHp);
+			m_pPlayer->GetParameter()->SetHp(nHp);
 
 			// サウンド再生
 			pSound->PlaySound(CSound::SOUND_LABEL_LIFE);

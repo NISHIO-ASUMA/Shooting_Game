@@ -202,14 +202,3 @@ void CRankingScore::Load(void)
 		MessageBox(NULL, "RankScore.txt が開けませんでした", "エラー", MB_OK);
 	}
 }
-//===============================
-// テクスチャ割り当て処理
-//===============================
-void CRankingScore::SetTexture(void)
-{
-	// テクスチャポインタ取得
-	CTexture* pTexture = CManager::GetTexture();
-
-	// テクスチャ割り当て
-	m_nIdxTex = pTexture->Register("data\\TEXTURE\\num001.png");
-}

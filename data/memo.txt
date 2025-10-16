@@ -1,9 +1,0 @@
-操作 [ キーボード ]
-
-移動 A/D
-攻撃 Enter
-ジャンプ SPACE
-切り替え F or Q
-画面遷移 Enter
-ポーズ TAB 
-選択 W/S ↑/ ↓↓

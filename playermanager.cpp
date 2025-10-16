@@ -63,7 +63,7 @@ HRESULT CPlayerManager::Init(void)
 	m_isChageActive = false;
 
 	// ƒvƒŒƒCƒ„[¶¬
-	m_pPlayer = CPlayer::Create(D3DXVECTOR3(0.0f, 0.0f, -550.0f), VECTOR3_NULL, 10, 0, "data\\MOTION\\Player\\Player100motion.txt");
+	m_pPlayer = CPlayer::Create(D3DXVECTOR3(0.0f, 0.0f, -550.0f), VECTOR3_NULL, 10,"data\\MOTION\\Player\\Player100motion.txt");
 
 	// ‰Šú‰»Œ‹‰Ê
 	return S_OK;

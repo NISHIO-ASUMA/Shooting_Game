@@ -152,13 +152,13 @@ void CBossStateEvent::OnStart(void)
 
 	// カメラ取得
 	CCamera* pCamera = CManager::GetCamera();
-
 	if (pCamera == nullptr) return;
 
 	// プレイヤー取得
-	CPlayer* pPlayer = CPlayer::GetIdxPlayer(0);
+	CPlayer* pPlayer = CGameManager::GetPlayer();
 	if (pPlayer == nullptr) return;
 
+	// 座標取得
 	D3DXVECTOR3 playerPos = pPlayer->GetPos();
 	playerPos.y = 0.0f;
 

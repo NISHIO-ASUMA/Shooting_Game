@@ -866,9 +866,7 @@ void CBoss::ChangeState(CBossStateBace* pNewState, int Id)
 void CBoss::RollToPlayer(void)
 {
 	// プレイヤーの取得
-	CPlayer* pPlayer = CPlayer::GetIdxPlayer(0);
-
-	// nullなら
+	CPlayer* pPlayer = CGameManager::GetPlayer();
 	if (pPlayer == nullptr) return;
 
 	// プレイヤーの座標を取得

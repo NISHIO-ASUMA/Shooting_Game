@@ -34,6 +34,7 @@ CBarrierDurability::CBarrierDurability(int nPriority) : CObjectX(nPriority)
 {
 	// 値のクリア
 	m_nIdx = NULL;
+	m_pPlayer = nullptr;
 }
 //=======================================
 // デストラクタ
@@ -94,10 +95,6 @@ void CBarrierDurability::Uninit(void)
 //=========================================
 void CBarrierDurability::Update(void)
 {
-	// プレイヤーを取得
-	CPlayer* pPlayer = CPlayer::GetIdxPlayer(0);
-	if (!pPlayer) return;
-
 	// 回転角度を更新
 	static float fValueAngle = NULL;
 
@@ -105,8 +102,8 @@ void CBarrierDurability::Update(void)
 
 	// 距離を計算
 	float fDistance = BARRIERINFO::DISTANCE;
-	float DestPosY = pPlayer->GetPos().y + BARRIERINFO::DISTANCE;
 
+	// シーン取得
 	CScene::MODE nMode = CManager::GetScene();
 
 	// ポインタ
@@ -118,11 +115,16 @@ void CBarrierDurability::Update(void)
 		{
 			// ポインタ取得
 			pBarrier = CGameManager::GetBarrier();
+
+			// m_pPlayer = CGameManager::GetPlayer();
 		}
 		else
 		{
 			// ポインタ取得
 			pBarrier = CTutorialManager::GetBarrier();
+
+			// 取得
+			m_pPlayer = CTutorialManager::GetPlayer();
 		}
 	}
 
@@ -130,15 +132,17 @@ void CBarrierDurability::Update(void)
 	float angleOffset = (D3DX_PI * 2.0f / pBarrier->GetNumBarrier()) * m_nIdx;
 	float currentAngle = fValueAngle + angleOffset;
 
+	float DestPosY = m_pPlayer->GetPos().y + BARRIERINFO::DISTANCE;
+
 	// 座標を計算
-	float DestPosX = pPlayer->GetPos().x + cosf(currentAngle) * fDistance;
-	float DestPosZ = pPlayer->GetPos().z + sinf(currentAngle) * fDistance;
+	float DestPosX = m_pPlayer->GetPos().x + cosf(currentAngle) * fDistance;
+	float DestPosZ = m_pPlayer->GetPos().z + sinf(currentAngle) * fDistance;
 
 	// オブジェクトの座標にセット
 	SetPos(D3DXVECTOR3(DestPosX, DestPosY, DestPosZ));
 
 	// オブジェクトの内側をプレイヤー方向を向かせる
-	D3DXVECTOR3 VecToPlayer = pPlayer->GetPos() - CObjectX::GetPos();
+	D3DXVECTOR3 VecToPlayer = m_pPlayer->GetPos() - CObjectX::GetPos();
 	float fAngleY = atan2f(VecToPlayer.x, VecToPlayer.z);
 
 	// 現在角度を取得

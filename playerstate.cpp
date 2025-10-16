@@ -331,13 +331,9 @@ void CPlayerStateDamage::OnStart()
 	// モーションセット
 	m_pPlayer->GetMotion()->SetMotion(CPlayer::PLAYERMOTION_DAMAGE, false, 0, false);
 
-	// 一体目のプレイヤーの時
-	if (m_pPlayer->GetPlayerIndex() == 0)
-	{
-		// 体力を減らす
-		m_pPlayer->HitDamage(m_nDamage);
-	}
-
+	// 体力を減らす
+	m_pPlayer->HitDamage(m_nDamage);
+	
 	// 状態変更
 	m_nStateCount = PLAYERSTATEINFO::DAMAGECOUNT;
 

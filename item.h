@@ -17,6 +17,7 @@
 // 前方宣言
 //****************************
 class CObject;
+class CPlayer;
 
 //****************************
 // アイテムクラスを定義
@@ -50,6 +51,8 @@ public:
 
 private:
 	int m_nType;	// アイテムの種類
+	CPlayer* m_pPlayer; // プレイヤー
+
 };
 
 #endif

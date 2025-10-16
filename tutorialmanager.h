@@ -8,7 +8,11 @@
 #ifndef _TUTORIALMANAGER_H_ // このマクロ定義がされてなかったら
 #define _TUTORIALMANAGER_H_ // 2重インクルード防止のマクロ定義
 
+//******************************
+// インクルードファイル
+//******************************
 #include "barriermanager.h"
+#include "player.h"
 
 //******************************
 // 前方宣言
@@ -50,6 +54,8 @@ public:
 	void Update(void);
 
 	static CBarrierManager* GetBarrier(void) { return m_pBarrierManger; }
+	static CPlayer* GetPlayer(void) { return m_pPlayer; }
+
 private:
 	CTutorialUi* m_pTutoui; // チュートリアルuiクラスのポインタ
 	CTutoTask* m_pTask;		// タスククラスポインタ	
@@ -58,6 +64,8 @@ private:
 	CMoveUi* m_pMoveui;
 	CMoveUi* m_pMoveItemUi;
 	CItem* m_pItem[2];
+	static CPlayer* m_pPlayer;
+
 	static CBarrierManager* m_pBarrierManger;
 
 	bool m_isFreeDone;

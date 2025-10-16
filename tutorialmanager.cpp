@@ -33,6 +33,7 @@
 // 静的メンバ変数宣言
 //********************************
 CBarrierManager* CTutorialManager::m_pBarrierManger = nullptr;
+CPlayer* CTutorialManager::m_pPlayer = nullptr;
 
 //==========================
 // コンストラクタ
@@ -91,6 +92,9 @@ HRESULT CTutorialManager::Init(void)
 		m_pTask->Init();
 	}
 
+	// 生成
+	m_pPlayer = CPlayer::Create(VECTOR3_NULL, VECTOR3_NULL, 10, "data/MOTION/Player/TutoPlayer100motion.txt");
+
 	m_pBarrierManger = new CBarrierManager;
 	m_pBarrierManger->Init();
 
@@ -102,6 +106,9 @@ HRESULT CTutorialManager::Init(void)
 //==========================
 void CTutorialManager::Uninit(void)
 {
+	// nullにする
+	m_pPlayer = nullptr;
+
 	// nullじゃなかったら
 	if (m_pTask != nullptr)
 	{
@@ -148,13 +155,6 @@ void CTutorialManager::Update(void)
 	// 入力デバイス取得
 	CInputKeyboard* pKey = CManager::GetInputKeyboard();
 	CJoyPad* pJoyPad = CManager::GetJoyPad();
-
-	// プレイヤー取得
-	CPlayer* pPlayer = CPlayer::GetIdxPlayer(0);
-	D3DXVECTOR3 pPos = pPlayer->GetPos();
-
-	CPlayer* pPlayer1 = CPlayer::GetIdxPlayer(1);
-	D3DXVECTOR3 pPos1 = pPlayer1->GetPos();
 
 	// 取得失敗時
 	if (pKey == nullptr) return;

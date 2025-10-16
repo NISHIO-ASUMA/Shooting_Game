@@ -15,14 +15,13 @@
 #include "uimanager.h"
 #include "barriermanager.h"
 #include "rubblemanager.h"
-#include "subplayer.h"
+#include "player.h"
 
 //*****************************
 // 前方宣言
 //*****************************
 class CItemManager;
 class CPilerManager;
-class CPlayerManager;
 
 //*****************************
 // ゲーム状態管理クラスを定義
@@ -46,7 +45,7 @@ public:
 	static CUimanager* GetUimanager(void) { return m_puimanager; }
 	static CBarrierManager* GetBarrier(void) { return m_pBarrier; }
 	static CRubbleManager* GetRubble(void) { return m_pRubble; }
-	static CSubPlayer* GetSubPlayer(void) { return m_pSubPlayer; }
+	static CPlayer* GetPlayer(void) { return m_pPlayer; }
 
 private:
 	static CMeshCylinder* m_pMeshCylinder;		// シリンダー
@@ -55,11 +54,10 @@ private:
 	static CUimanager* m_puimanager;			// UIマネージャー
 	static CBarrierManager* m_pBarrier;
 	static CRubbleManager* m_pRubble;
-	static CSubPlayer* m_pSubPlayer;
+	static CPlayer* m_pPlayer;
 
 	CItemManager* m_pItemManager;		// アイテムマネージャーポインタ
 	CPilerManager* m_pPilerManager;
-	CPlayerManager* m_pPlayerManager;
 
 };
 

@@ -91,6 +91,7 @@ void CBulletHorming::Uninit(void)
 //==================================
 void CBulletHorming::Update(void)
 {
+#if 0
 	// 現在の座標を取得
 	D3DXVECTOR3 NowPos = GetPos();
 
@@ -134,6 +135,7 @@ void CBulletHorming::Update(void)
 
 	// 現在の座標にセットする
 	SetPos(NowPos);
+#endif
 }
 //==================================
 // 描画処理
@@ -148,6 +150,7 @@ void CBulletHorming::Draw(void)
 //==================================
 void CBulletHorming::CollisionAll(void)
 {
+#if 0
 	// 現在の座標を取得
 	D3DXVECTOR3 NowPos = GetPos();
 
@@ -215,6 +218,7 @@ void CBulletHorming::CollisionAll(void)
 		// 次のオブジェクトを検出する
 		pObj = pObj->GetNext();
 	}
+#endif
 }
 //==================================
 // 当たり判定処理

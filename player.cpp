@@ -47,9 +47,7 @@ namespace PLAYERINFO
 	constexpr float HITRADIUS = 25.0f;	 // 当たり判定の半径
 	constexpr float AVOID_COOLTIME = 5.0f;	// 回避のクールタイム
 	constexpr float RADIUS = 550.0f;		// 半径
-	constexpr int   NUMBER_MAIN = 0;	 // メイン操作プレイヤー番号
-	constexpr int   NUMBER_SUB = 1;		 // 分身操作プレイヤー番号
-	constexpr int   KeyRepeatCount = 15; // キーのリピート最大カウント
+	constexpr int   KeyRepeatCount = 15;	// キーのリピート最大カウント
 };
 
 //**********************
@@ -72,7 +70,6 @@ CPlayer::CPlayer(int nPriority) : CObject(nPriority)
 	m_type = NULL;
 	m_posOld = VECTOR3_NULL;
 	m_pFilename = {};
-	m_nIdxPlayer = NULL;
 	m_fAngle = NULL;
 	m_fAvoidTime = NULL;
 
@@ -95,7 +92,6 @@ CPlayer::CPlayer(int nPriority) : CObject(nPriority)
 	m_isAttack = false;
 	m_isMoving = false;
 	m_isShadow = false;
-	m_isStateSynchro = false;
 	m_isConectPad = false;
 	m_isGuard = false;
 	m_isDecHp = false;
@@ -116,7 +112,7 @@ CPlayer::~CPlayer()
 //===============================
 // プレイヤー生成処理
 //===============================
-CPlayer* CPlayer::Create(D3DXVECTOR3 pos, D3DXVECTOR3 rot,int nLife,const int nIdxParson, const char* pFilename)
+CPlayer* CPlayer::Create(D3DXVECTOR3 pos, D3DXVECTOR3 rot,int nLife,const char* pFilename)
 {
 	// プレイヤーのインスタンス生成
 	CPlayer* pPlayer = new CPlayer;
@@ -127,36 +123,19 @@ CPlayer* CPlayer::Create(D3DXVECTOR3 pos, D3DXVECTOR3 rot,int nLife,const int nI
 	// オブジェクト設定
 	pPlayer->m_pos = pos;
 	pPlayer->m_rot = rot;
-	pPlayer->m_nIdxPlayer = nIdxParson;
 	pPlayer->m_pFilename = pFilename;
 
-	// 体力は2体で共通
-	if (nIdxParson == PLAYERINFO::NUMBER_MAIN)
+	// ポインタ生成
+	pPlayer->m_pParameter = new CParameter;
+
+	// nullチェック
+	if (pPlayer->m_pParameter != nullptr)
 	{
-		// ポインタ生成
-		pPlayer->m_pParameter = new CParameter;
-
-		// nullチェック
-		if (pPlayer->m_pParameter != nullptr)
-		{
-			// 体力パラメーターを設定
-			pPlayer->m_pParameter->SetHp(nLife);
-			pPlayer->m_pParameter->SetMaxHp(nLife);
-		}
+		// 体力パラメーターを設定
+		pPlayer->m_pParameter->SetHp(nLife);
+		pPlayer->m_pParameter->SetMaxHp(nLife);
 	}
-	else
-	{
-		// メイン側の情報をセット
-		CPlayer* pMain = CPlayer::GetIdxPlayer(PLAYERINFO::NUMBER_MAIN);
-
-		// nullptrチェック
-		if (pMain != nullptr)
-		{
-			// ポインタを共有
-			pPlayer->m_pParameter = pMain->m_pParameter;
-		}
-	}
-
+	
 	// プレイヤー初期化処理
 	if (FAILED(pPlayer->Init()))
 	{
@@ -213,17 +192,14 @@ HRESULT CPlayer::Init(void)
 		}
 	}
 	
-	// 一人目のプレイヤーなら
-	if (m_nIdxPlayer == PLAYERINFO::NUMBER_MAIN)
-	{
-		// ステンシルシャドウ生成
-		m_pShadowS = 
-			CShadowS::Create(
-			"data\\MODEL\\STAGEOBJ\\Shadowmodel.x",
-			CPlayer::GetIdxPlayer(PLAYERINFO::NUMBER_MAIN)->GetPos(), 
-			CPlayer::GetIdxPlayer(PLAYERINFO::NUMBER_MAIN)->GetRot()
-			);
-	}
+	// ステンシルシャドウ生成
+	m_pShadowS = CShadowS::Create
+	(
+		"data\\MODEL\\STAGEOBJ\\Shadowmodel.x",
+		m_pos, 
+		m_rot
+	);
+	
 
 	// 初期座標の向きを設定
 	InitPos(NULL);
@@ -233,8 +209,6 @@ HRESULT CPlayer::Init(void)
 
 	// 初期状態をセット
 	ChangeState(new CPlayerStateNeutral,CPlayerStateBase::ID_NEUTRAL); 
-
-	m_fSize = { 50.0f,50.0f,50.0f };
 
 	// クールタイム
 	m_fAvoidTime = PLAYERINFO::AVOID_COOLTIME;
@@ -275,7 +249,7 @@ void CPlayer::Uninit(void)
 	}
 
 	// nullptrチェック
-	if (m_pParameter != nullptr && m_nIdxPlayer == PLAYERINFO::NUMBER_MAIN)
+	if (m_pParameter != nullptr)
 	{
 		// ポインタの破棄
 		delete m_pParameter;
@@ -318,14 +292,11 @@ void CPlayer::Update(void)
 		D3DXVECTOR3 BossDir = CGameManager::GetBoss()->GetPos() - m_pos;
 		BossDir.y = 0.0f;
 
-		if (D3DXVec3LengthSq(&BossDir) > 0.0001f)
-		{
-			// 正規化
-			D3DXVec3Normalize(&BossDir, &BossDir);
+		// 正規化
+		D3DXVec3Normalize(&BossDir, &BossDir);
 
-			// 角度を適用
-			m_rot.y = atan2f(-BossDir.x, -BossDir.z);
-		}
+		// 角度を適用
+		m_rot.y = atan2f(-BossDir.x, -BossDir.z);
 	}
 	else if (m_isAttack && nMode == CScene::MODE_TUTORIAL)
 	{
@@ -333,14 +304,12 @@ void CPlayer::Update(void)
 		D3DXVECTOR3 DestPos = VECTOR3_NULL - m_pos;
 		DestPos.y = 0.0f;
 
-		if (D3DXVec3LengthSq(&DestPos) > 0.0001f)
-		{
-			// 正規化
-			D3DXVec3Normalize(&DestPos, &DestPos);
+		// 正規化
+		D3DXVec3Normalize(&DestPos, &DestPos);
 
-			// 角度を適用
-			m_rot.y = atan2f(-DestPos.x, -DestPos.z);
-		}
+		// 角度を適用
+		m_rot.y = atan2f(-DestPos.x, -DestPos.z);
+		
 	}
 
 	// クールタイムを減算する
@@ -351,96 +320,6 @@ void CPlayer::Update(void)
 		if (m_fAvoidTime < 0.0f)
 		{
 			m_fAvoidTime = 0.0f;
-		}
-	}
-
-	// SUBプレイヤーだけ処理
-	if (m_nIdxPlayer == PLAYERINFO::NUMBER_SUB)
-	{
-		// MAINプレイヤー取得
-		CPlayer* pMain = CPlayer::GetIdxPlayer(PLAYERINFO::NUMBER_MAIN);
-
-		// 角度統一
-		m_fAngle = pMain->m_fAngle;
-
-		if (nMode == CScene::MODE_GAME)
-		{
-			// 座標統一
-			float fRadius = CGameManager::GetCylinder()->GetRadius();
-			float IdxAngle = m_fAngle + D3DX_PI;
-			D3DXVECTOR3 DestPos = CGameManager::GetCylinder()->GetPos();
-
-			// 座標設定
-			m_pos.x = DestPos.x - sinf(IdxAngle) * fRadius;
-			m_pos.y = pMain->m_pos.y;
-			m_pos.z = DestPos.z - cosf(IdxAngle) * fRadius;
-		}
-		else if (nMode == CScene::MODE_TUTORIAL)
-		{
-			// 座標統一
-			float fRadius = PLAYERINFO::RADIUS;
-			float IdxAngle = m_fAngle + D3DX_PI;
-			D3DXVECTOR3 DestPos = VECTOR3_NULL;
-
-			// 座標設定
-			m_pos.x = DestPos.x - sinf(IdxAngle) * fRadius;
-			m_pos.y = pMain->m_pos.y;
-			m_pos.z = DestPos.z - cosf(IdxAngle) * fRadius;
-		}
-
-		// モーションを統一する
-		m_pMotion->SetMotion(pMain->GetNowMotion());
-
-		// MAINとSUBのステート取得
-		int mainStateID = pMain->m_pStateMachine->GetNowStateID();
-		int subStateID = m_pStateMachine->GetNowStateID();
-
-		{
-			// 両方同じなら同期許可
-			if (mainStateID == subStateID)
-			{
-				m_isStateSynchro = true;
-			}
-		}
-
-		// モーション一致していたら
-		if (m_isStateSynchro)
-		{
-			// モーションを統一する
-			m_pMotion->SetMotion(pMain->GetNowMotion());
-
-			if (mainStateID != subStateID )
-			{
-				switch (mainStateID)
-				{
-				case CPlayerStateBase::ID_NEUTRAL:	// ニュートラル
-					ChangeState(new CPlayerStateNeutral(), CPlayerStateBase::ID_NEUTRAL);
-					break;
-
-				case CPlayerStateBase::ID_MOVE:		// 移動
-					ChangeState(new CPlayerStateMove(), CPlayerStateBase::ID_MOVE);
-					break;
-
-				case CPlayerStateBase::ID_ACTION:	// 攻撃
-					ChangeState(new CPlayerStateAction(), CPlayerStateBase::ID_ACTION);
-					break;
-
-				case CPlayerStateBase::ID_DAMAGE:	// ダメージ
-					ChangeState(new CPlayerStateDamage(0), CPlayerStateBase::ID_DAMAGE);
-					break;
-
-				case CPlayerStateBase::ID_AVOIDRIGHT:	// 回避
-					ChangeState(new CPlayerStateAvoidRight(), CPlayerStateBase::ID_AVOIDRIGHT);
-					break;
-
-				case CPlayerStateBase::ID_AVOIDLEFT:	// 回避
-					ChangeState(new CPlayerStateAvoidLeft(), CPlayerStateBase::ID_AVOIDLEFT);
-					break;
-
-				default:
-					break;
-				}
-			}
 		}
 	}
 
@@ -493,7 +372,7 @@ void CPlayer::Update(void)
 	}
 
 	// イベント時は当たり判定をとおさない かつ 一人目のみと判定する
-	if (CManager::GetCamera()->GetMode() != CManager::GetCamera()->MODE_EVENT && m_nIdxPlayer == PLAYERINFO::NUMBER_MAIN)
+	if (CManager::GetCamera()->GetMode() != CManager::GetCamera()->MODE_EVENT)
 	{
 		// 当たり判定処理関数
 		Collision();
@@ -519,15 +398,15 @@ void CPlayer::Update(void)
 		m_move.y = 0.0f;
 	}
 
-	// ステンシルシャドウが存在 かつ MAINプレイヤー
-	if (m_pShadowS && m_nIdxPlayer == PLAYERINFO::NUMBER_MAIN)
+	// ステンシルシャドウが存在するとき
+	if (m_pShadowS)
 	{
 		// 影座標をMAINプレイヤー座標に設定
-		D3DXVECTOR3 ShadowPos = GetIdxPlayer(0)->GetPos();
+		D3DXVECTOR3 ShadowPos = m_pos;
 
 		// オブジェクト設定
 		m_pShadowS->SetPos(ShadowPos);
-		m_pShadowS->SetRot(GetIdxPlayer(PLAYERINFO::NUMBER_MAIN)->GetRot()); 
+		m_pShadowS->SetRot(m_rot); 
 	}
 
 	// チャージ上限に達したとき かつ フラグが有効なら
@@ -535,6 +414,7 @@ void CPlayer::Update(void)
 	{
 		// サウンド再生
 		CSound * pSound = CManager::GetSound();
+
 		if (pSound != nullptr)
 		{
 			pSound->PlaySound(CSound::SOUND_LABEL_CHANGEWEPON);
@@ -544,7 +424,7 @@ void CPlayer::Update(void)
 		CBullet::SetType(CBullet::BTYPE_LASER);
 	}
 
-	// レーザーの時
+	// レーザー切り替え時
 	if (CBullet::GetType() == CBullet::BTYPE_LASER)
 	{
 		// パーティクル生成
@@ -589,80 +469,22 @@ void CPlayer::Draw(void)
 		m_apModel[nCnt]->Draw();
 	}
 
-	if (m_nIdxPlayer == PLAYERINFO::NUMBER_MAIN)
-	{
-		// 状態
-		CDebugproc::Print("ジャンプのフラグ { m_isJump = %d } ", m_isJump);
-		// デバッグフォント描画
-		CDebugproc::Draw(0, 160);
-	}
+	// 状態
+	CDebugproc::Print("ジャンプのフラグ { m_isJump = %d } ", m_isJump);
+	// デバッグフォント描画
+	CDebugproc::Draw(0, 160);
+	
 
 	// 識別描画
-	CDebugproc::Print("MAINプレイヤーの座標 { %.2f,%.2f,%.2f }", CPlayer::GetIdxPlayer(0)->GetPos().x, CPlayer::GetIdxPlayer(0)->GetPos().y, CPlayer::GetIdxPlayer(0)->GetPos().z);
+	CDebugproc::Print("プレイヤーの座標 { %.2f,%.2f,%.2f }", m_pos.x,m_pos.y, m_pos.z);
 	// デバッグフォント描画
 	CDebugproc::Draw(0, 200);
 
-#if 1
-	// 識別描画
-	CDebugproc::Print("SUBプレイヤーの座標 { %.2f,%.2f,%.2f }", CPlayer::GetIdxPlayer(1)->GetPos().x, CPlayer::GetIdxPlayer(1)->GetPos().y, CPlayer::GetIdxPlayer(1)->GetPos().z);
-	// デバッグフォント描画
-	CDebugproc::Draw(0, 220);
-
-	// 体力描画
-	CDebugproc::Print("プレイヤーの体力 { %d } ", m_pParameter->GetHp());
-	// デバッグフォント描画
-	CDebugproc::Draw(0, 340);
-
-	// モーション描画
-	CDebugproc::Print("MAINプレイヤーのモーション { %d } ", CPlayer::GetIdxPlayer(PLAYERINFO::NUMBER_MAIN)->GetNowMotion());
-	// デバッグフォント描画
-	CDebugproc::Draw(0, 600);
-
-	// モーション描画
-	CDebugproc::Print("SUBプレイヤーのモーション { %d } ", CPlayer::GetIdxPlayer(PLAYERINFO::NUMBER_SUB)->GetNowMotion());
-	// デバッグフォント描画
-	CDebugproc::Draw(0, 620);
-	CDebugproc::Print("SUB 角度 { %.2f }", CPlayer::GetIdxPlayer(PLAYERINFO::NUMBER_SUB)->m_fAngle);
-	CDebugproc::Draw(0, 680);
-#endif
-	CDebugproc::Print("MAIN角度 { %.2f }", CPlayer::GetIdxPlayer(PLAYERINFO::NUMBER_MAIN)->m_fAngle);
+	CDebugproc::Print("プレイヤー角度 { %.2f }", m_fAngle);
 	CDebugproc::Draw(0, 660);
 
-	CDebugproc::Print("プレイヤーの状態 { %d }", GetIdxPlayer(PLAYERINFO::NUMBER_MAIN)->GetStateMachine()->GetNowStateID());
+	CDebugproc::Print("プレイヤーの状態 { %d }",GetStateMachine()->GetNowStateID());
 	CDebugproc::Draw(1100, 500);
-}
-
-//=========================================
-// 識別番号ごとのプレイヤーの取得
-//=========================================
-CPlayer* CPlayer::GetIdxPlayer(int Idx)
-{
-	// オブジェクトの先頭取得
-	CObject* pObj = CObject::GetTop(static_cast<int>(CObject::PRIORITY::CHARACTOR));
-
-	// pObjがnullptrじゃなかったら
-	while (pObj != nullptr)
-	{
-		// オブジェクトのタイプがPLAYERの時
-		if (pObj->GetObjType() == CObject::TYPE_PLAYER)
-		{
-			// プレイヤー型にキャスト
-			CPlayer* pPlayer = static_cast<CPlayer*>(pObj);
-
-			// 番号が一致していたら
-			if (pPlayer->GetPlayerIndex() == Idx)
-			{
-				// ポインタを返す
-				return pPlayer;
-			}
-		}
-
-		// 次のプレイヤーを代入
-		pObj = pObj->GetNext();
-	}
-
-	// 取得できなかった場合
-	return nullptr;
 }
 
 //=========================================
@@ -695,10 +517,6 @@ void CPlayer::ChangeState(CPlayerStateBase* pNewState,int id)
 
 	// ステート変更
 	m_pStateMachine->ChangeState(pNewState);
-
-	// 同期を一時解除
-	if (m_nIdxPlayer == PLAYERINFO::NUMBER_SUB)
-		m_isStateSynchro = false;
 }
 
 //=========================================
@@ -706,9 +524,6 @@ void CPlayer::ChangeState(CPlayerStateBase* pNewState,int id)
 //=========================================
 void CPlayer::UpdateAction(CInputKeyboard* pInputKeyboard,D3DXMATRIX pMtx,const D3DXVECTOR3 DestMove, CJoyPad* pPad)
 {
-	// SUBプレイヤーがステート未同期なら処理しない
-	if (m_nIdxPlayer == PLAYERINFO::NUMBER_SUB && !m_isStateSynchro) return;
-
 	// キーフラグをセット
 	bool isKeyPress = false;
 
@@ -778,8 +593,6 @@ void CPlayer::UpdateAction(CInputKeyboard* pInputKeyboard,D3DXMATRIX pMtx,const 
 //=========================================
 void CPlayer::UpdateMove(const D3DXVECTOR3 DestPos,CInputKeyboard* pInputKeyboard, CJoyPad* pPad)
 {
-	// SUBプレイヤーがステート未同期なら処理しない
-	if (m_nIdxPlayer == PLAYERINFO::NUMBER_SUB && !m_isStateSynchro) return;
 
 	// ジャンプ攻撃中なら移動処理を禁止
 	if (m_pMotion->GetMotionType() == PLAYERMOTION_JUMPATTACK)
@@ -806,172 +619,81 @@ void CPlayer::UpdateMove(const D3DXVECTOR3 DestPos,CInputKeyboard* pInputKeyboar
 	// サウンド取得
 	CSound* pSound = CManager::GetSound();
 
-	// 識別番号で処理を分別する
-	switch (m_nIdxPlayer)
+	// キー入力時の角度計算
+	if (pInputKeyboard->GetPress(DIK_A) || (pPad->GetPress(pPad->JOYKEY_LEFT)))
 	{
-	case PLAYERINFO::NUMBER_MAIN: // メインプレイヤー
+		//==========================
+		// 左移動
+		//==========================
 
-		// キー入力時の角度計算
-		if (pInputKeyboard->GetPress(DIK_A) || (pPad->GetPress(pPad->JOYKEY_LEFT)))
-		{
-			//==========================
-			// 左移動
-			//==========================
-
-			// 角度更新
-			m_fAngle += PLAYERINFO::MOVE;
+		// 角度更新
+		m_fAngle += PLAYERINFO::MOVE;
 			
-			// 目的角を計算
-			m_rotDest.y = m_fAngle - D3DX_PI * 0.5f; // 左向きに設定
+		// 目的角を計算
+		m_rotDest.y = m_fAngle - D3DX_PI * 0.5f; // 左向きに設定
 
-			if (!m_isJump)
-			{
-				// キー入力で回避発動
-				if ((pInputKeyboard->GetTrigger(DIK_W) || pPad->GetTrigger(pPad->JOYKEY_RIGHT_B)) && m_fAvoidTime <= 0.0f && !m_isAvoid)
-				{
-					// 回避SE
-					pSound->PlaySound(CSound::SOUND_LABEL_AVOID);
-
-					// 入力フラグを有効化
-					m_isAvoid = true;
-
-					// クールタイム設定
-					m_fAvoidTime = PLAYERINFO::AVOID_COOLTIME;
-
-					// ステート変更
-					ChangeState(new CPlayerStateAvoidLeft(), CPlayerStateBase::ID_AVOIDLEFT);
-
-					return;
-				}
-			}
-
-			if (!m_isJump) 	m_pMotion->SetMotion(PLAYERMOTION_MOVE, false, 0,false); // 移動モーションに変更
-		}
-		else if (pInputKeyboard->GetPress(DIK_D) || (pPad->GetPress(pPad->JOYKEY_RIGHT)))
+		if (!m_isJump)
 		{
-			//==========================
-			// 右移動
-			//==========================
+			// キー入力で回避発動
+			if ((pInputKeyboard->GetTrigger(DIK_W) || pPad->GetTrigger(pPad->JOYKEY_RIGHT_B)) && m_fAvoidTime <= 0.0f && !m_isAvoid)
+			{
+				// 回避SE
+				pSound->PlaySound(CSound::SOUND_LABEL_AVOID);
 
-			// 角度更新
-			m_fAngle -= PLAYERINFO::MOVE;
+				// 入力フラグを有効化
+				m_isAvoid = true;
+
+				// クールタイム設定
+				m_fAvoidTime = PLAYERINFO::AVOID_COOLTIME;
+
+				// ステート変更
+				ChangeState(new CPlayerStateAvoidLeft(), CPlayerStateBase::ID_AVOIDLEFT);
+
+				return;
+			}
+		}
+
+		if (!m_isJump) 	m_pMotion->SetMotion(PLAYERMOTION_MOVE, false, 0,false); // 移動モーションに変更
+	}
+	else if (pInputKeyboard->GetPress(DIK_D) || (pPad->GetPress(pPad->JOYKEY_RIGHT)))
+	{
+		//==========================
+		// 右移動
+		//==========================
+
+		// 角度更新
+		m_fAngle -= PLAYERINFO::MOVE;
 			
-			// 目的角を計算
-			m_rotDest.y = m_fAngle + D3DX_PI * 0.5f; // 右向きに設定
+		// 目的角を計算
+		m_rotDest.y = m_fAngle + D3DX_PI * 0.5f; // 右向きに設定
 
-			if (!m_isJump)
+		if (!m_isJump)
+		{
+			// キー入力で回避発動
+			if ((pInputKeyboard->GetTrigger(DIK_W) || pPad->GetTrigger(pPad->JOYKEY_RIGHT_B)) && m_fAvoidTime <= 0.0f && !m_isAvoid)
 			{
-				// キー入力で回避発動
-				if ((pInputKeyboard->GetTrigger(DIK_W) || pPad->GetTrigger(pPad->JOYKEY_RIGHT_B)) && m_fAvoidTime <= 0.0f && !m_isAvoid)
-				{
-					// 回避SE
-					pSound->PlaySound(CSound::SOUND_LABEL_AVOID);
+				// 回避SE
+				pSound->PlaySound(CSound::SOUND_LABEL_AVOID);
 
-					// 入力フラグを有効化
-					m_isAvoid = true;
+				// 入力フラグを有効化
+				m_isAvoid = true;
 
-					// クールタイム設定
-					m_fAvoidTime = PLAYERINFO::AVOID_COOLTIME;
+				// クールタイム設定
+				m_fAvoidTime = PLAYERINFO::AVOID_COOLTIME;
 
-					// ステート変更
-					ChangeState(new CPlayerStateAvoidRight(), CPlayerStateBase::ID_AVOIDRIGHT);
+				// ステート変更
+				ChangeState(new CPlayerStateAvoidRight(), CPlayerStateBase::ID_AVOIDRIGHT);
 
-					return;
-				}
+				return;
 			}
-
-			if (!m_isJump) 	m_pMotion->SetMotion(PLAYERMOTION_MOVE, false, 0, false); // 移動モーションに変更
 		}
-		else
-		{
-			// 移動モーション時,ニュートラルモーションに変更
-			if (m_pMotion->GetMotionType() == PLAYERMOTION_MOVE) m_pMotion->SetMotion(PLAYERMOTION_NEUTRAL, false, 0, false);
-		}
-		break;
 
-	case PLAYERINFO::NUMBER_SUB: // 対角線上のプレイヤー
-
-		// キー入力時の角度計算
-		if (pInputKeyboard->GetPress(DIK_A) || (pPad->GetPress(pPad->JOYKEY_LEFT))) // Aキー
-		{
-			//==========================
-			// 左移動
-			//==========================
-
-			// 角度更新
-			m_fAngle -= PLAYERINFO::MOVE;
-
-			// 目的角を計算
-			m_rotDest.y = m_fAngle - D3DX_PI * 0.5f; // 左向きに設定
-
-			if (!m_isJump)
-			{
-				// キー入力で回避発動
-				if ((pInputKeyboard->GetTrigger(DIK_W) || pPad->GetTrigger(pPad->JOYKEY_RIGHT_B)) && m_fAvoidTime <= 0.0f && !m_isAvoid)
-				{
-					// 回避SE
-					pSound->PlaySound(CSound::SOUND_LABEL_AVOID);
-
-					// 入力フラグを無効化
-					m_isAvoid = true;
-
-					// クールタイム設定
-					m_fAvoidTime = PLAYERINFO::AVOID_COOLTIME;
-
-					// ステート変更
-					ChangeState(new CPlayerStateAvoidLeft(), CPlayerStateBase::ID_AVOIDLEFT);
-
-					return;
-				}
-			}
-
-			if (!m_isJump) 	m_pMotion->SetMotion(PLAYERMOTION_MOVE, false, 0, false); // 移動モーションに変更
-
-		}
-		else if (pInputKeyboard->GetPress(DIK_D) || (pPad->GetPress(pPad->JOYKEY_RIGHT))) // Dキー
-		{
-			//==========================
-			// 右移動
-			//==========================
-
-			// 角度更新
-			m_fAngle += PLAYERINFO::MOVE;
-
-			// 目的角を計算
-			m_rotDest.y = m_fAngle + D3DX_PI * 0.5f; // 右向きに設定
-
-			if (!m_isJump)
-			{
-				// 回避遷移
-				if ((pInputKeyboard->GetTrigger(DIK_W) || pPad->GetTrigger(pPad->JOYKEY_RIGHT_B)) && m_fAvoidTime <= 0.0f && m_isAvoid)
-				{
-					// 回避SE
-					pSound->PlaySound(CSound::SOUND_LABEL_AVOID);
-
-					// 入力を無効化
-					m_isAvoid = true;
-
-					// クールタイム設定
-					m_fAvoidTime = PLAYERINFO::AVOID_COOLTIME;
-
-					// ステート変更
-					ChangeState(new CPlayerStateAvoidRight(), CPlayerStateBase::ID_AVOIDRIGHT);
-
-					return;
-				}
-			}
-
-			if (!m_isJump) 	m_pMotion->SetMotion(PLAYERMOTION_MOVE, false, 0, false); // 移動モーションに変更
-		}
-		else
-		{
-			// 移動モーション時,ニュートラルモーションに変更
-			if (m_pMotion->GetMotionType() == PLAYERMOTION_MOVE) m_pMotion->SetMotion(PLAYERMOTION_NEUTRAL, false, 0, false);
-		}
-		break;
-
-	default:
-		break;
+		if (!m_isJump) 	m_pMotion->SetMotion(PLAYERMOTION_MOVE, false, 0, false); // 移動モーションに変更
+	}
+	else
+	{
+		// 移動モーション時,ニュートラルモーションに変更
+		if (m_pMotion->GetMotionType() == PLAYERMOTION_MOVE) m_pMotion->SetMotion(PLAYERMOTION_NEUTRAL, false, 0, false);
 	}
 
 	// 角度を正規化
@@ -984,22 +706,14 @@ void CPlayer::UpdateMove(const D3DXVECTOR3 DestPos,CInputKeyboard* pInputKeyboar
 		m_rot.y -= D3DX_PI * 2.0f;
 	}
 
-	// 自身の角度を計算
-	float IdxAngle = (m_nIdxPlayer == PLAYERINFO::NUMBER_MAIN) ? m_fAngle : m_fAngle + D3DX_PI;
 
 	// 対角線座標を中心から計算
-	m_pos.x = DestPos.x - sinf(IdxAngle) * fRadius;
-	m_pos.z = DestPos.z - cosf(IdxAngle) * fRadius;
+	m_pos.x = DestPos.x - sinf(m_fAngle) * fRadius;
+	m_pos.z = DestPos.z - cosf(m_fAngle) * fRadius;
 
 	// 現在の角度を設定する
-	if (m_nIdxPlayer == PLAYERINFO::NUMBER_MAIN)
-	{
-		m_rot.y += (m_rotDest.y - m_rot.y) + D3DX_PI;
-	}
-	else if (m_nIdxPlayer == PLAYERINFO::NUMBER_SUB)
-	{
-		m_rot.y += (m_rotDest.y - m_rot.y);
-	}
+	m_rot.y += (m_rotDest.y - m_rot.y) + D3DX_PI;
+	
 
 	// 座標更新
 	m_posOld = m_pos;
@@ -1009,8 +723,6 @@ void CPlayer::UpdateMove(const D3DXVECTOR3 DestPos,CInputKeyboard* pInputKeyboar
 //=========================================
 void CPlayer::UpdateJumpAction(CInputKeyboard* pInputKeyboard, D3DXMATRIX pMtx, const D3DXVECTOR3 DestMove, CJoyPad* pPad)
 {
-	 // SUBプレイヤーがステート未同期なら処理しない
-	 if (m_nIdxPlayer == PLAYERINFO::NUMBER_SUB && !m_isStateSynchro) return;
 
 	 // モーションのフラグ
 	 bool isJumpAttacking = (m_pMotion->GetMotionType() == PLAYERMOTION_JUMPATTACK);
@@ -1136,9 +848,6 @@ void CPlayer::UpdateJumpAction(CInputKeyboard* pInputKeyboard, D3DXMATRIX pMtx, 
 //=============================
 void CPlayer::UpdateAvoidRight(void)
 {
-	// SUBプレイヤーがステート未同期なら処理しない
-	if (m_nIdxPlayer == PLAYERINFO::NUMBER_SUB && !m_isStateSynchro) return;
-
 	// ジャンプ攻撃中なら移動処理を禁止
 	if (m_pMotion->GetMotionType() == PLAYERMOTION_JUMPATTACK)
 	{
@@ -1161,32 +870,11 @@ void CPlayer::UpdateAvoidRight(void)
 		fRadius = PLAYERINFO::RADIUS;
 	}
 
-	// 識別番号で処理を分別する
-	switch (m_nIdxPlayer)
-	{
-	case PLAYERINFO::NUMBER_MAIN: // メインプレイヤー
+	// 角度更新
+	m_fAngle -= PLAYERINFO::MOVE;
 
-		// 角度更新
-		m_fAngle -= PLAYERINFO::MOVE;
-
-		// 目的角を計算
-		m_rotDest.y = m_fAngle + D3DX_PI * 0.5f; // 右向きに設定
-
-		break;
-
-	case PLAYERINFO::NUMBER_SUB:
-
-		// 角度更新
-		m_fAngle -= PLAYERINFO::MOVE;
-
-		// 目的角を計算
-		m_rotDest.y = m_fAngle + D3DX_PI * 0.5f; // 右向きに設定
-
-		break;
-
-	default:
-		break;
-	}
+	// 目的角を計算
+	m_rotDest.y = m_fAngle + D3DX_PI * 0.5f; // 右向きに設定
 
 	// 角度を正規化
 	if (m_rotDest.y - m_rot.y > D3DX_PI)
@@ -1198,30 +886,18 @@ void CPlayer::UpdateAvoidRight(void)
 		m_rot.y -= D3DX_PI * 2.0f;
 	}
 
-	// 自身の角度を計算
-	float IdxAngle = (m_nIdxPlayer == PLAYERINFO::NUMBER_MAIN) ? m_fAngle : m_fAngle + D3DX_PI;
-
 	// 対角線座標を中心から計算
-	m_pos.x = 0.0f - sinf(IdxAngle) * fRadius;
-	m_pos.z = 0.0f - cosf(IdxAngle) * fRadius;
+	m_pos.x = 0.0f - sinf(m_fAngle) * fRadius;
+	m_pos.z = 0.0f - cosf(m_fAngle) * fRadius;
 
 	// 現在の角度を設定する
-	if (m_nIdxPlayer == PLAYERINFO::NUMBER_MAIN)
-	{
-		m_rot.y += (m_rotDest.y - m_rot.y) + D3DX_PI;
-	}
-	else if (m_nIdxPlayer == PLAYERINFO::NUMBER_SUB)
-	{
-		m_rot.y += (m_rotDest.y - m_rot.y);
-	}
+	m_rot.y += (m_rotDest.y - m_rot.y) + D3DX_PI;
 }
 //=============================
 // 左回避状態更新関数
 //=============================
 void CPlayer::UpdateAvoidLeft(void)
 {
-	// SUBプレイヤーがステート未同期なら処理しない
-	if (m_nIdxPlayer == PLAYERINFO::NUMBER_SUB && !m_isStateSynchro) return;
 
 	// ジャンプ攻撃中なら移動処理を禁止
 	if (m_pMotion->GetMotionType() == PLAYERMOTION_JUMPATTACK)
@@ -1245,32 +921,11 @@ void CPlayer::UpdateAvoidLeft(void)
 		fRadius = PLAYERINFO::RADIUS;
 	}
 
-	// 識別番号で処理を分別する
-	switch (m_nIdxPlayer)
-	{
-	case PLAYERINFO::NUMBER_MAIN: // メインプレイヤー
+	// 角度更新
+	m_fAngle += PLAYERINFO::MOVE;
 
-		// 角度更新
-		m_fAngle += PLAYERINFO::MOVE;
-
-		// 目的角を計算
-		m_rotDest.y = m_fAngle - D3DX_PI * 0.5f; // 左向きに設定
-
-		break;
-
-	case PLAYERINFO::NUMBER_SUB:
-
-		// 角度更新
-		m_fAngle += PLAYERINFO::MOVE;
-
-		// 目的角を計算
-		m_rotDest.y = m_fAngle + D3DX_PI * 0.5f; // 左向きに設定
-
-		break;
-
-	default:
-		break;
-	}
+	// 目的角を計算
+	m_rotDest.y = m_fAngle - D3DX_PI * 0.5f; // 左向きに設定
 
 	// 角度を正規化
 	if (m_rotDest.y - m_rot.y > D3DX_PI)
@@ -1282,22 +937,13 @@ void CPlayer::UpdateAvoidLeft(void)
 		m_rot.y -= D3DX_PI * 2.0f;
 	}
 
-	// 自身の角度を計算
-	float IdxAngle = (m_nIdxPlayer == PLAYERINFO::NUMBER_MAIN) ? m_fAngle : m_fAngle + D3DX_PI;
 
 	// 対角線座標を中心から計算
-	m_pos.x = 0.0f - sinf(IdxAngle) * fRadius;
-	m_pos.z = 0.0f - cosf(IdxAngle) * fRadius;
+	m_pos.x = 0.0f - sinf(m_fAngle) * fRadius;
+	m_pos.z = 0.0f - cosf(m_fAngle) * fRadius;
 
 	// 現在の角度を設定する
-	if (m_nIdxPlayer == PLAYERINFO::NUMBER_MAIN)
-	{
-		m_rot.y += (m_rotDest.y - m_rot.y) + D3DX_PI;
-	}
-	else if (m_nIdxPlayer == PLAYERINFO::NUMBER_SUB)
-	{
-		m_rot.y += (m_rotDest.y - m_rot.y);
-	}
+	m_rot.y += (m_rotDest.y - m_rot.y) + D3DX_PI;
 }
 //=============================
 // コリジョン処理関数
@@ -1312,8 +958,6 @@ void CPlayer::Collision(void)
 
 	if (nMode == CScene::MODE_TUTORIAL)
 	{// ポイント判定
-
-		if (m_nIdxPlayer == PLAYERINFO::NUMBER_SUB) return;
 
 		// オブジェクト取得
 		CObject* pObj = CObject::GetTop(static_cast<int>(CObject::PRIORITY::SHADOW));
@@ -1379,53 +1023,49 @@ void CPlayer::Collision(void)
 		return;
 	}
 
-	// 一番目のプレイヤーに判別
-	if (m_nIdxPlayer == PLAYERINFO::NUMBER_MAIN)
+	// モーションタイプを取得
+	int nMotion = pBoss->GetMotion()->GetMotionType();
+	bool isHit = false;
+
+	if (!pBoss->IsDaeth()) // 生存時のみ判定
 	{
-		// モーションタイプを取得
-		int nMotion = pBoss->GetMotion()->GetMotionType();
-		bool isHit = false;
-
-		if (!pBoss->IsDaeth()) // 生存時のみ判定
+		switch (nMotion)
 		{
-			switch (nMotion)
-			{
-			case CBoss::TYPE_ACTION:
-				// 右手のみ判定
-				isHit = pBoss->CollisionRightHand(&m_pos);
-				break;
+		case CBoss::TYPE_ACTION:
+			// 右手のみ判定
+			isHit = pBoss->CollisionRightHand(&m_pos);
+			break;
 
-			case CBoss::TYPE_IMPACT:
-				// インパクト判定
-				isHit = pBoss->CollisionImpactScal(&m_pos);
-				break;
+		case CBoss::TYPE_IMPACT:
+			// インパクト判定
+			isHit = pBoss->CollisionImpactScal(&m_pos);
+			break;
 
-			case CBoss::TYPE_CIRCLE:
-				// サークル判定
-				isHit = pBoss->CollisionCircle(&m_pos, PLAYERINFO::HITRADIUS);
-				break;
+		case CBoss::TYPE_CIRCLE:
+			// サークル判定
+			isHit = pBoss->CollisionCircle(&m_pos, PLAYERINFO::HITRADIUS);
+			break;
 
-			case CBoss::TYPE_ARMRIGHTLEFT:
-				// 振り下ろし
-				isHit = pBoss->CollisionSwing(&m_pos, PLAYERINFO::HITRADIUS);
-				break;
+		case CBoss::TYPE_ARMRIGHTLEFT:
+			// 振り下ろし
+			isHit = pBoss->CollisionSwing(&m_pos, PLAYERINFO::HITRADIUS);
+			break;
 
-			default:
-				// デフォルト判定
-				isHit = pBoss->CollisionRightHand(&m_pos);
-				break;
-			}
+		default:
+			// デフォルト判定
+			isHit = pBoss->CollisionRightHand(&m_pos);
+			break;
+		}
 
-			if (isHit == true)
-			{
-				// ダメージステートに遷移
-				ChangeState(new CPlayerStateDamage(1), CPlayerStateBase::ID_DAMAGE);
+		if (isHit == true)
+		{
+			// ダメージステートに遷移
+			ChangeState(new CPlayerStateDamage(1), CPlayerStateBase::ID_DAMAGE);
 
-				return;
-			}
+			return;
 		}
 	}
-
+	
 	//=============================
 	// インパクトとの当たり判定
 	//=============================
@@ -1475,9 +1115,6 @@ void CPlayer::Collision(void)
 			// 円柱クラスにキャスト
 			CMeshPiler* pMesh = static_cast<CMeshPiler*>(pObjPiler);
 
-			// 2体目なら
-			if (m_nIdxPlayer != PLAYERINFO::NUMBER_MAIN) break;
-
 			// コリジョンしたとき
 			if (pMesh->Collision(&m_pos) == true)
 			{
@@ -1506,9 +1143,6 @@ void CPlayer::Collision(void)
 		{
 			// キャスト
 			CRubble* pRubble = static_cast<CRubble*>(pObjRubble);
-
-			// 2体目なら
-			if (m_nIdxPlayer != PLAYERINFO::NUMBER_MAIN) break;
 
 			// コリジョンしたとき
 			if (pRubble->Collision(&m_pos) == true)
@@ -1604,23 +1238,13 @@ void CPlayer::InitPos(float fAngle)
 	// 角度の初期設定
 	m_fAngle = fAngle;
 
-	// 自身の角度を計算
-	float IdxAngle = (m_nIdxPlayer == PLAYERINFO::NUMBER_MAIN) ? m_fAngle : m_fAngle + D3DX_PI;
-
 	// 円周上の初期位置を計算
-	m_pos.x = DestPos.x - sinf(IdxAngle) * fRadius;
-	m_pos.z = DestPos.z - cosf(IdxAngle) * fRadius;
+	m_pos.x = DestPos.x - sinf(m_fAngle) * fRadius;
+	m_pos.z = DestPos.z - cosf(m_fAngle) * fRadius;
 	m_pos.y = 0.0f;
 
 	// 現在の角度を設定する
-	if (m_nIdxPlayer == PLAYERINFO::NUMBER_MAIN)
-	{
-		m_rot.y += (m_rotDest.y - m_rot.y) + D3DX_PI;
-	}
-	else if (m_nIdxPlayer == PLAYERINFO::NUMBER_SUB)
-	{
-		m_rot.y += (m_rotDest.y - m_rot.y);
-	}
+	m_rot.y += (m_rotDest.y - m_rot.y) + D3DX_PI;
 
 	// 回転をセット
 	m_rotDest.y = m_rot.y;

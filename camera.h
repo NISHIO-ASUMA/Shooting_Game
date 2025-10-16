@@ -60,9 +60,6 @@ public:
 
 	void MouseView(CInputMouse* pMouse);
 	void LockOn(void);
-	void LockOnMain(void);
-	void LockOnSub(void);
-	void PlayerFollow(void);
 	void Rotation(void);
 	void TitleCamera(void);
 	void TutorialCamera(void);

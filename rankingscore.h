@@ -35,8 +35,6 @@ public:
 	void Draw(void);
 	void Load(void);
 
-	// セッター
-	void SetTexture(void);
 
 	// 静的メンバ関数
 	static CRankingScore* Create(D3DXVECTOR3 pos, float fWidth, float fHeight);

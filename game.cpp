@@ -219,7 +219,7 @@ void CGame::Update(void)
 		}
 
 		// ƒvƒŒƒCƒ„[Žæ“¾
-		CPlayer* pPlayer = CPlayer::GetIdxPlayer(0);
+		CPlayer* pPlayer = m_pGameManager->GetPlayer();
 		if (pPlayer == nullptr) return;
 
 		if (pPlayer->IsDeath())

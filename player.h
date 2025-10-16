@@ -102,15 +102,12 @@ public:
 	CModel** GetModel(void) { return m_apModel; }
 
 	int GetType(void) { return m_type; }
-	int GetPlayerIndex() const { return m_nIdxPlayer; }
-
 	float GetCoolTime(void) { return m_fAvoidTime; }
 
 	// フラグメント関数
 	bool IsJumping() { return m_isJump; } 	// ジャンプ状態の確認
 	bool isMoveInputKey(CInputKeyboard* pKeyInput);
 	bool isMovePadButton(CJoyPad* pPad);
-	bool isAttackeyPress(CInputKeyboard* pKeyInput);
 	bool isLanding(void) { return m_isJump; }
 	bool GetLanding(void) { return m_isLanding; }
 	bool GetIsDamege(void) { return m_isDecHp; }
@@ -119,9 +116,8 @@ public:
 	bool GetRight(void) { return m_isRight; }
 
 	// 静的メンバ関数
-	static CPlayer* Create(D3DXVECTOR3 pos, D3DXVECTOR3 rot, int nLife, const int nIdxParson, const char* pFilename); // 生成処理
+	static CPlayer* Create(D3DXVECTOR3 pos, D3DXVECTOR3 rot, int nLife,const char* pFilename); // 生成処理
 	static bool IsDeath(void) { return m_isDeath; }
-	static CPlayer* GetIdxPlayer(int Idx); // インデックス番号で取得
 
 private:
 	static inline constexpr int MAX_MODEL = 19; // プレイヤーで使うモデルの数
@@ -147,14 +143,12 @@ private:
 	int m_nNumAll;			// モデル総数
 	int m_State;			// 状態管理カウンター
 	int m_nIdxTexture;		// テクスチャID
-	int m_nIdxPlayer;		// プレイヤーの識別番号
 
 	bool m_isLanding;		// 着地判定
 	bool m_isJump;			// ジャンプ判定
 	bool m_isMoving;		// 移動キー判定
 	bool m_isAttack;		// 攻撃判定
 	bool m_isShadow;
-	bool m_isStateSynchro;
 	bool m_isConectPad;
 	bool m_isGuard;
 	bool m_isDecHp;
@@ -171,7 +165,6 @@ private:
 	const char* m_pFilename; // 読み込むファイル名
 
 	static bool m_isDeath; // 静的
-
 };
 
 #endif
