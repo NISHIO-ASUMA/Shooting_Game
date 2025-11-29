@@ -77,7 +77,6 @@ HRESULT CResultManager::Init(void)
 	// 最終スコア
 	m_pResultScore[RESULTINFO::LAST_SCOREIDX]->SetLastScore(m_nGameScore, nScore);
 
-
 	// サウンド取得
 	CSound* pSound = CManager::GetSound();
 

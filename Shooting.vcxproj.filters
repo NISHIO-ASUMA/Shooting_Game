@@ -816,7 +816,7 @@
       <Filter>ヘッダー ファイル\StateMachine</Filter>
     </ClInclude>
     <ClInclude Include="chargesignal.h">
-      <Filter>ヘッダー ファイル</Filter>
+      <Filter>ヘッダー ファイル\2D</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
