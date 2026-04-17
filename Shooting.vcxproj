@@ -72,13 +72,13 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>C:\Program Files %28x86%29\Microsoft DirectX SDK %28June 2010%29\Include;$(IncludePath)</IncludePath>
-    <LibraryPath>C:\Program Files %28x86%29\Microsoft DirectX SDK %28June 2010%29\Lib\x86;$(LibraryPath)</LibraryPath>
+    <IncludePath>C:\Program Files %28x86%29\Microsoft DirectX SDK %28June 2010%29\Include;$(DXSDK_DIR)Include</IncludePath>
+    <LibraryPath>$(DXSDK_DIR)Lib\x86;C:\Program Files %28x86%29\Microsoft DirectX SDK %28June 2010%29\Lib\x86</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
-    <IncludePath>C:\Program Files %28x86%29\Microsoft DirectX SDK %28June 2010%29\Include;$(IncludePath)</IncludePath>
-    <LibraryPath>C:\Program Files %28x86%29\Microsoft DirectX SDK %28June 2010%29\Lib\x86;$(LibraryPath)</LibraryPath>
+    <IncludePath>C:\Program Files %28x86%29\Microsoft DirectX SDK %28June 2010%29\Include;$(DXSDK_DIR)Include</IncludePath>
+    <LibraryPath>$(DXSDK_DIR)Lib\x86;C:\Program Files %28x86%29\Microsoft DirectX SDK %28June 2010%29\Lib\x86</LibraryPath>
     <OutDir>$(SolutionDir)</OutDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -91,7 +91,7 @@
     <ClCompile>
       <WarningLevel>Level4</WarningLevel>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>WIN32;_CRT_SECURE_NO_WARNINGS</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_CRT_SECURE_NO_WARNINGS</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp17</LanguageStandard>
       <PrecompiledHeader>Use</PrecompiledHeader>
@@ -109,7 +109,7 @@
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
-      <PreprocessorDefinitions>WIN32;_CRT_SECURE_NO_WARNINGS</PreprocessorDefinitions>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_CRT_SECURE_NO_WARNINGS</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
       <LanguageStandard>stdcpp17</LanguageStandard>
       <PrecompiledHeader>Use</PrecompiledHeader>
@@ -154,7 +154,6 @@
   <ItemGroup>
     <ClCompile Include="barrierdurability.cpp" />
     <ClCompile Include="barriermanager.cpp" />
-    <ClCompile Include="bg.cpp" />
     <ClCompile Include="billboard.cpp" />
     <ClCompile Include="block.cpp" />
     <ClCompile Include="blockManager.cpp" />
@@ -163,28 +162,20 @@
     <ClCompile Include="bosslifegage.cpp" />
     <ClCompile Include="bossstate.cpp" />
     <ClCompile Include="bullet.cpp" />
-    <ClCompile Include="bullethorming.cpp" />
     <ClCompile Include="bulleticon.cpp" />
     <ClCompile Include="camera.cpp" />
     <ClCompile Include="cameramode.cpp" />
     <ClCompile Include="chargesignal.cpp" />
-    <ClCompile Include="character.cpp" />
     <ClCompile Include="charge.cpp" />
-    <ClCompile Include="collision.cpp" />
     <ClCompile Include="debugproc.cpp" />
     <ClCompile Include="easing.cpp" />
     <ClCompile Include="edit.cpp" />
     <ClCompile Include="editmanager.cpp" />
-    <ClCompile Include="editmodel.cpp" />
     <ClCompile Include="effect.cpp" />
     <ClCompile Include="effectlaser.cpp" />
     <ClCompile Include="effectpiler.cpp" />
     <ClCompile Include="effectsmoke.cpp" />
-    <ClCompile Include="enemy.cpp" />
-    <ClCompile Include="enemymanager.cpp" />
-    <ClCompile Include="enemystate.cpp" />
     <ClCompile Include="exitpoint.cpp" />
-    <ClCompile Include="explosion.cpp" />
     <ClCompile Include="fade.cpp" />
     <ClCompile Include="gage.cpp" />
     <ClCompile Include="game.cpp" />
@@ -226,7 +217,6 @@
     <ClCompile Include="pilermanager.cpp" />
     <ClCompile Include="player.cpp" />
     <ClCompile Include="playerlifegage.cpp" />
-    <ClCompile Include="playermanager.cpp" />
     <ClCompile Include="playerstate.cpp" />
     <ClCompile Include="pointui.cpp" />
     <ClCompile Include="ranking.cpp" />
@@ -248,8 +238,6 @@
     <ClCompile Include="sound.cpp" />
     <ClCompile Include="spread.cpp" />
     <ClCompile Include="state.cpp" />
-    <ClCompile Include="subplayer.cpp" />
-    <ClCompile Include="subplayerstate.cpp" />
     <ClCompile Include="texture.cpp" />
     <ClCompile Include="time.cpp" />
     <ClCompile Include="title.cpp" />
@@ -263,16 +251,10 @@
     <ClCompile Include="tutorialui.cpp" />
     <ClCompile Include="tutotask.cpp" />
     <ClCompile Include="ui.cpp" />
-    <ClCompile Include="uiedit.cpp" />
-    <ClCompile Include="uieditmanager.cpp" />
-    <ClCompile Include="uimanager.cpp" />
-    <ClCompile Include="uiobject.cpp" />
-    <ClCompile Include="uiobjectmanager.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="barrierdurability.h" />
     <ClInclude Include="barriermanager.h" />
-    <ClInclude Include="bg.h" />
     <ClInclude Include="billboard.h" />
     <ClInclude Include="block.h" />
     <ClInclude Include="blockManager.h" />
@@ -281,28 +263,20 @@
     <ClInclude Include="bosslifegage.h" />
     <ClInclude Include="bossstate.h" />
     <ClInclude Include="bullet.h" />
-    <ClInclude Include="bullethorming.h" />
     <ClInclude Include="bulleticon.h" />
     <ClInclude Include="camera.h" />
     <ClInclude Include="cameramode.h" />
     <ClInclude Include="chargesignal.h" />
-    <ClInclude Include="character.h" />
     <ClInclude Include="charge.h" />
-    <ClInclude Include="collision.h" />
     <ClInclude Include="debugproc.h" />
     <ClInclude Include="easing.h" />
     <ClInclude Include="edit.h" />
     <ClInclude Include="editmanager.h" />
-    <ClInclude Include="editmodel.h" />
     <ClInclude Include="effect.h" />
     <ClInclude Include="effectlaser.h" />
     <ClInclude Include="effectpiler.h" />
     <ClInclude Include="effectsmoke.h" />
-    <ClInclude Include="enemy.h" />
-    <ClInclude Include="enemymanager.h" />
-    <ClInclude Include="enemystate.h" />
     <ClInclude Include="exitpoint.h" />
-    <ClInclude Include="explosion.h" />
     <ClInclude Include="fade.h" />
     <ClInclude Include="gage.h" />
     <ClInclude Include="game.h" />
@@ -342,7 +316,6 @@
     <ClInclude Include="pilermanager.h" />
     <ClInclude Include="player.h" />
     <ClInclude Include="playerlifegage.h" />
-    <ClInclude Include="playermanager.h" />
     <ClInclude Include="playerstate.h" />
     <ClInclude Include="pointui.h" />
     <ClInclude Include="ranking.h" />
@@ -365,8 +338,6 @@
     <ClInclude Include="sound.h" />
     <ClInclude Include="spread.h" />
     <ClInclude Include="state.h" />
-    <ClInclude Include="subplayer.h" />
-    <ClInclude Include="subplayerstate.h" />
     <ClInclude Include="template.h" />
     <ClInclude Include="texture.h" />
     <ClInclude Include="time.h" />
@@ -381,11 +352,6 @@
     <ClInclude Include="tutorialui.h" />
     <ClInclude Include="tutotask.h" />
     <ClInclude Include="ui.h" />
-    <ClInclude Include="uiedit.h" />
-    <ClInclude Include="uieditmanager.h" />
-    <ClInclude Include="uimanager.h" />
-    <ClInclude Include="uiobject.h" />
-    <ClInclude Include="uiobjectmanager.h" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="Shooting.rc" />

@@ -1,15 +1,13 @@
-//============================================
+//=========================================================
 //
 // プレイヤー体力処理 [ playerlifegage.cpp ]
 // Author: Asuma Nishio
-// 
-// TODO : 振動処理入れる
 //
-//============================================
+//=========================================================
 
-//**********************
+//*********************************************************
 // インクルードファイル
-//**********************
+//*********************************************************
 #include "playerlifegage.h"
 #include "player.h"
 #include "parameter.h"
@@ -19,9 +17,9 @@
 #include "gamemanager.h"
 #include "tutorialmanager.h"
 
-//*************************
+//*********************************************************
 // 定数宣言
-//*************************
+//*********************************************************
 namespace PLAYERLIFEINFO
 {
 	constexpr float GAGE_HEIGHT = 45.0f; // ゲージの高さの固定
@@ -34,9 +32,9 @@ namespace PLAYERLIFEINFO
 	constexpr int RANDOM_MIN = 100; // 最小値
 };
 
-//========================
+//=========================================================
 // コンストラクタ
-//========================
+//=========================================================
 CPlayerLifeGage::CPlayerLifeGage(int nPriority) : CGage(nPriority)
 {
 	// 値のクリア
@@ -51,16 +49,43 @@ CPlayerLifeGage::CPlayerLifeGage(int nPriority) : CGage(nPriority)
 	m_fShakeOffset = NULL;
 	m_basePos = VECTOR3_NULL;
 }
-//========================
+//=========================================================
 // デストラクタ
-//========================
+//=========================================================
 CPlayerLifeGage::~CPlayerLifeGage()
 {
 	// 無し
 }
-//========================
+//=========================================================
+// 生成処理
+//=========================================================
+CPlayerLifeGage* CPlayerLifeGage::Create(D3DXVECTOR3 pos, float fWidth, float fHeight, int gagetype, const char* pTexName)
+{
+	// インスタンス生成
+	CPlayerLifeGage* pLifeGage = new CPlayerLifeGage;
+	if (pLifeGage == nullptr) return nullptr;
+
+	// 初期化失敗時
+	if (FAILED(pLifeGage->Init()))
+	{
+		// nullを返す
+		return nullptr;
+	}
+
+	// 2Dオブジェクト設定
+	pLifeGage->SetPos(pos);
+	pLifeGage->m_basePos = pos;
+	pLifeGage->SetSize(fWidth, fHeight);
+	pLifeGage->SetGage(gagetype);
+	pLifeGage->SetTexture(pTexName);
+	pLifeGage->SetAnchor(ANCHORTYPE_LEFTSIDE);
+
+	// 生成されたポインタを返す
+	return pLifeGage;
+}
+//=========================================================
 // 初期化処理
-//========================
+//=========================================================
 HRESULT CPlayerLifeGage::Init(void)
 {
 	// 親クラスの初期化処理
@@ -100,17 +125,17 @@ HRESULT CPlayerLifeGage::Init(void)
 	// 初期化結果を返す
 	return S_OK;
 }
-//========================
+//=========================================================
 // 終了処理
-//========================
+//=========================================================
 void CPlayerLifeGage::Uninit(void)
 {
 	// 親クラスの終了処理
 	CObject2D::Uninit();
 }
-//========================
+//=========================================================
 // 更新処理
-//========================
+//=========================================================
 void CPlayerLifeGage::Update(void)
 {
 	// パラメーター取得
@@ -186,40 +211,11 @@ void CPlayerLifeGage::Update(void)
 		CObject2D::Update();
 	}
 }
-//========================
+//=========================================================
 // 描画処理
-//========================
+//=========================================================
 void CPlayerLifeGage::Draw(void)
 {
 	// 親クラスの描画
 	CObject2D::Draw();
-}
-//========================
-// 生成処理
-//========================
-CPlayerLifeGage* CPlayerLifeGage::Create(D3DXVECTOR3 pos, float fWidth, float fHeight, int gagetype, const char* pTexName)
-{
-	// インスタンス生成
-	CPlayerLifeGage* pLifeGage = new CPlayerLifeGage;
-
-	// nullだったら
-	if (pLifeGage == nullptr) return nullptr;
-
-	// 初期化失敗時
-	if (FAILED(pLifeGage->Init()))
-	{
-		// nullを返す
-		return nullptr;
-	}
-
-	// 2Dオブジェクト設定
-	pLifeGage->SetPos(pos);
-	pLifeGage->m_basePos = pos;
-	pLifeGage->SetSize(fWidth, fHeight);
-	pLifeGage->SetGage(gagetype);
-	pLifeGage->SetTexture(pTexName);
-	pLifeGage->SetAnchor(ANCHORTYPE_LEFTSIDE);
-
-	// 生成されたポインタを返す
-	return pLifeGage;
 }

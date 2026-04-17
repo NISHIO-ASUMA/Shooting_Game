@@ -1,36 +1,36 @@
-//====================================
+//=========================================================
 //
 // マネージャー処理 [ manager.h ]
 // Author: Asuma Nishio
 //
-//=====================================
+//=========================================================
 
-#ifndef _MANAGER_H_ // このマクロ定義がされてなかったら
-#define _MANAGER_H_ // 2重インクルード防止のマクロ定義
+//*********************************************************
+// インクルードガード
+//*********************************************************
+#pragma once
 
-//**************************  
-// インクルードファイル宣言
-//**************************
+//*********************************************************
+// インクルードファイル
+//*********************************************************
 #include "renderer.h"
 #include "input.h"
 #include "sound.h"
 #include "debugproc.h"
 #include "bullet.h"
-#include "enemymanager.h"
 #include "texture.h"
 #include "camera.h"
 #include "light.h"
 #include "object3D.h"
 #include "blockManager.h"
-#include "collision.h"
 #include "meshcylinder.h"
 #include "boss.h"
 #include "scene.h"
 #include "fade.h"
 
-//**************************
-// マネージャークラス宣言
-//**************************
+//*********************************************************
+// マネージャークラスを定義
+//*********************************************************
 class CManager
 {
 public:
@@ -53,7 +53,6 @@ public:
 	static CTexture* GetTexture(void) { return m_pTexture; }
 	static CCamera* GetCamera(void) { return m_pCamera; }
 	static CLight* GetLight(void) { return m_pLight; }
-	static CCollision* GetCollision(void) { return m_pCollision; }
 	static CScene* Getscene(void) { return m_pScene; }
 	static CFade* GetFade(void) { return m_pFade; }
 
@@ -71,6 +70,4 @@ private:
 	static CLight* m_pLight;				// ライトクラスのポインタ
 	static CScene* m_pScene;				// シーン管理クラスのポインタ
 	static CFade* m_pFade;					// フェードクラスのポインタ
-	static CCollision* m_pCollision;		// コリジョンクラスへのポインタ
 };
-#endif

@@ -1,13 +1,13 @@
-//==========================================
+//=========================================================
 //
 // ゲーム管理処理 [ gamemanager.cpp ]
 // Author: Asuma Nishio
 // 
-//==========================================
+//=========================================================
 
-//***************************
-// インクルードファイル宣言
-//***************************
+//*********************************************************
+// インクルードファイル
+//*********************************************************
 #include "gamemanager.h"
 #include "manager.h"
 #include "debugproc.h"
@@ -23,7 +23,6 @@
 #include "sound.h"
 #include "item.h"
 #include "barrierdurability.h"
-#include "bullethorming.h"
 #include "itemmanager.h"
 #include "charge.h"
 #include "sceneloader.h"
@@ -34,11 +33,10 @@
 #include "bulleticon.h"
 #include "result.h"
 #include "moveui.h"
-#include "playermanager.h"
 
-//**************************
+//*********************************************************
 // 静的メンバ変数宣言
-//**************************
+//*********************************************************
 CMeshCylinder* CGameManager::m_pMeshCylinder = nullptr;	// 円柱
 CBoss* CGameManager::m_pBoss = nullptr;					// ボス
 CTime* CGameManager::m_pTime = nullptr;					// タイマー
@@ -47,23 +45,23 @@ CBarrierManager* CGameManager::m_pBarrier = nullptr;	// バリアマネージャー
 CRubbleManager* CGameManager::m_pRubble = nullptr;		// 瓦礫オブジェクトマネージャー
 CPlayer* CGameManager::m_pPlayer = nullptr;
 
-//========================
+//=========================================================
 // コンストラクタ
-//========================
+//=========================================================
 CGameManager::CGameManager()
 {
 	// 値のクリア
 }
-//========================
+//=========================================================
 // デストラクタ
-//========================
+//=========================================================
 CGameManager::~CGameManager()
 {
 	// 無し
 }
-//========================
+//=========================================================
 // 初期化処理
-//========================
+//=========================================================
 HRESULT CGameManager::Init(void)
 {
 	// シリンダー生成
@@ -72,6 +70,7 @@ HRESULT CGameManager::Init(void)
 	// ボス生成
 	m_pBoss = CBoss::Create(D3DXVECTOR3(0.0f, -800.0f, 0.0f), 60.0f, 300);
 
+	// プレイヤー生成
 	m_pPlayer = CPlayer::Create(VECTOR3_NULL, VECTOR3_NULL, 10, "data/MOTION/Player/Player100motion.txt");
 
 	// シーンオブジェクト読み込み
@@ -89,8 +88,6 @@ HRESULT CGameManager::Init(void)
 
 	// サウンド取得
 	CSound* pSound = CManager::GetSound();
-
-	// nullだったら
 	if (pSound == nullptr) return E_FAIL;
 
 	// サウンド再生
@@ -155,9 +152,9 @@ HRESULT CGameManager::Init(void)
 	// 初期化結果を返す
 	return S_OK;
 }
-//========================
+//=========================================================
 // 終了処理
-//========================
+//=========================================================
 void CGameManager::Uninit(void)
 {
 	// 使用したポインタのnull初期化
@@ -218,9 +215,9 @@ void CGameManager::Uninit(void)
 		m_pPilerManager = nullptr;
 	}
 }
-//========================
+//=========================================================
 // 更新処理
-//========================
+//=========================================================
 void CGameManager::Update(void)
 {
 	// 座標取得
@@ -255,22 +252,6 @@ void CGameManager::Update(void)
 	}
 
 #ifdef _DEBUG
-
-	// 検証用オブジェクト出現
-	if (CManager::GetInputKeyboard()->GetTrigger(DIK_O))
-	{
-		// 減算回数を加算
-		CScore::DecScore();
-	}
-
-	// 検証用オブジェクト出現
-	if (CManager::GetInputKeyboard()->GetTrigger(DIK_2))
-	{
-		// 更新
-		CManager::GetFade()->SetFade(new CResult());
-		return;
-	}
-
 	if (CManager::GetInputKeyboard()->GetTrigger(DIK_L))
 	{
 		// ファイル処理
@@ -285,6 +266,7 @@ void CGameManager::Update(void)
 
 	if (CManager::GetInputKeyboard()->GetTrigger(DIK_G))
 	{
+		// カメラモードをアニメーションに
 		pCamera->SetCameraMode(CCamera::MODE_ANIM);
 	}
 #endif

@@ -97,9 +97,6 @@
     <Filter Include="ソース ファイル\Models">
       <UniqueIdentifier>{7b45dd55-e139-4c6b-873f-bcc460148891}</UniqueIdentifier>
     </Filter>
-    <Filter Include="ソース ファイル\UiEdit">
-      <UniqueIdentifier>{c0f7681e-fdef-43ec-a10b-111cd04d5054}</UniqueIdentifier>
-    </Filter>
     <Filter Include="ヘッダー ファイル\Bullet">
       <UniqueIdentifier>{8508c2b5-3c7e-4ef1-87a5-4b254916460b}</UniqueIdentifier>
     </Filter>
@@ -115,17 +112,14 @@
     <Filter Include="ヘッダー ファイル\Models">
       <UniqueIdentifier>{73fc2122-dfb5-48a8-ac91-6b79dc050a21}</UniqueIdentifier>
     </Filter>
-    <Filter Include="ヘッダー ファイル\StateMachine">
-      <UniqueIdentifier>{3b661f4a-6399-41bb-8b8e-24c5d51dcc46}</UniqueIdentifier>
-    </Filter>
     <Filter Include="ヘッダー ファイル\System">
       <UniqueIdentifier>{52c70383-65e5-4994-8f1c-b2d0bf0f9e4b}</UniqueIdentifier>
     </Filter>
-    <Filter Include="ヘッダー ファイル\UiEdit">
-      <UniqueIdentifier>{6889b0dd-8ab4-4403-a4b3-a796f874485e}</UniqueIdentifier>
-    </Filter>
     <Filter Include="ヘッダー ファイル\Charactor\Enemy">
       <UniqueIdentifier>{f9c44f7d-7fa8-4d04-9dbf-7110acb293cf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="ヘッダー ファイル\Scene\StateMachine">
+      <UniqueIdentifier>{3b661f4a-6399-41bb-8b8e-24c5d51dcc46}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -134,9 +128,6 @@
     </ClCompile>
     <ClCompile Include="barriermanager.cpp">
       <Filter>ソース ファイル\Manager</Filter>
-    </ClCompile>
-    <ClCompile Include="bg.cpp">
-      <Filter>ソース ファイル\2D</Filter>
     </ClCompile>
     <ClCompile Include="block.cpp">
       <Filter>ソース ファイル\Xfile</Filter>
@@ -162,9 +153,6 @@
     <ClCompile Include="bullet.cpp">
       <Filter>ソース ファイル\Bullet</Filter>
     </ClCompile>
-    <ClCompile Include="bullethorming.cpp">
-      <Filter>ソース ファイル\Bullet</Filter>
-    </ClCompile>
     <ClCompile Include="bulleticon.cpp">
       <Filter>ソース ファイル\2D</Filter>
     </ClCompile>
@@ -174,14 +162,8 @@
     <ClCompile Include="cameramode.cpp">
       <Filter>ソース ファイル\Scene</Filter>
     </ClCompile>
-    <ClCompile Include="character.cpp">
-      <Filter>ソース ファイル\Charactor</Filter>
-    </ClCompile>
     <ClCompile Include="charge.cpp">
       <Filter>ソース ファイル\2D</Filter>
-    </ClCompile>
-    <ClCompile Include="collision.cpp">
-      <Filter>ソース ファイル\System</Filter>
     </ClCompile>
     <ClCompile Include="debugproc.cpp">
       <Filter>ソース ファイル\System</Filter>
@@ -201,19 +183,7 @@
     <ClCompile Include="effectsmoke.cpp">
       <Filter>ソース ファイル\Effect</Filter>
     </ClCompile>
-    <ClCompile Include="enemy.cpp">
-      <Filter>ソース ファイル\Charactor\Enemy</Filter>
-    </ClCompile>
-    <ClCompile Include="enemymanager.cpp">
-      <Filter>ソース ファイル\Manager</Filter>
-    </ClCompile>
-    <ClCompile Include="enemystate.cpp">
-      <Filter>ソース ファイル\StateMachine</Filter>
-    </ClCompile>
     <ClCompile Include="exitpoint.cpp">
-      <Filter>ソース ファイル\2D</Filter>
-    </ClCompile>
-    <ClCompile Include="explosion.cpp">
       <Filter>ソース ファイル\2D</Filter>
     </ClCompile>
     <ClCompile Include="fade.cpp">
@@ -253,9 +223,6 @@
       <Filter>ソース ファイル\MainLoop</Filter>
     </ClCompile>
     <ClCompile Include="editmanager.cpp">
-      <Filter>ソース ファイル\MapEdit</Filter>
-    </ClCompile>
-    <ClCompile Include="editmodel.cpp">
       <Filter>ソース ファイル\MapEdit</Filter>
     </ClCompile>
     <ClCompile Include="mapmanager.cpp">
@@ -438,32 +405,8 @@
     <ClCompile Include="ui.cpp">
       <Filter>ソース ファイル\2D</Filter>
     </ClCompile>
-    <ClCompile Include="uiedit.cpp">
-      <Filter>ソース ファイル\Scene</Filter>
-    </ClCompile>
-    <ClCompile Include="uieditmanager.cpp">
-      <Filter>ソース ファイル\UiEdit</Filter>
-    </ClCompile>
-    <ClCompile Include="uimanager.cpp">
-      <Filter>ソース ファイル\UiEdit</Filter>
-    </ClCompile>
-    <ClCompile Include="uiobject.cpp">
-      <Filter>ソース ファイル\UiEdit</Filter>
-    </ClCompile>
-    <ClCompile Include="uiobjectmanager.cpp">
-      <Filter>ソース ファイル\UiEdit</Filter>
-    </ClCompile>
-    <ClCompile Include="subplayer.cpp">
-      <Filter>ソース ファイル\Charactor\Player</Filter>
-    </ClCompile>
     <ClCompile Include="particlepiler.cpp">
       <Filter>ソース ファイル\Effect</Filter>
-    </ClCompile>
-    <ClCompile Include="playermanager.cpp">
-      <Filter>ソース ファイル\Manager</Filter>
-    </ClCompile>
-    <ClCompile Include="subplayerstate.cpp">
-      <Filter>ソース ファイル\StateMachine</Filter>
     </ClCompile>
     <ClCompile Include="chargesignal.cpp">
       <Filter>ソース ファイル\2D</Filter>
@@ -475,9 +418,6 @@
     </ClInclude>
     <ClInclude Include="barriermanager.h">
       <Filter>ヘッダー ファイル\Manager</Filter>
-    </ClInclude>
-    <ClInclude Include="bg.h">
-      <Filter>ヘッダー ファイル\2D</Filter>
     </ClInclude>
     <ClInclude Include="billboard.h">
       <Filter>ヘッダー ファイル\Object</Filter>
@@ -492,18 +432,15 @@
       <Filter>ヘッダー ファイル\Charactor\Boss</Filter>
     </ClInclude>
     <ClInclude Include="bossattackstate.h">
-      <Filter>ヘッダー ファイル\StateMachine</Filter>
+      <Filter>ヘッダー ファイル\Scene\StateMachine</Filter>
     </ClInclude>
     <ClInclude Include="bosslifegage.h">
       <Filter>ヘッダー ファイル\2D</Filter>
     </ClInclude>
     <ClInclude Include="bossstate.h">
-      <Filter>ヘッダー ファイル\StateMachine</Filter>
+      <Filter>ヘッダー ファイル\Scene\StateMachine</Filter>
     </ClInclude>
     <ClInclude Include="bullet.h">
-      <Filter>ヘッダー ファイル\Bullet</Filter>
-    </ClInclude>
-    <ClInclude Include="bullethorming.h">
       <Filter>ヘッダー ファイル\Bullet</Filter>
     </ClInclude>
     <ClInclude Include="bulleticon.h">
@@ -515,14 +452,8 @@
     <ClInclude Include="cameramode.h">
       <Filter>ヘッダー ファイル\Scene</Filter>
     </ClInclude>
-    <ClInclude Include="character.h">
-      <Filter>ヘッダー ファイル\Charactor</Filter>
-    </ClInclude>
     <ClInclude Include="charge.h">
       <Filter>ヘッダー ファイル\2D</Filter>
-    </ClInclude>
-    <ClInclude Include="collision.h">
-      <Filter>ヘッダー ファイル\System</Filter>
     </ClInclude>
     <ClInclude Include="debugproc.h">
       <Filter>ヘッダー ファイル\System</Filter>
@@ -534,9 +465,6 @@
       <Filter>ヘッダー ファイル\Scene</Filter>
     </ClInclude>
     <ClInclude Include="editmanager.h">
-      <Filter>ヘッダー ファイル\MapEdit</Filter>
-    </ClInclude>
-    <ClInclude Include="editmodel.h">
       <Filter>ヘッダー ファイル\MapEdit</Filter>
     </ClInclude>
     <ClInclude Include="effect.h">
@@ -551,19 +479,7 @@
     <ClInclude Include="effectsmoke.h">
       <Filter>ヘッダー ファイル\Effect</Filter>
     </ClInclude>
-    <ClInclude Include="enemy.h">
-      <Filter>ヘッダー ファイル\Charactor\Enemy</Filter>
-    </ClInclude>
-    <ClInclude Include="enemymanager.h">
-      <Filter>ヘッダー ファイル\Manager</Filter>
-    </ClInclude>
-    <ClInclude Include="enemystate.h">
-      <Filter>ヘッダー ファイル\StateMachine</Filter>
-    </ClInclude>
     <ClInclude Include="exitpoint.h">
-      <Filter>ヘッダー ファイル\2D</Filter>
-    </ClInclude>
-    <ClInclude Include="explosion.h">
       <Filter>ヘッダー ファイル\2D</Filter>
     </ClInclude>
     <ClInclude Include="fade.h">
@@ -681,7 +597,7 @@
       <Filter>ヘッダー ファイル\2D</Filter>
     </ClInclude>
     <ClInclude Include="playerstate.h">
-      <Filter>ヘッダー ファイル\StateMachine</Filter>
+      <Filter>ヘッダー ファイル\Scene\StateMachine</Filter>
     </ClInclude>
     <ClInclude Include="pointui.h">
       <Filter>ヘッダー ファイル\2D</Filter>
@@ -747,7 +663,7 @@
       <Filter>ヘッダー ファイル\Xfile</Filter>
     </ClInclude>
     <ClInclude Include="state.h">
-      <Filter>ヘッダー ファイル\StateMachine</Filter>
+      <Filter>ヘッダー ファイル\Scene\StateMachine</Filter>
     </ClInclude>
     <ClInclude Include="time.h">
       <Filter>ヘッダー ファイル\2D</Filter>
@@ -785,35 +701,11 @@
     <ClInclude Include="ui.h">
       <Filter>ヘッダー ファイル\2D</Filter>
     </ClInclude>
-    <ClInclude Include="uiedit.h">
-      <Filter>ヘッダー ファイル\Scene</Filter>
-    </ClInclude>
-    <ClInclude Include="uieditmanager.h">
-      <Filter>ヘッダー ファイル\UiEdit</Filter>
-    </ClInclude>
-    <ClInclude Include="uimanager.h">
-      <Filter>ヘッダー ファイル\UiEdit</Filter>
-    </ClInclude>
-    <ClInclude Include="uiobject.h">
-      <Filter>ヘッダー ファイル\UiEdit</Filter>
-    </ClInclude>
-    <ClInclude Include="uiobjectmanager.h">
-      <Filter>ヘッダー ファイル\UiEdit</Filter>
-    </ClInclude>
     <ClInclude Include="resource.h">
       <Filter>ヘッダー ファイル</Filter>
     </ClInclude>
     <ClInclude Include="particlepiler.h">
       <Filter>ヘッダー ファイル\Effect</Filter>
-    </ClInclude>
-    <ClInclude Include="playermanager.h">
-      <Filter>ヘッダー ファイル\Manager</Filter>
-    </ClInclude>
-    <ClInclude Include="subplayer.h">
-      <Filter>ヘッダー ファイル\Charactor\Player</Filter>
-    </ClInclude>
-    <ClInclude Include="subplayerstate.h">
-      <Filter>ヘッダー ファイル\StateMachine</Filter>
     </ClInclude>
     <ClInclude Include="chargesignal.h">
       <Filter>ヘッダー ファイル\2D</Filter>

@@ -1,30 +1,32 @@
-//====================================
+//=========================================================
 //
 // ボス処理 [ boss.h ]
 // Author: Asuma Nishio
 //
-//=====================================
+//=========================================================
 
-#ifndef _BOSS_H_ // このマクロ定義がされてなかったら
-#define _BOSS_H_ // 2重インクルード防止のマクロ定義
+//*********************************************************
+// インクルードガード
+//*********************************************************
+#pragma once
 
-//******************************
+//*********************************************************
 // インクルードファイル
-//******************************
+//*********************************************************
 #include "object.h"
 #include "model.h"
 #include "motion.h"
 
-//**********************
+//*********************************************************
 // 前方宣言
-//**********************
+//*********************************************************
 class CParameter;
 class CStateMachine;
 class CBossStateBace;
 
-//**********************
+//*********************************************************
 // ボスクラスを定義
-//**********************
+//*********************************************************
 class CBoss : public CObject
 {
 public:
@@ -57,7 +59,7 @@ public:
 	bool CollisionCircle(D3DXVECTOR3* pPos, float fHitRadius);
 	bool CollisionSwing(D3DXVECTOR3* pPos, float fHitRadius);
 
-	void Hit(int nDamage,D3DXVECTOR3 HitPos);
+	void Hit(int nDamage, D3DXVECTOR3 HitPos);
 	void ChangeState(CBossStateBace* pNewState, int Id);
 	void RollToPlayer(void);
 	void DecCoolTime(void) { if (m_nCoolTime > 0) m_nCoolTime--; }
@@ -69,7 +71,7 @@ public:
 	void SetPos(D3DXVECTOR3 pos) { m_pos = pos; }
 
 	// ゲッター
-	D3DXVECTOR3 GetPos(void) { return m_pos;}
+	D3DXVECTOR3 GetPos(void) { return m_pos; }
 	D3DXVECTOR3 GetRot(void) { return m_rot; }
 	CParameter* GetParam(void) { return m_pParam; }
 	CMotion* GetMotion(void) { return m_pMotion; }
@@ -79,9 +81,9 @@ public:
 	bool GetIsSet(void) { return m_isSet; }
 
 	// 静的メンバ関数
-	static CBoss* Create(D3DXVECTOR3 pos, float fSize,int nLife);
-	static bool IsDaeth(void) { return m_isdaeth;}
-	CModel*GetModelPartType(CModel::PARTTYPE modelpart);
+	static CBoss* Create(D3DXVECTOR3 pos, float fSize, int nLife);
+	static bool IsDaeth(void) { return m_isdaeth; }
+	CModel* GetModelPartType(CModel::PARTTYPE modelpart);
 
 private:
 
@@ -108,5 +110,3 @@ private:
 	bool m_isDamegeBarrier;	// バリアにダメージを与えたか
 	static bool m_isdaeth;	// 死亡フラグ
 };
-
-#endif
