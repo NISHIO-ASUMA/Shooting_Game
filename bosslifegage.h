@@ -1,0 +1,61 @@
+//=========================================================
+//
+// ボス体力処理 [ bosslifegage.h ]
+// Author: Asuma Nishio
+//
+//=========================================================
+
+//*********************************************************
+// インクルードガード
+//*********************************************************
+#pragma once
+
+//*********************************************************
+// インクルードファイル
+//*********************************************************
+#include "object.h"
+#include "gage.h"
+
+//*********************************************************
+// 前方宣言
+//*********************************************************
+class CBoss;
+
+//*********************************************************
+// ボス体力管理クラスを定義
+//*********************************************************
+class CBossLifeGage : public CGage
+{
+public:
+	//***********************
+	// ゲージの種類
+	//***********************
+	enum TYPE
+	{
+		TYPE_FRAME,
+		TYPE_GAGE,
+		TYPE_MAX
+	};
+
+	// コンストラクタ・デストラクタ
+	CBossLifeGage(int nPriority = static_cast<int>(CObject::PRIORITY::UI));
+	~CBossLifeGage();
+
+	// メンバ関数
+	HRESULT Init(void);
+	void Uninit(void);
+	void Update(void);
+	void Draw(void);
+
+	// セッター
+	void SetType(int nType) { m_Type = nType; }
+
+	// 静的メンバ関数
+	static CBossLifeGage* Create(D3DXVECTOR3 pos, float fWidth, float fHeight, int nType,const char * pTexName);
+
+private:
+	int m_nCurrentLifeLength;		// バーの長さ基準値
+	int m_nMaxLifeLength;	// 最大体力時の長さ
+	int m_Type;				// 種類
+	CBoss* m_pBoss;			// ボスのポインタ
+};
