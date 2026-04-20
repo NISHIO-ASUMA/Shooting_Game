@@ -154,7 +154,6 @@ void CMoveUi::Update(void)
 
 		// 現在の幅
 		float fWidth = GetWidth();
-
 		if (fWidth < fMaxWidth)
 		{
 			fWidth += fAddWidth;
@@ -175,7 +174,8 @@ void CMoveUi::Update(void)
 		// 目標座標
 		D3DXVECTOR3 DestPos = { 135.0f, 600.0f, 0.0f };
 
-		const float fDestHeight = 40.0f;	// 高さ
+		// 目標高さ
+		const float fDestHeight = 100.0f;
 
 		// 移動スピード
 		const float fLerpSpeed = 0.05f;
